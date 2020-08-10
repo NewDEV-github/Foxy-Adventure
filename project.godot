@@ -14,7 +14,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://minimap/Crate.gd"
 }, {
-"base": "",
+"base": "Node",
+"class": "DLCLoader",
+"language": "GDScript",
+"path": "res://Script/dlc_loader_class.gd"
+}, {
+"base": "Node",
 "class": "FmodNative",
 "language": "NativeScript",
 "path": "res://bin/fmod/Fmod.gdns"
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Crate": "",
+"DLCLoader": "",
 "FmodNative": "",
 "Mob": "",
 "Player": ""
