@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://minimap/Player.gd"
+}, {
+"base": "Node",
+"class": "google",
+"language": "GDScript",
+"path": "res://Scripts/dlc_loader_class.gd"
 } ]
 _global_script_class_icons={
 "Crate": "",
 "DLCLoader": "",
 "FmodNative": "",
 "Mob": "",
-"Player": ""
+"Player": "",
+"google": ""
 }
 
 [android]
