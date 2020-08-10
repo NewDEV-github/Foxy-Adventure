@@ -1,0 +1,24 @@
+[gd_resource type="Environment" load_steps=2 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 134.7
+fog_enabled = true
+fog_depth_curve = 0.68302
+fog_transmit_enabled = true
+fog_transmit_curve = 0.63728
+fog_height_enabled = true
+fog_height_curve = 0.574348
+auto_exposure_enabled = true
+ss_reflections_enabled = true
+ssao_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 37.65
+dof_blur_near_enabled = true
+dof_blur_near_distance = 5.64
+glow_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 5.13

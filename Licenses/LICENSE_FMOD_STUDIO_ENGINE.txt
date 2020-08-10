@@ -1,0 +1,69 @@
+END-USER LICENSE AGREEMENT: CELESTE FMOD PROJECT AND SOURCE AUDIO CONTENT
+
+This Celeste FMOD Project and Source Audio Content End-User License Agreement
+(the "EULA") is a legal agreement between you, and Power Up Audio Inc and Lena
+Raine. By downloading, viewing, and in any way using this Celeste FMOD project
+file (the "PROJECT"), you agree to be bound by the terms of this EULA. If you
+do not agree with this EULA, do not use this PROJECT. All rights not expressly
+granted to you here are reserved by Power Up Audio Inc and Lena Raine.
+
+Upon acceptance of this EULA, Power Up Audio Inc and Lena Raine grant a license
+to you to use this PROJECT expressly for educational or personal purposes only.
+This license is granted worldwide and in perpetuity.
+
+This EULA includes license terms for:
+
+a) The PROJECT, and any .bank files built thereof (altogether, the "FMOD
+CONTENT"), and 
+
+b) The included .ogg sound and music files (altogether, the "SOURCE
+AUDIO").
+
+
+GRANT OF LICENSE:
+
+1. FMOD CONTENT:
+
+    You may modify, remix, redesign, and build upon the FMOD CONTENT.
+
+    You may share the FMOD CONTENT, original or otherwise modified.
+
+    You may broadcast video of the FMOD CONTENT, original or otherwise
+    modified.
+
+    If you share the FMOD CONTENT, you must indicate if modifications were made,
+    and make your best effort to describe those modifications.
+
+    You may not use the FMOD CONTENT for commercial purposes.
+
+    If you modify and share the FMOD CONTENT, you must distribute the modified
+    FMOD CONTENT under this same license.
+
+    You may not apply legal terms or technological measures that legally 
+    restrict others from doing anything this license permits.
+
+2. SOURCE AUDIO:
+
+    All SOURCE AUDIO is owned by either Power Up Audio Inc. or Lena Raine.
+
+    You may not share, copy, or otherwise redistribute the SOURCE AUDIO.
+
+    You may not use the SOURCE AUDIO for any commercial or non-commercial
+    purpose unrelated to the PROJECT.
+
+    You may modify, remix, redesign, and build upon the SOURCE AUDIO, provided
+    it is for a purpose strictly related to the PROJECT.
+
+
+BOTTOM LINE:
+
+This FMOD Project and the content herein has been released in the effort of
+contributing to education and welcoming discussion in game development. This
+doesn't happen very often, as many studios and individuals worry about trade
+secrets being revealed, or about content being copied and redistributed without
+permission. That said, please respect our choice to release this project by
+using it as intended - for non-commercial personal and/or educational purposes
+only.
+
+If you have any questions about the FMOD Project, or about this EULA, please
+feel free to message us at contact@powerupaudio.com.

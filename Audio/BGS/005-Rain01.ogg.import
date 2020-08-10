@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/005-Rain01.ogg-0cc2f28a6c597c158ac0c8fa0e138858.oggstr"
+
+[deps]
+
+source_file="res://Audio/BGS/005-Rain01.ogg"
+dest_files=[ "res://.import/005-Rain01.ogg-0cc2f28a6c597c158ac0c8fa0e138858.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

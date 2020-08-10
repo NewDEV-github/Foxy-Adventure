@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/119-Fire03.ogg-f40a9490fac7ef2546c3f1555ad58ab7.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/119-Fire03.ogg"
+dest_files=[ "res://.import/119-Fire03.ogg-f40a9490fac7ef2546c3f1555ad58ab7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

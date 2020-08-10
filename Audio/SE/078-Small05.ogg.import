@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/078-Small05.ogg-3c4519bb37e8dee60a462d16db7bdcce.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/078-Small05.ogg"
+dest_files=[ "res://.import/078-Small05.ogg-3c4519bb37e8dee60a462d16db7bdcce.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

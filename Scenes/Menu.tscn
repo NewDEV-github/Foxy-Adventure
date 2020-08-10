@@ -1,0 +1,240 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/NewTheFox/recolour4.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/BGM/main_menu.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Fonts/Ubuntu-L.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bg"
+length = 100.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("IMG_0008:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 50, 100 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -850 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("IMG_0009:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 50, 100 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -850 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "end_transition"
+length = 1.5
+
+[node name="Menu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 7 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IMG_0008" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 845.36
+rect_clip_content = true
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IMG_0009" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 848.0
+rect_clip_content = true
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 225.0
+margin_bottom = 135.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Las" type="Button" parent="VBoxContainer"]
+margin_right = 225.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+text = "KEY_WORLD_LIST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Website" type="Button" parent="VBoxContainer"]
+margin_top = 69.0
+margin_right = 225.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+text = "KEY_PROJECT_WEBSITE"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -225.0
+margin_top = -135.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="VBoxContainer2"]
+margin_right = 225.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+text = "KEY_GAME_OPTIONS"
+
+[node name="dsc" type="Button" parent="VBoxContainer2"]
+margin_top = 46.0
+margin_right = 225.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+text = "KEY_AUTHORS"
+
+[node name="Quit" type="Button" parent="VBoxContainer2"]
+margin_top = 92.0
+margin_right = 225.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+text = "KEY_EXIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+autoplay = "bg"
+anims/bg = SubResource( 1 )
+anims/end_transition = SubResource( 2 )
+
+[node name="Control" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.110352
+anchor_top = 0.388
+anchor_right = 0.892023
+anchor_bottom = 1.01333
+margin_top = 0.199982
+margin_right = -0.432007
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Music"
+
+[node name="CharacterSelect" type="WindowDialog" parent="."]
+visible = true
+margin_left = 183.0
+margin_top = 206.0
+margin_right = 681.0
+margin_bottom = 495.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="CharacterSelect" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -249.0
+margin_top = -144.5
+margin_right = 249.0
+margin_bottom = 144.5
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -675.0
+margin_bottom = 95.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+align = 2
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectWorld" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -244.5
+margin_top = -192.5
+margin_right = 244.5
+margin_bottom = 192.5
+
+[node name="WorldList" type="ItemList" parent="SelectWorld"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="RichTextLabel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -42.0
+margin_right = 533.0
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 5 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 4
+bbcode_enabled = true
+bbcode_text = "[wave amp=50 freq=1]Support: support@sonadow-dev.ml
+Version 0.0.1.1-alpha, Copyright 2020 - present, Sonadow DEV[/wave]"
+text = "Support: support@sonadow-dev.ml
+Version 0.0.1.1-alpha, Copyright 2020 - present, Sonadow DEV"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
+[connection signal="pressed" from="VBoxContainer/Las" to="." method="_on_World1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer2/dsc" to="." method="_on_Options2_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="item_selected" from="SelectWorld/WorldList" to="." method="_on_WorldList_item_selected"]

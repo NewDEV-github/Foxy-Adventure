@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/141-Burst01.ogg-4456c7375e0c0923b1169651168fb840.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/141-Burst01.ogg"
+dest_files=[ "res://.import/141-Burst01.ogg-4456c7375e0c0923b1169651168fb840.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

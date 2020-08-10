@@ -1,0 +1,26 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="fmod_"
+reloadable=true
+
+[entry]
+
+Android.armeabi-v7a="res://bin/fmod/android/armeabi-v7a/libGodotFmod.android.release.armeabi-v7a.so"
+Android.arm64-v8a="res://bin/fmod/android/arm64-v8a/libGodotFmod.android.release.arm64-v8a.so"
+OSX.64="res://bin/fmod/osx/libGodotFmod.osx.release.64.dylib"
+Windows.64="res://bin/fmod/windows/x64/libGodotFmod.windows.release.64.dll"
+Windows.32=""
+X11.64="res://bin/fmod/linux/x86_64/libGodotFmod.linux.release.64.so"
+X11.32="res://bin/fmod/linux/x86/libGodotFmod.linux.debug.32.so"
+
+[dependencies]
+
+Android.armeabi-v7a=[ "res://bin/fmod/android/armeabi-v7a/libfmod.so", "res://bin/fmod/android/armeabi-v7a/libfmodstudio.so" ]
+Android.arm64-v8a=[ "res://bin/fmod/android/arm64-v8a/libfmod.so", "res://bin/fmod/android/arm64-v8a/libfmodstudio.so" ]
+OSX.64=[ "res://bin/fmod/libs/osx/libfmod.dylib", "res://bin/fmod/osx/libfmodstudio.dylib" ]
+Windows.64=[ "res://bin/fmod/windows/x64/fmod.dll", "res://bin/fmod/windows/x64/fmodL.dll", "res://bin/fmod/windows/x64/fmodstudio.dll" ]
+Windows.32=[ "res://bin/fmod/windows/x86/fmod.dll", "res://bin/fmod/windows/x86/fmodstudio.dll" ]
+X11.64=[ "res://bin/fmod/linux/x86_64/libfmod.so", "res://bin/fmod/linux/x86_64/libfmodstudio.so" ]
+X11.32=[ "res://bin/fmod/linux/x86/libfmod.so", "res://bin/fmod/linux/x86/libfmodstudio.so" ]

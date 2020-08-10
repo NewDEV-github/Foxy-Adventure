@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/162-Skill06.ogg-f330b9f4212911df8b8c90ffaee1e060.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/162-Skill06.ogg"
+dest_files=[ "res://.import/162-Skill06.ogg-f330b9f4212911df8b8c90ffaee1e060.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

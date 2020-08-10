@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/136-Light02.ogg-bbddc43bc3c1c1bc53fe60539b57150a.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/136-Light02.ogg"
+dest_files=[ "res://.import/136-Light02.ogg-bbddc43bc3c1c1bc53fe60539b57150a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

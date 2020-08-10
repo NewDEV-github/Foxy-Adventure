@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/130-Earth02.ogg-d4505066b35336b7cb6d749e4cf9c7bc.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/130-Earth02.ogg"
+dest_files=[ "res://.import/130-Earth02.ogg-d4505066b35336b7cb6d749e4cf9c7bc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

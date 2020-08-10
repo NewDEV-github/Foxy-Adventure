@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://translations/srpg_2.en.translation", "res://translations/srpg_2.es.translation", "res://translations/srpg_2.de.translation", "res://translations/srpg_2.pl.translation", "res://translations/srpg_2.es_MX.translation", "res://translations/srpg_2.ja.translation", "res://translations/srpg_2.ru.translation", "res://translations/srpg_2.zh.translation" ]
+
+source_file="res://translations/srpg_2.csv"
+dest_files=[ "res://translations/srpg_2.en.translation", "res://translations/srpg_2.es.translation", "res://translations/srpg_2.de.translation", "res://translations/srpg_2.pl.translation", "res://translations/srpg_2.es_MX.translation", "res://translations/srpg_2.ja.translation", "res://translations/srpg_2.ru.translation", "res://translations/srpg_2.zh.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

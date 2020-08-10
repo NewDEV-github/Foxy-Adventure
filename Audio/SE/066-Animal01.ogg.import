@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/066-Animal01.ogg-a115eaa3fc65786b9ad8c689df92871a.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/066-Animal01.ogg"
+dest_files=[ "res://.import/066-Animal01.ogg-a115eaa3fc65786b9ad8c689df92871a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

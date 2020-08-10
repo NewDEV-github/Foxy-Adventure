@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/029-Door06.ogg-d95c84c8421a144b8bebb1f759359fdc.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/029-Door06.ogg"
+dest_files=[ "res://.import/029-Door06.ogg-d95c84c8421a144b8bebb1f759359fdc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

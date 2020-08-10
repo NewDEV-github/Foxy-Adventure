@@ -1,0 +1,479 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/options.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Ubuntu-L.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/controls.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/AndroidDLCInstaller.tscn" type="PackedScene" id=4]
+
+[node name="Control" type="WindowDialog"]
+anchor_left = 0.00292968
+anchor_top = 0.246666
+anchor_right = 0.727539
+anchor_bottom = 1.00333
+custom_fonts/title_font = ExtResource( 2 )
+window_title = "KEY_GAME_OPTIONS"
+resizable = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="tabs" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ogólne" type="Tabs" parent="tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+tab_close_display_policy = 1
+drag_to_rearrange_enabled = true
+
+[node name="Options" type="HBoxContainer" parent="tabs/Ogólne"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graphics" type="VBoxContainer" parent="tabs/Ogólne/Options"]
+margin_right = 478.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Graphics" type="Label" parent="tabs/Ogólne/Options/Graphics"]
+margin_top = 118.0
+margin_right = 478.0
+margin_bottom = 137.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_GRAPHICS"
+align = 1
+valign = 1
+
+[node name="Fullscreen" type="CheckButton" parent="tabs/Ogólne/Options/Graphics"]
+visible = false
+margin_top = 109.0
+margin_right = 440.0
+margin_bottom = 149.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_FULLSCREEN_MODE"
+
+[node name="VSync" type="CheckButton" parent="tabs/Ogólne/Options/Graphics"]
+margin_top = 141.0
+margin_right = 478.0
+margin_bottom = 181.0
+custom_fonts/font = ExtResource( 2 )
+text = "VSync"
+
+[node name="fps" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
+margin_top = 185.0
+margin_right = 478.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 0, 40 )
+alignment = 2
+
+[node name="Label" type="Label" parent="tabs/Ogólne/Options/Graphics/fps"]
+margin_top = 10.0
+margin_right = 400.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_FORCED_FPS"
+
+[node name="target" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/fps"]
+margin_left = 404.0
+margin_right = 478.0
+margin_bottom = 40.0
+max_value = 1e+14
+
+[node name="custom_resolution" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
+margin_top = 229.0
+margin_right = 478.0
+margin_bottom = 269.0
+rect_min_size = Vector2( 40, 40 )
+alignment = 1
+
+[node name="Label" type="Label" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
+margin_top = 10.0
+margin_right = 218.0
+margin_bottom = 29.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_C-RESOLUTION"
+align = 1
+valign = 1
+
+[node name="x" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
+margin_left = 222.0
+margin_right = 296.0
+margin_bottom = 40.0
+min_value = 640.0
+max_value = 8192.0
+value = 1024.0
+align = 1
+
+[node name="y" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
+margin_left = 300.0
+margin_right = 374.0
+margin_bottom = 40.0
+min_value = 480.0
+max_value = 8192.0
+value = 600.0
+align = 1
+
+[node name="SpinBox" type="OptionButton" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
+margin_left = 378.0
+margin_right = 478.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )
+text = "1024x600"
+items = [ "640x480", null, false, 0, false, "800x480", null, false, 1, false, "800x600", null, false, 2, false, "1024x600", null, false, 3, false, "1280x720", null, false, 4, false, "1280x800", null, false, 5, false, "1366x768", null, false, 6, false, "1440x900", null, false, 7, false, "1920x1080", null, false, 8, false, "2048x1152", null, false, 9, false, "2048x1024", null, false, 10, false, "2560x1600", null, false, 11, false, "2560x2048", null, false, 12, false, "3072x1728", null, false, 13, false, "4096x2304", null, false, 14, false, "8192x4608", null, false, 15, false ]
+selected = 3
+
+[node name="Other" type="Label" parent="tabs/Ogólne/Options/Graphics"]
+visible = false
+margin_top = 247.0
+margin_right = 478.0
+margin_bottom = 266.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_OTHER"
+align = 1
+valign = 1
+
+[node name="ClearDownloadedAssets" type="Button" parent="tabs/Ogólne/Options/Graphics"]
+visible = false
+margin_top = 270.0
+margin_right = 478.0
+margin_bottom = 295.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_DOWNLOAD_ASSETS_AGAIN"
+
+[node name="lang" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
+margin_top = 273.0
+margin_right = 478.0
+margin_bottom = 298.0
+
+[node name="language" type="Label" parent="tabs/Ogólne/Options/Graphics/lang"]
+margin_top = 3.0
+margin_right = 237.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_LANG"
+
+[node name="lang" type="OptionButton" parent="tabs/Ogólne/Options/Graphics/lang"]
+margin_left = 241.0
+margin_right = 478.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_LANG_EN"
+items = [ "KEY_OPTIONS_LANG_EN", null, false, 0, null, "KEY_OPTIONS_LANG_ES", null, false, 1, null, "KEY_OPTIONS_LANG_DE", null, false, 2, null, "KEY_OPTIONS_LANG_PL", null, false, 3, null, "KEY_OPTIONS_LANG_ES_MX", null, false, 4, null, "KEY_OPTIONS_LANG_JA", null, false, 5, null, "KEY_OPTIONS_LANG_RU", null, false, 6, null, "KEY_OPTIONS_LANG_ZH", null, false, 7, null ]
+selected = 0
+
+[node name="Audio" type="VBoxContainer" parent="tabs/Ogólne/Options"]
+margin_left = 482.0
+margin_right = 733.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Label" parent="tabs/Ogólne/Options/Audio"]
+margin_top = 91.0
+margin_right = 251.0
+margin_bottom = 110.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_AUDIO"
+align = 1
+valign = 1
+
+[node name="Master_label" type="Label" parent="tabs/Ogólne/Options/Audio"]
+visible = false
+margin_top = 115.0
+margin_right = 251.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_MASTER_VOLUME"
+align = 1
+valign = 1
+
+[node name="Master" type="HBoxContainer" parent="tabs/Ogólne/Options/Audio"]
+visible = false
+margin_top = 159.0
+margin_right = 251.0
+margin_bottom = 175.0
+
+[node name="Master_slider" type="HSlider" parent="tabs/Ogólne/Options/Audio/Master"]
+margin_right = 251.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 20.0
+
+[node name="Master_on" type="CheckButton" parent="tabs/Ogólne/Options/Audio/Master"]
+visible = false
+margin_left = 410.0
+margin_right = 486.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )
+pressed = true
+
+[node name="Music_label" type="Label" parent="tabs/Ogólne/Options/Audio"]
+margin_top = 135.0
+margin_right = 251.0
+margin_bottom = 154.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_MUSIC_VOLUME"
+align = 1
+valign = 1
+
+[node name="Music" type="HBoxContainer" parent="tabs/Ogólne/Options/Audio"]
+margin_top = 179.0
+margin_right = 251.0
+margin_bottom = 195.0
+
+[node name="Music_slider" type="HSlider" parent="tabs/Ogólne/Options/Audio/Music"]
+margin_right = 251.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 20.0
+
+[node name="Music_on" type="CheckButton" parent="tabs/Ogólne/Options/Audio/Music"]
+visible = false
+margin_left = 434.0
+margin_right = 510.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="SFX_label" type="Label" parent="tabs/Ogólne/Options/Audio"]
+margin_top = 220.0
+margin_right = 251.0
+margin_bottom = 239.0
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_SFX_VOLUME"
+align = 1
+valign = 1
+
+[node name="SFX" type="HBoxContainer" parent="tabs/Ogólne/Options/Audio"]
+margin_top = 264.0
+margin_right = 251.0
+margin_bottom = 280.0
+
+[node name="SFX_slider" type="HSlider" parent="tabs/Ogólne/Options/Audio/SFX"]
+margin_right = 251.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 20.0
+
+[node name="SFX_on" type="CheckButton" parent="tabs/Ogólne/Options/Audio/SFX"]
+visible = false
+margin_left = 434.0
+margin_right = 510.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="SPEAKERMODE" type="OptionButton" parent="tabs/Ogólne/Options/Audio"]
+margin_top = 305.0
+margin_right = 251.0
+margin_bottom = 325.0
+text = "STEREO"
+items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", null, false, 2, null, "RAW", null, false, 3, null, "5.1", null, false, 4, null, "7.1", null, false, 5, null, "7.1.4", null, false, 6, null, "SURROUND", null, false, 7, null, "DEFAULT", null, false, 8, null ]
+selected = 1
+
+[node name="Sterowanie" type="Tabs" parent="tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+drag_to_rearrange_enabled = true
+
+[node name="controls_ui" parent="tabs/Sterowanie" instance=ExtResource( 3 )]
+
+[node name="Rozgrywka" type="Tabs" parent="tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+drag_to_rearrange_enabled = true
+
+[node name="box" type="VBoxContainer" parent="tabs/Rozgrywka"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_clock" type="HBoxContainer" parent="tabs/Rozgrywka/box"]
+visible = false
+margin_right = 733.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+
+[node name="game_clock_label" type="Label" parent="tabs/Rozgrywka/box/game_clock"]
+margin_top = 3.0
+margin_right = 364.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_GC"
+
+[node name="gcbutton" type="OptionButton" parent="tabs/Rozgrywka/box/game_clock"]
+margin_left = 368.0
+margin_right = 733.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_GC_REAL"
+items = [ "KEY_OPTIONS_GC_REAL", null, false, 0, null, "KEY_OPTIONS_GC_FICTIONAL", null, false, 1, null ]
+selected = 0
+
+[node name="nsfwmode" type="HBoxContainer" parent="tabs/Rozgrywka/box"]
+visible = false
+margin_right = 733.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="game_clock_label" type="Label" parent="tabs/Rozgrywka/box/nsfwmode"]
+visible = false
+margin_top = 10.0
+margin_right = 364.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "NSFW"
+
+[node name="nsfw" type="CheckButton" parent="tabs/Rozgrywka/box/nsfwmode"]
+margin_right = 733.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_NSFW"
+
+[node name="minimapenabled" type="HBoxContainer" parent="tabs/Rozgrywka/box"]
+visible = false
+margin_top = 44.0
+margin_right = 733.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+
+[node name="game_clock_label" type="Label" parent="tabs/Rozgrywka/box/minimapenabled"]
+visible = false
+margin_top = 10.0
+margin_right = 364.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+
+[node name="minimap" type="CheckButton" parent="tabs/Rozgrywka/box/minimapenabled"]
+margin_right = 733.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "KEY_OPTIONS_MINIMAP_ENABLED"
+
+[node name="Inne" type="Tabs" parent="tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+drag_to_rearrange_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tabs/Inne"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Licenses" type="Button" parent="tabs/Inne/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 20.0
+text = "KEY_OPTIONS_LICENSES"
+
+[node name="InstallDLC" type="Button" parent="tabs/Inne/VBoxContainer"]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 44.0
+text = "KEY_OPTIONS_INSTALL_DLC"
+
+[node name="Control" parent="." instance=ExtResource( 4 )]
+
+[node name="SAVE" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -37.0
+margin_top = -20.0
+margin_right = 37.0
+text = "KEY_OPTIONS_APPLY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RESETSETTINGS" type="Button" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -144.0
+margin_top = -20.0
+text = "KEY_OPTIONS_RESET"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="tabs/Ogólne/Options/Graphics/Fullscreen" to="." method="_on_Fullscreen_toggled"]
+[connection signal="toggled" from="tabs/Ogólne/Options/Graphics/VSync" to="." method="_on_VSync_toggled"]
+[connection signal="value_changed" from="tabs/Ogólne/Options/Graphics/fps/target" to="." method="_on_maxfps_value_changed"]
+[connection signal="value_changed" from="tabs/Ogólne/Options/Graphics/custom_resolution/x" to="." method="_on_x_value_changed"]
+[connection signal="value_changed" from="tabs/Ogólne/Options/Graphics/custom_resolution/y" to="." method="_on_y_value_changed"]
+[connection signal="item_selected" from="tabs/Ogólne/Options/Graphics/custom_resolution/SpinBox" to="." method="_on_SpinBox_item_selected"]
+[connection signal="pressed" from="tabs/Ogólne/Options/Graphics/ClearDownloadedAssets" to="." method="_on_ClearDownloadedAssets_pressed"]
+[connection signal="item_selected" from="tabs/Ogólne/Options/Graphics/lang/lang" to="." method="_on_lang_item_selected"]
+[connection signal="value_changed" from="tabs/Ogólne/Options/Audio/Master/Master_slider" to="." method="_on_Master_slider_value_changed"]
+[connection signal="toggled" from="tabs/Ogólne/Options/Audio/Master/Master_on" to="." method="_on_Master_on_toggled"]
+[connection signal="value_changed" from="tabs/Ogólne/Options/Audio/Music/Music_slider" to="." method="_on_Music_slider_value_changed"]
+[connection signal="toggled" from="tabs/Ogólne/Options/Audio/Music/Music_on" to="." method="_on_Music_on_toggled"]
+[connection signal="value_changed" from="tabs/Ogólne/Options/Audio/SFX/SFX_slider" to="." method="_on_SFX_slider_value_changed"]
+[connection signal="toggled" from="tabs/Ogólne/Options/Audio/SFX/SFX_on" to="." method="_on_SFX_on_toggled"]
+[connection signal="item_selected" from="tabs/Ogólne/Options/Audio/SPEAKERMODE" to="." method="_on_SPEAKERMODE_item_selected"]
+[connection signal="item_selected" from="tabs/Rozgrywka/box/game_clock/gcbutton" to="." method="_on_gcbutton_item_selected"]
+[connection signal="toggled" from="tabs/Rozgrywka/box/nsfwmode/nsfw" to="." method="_on_nsfw_toggled"]
+[connection signal="toggled" from="tabs/Rozgrywka/box/minimapenabled/minimap" to="." method="_on_minimap_toggled"]
+[connection signal="pressed" from="tabs/Inne/VBoxContainer/Licenses" to="." method="_on_Licenses_pressed"]
+[connection signal="pressed" from="tabs/Inne/VBoxContainer/InstallDLC" to="." method="_on_InstallDLC_pressed"]
+[connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]
+[connection signal="pressed" from="RESETSETTINGS" to="." method="_on_RESETSETTINGS_pressed"]

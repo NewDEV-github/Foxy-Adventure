@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/ServerAPI/http.gd" type="Script" id=1]
+
+[node name="HTTPRequest" type="HTTPRequest"]
+script = ExtResource( 1 )
+[connection signal="request_completed" from="." to="." method="_on_HTTPRequest_request_completed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/020-People02.ogg-700ec5ebc93d09bee75c27265940dd62.oggstr"
+
+[deps]
+
+source_file="res://Audio/BGS/020-People02.ogg"
+dest_files=[ "res://.import/020-People02.ogg-700ec5ebc93d09bee75c27265940dd62.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

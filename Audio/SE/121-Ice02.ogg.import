@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/121-Ice02.ogg-abd2dc8a4e70ce1eaf343705a8e69e8a.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/121-Ice02.ogg"
+dest_files=[ "res://.import/121-Ice02.ogg-abd2dc8a4e70ce1eaf343705a8e69e8a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

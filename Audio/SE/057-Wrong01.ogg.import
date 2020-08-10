@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/057-Wrong01.ogg-3c0b97767997a4202eddb4b2700a60b6.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/057-Wrong01.ogg"
+dest_files=[ "res://.import/057-Wrong01.ogg-3c0b97767997a4202eddb4b2700a60b6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

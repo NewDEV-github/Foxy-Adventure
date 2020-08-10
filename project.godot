@@ -1,0 +1,168 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Crate",
+"language": "GDScript",
+"path": "res://minimap/Crate.gd"
+}, {
+"base": "",
+"class": "FmodNative",
+"language": "NativeScript",
+"path": "res://bin/fmod/Fmod.gdns"
+}, {
+"base": "KinematicBody2D",
+"class": "Mob",
+"language": "GDScript",
+"path": "res://minimap/Mob.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://minimap/Player.gd"
+} ]
+_global_script_class_icons={
+"Crate": "",
+"FmodNative": "",
+"Mob": "",
+"Player": ""
+}
+
+[android]
+
+modules="org/godotengine/godot/FmodSingleton"
+
+[application]
+
+config/name="Foxy Adventure"
+run/main_scene="res://Scenes/ServerAPI/updater.tscn"
+boot_splash/image="res://Graphics/icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://Graphics/icon.png"
+config/windows_native_icon="res://Graphics/icon.ico"
+
+[autoload]
+
+Screen="*res://addons/screen_debugger/screen.scn"
+BackgroundLoad="*res://Scenes/background_load.tscn"
+Console="*res://addons/godot-console-dev/src/Console.tscn"
+API="*res://Scenes/ServerAPI/API.tscn"
+Globals="*res://Scripts/Globals.gd"
+Fmod="*res://bin/fmod/Fmod.gd"
+SScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
+ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
+Screenshot="*res://Scripts/screenshot.gd"
+
+[debug]
+
+settings/crash_handler/message="Please include this when reporting the bug on https://github.com/MasterPolska123/sonadow-rpg/issues/"
+
+[display]
+
+window/dpi/allow_hidpi=true
+window/vsync/vsync_via_compositor=true
+
+[editor]
+
+convert_text_resources_to_binary_on_export=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "godot-console-dev", "screen_debugger" )
+
+[gdnative]
+
+singletons=[  ]
+
+[input]
+
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+console_toggle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_left2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+screen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[locale]
+
+translations=PoolStringArray( "res://translations/srpg_1.csv", "res://translations/srpg_1.de.translation", "res://translations/srpg_1.en.translation", "res://translations/srpg_1.es.translation", "res://translations/srpg_1.pl.translation", "res://translations/srpg_1.es_MX.translation", "res://translations/srpg_1.ja.translation", "res://translations/srpg_1.ru.translation", "res://translations/srpg_1.zh.translation" )
+
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="user://logs/engine_log.txt"
+file_logging/max_log_files=30000
+
+[rendering]
+
+quality/driver/fallback_to_gles2=true
+quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
+vram_compression/import_etc=true
+quality/reflections/texture_array_reflections.mobile=true
+quality/reflections/high_quality_ggx.mobile=true
+batching/options/single_rect_fallback=true
+batching/debug/flash_batching=true
+batching/debug/diagnose_frame=true
+batching/precision/uv_contract=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )

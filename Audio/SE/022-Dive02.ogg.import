@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/022-Dive02.ogg-1f8ecad5c724a4e8669358b8f5de5a41.oggstr"
+
+[deps]
+
+source_file="res://Audio/SE/022-Dive02.ogg"
+dest_files=[ "res://.import/022-Dive02.ogg-1f8ecad5c724a4e8669358b8f5de5a41.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
