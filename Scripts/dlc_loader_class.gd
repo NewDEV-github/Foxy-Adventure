@@ -1,8 +1,10 @@
 extends Node
-class_name google
+class_name DLCLoader
 var dlc_path = "user://dlcs/"
 var dir = Directory.new()
-
+func _ready():
+	dir.open("user://")
+	dir.make_dir("dlcs")
 func load_all_dlcs():
 	if dir.open(dlc_path) == OK:
 		dir.list_dir_begin()
@@ -16,7 +18,3 @@ func load_all_dlcs():
 					print("DLC Found")
 					ProjectSettings.load_resource_pack(dlc_path + file_name, false)
 		file_name = dir.get_next()
-
-func _ready():
-	dir.open("user://")
-	dir.make_dir("dlcs")
