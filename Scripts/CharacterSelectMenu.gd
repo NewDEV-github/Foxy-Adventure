@@ -19,22 +19,6 @@ func _ready():
 func after_selecting_player():
 	BackgroundLoad.load_scene(str(Globals.world))
 
-func _on_Shadow_pressed():
-	Globals.character_path = "res://Scenes/Characters/Shadow.tscn"
-	Globals.selected_character = preload("res://Scenes/Characters/Shadow.tscn").instance()
-	after_selecting_player()
-
-func _on_Sonic_pressed():
-	Globals.character_path = "res://Scenes/Characters/Sonic.tscn"
-	Globals.selected_character = preload("res://Scenes/Characters/Sonic.tscn").instance()
-	after_selecting_player()
-
-
-func _on_New_pressed():
-	Globals.character_path = "res://Scenes/Characters/NewTheFox.tscn"
-	Globals.selected_character = preload("res://Scenes/Characters/NewTheFox.tscn").instance()
-	after_selecting_player()
-
 
 func _on_ItemList_item_selected(index):
 	var item_name = $ItemList.get_item_text(index)

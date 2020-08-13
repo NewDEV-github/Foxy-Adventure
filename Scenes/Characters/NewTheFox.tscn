@@ -1,245 +1,420 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://Graphics/Characters/newtf.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Characters/NewTheFox.gd" type="Script" id=2]
-[ext_resource path="res://Graphics/blind_effect.png" type="Texture" id=3]
-[ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Graphics/pause_button.png" type="Texture" id=6]
-[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
-[ext_resource path="res://minimap/MiniMap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Graphics/Sprites/instaShield.png" type="Texture" id=1]
+[ext_resource path="res://Audio/SFX/spinDashCharge.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/SFX/peelOutCharge.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/SFX/spinDashRelease.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/SFX/instaShield.wav" type="AudioStream" id=5]
+[ext_resource path="res://Graphics/Sprites/Sonic.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/character_vfx.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/States/on_air.gd" type="Script" id=8]
+[ext_resource path="res://Audio/SFX/jump.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/SFX/brake.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/SFX/spin.wav" type="AudioStream" id=11]
+[ext_resource path="res://Scripts/audio_player.gd" type="Script" id=12]
+[ext_resource path="res://Graphics/Sprites/spinDash.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/States/spin_dash.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/player_physics.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/state_machine.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/States/super_peel_out.gd" type="Script" id=17]
+[ext_resource path="res://Audio/SFX/peelOutRelease.wav" type="AudioStream" id=18]
+[ext_resource path="res://Scripts/player_camera.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/States/on_ground.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/character_animator.gd" type="Script" id=22]
 
-[sub_resource type="CapsuleShape2D" id=1]
-height = 5.71344
 
-[sub_resource type="Animation" id=2]
-resource_name = "down"
-length = 2.0
-loop = true
-step = 0.25
+[sub_resource type="Animation" id=1]
+resource_name = "Braking"
+length = 0.52
+step = 0.13
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"times": PoolRealArray( 0, 0.133686, 0.26, 0.39 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 38, 39, 40, 41 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.7, 3, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 5, 6 ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "left"
-length = 2.0
-loop = true
-step = 0.5
+length = 10.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.48712, 1.8, 2.08852, 2.4, 3.1, 3.4, 3.7, 4, 4.3, 4.6, 4.88712, 5.2, 5.48852, 5.8, 6.5, 6.8, 7.1, 7.4, 7.7, 8, 8.28712, 8.6, 8.88852, 9.2, 9.9, 10.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 6, 7 ]
+"values": [ 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 10 ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "right"
-length = 2.0
+length = 0.6
 loop = true
-step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11 ]
+"values": [ 11, 12 ]
 }
 
 [sub_resource type="Animation" id=5]
-length = 2.0
-loop = true
-step = 0.5
+resource_name = "LookDown"
+length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "LookUp"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "PeelOut"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 13, 14, 15, 14 ]
+"values": [ 60, 61, 62, 63 ]
 }
 
-[node name="NewTheFox" type="KinematicBody2D"]
-position = Vector2( 512, 304 )
-script = ExtResource( 2 )
+[sub_resource type="Animation" id=8]
+resource_name = "Pushing"
+length = 2.1
+loop = true
+step = 0.53
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.53, 1.06, 1.59 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 52, 53, 54, 55 ]
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.00012207, 11 )
-shape = SubResource( 1 )
+[sub_resource type="Animation" id=9]
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 26, 30, 27, 30, 28, 30, 29, 30 ]
+}
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[sub_resource type="Animation" id=10]
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.24
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 31, 32, 33, 34, 35, 36 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 20, 21, 14, 15, 16 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.28
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "InstaShield"
+length = 0.12
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=15]
+radius = 9.03
+height = 6.05999
+
+[sub_resource type="CircleShape2D" id=16]
+radius = 9.0
+
+[sub_resource type="RayShape2D" id=17]
+
+[node name="main" type="Node"]
+
+[node name="PlayerCamera" type="Node2D" parent="."]
+position = Vector2( 212, 120 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CameraScroll" type="Node2D" parent="PlayerCamera"]
+
+[node name="Camera2D" type="Camera2D" parent="PlayerCamera/CameraScroll"]
 current = true
-limit_smoothed = true
+limit_left = 0
+limit_top = 0
+drag_margin_left = 0.08
+drag_margin_top = 0.4
+drag_margin_right = 0.0
+drag_margin_bottom = 0.15
 editor_draw_limits = true
-editor_draw_drag_margin = true
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.2, 1.2 )
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 33, 313.92 )
+z_index = 1
+collision/safe_margin = 0.1
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StateMachine" type="Node" parent="Player"]
+script = ExtResource( 16 )
+
+[node name="OnGround" type="Node" parent="Player/StateMachine"]
+script = ExtResource( 21 )
+
+[node name="OnAir" type="Node" parent="Player/StateMachine"]
+script = ExtResource( 8 )
+
+[node name="SpinDash" type="Node" parent="Player/StateMachine"]
+script = ExtResource( 14 )
+
+[node name="SuperPeelOut" type="Node" parent="Player/StateMachine"]
+script = ExtResource( 17 )
+
+[node name="Characters" type="Node2D" parent="Player"]
+position = Vector2( 0, -4 )
+
+[node name="Sonic" type="Sprite" parent="Player/Characters"]
+texture = ExtResource( 6 )
+vframes = 17
+hframes = 17
+region_rect = Rect2( 0, 0, 48, 48 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Characters/Sonic"]
+anims/Braking = SubResource( 1 )
+anims/Idle1 = SubResource( 2 )
+anims/Idle2 = SubResource( 3 )
+anims/Idle3 = SubResource( 4 )
+anims/LookDown = SubResource( 5 )
+anims/LookUp = SubResource( 6 )
+anims/PeelOut = SubResource( 7 )
+anims/Pushing = SubResource( 8 )
+anims/Rolling = SubResource( 9 )
+anims/Running = SubResource( 10 )
+anims/SpinDashCharge = SubResource( 11 )
+anims/Walking = SubResource( 12 )
+script = ExtResource( 22 )
+
+[node name="VFX" type="Node2D" parent="Player/Characters"]
+script = ExtResource( 7 )
+
+[node name="ChargeDust" type="Sprite" parent="Player/Characters/VFX"]
+visible = false
+position = Vector2( -19, 13 )
+texture = ExtResource( 13 )
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Characters/VFX/ChargeDust"]
+anims/ChargeDust = SubResource( 13 )
+
+[node name="InstaShield" type="Sprite" parent="Player/Characters/VFX"]
+visible = false
+position = Vector2( 0, 9 )
 texture = ExtResource( 1 )
-vframes = 4
-hframes = 4
-frame = 8
+hframes = 6
+frame = 5
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Characters/VFX/InstaShield"]
+anims/InstaShield = SubResource( 14 )
 
-[node name="HouseDialog" type="ConfirmationDialog" parent="CanvasLayer"]
-pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -63.0
-margin_top = -37.5
-margin_right = 63.0
-margin_bottom = 37.5
-theme = ExtResource( 7 )
-window_title = "Question"
-dialog_text = "KEY_ENTER_HOUSE_CONFIRMATION"
-dialog_autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AudioPlayer" type="Node2D" parent="Player"]
+script = ExtResource( 12 )
 
-[node name="HouseDialog2" type="ConfirmationDialog" parent="CanvasLayer"]
-pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -63.0
-margin_top = -37.5
-margin_right = 63.0
-margin_bottom = 37.5
-theme = ExtResource( 7 )
-window_title = "Question"
-dialog_text = "KEY_EXIT_HOUSE_CONFIRMATION"
-dialog_autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="jump" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 9 )
+volume_db = -15.0
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="brake" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 10 )
+volume_db = -20.0
 
-[node name="blind_effect" type="TextureRect" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="spin" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 11 )
+volume_db = -10.0
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="SpinDashCharge" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 2 )
+volume_db = -10.0
 
-[node name="left_down" type="Control" parent="CanvasLayer"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -40.0
-margin_right = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="SpinDashRelease" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 4 )
+volume_db = -10.0
 
-[node name="right" type="TouchScreenButton" parent="CanvasLayer/left_down"]
-position = Vector2( 248, -32 )
-rotation = 3.14159
-scale = Vector2( 1.7, 1.7 )
-normal = ExtResource( 4 )
-action = "ui_right"
-visibility_mode = 1
+[node name="PeelOutCharge" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 3 )
+volume_db = -10.0
 
-[node name="left" type="TouchScreenButton" parent="CanvasLayer/left_down"]
-position = Vector2( 32, -144 )
-scale = Vector2( 1.7, 1.7 )
-normal = ExtResource( 4 )
-action = "ui_left"
-visibility_mode = 1
+[node name="PeelOutRelease" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 18 )
+volume_db = -10.0
 
-[node name="right_down" type="Control" parent="CanvasLayer"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="InstaShield" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+stream = ExtResource( 5 )
+volume_db = -25.0
 
-[node name="down" type="TouchScreenButton" parent="CanvasLayer/right_down"]
-position = Vector2( -144, 32 )
-rotation = -1.5708
-scale = Vector2( 1.7, 1.7 )
-normal = ExtResource( 4 )
-action = "ui_down"
-visibility_mode = 1
+[node name="HighCollider" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, -5 )
+shape = SubResource( 15 )
 
-[node name="up" type="TouchScreenButton" parent="CanvasLayer/right_down"]
-position = Vector2( -32, -184 )
-rotation = 1.5708
-scale = Vector2( 1.7, 1.7 )
-normal = ExtResource( 4 )
-action = "ui_up"
-visibility_mode = 1
+[node name="LowCollider" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 5 )
+shape = SubResource( 16 )
 
-[node name="right_up" type="Control" parent="CanvasLayer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RayShape" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 17 )
 
-[node name="pause" type="TouchScreenButton" parent="CanvasLayer/right_up"]
-pause_mode = 2
-position = Vector2( -120, 25 )
-normal = ExtResource( 6 )
-action = "ui_cancel"
-visibility_mode = 1
+[node name="LeftGroundSensor" type="RayCast2D" parent="Player"]
+position = Vector2( -9, 0 )
+enabled = true
+cast_to = Vector2( 0, 36 )
 
-[node name="MiniMap" parent="CanvasLayer" instance=ExtResource( 8 )]
-margin_right = 190.0
-margin_bottom = 190.0
-player = NodePath("../../../NewTheFox")
+[node name="RightGroundSensor" type="RayCast2D" parent="Player"]
+position = Vector2( 9, 0 )
+enabled = true
+cast_to = Vector2( 0, 36 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.2
-anims/down = SubResource( 2 )
-anims/left = SubResource( 3 )
-anims/right = SubResource( 4 )
-anims/up = SubResource( 5 )
-[connection signal="tree_entered" from="." to="." method="_on_Shadow_tree_entered"]
-[connection signal="confirmed" from="CanvasLayer/HouseDialog" to="." method="_on_HouseDialog_confirmed"]
-[connection signal="popup_hide" from="CanvasLayer/HouseDialog" to="." method="_on_HouseDialog_popup_hide"]
-[connection signal="confirmed" from="CanvasLayer/HouseDialog2" to="." method="_on_HouseDialog2_confirmed"]
-[connection signal="popup_hide" from="CanvasLayer/HouseDialog2" to="." method="_on_HouseDialog2_popup_hide"]
+[node name="RightWallSensor" type="RayCast2D" parent="Player"]
+enabled = true
+cast_to = Vector2( 11, 0 )
+
+[node name="LeftWallSensor" type="RayCast2D" parent="Player"]
+enabled = true
+cast_to = Vector2( -11, 0 )
+[connection signal="animation_finished" from="Player/Characters/Sonic/AnimationPlayer" to="Player/StateMachine" method="_on_AnimationPlayer_animation_finished"]

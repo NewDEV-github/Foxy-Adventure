@@ -46,15 +46,15 @@ func _ready():
 	if day == 21 and month == 6:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "Sonadow RPG"')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "Foxy Adventure"')
 	elif day == 17 and month == 2:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox"')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" - Kocham cię ~sonic')
 	elif day == 25 and month == 3:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox"')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" - Kocham cię ~sonic')
 	elif day == 22 and month == 12:
 		$IMG_0008.hide()
 		load_easterregg_animation('bs')

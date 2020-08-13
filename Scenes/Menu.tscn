@@ -65,7 +65,8 @@ __meta__ = {
 }
 
 [node name="IMG_0009" type="TextureRect" parent="."]
-anchor_right = 1.0
+anchor_left = -0.000976562
+anchor_right = 0.999023
 anchor_bottom = 1.0
 margin_bottom = 848.0
 rect_clip_content = true
@@ -177,9 +178,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -249.0
-margin_top = -144.5
+margin_top = -143.5
 margin_right = 249.0
-margin_bottom = 144.5
+margin_bottom = 145.5
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 1.0
@@ -220,14 +221,14 @@ margin_top = -42.0
 margin_right = 533.0
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 5 )
-custom_constants/shadow_offset_x = 4
-custom_constants/shadow_offset_y = 4
-custom_constants/shadow_as_outline = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 5
 bbcode_enabled = true
-bbcode_text = "[wave amp=50 freq=1]Support: support@sonadow-dev.ml
-Version 0.0.1.1-alpha, Copyright 2020 - present, Sonadow DEV[/wave]"
-text = "Support: support@sonadow-dev.ml
-Version 0.0.1.1-alpha, Copyright 2020 - present, Sonadow DEV"
+bbcode_text = "[wave amp=50 freq=1]Support: support@new-dev.ml
+Version 0.0.1.2-alpha, Copyright 2020 - present, New DEV[/wave]"
+text = "Support: support@new-dev.ml
+Version 0.0.1.2-alpha, Copyright 2020 - present, New DEV"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -9,15 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "AudioPlayer",
+"language": "GDScript",
+"path": "res://Scripts/audio_player.gd"
+}, {
+"base": "AnimationPlayer",
+"class": "CharacterAnimator",
+"language": "GDScript",
+"path": "res://Scripts/character_animator.gd"
+}, {
 "base": "Area2D",
 "class": "Crate",
 "language": "GDScript",
 "path": "res://minimap/Crate.gd"
-}, {
-"base": "Node",
-"class": "DLCLoader",
-"language": "GDScript",
-"path": "res://Script/dlc_loader_class.gd"
 }, {
 "base": "Node",
 "class": "FmodNative",
@@ -34,17 +39,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://minimap/Player.gd"
 }, {
+"base": "Node2D",
+"class": "PlayerCamera",
+"language": "GDScript",
+"path": "res://Scripts/player_camera.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlayerPhysics",
+"language": "GDScript",
+"path": "res://Scripts/player_physics.gd"
+}, {
 "base": "Node",
 "class": "google",
 "language": "GDScript",
 "path": "res://Scripts/dlc_loader_class.gd"
 } ]
 _global_script_class_icons={
+"AudioPlayer": "",
+"CharacterAnimator": "",
 "Crate": "",
-"DLCLoader": "",
 "FmodNative": "",
 "Mob": "",
 "Player": "",
+"PlayerCamera": "",
+"PlayerPhysics": "",
 "google": ""
 }
 
@@ -177,4 +195,4 @@ batching/options/single_rect_fallback=true
 batching/debug/flash_batching=true
 batching/debug/diagnose_frame=true
 batching/precision/uv_contract=true
-environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"
