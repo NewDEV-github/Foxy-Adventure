@@ -7,5 +7,5 @@ Licenes (See the "Licenes Folder")
 
 Authors:
 NewTheFox, ShadowuTheHedgehog, sonic.exe
-Copyright 2020 - present Sonadow DEV
+Copyright 2020 - present New-DEV
 Made with FMOD Studio by Firelight Technologies Pty Ltd.
