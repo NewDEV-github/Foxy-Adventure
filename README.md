@@ -1,7 +1,7 @@
-Sonadow RPG
+Foxy Adventure
 
 About the game:
-RPG Game with Sonic and Shadow as a playable characters
+2D platformer with New The Fox and Miles "Tails" Prower as a playable characters
 
 Licenes (See the "Licenes Folder")
 
