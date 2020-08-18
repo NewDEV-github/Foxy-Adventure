@@ -31,6 +31,7 @@ onready var character = $Characters
 onready var animation = $Characters/Sonic/AnimationPlayer
 onready var audio_player = $AudioPlayer
 
+var is_tired_of_flying = false
 var gsp : float
 var velocity : Vector2
 var ground_mode : int
@@ -169,3 +170,10 @@ func get_ground_ray():
 		return left_ground
 	else:
 		return right_ground
+
+func start_fly_timer():
+	$fly_timer.start()
+	print("I'm flying")
+func _on_fly_timer_timeout():
+	print("I'm Tired")
+	is_tired_of_flying = true

@@ -575,7 +575,7 @@ margin_right = 423.0
 margin_bottom = 164.0
 custom_fonts/font = ExtResource( 5 )
 text = "-MUSIC-
-sonic"
+GeKaGD"
 align = 1
 valign = 1
 __meta__ = {
@@ -636,6 +636,7 @@ margin_right = 423.0
 margin_bottom = 204.0
 custom_fonts/font = ExtResource( 5 )
 text = "-AUDIO MASTERING-
+GeKaGD
 sonic"
 align = 1
 valign = 1
@@ -651,8 +652,8 @@ margin_right = 423.0
 margin_bottom = 164.0
 custom_fonts/font = ExtResource( 5 )
 text = "-AUDIO PROGRAMMING-
-NewTheFox
-sonic"
+sonic
+NewTheFox"
 align = 1
 valign = 1
 __meta__ = {
@@ -731,7 +732,8 @@ margin_top = 147.0
 margin_right = 512.0
 margin_bottom = 264.0
 custom_fonts/font = ExtResource( 5 )
-text = "developers of FMOD GDNative plugin"
+text = "GeKaGD
+developers of FMOD GDNative plugin"
 align = 1
 valign = 1
 __meta__ = {

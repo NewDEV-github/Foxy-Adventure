@@ -100,7 +100,6 @@ playback_speed = 0.5
 anims/intro = SubResource( 1 )
 
 [node name="RequiredAssets" type="HTTPRequest" parent="."]
-use_threads = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -215,6 +214,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CFGDownloader" type="HTTPRequest" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="request_completed" from="RequiredAssets" to="." method="on_assets_downloaded"]
+[connection signal="request_completed" from="RequiredAssets" to="." method="load_dlc_list"]

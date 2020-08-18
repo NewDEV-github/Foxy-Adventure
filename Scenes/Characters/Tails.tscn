@@ -417,8 +417,12 @@ cast_to = Vector2( 11, 0 )
 enabled = true
 cast_to = Vector2( -11, 0 )
 
+[node name="fly_timer" type="Timer" parent="Tails"]
+wait_time = 15.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -24.0493, 382.5, 427.951, 364.5, 901.951, 358.5, 1109.95, 434.5, 1029.95, 618.5, 429.951, 590.5, -0.0493469, 494.5 )
+polygon = PoolVector2Array( -24.0493, 382.5, 427.951, 364.5, 901.951, 358.5, 2123.9, 352.5, 2127.81, 592.5, 429.951, 590.5, -0.0493469, 494.5 )
 [connection signal="animation_finished" from="Tails/Characters/Sonic/AnimationPlayer" to="Tails/StateMachine" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Tails/fly_timer" to="Tails" method="_on_fly_timer_timeout"]

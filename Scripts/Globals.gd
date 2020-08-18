@@ -60,11 +60,7 @@ var dlcs:Array = [
 var worlds:Array = [
 	
 ]
-var dlc_name_list:Dictionary = {
-	"Foxes":"dlc_foxes",
-	"Baby Sonadow":"dlc_babysonadow"
-	
-}
+var dlc_name_list
 var gc_mode = 'realtime'
 var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):

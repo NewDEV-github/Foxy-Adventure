@@ -1,11 +1,15 @@
 extends Node
-class_name DLCLoader
+class_name google
 var dlc_path = "user://dlcs/"
 var dir = Directory.new()
+var avaliavble_dlcs
 func _ready():
-	dir.open("user://")
-	dir.make_dir("dlcs")
+	if not dir.dir_exists("user://dlcs/"):
+		dir.open("user://")
+		dir.make_dir("dlcs")
+
 func load_all_dlcs():
+#	pass
 	if dir.open(dlc_path) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -17,4 +21,6 @@ func load_all_dlcs():
 				if file_name.get_extension() == "pck":
 					print("DLC Found")
 					ProjectSettings.load_resource_pack(dlc_path + file_name, false)
-		file_name = dir.get_next()
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")

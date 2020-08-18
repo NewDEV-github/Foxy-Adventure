@@ -74,3 +74,4 @@ func vertical_scrolling(player : PlayerPhysics, delta : float):
 		elif camera_scroll.position.y < 0:
 			camera_scroll.position.y += SCROLL_SPEED * delta
 			camera_scroll.position.y = min(camera_scroll.position.y, 0)
+

@@ -6,10 +6,11 @@ var roll_jump : bool
 var can_attack : bool
 var is_in_air : bool
 var is_flying : bool
-
+var is_tired_of_flying
 var override_anim : String
 
 func enter(host):
+	is_tired_of_flying = host.is_tired_of_flying
 	is_flying = host.is_flying
 	is_in_air = host.is_in_air
 	has_jumped = host.has_jumped
@@ -20,7 +21,15 @@ func enter(host):
 	roll_jump = has_jumped and has_rolled
 
 func step(host, delta):
+	if host.is_tired_of_flying:
+#		host.FALL = 150
+#		host.GRV = 13.125
+		host.velocity.y += 0.2
 	if host.is_grounded:
+		host.is_tired_of_flying = false
+		host.is_flying = false
+		host.FALL = 150
+		host.GRV = 13.125
 		host.ground_reacquisition()
 		return 'OnGround'
 	
@@ -36,10 +45,11 @@ func step(host, delta):
 			host.velocity.x += host.AIR
 	
 	if Input.is_action_just_pressed("ui_accept") and can_attack:
-		host.player_vfx.play('InstaShield', true)
-		host.audio_player.play('insta_shield')
-		can_attack = false
-		roll_jump = false
+		if not host.name == "Tails" or not host.name == "NewTheFox":
+			host.player_vfx.play('InstaShield', true)
+			host.audio_player.play('insta_shield')
+			can_attack = false
+			roll_jump = false
 	
 	if host.velocity.y < 0 and host.velocity.y > -240:
 		host.velocity.x -= int(host.velocity.x / 7.5) / 15360.0
@@ -47,19 +57,20 @@ func step(host, delta):
 	host.velocity.y += host.GRV
 	
 	if Input.is_action_just_released("ui_accept"): # has jumped
-		if host.name == "Tails":
+		if host.name == "Tails" or host.name == "NewTheFox":
 			is_in_air = true
+			can_attack = false
 		if host.velocity.y < -240.0: # set min jump height
 			host.velocity.y = -240.0
 	if Input.is_action_just_released("ui_accept") and is_in_air == true: # has jumped
-		if host.name == "Tails":
+		if host.name == "Tails" or host.name == "NewTheFox":
 			is_in_air = false
 			is_flying = true
-			if not host.velocity.y == 1000:
-				host.velocity.y +=100
-			host.GRV = 0
-			host.FALL = 0
-			
+			#if not host.velocity.y == 1000:
+			host.velocity.y +=100
+			host.GRV = 0.01
+			host.FALL = 0.01
+			host.start_fly_timer()
 	if Input.is_action_pressed("ui_down"):
 		host.velocity.y += 5
 	if Input.is_action_pressed("ui_up"):
@@ -79,7 +90,8 @@ func animation_step(host, animator):
 	if has_jumped or has_rolled:
 		anim_name = 'Rolling'
 		anim_speed = max(-((5.0 / 60.0) - (abs(host.gsp) / 120.0)), 1.0)
-	
+	if is_flying and host.name == "Tails" or host.name == "NewTheFox":
+		anim_name == "Flying"
 	if Input.is_action_pressed("ui_right"):
 		host.character.scale.x = 1
 	elif Input.is_action_pressed("ui_left"):

@@ -182,6 +182,10 @@ file_logging/enable_file_logging=true
 file_logging/log_path="user://logs/engine_log.txt"
 file_logging/max_log_files=30000
 
+[network]
+
+ssl/certificates="res://ca-bundle.crt"
+
 [rendering]
 
 quality/driver/fallback_to_gles2=true
