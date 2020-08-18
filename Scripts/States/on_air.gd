@@ -58,23 +58,23 @@ func step(host, delta):
 	
 	if Input.is_action_just_released("ui_accept"): # has jumped
 		if host.name == "Tails" or host.name == "NewTheFox":
-			is_in_air = true
+			host.is_in_air = true
 			can_attack = false
 		if host.velocity.y < -240.0: # set min jump height
 			host.velocity.y = -240.0
 	if Input.is_action_just_released("ui_accept") and is_in_air == true: # has jumped
 		if host.name == "Tails" or host.name == "NewTheFox":
-			is_in_air = false
-			is_flying = true
+			host.is_in_air = false
+			host.is_flying = true
 			#if not host.velocity.y == 1000:
 			host.velocity.y +=100
 			host.GRV = 0.01
 			host.FALL = 0.01
 			host.start_fly_timer()
-	if Input.is_action_pressed("ui_down"):
-		host.velocity.y += 5
-	if Input.is_action_pressed("ui_up"):
-		host.velocity.y -= 5
+	if Input.is_action_pressed("ui_down") and host.is_flying:
+		host.velocity.y += 2
+	if Input.is_action_pressed("ui_up") and host.is_flying:
+		host.velocity.y -= 2
 	host.velocity.x = 0 if host.is_wall_left and host.velocity.x < 0 else host.velocity.x
 	host.velocity.x = 0 if host.is_wall_right and host.velocity.x > 0 else host.velocity.x
 func exit(host):
@@ -90,8 +90,14 @@ func animation_step(host, animator):
 	if has_jumped or has_rolled:
 		anim_name = 'Rolling'
 		anim_speed = max(-((5.0 / 60.0) - (abs(host.gsp) / 120.0)), 1.0)
-	if is_flying and host.name == "Tails" or host.name == "NewTheFox":
-		anim_name == "Flying"
+	if host.is_flying and host.name == "Tails" or host.name == "NewTheFox":
+		anim_name = "Flying"
+	if host.is_tired_of_flying and host.name == "Tails" or host.name == "NewTheFox":
+		anim_name = "TiredOfFlying"
+	if host.is_flying and Input.is_action_pressed("ui_up") and host.name == "Tails" or host.name == "NewTheFox":
+		anim_name = "FlyingUP"
+	if host.is_flying and Input.is_action_pressed("ui_down") and host.name == "Tails" or host.name == "NewTheFox":
+		anim_name = "FlyingDOWN"
 	if Input.is_action_pressed("ui_right"):
 		host.character.scale.x = 1
 	elif Input.is_action_pressed("ui_left"):
