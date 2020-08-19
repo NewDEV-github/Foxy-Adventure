@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/bootlogo.png" type="Texture" id=2]
@@ -6,82 +6,8 @@
 [ext_resource path="res://Fonts/Ubuntu-L32.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Graphics/icon.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/1200px-Godot_logo.svg.png" type="Texture" id=6]
-
-[sub_resource type="Animation" id=1]
-resource_name = "intro"
-length = 7.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("VBoxContainer/TextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("bootlogo:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("icon:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("VBoxContainer/Label:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("VBoxContainer2/Label:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 3, 4, 6, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("VBoxContainer2/godotlogo:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 3, 4, 6, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
+[ext_resource path="res://assets/Animations/Intro1.anim" type="Animation" id=7]
+[ext_resource path="res://assets/Animations/Blue-Animation.webm" type="VideoStream" id=8]
 
 [node name="Updater" type="Control"]
 anchor_right = 1.0
@@ -97,7 +23,11 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.5
-anims/intro = SubResource( 1 )
+anims/intro = ExtResource( 7 )
+
+[node name="introzajebistewchuj" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+anims/Intro1 = ExtResource( 7 )
 
 [node name="RequiredAssets" type="HTTPRequest" parent="."]
 
@@ -191,6 +121,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer2"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 394.0
 margin_bottom = 37.0
@@ -204,7 +135,6 @@ __meta__ = {
 
 [node name="godotlogo" type="TextureRect" parent="VBoxContainer2"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 41.0
 margin_right = 394.0
 margin_bottom = 195.0
 size_flags_horizontal = 3
@@ -216,6 +146,13 @@ __meta__ = {
 }
 
 [node name="CFGDownloader" type="HTTPRequest" parent="."]
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 8 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="introzajebistewchuj" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="request_completed" from="RequiredAssets" to="." method="load_dlc_list"]

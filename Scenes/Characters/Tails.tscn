@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Graphics/Sprites/instaShield.png" type="Texture" id=1]
 [ext_resource path="res://Audio/SFX/spinDashCharge.wav" type="AudioStream" id=2]
@@ -19,8 +19,14 @@
 [ext_resource path="res://Scripts/States/super_peel_out.gd" type="Script" id=17]
 [ext_resource path="res://Audio/SFX/peelOutRelease.wav" type="AudioStream" id=18]
 [ext_resource path="res://Scripts/player_camera.gd" type="Script" id=19]
+[ext_resource path="res://Masks/MaskSetterInvert.res" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/States/on_ground.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/character_animator.gd" type="Script" id=22]
+[ext_resource path="res://Test Zone/loop_part_red.res" type="PackedScene" id=23]
+[ext_resource path="res://Masks/MaskSetterRed.res" type="PackedScene" id=24]
+[ext_resource path="res://Test Zone/loop_part.res" type="PackedScene" id=25]
+[ext_resource path="res://Masks/MaskSetterBlue.res" type="PackedScene" id=26]
+[ext_resource path="res://Test Zone/loop_part_blue.res" type="PackedScene" id=27]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Braking"
@@ -39,7 +45,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40, 41 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=2]
 resource_name = "Flying"
 length = 0.2
 loop = true
@@ -56,7 +62,7 @@ tracks/0/keys = {
 "values": [ 37, 38 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=3]
 resource_name = "FlyingDOWN"
 length = 0.2
 loop = true
@@ -73,7 +79,7 @@ tracks/0/keys = {
 "values": [ 41, 42 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=4]
 resource_name = "FlyingUP"
 length = 0.2
 loop = true
@@ -90,7 +96,7 @@ tracks/0/keys = {
 "values": [ 39, 40 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -105,7 +111,7 @@ tracks/0/keys = {
 "values": [ 0, 0, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 length = 10.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -120,7 +126,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -136,8 +142,7 @@ tracks/0/keys = {
 "values": [ 11, 12 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "LookDown"
+[sub_resource type="Animation" id=8]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -152,8 +157,7 @@ tracks/0/keys = {
 "values": [ 3, 4 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "LookUp"
+[sub_resource type="Animation" id=9]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -168,8 +172,7 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "PeelOut"
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -185,8 +188,7 @@ tracks/0/keys = {
 "values": [ 60, 61, 62, 63 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Pushing"
+[sub_resource type="Animation" id=11]
 length = 2.1
 loop = true
 step = 0.53
@@ -203,7 +205,7 @@ tracks/0/keys = {
 "values": [ 52, 53, 54, 55 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -219,7 +221,7 @@ tracks/0/keys = {
 "values": [ 26, 30, 27, 30, 28, 30, 29, 30 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=13]
 length = 0.8
 loop = true
 step = 0.2
@@ -236,7 +238,7 @@ tracks/0/keys = {
 "values": [ 22, 23, 24, 25 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 length = 0.24
 loop = true
 step = 0.04
@@ -253,7 +255,7 @@ tracks/0/keys = {
 "values": [ 31, 32, 33, 34, 35, 36 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=15]
 resource_name = "TiredOfFlying"
 length = 0.2
 loop = true
@@ -270,7 +272,7 @@ tracks/0/keys = {
 "values": [ 43, 44 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=16]
 length = 1.6
 loop = true
 step = 0.2
@@ -287,7 +289,7 @@ tracks/0/keys = {
 "values": [ 17, 18, 19, 20, 21, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=17]
 length = 0.28
 loop = true
 step = 0.04
@@ -304,8 +306,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "InstaShield"
+[sub_resource type="Animation" id=18]
 length = 0.12
 step = 0.02
 tracks/0/type = "value"
@@ -321,16 +322,16 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=19]
 radius = 9.03
 height = 6.05999
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=20]
 radius = 9.0
 
-[sub_resource type="RayShape2D" id=17]
+[sub_resource type="RayShape2D" id=21]
 
-[node name="Tails" type="Node"]
+[node name="Tails" type="Node2D"]
 
 [node name="PlayerCamera" type="Node2D" parent="."]
 position = Vector2( 212, 120 )
@@ -387,21 +388,21 @@ region_rect = Rect2( 0, 0, 48, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/Sonic"]
 anims/Braking = SubResource( 1 )
-anims/Flying = SubResource( 18 )
-anims/FlyingDOWN = SubResource( 19 )
-anims/FlyingUP = SubResource( 20 )
-anims/Idle1 = SubResource( 2 )
-anims/Idle2 = SubResource( 3 )
-anims/Idle3 = SubResource( 4 )
-anims/LookDown = SubResource( 5 )
-anims/LookUp = SubResource( 6 )
-anims/PeelOut = SubResource( 7 )
-anims/Pushing = SubResource( 8 )
-anims/Rolling = SubResource( 9 )
-anims/Running = SubResource( 10 )
-anims/SpinDashCharge = SubResource( 11 )
-anims/TiredOfFlying = SubResource( 21 )
-anims/Walking = SubResource( 12 )
+anims/Flying = SubResource( 2 )
+anims/FlyingDOWN = SubResource( 3 )
+anims/FlyingUP = SubResource( 4 )
+anims/Idle1 = SubResource( 5 )
+anims/Idle2 = SubResource( 6 )
+anims/Idle3 = SubResource( 7 )
+anims/LookDown = SubResource( 8 )
+anims/LookUp = SubResource( 9 )
+anims/PeelOut = SubResource( 10 )
+anims/Pushing = SubResource( 11 )
+anims/Rolling = SubResource( 12 )
+anims/Running = SubResource( 13 )
+anims/SpinDashCharge = SubResource( 14 )
+anims/TiredOfFlying = SubResource( 15 )
+anims/Walking = SubResource( 16 )
 script = ExtResource( 22 )
 
 [node name="VFX" type="Node2D" parent="Tails/Characters"]
@@ -414,7 +415,7 @@ texture = ExtResource( 13 )
 hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/VFX/ChargeDust"]
-anims/ChargeDust = SubResource( 13 )
+anims/ChargeDust = SubResource( 17 )
 
 [node name="InstaShield" type="Sprite" parent="Tails/Characters/VFX"]
 visible = false
@@ -424,7 +425,7 @@ hframes = 6
 frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/VFX/InstaShield"]
-anims/InstaShield = SubResource( 14 )
+anims/InstaShield = SubResource( 18 )
 
 [node name="AudioPlayer" type="Node2D" parent="Tails"]
 script = ExtResource( 12 )
@@ -463,14 +464,14 @@ volume_db = -25.0
 
 [node name="HighCollider" type="CollisionShape2D" parent="Tails"]
 position = Vector2( 0, -5 )
-shape = SubResource( 15 )
+shape = SubResource( 19 )
 
 [node name="LowCollider" type="CollisionShape2D" parent="Tails"]
 position = Vector2( 0, 5 )
-shape = SubResource( 16 )
+shape = SubResource( 20 )
 
 [node name="RayShape" type="CollisionShape2D" parent="Tails"]
-shape = SubResource( 17 )
+shape = SubResource( 21 )
 
 [node name="LeftGroundSensor" type="RayCast2D" parent="Tails"]
 position = Vector2( -9, 0 )
@@ -498,5 +499,40 @@ one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -24.0493, 382.5, 427.951, 364.5, 901.951, 358.5, 2123.9, 352.5, 2127.81, 592.5, 429.951, 590.5, -0.0493469, 494.5 )
+
+[node name="FullLoop" type="Node2D" parent="."]
+position = Vector2( 832.248, 225.404 )
+
+[node name="loop_part" parent="FullLoop" instance=ExtResource( 25 )]
+position = Vector2( -82, -84 )
+rotation = 1.5708
+z_index = 2
+
+[node name="loop_part2" parent="FullLoop" instance=ExtResource( 25 )]
+position = Vector2( 85, -82 )
+rotation = 3.14159
+z_index = 2
+
+[node name="loop_part_blue" parent="FullLoop" instance=ExtResource( 27 )]
+position = Vector2( -84, 83 )
+
+[node name="loop_part_red" parent="FullLoop" instance=ExtResource( 23 )]
+position = Vector2( 83, 85 )
+z_index = 2
+
+[node name="MaskSetterRed" parent="FullLoop" instance=ExtResource( 24 )]
+position = Vector2( -170, 94 )
+
+[node name="MaskSetterRed2" parent="FullLoop" instance=ExtResource( 24 )]
+position = Vector2( -170, 31 )
+
+[node name="MaskSetterBlue" parent="FullLoop" instance=ExtResource( 26 )]
+position = Vector2( 174, 95 )
+
+[node name="MaskSetterBlue2" parent="FullLoop" instance=ExtResource( 26 )]
+position = Vector2( 174, 32 )
+
+[node name="MaskSetterInvert" parent="FullLoop" instance=ExtResource( 20 )]
+position = Vector2( 0, -95 )
 [connection signal="animation_finished" from="Tails/Characters/Sonic/AnimationPlayer" to="Tails/StateMachine" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Tails/fly_timer" to="Tails" method="_on_fly_timer_timeout"]

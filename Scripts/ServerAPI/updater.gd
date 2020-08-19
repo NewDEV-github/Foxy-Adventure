@@ -45,7 +45,8 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 
 func _on_Timer_timeout():
-	$AnimationPlayer.play("intro")
+#	$AnimationPlayer.play("intro")
+	$introzajebistewchuj.play("Intro1")
 func download_dlc_list():
 	print('downloading dlc list')
 	$RequiredAssets.set_download_file("user://dlcs/dlc_list.gd")

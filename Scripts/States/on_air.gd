@@ -28,6 +28,7 @@ func step(host, delta):
 	if host.is_grounded:
 		host.is_tired_of_flying = false
 		host.is_flying = false
+#		host.is_in_air = false
 		host.FALL = 150
 		host.GRV = 13.125
 		host.ground_reacquisition()

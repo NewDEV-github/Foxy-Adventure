@@ -1,5 +1,5 @@
 extends Control
-
+var date = OS.get_date()
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -35,7 +35,11 @@ func _ready():
 #	$RichTextLabel.bbcode_text += authors
 	$RichTextLabel.bbcode_text += copyright
 #	$RichTextLabel.bbcode_text += godot_copyrights
-
+	if date.day == 27 and date.month == 7:
+		$RichTextLabel.bbcode_text += "[center]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI LOVE YOU, NEW! <3 <3 <3[/center]"
+		$AnimationPlayer.play("credits_easteregg")
+	else:
+		$AnimationPlayer.play("credits")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	Fmod.stop_sound(Globals.fmod_sound_music_instance)

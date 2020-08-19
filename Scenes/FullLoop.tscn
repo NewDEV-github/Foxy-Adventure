@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Test Zone/loop_part_red.res" type="PackedScene" id=1]
+[ext_resource path="res://Test Zone/loop_part_blue.res" type="PackedScene" id=3]
+[ext_resource path="res://Test Zone/loop_part.res" type="PackedScene" id=4]
+[ext_resource path="res://Masks/MaskSetterInvert.res" type="PackedScene" id=5]
+[ext_resource path="res://Masks/MaskSetterBlue.res" type="PackedScene" id=6]
+[ext_resource path="res://Masks/MaskSetterRed.res" type="PackedScene" id=7]
+
+[node name="FullLoop" type="Node2D"]
+position = Vector2( 541, 537 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="loop_part" parent="." instance=ExtResource( 4 )]
+position = Vector2( -82, -84 )
+rotation = 1.5708
+z_index = 2
+
+[node name="loop_part2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 85, -82 )
+rotation = 3.14159
+z_index = 2
+
+[node name="loop_part_blue" parent="." instance=ExtResource( 3 )]
+position = Vector2( -84, 83 )
+
+[node name="loop_part_red" parent="." instance=ExtResource( 1 )]
+position = Vector2( 83, 85 )
+z_index = 2
+
+[node name="MaskSetterRed" parent="." instance=ExtResource( 7 )]
+position = Vector2( -170, 94 )
+
+[node name="MaskSetterRed2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -170, 31 )
+
+[node name="MaskSetterBlue" parent="." instance=ExtResource( 6 )]
+position = Vector2( 174, 95 )
+
+[node name="MaskSetterBlue2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 174, 32 )
+
+[node name="MaskSetterInvert" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -95 )
