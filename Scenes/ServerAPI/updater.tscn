@@ -152,6 +152,8 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 stream = ExtResource( 8 )
+
+[node name="PCKDownloader" type="HTTPRequest" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="introzajebistewchuj" to="." method="_on_AnimationPlayer_animation_finished"]

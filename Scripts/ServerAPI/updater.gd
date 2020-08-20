@@ -1,7 +1,10 @@
 extends Control
+var list_downloaded
 var file = File.new()
 var dlc_loader_class = google.new()
-
+var intro_played = false
+var cfg_number = 1
+var pck_number = 1
 func _ready():
 	download_dlc_list()
 	dlc_loader_class.load_all_dlcs()
@@ -17,6 +20,10 @@ func _ready():
 	OS.request_permissions()
 	$icon.show()
 	$Timer.start()
+#	while list_downloaded:
+#		download_pck_files_from_cfg("2")
+#	while intro_played:
+#		get_tree().change_scene("res://Scenes/Menu.tscn")
 func copy_recursive(from, to):
 	var directory = Directory.new()
 	
@@ -41,12 +48,24 @@ func copy_recursive(from, to):
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
-	get_tree().change_scene("res://Scenes/Menu.tscn")
-
+	intro_played = true
 
 func _on_Timer_timeout():
 #	$AnimationPlayer.play("intro")
 	$introzajebistewchuj.play("Intro1")
+	
+###DLC DOWNLOADING
+func download_pck_files_from_cfg(cfg_name:String):
+	var cfg_file = ConfigFile.new()
+	cfg_file.load("user://dlcs/" + cfg_name + ".cfg")
+	var files_array = cfg_file.get_value("info", "files")
+	print(str(files_array))
+	for file in files_array:
+		print(str(file))
+		$PCKDownloader.set_download_file("user://dlcs/" + str(pck_number) + ".pck")
+		$PCKDownloader.request(file)
+		yield($PCKDownloader, "request_completed")
+		pck_number += 1
 func download_dlc_list():
 	print('downloading dlc list')
 	$RequiredAssets.set_download_file("user://dlcs/dlc_list.gd")
@@ -58,8 +77,9 @@ func load_dlc_list(result, response_code, headers, body):
 	for cfg in Globals.dlc_name_list:
 		print(str(cfg))
 		var str_cfg = str(cfg)
-		var cfg_number = 1
 		$CFGDownloader.set_download_file("user://dlcs/" + str(cfg_number) + '.cfg')
 		$CFGDownloader.request(cfg)
+		yield($CFGDownloader, "request_completed")
 		cfg_number += 1
-
+	list_downloaded = true
+	download_pck_files_from_cfg("2")
