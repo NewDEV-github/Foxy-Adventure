@@ -48,11 +48,6 @@ _global_script_classes=[ {
 "class": "PlayerPhysics",
 "language": "GDScript",
 "path": "res://Scripts/player_physics.gd"
-}, {
-"base": "Node",
-"class": "google",
-"language": "GDScript",
-"path": "res://Scripts/dlc_loader_class.gd"
 } ]
 _global_script_class_icons={
 "AudioPlayer": "",
@@ -62,8 +57,7 @@ _global_script_class_icons={
 "Mob": "",
 "Player": "",
 "PlayerCamera": "",
-"PlayerPhysics": "",
-"google": ""
+"PlayerPhysics": ""
 }
 
 [android]
@@ -86,12 +80,12 @@ config/windows_native_icon="res://Graphics/icon.ico"
 Screen="*res://addons/screen_debugger/screen.scn"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 Console="*res://addons/godot-console-dev/src/Console.tscn"
-API="*res://Scenes/ServerAPI/API.tscn"
 Globals="*res://Scripts/Globals.gd"
 Fmod="*res://bin/fmod/Fmod.gd"
 SScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 Screenshot="*res://Scripts/screenshot.gd"
+DLCLoader="*res://Scenes/ServerAPI/dlc_loader.tscn"
 
 [debug]
 
