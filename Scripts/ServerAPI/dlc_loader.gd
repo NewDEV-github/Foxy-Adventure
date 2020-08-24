@@ -1,4 +1,7 @@
 extends Node2D
+signal finished_loading_dlc_list
+signal finished_loading_dlcs_cfg
+signal finished_downloading_dlc
 var cfg_number = 1
 var pck_number = 1
 var list_downloaded
@@ -39,7 +42,6 @@ func load_all_dlcs():
 				if file_name.get_extension() == "gd":
 					print("DLC Found")
 					var script = load(str(file_name)).new()
-					script.add_dlc()
 					script.add_characters()
 					script.add_stages()
 			file_name = dir.get_next()
@@ -54,6 +56,8 @@ func download_pck_files_from_cfg(cfg_name:String):
 	dir.make_dir(str(info_file.dlc_name))
 	var files_array = info_file.dlc_files
 	print(str(files_array))
+	for dlcname in info_file.dlc_name:
+		Globals.add_dlc(str(dlcname))
 	for f_name in info_file.dlc_file_names:
 		file_name = str(f_name)
 		for file in files_array:
@@ -62,18 +66,18 @@ func download_pck_files_from_cfg(cfg_name:String):
 			$download_dlc_files.request(file)
 			yield($download_dlc_files, "request_completed")
 			pck_number += 1
+	emit_signal("finished_downloading_dlc", cfg_name)
 
 func download_dlc_list():
 	print('downloading dlc list')
 	$download_dlc_list.set_download_file("user://dlcs/dlc_list.gd")
 	$download_dlc_list.request("https://dl.new-dev.tk/data/games/dlcs/foxy-adventure/dlc_list.gd")
-	
+	emit_signal("finished_loading_dlc_list")
 func download_dlc_cfg_files():
 	dir.open("user://dlcs/")
 	var script = load("user://dlcs/dlc_list.gd").new()
-	Globals.dlc_name_list = script.dlc_list
-	print(str(Globals.dlc_name_list))
-	for cfg in Globals.dlc_name_list:
+	print(str(script.dlc_list))
+	for cfg in script.dlc_list:
 		print(str(cfg))
 		var str_cfg = str(cfg)
 		$download_dlc_cfg.set_download_file("user://dlcs/" + str(cfg_number) + '.gd')
@@ -83,8 +87,9 @@ func download_dlc_cfg_files():
 		dir.rename(str(cfg_number) + ".gd", str(new_filename) + ".gd")
 		cfg_number += 1
 	list_downloaded = true
-	download_pck_files_from_cfg("Classic Sonic")
-	download_pck_files_from_cfg("Test")
+	emit_signal("finished_loading_dlcs_cfg")
+#	download_pck_files_from_cfg("Classic Sonic")
+#	download_pck_files_from_cfg("Test")
 
 
 func _on_download_dlc_list_request_completed(result, response_code, headers, body):
