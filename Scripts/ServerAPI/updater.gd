@@ -1,4 +1,5 @@
 extends Control
+var intro_played = false
 var file = File.new()
 func _ready():
 	var dir = Directory.new()
@@ -13,11 +14,9 @@ func _ready():
 	OS.request_permissions()
 	$icon.show()
 	$Timer.start()
-	DLCLoader.download_dlc_list()
-#	while list_downloaded:
-#		download_pck_files_from_cfg("2")
-#	while intro_played:
-#		get_tree().change_scene("res://Scenes/Menu.tscn")
+	
+	while intro_played:
+		get_tree().change_scene("res://Scenes/Menu.tscn")
 func copy_recursive(from, to):
 	var directory = Directory.new()
 	
@@ -42,7 +41,8 @@ func copy_recursive(from, to):
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
-	get_tree().change_scene('res://Scenes/Menu.tscn')
+	intro_played = true
+#	get_tree().change_scene('res://Scenes/Menu.tscn')
 
 func _on_Timer_timeout():
 #	$AnimationPlayer.play("intro")

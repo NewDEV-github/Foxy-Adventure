@@ -39,6 +39,7 @@ func _ready():
 	Globals.fmod_sound_music_instance = Fmod.create_sound_instance(music_path)
 	Fmod.play_sound(Globals.fmod_sound_music_instance)
 	$SelectWorld/WorldList.add_item(tr("KEY_MAGIC_FOREST"))
+	DLCLoader.load_all_dlcs()
 	for world_name in world_list:
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
@@ -55,6 +56,10 @@ func _ready():
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" - Kocham cię ~sonic')
+	elif day == 14 and month == 9:
+		$IMG_0008.hide()
+		load_easterregg_animation('ntf')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Gekon aka "GeKaGD"')
 	elif day == 22 and month == 12:
 		$IMG_0008.hide()
 		load_easterregg_animation('bs')

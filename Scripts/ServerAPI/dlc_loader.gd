@@ -15,39 +15,6 @@ func _ready():
 		dir.make_dir("dlcs")
 		download_dlc_list()
 
-func load_all_dlcs():
-#	pass
-	if dir.open(dlc_path) == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if dir.current_is_dir():
-				print("Found directory: " + file_name)
-			else:
-				print("Found file: " + file_name)
-				if file_name.get_extension() == "pck":
-					print("DLC Found")
-					ProjectSettings.load_resource_pack(dlc_path + file_name, false)
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.")
-	if dir.open(dlc_script_path) == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if dir.current_is_dir():
-				print("Found directory: " + file_name)
-			else:
-				print("Found file: " + file_name)
-				if file_name.get_extension() == "gd":
-					print("DLC Found")
-					var script = load(str(file_name)).new()
-					script.add_characters()
-					script.add_stages()
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.")
-
 
 func download_pck_files_from_cfg(cfg_name:String):
 	dir.open("user://dlcs/")
@@ -85,15 +52,14 @@ func download_dlc_cfg_files():
 		yield($download_dlc_cfg, "request_completed")
 		var new_filename = load("user://dlcs/" + str(cfg_number) + '.gd').new().dlc_name
 		dir.rename(str(cfg_number) + ".gd", str(new_filename) + ".gd")
+		new_filename = null
 		cfg_number += 1
 	list_downloaded = true
 	emit_signal("finished_loading_dlcs_cfg")
-#	download_pck_files_from_cfg("Classic Sonic")
-#	download_pck_files_from_cfg("Test")
-
 
 func _on_download_dlc_list_request_completed(result, response_code, headers, body):
 	download_dlc_cfg_files()
+#	pass
 
 func uninstall_dlc(dlc_name:String):
 	var dlc_cfg_file = load("user://dlcs/" + dlc_name + ".gd").new()

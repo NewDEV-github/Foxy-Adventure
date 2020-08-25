@@ -60,7 +60,10 @@ var dlcs:Array = [
 var worlds:Array = [
 	
 ]
-var dlc_name_list
+var dlc_name_list:Array = [
+	
+]
+
 var gc_mode = 'realtime'
 var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):
@@ -75,6 +78,25 @@ func set_minimap_enabled(minimap_visible):
 func get_minimap_enabled():
 	return minimap_enabled
 func _ready():
+	##LOAD DLCS
+	#LEO
+	if file.file_exists('res://dlcs/dlc_leo.gd'):
+		var script = load('res://dlcs/dlc_leo.gd')
+		script.add_characters()
+		script.add_stages()
+		script.add_dlc()
+	#Classic Sonic
+	if file.file_exists('res://dlcs/dlc_classic_sonic.gd'):
+		var script = load('res://dlcs/dlc_classic_sonic.gd')
+		script.add_characters()
+		script.add_stages()
+		script.add_dlc()
+	#New.exe
+	if file.file_exists('res://dlcs/dlc_new_exe.gd'):
+		var script = load('res://dlcs/dlc_new_exe.gd')
+		script.add_characters()
+		script.add_stages()
+		script.add_dlc()
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):

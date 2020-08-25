@@ -16,6 +16,8 @@ export(float) var FALL = 150
 export(float) var AIR = 5.625
 export(float) var GRV = 13.125
 
+onready var tails = $Characters/tails/AnimationPlayer
+
 onready var player_camera = $'../PlayerCamera'
 onready var player_vfx = $Characters/VFX
 

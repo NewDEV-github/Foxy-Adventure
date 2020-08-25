@@ -1,0 +1,5 @@
+1.ProjectSettings.load_resource_pack('user://dlcs/' + dlc_file_name)
+	var script = load('res://dlcs/' + dlc_gd_configuration_script)
+	script.add_characters()
+	script.add_stages()
+	script.add_dlc()

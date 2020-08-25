@@ -3,6 +3,7 @@ extends Node2D
 onready var vfx = {
 	'ChargeDust' : $ChargeDust/AnimationPlayer,
 	'InstaShield' : $InstaShield/AnimationPlayer,
+#	'Tails' : $tails/AnimationPlayer,
 }
 
 var effect_to_stop

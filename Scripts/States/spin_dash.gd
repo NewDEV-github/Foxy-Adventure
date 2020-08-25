@@ -6,14 +6,18 @@ func enter(host):
 	p = 0
 	host.player_vfx.play('ChargeDust', false)
 	host.audio_player.play('spin_dash_charge')
+	host.tails.show()
+	host.tails.play('spindash_push')
 
 func step(host, delta):
 	if Input.is_action_just_released("ui_down"):
+		host.tails.hide()
 		return 'OnGround'
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		p += 120
 		host.animation.stop(true)
+		host.tails.play('spindash_push')
 		host.audio_player.play('spin_dash_charge')
 	
 	p = min(p, 480)
