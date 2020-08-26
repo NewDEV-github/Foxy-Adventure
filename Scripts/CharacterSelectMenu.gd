@@ -4,11 +4,13 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var new_chrs = Globals.new_characters
+#var new_chrs = Globals.new_characters
 #var discord_rpc = DISCORD_RPC.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var new_chrs = Globals.new_characters
+	print(str(new_chrs))
 	for character in new_chrs:
 		$ItemList.add_item(str(character))
 

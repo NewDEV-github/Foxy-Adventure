@@ -30,7 +30,7 @@
 [ext_resource path="res://Graphics/Sprites/tails.png" type="Texture" id=28]
 [ext_resource path="res://Scripts/Characters/tails_AnimationPlayer.gd" type="Script" id=29]
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=1]
 resource_name = "jump_roll"
 length = 0.5
 loop = true
@@ -47,7 +47,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=2]
 resource_name = "normal"
 length = 0.5
 loop = true
@@ -64,7 +64,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=3]
 resource_name = "spindash_push"
 length = 0.5
 loop = true
@@ -81,8 +81,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Braking"
+[sub_resource type="Animation" id=4]
 length = 0.52
 step = 0.13
 tracks/0/type = "value"
@@ -98,8 +97,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40, 41 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Flying"
+[sub_resource type="Animation" id=5]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -115,8 +113,7 @@ tracks/0/keys = {
 "values": [ 37, 38 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "FlyingDOWN"
+[sub_resource type="Animation" id=6]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -132,8 +129,7 @@ tracks/0/keys = {
 "values": [ 41, 42 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "FlyingUP"
+[sub_resource type="Animation" id=7]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -149,7 +145,7 @@ tracks/0/keys = {
 "values": [ 39, 40 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -164,7 +160,7 @@ tracks/0/keys = {
 "values": [ 0, 0, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 10.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -179,7 +175,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -195,7 +191,7 @@ tracks/0/keys = {
 "values": [ 11, 12 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -210,7 +206,7 @@ tracks/0/keys = {
 "values": [ 3, 4 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -225,7 +221,7 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=13]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -241,7 +237,7 @@ tracks/0/keys = {
 "values": [ 60, 61, 62, 63 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 length = 2.1
 loop = true
 step = 0.53
@@ -258,7 +254,7 @@ tracks/0/keys = {
 "values": [ 52, 53, 54, 55 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -274,7 +270,7 @@ tracks/0/keys = {
 "values": [ 26, 30, 27, 30, 28, 30, 29, 30 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=16]
 length = 0.8
 loop = true
 step = 0.2
@@ -291,7 +287,7 @@ tracks/0/keys = {
 "values": [ 22, 23, 24, 25 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=17]
 length = 0.24
 loop = true
 step = 0.04
@@ -308,8 +304,7 @@ tracks/0/keys = {
 "values": [ 31, 32, 33, 34, 35, 36 ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "TiredOfFlying"
+[sub_resource type="Animation" id=18]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -325,7 +320,7 @@ tracks/0/keys = {
 "values": [ 43, 44 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=19]
 length = 1.6
 loop = true
 step = 0.2
@@ -342,7 +337,7 @@ tracks/0/keys = {
 "values": [ 17, 18, 19, 20, 21, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=20]
 length = 0.28
 loop = true
 step = 0.04
@@ -359,7 +354,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=21]
 length = 0.12
 step = 0.02
 tracks/0/type = "value"
@@ -375,14 +370,14 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=19]
+[sub_resource type="CapsuleShape2D" id=22]
 radius = 9.03
 height = 6.05999
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="CircleShape2D" id=23]
 radius = 9.0
 
-[sub_resource type="RayShape2D" id=21]
+[sub_resource type="RayShape2D" id=24]
 
 [node name="Tails" type="Node2D"]
 
@@ -433,15 +428,16 @@ script = ExtResource( 17 )
 position = Vector2( 0, -4 )
 
 [node name="tails" type="Sprite" parent="Tails/Characters"]
-position = Vector2( 2.46033, -8.24844 )
+position = Vector2( -11.2897, 10.2516 )
+scale = Vector2( 0.990566, 1 )
 texture = ExtResource( 28 )
-hframes = 14
-frame = 9
+hframes = 12
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/tails"]
-anims/jump_roll = SubResource( 22 )
-anims/normal = SubResource( 23 )
-anims/spindash_push = SubResource( 24 )
+anims/jump_roll = SubResource( 1 )
+anims/normal = SubResource( 2 )
+anims/spindash_push = SubResource( 3 )
 script = ExtResource( 29 )
 
 [node name="Sonic" type="Sprite" parent="Tails/Characters"]
@@ -451,22 +447,22 @@ hframes = 17
 region_rect = Rect2( 0, 0, 48, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/Sonic"]
-anims/Braking = SubResource( 1 )
-anims/Flying = SubResource( 2 )
-anims/FlyingDOWN = SubResource( 3 )
-anims/FlyingUP = SubResource( 4 )
-anims/Idle1 = SubResource( 5 )
-anims/Idle2 = SubResource( 6 )
-anims/Idle3 = SubResource( 7 )
-anims/LookDown = SubResource( 8 )
-anims/LookUp = SubResource( 9 )
-anims/PeelOut = SubResource( 10 )
-anims/Pushing = SubResource( 11 )
-anims/Rolling = SubResource( 12 )
-anims/Running = SubResource( 13 )
-anims/SpinDashCharge = SubResource( 14 )
-anims/TiredOfFlying = SubResource( 15 )
-anims/Walking = SubResource( 16 )
+anims/Braking = SubResource( 4 )
+anims/Flying = SubResource( 5 )
+anims/FlyingDOWN = SubResource( 6 )
+anims/FlyingUP = SubResource( 7 )
+anims/Idle1 = SubResource( 8 )
+anims/Idle2 = SubResource( 9 )
+anims/Idle3 = SubResource( 10 )
+anims/LookDown = SubResource( 11 )
+anims/LookUp = SubResource( 12 )
+anims/PeelOut = SubResource( 13 )
+anims/Pushing = SubResource( 14 )
+anims/Rolling = SubResource( 15 )
+anims/Running = SubResource( 16 )
+anims/SpinDashCharge = SubResource( 17 )
+anims/TiredOfFlying = SubResource( 18 )
+anims/Walking = SubResource( 19 )
 script = ExtResource( 22 )
 
 [node name="VFX" type="Node2D" parent="Tails/Characters"]
@@ -479,7 +475,7 @@ texture = ExtResource( 13 )
 hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/VFX/ChargeDust"]
-anims/ChargeDust = SubResource( 17 )
+anims/ChargeDust = SubResource( 20 )
 
 [node name="InstaShield" type="Sprite" parent="Tails/Characters/VFX"]
 visible = false
@@ -489,7 +485,7 @@ hframes = 6
 frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/VFX/InstaShield"]
-anims/InstaShield = SubResource( 18 )
+anims/InstaShield = SubResource( 21 )
 
 [node name="AudioPlayer" type="Node2D" parent="Tails"]
 script = ExtResource( 12 )
@@ -528,14 +524,14 @@ volume_db = -25.0
 
 [node name="HighCollider" type="CollisionShape2D" parent="Tails"]
 position = Vector2( 0, -5 )
-shape = SubResource( 19 )
+shape = SubResource( 22 )
 
 [node name="LowCollider" type="CollisionShape2D" parent="Tails"]
 position = Vector2( 0, 5 )
-shape = SubResource( 20 )
+shape = SubResource( 23 )
 
 [node name="RayShape" type="CollisionShape2D" parent="Tails"]
-shape = SubResource( 21 )
+shape = SubResource( 24 )
 
 [node name="LeftGroundSensor" type="RayCast2D" parent="Tails"]
 position = Vector2( -9, 0 )

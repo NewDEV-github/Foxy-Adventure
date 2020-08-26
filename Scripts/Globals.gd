@@ -67,7 +67,9 @@ var dlc_name_list:Array = [
 var gc_mode = 'realtime'
 var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):
+#	new_characters.insert(1, chr_name)
 	new_characters.append(chr_name)
+	print(str(new_characters))
 func add_dlc(dlc_name:String):
 	dlcs.append(dlc_name)
 func add_world(world_name:String):
@@ -81,19 +83,19 @@ func _ready():
 	##LOAD DLCS
 	#LEO
 	if file.file_exists('res://dlcs/dlc_leo.gd'):
-		var script = load('res://dlcs/dlc_leo.gd')
+		var script = load('res://dlcs/dlc_leo.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
 	#Classic Sonic
 	if file.file_exists('res://dlcs/dlc_classic_sonic.gd'):
-		var script = load('res://dlcs/dlc_classic_sonic.gd')
+		var script = load('res://dlcs/dlc_classic_sonic.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
 	#New.exe
 	if file.file_exists('res://dlcs/dlc_new_exe.gd'):
-		var script = load('res://dlcs/dlc_new_exe.gd')
+		var script = load('res://dlcs/dlc_new_exe.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()

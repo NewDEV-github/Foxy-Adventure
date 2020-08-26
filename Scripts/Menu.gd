@@ -39,7 +39,7 @@ func _ready():
 	Globals.fmod_sound_music_instance = Fmod.create_sound_instance(music_path)
 	Fmod.play_sound(Globals.fmod_sound_music_instance)
 	$SelectWorld/WorldList.add_item(tr("KEY_MAGIC_FOREST"))
-	DLCLoader.load_all_dlcs()
+#	DLCLoader.load_all_dlcs()
 	for world_name in world_list:
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')

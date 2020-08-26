@@ -15,8 +15,8 @@ func _ready():
 	$icon.show()
 	$Timer.start()
 	
-	while intro_played:
-		get_tree().change_scene("res://Scenes/Menu.tscn")
+#	if intro_played:
+#		get_tree().change_scene("res://Scenes/Menu.tscn")
 func copy_recursive(from, to):
 	var directory = Directory.new()
 	
@@ -41,8 +41,8 @@ func copy_recursive(from, to):
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
-	intro_played = true
-#	get_tree().change_scene('res://Scenes/Menu.tscn')
+#	intro_played = true
+	get_tree().change_scene('res://Scenes/Menu.tscn')
 
 func _on_Timer_timeout():
 #	$AnimationPlayer.play("intro")
