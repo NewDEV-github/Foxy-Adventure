@@ -1,9 +1,10 @@
 extends Node
+signal debugModeSet
 signal loaded
 signal minimap
 signal nsfw
 var minimap_enabled = true setget set_minimap_enabled, get_minimap_enabled
-var debugMode
+var debugMode = false
 var coming_from_house = ''
 var object_transparency = 0.65
 var selected_character
@@ -102,7 +103,7 @@ func _ready():
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
-		Globals.debugMode = bool(str(save_file.get_value('Graphics', 'debug_mode', false)))
+		debugMode = bool(str(save_file.get_value('Game', 'debug_mode', false)))
 	_loadfmod()
 	if str(OS.get_name()) == "Android":
 		ProjectSettings.set_setting('appilcation/config/use_custom_user_dir', true)

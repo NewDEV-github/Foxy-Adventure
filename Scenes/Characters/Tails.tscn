@@ -66,7 +66,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "spindash_push"
-length = 0.5
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -75,10 +75,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 9, 10, 11, 12 ]
+"values": [ 9, 10, 11 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -428,11 +428,11 @@ script = ExtResource( 17 )
 position = Vector2( 0, -4 )
 
 [node name="tails" type="Sprite" parent="Tails/Characters"]
-position = Vector2( -11.2897, 10.2516 )
+position = Vector2( -12.7897, 11.2516 )
 scale = Vector2( 0.990566, 1 )
 texture = ExtResource( 28 )
 hframes = 12
-frame = 8
+frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/tails"]
 anims/jump_roll = SubResource( 1 )
