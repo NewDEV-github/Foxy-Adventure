@@ -2,6 +2,7 @@ extends VideoPlayer
 var is_able_to_skip = false
 var thread = null
 var regex = RegEx.new()
+#var regexmatch = RegExMatch.new()
 var f = File.new()
 #var play_start_transition = false
 #onready var progress = $progress
@@ -79,7 +80,8 @@ func _process(delta):
 		else:
 			f.seek(file_pos)
 			pass
-		print(result)
+		print(str(result[0]))
+#		print(str(result))
 func _thread_load(path):
 	var ril = ResourceLoader.load_interactive(path)
 	assert(ril)

@@ -38,7 +38,7 @@ func _ready():
 	Fmod.load_file_as_music(music_path)
 	Globals.fmod_sound_music_instance = Fmod.create_sound_instance(music_path)
 	Fmod.play_sound(Globals.fmod_sound_music_instance)
-	$SelectWorld/WorldList.add_item(tr("KEY_MAGIC_FOREST"))
+#	$SelectWorld/WorldList.add_item(tr("KEY_MAG
 #	DLCLoader.load_all_dlcs()
 	for world_name in world_list:
 		$SelectWorld/WorldList.add_item(tr(world_name))
@@ -64,6 +64,10 @@ func _ready():
 		$IMG_0008.hide()
 		load_easterregg_animation('bs')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' thugpro420 aka "Baby Sonadow"')
+	elif day == 16 and month == 10:
+		$IMG_0008.hide()
+#		load_easterregg_animation('bs')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
 	BackgroundLoad.play_start_transition = true
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
@@ -83,6 +87,7 @@ func load_easterregg_animation(name_:String):
 	elif name_ == 'bs':
 		$IMG_0009.texture = load(str(bs_imgs[randi()%bs_imgs.size()]))
 func _on_World1_pressed():
+	 
 	$SelectWorld.popup_centered()
 #	$SelectWorld.show()
 func _on_Options_pressed():
@@ -94,7 +99,8 @@ func _on_Quit_pressed():
 
 
 func _on_Website_pressed():
-	website = OS.shell_open('https://www.sonadow-rpg.ml/')
+	website = OS.shell_open('https://www.new-dev.ml/games/foxy-adventure/')
+#	pass     
 
 
 func _on_Options2_pressed():
@@ -102,8 +108,7 @@ func _on_Options2_pressed():
 
 
 func _on_WorldList_item_selected(index):
-	if index == 0:
-		Globals.world = "res://Scenes/Maps/MainWorld.tscn"
+	Globals.world = "res://Scenes/Stages/" + $SelectWorld/WorldList.get_item_text(index) + ".tscn"
 	if Globals.selected_character == null:
 		$CharacterSelect.popup_centered()
 	else:
