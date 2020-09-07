@@ -116,4 +116,3 @@ size_flags_horizontal = 3
 custom_styles/focus = SubResource( 8 )
 custom_fonts/font = SubResource( 9 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Anchor", "Caret", "Grow Direction", "Margin", "Material", "Pause", "Placeholder", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]

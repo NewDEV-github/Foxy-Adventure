@@ -1,15 +1,17 @@
 extends Node
+var log_text = ""
 #var _scn:PackedScene = preload("res://addons/screen_debugger/screen.scn")
-var label
+onready var label = $Control/Panel/Label
 func _ready():
-	label = $Control/Panel/Label
+#	var c_script = preload("res://addons/godot-console-dev/src/Misc/BaseCommands.gd").new()
+#	c_script.connect("take_log", self, "take_log")
 	set_process(false)
 	Globals.connect("loaded", self, "g_tree_entered")
 func g_tree_entered():
 	set_process(true)
 func _process(delta):
 	var perf_data = Fmod.get_performance_data()
-	label.text = str(
+	log_text = str(
 		'\n\nFMOD Sound System',
 		'\nCPU usage: ' + str(perf_data.CPU),
 		'\nFile: ' + str(perf_data.file),
@@ -28,9 +30,11 @@ func _process(delta):
 		'\ncharacter_position: '+ str(Globals.character_position),
 		'\nis_coming_from_house: '+ str(Globals.coming_from_house),
 		'\nlast_position_on_world: '+ str(Globals.last_world_position),
-		'\nmod_path: '+ str(Globals.mod_path),
 		'\nworld: '+ str(Globals.world),
 		'\ndebugMode: '+ str(Globals.debugMode),
 		'\nwindow_x_resolution: '+ str(Globals.window_x_resolution),
 		'\nwindow_y_resolution: '+ str(Globals.window_y_resolution)
 	)
+	label.text = log_text
+func take_log():
+	pass

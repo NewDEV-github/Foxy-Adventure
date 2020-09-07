@@ -81,10 +81,10 @@ func load_settings():
 #			$tabs/Rozgrywka/box/minimapenabled/minimap.set_pressed(bool(str(save_file.get_value('Game', 'minimap_enabled', true))))
 		if save_file.has_section_key('Game', 'game_clock'):
 			Globals.set_day_night_mode(str(save_file.get_value('Game', 'target_fps', 60)))
-		if save_file.has_section_key('Game', 'nsfw_enabled'):
+#		if save_file.has_section_key('Game', 'nsfw_enabled'):
 		
-			Globals.set_nsfw(bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
-			$tabs/Rozgrywka/box/nsfwmode/nsfw.set_pressed(!bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
+#			Globals.set_nsfw(bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
+#			$tabs/Rozgrywka/box/nsfwmode/nsfw.set_pressed(!bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 		if not str(OS.get_name()) == 'Android':
 			Globals.apply_custom_resolution()
 		$"tabs/Ogólne/Options/Graphics/custom_resolution/SpinBox".set_text(str($"tabs/Ogólne/Options/Graphics/custom_resolution/x".value) + 'x' + str($"tabs/Ogólne/Options/Graphics/custom_resolution/y".value))

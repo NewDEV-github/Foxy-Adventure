@@ -66,7 +66,7 @@ var dlc_name_list:Array = [
 ]
 
 var gc_mode = 'realtime'
-var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
+#var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):
 #	new_characters.insert(1, chr_name)
 	new_characters.append(chr_name)

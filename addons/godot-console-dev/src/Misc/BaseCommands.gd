@@ -1,11 +1,15 @@
 
 extends Reference
 
-
+signal take_log
 func _init():
 	Console.addCommand('echo', Console, 'write')\
 		.setDescription('Prints a string.')\
 		.addArgument('text', TYPE_STRING)\
+		.register()
+
+	Console.addCommand('ssdl', ScreenDebugger, 'take_log')\
+		.setDescription('Prints a text from Screen Debugger into output, debug and this console')\
 		.register()
 
 	Console.addCommand('history', Console.History, 'printAll')\
@@ -116,3 +120,6 @@ static func setEngineVariable(variable, value):
 
 static func setOSVariable(variable, value):
 	OS.set(variable, value)
+
+#static func ssdl_func():
+#	ScreenDebugger.take_log()

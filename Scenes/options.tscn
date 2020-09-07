@@ -44,7 +44,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="VBoxContainer" parent="tabs/Ogólne/Options"]
-margin_right = 478.0
+margin_right = 733.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -52,7 +52,7 @@ alignment = 1
 
 [node name="Graphics" type="Label" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 118.0
-margin_right = 478.0
+margin_right = 733.0
 margin_bottom = 137.0
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_GRAPHICS"
@@ -69,21 +69,21 @@ text = "KEY_OPTIONS_FULLSCREEN_MODE"
 
 [node name="VSync" type="CheckButton" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 141.0
-margin_right = 478.0
+margin_right = 733.0
 margin_bottom = 181.0
 custom_fonts/font = ExtResource( 2 )
 text = "VSync"
 
 [node name="fps" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 185.0
-margin_right = 478.0
+margin_right = 733.0
 margin_bottom = 225.0
 rect_min_size = Vector2( 0, 40 )
 alignment = 2
 
 [node name="Label" type="Label" parent="tabs/Ogólne/Options/Graphics/fps"]
 margin_top = 10.0
-margin_right = 400.0
+margin_right = 655.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -91,14 +91,14 @@ custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_FORCED_FPS"
 
 [node name="target" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/fps"]
-margin_left = 404.0
-margin_right = 478.0
+margin_left = 659.0
+margin_right = 733.0
 margin_bottom = 40.0
 max_value = 1e+14
 
 [node name="custom_resolution" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 229.0
-margin_right = 478.0
+margin_right = 733.0
 margin_bottom = 269.0
 rect_min_size = Vector2( 40, 40 )
 alignment = 1
@@ -115,8 +115,8 @@ align = 1
 valign = 1
 
 [node name="x" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
-margin_left = 222.0
-margin_right = 296.0
+margin_left = 477.0
+margin_right = 551.0
 margin_bottom = 40.0
 min_value = 640.0
 max_value = 8192.0
@@ -124,8 +124,8 @@ value = 1024.0
 align = 1
 
 [node name="y" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
-margin_left = 300.0
-margin_right = 374.0
+margin_left = 555.0
+margin_right = 629.0
 margin_bottom = 40.0
 min_value = 480.0
 max_value = 8192.0
@@ -133,8 +133,8 @@ value = 600.0
 align = 1
 
 [node name="SpinBox" type="OptionButton" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
-margin_left = 378.0
-margin_right = 478.0
+margin_left = 633.0
+margin_right = 733.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 2 )
 text = "1024x600"
@@ -161,12 +161,12 @@ text = "KEY_OPTIONS_DOWNLOAD_ASSETS_AGAIN"
 
 [node name="lang" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 273.0
-margin_right = 478.0
+margin_right = 733.0
 margin_bottom = 298.0
 
 [node name="language" type="Label" parent="tabs/Ogólne/Options/Graphics/lang"]
 margin_top = 3.0
-margin_right = 237.0
+margin_right = 364.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -174,8 +174,8 @@ custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_LANG"
 
 [node name="lang" type="OptionButton" parent="tabs/Ogólne/Options/Graphics/lang"]
-margin_left = 241.0
-margin_right = 478.0
+margin_left = 368.0
+margin_right = 733.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -184,6 +184,7 @@ items = [ "KEY_OPTIONS_LANG_EN", null, false, 0, null, "KEY_OPTIONS_LANG_ES", nu
 selected = 0
 
 [node name="Audio" type="VBoxContainer" parent="tabs/Ogólne/Options"]
+visible = false
 margin_left = 482.0
 margin_right = 733.0
 margin_bottom = 417.0
