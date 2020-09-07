@@ -4,15 +4,16 @@ var save_file = ConfigFile.new()
 var file = File.new()
 var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
-	$tabs.set_tab_disabled(1, true)
-	$tabs/Inne/VBoxContainer/InstallDLC.set_disabled(!dlc_web_avaliable)
+	set_process(false)
+#	$tabs.set_tab_disabled(1, true)
+#	$tabs/Inne/VBoxContainer/InstallDLC.set_disabled(!dlc_web_avaliable)
 	$"tabs/Ogólne/Options/Graphics/lang/lang".text = "KEY_OPTIONS_LANG_" + str(TranslationServer.get_locale().to_upper())
 	$tabs.set_tab_title(0, "KEY_OPTIONS_GENERAL")
 	$tabs.set_tab_title(1, "KEY_OPTIONS_STEERING")
-	$tabs.set_tab_title(2, "KEY_OPTIONS_GAMEPLAY")
-	$tabs.set_tab_title(3, "KEY_OPTIONS_OTHER")
+#	$tabs.set_tab_title(2, "KEY_OPTIONS_GAMEPLAY")
+#	$tabs.set_tab_title(3, "KEY_OPTIONS_OTHER")
 	$"tabs/Ogólne/Options/Graphics/fps/target".value = Engine.target_fps
-	set_process(false)
+	
 	load_settings()
 	if str(OS.get_name()) == 'Android':
 #		$tabs/Sterowanie.hide()
@@ -21,7 +22,7 @@ func _ready():
 		$"tabs/Ogólne/Options/Graphics/custom_resolution".hide()
 	else:
 		$"tabs/Ogólne/Options/Audio/SPEAKERMODE".set_disabled(false)
-		$tabs.set_tab_disabled(2, false)
+		$tabs.set_tab_disabled(1, false)
 #		$tabs/Sterowanie.show()
 		$"tabs/Ogólne/Options/Graphics/custom_resolution".show()
 func _process(_delta):
@@ -119,10 +120,10 @@ func _on_Music_on_toggled(button_pressed):
 
 
 func _on_SFX_slider_value_changed(value):
-	if value <= 0:
-		Fmod.set_sound_volume(Globals.fmod_sound_sfx_instance, value)
-	else:
-		Fmod.set_sound_volume(Globals.fmod_sound_sfx_instance, 0)
+#	if value <= 0:
+#		Fmod.set_sound_volume(Globals.fmod_sound_sfx_instance, value)
+#	else:
+#		Fmod.set_sound_volume(Globals.fmod_sound_sfx_instance, 0)
 	AudioServer.set_bus_volume_db(2, value)
 	
 

@@ -55,13 +55,16 @@ func _thread_done(resource):
 	get_tree().current_scene = new_scene
 	
 	progress.visible = false
-	
+	$Start_transtition.hide()
+	$bg.hide()
 func load_scene(path):
 	pth = path
 	if play_start_transition:
+		$Start_transtition.show()
 		raise()
 		$AnimationPlayer.play("start_transition")
 	else:
+		$Start_transtition.hide()
 		$bg.hide()
 		thread = Thread.new()
 		thread.start( self, "_thread_load", pth)

@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/AndroidDLCInstaller.tscn" type="PackedScene" id=4]
 
 [node name="Control" type="WindowDialog"]
+visible = true
 anchor_left = 0.00292968
 anchor_top = 0.246666
 anchor_right = 0.727539
@@ -313,121 +314,6 @@ drag_to_rearrange_enabled = true
 
 [node name="controls_ui" parent="tabs/Sterowanie" instance=ExtResource( 3 )]
 
-[node name="Rozgrywka" type="Tabs" parent="tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-drag_to_rearrange_enabled = true
-
-[node name="box" type="VBoxContainer" parent="tabs/Rozgrywka"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="game_clock" type="HBoxContainer" parent="tabs/Rozgrywka/box"]
-visible = false
-margin_right = 733.0
-margin_bottom = 25.0
-size_flags_horizontal = 3
-
-[node name="game_clock_label" type="Label" parent="tabs/Rozgrywka/box/game_clock"]
-margin_top = 3.0
-margin_right = 364.0
-margin_bottom = 22.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_GC"
-
-[node name="gcbutton" type="OptionButton" parent="tabs/Rozgrywka/box/game_clock"]
-margin_left = 368.0
-margin_right = 733.0
-margin_bottom = 25.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_GC_REAL"
-items = [ "KEY_OPTIONS_GC_REAL", null, false, 0, null, "KEY_OPTIONS_GC_FICTIONAL", null, false, 1, null ]
-selected = 0
-
-[node name="nsfwmode" type="HBoxContainer" parent="tabs/Rozgrywka/box"]
-visible = false
-margin_right = 733.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-
-[node name="game_clock_label" type="Label" parent="tabs/Rozgrywka/box/nsfwmode"]
-visible = false
-margin_top = 10.0
-margin_right = 364.0
-margin_bottom = 29.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
-text = "NSFW"
-
-[node name="nsfw" type="CheckButton" parent="tabs/Rozgrywka/box/nsfwmode"]
-margin_right = 733.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_NSFW"
-
-[node name="minimapenabled" type="HBoxContainer" parent="tabs/Rozgrywka/box"]
-visible = false
-margin_top = 44.0
-margin_right = 733.0
-margin_bottom = 84.0
-size_flags_horizontal = 3
-
-[node name="game_clock_label" type="Label" parent="tabs/Rozgrywka/box/minimapenabled"]
-visible = false
-margin_top = 10.0
-margin_right = 364.0
-margin_bottom = 29.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
-
-[node name="minimap" type="CheckButton" parent="tabs/Rozgrywka/box/minimapenabled"]
-margin_right = 733.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_MINIMAP_ENABLED"
-
-[node name="Inne" type="Tabs" parent="tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-drag_to_rearrange_enabled = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="tabs/Inne"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Licenses" type="Button" parent="tabs/Inne/VBoxContainer"]
-margin_right = 200.0
-margin_bottom = 20.0
-text = "KEY_OPTIONS_LICENSES"
-
-[node name="InstallDLC" type="Button" parent="tabs/Inne/VBoxContainer"]
-margin_top = 24.0
-margin_right = 200.0
-margin_bottom = 44.0
-text = "KEY_OPTIONS_INSTALL_DLC"
-
 [node name="Control" parent="." instance=ExtResource( 4 )]
 
 [node name="SAVE" type="Button" parent="."]
@@ -470,10 +356,5 @@ __meta__ = {
 [connection signal="value_changed" from="tabs/Ogólne/Options/Audio/SFX/SFX_slider" to="." method="_on_SFX_slider_value_changed"]
 [connection signal="toggled" from="tabs/Ogólne/Options/Audio/SFX/SFX_on" to="." method="_on_SFX_on_toggled"]
 [connection signal="item_selected" from="tabs/Ogólne/Options/Audio/SPEAKERMODE" to="." method="_on_SPEAKERMODE_item_selected"]
-[connection signal="item_selected" from="tabs/Rozgrywka/box/game_clock/gcbutton" to="." method="_on_gcbutton_item_selected"]
-[connection signal="toggled" from="tabs/Rozgrywka/box/nsfwmode/nsfw" to="." method="_on_nsfw_toggled"]
-[connection signal="toggled" from="tabs/Rozgrywka/box/minimapenabled/minimap" to="." method="_on_minimap_toggled"]
-[connection signal="pressed" from="tabs/Inne/VBoxContainer/Licenses" to="." method="_on_Licenses_pressed"]
-[connection signal="pressed" from="tabs/Inne/VBoxContainer/InstallDLC" to="." method="_on_InstallDLC_pressed"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]
 [connection signal="pressed" from="RESETSETTINGS" to="." method="_on_RESETSETTINGS_pressed"]
