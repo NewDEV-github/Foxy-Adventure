@@ -9,6 +9,7 @@ func _ready():
 	set_process(false)
 	Globals.connect("loaded", self, "g_tree_entered")
 func g_tree_entered():
+	$Control.set_visible(Globals.debugMode)
 	set_process(true)
 func _process(delta):
 	perf_data = Fmod.get_performance_data()

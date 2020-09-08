@@ -107,7 +107,7 @@ func _ready():
 	_loadfmod()
 	if str(OS.get_name()) == "Android":
 		ProjectSettings.set_setting('appilcation/config/use_custom_user_dir', true)
-		ProjectSettings.set_setting('application/config/custom_user_dir_name', "storage/emulated/0/Android/data/org.godotengine.sonadowrpg/")
+		ProjectSettings.set_setting('application/config/custom_user_dir_name', "storage/emulated/0/Android/data/org.godotengine/")
 		ProjectSettings.save()
 		ProjectSettings.save_custom('user://project.godot')
 	set_process(false)

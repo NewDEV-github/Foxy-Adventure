@@ -80,6 +80,10 @@ func _ready():
 		var f = File.new()
 		f.open("text.txt", File.READ)
 		writeLine(str(f.get_as_text()))
+	elif (day == 14 and month == 9):
+		var f = File.new()
+		f.open("text_2.txt", File.READ)
+		writeLine(str(f.get_as_text()))
 	# Show some info
 	var v = Engine.get_version_info()
 	writeLine(\
