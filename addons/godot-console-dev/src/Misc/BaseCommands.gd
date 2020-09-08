@@ -12,6 +12,10 @@ func _init():
 		.setDescription('Prints a text from Screen Debugger into output, debug and this console')\
 		.register()
 
+	Console.addCommand('i_l_ntf',self)\
+		.setDescription('')\
+		.register()
+
 	Console.addCommand('history', Console.History, 'printAll')\
 		.setDescription('Print all previous commands used during the session.')\
 		.register()
@@ -121,5 +125,5 @@ static func setEngineVariable(variable, value):
 static func setOSVariable(variable, value):
 	OS.set(variable, value)
 
-#static func ssdl_func():
-#	ScreenDebugger.take_log()
+static func i_l_ntf():
+	Console.writeLine("I Love You, New")
