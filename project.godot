@@ -107,7 +107,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "godot-console-dev", "screen_debugger" )
+enabled=PoolStringArray( "godot-console-dev", "screen_debugger", "string_keys" )
 
 [gdnative]
 
@@ -216,6 +216,7 @@ ssl/certificates="res://ca-bundle.crt"
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0

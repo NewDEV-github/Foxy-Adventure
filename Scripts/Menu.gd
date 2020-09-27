@@ -3,25 +3,16 @@ var tekst = "Hello World"
 var world_scene
 var website
 var music_fmod
+onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
 var month = OS.get_date().month
 var nsfw_connection
 onready var world_list = Globals.worlds
 onready var ntf_imgs = [
-	'res://Graphics/NewTheFox/1.png',
 	'res://Graphics/NewTheFox/2.png',
-	'res://Graphics/NewTheFox/3.png',
-	'res://Graphics/NewTheFox/4.png',
 	'res://Graphics/NewTheFox/5.png',
-	'res://Graphics/NewTheFox/6.png',
-	'res://Graphics/NewTheFox/7.png',
 	'res://Graphics/NewTheFox/8.png',
-	'res://Graphics/NewTheFox/9.png',
-	'res://Graphics/NewTheFox/10.png',
-	'res://Graphics/NewTheFox/11.png',
-	'res://Graphics/NewTheFox/recolour1.png',
-	'res://Graphics/NewTheFox/recolour2.png',
 	'res://Graphics/NewTheFox/recolour3.png',
 	'res://Graphics/NewTheFox/recolour4.png',
 	'res://Graphics/NewTheFox/recolour5.png',
@@ -31,6 +22,8 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	editor_lib.connect("editor_started", self, "on_editor_started")
+	editor_lib.connect("editor_closed", self, "on_editor_closed")
 #	load_easterregg_animation('ntf')
 	var music_path = "res://Audio/BGM/main_menu.ogg"
 #	# register listener
@@ -68,6 +61,10 @@ func _ready():
 		$IMG_0008.hide()
 #		load_easterregg_animation('bs')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
+	elif day == 16 and month == 4:
+		$IMG_0008.hide()
+#		load_easterregg_animation('bs')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Erwin')
 	BackgroundLoad.play_start_transition = true
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
@@ -118,3 +115,12 @@ func _on_WorldList_item_selected(index):
 
 func _on_Menu_tree_exiting():
 	Fmod.stop_sound(Globals.fmod_sound_music_instance)
+
+
+func _on_Level_Editor_pressed():
+	ProjectSettings.load_resource_pack("user://packs/editor.pck")
+	get_tree().change_scene("res://level_editor/Main.tscn")
+func on_editor_started():
+	print("starting editor")
+func on_editor_closed():
+	print("editor closed")

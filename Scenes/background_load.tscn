@@ -59,6 +59,7 @@ tracks/3/keys = {
 [node name="bgload" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -69,12 +70,14 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start_transtition" parent="." instance=ExtResource( 2 )]
+mouse_filter = 1
 
 [node name="progress" type="ProgressBar" parent="."]
 anchor_left = 0.5

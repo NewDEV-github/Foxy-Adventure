@@ -10,8 +10,9 @@ var is_tired_of_flying
 var override_anim : String
 
 func enter(host):
-	host.tails.hide()
-	is_tired_of_flying = host.is_tired_of_flying
+	if host.name == "Tails" or host.name == "NewTheFox":
+		host.tails.hide()
+		is_tired_of_flying = host.is_tired_of_flying
 	is_flying = host.is_flying
 	is_in_air = host.is_in_air
 	has_jumped = host.has_jumped
@@ -59,10 +60,10 @@ func step(host, delta):
 	host.velocity.y += host.GRV
 	
 	if Input.is_action_just_released("ui_accept"): # has jumped
-		host.tails.play('jump_roll')
 		if host.name == "Tails" or host.name == "NewTheFox":
 			host.is_in_air = true
 			can_attack = false
+			host.tails.play('jump_roll')
 		if host.velocity.y < -240.0: # set min jump height
 			host.velocity.y = -240.0
 	if Input.is_action_just_released("ui_accept") and is_in_air == true: # has jumped

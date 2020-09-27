@@ -83,23 +83,26 @@ func get_minimap_enabled():
 func _ready():
 	##LOAD DLCS
 	#LEO
-	if file.file_exists('res://dlcs/dlc_leo.gd'):
+	if file.file_exists('res://dlcs/dlc_leo.gd') and file.file_exists('user://dlcs/dlc_leo.pck'):
 		var script = load('res://dlcs/dlc_leo.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
+		ProjectSettings.load_resource_pack("user://dlcs/dlc_leo.pck")
 	#Classic Sonic
-	if file.file_exists('res://dlcs/dlc_classic_sonic.gd'):
+	if file.file_exists('res://dlcs/dlc_classic_sonic.gd') and file.file_exists('user://dlcs/dlc_classic_sonic.pck'):
 		var script = load('res://dlcs/dlc_classic_sonic.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
+		ProjectSettings.load_resource_pack("user://dlcs/dlc_classic_sonic.pck")
 	#New.exe
-	if file.file_exists('res://dlcs/dlc_new_exe.gd'):
+	if file.file_exists('res://dlcs/dlc_new_exe.gd') and file.file_exists('user://dlcs/dlc_new_exe.pck'):
 		var script = load('res://dlcs/dlc_new_exe.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
+		ProjectSettings.load_resource_pack("user://dlcs/dlc_new_exe.pck")
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):

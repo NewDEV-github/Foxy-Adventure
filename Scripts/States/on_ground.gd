@@ -12,22 +12,27 @@ func step(host, delta):
 	host.is_looking_down = false
 	host.is_looking_up = false
 	host.is_pushing = false
-	host.tails.show()
-	host.tails.play("normal")
+	if host.name == "Tails" or host.name == "NewTheFox":
+		host.tails.show()
+		host.tails.play("normal")
 	if !host.is_ray_colliding or host.fall_from_ground():
 		host.is_grounded = false
-		host.tails.stop()
-		host.tails.hide()
+		if host.name == "Tails" or host.name == "NewTheFox":
+			host.tails.stop()
+			host.tails.hide()
 		return 'OnAir'
 		
 	if Input.is_action_pressed("ui_down"):
-		host.tails.stop()
-		host.tails.hide()
+		if host.name == "Tails" or host.name == "NewTheFox":
+			host.tails.stop()
+			host.tails.hide()
 		if abs(host.gsp) > 61.875:
 			if !host.is_rolling:
-				host.tails.show()
+				if host.name == "Tails" or host.name == "NewTheFox":
+					host.tails.show()
 				host.audio_player.play('spin')
-				host.tails.play('spindash_push')
+				if host.name == "Tails" or host.name == "NewTheFox":
+					host.tails.play('spindash_push')
 			host.is_rolling = true
 		elif host.ground_mode == 0:
 			host.is_rolling = false
@@ -56,8 +61,9 @@ func step(host, delta):
 	host.gsp -= slope * sin(host.ground_angle())
 	
 	if Input.is_action_pressed("ui_left") and !host.control_locked:
-		host.tails.stop()
-		host.tails.hide()
+		if host.name == "Tails" or host.name == "NewTheFox":
+			host.tails.stop()
+			host.tails.hide()
 		if host.gsp > 0:
 			host.gsp -= host.DEC if !host.is_rolling else host.ROLLDEC
 			
@@ -72,8 +78,9 @@ func step(host, delta):
 		if host.is_wall_left and host.gsp < 0:
 			host.is_pushing = true
 	elif Input.is_action_pressed("ui_right") and !host.control_locked:
-		host.tails.stop()
-		host.tails.hide()
+		if host.name == "Tails" or host.name == "NewTheFox":
+			host.tails.stop()
+			host.tails.hide()
 		if host.gsp < 0 :
 			host.gsp += host.DEC if !host.is_rolling else host.ROLLDEC
 			
@@ -96,7 +103,8 @@ func step(host, delta):
 	host.is_braking = is_braking
 	
 	if host.is_rolling:
-		host.tails.play('jump_roll')
+		if host.name == "Tails" or host.name == "NewTheFox":
+			host.tails.play('jump_roll')
 		host.gsp -= min(abs(host.gsp), host.FRC / 2.0) * sign(host.gsp)
 		host.gsp = clamp(host.gsp, -host.TOPROLL, host.TOPROLL)
 	elif host.is_looking_down:
@@ -108,8 +116,9 @@ func step(host, delta):
 	host.velocity.y = host.gsp * -sin(host.ground_angle())
 	
 	if Input.is_action_just_pressed("ui_accept"):
-			host.tails.show()
-			host.tails.play('jump_roll')
+			if host.name == "Tails" or host.name == "NewTheFox":
+				host.tails.show()
+				host.tails.play('jump_roll')
 			host.velocity.x -= host.JMP * sin(host.ground_angle())
 			host.velocity.y -= host.JMP * cos(host.ground_angle())
 			host.rotation_degrees = 0

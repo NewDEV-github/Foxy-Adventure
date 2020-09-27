@@ -1,11 +1,11 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Graphics/Sprites/instaShield.png" type="Texture" id=1]
 [ext_resource path="res://Audio/SFX/spinDashCharge.wav" type="AudioStream" id=2]
 [ext_resource path="res://Audio/SFX/peelOutCharge.wav" type="AudioStream" id=3]
 [ext_resource path="res://Audio/SFX/spinDashRelease.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/SFX/instaShield.wav" type="AudioStream" id=5]
-[ext_resource path="res://Graphics/Sprites/Sonic.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Sprites/ntf.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/character_vfx.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/States/on_air.gd" type="Script" id=8]
 [ext_resource path="res://Audio/SFX/jump.wav" type="AudioStream" id=9]
@@ -19,12 +19,64 @@
 [ext_resource path="res://Scripts/States/super_peel_out.gd" type="Script" id=17]
 [ext_resource path="res://Audio/SFX/peelOutRelease.wav" type="AudioStream" id=18]
 [ext_resource path="res://Scripts/player_camera.gd" type="Script" id=19]
+[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/States/on_ground.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/character_animator.gd" type="Script" id=22]
-
+[ext_resource path="res://Graphics/Sprites/ntf_tails.png" type="Texture" id=23]
+[ext_resource path="res://Scripts/Characters/tails_AnimationPlayer.gd" type="Script" id=29]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Braking"
+resource_name = "jump_roll"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "normal"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spindash_push"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.52
 step = 0.13
 tracks/0/type = "value"
@@ -40,7 +92,55 @@ tracks/0/keys = {
 "values": [ 38, 39, 40, 41 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 37, 38 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 41, 42 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 39, 40 ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -55,7 +155,7 @@ tracks/0/keys = {
 "values": [ 0, 0, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 length = 10.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -70,7 +170,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 7, 8, 7, 8, 7, 8, 7, 8, 9, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -86,8 +186,7 @@ tracks/0/keys = {
 "values": [ 11, 12 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "LookDown"
+[sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -102,8 +201,7 @@ tracks/0/keys = {
 "values": [ 3, 4 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "LookUp"
+[sub_resource type="Animation" id=12]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -118,8 +216,7 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "PeelOut"
+[sub_resource type="Animation" id=13]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -135,8 +232,7 @@ tracks/0/keys = {
 "values": [ 60, 61, 62, 63 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Pushing"
+[sub_resource type="Animation" id=14]
 length = 2.1
 loop = true
 step = 0.53
@@ -153,7 +249,7 @@ tracks/0/keys = {
 "values": [ 52, 53, 54, 55 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=15]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -169,7 +265,7 @@ tracks/0/keys = {
 "values": [ 26, 30, 27, 30, 28, 30, 29, 30 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=16]
 length = 0.8
 loop = true
 step = 0.2
@@ -186,7 +282,7 @@ tracks/0/keys = {
 "values": [ 22, 23, 24, 25 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=17]
 length = 0.24
 loop = true
 step = 0.04
@@ -203,7 +299,23 @@ tracks/0/keys = {
 "values": [ 31, 32, 33, 34, 35, 36 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=18]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 43, 44 ]
+}
+
+[sub_resource type="Animation" id=19]
 length = 1.6
 loop = true
 step = 0.2
@@ -220,7 +332,7 @@ tracks/0/keys = {
 "values": [ 17, 18, 19, 20, 21, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=20]
 length = 0.28
 loop = true
 step = 0.04
@@ -237,8 +349,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "InstaShield"
+[sub_resource type="Animation" id=21]
 length = 0.12
 step = 0.02
 tracks/0/type = "value"
@@ -254,19 +365,18 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=22]
 radius = 9.03
 height = 6.05999
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=23]
 radius = 9.0
 
-[sub_resource type="RayShape2D" id=17]
+[sub_resource type="RayShape2D" id=24]
 
-[node name="main" type="Node"]
+[node name="NewTheFox" type="KinematicBody2D"]
 
 [node name="PlayerCamera" type="Node2D" parent="."]
-position = Vector2( 212, 120 )
 script = ExtResource( 19 )
 __meta__ = {
 "_edit_group_": true
@@ -284,8 +394,7 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.15
 editor_draw_limits = true
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 33, 313.92 )
+[node name="NewTheFox" type="KinematicBody2D" parent="."]
 z_index = 1
 collision/safe_margin = 0.1
 script = ExtResource( 15 )
@@ -293,128 +402,154 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StateMachine" type="Node" parent="Player"]
+[node name="StateMachine" type="Node" parent="NewTheFox"]
 script = ExtResource( 16 )
 
-[node name="OnGround" type="Node" parent="Player/StateMachine"]
+[node name="OnGround" type="Node" parent="NewTheFox/StateMachine"]
 script = ExtResource( 21 )
 
-[node name="OnAir" type="Node" parent="Player/StateMachine"]
+[node name="OnAir" type="Node" parent="NewTheFox/StateMachine"]
 script = ExtResource( 8 )
 
-[node name="SpinDash" type="Node" parent="Player/StateMachine"]
+[node name="SpinDash" type="Node" parent="NewTheFox/StateMachine"]
 script = ExtResource( 14 )
 
-[node name="SuperPeelOut" type="Node" parent="Player/StateMachine"]
+[node name="SuperPeelOut" type="Node" parent="NewTheFox/StateMachine"]
 script = ExtResource( 17 )
 
-[node name="Characters" type="Node2D" parent="Player"]
+[node name="Characters" type="Node2D" parent="NewTheFox"]
 position = Vector2( 0, -4 )
 
-[node name="Sonic" type="Sprite" parent="Player/Characters"]
+[node name="tails" type="Sprite" parent="NewTheFox/Characters"]
+position = Vector2( -12.7897, 11.2516 )
+scale = Vector2( 0.990566, 1 )
+texture = ExtResource( 23 )
+hframes = 12
+frame = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewTheFox/Characters/tails"]
+anims/jump_roll = SubResource( 1 )
+anims/normal = SubResource( 2 )
+anims/spindash_push = SubResource( 3 )
+script = ExtResource( 29 )
+
+[node name="Sonic" type="Sprite" parent="NewTheFox/Characters"]
 texture = ExtResource( 6 )
 vframes = 17
 hframes = 17
 region_rect = Rect2( 0, 0, 48, 48 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Characters/Sonic"]
-anims/Braking = SubResource( 1 )
-anims/Idle1 = SubResource( 2 )
-anims/Idle2 = SubResource( 3 )
-anims/Idle3 = SubResource( 4 )
-anims/LookDown = SubResource( 5 )
-anims/LookUp = SubResource( 6 )
-anims/PeelOut = SubResource( 7 )
-anims/Pushing = SubResource( 8 )
-anims/Rolling = SubResource( 9 )
-anims/Running = SubResource( 10 )
-anims/SpinDashCharge = SubResource( 11 )
-anims/Walking = SubResource( 12 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewTheFox/Characters/Sonic"]
+anims/Braking = SubResource( 4 )
+anims/Flying = SubResource( 5 )
+anims/FlyingDOWN = SubResource( 6 )
+anims/FlyingUP = SubResource( 7 )
+anims/Idle1 = SubResource( 8 )
+anims/Idle2 = SubResource( 9 )
+anims/Idle3 = SubResource( 10 )
+anims/LookDown = SubResource( 11 )
+anims/LookUp = SubResource( 12 )
+anims/PeelOut = SubResource( 13 )
+anims/Pushing = SubResource( 14 )
+anims/Rolling = SubResource( 15 )
+anims/Running = SubResource( 16 )
+anims/SpinDashCharge = SubResource( 17 )
+anims/TiredOfFlying = SubResource( 18 )
+anims/Walking = SubResource( 19 )
 script = ExtResource( 22 )
 
-[node name="VFX" type="Node2D" parent="Player/Characters"]
+[node name="VFX" type="Node2D" parent="NewTheFox/Characters"]
 script = ExtResource( 7 )
 
-[node name="ChargeDust" type="Sprite" parent="Player/Characters/VFX"]
+[node name="ChargeDust" type="Sprite" parent="NewTheFox/Characters/VFX"]
 visible = false
 position = Vector2( -19, 13 )
 texture = ExtResource( 13 )
 hframes = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Characters/VFX/ChargeDust"]
-anims/ChargeDust = SubResource( 13 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewTheFox/Characters/VFX/ChargeDust"]
+anims/ChargeDust = SubResource( 20 )
 
-[node name="InstaShield" type="Sprite" parent="Player/Characters/VFX"]
+[node name="InstaShield" type="Sprite" parent="NewTheFox/Characters/VFX"]
 visible = false
 position = Vector2( 0, 9 )
 texture = ExtResource( 1 )
 hframes = 6
 frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Characters/VFX/InstaShield"]
-anims/InstaShield = SubResource( 14 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewTheFox/Characters/VFX/InstaShield"]
+anims/InstaShield = SubResource( 21 )
 
-[node name="AudioPlayer" type="Node2D" parent="Player"]
+[node name="AudioPlayer" type="Node2D" parent="NewTheFox"]
 script = ExtResource( 12 )
 
-[node name="jump" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="jump" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 9 )
 volume_db = -15.0
 
-[node name="brake" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="brake" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 10 )
 volume_db = -20.0
 
-[node name="spin" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="spin" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 11 )
 volume_db = -10.0
 
-[node name="SpinDashCharge" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="SpinDashCharge" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 2 )
 volume_db = -10.0
 
-[node name="SpinDashRelease" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="SpinDashRelease" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 4 )
 volume_db = -10.0
 
-[node name="PeelOutCharge" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="PeelOutCharge" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 3 )
 volume_db = -10.0
 
-[node name="PeelOutRelease" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="PeelOutRelease" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 18 )
 volume_db = -10.0
 
-[node name="InstaShield" type="AudioStreamPlayer" parent="Player/AudioPlayer"]
+[node name="InstaShield" type="AudioStreamPlayer" parent="NewTheFox/AudioPlayer"]
 stream = ExtResource( 5 )
 volume_db = -25.0
 
-[node name="HighCollider" type="CollisionShape2D" parent="Player"]
+[node name="HighCollider" type="CollisionShape2D" parent="NewTheFox"]
 position = Vector2( 0, -5 )
-shape = SubResource( 15 )
+shape = SubResource( 22 )
 
-[node name="LowCollider" type="CollisionShape2D" parent="Player"]
+[node name="LowCollider" type="CollisionShape2D" parent="NewTheFox"]
 position = Vector2( 0, 5 )
-shape = SubResource( 16 )
+shape = SubResource( 23 )
 
-[node name="RayShape" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 17 )
+[node name="RayShape" type="CollisionShape2D" parent="NewTheFox"]
+shape = SubResource( 24 )
 
-[node name="LeftGroundSensor" type="RayCast2D" parent="Player"]
+[node name="LeftGroundSensor" type="RayCast2D" parent="NewTheFox"]
 position = Vector2( -9, 0 )
 enabled = true
 cast_to = Vector2( 0, 36 )
 
-[node name="RightGroundSensor" type="RayCast2D" parent="Player"]
+[node name="RightGroundSensor" type="RayCast2D" parent="NewTheFox"]
 position = Vector2( 9, 0 )
 enabled = true
 cast_to = Vector2( 0, 36 )
 
-[node name="RightWallSensor" type="RayCast2D" parent="Player"]
+[node name="RightWallSensor" type="RayCast2D" parent="NewTheFox"]
 enabled = true
 cast_to = Vector2( 11, 0 )
 
-[node name="LeftWallSensor" type="RayCast2D" parent="Player"]
+[node name="LeftWallSensor" type="RayCast2D" parent="NewTheFox"]
 enabled = true
 cast_to = Vector2( -11, 0 )
-[connection signal="animation_finished" from="Player/Characters/Sonic/AnimationPlayer" to="Player/StateMachine" method="_on_AnimationPlayer_animation_finished"]
+
+[node name="fly_timer" type="Timer" parent="NewTheFox"]
+wait_time = 15.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 20 )]
+[connection signal="animation_finished" from="NewTheFox/Characters/Sonic/AnimationPlayer" to="NewTheFox/StateMachine" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="NewTheFox/fly_timer" to="NewTheFox" method="_on_fly_timer_timeout"]

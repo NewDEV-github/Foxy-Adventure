@@ -23,7 +23,7 @@ func invert(is_left_activated, is_right_activated):
 		uncheck_mask = 2
 
 func _on_Area2D_body_entered(body):
-	if body.name == 'Tails' or body.name == 'NewTheFox':
+	if body.name != "":
 		var left = body.get_collision_mask_bit(1)
 		var right = body.get_collision_mask_bit(2)
 		
