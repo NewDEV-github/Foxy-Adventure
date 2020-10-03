@@ -83,6 +83,7 @@ func get_minimap_enabled():
 func _ready():
 	##LOAD DLCS
 	#LEO
+	save_level()
 	if file.file_exists('res://dlcs/dlc_leo.gd'):
 		var script = load('res://dlcs/dlc_leo.gd').new()
 		script.add_characters()
@@ -170,3 +171,10 @@ func scan_dlcs(path = 'user://dlcs/'):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
+
+
+func save_level():
+	var sonyk = ConfigFile.new()
+	sonyk.open("user://save.cfg")
+	sonyk.set_value("sekcja", "klucz", "wartość")
+	sonyk.close()
