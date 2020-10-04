@@ -3,7 +3,7 @@ var tekst = "Hello World"
 var world_scene
 var website
 var music_fmod
-onready var editor_lib = load("res://bin/gdexample.gdns").new()
+#onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
 var month = OS.get_date().month
@@ -22,8 +22,6 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	editor_lib.connect("editor_started", self, "on_editor_started")
-	editor_lib.connect("editor_closed", self, "on_editor_closed")
 #	load_easterregg_animation('ntf')
 	var music_path = "res://Audio/BGM/main_menu.ogg"
 #	# register listener
