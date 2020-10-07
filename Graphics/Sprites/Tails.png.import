@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tails.png-02971bd5f398517ba6570fd7656c7a7b.stex"
+path="res://.import/Tails.png-38c3b44e7c7da7d52208af7971ac1452.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Sprites/tails.png"
-dest_files=[ "res://.import/tails.png-02971bd5f398517ba6570fd7656c7a7b.stex" ]
+source_file="res://Graphics/Sprites/Tails.png"
+dest_files=[ "res://.import/Tails.png-38c3b44e7c7da7d52208af7971ac1452.stex" ]
 
 [params]
 

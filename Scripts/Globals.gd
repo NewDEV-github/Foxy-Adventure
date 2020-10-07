@@ -83,12 +83,8 @@ func get_minimap_enabled():
 func _ready():
 	##LOAD DLCS
 	#LEO
-<<<<<<< HEAD
+	
 	if file.file_exists('res://dlcs/dlc_leo.gd') and file.file_exists('user://dlcs/dlc_leo.pck'):
-=======
-	save_level()
-	if file.file_exists('res://dlcs/dlc_leo.gd'):
->>>>>>> 0c2328eea8942f2ac7287b5ef0adb6f634f91891
 		var script = load('res://dlcs/dlc_leo.gd').new()
 		script.add_characters()
 		script.add_stages()
