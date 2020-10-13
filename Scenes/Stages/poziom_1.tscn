@@ -1,8 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_1.gd" type="Script" id=2]
 [ext_resource path="res://Audio/BGM/1stage.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Characters/enemy.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 184, 192 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 60.1925, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 24, 10 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,3 +40,160 @@ tile_data = PoolIntArray( 524288, 23, 0, 524289, 23, 0, 524290, 23, 0, 524291, 2
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
+
+[node name="coins" type="Node2D" parent="."]
+
+[node name="coin" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 1920, 544 )
+
+[node name="coin2" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 1952, 544 )
+
+[node name="coin3" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 1984, 544 )
+
+[node name="coin4" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2016, 528 )
+
+[node name="coin5" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2048, 528 )
+
+[node name="coin6" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2080, 528 )
+
+[node name="coin7" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2112, 512 )
+
+[node name="coin8" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2144, 512 )
+
+[node name="coin9" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2176, 512 )
+
+[node name="coin10" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2208, 496 )
+
+[node name="coin11" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2240, 496 )
+
+[node name="coin12" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2272, 496 )
+
+[node name="coin13" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 2304, 496 )
+
+[node name="coin14" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 288, 544 )
+
+[node name="coin15" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 320, 544 )
+
+[node name="coin16" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 352, 544 )
+
+[node name="coin17" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 384, 544 )
+
+[node name="coin18" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 416, 544 )
+
+[node name="coin19" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 512, 544 )
+
+[node name="coin20" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 544, 544 )
+
+[node name="coin21" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 576, 544 )
+
+[node name="coin22" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 608, 544 )
+
+[node name="coin23" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 640, 576 )
+
+[node name="coin24" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 672, 576 )
+
+[node name="coin25" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 704, 576 )
+
+[node name="coin26" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 768, 464 )
+
+[node name="coin27" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 800, 464 )
+
+[node name="coin28" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 832, 464 )
+
+[node name="coin29" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 864, 464 )
+
+[node name="coin30" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 896, 288 )
+
+[node name="coin31" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 928, 288 )
+
+[node name="coin32" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 960, 288 )
+
+[node name="coin33" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 992, 288 )
+
+[node name="coin34" parent="coins" instance=ExtResource( 4 )]
+position = Vector2( 1024, 288 )
+
+[node name="enemy" type="Node2D" parent="."]
+
+[node name="Enemy" parent="enemy" instance=ExtResource( 5 )]
+position = Vector2( 384, 248 )
+
+[node name="Enemy2" parent="enemy" instance=ExtResource( 5 )]
+position = Vector2( 536, 248 )
+
+[node name="Enemy3" parent="enemy" instance=ExtResource( 5 )]
+position = Vector2( 912, 536 )
+
+[node name="Enemy4" parent="enemy" instance=ExtResource( 5 )]
+position = Vector2( 1376, 520 )
+
+[node name="Enemy5" parent="enemy" instance=ExtResource( 5 )]
+position = Vector2( 248, 96 )
+
+[node name="Enemy6" parent="enemy" instance=ExtResource( 5 )]
+position = Vector2( 240, 568 )
+
+[node name="dead_areas" type="Node2D" parent="."]
+
+[node name="dead_area" type="Area2D" parent="dead_areas"]
+position = Vector2( 448, 808 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area"]
+position = Vector2( 8, 0 )
+shape = SubResource( 1 )
+
+[node name="dead_area2" type="Area2D" parent="dead_areas"]
+position = Vector2( 1539.81, 592 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area2"]
+shape = SubResource( 2 )
+
+[node name="dead_area3" type="Area2D" parent="dead_areas"]
+position = Vector2( 1728, 584 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area3"]
+position = Vector2( 8, -8 )
+shape = SubResource( 3 )
+
+[node name="dead_area4" type="Area2D" parent="dead_areas"]
+position = Vector2( 1856, 593.95 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area4"]
+position = Vector2( 8, -25.95 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]
+[connection signal="body_entered" from="dead_areas/dead_area2" to="." method="toxic_entered"]
+[connection signal="body_entered" from="dead_areas/dead_area3" to="." method="toxic_entered"]
+[connection signal="body_entered" from="dead_areas/dead_area4" to="." method="toxic_entered"]

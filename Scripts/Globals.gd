@@ -21,7 +21,8 @@ var timer = Timer.new()
 var hour
 var nsfw
 var new_characters:Array = [
-	
+	"NewTheFox",
+	"Tails",
 ]
 
 func get_dlcs_avaliable():
@@ -157,3 +158,8 @@ func save_level():
 	sonyk.open("user://save.cfg")
 	sonyk.set_value("sekcja", "klucz", "wartość")
 	sonyk.close()
+
+func game_over():
+	print("GAME OVER!")
+	pass
+	#do game over here

@@ -12,3 +12,9 @@ func _ready():
 	add_child(character)
 #	character.set_owner(root)
 	get_node(str(character.name)).position = startup_position
+
+
+func toxic_entered(body):
+	var characters = Globals.new_characters
+	if characters.has(body.name):
+		Globals.game_over()

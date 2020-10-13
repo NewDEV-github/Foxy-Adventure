@@ -13,7 +13,6 @@ __meta__ = {
 [node name="ItemList" type="ItemList" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-items = [ "NewTheFox", null, false, "Tails", null, false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
