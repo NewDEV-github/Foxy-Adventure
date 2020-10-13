@@ -23,30 +23,7 @@ var nsfw
 var new_characters:Array = [
 	
 ]
-var fmod_sound_music_instance
-var fmod_sound_sfx_instance
-var fmod_event_sound_instance
-var fmod_event_sfx_instance
-var fmod_perf_data
-func _loadfmod():
-	# set up FMOD
-	Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_STEREO, 0)
-	Fmod.init(1024, Fmod.FMOD_STUDIO_INIT_LIVEUPDATE, Fmod.FMOD_INIT_NORMAL)
-	Fmod.set_sound_3D_settings(1, 32, 1)
-	Fmod.set_listener_number(2)
-	
-	# load banks
-# warning-ignore:return_value_discarded
-	Fmod.load_bank("res://assets/Banks/Master Bank.strings.bank", Fmod.FMOD_STUDIO_LOAD_BANK_NORMAL)
-# warning-ignore:return_value_discarded
-	Fmod.load_bank("res://assets/Banks/Master Bank.bank", Fmod.FMOD_STUDIO_LOAD_BANK_NORMAL)
-# warning-ignore:return_value_discarded
-	Fmod.load_bank("res://assets/Banks/Music.bank", Fmod.FMOD_STUDIO_LOAD_BANK_NORMAL)
-# warning-ignore:return_value_discarded
-	Fmod.load_bank("res://assets/Banks/Vehicles.bank", Fmod.FMOD_STUDIO_LOAD_BANK_NORMAL)
-	print("Fmod initialised.")
-	var drivers = Fmod.get_available_drivers()
-	print(drivers)
+
 func get_dlcs_avaliable():
 #	var http = HTTPRequest.new()
 #	var req = http.request('https://www.sonadow-rpg.ml/dlcs/index.html')
@@ -108,7 +85,6 @@ func _ready():
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
 		debugMode = bool(str(save_file.get_value('Game', 'debug_mode', false)))
-	_loadfmod()
 	if str(OS.get_name()) == "Android":
 		ProjectSettings.set_setting('appilcation/config/use_custom_user_dir', true)
 		ProjectSettings.set_setting('application/config/custom_user_dir_name', "storage/emulated/0/Android/data/org.godotengine/")

@@ -1,0 +1,10 @@
+1. Install Java jdk1.8.0_221 on pc
+2.Generate debug.keystore using
+
+keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+
+or realease version of debug.keystore
+
+keytool -v -genkey -v -keystore mygame.keystore -alias mygame -keyalg RSA -validity 10000
+
+download adb

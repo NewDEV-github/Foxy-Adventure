@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://FeedBack/Main.gd" type="Script" id=1]
+[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=2]
 
 [node name="HTTPRequest" type="HTTPRequest"]
 script = ExtResource( 1 )
@@ -13,6 +14,7 @@ one_shot = true
 [node name="FeedBack" type="WindowDialog" parent="."]
 margin_right = 291.0
 margin_bottom = 237.0
+theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,10 +29,10 @@ __meta__ = {
 [node name="Discord" type="Tabs" parent="FeedBack/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = 36.0
-margin_bottom = 20.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
 
 [node name="options" type="VBoxContainer" parent="FeedBack/TabContainer/Discord"]
 anchor_top = -0.0177778
@@ -44,56 +46,54 @@ __meta__ = {
 }
 
 [node name="DM" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
-margin_right = 281.0
-margin_bottom = 20.0
+margin_right = 244.0
+margin_bottom = 27.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="FeedBack/TabContainer/Discord/options/DM"]
-margin_top = 3.0
-margin_right = 122.0
-margin_bottom = 17.0
+margin_right = 144.0
+margin_bottom = 27.0
 text = "Via Direct Message"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DSCdm" type="Button" parent="FeedBack/TabContainer/Discord/options/DM"]
-margin_left = 126.0
-margin_right = 156.0
-margin_bottom = 20.0
+margin_left = 148.0
+margin_right = 180.0
+margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Go"
 
 [node name="JOIN" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
-margin_top = 24.0
-margin_right = 281.0
-margin_bottom = 44.0
+margin_top = 31.0
+margin_right = 244.0
+margin_bottom = 58.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="FeedBack/TabContainer/Discord/options/JOIN"]
-margin_top = 3.0
-margin_right = 169.0
-margin_bottom = 17.0
+margin_right = 199.0
+margin_bottom = 27.0
 text = "Join our community server"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DSCServer" type="Button" parent="FeedBack/TabContainer/Discord/options/JOIN"]
-margin_left = 173.0
-margin_right = 203.0
-margin_bottom = 20.0
+margin_left = 203.0
+margin_right = 235.0
+margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Go"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FeedBack/TabContainer/Discord/options"]
-margin_top = 48.0
-margin_right = 281.0
-margin_bottom = 199.0
+margin_top = 62.0
+margin_right = 244.0
+margin_bottom = 175.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -112,15 +112,91 @@ NewTF#4548 - 708014517975777302
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="options" type="VBoxContainer" parent="FeedBack/TabContainer/Other"]
+anchor_top = -0.0177778
+anchor_right = 0.869969
+anchor_bottom = 0.866667
+margin_top = 9.68575e-08
+margin_right = -9.65595e-06
+margin_bottom = -1.78814e-06
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="DM" type="HBoxContainer" parent="FeedBack/TabContainer/Other/options"]
+margin_right = 281.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FeedBack/TabContainer/Other/options/DM"]
+margin_top = 3.0
+margin_right = 122.0
+margin_bottom = 17.0
+text = "Visit our website"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Website" type="Button" parent="FeedBack/TabContainer/Other/options/DM"]
+margin_left = 126.0
+margin_right = 156.0
+margin_bottom = 20.0
+size_flags_vertical = 4
+text = "Go"
+
+[node name="JOIN" type="HBoxContainer" parent="FeedBack/TabContainer/Other/options"]
+margin_top = 24.0
+margin_right = 281.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FeedBack/TabContainer/Other/options/JOIN"]
+margin_top = 3.0
+margin_right = 169.0
+margin_bottom = 17.0
+text = "Facebook"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Facebook" type="Button" parent="FeedBack/TabContainer/Other/options/JOIN"]
+margin_left = 173.0
+margin_right = 203.0
+margin_bottom = 20.0
+size_flags_vertical = 4
+text = "Go"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FeedBack/TabContainer/Other/options"]
+margin_top = 48.0
+margin_right = 281.0
+margin_bottom = 199.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+Our discord tags and IDs:
+sonic#7813 - 49297095049323264
+NewTF#4548 - 708014517975777302
+[/center]"
+text = "
+Our discord tags and IDs:
+sonic#7813 - 49297095049323264
+NewTF#4548 - 708014517975777302
+"
 
 [node name="DscDMCreator" type="WindowDialog" parent="."]
-visible = true
 margin_right = 242.0
 margin_bottom = 174.0
+theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,11 +210,11 @@ __meta__ = {
 
 [node name="text" type="HBoxContainer" parent="DscDMCreator/VBoxContainer"]
 margin_right = 242.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 
 [node name="text" type="LineEdit" parent="DscDMCreator/VBoxContainer/text"]
-margin_right = 58.0
-margin_bottom = 24.0
+margin_right = 60.0
+margin_bottom = 27.0
 size_flags_horizontal = 0
 size_flags_vertical = 5
 placeholder_text = "Text"
@@ -146,20 +222,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Expand" type="Button" parent="DscDMCreator/VBoxContainer/text"]
-margin_left = 62.0
-margin_right = 126.0
-margin_bottom = 24.0
+[node name="ExpandDSCMSG" type="Button" parent="DscDMCreator/VBoxContainer/text"]
+margin_left = 64.0
+margin_right = 136.0
+margin_bottom = 27.0
 text = "EXPAND"
 
 [node name="email" type="HBoxContainer" parent="DscDMCreator/VBoxContainer"]
-margin_top = 28.0
+margin_top = 31.0
 margin_right = 242.0
-margin_bottom = 52.0
+margin_bottom = 58.0
 
 [node name="email" type="LineEdit" parent="DscDMCreator/VBoxContainer/email"]
 margin_right = 242.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 placeholder_text = "Your email"
@@ -181,7 +257,24 @@ text = "Send"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Expand" type="WindowDialog" parent="."]
+margin_right = 474.0
+margin_bottom = 350.0
+theme = ExtResource( 2 )
+
+[node name="TextEdit" type="TextEdit" parent="Expand"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="HeartbeatTimer" to="." method="_on_HeartbeatTimer_timeout"]
 [connection signal="timeout" from="InvalidSessionTimer" to="." method="_on_InvalidSessionTimer_timeout"]
 [connection signal="pressed" from="FeedBack/TabContainer/Discord/options/DM/DSCdm" to="." method="_on_DSCdm_pressed"]
+[connection signal="pressed" from="FeedBack/TabContainer/Discord/options/JOIN/DSCServer" to="." method="_on_DSCServer_pressed"]
+[connection signal="pressed" from="FeedBack/TabContainer/Other/options/DM/Website" to="." method="_on_Website_pressed"]
+[connection signal="pressed" from="FeedBack/TabContainer/Other/options/JOIN/Facebook" to="." method="_on_Facebook_pressed"]
+[connection signal="pressed" from="DscDMCreator/VBoxContainer/text/ExpandDSCMSG" to="." method="_on_ExpandDSCMSG_pressed"]
 [connection signal="pressed" from="DscDMCreator/Send" to="." method="_on_Send_pressed"]
+[connection signal="text_changed" from="Expand/TextEdit" to="." method="_on_TextEdit_text_changed"]

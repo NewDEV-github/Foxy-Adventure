@@ -12,9 +12,11 @@ func _ready():
 		dir.open('user://')
 		dir.make_dir('logs')
 	OS.request_permissions()
-	$icon.show()
+#	$icon.show()
 	$Timer.start()
-	
+	$VideoPlayer.stop()
+	#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
+	_on_VideoPlayer_finished()
 #	if intro_played:
 #		get_tree().change_scene("res://Scenes/Menu.tscn")
 func copy_recursive(from, to):
@@ -44,8 +46,9 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 #	intro_played = true
 	get_tree().change_scene('res://Scenes/Menu.tscn')
 
-func _on_Timer_timeout():
-#	$AnimationPlayer.play("intro")
-	$introzajebistewchuj.play("Intro1")
 	
 ###DLC DOWNLOADING
+
+
+func _on_VideoPlayer_finished():
+	get_tree().change_scene('res://Scenes/Menu.tscn')

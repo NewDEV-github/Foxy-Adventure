@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/NewTheFox/recolour4.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Fonts/Ubuntu-L.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
+[ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bg"
@@ -51,6 +52,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Feedback" parent="." instance=ExtResource( 8 )]
 
 [node name="IMG_0008" type="TextureRect" parent="."]
 visible = false
@@ -122,32 +125,41 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -225.0
-margin_top = -135.0
+margin_top = -183.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="VBoxContainer2"]
+[node name="Feedback" type="Button" parent="VBoxContainer2"]
 margin_right = 225.0
 margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+text = "Feedback"
+
+[node name="Options" type="Button" parent="VBoxContainer2"]
+margin_top = 46.0
+margin_right = 225.0
+margin_bottom = 89.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
 text = "KEY_GAME_OPTIONS"
 
 [node name="dsc" type="Button" parent="VBoxContainer2"]
-margin_top = 46.0
+margin_top = 93.0
 margin_right = 225.0
-margin_bottom = 88.0
+margin_bottom = 136.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
 text = "KEY_AUTHORS"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
-margin_top = 92.0
+margin_top = 140.0
 margin_right = 225.0
-margin_bottom = 135.0
+margin_bottom = 183.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
@@ -172,6 +184,7 @@ margin_right = -0.432007
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+autoplay = true
 bus = "Music"
 
 [node name="CharacterSelect" type="WindowDialog" parent="."]
@@ -250,6 +263,7 @@ __meta__ = {
 [connection signal="pressed" from="VBoxContainer/Las" to="." method="_on_World1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level Editor" to="." method="_on_Level_Editor_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Feedback" to="." method="_on_Feedback_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/dsc" to="." method="_on_Options2_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]

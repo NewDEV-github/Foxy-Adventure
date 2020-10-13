@@ -12,12 +12,7 @@ func g_tree_entered():
 	$Control.set_visible(Globals.debugMode)
 	set_process(true)
 func _process(delta):
-	perf_data = Fmod.get_performance_data()
 	log_text = str(
-		'\n\nFMOD Sound System',
-		'\nCPU usage: ' + str(perf_data.CPU),
-		'\nFile: ' + str(perf_data.file),
-		'\nMemory usage: ' + str(perf_data.memory),
 		'\n\nGame info',
 		'\nCreator: New DEV',
 		'\nName: Foxy Adventure',
@@ -39,12 +34,7 @@ func _process(delta):
 	)
 	label.text = log_text
 func take_log():
-	perf_data = Fmod.get_performance_data()
 	Console.writeLine(str(
-		'\n\nFMOD Sound System',
-		'\nCPU usage: ' + str(perf_data.CPU),
-		'\nFile: ' + str(perf_data.file),
-		'\nMemory usage: ' + str(perf_data.memory),
 		'\n\nGame info',
 		'\nCreator: New DEV',
 		'\nName: Foxy Adventure',

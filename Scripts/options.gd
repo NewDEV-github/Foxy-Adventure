@@ -39,7 +39,6 @@ func _process(_delta):
 	save_file.set_value('Audio', 'music_bus_enabled', str($"tabs/Ogólne/Options/Audio/Music/Music_on".pressed))
 	save_file.set_value('Audio', 'sfx_bus_volume', str($"tabs/Ogólne/Options/Audio/SFX/SFX_slider".value))
 	save_file.set_value('Audio', 'sfx_bus_enabled', str($"tabs/Ogólne/Options/Audio/SFX/SFX_on".pressed))
-	save_file.set_value('FMOD Sound System Studio API', 'SPEAKERMODE', str($"tabs/Ogólne/Options/Audio/SPEAKERMODE".selected))
 #	save_file.set_value('Graphics', 'fullscreen', str($"tabs/Ogólne/Options/Graphics/Fullscreen".pressed))
 	save_file.set_value('Graphics', 'vsync_enabled', str($"tabs/Ogólne/Options/Graphics/VSync".pressed))
 	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/Ogólne/Options/Graphics/VSync".pressed))
@@ -51,8 +50,6 @@ func _process(_delta):
 func load_settings():
 	if file.file_exists('user://settings.cfg'):
 		save_file.load('user://settings.cfg')
-		if save_file.has_section_key('FMOD Sound System Studio API', 'SPEAKERMODE'):
-			$"tabs/Ogólne/Options/Audio/SPEAKERMODE".select(int(save_file.get_value("FMOD Sound System Studio API", "SPEAKERMODE", 1)))
 		if save_file.has_section_key('Audio', 'master_bus_volume'):
 			$"tabs/Ogólne/Options/Audio/Master/Master_slider".set_value(float(save_file.get_value('Audio', 'master_bus_volume', 0)))
 		if save_file.has_section_key('Audio', 'master_bus_enabled'):
@@ -107,10 +104,6 @@ func _on_Master_on_toggled(button_pressed):
 	$"tabs/Ogólne/Options/Audio/SFX/SFX_on".set_disabled(!button_pressed)
 
 func _on_Music_slider_value_changed(value):
-	if value <= 0:
-		Fmod.set_sound_volume(Globals.fmod_sound_music_instance, value)
-	else:
-		Fmod.set_sound_volume(Globals.fmod_sound_music_instance, 0)
 	AudioServer.set_bus_volume_db(1, value)
 	AudioServer.set_bus_volume_db(3, value)
 
@@ -272,12 +265,6 @@ func _on_RESETSETTINGS_pressed():
 	_ready()
 
 
-func _on_nsfw_toggled(button_pressed):
-	if button_pressed:
-		Globals.set_nsfw(false)
-	else:
-		Globals.set_nsfw(true)
-
 
 func _on_Licenses_pressed():
 	if str(OS.get_name()) == "Android" or str(OS.get_name()) == "OSX":
@@ -288,30 +275,3 @@ func _on_Licenses_pressed():
 
 func _on_minimap_toggled(button_pressed):
 	Globals.set_minimap_enabled(button_pressed)
-
-
-func _on_InstallDLC_pressed():
-	if str(OS.get_name()) == "Android":
-		$Control.popup_centered()
-	OS.shell_open('https://www.sonadow-rpg.ml/dlcs/')
-
-
-func _on_SPEAKERMODE_item_selected(index):
-	if index == 0:#MONO
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_MONO, 0)
-	if index == 1:#STEREO
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_STEREO, 0)
-	if index == 2:#QUAD
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_QUAD, 0)
-	if index == 3:#RAW
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_RAW, 0)
-	if index == 4:#5.1
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_5POINT1, 0)
-	if index == 5:#7.1
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_7POINT1, 0)
-	if index == 6:#7.1.4
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_7POINT1POINT4, 0)
-	if index == 7:#SURROUND
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_SURROUND, 0)
-	if index == 8:#DEFAULT
-		Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_DEFAULT, 0)

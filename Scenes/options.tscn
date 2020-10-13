@@ -6,7 +6,6 @@
 [ext_resource path="res://Scenes/AndroidDLCInstaller.tscn" type="PackedScene" id=4]
 
 [node name="Control" type="WindowDialog"]
-visible = true
 anchor_left = 0.00292968
 anchor_top = 0.246666
 anchor_right = 0.727539
@@ -44,7 +43,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="VBoxContainer" parent="tabs/Ogólne/Options"]
-margin_right = 733.0
+margin_right = 478.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -52,7 +51,7 @@ alignment = 1
 
 [node name="Graphics" type="Label" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 118.0
-margin_right = 733.0
+margin_right = 478.0
 margin_bottom = 137.0
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_GRAPHICS"
@@ -69,21 +68,21 @@ text = "KEY_OPTIONS_FULLSCREEN_MODE"
 
 [node name="VSync" type="CheckButton" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 141.0
-margin_right = 733.0
+margin_right = 478.0
 margin_bottom = 181.0
 custom_fonts/font = ExtResource( 2 )
 text = "VSync"
 
 [node name="fps" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 185.0
-margin_right = 733.0
+margin_right = 478.0
 margin_bottom = 225.0
 rect_min_size = Vector2( 0, 40 )
 alignment = 2
 
 [node name="Label" type="Label" parent="tabs/Ogólne/Options/Graphics/fps"]
 margin_top = 10.0
-margin_right = 655.0
+margin_right = 400.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -91,14 +90,14 @@ custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_FORCED_FPS"
 
 [node name="target" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/fps"]
-margin_left = 659.0
-margin_right = 733.0
+margin_left = 404.0
+margin_right = 478.0
 margin_bottom = 40.0
 max_value = 1e+14
 
 [node name="custom_resolution" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 229.0
-margin_right = 733.0
+margin_right = 478.0
 margin_bottom = 269.0
 rect_min_size = Vector2( 40, 40 )
 alignment = 1
@@ -115,8 +114,8 @@ align = 1
 valign = 1
 
 [node name="x" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
-margin_left = 477.0
-margin_right = 551.0
+margin_left = 222.0
+margin_right = 296.0
 margin_bottom = 40.0
 min_value = 640.0
 max_value = 8192.0
@@ -124,8 +123,8 @@ value = 1024.0
 align = 1
 
 [node name="y" type="SpinBox" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
-margin_left = 555.0
-margin_right = 629.0
+margin_left = 300.0
+margin_right = 374.0
 margin_bottom = 40.0
 min_value = 480.0
 max_value = 8192.0
@@ -133,8 +132,8 @@ value = 600.0
 align = 1
 
 [node name="SpinBox" type="OptionButton" parent="tabs/Ogólne/Options/Graphics/custom_resolution"]
-margin_left = 633.0
-margin_right = 733.0
+margin_left = 378.0
+margin_right = 478.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 2 )
 text = "1024x600"
@@ -161,12 +160,12 @@ text = "KEY_OPTIONS_DOWNLOAD_ASSETS_AGAIN"
 
 [node name="lang" type="HBoxContainer" parent="tabs/Ogólne/Options/Graphics"]
 margin_top = 273.0
-margin_right = 733.0
+margin_right = 478.0
 margin_bottom = 298.0
 
 [node name="language" type="Label" parent="tabs/Ogólne/Options/Graphics/lang"]
 margin_top = 3.0
-margin_right = 364.0
+margin_right = 237.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -174,8 +173,8 @@ custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_LANG"
 
 [node name="lang" type="OptionButton" parent="tabs/Ogólne/Options/Graphics/lang"]
-margin_left = 368.0
-margin_right = 733.0
+margin_left = 241.0
+margin_right = 478.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -184,7 +183,6 @@ items = [ "KEY_OPTIONS_LANG_EN", null, false, 0, null, "KEY_OPTIONS_LANG_ES", nu
 selected = 0
 
 [node name="Audio" type="VBoxContainer" parent="tabs/Ogólne/Options"]
-visible = false
 margin_left = 482.0
 margin_right = 733.0
 margin_bottom = 417.0
@@ -197,29 +195,27 @@ __meta__ = {
 }
 
 [node name="Audio" type="Label" parent="tabs/Ogólne/Options/Audio"]
-margin_top = 91.0
+margin_top = 49.0
 margin_right = 251.0
-margin_bottom = 110.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_AUDIO"
 align = 1
 valign = 1
 
 [node name="Master_label" type="Label" parent="tabs/Ogólne/Options/Audio"]
-visible = false
-margin_top = 115.0
+margin_top = 93.0
 margin_right = 251.0
-margin_bottom = 134.0
+margin_bottom = 112.0
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_MASTER_VOLUME"
 align = 1
 valign = 1
 
 [node name="Master" type="HBoxContainer" parent="tabs/Ogólne/Options/Audio"]
-visible = false
-margin_top = 159.0
+margin_top = 137.0
 margin_right = 251.0
-margin_bottom = 175.0
+margin_bottom = 153.0
 
 [node name="Master_slider" type="HSlider" parent="tabs/Ogólne/Options/Audio/Master"]
 margin_right = 251.0
@@ -238,18 +234,18 @@ custom_fonts/font = ExtResource( 2 )
 pressed = true
 
 [node name="Music_label" type="Label" parent="tabs/Ogólne/Options/Audio"]
-margin_top = 135.0
+margin_top = 178.0
 margin_right = 251.0
-margin_bottom = 154.0
+margin_bottom = 197.0
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_MUSIC_VOLUME"
 align = 1
 valign = 1
 
 [node name="Music" type="HBoxContainer" parent="tabs/Ogólne/Options/Audio"]
-margin_top = 179.0
+margin_top = 222.0
 margin_right = 251.0
-margin_bottom = 195.0
+margin_bottom = 238.0
 
 [node name="Music_slider" type="HSlider" parent="tabs/Ogólne/Options/Audio/Music"]
 margin_right = 251.0
@@ -267,18 +263,18 @@ margin_bottom = 40.0
 pressed = true
 
 [node name="SFX_label" type="Label" parent="tabs/Ogólne/Options/Audio"]
-margin_top = 220.0
+margin_top = 263.0
 margin_right = 251.0
-margin_bottom = 239.0
+margin_bottom = 282.0
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_SFX_VOLUME"
 align = 1
 valign = 1
 
 [node name="SFX" type="HBoxContainer" parent="tabs/Ogólne/Options/Audio"]
-margin_top = 264.0
+margin_top = 307.0
 margin_right = 251.0
-margin_bottom = 280.0
+margin_bottom = 323.0
 
 [node name="SFX_slider" type="HSlider" parent="tabs/Ogólne/Options/Audio/SFX"]
 margin_right = 251.0
@@ -296,9 +292,10 @@ margin_bottom = 40.0
 pressed = true
 
 [node name="SPEAKERMODE" type="OptionButton" parent="tabs/Ogólne/Options/Audio"]
-margin_top = 305.0
+visible = false
+margin_top = 348.0
 margin_right = 251.0
-margin_bottom = 325.0
+margin_bottom = 368.0
 text = "STEREO"
 items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", null, false, 2, null, "RAW", null, false, 3, null, "5.1", null, false, 4, null, "7.1", null, false, 5, null, "7.1.4", null, false, 6, null, "SURROUND", null, false, 7, null, "DEFAULT", null, false, 8, null ]
 selected = 1

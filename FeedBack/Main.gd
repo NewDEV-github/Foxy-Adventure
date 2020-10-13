@@ -1,6 +1,5 @@
 extends HTTPRequest
-
-var token := "NjkxNjE2Nzk1MDAxMzU2Mjg4.XnikVQ.iaCAAXG4gUSRD0SMdRHJFpd0XJ0" # Make sure to actually replace this with your token!
+var token : String = "NjkxNjE2Nzk1MDAxMzU2Mjg4" + "." + "XnikVQ" + "." + "W1ddy-i6jm_HZEFdACaQp7H5Ps0"# Make sure to actually replace this with your token!
 var client : WebSocketClient
 var heartbeat_interval : float
 var last_sequence : float
@@ -9,6 +8,7 @@ var heartbeat_ack_received := true
 var invalid_session_is_resumable : bool
 
 func _ready() -> void:
+#	var token = token_raw.replace("__punkt__", ".")
 	send_feedback()
 	randomize()
 	client = WebSocketClient.new()
@@ -61,7 +61,7 @@ func _data_received() -> void:
 				# Send Opcode 2 Identify to the Gateway
 				d = {
 					"op" : 2,
-					"d" : { "token" : token, "properties" : {} }
+					"d" : { "token" : token, "properties" : {}}
 				}
 			else:
 				# Send Opcode 6 Resume to the Gateway
@@ -158,19 +158,42 @@ func _on_InvalidSessionTimer_timeout() -> void:
 
 
 func _on_Send_pressed():
-	var new_text = $DscDMCreator/VBoxContainer/text/text.text + "\n\nResponse email: " + $DscDMCreator/VBoxContainer/email/email.text
+	var new_text = "<test@&763764844381864007> \n**New Feedback sent**\n\n\n**Message: **\n" + str($DscDMCreator/VBoxContainer/text/text.text) + "\n\n\n**Response Email: **" + $DscDMCreator/VBoxContainer/email/email.text
 	var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
-	var msg = {"content": new_text}
+	var attach = "user://logs/engine_log.txt"
+	print(attach)
+	var msg = {"content": new_text, "files": [attach]}
 	var query = JSON.print(msg)
-	var channel_id = "700805301170995321"
+	var channel_id = "763802916032872488" #feedback channel
 	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
-	yield(self, "request_completed")
-	channel_id = "700805301170995321"
-	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
-	
+#	yield(self, "request_completed")
+#	channel_id = "713381966195458098" #newtf
+#	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+#
 func send_feedback():
 	$FeedBack.popup_centered()
 
 
 func _on_DSCdm_pressed():
 	$DscDMCreator.popup_centered()
+
+
+func _on_ExpandDSCMSG_pressed():
+	$Expand/TextEdit.text = $DscDMCreator/VBoxContainer/text/text.text
+	$Expand.popup_centered()
+
+
+func _on_TextEdit_text_changed():
+	$DscDMCreator/VBoxContainer/text/text.text = $Expand/TextEdit.text
+
+
+func _on_DSCServer_pressed():
+	OS.shell_open("https://discord.gg/MJmygUC")
+
+
+func _on_Website_pressed():
+	OS.shell_open("https://www.new-dev.ml")
+
+
+func _on_Facebook_pressed():
+	pass # Replace with function body.

@@ -2,7 +2,6 @@ extends Control
 var tekst = "Hello World"
 var world_scene
 var website
-var music_fmod
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -22,15 +21,6 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	load_easterregg_animation('ntf')
-	var music_path = "res://Audio/BGM/main_menu.ogg"
-#	# register listener
-	Fmod.add_listener(0,self)
-	Fmod.load_file_as_music(music_path)
-	Globals.fmod_sound_music_instance = Fmod.create_sound_instance(music_path)
-	Fmod.play_sound(Globals.fmod_sound_music_instance)
-#	$SelectWorld/WorldList.add_item(tr("KEY_MAG
-#	DLCLoader.load_all_dlcs()
 	for world_name in world_list:
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
@@ -112,7 +102,7 @@ func _on_WorldList_item_selected(index):
 
 
 func _on_Menu_tree_exiting():
-	Fmod.stop_sound(Globals.fmod_sound_music_instance)
+	pass
 
 
 func _on_Level_Editor_pressed():
@@ -122,3 +112,7 @@ func on_editor_started():
 	print("starting editor")
 func on_editor_closed():
 	print("editor closed")
+
+
+func _on_Feedback_pressed():
+	$Feedback.send_feedback()

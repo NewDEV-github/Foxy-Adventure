@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/cutscene_player.gd"
 }, {
-"base": "Node",
-"class": "FmodNative",
-"language": "NativeScript",
-"path": "res://bin/fmod/Fmod.gdns"
-}, {
 "base": "KinematicBody2D",
 "class": "Mob",
 "language": "GDScript",
@@ -59,16 +54,11 @@ _global_script_class_icons={
 "CharacterAnimator": "",
 "Crate": "",
 "CutsceneVideoPlayer": "",
-"FmodNative": "",
 "Mob": "",
 "Player": "",
 "PlayerCamera": "",
 "PlayerPhysics": ""
 }
-
-[android]
-
-modules="org/godotengine/godot/FmodSingleton"
 
 [application]
 
@@ -87,7 +77,6 @@ Screen="*res://addons/screen_debugger/screen.scn"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 Console="*res://addons/godot-console-dev/src/Console.tscn"
 Globals="*res://Scripts/Globals.gd"
-Fmod="*res://bin/fmod/Fmod.gd"
 SScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 Screenshot="*res://Scripts/screenshot.gd"
@@ -95,6 +84,7 @@ Screenshot="*res://Scripts/screenshot.gd"
 [debug]
 
 settings/crash_handler/message="Please include this when reporting the bug on https://github.com/MasterPolska123/sonadow-rpg/issues/"
+settings/fps/force_fps=30
 
 [display]
 
@@ -218,9 +208,8 @@ ssl/certificates="res://ca-bundle.crt"
 
 quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
-quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=1
+quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 quality/reflections/texture_array_reflections.mobile=true
 quality/reflections/high_quality_ggx.mobile=true
@@ -228,4 +217,3 @@ batching/options/single_rect_fallback=true
 batching/debug/flash_batching=true
 batching/debug/diagnose_frame=true
 batching/precision/uv_contract=true
-environment/default_environment="res://default_env.tres"

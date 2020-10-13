@@ -8,6 +8,7 @@
 
 [node name="PauseMenu" type="WindowDialog"]
 pause_mode = 2
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -23,6 +24,34 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.172688
+anchor_top = 0.31126
+anchor_right = 0.891438
+anchor_bottom = 1.04793
+margin_left = -134.93
+margin_top = -47.6371
+margin_right = 92.0698
+margin_bottom = -47.6371
+
+[node name="QuitTOMenuDIalog" type="ConfirmationDialog" parent="."]
+visible = true
+margin_right = 200.0
+margin_bottom = 124.0
+window_title = ""
+dialog_text = "KEY_EXIT_GAME_CONFIRMATION"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "PauseMenu"
+
+[node name="MusicDelay" type="Timer" parent="."]
+one_shot = true
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 pause_mode = 2
@@ -60,37 +89,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "KEY_EXIT"
-
-[node name="Control" parent="." instance=ExtResource( 2 )]
-visible = true
-anchor_left = 0.172688
-anchor_top = 0.31126
-anchor_right = 0.891438
-anchor_bottom = 1.04793
-margin_left = -134.93
-margin_top = -47.6371
-margin_right = 92.0698
-margin_bottom = -47.6371
-
-[node name="QuitTOMenuDIalog" type="ConfirmationDialog" parent="."]
-visible = true
-margin_right = 200.0
-margin_bottom = 124.0
-window_title = ""
-dialog_text = "KEY_EXIT_GAME_CONFIRMATION"
-dialog_autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseMenu" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-bus = "PauseMenu"
-
-[node name="MusicDelay" type="Timer" parent="."]
-one_shot = true
+[connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
+[connection signal="timeout" from="MusicDelay" to="." method="_on_MusicDelay_timeout"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Buttons/QuitGame" to="." method="_on_QuitGame_pressed"]
-[connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
-[connection signal="timeout" from="MusicDelay" to="." method="_on_MusicDelay_timeout"]
