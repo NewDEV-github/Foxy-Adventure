@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/NewTheFox/recolour4.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Graphics/ja.jpg" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bg"
@@ -77,6 +78,19 @@ margin_right = 1.0
 margin_bottom = 848.0
 rect_clip_content = true
 texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tails" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 845.36
+rect_clip_content = true
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 7
 __meta__ = {
@@ -232,11 +246,14 @@ margin_left = -244.5
 margin_top = -192.5
 margin_right = 244.5
 margin_bottom = 192.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="WorldList" type="ItemList" parent="SelectWorld"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-items = [ "poziom_1", null, false ]
+items = [ "poziom_1", null, false, "poziom_2", null, false, "poziom_3", null, false, "poziom_4", null, false, "poziom_5", null, false, "poziom_6", null, false, "poziom_7", null, false, "poziom_8", null, false, "poziom_9", null, false, "poziom_10", null, false, "poziom_11", null, false, "poziom_12", null, false, "poziom_13", null, false, "poziom_14", null, false, "poziom_15", null, false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }

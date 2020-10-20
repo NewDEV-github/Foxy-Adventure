@@ -80,6 +80,7 @@ Globals="*res://Scripts/Globals.gd"
 SScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 Screenshot="*res://Scripts/screenshot.gd"
+ErrorCodeServer="*res://ErrorCodeServer.gd"
 
 [debug]
 

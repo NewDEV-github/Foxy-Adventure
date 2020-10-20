@@ -10,6 +10,7 @@ var object_transparency = 0.65
 var selected_character
 var character_path
 var world
+var relase_mode = false
 var game_hour = 10 #seconds
 var window_x_resolution = 1024
 var window_y_resolution = 600

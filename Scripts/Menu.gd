@@ -21,7 +21,14 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$tails.hide()
+	if File.new().file_exists("user://milestailsprower.txt"):
+		$tails.show()
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
 	for world_name in world_list:
+		if world_name == [] or world_name == null:
+#			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
 	nsfw_connection = Globals.connect("nsfw", self, "globals_nsfw_changed")

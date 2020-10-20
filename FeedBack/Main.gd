@@ -8,30 +8,37 @@ var heartbeat_ack_received := true
 var invalid_session_is_resumable : bool
 
 func _ready() -> void:
+	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
 #	var token = token_raw.replace("__punkt__", ".")
-	send_feedback()
+#	send_feedback()
 	randomize()
 	client = WebSocketClient.new()
 	client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
+	client.connect("connection_error", self, "wss_dm_error")
 	client.connect("connection_established", self, "_connection_established")
 	client.connect("connection_closed", self, "_connection_closed")
 	client.connect("server_close_request", self, "_server_close_request")
 	client.connect("data_received", self, "_data_received")
 
+func wss_dm_error():
+	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = true
 func _process(_delta : float) -> void:
 	# Check if the client is not disconnected, there's no point to poll it if it is
 	if client.get_connection_status() != NetworkedMultiplayerPeer.CONNECTION_DISCONNECTED:
 		client.poll()
 	else:
 		# If it is disconnected, try to resume
-		client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
+		var err = client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
+		if !err:
+			set_process(false)
 
 func _connection_established(protocol : String) -> void:
+	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
 	print("We are connected! Protocol: %s" % protocol)
 
 func _connection_closed(was_clean_close : bool) -> void:
 	print("We disconnected. Clean close: %s" % was_clean_close)
-
+	wss_dm_error()
 func _server_close_request(code : int, reason : String) -> void:
 	print("The server requested a clean close. Code: %s, reason: %s" % [code, reason])
 
@@ -158,11 +165,9 @@ func _on_InvalidSessionTimer_timeout() -> void:
 
 
 func _on_Send_pressed():
-	var new_text = "<test@&763764844381864007> \n**New Feedback sent**\n\n\n**Message: **\n" + str($DscDMCreator/VBoxContainer/text/text.text) + "\n\n\n**Response Email: **" + $DscDMCreator/VBoxContainer/email/email.text
+	var new_text = "<test@&763764844381864007> \n**New Feedback sent**\n\n\n**Message: **\n" + str($DscDMCreator/VBoxContainer/text/text.text) + "\n\n\n**Response Email: **" + $DscDMCreator/VBoxContainer/email/email.text + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
 	var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
-	var attach = "user://logs/engine_log.txt"
-	print(attach)
-	var msg = {"content": new_text, "files": [attach]}
+	var msg = {"content": new_text}
 	var query = JSON.print(msg)
 	var channel_id = "763802916032872488" #feedback channel
 	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)

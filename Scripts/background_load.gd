@@ -58,6 +58,10 @@ func _thread_done(resource):
 	$Start_transtition.hide()
 	$bg.hide()
 func load_scene(path):
+	if not File.new().file_exists(path):
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+		get_tree().quit()
 	pth = path
 	if play_start_transition:
 		$Start_transtition.show()

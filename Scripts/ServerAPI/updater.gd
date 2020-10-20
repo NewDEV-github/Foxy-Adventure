@@ -1,7 +1,30 @@
 extends Control
 var intro_played = false
 var file = File.new()
+func load_assets():
+	if file.file_exist("user://packs/graphics.pck"):
+#load graphics downloaded from server
+		if ProjectSettings.load_resource_pack("user://packs/graphics.pck") == false:
+			print("Error loading graphics!")
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
+	else:
+		$PCKDownloader.set_download_file("user://packs/graphics.pck")
+		$PCKDownloader.request("https://dl.new-dev.tk/data/games/foxy-adventure/graphics.pck")
+
+	if file.file_exists("user://packs/audio.pck"):
+#load audio downloaded from server
+		if ProjectSettings.load_resource_pack("user://packs/audio.pck") == false:
+			print("Error loading audio!")
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
+	else:
+		$RequiredAssets.set_download_file("user://packs/audio.pck")
+		$RequiredAssets.request("https://dl.new-dev.tk/data/games/foxy-adventure/audio.pck")
+
 func _ready():
+	if Globals.release_mode:
+		load_assets()
+#	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
+#	BackgroundLoad.load_scene("res://s.tscn")
 	var dir = Directory.new()
 	dir.open('user://')
 	dir.make_dir('dlcs')
@@ -11,7 +34,10 @@ func _ready():
 		dir = Directory.new()
 		dir.open('user://')
 		dir.make_dir('logs')
-	OS.request_permissions()
+	if OS.request_permissions() == false:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_WRITE_READ_PERMISSIONS)
+		get_tree().quit()
+	
 #	$icon.show()
 	$Timer.start()
 	$VideoPlayer.stop()
@@ -40,8 +66,6 @@ func copy_recursive(from, to):
 			file_name = directory.get_next()
 	else:
 		print("Error copying " + from + " to " + to)
-
-
 func _on_AnimationPlayer_animation_finished(_anim_name):
 #	intro_played = true
 	get_tree().change_scene('res://Scenes/Menu.tscn')
@@ -51,4 +75,13 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 
 func _on_VideoPlayer_finished():
-	get_tree().change_scene('res://Scenes/Menu.tscn')
+	if not get_tree().change_scene('res://Scenes/Menu.tscn'):
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+
+
+func _on_pck_request_completed(result, response_code, headers, body):
+	if not result == 0:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_DATA_FILES)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_INITIALIZING_GAME)
+		get_tree().quit()

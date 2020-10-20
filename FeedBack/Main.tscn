@@ -12,6 +12,7 @@ script = ExtResource( 1 )
 one_shot = true
 
 [node name="FeedBack" type="WindowDialog" parent="."]
+visible = true
 margin_right = 291.0
 margin_bottom = 237.0
 theme = ExtResource( 2 )
