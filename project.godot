@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Foxy Adventure"
-run/main_scene="res://Scenes/ServerAPI/updater.tscn"
+run/main_scene="res://Scenes/intro.tscn"
 boot_splash/image="res://Graphics/icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false

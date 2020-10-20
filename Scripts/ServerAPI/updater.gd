@@ -6,6 +6,7 @@ func load_assets():
 #load graphics downloaded from server
 		if ProjectSettings.load_resource_pack("user://packs/graphics.pck") == false:
 			print("Error loading graphics!")
+			ErrorCodeServer.treat_error(ErrorCodeServer.FILE_ERR_CORRUPTED)
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 	else:
 		$PCKDownloader.set_download_file("user://packs/graphics.pck")
@@ -15,6 +16,7 @@ func load_assets():
 #load audio downloaded from server
 		if ProjectSettings.load_resource_pack("user://packs/audio.pck") == false:
 			print("Error loading audio!")
+			ErrorCodeServer.treat_error(ErrorCodeServer.FILE_ERR_CORRUPTED)
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 	else:
 		$RequiredAssets.set_download_file("user://packs/audio.pck")
