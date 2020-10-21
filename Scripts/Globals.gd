@@ -10,7 +10,7 @@ var object_transparency = 0.65
 var selected_character
 var character_path
 var world
-var relase_mode = false
+var release_mode = false
 var game_hour = 10 #seconds
 var window_x_resolution = 1024
 var window_y_resolution = 600
@@ -86,7 +86,7 @@ func _ready():
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
-		debugMode = bool(str(save_file.get_value('Game', 'debug_mode', false)))
+		debugMode = bool(str(save_file.get_value('Game', 'debug_mode')))
 	if str(OS.get_name()) == "Android":
 		ProjectSettings.set_setting('appilcation/config/use_custom_user_dir', true)
 		ProjectSettings.set_setting('application/config/custom_user_dir_name', "storage/emulated/0/Android/data/org.godotengine/")

@@ -23,6 +23,7 @@ func load_assets():
 		$RequiredAssets.request("https://dl.new-dev.tk/data/games/foxy-adventure/audio.pck")
 
 func _ready():
+	print(str(PI))
 	if Globals.release_mode:
 		load_assets()
 #	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
@@ -82,6 +83,18 @@ func _on_VideoPlayer_finished():
 
 
 func _on_pck_request_completed(result, response_code, headers, body):
+	if result == 2:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_CONNECT)
+	if result == 3:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_RESOLVE)
+	if result == 4:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CONNECTION_ERR)
+	if result == 6:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_NO_RESPONSE)
+	if result == 9:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_OPEN)
+	if result == 10:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_WRITE)
 	if not result == 0:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_DATA_FILES)
