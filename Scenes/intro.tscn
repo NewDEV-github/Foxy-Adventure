@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
-[ext_resource path="res://assets/Animations/intro2.webm" type="VideoStream" id=2]
 
 [node name="Updater" type="Control"]
 anchor_right = 1.0
@@ -17,6 +16,14 @@ one_shot = true
 
 [node name="RequiredAssets" type="HTTPRequest" parent="."]
 
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+process_priority = -10
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -27,16 +34,6 @@ __meta__ = {
 }
 
 [node name="CFGDownloader" type="HTTPRequest" parent="."]
-
-[node name="VideoPlayer" type="VideoPlayer" parent="."]
-process_priority = -10
-anchor_right = 1.0
-anchor_bottom = 1.0
-stream = ExtResource( 2 )
-buffering_msec = 1000
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PCKDownloader" type="HTTPRequest" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

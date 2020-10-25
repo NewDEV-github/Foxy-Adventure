@@ -39,11 +39,11 @@ func _ready():
 	elif day == 17 and month == 2:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" - Kocham cię ~sonic')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
 	elif day == 25 and month == 3:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" - Kocham cię ~sonic')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
 	elif day == 14 and month == 9:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')

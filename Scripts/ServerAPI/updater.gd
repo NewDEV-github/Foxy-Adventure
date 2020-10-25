@@ -22,7 +22,23 @@ func load_assets():
 		$RequiredAssets.set_download_file("user://packs/audio.pck")
 		$RequiredAssets.request("https://dl.new-dev.tk/data/games/foxy-adventure/audio.pck")
 
-func _ready():
+func _ready() -> void:
+	var stream = VideoStreamGDNative.new()
+	var file = "res://assets/Animations/intro.webm"#supports for now
+	print(file)
+	stream.set_file(file)
+	var vp = $VideoPlayer
+	vp.stream = stream
+	var sp = vp.stream_position
+	# hack: to get the stream length, set the position to a negative number
+	# the plugin will set the position to the end of the stream instead.
+	vp.stream_position = -1
+	var duration = vp.stream_position
+#	$ProgressBar.max_value = duration
+	vp.stream_position = sp
+	vp.play()
+	yield($VideoPlayer,"finished")
+	file = File.new()
 	print(str(PI))
 	if Globals.release_mode:
 		load_assets()
@@ -76,7 +92,13 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	
 ###DLC DOWNLOADING
 
-
+func play_native_video(videopath)-> void:
+	var stream_gdn = VideoStreamGDNative.new()
+	stream_gdn.set_file(videopath)
+	$VideoPlayer.stream = stream_gdn
+	$VideoPlayer.stream_position = 0
+	$VideoPlayer.play()
+	print("Playing: " + videopath)
 func _on_VideoPlayer_finished():
 	if not get_tree().change_scene('res://Scenes/Menu.tscn'):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)

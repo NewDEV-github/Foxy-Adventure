@@ -102,7 +102,7 @@ enabled=PoolStringArray( "godot-console-dev", "screen_debugger", "string_keys" )
 
 [gdnative]
 
-singletons=[  ]
+singletons=[ "res://addons/videodecoder.gdnlib" ]
 
 [importer_defaults]
 

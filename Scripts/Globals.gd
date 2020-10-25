@@ -3,6 +3,7 @@ signal debugModeSet
 signal loaded
 signal minimap
 signal nsfw
+var install_base_path
 var minimap_enabled = true setget set_minimap_enabled, get_minimap_enabled
 var debugMode = false
 var coming_from_house = ''
@@ -25,7 +26,9 @@ var new_characters:Array = [
 	"NewTheFox",
 	"Tails",
 ]
-
+func _init():
+	install_base_path = OS.get_executable_path().get_base_dir() + "/"
+	print(install_base_path)
 func get_dlcs_avaliable():
 #	var http = HTTPRequest.new()
 #	var req = http.request('https://www.sonadow-rpg.ml/dlcs/index.html')

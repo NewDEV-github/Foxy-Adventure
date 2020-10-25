@@ -1,5 +1,5 @@
 extends HTTPRequest
-var token : String = "NjkxNjE2Nzk1MDAxMzU2Mjg4" + "." + "XnikVQ" + "." + "W1ddy-i6jm_HZEFdACaQp7H5Ps0"# Make sure to actually replace this with your token!
+var token = null# Make sure to actually replace this with your token!
 var client : WebSocketClient
 var heartbeat_interval : float
 var last_sequence : float
@@ -9,8 +9,8 @@ var invalid_session_is_resumable : bool
 
 func _ready() -> void:
 	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
-#	var token = token_raw.replace("__punkt__", ".")
-#	send_feedback()
+	$tokenrequest.request("https://www.new-dev.ml/api/feedback-bot-token/")
+	yield($tokenrequest,"request_completed")
 	randomize()
 	client = WebSocketClient.new()
 	client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
@@ -23,14 +23,15 @@ func _ready() -> void:
 func wss_dm_error():
 	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = true
 func _process(_delta : float) -> void:
+	if not token == null:
 	# Check if the client is not disconnected, there's no point to poll it if it is
-	if client.get_connection_status() != NetworkedMultiplayerPeer.CONNECTION_DISCONNECTED:
-		client.poll()
-	else:
+		if client.get_connection_status() != NetworkedMultiplayerPeer.CONNECTION_DISCONNECTED:
+			client.poll()
+		else:
 		# If it is disconnected, try to resume
-		var err = client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
-		if !err:
-			set_process(false)
+			var err = client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
+			if !err:
+				set_process(false)
 
 func _connection_established(protocol : String) -> void:
 	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
@@ -202,3 +203,28 @@ func _on_Website_pressed():
 
 func _on_Facebook_pressed():
 	pass # Replace with function body.
+
+
+func _on_tokenrequest_request_completed(result, response_code, headers, body):
+	if result == 2:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_CONNECT)
+	if result == 3:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_RESOLVE)
+	if result == 4:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CONNECTION_ERR)
+	if result == 6:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_NO_RESPONSE)
+	if result == 9:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_OPEN)
+	if result == 10:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_WRITE)
+	if not result == 0:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_DATA_FILES)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_INITIALIZING_GAME)
+#		get_tree().quit()
+	if result ==0:
+		var json = JSON.parse(body.get_string_from_utf8())
+		var json_result = json.result
+		print(str(json_result))
+		token = str(json_result)

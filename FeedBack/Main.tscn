@@ -270,6 +270,8 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="tokenrequest" type="HTTPRequest" parent="."]
 [connection signal="timeout" from="HeartbeatTimer" to="." method="_on_HeartbeatTimer_timeout"]
 [connection signal="timeout" from="InvalidSessionTimer" to="." method="_on_InvalidSessionTimer_timeout"]
 [connection signal="pressed" from="FeedBack/TabContainer/Discord/options/DM/DSCdm" to="." method="_on_DSCdm_pressed"]
@@ -279,3 +281,4 @@ __meta__ = {
 [connection signal="pressed" from="DscDMCreator/VBoxContainer/text/ExpandDSCMSG" to="." method="_on_ExpandDSCMSG_pressed"]
 [connection signal="pressed" from="DscDMCreator/Send" to="." method="_on_Send_pressed"]
 [connection signal="text_changed" from="Expand/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="request_completed" from="tokenrequest" to="." method="_on_tokenrequest_request_completed"]
