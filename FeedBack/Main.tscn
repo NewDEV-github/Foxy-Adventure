@@ -47,14 +47,14 @@ __meta__ = {
 }
 
 [node name="DM" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
-margin_right = 244.0
+margin_right = 250.0
 margin_bottom = 27.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="FeedBack/TabContainer/Discord/options/DM"]
-margin_right = 144.0
+margin_right = 150.0
 margin_bottom = 27.0
 text = "Via Direct Message"
 __meta__ = {
@@ -62,22 +62,22 @@ __meta__ = {
 }
 
 [node name="DSCdm" type="Button" parent="FeedBack/TabContainer/Discord/options/DM"]
-margin_left = 148.0
-margin_right = 180.0
+margin_left = 154.0
+margin_right = 187.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Go"
 
 [node name="JOIN" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
 margin_top = 31.0
-margin_right = 244.0
+margin_right = 250.0
 margin_bottom = 58.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="FeedBack/TabContainer/Discord/options/JOIN"]
-margin_right = 199.0
+margin_right = 213.0
 margin_bottom = 27.0
 text = "Join our community server"
 __meta__ = {
@@ -85,15 +85,15 @@ __meta__ = {
 }
 
 [node name="DSCServer" type="Button" parent="FeedBack/TabContainer/Discord/options/JOIN"]
-margin_left = 203.0
-margin_right = 235.0
+margin_left = 217.0
+margin_right = 250.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Go"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FeedBack/TabContainer/Discord/options"]
 margin_top = 62.0
-margin_right = 244.0
+margin_right = 250.0
 margin_bottom = 175.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -272,6 +272,23 @@ __meta__ = {
 }
 
 [node name="tokenrequest" type="HTTPRequest" parent="."]
+
+[node name="ThanksDialog" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 483.0
+margin_bottom = 304.0
+theme = ExtResource( 2 )
+window_title = ""
+resizable = true
+dialog_text = "Thanks for your feedback!
+We'll recived it and we'll reply as soon as possible at given email
+
+Best regards! :)
+~New DEV Development Team!"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="HeartbeatTimer" to="." method="_on_HeartbeatTimer_timeout"]
 [connection signal="timeout" from="InvalidSessionTimer" to="." method="_on_InvalidSessionTimer_timeout"]
 [connection signal="pressed" from="FeedBack/TabContainer/Discord/options/DM/DSCdm" to="." method="_on_DSCdm_pressed"]

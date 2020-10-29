@@ -2,7 +2,7 @@ extends WindowDialog
 var dir = Directory.new()
 var save_file = ConfigFile.new()
 var file = File.new()
-var dlc_web_avaliable = Globals.get_dlcs_avaliable()
+#var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
 	set_process(false)
 #	$tabs.set_tab_disabled(1, true)

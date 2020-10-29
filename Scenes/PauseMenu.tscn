@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fonts/Ubuntu-L.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Ubuntu-L18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Audio/BGM/pause_menu.ogg" type="AudioStream" id=4]
 [ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=5]
+
 
 [node name="PauseMenu" type="WindowDialog"]
 pause_mode = 2

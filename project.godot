@@ -73,14 +73,12 @@ config/windows_native_icon="res://Graphics/icon.ico"
 
 [autoload]
 
-Screen="*res://addons/screen_debugger/screen.scn"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 Console="*res://addons/godot-console-dev/src/Console.tscn"
 Globals="*res://Scripts/Globals.gd"
-SScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
-ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 Screenshot="*res://Scripts/screenshot.gd"
 ErrorCodeServer="*res://ErrorCodeServer.gd"
+ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 
 [debug]
 

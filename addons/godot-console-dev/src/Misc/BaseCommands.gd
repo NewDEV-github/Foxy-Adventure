@@ -8,9 +8,9 @@ func _init():
 		.addArgument('text', TYPE_STRING)\
 		.register()
 
-	Console.addCommand('ssdl', ScreenDebugger, 'take_log')\
-		.setDescription('Prints a text from Screen Debugger into output, debug and this console')\
-		.register()
+#	Console.addCommand('ssdl', ScreenDebugger, 'take_log')\
+#		.setDescription('Prints a text from Screen Debugger into output, debug and this console')\
+#		.register()
 
 	Console.addCommand('i_l_ntf',self)\
 		.setDescription('')\

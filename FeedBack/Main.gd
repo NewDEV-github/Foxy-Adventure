@@ -1,5 +1,6 @@
 extends HTTPRequest
-var token = null# Make sure to actually replace this with your token!
+var prefix = "nd!"
+var token = "NjkxNjE2Nzk1MDAxMzU2Mjg4" + "." + "XnikVQ" + "." + "W1ddy-i6jm_HZEFdACaQp7H5Ps0"
 var client : WebSocketClient
 var heartbeat_interval : float
 var last_sequence : float
@@ -8,9 +9,10 @@ var heartbeat_ack_received := true
 var invalid_session_is_resumable : bool
 
 func _ready() -> void:
+	send_feedback()
 	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
-	$tokenrequest.request("https://www.new-dev.ml/api/feedback-bot-token/")
-	yield($tokenrequest,"request_completed")
+#	$tokenrequest.request("https://www.new-dev.ml/api/feedback-bot-token/")
+#	yield($tokenrequest,"request_completed")
 	randomize()
 	client = WebSocketClient.new()
 	client.connect_to_url("wss://gateway.discord.gg/?v=6&encoding=json")
@@ -127,25 +129,41 @@ func handle_events(dict : Dictionary) -> void:
 		"MESSAGE_CREATE":
 			var channel_id = dict["d"]["channel_id"]
 			var message_content = dict["d"]["content"]
-
+			var msg_args = str(message_content).split("-arg") #1 - arg no 1
 			var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
 			var query : String
-
-			if message_content.to_upper() == "ORAMA":
-				var message_to_send := {"content" : "Interactive"}
+			print(channel_id)
+			print(str(msg_args))
+			if str(message_content.to_upper()).begins_with("ND!WEBSITE"): #no-arg command
+				var message_to_send := {"content" : "https://www.new-dev.ml"}
 				query = JSON.print(message_to_send)
-			elif message_content.to_upper() == "WEBSITE":
-				var message_to_send := {"content" : "http://oramagamestudios.com/"}
-				query = JSON.print(message_to_send)
-			elif message_content.to_upper() == "BLOG":
-				var message_to_send := {"content" : "https://functionoverload590613498.wordpress.com"}
-				query = JSON.print(message_to_send)
-			elif message_content.to_upper() == "GITHUB":
-				var message_to_send := {"content" : "test"}
-				query = JSON.print(message_to_send)
-			if query:
-				print(str(channel_id))
 				request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+			elif str(message_content.to_upper()).begins_with("ND!FEEDBACK"):#arg command
+				if msg_args.size() == 3:
+					send_feedback_msg(str(msg_args[1]), str(msg_args[2]))
+					var message_to_send := {"content" : "Thanks for your feedback!\nWe'll recived it and we'll reply as soon as possible at given email\n\nBest regards! :)\n~New DEV Development Team!"}
+					query = JSON.print(message_to_send)
+					yield(self, "request_completed")
+					request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+			elif str(message_content.to_upper()).begins_with("ND!FAQ"):#arg command
+				if msg_args.size() == 2:
+					print(msg_args)
+					if msg_args[1] == " PIXEL ZONE":
+						var message_to_send := {"content" : "https://www.new-dev.ml/faq/pixel-zone/"}
+						query = JSON.print(message_to_send)
+						request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+					elif str(msg_args[1]).to_upper() == "FOXY ADVENTURE":
+						var message_to_send := {"content" : "https://www.new-dev.ml/faq/foxy-adventure/"}
+						query = JSON.print(message_to_send)
+						request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+					elif str(msg_args[1]).to_upper() == "MAIN":
+						var message_to_send := {"content" : "https://www.new-dev.ml/faq/"}
+						query = JSON.print(message_to_send)
+						request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+				else:
+					var message_to_send = {"content" : "https://www.new-dev.ml/faq/"}
+					query = JSON.print(message_to_send)
+					request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
 
 func _on_InvalidSessionTimer_timeout() -> void:
 	var d := {}
@@ -163,19 +181,24 @@ func _on_InvalidSessionTimer_timeout() -> void:
 		}
 	send_dictionary_as_packet(d)
 
-
-
-func _on_Send_pressed():
-	var new_text = "<test@&763764844381864007> \n**New Feedback sent**\n\n\n**Message: **\n" + str($DscDMCreator/VBoxContainer/text/text.text) + "\n\n\n**Response Email: **" + $DscDMCreator/VBoxContainer/email/email.text + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
+func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true):
+	var new_text = "<test@&763764844381864007>\n\n\n**Message: **\n" + text + "\n\n\n**Response Email: **" + resp_email + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
 	var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
-	var msg = {"content": new_text}
+	var msg = {"content": "", "embed": {"title": "New Feedback sent", "description": new_text}}
 	var query = JSON.print(msg)
 	var channel_id = "763802916032872488" #feedback channel
 	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
-#	yield(self, "request_completed")
-#	channel_id = "713381966195458098" #newtf
-#	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
-#
+	yield(self, "request_completed")
+	if thanks_popup:
+		$Expand.hide()
+		$DscDMCreator.hide()
+		$FeedBack.hide()
+		$ThanksDialog.popup_centered()
+func _on_Send_pressed():
+	send_feedback_msg(str($DscDMCreator/VBoxContainer/text/text.text),str($DscDMCreator/VBoxContainer/email/email.text), true)
+	
+	
+
 func send_feedback():
 	$FeedBack.popup_centered()
 
@@ -225,6 +248,15 @@ func _on_tokenrequest_request_completed(result, response_code, headers, body):
 #		get_tree().quit()
 	if result ==0:
 		var json = JSON.parse(body.get_string_from_utf8())
-		var json_result = json.result
-		print(str(json_result))
-		token = str(json_result)
+		print(str(json.result))
+		token = str(json.result)
+
+func send_err_log_msg():
+	var f = File.new()
+	f.open("user://engine_log.txt")
+	var new_text = "<test@&763764844381864007> \n**New error catched up**\n\n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
+	var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
+	var msg = {"content": new_text}
+	var query = JSON.print(msg)
+	var channel_id = "763802916032872488" #feedback channel
+	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)

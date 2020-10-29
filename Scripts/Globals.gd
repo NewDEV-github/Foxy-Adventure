@@ -1,4 +1,5 @@
 extends Node
+#var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
 signal minimap
@@ -29,14 +30,6 @@ var new_characters:Array = [
 func _init():
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print(install_base_path)
-func get_dlcs_avaliable():
-#	var http = HTTPRequest.new()
-#	var req = http.request('https://www.sonadow-rpg.ml/dlcs/index.html')
-#	if req == OK:
-#		return true
-#	elif req == FAILED:
-#		return false
-	return true
 var dlcs:Array = [
 	
 ]
@@ -102,14 +95,6 @@ func _ready():
 		debugMode = false
 	emit_signal("debugModeSet", debugMode)
 	emit_signal("loaded")
-func save_game():
-	cfile.load('user://save.cfg')
-	cfile.set_value('savedata', 'character', str(character_path))
-	cfile.set_value('savedata', 'last_world_position_y', last_world_position.y)
-	cfile.set_value('savedata', 'last_world_position_x', last_world_position.x)
-	cfile.set_value('savedata', 'world', str(world))
-	cfile.set_value('savedata', 'time', str(hour))
-	cfile.save('user://save.cfg')
 func set_day_night_mode(mode:String):
 	gc_mode = mode
 	if mode == 'realtime':
@@ -129,8 +114,6 @@ func set_variable(variable, value):
 
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
-
-
 func set_nsfw(nsfw_enabled:bool):
 	nsfw = nsfw_enabled
 	emit_signal("nsfw", nsfw_enabled)
@@ -157,13 +140,12 @@ func scan_dlcs(path = 'user://dlcs/'):
 		print("An error occurred when trying to access the path.")
 
 
-func save_level():
+func save_level(stage:int):
 	var sonyk = ConfigFile.new()
-	sonyk.open("user://save.cfg")
-	sonyk.set_value("sekcja", "klucz", "wartość")
+	sonyk.load("user://save.cfg")
+	sonyk.set_value("save", "stage", stage)
+	sonyk.save("user://save.cfg")
 	sonyk.close()
 
 func game_over():
-	print("GAME OVER!")
-	pass
-	#do game over here
+	get_tree().change_scene("res://Scenes/GameOver.tscn")
