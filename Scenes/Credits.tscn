@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Ubuntu-L18.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Audio/BGM/credits.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Fonts/Ubuntu-L50.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Fonts/Ubuntu-L32.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/Credits.tres" type="Animation" id=6]
-
+[ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "credits_easteregg"
@@ -771,6 +771,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="spectrum" parent="." instance=ExtResource( 7 )]
+audio_player = NodePath("../AudioStreamPlayer")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_bottom = 1.0
@@ -1130,7 +1133,6 @@ autoplay = true
 bus = "Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 0.5
 anims/credits = ExtResource( 6 )
 anims/credits_easteregg = SubResource( 1 )
 
@@ -1154,7 +1156,7 @@ __meta__ = {
 
 [node name="ntf" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.1 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -1188,18 +1190,19 @@ __meta__ = {
 [node name="Directors" type="Label" parent="VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 315.0
-margin_bottom = 57.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 4 )
 text = "--DIRECTORS--"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="4" type="Label" parent="VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 87.0
+margin_top = 81.0
 margin_right = 315.0
-margin_bottom = 164.0
+margin_bottom = 150.0
 custom_fonts/font = ExtResource( 5 )
 text = "sonic
 NewTheFox"
@@ -1226,9 +1229,10 @@ __meta__ = {
 [node name="Programmers" type="Label" parent="VBoxContainer2"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 423.0
-margin_bottom = 57.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 4 )
 text = "--PROGRAMMERS--"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1295,10 +1299,11 @@ __meta__ = {
 [node name="GameDesign" type="Label" parent="VBoxContainer3"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 423.0
-margin_bottom = 57.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 4 )
 text = "--GAME DESIGN--"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

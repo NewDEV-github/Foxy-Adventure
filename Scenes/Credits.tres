@@ -2,7 +2,7 @@
 
 [resource]
 resource_name = "credits"
-length = 60.0
+length = 480.0
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("sd-dt:modulate")
@@ -371,7 +371,7 @@ tracks/30/loop_wrap = true
 tracks/30/imported = false
 tracks/30/enabled = true
 tracks/30/keys = {
-"times": PoolRealArray( 0, 34.97, 57 ),
+"times": PoolRealArray( 0, 34.97, 477 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 600 ), Vector2( 0, 600 ), Vector2( 0, -3075 ) ]
@@ -383,30 +383,18 @@ tracks/31/loop_wrap = true
 tracks/31/imported = false
 tracks/31/enabled = true
 tracks/31/keys = {
-"times": PoolRealArray( 0, 35.04, 36.01, 58, 59 ),
+"times": PoolRealArray( 0, 35.04, 36.01, 478, 479 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("AnimationPlayer:playback_speed")
+tracks/32/path = NodePath("RichTextLabel:bbcode_text")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = {
-"times": PoolRealArray( 0, 34.96, 35.03 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.5, 0.5, 0.3 ]
-}
-tracks/33/type = "value"
-tracks/33/path = NodePath("RichTextLabel:bbcode_text")
-tracks/33/interp = 1
-tracks/33/loop_wrap = true
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/keys = {
 "times": PoolRealArray( 0, 35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,

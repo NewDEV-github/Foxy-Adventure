@@ -96,7 +96,7 @@ func _on_Website_pressed():
 
 
 func _on_Options2_pressed():
-	BackgroundLoad.load_scene('res://Scenes/Credits.tscn')
+	get_tree().change_scene('res://Scenes/Credits.tscn')
 
 
 func _on_WorldList_item_selected(index):

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/spectrum.gd" type="Script" id=1]
+
+[node name="spectrum" type="Node2D"]
+position = Vector2( 816, 248 )
+script = ExtResource( 1 )
