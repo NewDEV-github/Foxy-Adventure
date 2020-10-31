@@ -373,7 +373,7 @@ tracks/29/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("RichTextLabel:rect_position")
+tracks/30/path = NodePath("HBoxContainer/RichTextLabel:rect_position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -385,7 +385,7 @@ tracks/30/keys = {
 "values": [ Vector2( 0, 600 ), Vector2( 0, 600 ), Vector2( 0, -3745 ) ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("RichTextLabel:modulate")
+tracks/31/path = NodePath("HBoxContainer/RichTextLabel:modulate")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -409,7 +409,7 @@ tracks/32/keys = {
 "values": [ 0.5, 0.5, 0.3 ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("RichTextLabel:bbcode_text")
+tracks/33/path = NodePath("HBoxContainer/RichTextLabel:bbcode_text")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -772,15 +772,28 @@ __meta__ = {
 }
 
 [node name="spectrum" parent="." instance=ExtResource( 7 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -520.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
 audio_player = NodePath("../AudioStreamPlayer")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 600.0
-margin_right = 1024.0
-margin_bottom = 4346.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+margin_right = 510.0
+margin_bottom = 3380.0
 focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]
@@ -1119,6 +1132,7 @@ Zak Stam (zaksnet)
 Zher Huei Lee (leezh)
 ZuBsPaCe
 "
+fit_content_height = true
 scroll_active = false
 scroll_following = true
 selection_enabled = true
@@ -1126,6 +1140,13 @@ override_selected_font_color = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 3380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -1156,7 +1177,7 @@ __meta__ = {
 
 [node name="ntf" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.1 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5

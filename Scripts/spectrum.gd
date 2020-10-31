@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # Gonkee's audio visualiser for Godot 3.2 - full tutorial https://youtu.be/AwgSICbGxJM
 # If you use this, I would prefer if you gave credit to me and my channel
