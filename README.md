@@ -5,6 +5,6 @@ About the game:
 
 [Licenses](https://github.com/NewDEV-github/Foxy-Adventure/tree/master/Licenses)
 
-Authors: NewTheFox, sonic (aka sonic.exe)
+Authors: NewTheFox, sonic (aka sonic.exe), GeKaGD (aka Gekon)
 Copyright 2020 - present New-DEV
-Made with FMOD Studio by Firelight Technologies Pty Ltd.
+Made with [Godot Engine](https://godotengine.org)

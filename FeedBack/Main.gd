@@ -141,7 +141,7 @@ func handle_events(dict : Dictionary) -> void:
 			elif str(message_content.to_upper()).begins_with("ND!FEEDBACK"):#arg command
 				if msg_args.size() == 3:
 					send_feedback_msg(str(msg_args[1]), str(msg_args[2]))
-					var message_to_send := {"content" : "Thanks for your feedback!\nWe'll recived it and we'll reply as soon as possible at given email\n\nBest regards! :)\n~New DEV Development Team!"}
+					var message_to_send := {"content" : "Thanks for your feedback!\nWe got it and we'll reply as soon as possible at given email\n\nBest regards! :)\n~New DEV Development Team!"}
 					query = JSON.print(message_to_send)
 					yield(self, "request_completed")
 					request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)

@@ -98,16 +98,8 @@ margin_bottom = 175.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[center]
-Our discord tags and IDs:
-sonic#7813 - 49297095049323264
-NewTF#4548 - 708014517975777302
-[/center]"
-text = "
-Our discord tags and IDs:
-sonic#7813 - 49297095049323264
-NewTF#4548 - 708014517975777302
-"
+bbcode_text = ""
+text = ""
 
 [node name="Other" type="Tabs" parent="FeedBack/TabContainer"]
 visible = false
@@ -183,16 +175,8 @@ margin_bottom = 199.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[center]
-Our discord tags and IDs:
-sonic#7813 - 49297095049323264
-NewTF#4548 - 708014517975777302
-[/center]"
-text = "
-Our discord tags and IDs:
-sonic#7813 - 49297095049323264
-NewTF#4548 - 708014517975777302
-"
+bbcode_text = ""
+text = ""
 
 [node name="DscDMCreator" type="WindowDialog" parent="."]
 margin_right = 242.0
@@ -281,7 +265,7 @@ theme = ExtResource( 2 )
 window_title = ""
 resizable = true
 dialog_text = "Thanks for your feedback!
-We'll recived it and we'll reply as soon as possible at given email
+We got it and we'll reply as soon as possible at given email
 
 Best regards! :)
 ~New DEV Development Team!"
