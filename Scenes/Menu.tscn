@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/NewTheFox/recolour4.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/ja.jpg" type="Texture" id=9]
-[ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bg"
@@ -277,9 +276,6 @@ Version 0.0.1.2-alpha, Copyright 2020 - present, New DEV"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="spectrum" parent="." instance=ExtResource( 10 )]
-audio_player = NodePath("../AudioStreamPlayer")
 [connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/Las" to="." method="_on_World1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]

@@ -145,7 +145,7 @@ func save_level(stage:int):
 	sonyk.load("user://save.cfg")
 	sonyk.set_value("save", "stage", stage)
 	sonyk.save("user://save.cfg")
-	sonyk.close()
+#	sonyk.close()
 
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
