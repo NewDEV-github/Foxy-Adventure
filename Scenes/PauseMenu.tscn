@@ -1,15 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/Ubuntu-L18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Audio/BGM/pause_menu.ogg" type="AudioStream" id=4]
 [ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=5]
-
+[ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=6]
 
 [node name="PauseMenu" type="WindowDialog"]
 pause_mode = 2
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -37,7 +36,6 @@ margin_right = 92.0698
 margin_bottom = -47.6371
 
 [node name="QuitTOMenuDIalog" type="ConfirmationDialog" parent="."]
-visible = true
 margin_right = 200.0
 margin_bottom = 124.0
 window_title = ""
@@ -46,6 +44,8 @@ dialog_autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HTTPRequest" parent="." instance=ExtResource( 6 )]
 
 [node name="PauseMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -65,7 +65,7 @@ __meta__ = {
 [node name="Resume" type="Button" parent="Buttons"]
 pause_mode = 2
 margin_right = 277.0
-margin_bottom = 135.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
@@ -73,9 +73,9 @@ text = "KEY_RESUME"
 
 [node name="Options" type="Button" parent="Buttons"]
 pause_mode = 2
-margin_top = 139.0
+margin_top = 104.0
 margin_right = 277.0
-margin_bottom = 274.0
+margin_bottom = 204.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
@@ -83,15 +83,26 @@ text = "KEY_GAME_OPTIONS"
 
 [node name="QuitGame" type="Button" parent="Buttons"]
 pause_mode = 2
-margin_top = 278.0
+margin_top = 208.0
+margin_right = 277.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "KEY_EXIT"
+
+[node name="FeedBack" type="Button" parent="Buttons"]
+pause_mode = 2
+margin_top = 312.0
 margin_right = 277.0
 margin_bottom = 413.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "KEY_EXIT"
+text = "Feedback"
 [connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
 [connection signal="timeout" from="MusicDelay" to="." method="_on_MusicDelay_timeout"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Buttons/QuitGame" to="." method="_on_QuitGame_pressed"]
+[connection signal="pressed" from="Buttons/FeedBack" to="." method="_on_FeedBack_pressed"]

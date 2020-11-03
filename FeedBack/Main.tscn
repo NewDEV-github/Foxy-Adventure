@@ -12,7 +12,6 @@ script = ExtResource( 1 )
 one_shot = true
 
 [node name="FeedBack" type="WindowDialog" parent="."]
-visible = true
 margin_right = 291.0
 margin_bottom = 237.0
 theme = ExtResource( 2 )
@@ -98,8 +97,6 @@ margin_bottom = 175.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = ""
-text = ""
 
 [node name="Other" type="Tabs" parent="FeedBack/TabContainer"]
 visible = false
@@ -175,10 +172,9 @@ margin_bottom = 199.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = ""
-text = ""
 
 [node name="DscDMCreator" type="WindowDialog" parent="."]
+visible = true
 margin_right = 242.0
 margin_bottom = 174.0
 theme = ExtResource( 2 )
@@ -209,7 +205,7 @@ __meta__ = {
 
 [node name="ExpandDSCMSG" type="Button" parent="DscDMCreator/VBoxContainer/text"]
 margin_left = 64.0
-margin_right = 136.0
+margin_right = 139.0
 margin_bottom = 27.0
 text = "EXPAND"
 
@@ -227,6 +223,19 @@ placeholder_text = "Your email"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="error_log" type="CheckBox" parent="DscDMCreator/VBoxContainer"]
+margin_top = 62.0
+margin_right = 242.0
+margin_bottom = 89.0
+pressed = true
+text = "Include full error log"
+
+[node name="error_label" type="Label" parent="DscDMCreator/VBoxContainer"]
+margin_top = 93.0
+margin_right = 242.0
+margin_bottom = 120.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 
 [node name="Send" type="Button" parent="DscDMCreator"]
 anchor_left = 0.5
@@ -258,7 +267,6 @@ __meta__ = {
 [node name="tokenrequest" type="HTTPRequest" parent="."]
 
 [node name="ThanksDialog" type="AcceptDialog" parent="."]
-visible = true
 margin_right = 483.0
 margin_bottom = 304.0
 theme = ExtResource( 2 )

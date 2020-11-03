@@ -34,7 +34,7 @@ func _on_QuitGame_pressed():
 func _on_QuitTOMenuDIalog_confirmed():
 	get_tree().quit()
 	get_tree().paused = false
-	BackgroundLoad.play_start_transition = false
+#	BackgroundLoad.play_start_transition = false
 	audio.set_bus_mute(music_bus_idx, false)
 	audio.set_bus_mute(pausemenu_bus_idx, true)
 	$MusicDelay.stop()
@@ -44,3 +44,7 @@ func _on_QuitTOMenuDIalog_confirmed():
 
 func _on_MusicDelay_timeout():
 	$PauseMenu.play()
+
+
+func _on_FeedBack_pressed():
+	$HTTPRequest.send_feedback()

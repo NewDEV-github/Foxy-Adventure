@@ -9,7 +9,7 @@ var heartbeat_ack_received := true
 var invalid_session_is_resumable : bool
 
 func _ready() -> void:
-	send_feedback()
+#	send_feedback()
 	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
 #	$tokenrequest.request("https://www.new-dev.ml/api/feedback-bot-token/")
 #	yield($tokenrequest,"request_completed")
@@ -182,21 +182,34 @@ func _on_InvalidSessionTimer_timeout() -> void:
 	send_dictionary_as_packet(d)
 
 func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true):
-	var new_text = "<test@&763764844381864007>\n\n\n**Message: **\n" + text + "\n\n\n**Response Email: **" + resp_email + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
-	var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
-	var msg = {"content": "", "embed": {"title": "New Feedback sent", "description": new_text}}
-	var query = JSON.print(msg)
-	var channel_id = "763802916032872488" #feedback channel
-	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
-	yield(self, "request_completed")
-	if thanks_popup:
-		$Expand.hide()
-		$DscDMCreator.hide()
-		$FeedBack.hide()
-		$ThanksDialog.popup_centered()
+	if text == "" or text == null:
+		return "Text Expected"
+		pass
+	elif resp_email == "" or resp_email == null:
+		return "Email Expected"
+		pass
+	else:
+		return "ok"
+		var new_text = "<test@&763764844381864007>\n\n\n**Message: **\n" + text + "\n\n\n**Response Email: **" + resp_email + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
+		var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
+		var msg = {"content": "", "embed": {"title": "New Feedback sent", "description": new_text}}
+		var query = JSON.print(msg)
+		var channel_id = "763802916032872488" #feedback channel
+		request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
+		yield(self, "request_completed")
+		if thanks_popup:
+			$Expand.hide()
+			$DscDMCreator.hide()
+			$FeedBack.hide()
+			$ThanksDialog.popup_centered()
+		if $DscDMCreator/VBoxContainer/error_log.pressed:
+			send_err_log_msg()
 func _on_Send_pressed():
-	send_feedback_msg(str($DscDMCreator/VBoxContainer/text/text.text),str($DscDMCreator/VBoxContainer/email/email.text), true)
-	
+	var fd = send_feedback_msg(str($DscDMCreator/VBoxContainer/text/text.text),str($DscDMCreator/VBoxContainer/email/email.text), true)
+	if fd == "ok":
+		pass
+	else:
+		$DscDMCreator/VBoxContainer/error_label.text = "ERROR: " + str(fd)
 	
 
 func send_feedback():
@@ -253,10 +266,11 @@ func _on_tokenrequest_request_completed(result, response_code, headers, body):
 
 func send_err_log_msg():
 	var f = File.new()
-	f.open("user://engine_log.txt")
-	var new_text = "<test@&763764844381864007> \n**New error catched up**\n\n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
+	f.open("user://logs/engine_log.txt", File.READ)
+	var new_text = "<test@&763764844381864007> \n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
 	var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
-	var msg = {"content": new_text}
+	var msg = {"content": "", "embed": {"title": "New error catched up!", "description": new_text}}
 	var query = JSON.print(msg)
-	var channel_id = "763802916032872488" #feedback channel
+	var channel_id = "773150027106484234"
+	f.close() #feedback channel
 	request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
