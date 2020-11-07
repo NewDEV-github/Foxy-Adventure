@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "AtbHBox",
+"language": "GDScript",
+"path": "res://src/scenes/editor/InspectorPanel/AtbHBox/AtbHbox.gd"
+}, {
 "base": "Node2D",
 "class": "AudioPlayer",
 "language": "GDScript",
 "path": "res://Scripts/audio_player.gd"
+}, {
+"base": "ColorRect",
+"class": "ButtonPressFx",
+"language": "GDScript",
+"path": "res://src/utils/ButtonFx/PressFx/ButtonPressFx.gd"
 }, {
 "base": "AnimationPlayer",
 "class": "CharacterAnimator",
@@ -28,6 +38,101 @@ _global_script_classes=[ {
 "class": "CutsceneVideoPlayer",
 "language": "GDScript",
 "path": "res://Scripts/cutscene_player.gd"
+}, {
+"base": "Reference",
+"class": "DataGameBg",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gamebg.gd"
+}, {
+"base": "Resource",
+"class": "DataGameBoss",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gameboss.gd"
+}, {
+"base": "Reference",
+"class": "DataGameLadder",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gameladder.gd"
+}, {
+"base": "Reference",
+"class": "DataGameLevel",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gamelevel.gd"
+}, {
+"base": "Reference",
+"class": "DataGameObject",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gameobject.gd"
+}, {
+"base": "Reference",
+"class": "DataGameSpike",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gamespike.gd"
+}, {
+"base": "Reference",
+"class": "DataGameTile",
+"language": "GDScript",
+"path": "res://src/global_gameclass/data_gametile.gd"
+}, {
+"base": "AcceptDialog",
+"class": "ExitUnsavedDialog",
+"language": "GDScript",
+"path": "res://src/scenes/editor/Popups/ExitUnsavedDialog/ExitUnsavedDialog.gd"
+}, {
+"base": "Reference",
+"class": "GameBgColorData",
+"language": "GDScript",
+"path": "res://src/database/game_bg_color_data.gd"
+}, {
+"base": "Reference",
+"class": "GameBgData",
+"language": "GDScript",
+"path": "res://src/database/game_bg_data.gd"
+}, {
+"base": "Reference",
+"class": "GameDataBuilder",
+"language": "GDScript",
+"path": "res://src/utils/game_data_builder.gd"
+}, {
+"base": "Node2D",
+"class": "GameGrid",
+"language": "GDScript",
+"path": "res://src/gameobj/game_grid/game_grid.gd"
+}, {
+"base": "Reference",
+"class": "GameLadderData",
+"language": "GDScript",
+"path": "res://src/database/game_ladder_data.gd"
+}, {
+"base": "Reference",
+"class": "GameSpikeData",
+"language": "GDScript",
+"path": "res://src/database/game_spike_data.gd"
+}, {
+"base": "TileMap",
+"class": "GameSpikeTileDrawer",
+"language": "GDScript",
+"path": "res://src/gameobj/game_spiketile_drawer/game_spiketile_drawer.gd"
+}, {
+"base": "Reference",
+"class": "GameTileSetData",
+"language": "GDScript",
+"path": "res://src/database/game_tileset_data.gd"
+}, {
+"base": "Node",
+"class": "Level",
+"language": "GDScript",
+"path": "res://src/scenes/level/level.gd"
+}, {
+"base": "Tabs",
+"class": "MainInspectorTab",
+"language": "GDScript",
+"path": "res://src/scenes/editor/InspectorPanel/Tab/MainInspectorTab.gd"
+}, {
+"base": "Panel",
+"class": "MenuBar",
+"language": "GDScript",
+"path": "res://src/scenes/editor/MenuBar/MenuBar.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Mob",
@@ -48,16 +153,55 @@ _global_script_classes=[ {
 "class": "PlayerPhysics",
 "language": "GDScript",
 "path": "res://Scripts/player_physics.gd"
+}, {
+"base": "PreviewObject",
+"class": "PreviewGameObject",
+"language": "GDScript",
+"path": "res://src/gameobj/preview_object/preview_game_object.gd"
+}, {
+"base": "Node2D",
+"class": "PreviewObject",
+"language": "GDScript",
+"path": "res://src/gameobj/preview_object/preview_object.gd"
+}, {
+"base": "TextureButton",
+"class": "TileTextureButton",
+"language": "GDScript",
+"path": "res://src/scenes/editor/InspectorPanel/Tab/TilemapTab/TileTextureButton.gd"
 } ]
 _global_script_class_icons={
+"AtbHBox": "",
 "AudioPlayer": "",
+"ButtonPressFx": "",
 "CharacterAnimator": "",
 "Crate": "",
 "CutsceneVideoPlayer": "",
+"DataGameBg": "",
+"DataGameBoss": "",
+"DataGameLadder": "",
+"DataGameLevel": "",
+"DataGameObject": "",
+"DataGameSpike": "",
+"DataGameTile": "",
+"ExitUnsavedDialog": "",
+"GameBgColorData": "",
+"GameBgData": "",
+"GameDataBuilder": "",
+"GameGrid": "",
+"GameLadderData": "",
+"GameSpikeData": "",
+"GameSpikeTileDrawer": "",
+"GameTileSetData": "",
+"Level": "",
+"MainInspectorTab": "",
+"MenuBar": "",
 "Mob": "",
 "Player": "",
 "PlayerCamera": "",
-"PlayerPhysics": ""
+"PlayerPhysics": "",
+"PreviewGameObject": "",
+"PreviewObject": "",
+"TileTextureButton": ""
 }
 
 [application]
@@ -70,6 +214,8 @@ boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://Graphics/icon.png"
 config/windows_native_icon="res://Graphics/icon.ico"
+config/project_creator="New DEV"
+config/version="1.0.0"
 
 [autoload]
 
@@ -79,6 +225,20 @@ Globals="*res://Scripts/Globals.gd"
 Screenshot="*res://Scripts/screenshot.gd"
 ErrorCodeServer="*res://ErrorCodeServer.gd"
 ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
+WindowTitleUpdater="*res://src/singletons/WindowTitleUpdater.gd"
+SelectedObjects="*res://src/singletons/SelectedObjects.gd"
+CopyPaste="*res://src/singletons/CopyPaste.gd"
+EditMode="*res://src/singletons/EditMode.gd"
+ExitHandler="*res://src/singletons/ExitHandler.gd"
+LevelUndo="*res://src/singletons/LevelUndo.gd"
+UnsaveChanges="*res://src/singletons/UnsaveChanges.gd"
+EditorLogBox="*res://src/scenes/editor/MessageLogBox/EditorLogBox.tscn"
+GlobalsEditor="*res://Editor/GlobalsEditor.gd"
+
+[config]
+
+project_creator=""
+project_creator/project_creator=""
 
 [debug]
 

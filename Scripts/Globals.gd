@@ -36,10 +36,16 @@ var dlcs:Array = [
 var worlds:Array = [
 	
 ]
+var cworlds:Array = [
+	
+]
+var levels_scan_path:Array = [
+	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Foxy Adventure/Levels/Editor/")
+]
 var dlc_name_list:Array = [
 	
 ]
-
+var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
 #var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):
@@ -50,6 +56,10 @@ func add_dlc(dlc_name:String):
 	dlcs.append(dlc_name)
 func add_world(world_name:String):
 	worlds.append(world_name)
+func add_custom_world(world_name:String):
+	cworlds.append(world_name)
+func add_custom_world_scan_path(path:String):
+	levels_scan_path.append(path)
 func set_minimap_enabled(minimap_visible):
 	emit_signal("minimap", minimap_visible)
 	minimap_enabled = minimap_visible

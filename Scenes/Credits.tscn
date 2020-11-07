@@ -790,8 +790,7 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 margin_right = 510.0
-margin_bottom = 3380.0
-focus_mode = 2
+margin_bottom = 3360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
@@ -1135,7 +1134,6 @@ ZuBsPaCe
 fit_content_height = true
 scroll_active = false
 scroll_following = true
-selection_enabled = true
 override_selected_font_color = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1144,7 +1142,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 3380.0
+margin_bottom = 3360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

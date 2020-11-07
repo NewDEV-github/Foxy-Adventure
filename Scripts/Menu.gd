@@ -30,6 +30,12 @@ func _ready():
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 		$SelectWorld/WorldList.add_item(tr(world_name))
+	custom_level_research()
+	for world_name in Globals.cworlds:
+#		if world_name == [] or world_name == null:
+##			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
+#			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
 	nsfw_connection = Globals.connect("nsfw", self, "globals_nsfw_changed")
 	if day == 21 and month == 6:
@@ -100,12 +106,40 @@ func _on_Options2_pressed():
 
 
 func _on_WorldList_item_selected(index):
-	Globals.world = "res://Scenes/Stages/" + $SelectWorld/WorldList.get_item_text(index) + ".tscn"
-	if Globals.selected_character == null:
-		$CharacterSelect.popup_centered()
+	var item_name = $SelectWorld/WorldList.get_item_text(index) 
+	if Globals.cworlds.has(item_name):
+		Globals.world = Globals.temp_custom_stages_dir + item_name + ".tscn"
+		if Globals.selected_character == null:
+			$CharacterSelect.popup_centered()
+		else:
+			BackgroundLoad.load_scene(str(Globals.world))
 	else:
-		BackgroundLoad.load_scene(str(Globals.world))
+		Globals.world = "res://Scenes/Stages/" + item_name + ".tscn"
+		if Globals.selected_character == null:
+			$CharacterSelect.popup_centered()
+		else:
+			BackgroundLoad.load_scene(str(Globals.world))
 
+func custom_level_research():
+	for path in Globals.levels_scan_path:
+		dir_contents(path)
+
+func dir_contents(path):
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				print("Found file: " + file_name)
+				if file_name.get_extension() == "tscn":
+					Globals.add_custom_world(file_name.get_basename())
+					dir.copy(path + file_name, Globals.temp_custom_stages_dir + file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
 
 
 func _on_Menu_tree_exiting():
@@ -114,11 +148,7 @@ func _on_Menu_tree_exiting():
 
 func _on_Level_Editor_pressed():
 	ProjectSettings.load_resource_pack("user://packs/editor.pck")
-	get_tree().change_scene("res://level_editor/Main.tscn")
-func on_editor_started():
-	print("starting editor")
-func on_editor_closed():
-	print("editor closed")
+	get_tree().change_scene("res://src/scenes/editor/editor.tscn")
 
 
 func _on_Feedback_pressed():

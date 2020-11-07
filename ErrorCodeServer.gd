@@ -1,4 +1,5 @@
 extends Node
+var treat_on_android = false
 
 
 const ERROR_MISSING_WRITE_READ_PERMISSIONS = "0x0000"
@@ -26,4 +27,5 @@ const ERR_WTF = "WTF?!"
 # Called when the node enters the scene tree for the first time.
 func treat_error(error_code):
 	print("Error happened!\n\nError code: " + str(error_code))
-	OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")
+	if str(OS.get_name()) == "Android" and treat_on_android:
+		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")

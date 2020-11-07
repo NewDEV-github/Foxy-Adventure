@@ -7,6 +7,10 @@ reloadable=false
 
 [entry]
 
+Android.armeabi-v7a=""
+Android.arm64-v8a=""
+Android.x86=""
+Android.x86_64=""
 OSX.64="res://addons/bin/osx/libgdnative_videodecoder.dylib"
 Windows.64="res://addons/bin/win64/libgdnative_videodecoder.dll"
 Windows.32="res://addons/bin/win32/libgdnative_videodecoder.dll"
@@ -15,6 +19,10 @@ X11.32="res://addons/bin/x11_32/libgdnative_videodecoder.so"
 
 [dependencies]
 
+Android.armeabi-v7a=[ "res://addons/bin/android/armeabi-v7a/lib/libavcodec-57.so", "res://addons/bin/android/armeabi-v7a/lib/libavdevice-57.so", "res://addons/bin/android/armeabi-v7a/lib/libavfilter-6.so", "res://addons/bin/android/armeabi-v7a/lib/libavformat-57.so", "res://addons/bin/android/armeabi-v7a/lib/libavutil-55.so", "res://addons/bin/android/armeabi-v7a/lib/libpostproc-54.so", "res://addons/bin/android/armeabi-v7a/lib/libswresample-2.so", "res://addons/bin/android/armeabi-v7a/lib/libswscale-4.so" ]
+Android.arm64-v8a=[ "res://addons/bin/android/arm64-v8a/lib/libavcodec-57.so", "res://addons/bin/android/arm64-v8a/lib/libavdevice-57.so", "res://addons/bin/android/arm64-v8a/lib/libavfilter-6.so", "res://addons/bin/android/arm64-v8a/lib/libavformat-57.so", "res://addons/bin/android/arm64-v8a/lib/libavutil-55.so", "res://addons/bin/android/arm64-v8a/lib/libpostproc-54.so", "res://addons/bin/android/arm64-v8a/lib/libswresample-2.so", "res://addons/bin/android/arm64-v8a/lib/libswscale-4.so" ]
+Android.x86=[ "res://addons/bin/android/x86/lib/libavcodec-57.so", "res://addons/bin/android/x86/lib/libavdevice-57.so", "res://addons/bin/android/x86/lib/libavfilter-6.so", "res://addons/bin/android/x86/lib/libavformat-57.so", "res://addons/bin/android/x86/lib/libavutil-55.so", "res://addons/bin/android/x86/lib/libpostproc-54.so", "res://addons/bin/android/x86/lib/libswresample-2.so", "res://addons/bin/android/x86/lib/libswscale-4.so" ]
+Android.x86_64=[ "res://addons/bin/android/x86_64/lib/libavcodec-57.so", "res://addons/bin/android/x86_64/lib/libavdevice-57.so", "res://addons/bin/android/x86_64/lib/libavfilter-6.so", "res://addons/bin/android/x86_64/lib/libavformat-57.so", "res://addons/bin/android/x86_64/lib/libavutil-55.so", "res://addons/bin/android/x86_64/lib/libpostproc-54.so", "res://addons/bin/android/x86_64/lib/libswresample-2.so", "res://addons/bin/android/x86_64/lib/libswscale-4.so" ]
 OSX.64=[ "res://addons/bin/osx/libavformat.58.dylib", "res://addons/bin/osx/libavutil.56.dylib", "res://addons/bin/osx/libavcodec.58.dylib", "res://addons/bin/osx/libswscale.5.dylib", "res://addons/bin/osx/libswresample.3.dylib" ]
 Windows.64=[ "res://addons/bin/win64/avformat-58.dll", "res://addons/bin/win64/avutil-56.dll", "res://addons/bin/win64/avcodec-58.dll", "res://addons/bin/win64/swscale-5.dll", "res://addons/bin/win64/swresample-3.dll", "res://addons/bin/win64/libwinpthread-1.dll" ]
 Windows.32=[ "res://addons/bin/win32/avformat-58.dll", "res://addons/bin/win32/avutil-56.dll", "res://addons/bin/win32/avcodec-58.dll", "res://addons/bin/win32/swscale-5.dll", "res://addons/bin/win32/swresample-3.dll", "res://addons/bin/win32/libwinpthread-1.dll" ]
