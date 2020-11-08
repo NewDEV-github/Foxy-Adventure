@@ -36,6 +36,7 @@ jobs:
          subdirectory: build-x11-32
     # Set true to output an artifact zip file
          package: false
+         projectDir: ./
       # Runs a single command using the runners shell
       - name: Build for Linux 64-bit
   # You may pin to the exact commit or the version.
