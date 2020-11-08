@@ -1,3 +1,0 @@
-[submodule "contrib/godot-videodecoder"]
-	path = contrib/godot-videodecoder
-	url = https://github.com/jamie-pate/godot-videodecoder.git
