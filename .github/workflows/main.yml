@@ -51,6 +51,7 @@ jobs:
          subdirectory: build-x11-64
     # Set true to output an artifact zip file
          package: false
+         projectDir: ./
     # Whether or not to use `--export-debug`
       - name: Build for Windows 32-bit
   # You may pin to the exact commit or the version.
@@ -65,6 +66,7 @@ jobs:
          subdirectory: build-win-32
     # Set true to output an artifact zip file
          package: false
+         projectDir: ./
     # Whether or not to use `--export-debug`
       - name: Build for Windows 64-bit
   # You may pin to the exact commit or the version.
@@ -79,7 +81,8 @@ jobs:
          subdirectory: build-win-64
     # Set true to output an artifact zip file
          package: false
-    # Whether or not to use `--export-debug`
+         projectDir: ./
+         # Whether or not to use `--export-debug`
       - name: Build for Mac OS X
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
@@ -93,6 +96,7 @@ jobs:
          subdirectory: build-osx
     # Set true to output an artifact zip file
          package: false
+         projectDir: ./
     # Whether or not to use `--export-debug`
       - name: ZIP Release
         env:
@@ -113,7 +117,7 @@ jobs:
         with:
           tag_name: ${{ steps.date.outputs.date }}
           release_name: Release from ${{ steps.date.outputs.date }}
-          draft: false
+          draft: true
           prerelease: false
       - name: Upload Release Asset (Linux 32-bit)
         uses: actions/upload-release-asset@v1
