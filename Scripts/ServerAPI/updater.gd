@@ -39,6 +39,8 @@ func _ready() -> void:
 		vp.stream_position = sp
 		vp.play()
 		yield($VideoPlayer,"finished")
+	else:
+		OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 	file = File.new()
 	print(str(PI))
 	if Globals.release_mode:
@@ -54,9 +56,7 @@ func _ready() -> void:
 		dir = Directory.new()
 		dir.open('user://')
 		dir.make_dir('logs')
-	if OS.request_permissions() == false:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_WRITE_READ_PERMISSIONS)
-		get_tree().quit()
+	OS.request_permissions()
 	
 #	$icon.show()
 	$Timer.start()
@@ -122,4 +122,3 @@ func _on_pck_request_completed(result, response_code, headers, body):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_DATA_FILES)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_INITIALIZING_GAME)
-		get_tree().quit()
