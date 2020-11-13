@@ -25,7 +25,7 @@ func load_assets():
 func _ready() -> void:
 	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
-		var file = "res://assets/Animations/intro.webm"#supports for now
+		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
 		print(file)
 		stream.set_file(file)
 		var vp = $VideoPlayer
