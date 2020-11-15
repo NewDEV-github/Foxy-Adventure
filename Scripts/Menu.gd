@@ -21,6 +21,8 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var lem = LevelEditorManager.new()
+	lem.install_editor("user://test.zip")
 	$tails.hide()
 	if File.new().file_exists("user://milestailsprower.txt"):
 		$tails.show()
@@ -147,9 +149,8 @@ func _on_Menu_tree_exiting():
 
 
 func _on_Level_Editor_pressed():
-	ProjectSettings.load_resource_pack("user://packs/editor.pck")
-	get_tree().change_scene("res://src/scenes/editor/editor.tscn")
-
-
+	var lvm = LevelEditorManager.new()
+	if !lvm.execute_editor():
+		lvm.download_editor()
 func _on_Feedback_pressed():
 	$Feedback.send_feedback()

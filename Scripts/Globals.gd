@@ -1,10 +1,11 @@
 extends Node
+var bits = 32
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
 signal minimap
 signal nsfw
-var install_base_path
+var install_base_path = OS.get_executable_path().get_base_dir() + "/"
 var minimap_enabled = true setget set_minimap_enabled, get_minimap_enabled
 var debugMode = false
 var coming_from_house = ''
@@ -66,6 +67,10 @@ func set_minimap_enabled(minimap_visible):
 func get_minimap_enabled():
 	return minimap_enabled
 func _ready():
+	var cfile = ConfigFile.new()
+	cfile.load(Globals.install_base_path + "config.cfg")
+	bits = str(cfile.get_value("config", "bits", "32"))
+	cfile.free()
 	##LOAD DLCS
 	#LEO
 	
