@@ -423,11 +423,11 @@ script = ExtResource( 17 )
 position = Vector2( 0, -4 )
 
 [node name="tails" type="Sprite" parent="Tails/Characters"]
-position = Vector2( -12.7897, 11.2516 )
+position = Vector2( -11.7897, 11.7516 )
 scale = Vector2( 0.990566, 1 )
 texture = ExtResource( 28 )
 hframes = 12
-frame = 10
+frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/tails"]
 anims/jump_roll = SubResource( 1 )

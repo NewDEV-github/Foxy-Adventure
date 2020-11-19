@@ -1,6 +1,6 @@
 extends HTTPRequest
 var prefix = "nd!"
-var token = "NjkxNjE2Nzk1MDAxMzU2Mjg4" + "." + "XnikVQ" + "." + "W1ddy-i6jm_HZEFdACaQp7H5Ps0"
+var token = null
 var client : WebSocketClient
 var heartbeat_interval : float
 var last_sequence : float
@@ -9,6 +9,7 @@ var heartbeat_ack_received := true
 var invalid_session_is_resumable : bool
 
 func _ready() -> void:
+	
 #	send_feedback()
 	$FeedBack/TabContainer/Discord/options/DM/DSCdm.disabled = false
 #	$tokenrequest.request("https://www.new-dev.ml/api/feedback-bot-token/")
@@ -194,7 +195,7 @@ func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true)
 		var headers := ["Authorization: Bot %s" % token, "Content-Type: application/json"]
 		var msg = {"content": "", "embed": {"title": "New Feedback sent", "description": new_text}}
 		var query = JSON.print(msg)
-		var channel_id = "763802916032872488" #feedback channel
+		var channel_id = "763763543073226822/763802916032872488" #feedback channel
 		request("https://discordapp.com/api/v6/channels/%s/messages" % channel_id, headers, true, HTTPClient.METHOD_POST, query)
 		yield(self, "request_completed")
 		if thanks_popup:

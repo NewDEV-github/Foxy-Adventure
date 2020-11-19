@@ -46,6 +46,7 @@ __meta__ = {
 }
 
 [node name="DM" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
+visible = false
 margin_right = 250.0
 margin_bottom = 27.0
 __meta__ = {
@@ -68,9 +69,8 @@ size_flags_vertical = 4
 text = "Go"
 
 [node name="JOIN" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
-margin_top = 31.0
 margin_right = 250.0
-margin_bottom = 58.0
+margin_bottom = 27.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,7 +91,7 @@ size_flags_vertical = 4
 text = "Go"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FeedBack/TabContainer/Discord/options"]
-margin_top = 62.0
+margin_top = 31.0
 margin_right = 250.0
 margin_bottom = 175.0
 size_flags_horizontal = 3
@@ -174,7 +174,6 @@ size_flags_vertical = 3
 bbcode_enabled = true
 
 [node name="DscDMCreator" type="WindowDialog" parent="."]
-visible = true
 margin_right = 242.0
 margin_bottom = 174.0
 theme = ExtResource( 2 )

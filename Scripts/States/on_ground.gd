@@ -42,9 +42,8 @@ func step(host, delta):
 	elif Input.is_action_pressed('ui_up'):
 		if abs(host.gsp) < .1 and host.ground_mode == 0:
 			if Input.is_action_just_pressed("ui_accept"):
-				
-				
-				return 'SuperPeelOut'
+				if  not host.name == "Tails" or not host.name == "NewTheFox":
+					return 'SuperPeelOut'
 			host.is_looking_up = true
 	
 	if host.is_rolling and abs(host.gsp) < 30.0:

@@ -21,6 +21,8 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.selected_character = null
+	Globals.character_path = null
 	var lem = LevelEditorManager.new()
 	lem.install_editor("user://test.zip")
 	$tails.hide()
@@ -72,13 +74,7 @@ func _ready():
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
-	$Control.load_settings()
 
-func globals_nsfw_changed(nsfw_enabled:bool):
-	if nsfw_enabled:
-		$IMG_0008.texture = load(str("res://Graphics/icon.png"))
-	else:
-		$IMG_0008.texture = load(str("res://Graphics/Titles/IMG_0008.jpeg"))
 
 func load_easterregg_animation(name_:String):
 	randomize()
