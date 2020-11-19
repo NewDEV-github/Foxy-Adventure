@@ -70,7 +70,6 @@ func _ready():
 	var cfile = ConfigFile.new()
 	cfile.load(Globals.install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
-	cfile.free()
 	##LOAD DLCS
 	#LEO
 	

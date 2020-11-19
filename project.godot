@@ -29,6 +29,31 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/cutscene_player.gd"
 }, {
+"base": "Resource",
+"class": "FirebaseResource",
+"language": "GDScript",
+"path": "res://addons/GDFirebase/FirebaseResource.gd"
+}, {
+"base": "HTTPRequest",
+"class": "FirebaseStorage",
+"language": "GDScript",
+"path": "res://addons/GDFirebase/FirebaseStorage.gd"
+}, {
+"base": "Reference",
+"class": "FirebaseUserData",
+"language": "GDScript",
+"path": "res://addons/GDFirebase/FirebaseUserData.gd"
+}, {
+"base": "Node",
+"class": "FirestoreCollection",
+"language": "GDScript",
+"path": "res://addons/GDFirebase/FirebaseFirestoreCollection.gd"
+}, {
+"base": "Node",
+"class": "FirestoreDocument",
+"language": "GDScript",
+"path": "res://addons/GDFirebase/FirebaseFirestoreDocument.gd"
+}, {
 "base": "HTTPRequest",
 "class": "LevelEditorManager",
 "language": "GDScript",
@@ -59,6 +84,11 @@ _global_script_class_icons={
 "CharacterAnimator": "",
 "Crate": "",
 "CutsceneVideoPlayer": "",
+"FirebaseResource": "",
+"FirebaseStorage": "",
+"FirebaseUserData": "",
+"FirestoreCollection": "",
+"FirestoreDocument": "",
 "LevelEditorManager": "",
 "Mob": "",
 "Player": "",
@@ -88,6 +118,7 @@ Screenshot="*res://Scripts/screenshot.gd"
 ErrorCodeServer="*res://ErrorCodeServer.gd"
 ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 GlobalsEditor="*res://Editor/GlobalsEditor.gd"
+Firebase="*res://addons/GDFirebase/Firebase.gd"
 
 [config]
 
@@ -110,7 +141,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "godot-console-dev", "screen_debugger", "string_keys" )
+enabled=PoolStringArray( "GDFirebase", "godot-console-dev", "screen_debugger", "string_keys" )
 
 [gdnative]
 
