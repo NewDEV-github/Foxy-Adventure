@@ -223,8 +223,8 @@ margin_right = 251.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-min_value = -80.0
-max_value = 20.0
+min_value = -100
+max_value = 0
 
 [node name="Master_on" type="CheckButton" parent="tabs/Ogólne/Options/Audio/Master"]
 visible = false
@@ -253,8 +253,8 @@ margin_right = 251.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-min_value = -80.0
-max_value = 20.0
+min_value = -100
+max_value = 0
 
 [node name="Music_on" type="CheckButton" parent="tabs/Ogólne/Options/Audio/Music"]
 visible = false
@@ -282,8 +282,8 @@ margin_right = 251.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-min_value = -80.0
-max_value = 20.0
+min_value = -100
+max_value = 0
 
 [node name="SFX_on" type="CheckButton" parent="tabs/Ogólne/Options/Audio/SFX"]
 visible = false
