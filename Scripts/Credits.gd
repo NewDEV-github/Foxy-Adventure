@@ -9,7 +9,7 @@ var copyright = "[center]\nPowered by Godot Engine\ngame_name - Copyright 2020 -
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var f = File.new
+	var f = File.new()
 	$HBoxContainer/RichTextLabel.bbcode_text += copyright
 	$AnimationPlayer.play("credits")
 

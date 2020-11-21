@@ -179,7 +179,7 @@ margin_bottom = 25.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "KEY_OPTIONS_LANG_EN"
-items = [ "KEY_OPTIONS_LANG_EN", null, false, 0, null, "KEY_OPTIONS_LANG_ES", null, false, 1, null, "KEY_OPTIONS_LANG_DE", null, false, 2, null, "KEY_OPTIONS_LANG_PL", null, false, 3, null, "KEY_OPTIONS_LANG_ES_MX", null, false, 4, null, "KEY_OPTIONS_LANG_JA", null, false, 5, null, "KEY_OPTIONS_LANG_RU", null, false, 6, null, "KEY_OPTIONS_LANG_ZH", null, false, 7, null ]
+items = [ "KEY_OPTIONS_LANG_EN", null, false, 0, null, "KEY_OPTIONS_LANG_ES", null, false, 1, null, "KEY_OPTIONS_LANG_DE", null, false, 2, null, "KEY_OPTIONS_LANG_PL", null, false, 3, null ]
 selected = 0
 
 [node name="Audio" type="VBoxContainer" parent="tabs/Ogólne/Options"]
@@ -339,6 +339,7 @@ text = "KEY_OPTIONS_RESET"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="toggled" from="tabs/Ogólne/Options/Graphics/Fullscreen" to="." method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="tabs/Ogólne/Options/Graphics/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/Ogólne/Options/Graphics/fps/target" to="." method="_on_maxfps_value_changed"]

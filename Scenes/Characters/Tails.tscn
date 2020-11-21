@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Graphics/Sprites/instaShield.png" type="Texture" id=1]
 [ext_resource path="res://Audio/SFX/spinDashCharge.wav" type="AudioStream" id=2]
@@ -6,26 +6,15 @@
 [ext_resource path="res://Audio/SFX/spinDashRelease.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/SFX/instaShield.wav" type="AudioStream" id=5]
 [ext_resource path="res://Graphics/Sprites/Tails_.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/character_vfx.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/States/on_air.gd" type="Script" id=8]
 [ext_resource path="res://Audio/SFX/jump.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/SFX/brake.wav" type="AudioStream" id=10]
 [ext_resource path="res://Audio/SFX/spin.wav" type="AudioStream" id=11]
-[ext_resource path="res://Scripts/audio_player.gd" type="Script" id=12]
 [ext_resource path="res://Graphics/Sprites/spinDash.png" type="Texture" id=13]
-[ext_resource path="res://Scripts/States/spin_dash.gd" type="Script" id=14]
-[ext_resource path="res://Scripts/player_physics.gd" type="Script" id=15]
-[ext_resource path="res://Scripts/state_machine.gd" type="Script" id=16]
-[ext_resource path="res://Scripts/States/super_peel_out.gd" type="Script" id=17]
 [ext_resource path="res://Audio/SFX/peelOutRelease.wav" type="AudioStream" id=18]
-[ext_resource path="res://Scripts/player_camera.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scripts/States/on_ground.gd" type="Script" id=21]
-[ext_resource path="res://Scripts/character_animator.gd" type="Script" id=22]
 [ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=23]
 [ext_resource path="res://Graphics/pause_button.png" type="Texture" id=24]
 [ext_resource path="res://Graphics/Sprites/tails.png" type="Texture" id=28]
-[ext_resource path="res://Scripts/Characters/tails_AnimationPlayer.gd" type="Script" id=29]
 
 [sub_resource type="Animation" id=1]
 resource_name = "jump_roll"
@@ -379,7 +368,6 @@ radius = 9.0
 [node name="Tails" type="KinematicBody2D"]
 
 [node name="PlayerCamera" type="Node2D" parent="."]
-script = ExtResource( 19 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -399,25 +387,9 @@ editor_draw_limits = true
 [node name="Tails" type="KinematicBody2D" parent="."]
 z_index = 1
 collision/safe_margin = 0.1
-script = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="StateMachine" type="Node" parent="Tails"]
-script = ExtResource( 16 )
-
-[node name="OnGround" type="Node" parent="Tails/StateMachine"]
-script = ExtResource( 21 )
-
-[node name="OnAir" type="Node" parent="Tails/StateMachine"]
-script = ExtResource( 8 )
-
-[node name="SpinDash" type="Node" parent="Tails/StateMachine"]
-script = ExtResource( 14 )
-
-[node name="SuperPeelOut" type="Node" parent="Tails/StateMachine"]
-script = ExtResource( 17 )
 
 [node name="Characters" type="Node2D" parent="Tails"]
 position = Vector2( 0, -4 )
@@ -427,18 +399,18 @@ position = Vector2( -11.7897, 11.7516 )
 scale = Vector2( 0.990566, 1 )
 texture = ExtResource( 28 )
 hframes = 12
-frame = 9
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/tails"]
 anims/jump_roll = SubResource( 1 )
 anims/normal = SubResource( 2 )
 anims/spindash_push = SubResource( 3 )
-script = ExtResource( 29 )
 
 [node name="Sonic" type="Sprite" parent="Tails/Characters"]
 texture = ExtResource( 6 )
 vframes = 17
 hframes = 17
+frame = 38
 region_rect = Rect2( 0, 0, 48, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/Sonic"]
@@ -458,10 +430,8 @@ anims/Running = SubResource( 16 )
 anims/SpinDashCharge = SubResource( 17 )
 anims/TiredOfFlying = SubResource( 18 )
 anims/Walking = SubResource( 19 )
-script = ExtResource( 22 )
 
 [node name="VFX" type="Node2D" parent="Tails/Characters"]
-script = ExtResource( 7 )
 
 [node name="ChargeDust" type="Sprite" parent="Tails/Characters/VFX"]
 visible = false
@@ -483,7 +453,6 @@ frame = 5
 anims/InstaShield = SubResource( 21 )
 
 [node name="AudioPlayer" type="Node2D" parent="Tails"]
-script = ExtResource( 12 )
 
 [node name="jump" type="AudioStreamPlayer" parent="Tails/AudioPlayer"]
 stream = ExtResource( 9 )
@@ -576,5 +545,4 @@ action = "ui_accept"
 position = Vector2( 62.2255, 492.147 )
 normal = ExtResource( 23 )
 action = "ui_left"
-[connection signal="animation_finished" from="Tails/Characters/Sonic/AnimationPlayer" to="Tails/StateMachine" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Tails/fly_timer" to="Tails" method="_on_fly_timer_timeout"]

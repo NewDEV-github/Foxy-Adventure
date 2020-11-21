@@ -236,7 +236,7 @@ screen={
 
 [locale]
 
-translations=PoolStringArray( "res://translations/srpg_1.csv", "res://translations/srpg_1.de.translation", "res://translations/srpg_1.en.translation", "res://translations/srpg_1.es.translation", "res://translations/srpg_1.pl.translation", "res://translations/srpg_1.es_MX.translation", "res://translations/srpg_1.ja.translation", "res://translations/srpg_1.ru.translation", "res://translations/srpg_1.zh.translation" )
+translations=PoolStringArray( "res://translations/foxy_adventure.csv", "res://translations/foxy_adventure.de.translation", "res://translations/foxy_adventure.en.translation", "res://translations/foxy_adventure.es.translation" )
 
 [logging]
 
@@ -257,6 +257,8 @@ quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 quality/reflections/texture_array_reflections.mobile=true
 quality/reflections/high_quality_ggx.mobile=true
+options/api_usage_batching/flag_stream=true
+options/api_usage_legacy/flag_stream=true
 batching/options/single_rect_fallback=true
 batching/debug/flash_batching=true
 batching/debug/diagnose_frame=true
