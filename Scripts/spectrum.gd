@@ -1,5 +1,6 @@
 extends Control
-
+export (int) var x = 0
+export (int) var y = 0
 # Gonkee's audio visualiser for Godot 3.2 - full tutorial https://youtu.be/AwgSICbGxJM
 # If you use this, I would prefer if you gave credit to me and my channel
 export (NodePath) var audio_player
@@ -12,7 +13,7 @@ var min_freq = 20
 var max_freq = 20000
 
 var max_db = 0
-var min_db = -40
+var min_db = -80
 
 var accel = 20
 var histogram = []
@@ -53,7 +54,7 @@ func _process(delta):
 
 func _draw():
 	# Horizontal Visualiser
-	var draw_pos = Vector2(0, 0)
+	var draw_pos = Vector2(x, y)
 	var w_interval = total_w / definition
 	
 #	draw_line(Vector2(0, -total_h), Vector2(total_w, -total_h), Color.crimson, 2.0, true)
