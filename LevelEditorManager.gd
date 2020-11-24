@@ -13,9 +13,10 @@ func generate_download_link() -> String:
 	var os_short = os_shorts[OS.get_name()]
 	var bits = Globals.bits
 #	var tag_name = "Release from "+ tag
-	var request_url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/%s/build-%s-%s.zip" % [tag, os_short, bits]
+	var request_url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/latest/build-%s-%s.zip" % [os_short, bits]
 	print(request_url)
 	return request_url
+
 func execute_editor():
 	var file = File.new()
 	if file.file_exists(Globals.install_base_path + "editor.exe") && OS.get_name() == "Windows":

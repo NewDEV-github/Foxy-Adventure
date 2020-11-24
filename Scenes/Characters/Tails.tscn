@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Graphics/Sprites/instaShield.png" type="Texture" id=1]
 [ext_resource path="res://Audio/SFX/spinDashCharge.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Audio/SFX/spinDashRelease.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/SFX/instaShield.wav" type="AudioStream" id=5]
 [ext_resource path="res://Graphics/Sprites/Tails_.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Characters/character_control.gd" type="Script" id=7]
 [ext_resource path="res://Audio/SFX/jump.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/SFX/brake.wav" type="AudioStream" id=10]
 [ext_resource path="res://Audio/SFX/spin.wav" type="AudioStream" id=11]
@@ -387,6 +388,7 @@ editor_draw_limits = true
 [node name="Tails" type="KinematicBody2D" parent="."]
 z_index = 1
 collision/safe_margin = 0.1
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -408,8 +410,8 @@ anims/spindash_push = SubResource( 3 )
 
 [node name="Sonic" type="Sprite" parent="Tails/Characters"]
 texture = ExtResource( 6 )
-vframes = 17
 hframes = 17
+vframes = 17
 frame = 38
 region_rect = Rect2( 0, 0, 48, 48 )
 
@@ -545,4 +547,5 @@ action = "ui_accept"
 position = Vector2( 62.2255, 492.147 )
 normal = ExtResource( 23 )
 action = "ui_left"
+
 [connection signal="timeout" from="Tails/fly_timer" to="Tails" method="_on_fly_timer_timeout"]

@@ -23,6 +23,7 @@ func load_assets():
 		$RequiredAssets.request("https://dl.new-dev.tk/data/games/foxy-adventure/audio.pck")
 
 func _ready() -> void:
+	pass
 	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
 		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
