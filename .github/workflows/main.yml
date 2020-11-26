@@ -116,7 +116,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.GITHUB_SHA_SHORT }}
-          release_name: Release from $${{ env.GITHUB_SHA_SHORT }} commit
+          release_name: Release from ${{ env.GITHUB_SHA_SHORT }} commit
           draft: false
           prerelease: false
       - name: Upload Release Asset (Linux 32-bit)
