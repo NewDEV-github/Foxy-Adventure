@@ -88,7 +88,7 @@ func _physics_process(delta):
 	# Jumping
 	if on_floor and Input.is_action_just_pressed("jump"):
 		linear_vel.y = -JUMP_SPEED
-		$AudioPlayer/jump.play()
+#		$AudioPlayer/jump.play()
 	# Shooting
 #	if Input.is_action_just_pressed("shoot"):
 #		var weapon_current = preload("res://scenes/bullet.tscn").instance()
@@ -119,7 +119,6 @@ func _physics_process(delta):
 			sprite.scale.x = -1
 		if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
 			sprite.scale.x = 1
-
 		if linear_vel.y < 0:
 			new_anim = "jumping"
 		else:

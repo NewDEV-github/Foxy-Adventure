@@ -23,14 +23,14 @@ var cfile = ConfigFile.new()
 var file =  File.new()
 var timer = Timer.new()
 var hour
-var nsfw
+var current_save_name = ""
 var new_characters:Array = [
-	"NewTheFox",
+#	"NewTheFox",
 	"Tails",
 ]
 func _init():
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
-	print(install_base_path)
+	print("Installed at: " + install_base_path)
 var dlcs:Array = [
 	
 ]
@@ -128,9 +128,6 @@ func set_variable(variable, value):
 
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
-func set_nsfw(nsfw_enabled:bool):
-	nsfw = nsfw_enabled
-	emit_signal("nsfw", nsfw_enabled)
 
 
 func scan_dlcs(path = 'user://dlcs/'):
@@ -154,11 +151,12 @@ func scan_dlcs(path = 'user://dlcs/'):
 		print("An error occurred when trying to access the path.")
 
 
-func save_level(stage:int):
+func save_level(stage:int, save_name:String):
 	var sonyk = ConfigFile.new()
-	sonyk.load("user://save.cfg")
+	sonyk.load("user://save_"+save_name+".cfg")
 	sonyk.set_value("save", "stage", stage)
-	sonyk.save("user://save.cfg")
+	sonyk.set_value("save", "character", character_path)
+	sonyk.save("user://save_"+save_name+".cfg")
 #	sonyk.close()
 
 func game_over():

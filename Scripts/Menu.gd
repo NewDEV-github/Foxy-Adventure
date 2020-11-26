@@ -83,9 +83,7 @@ func load_easterregg_animation(name_:String):
 	elif name_ == 'bs':
 		$IMG_0009.texture = load(str(bs_imgs[randi()%bs_imgs.size()]))
 func _on_World1_pressed():
-	 
-	$SelectWorld.popup_centered()
-#	$SelectWorld.show()
+	$CharacterSelect.popup_centered()
 func _on_Options_pressed():
 	$Control.popup_centered()
 
@@ -104,19 +102,7 @@ func _on_Options2_pressed():
 
 
 func _on_WorldList_item_selected(index):
-	var item_name = $SelectWorld/WorldList.get_item_text(index) 
-	if Globals.cworlds.has(item_name):
-		Globals.world = Globals.temp_custom_stages_dir + item_name + ".tscn"
-		if Globals.selected_character == null:
-			$CharacterSelect.popup_centered()
-		else:
-			BackgroundLoad.load_scene(str(Globals.world))
-	else:
-		Globals.world = "res://Scenes/Stages/" + item_name + ".tscn"
-		if Globals.selected_character == null:
-			$CharacterSelect.popup_centered()
-		else:
-			BackgroundLoad.load_scene(str(Globals.world))
+	pass
 
 func custom_level_research():
 	for path in Globals.levels_scan_path:

@@ -19,7 +19,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func after_selecting_player():
-	BackgroundLoad.load_scene(str(Globals.world))
+	BackgroundLoad.load_scene("res://Scenes/Stages/poziom_1.tscn")
 
 
 func _on_ItemList_item_selected(index):

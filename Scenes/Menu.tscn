@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/NewTheFox/recolour4.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/ja.jpg" type="Texture" id=9]
+[ext_resource path="res://Graphics/bg.jpg" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bg"
@@ -72,16 +73,11 @@ __meta__ = {
 }
 
 [node name="IMG_0009" type="TextureRect" parent="."]
-anchor_left = -0.000976562
-anchor_right = 0.999023
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.999999
-margin_right = 1.0
-margin_bottom = 848.0
 rect_clip_content = true
-texture = ExtResource( 2 )
+texture = ExtResource( 10 )
 expand = true
-stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Las" type="Button" parent="VBoxContainer"]
+[node name="NewGame" type="Button" parent="VBoxContainer"]
 margin_right = 225.0
 margin_bottom = 65.0
 size_flags_horizontal = 3
@@ -117,7 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Website" type="Button" parent="VBoxContainer"]
+[node name="LoadGame" type="Button" parent="VBoxContainer"]
 margin_top = 69.0
 margin_right = 225.0
 margin_bottom = 135.0
@@ -271,8 +267,8 @@ __meta__ = {
 }
 
 [connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
-[connection signal="pressed" from="VBoxContainer/Las" to="." method="_on_World1_pressed"]
-[connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
+[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_World1_pressed"]
+[connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Feedback" to="." method="_on_Feedback_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/dsc" to="." method="_on_Options2_pressed"]

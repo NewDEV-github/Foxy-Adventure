@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/character_animator.gd"
 }, {
-"base": "Area2D",
-"class": "Crate",
-"language": "GDScript",
-"path": "res://minimap/Crate.gd"
-}, {
 "base": "VideoPlayer",
 "class": "CutsceneVideoPlayer",
 "language": "GDScript",
@@ -59,16 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://LevelEditorManager.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "Mob",
-"language": "GDScript",
-"path": "res://minimap/Mob.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://minimap/Player.gd"
-}, {
 "base": "Node2D",
 "class": "PlayerCamera",
 "language": "GDScript",
@@ -82,7 +67,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AudioPlayer": "",
 "CharacterAnimator": "",
-"Crate": "",
 "CutsceneVideoPlayer": "",
 "FirebaseResource": "",
 "FirebaseStorage": "",
@@ -90,8 +74,6 @@ _global_script_class_icons={
 "FirestoreCollection": "",
 "FirestoreDocument": "",
 "LevelEditorManager": "",
-"Mob": "",
-"Player": "",
 "PlayerCamera": "",
 "PlayerPhysics": ""
 }
