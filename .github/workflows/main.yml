@@ -106,17 +106,17 @@ jobs:
           zip -r build-x11-64.zip build/build-x11-64
           zip -r build-win-32.zip build/build-win-32
           zip -r build-win-64.zip build/build-win-64
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Calculate GIT short ref
+        run: |
+          echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
       - name: Release snapshot
         id: release-snapshot
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.date.outputs.date }}
-          release_name: Release from ${{ steps.date.outputs.date }}
+          tag_name: ${{ env.GITHUB_SHA_SHORT }}
+          release_name: Release from $${{ env.GITHUB_SHA_SHORT }} commit
           draft: false
           prerelease: false
       - name: Upload Release Asset (Linux 32-bit)
