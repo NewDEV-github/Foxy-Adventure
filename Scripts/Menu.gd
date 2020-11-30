@@ -21,6 +21,7 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$version_label.bbcode_text = "[wave amp=50 freq=1]" + Globals.construct_game_version() + "[/wave]"
 	Globals.selected_character = null
 	Globals.character_path = null
 	var lem = LevelEditorManager.new()

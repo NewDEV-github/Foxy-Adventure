@@ -77,12 +77,12 @@ func _ready():
 	var day = OS.get_date().day
 	var month = OS.get_date().month
 	if (day == 17 and month == 2) or (day == 25 and month == 3) or (day == 21 and month == 6):
-		var f = File.new()
-		f.open("text.txt", File.READ)
-		writeLine(str(f.get_as_text()))
+#		var f = File.new()
+#		f.open("text.txt", File.READ)
+		writeLine(str("Happy birthday, NewTheFox!"))
 	elif (day == 14 and month == 9):
 		var f = File.new()
-		f.open("text_2.txt", File.READ)
+		f.open("gekagd.txt", File.READ)
 		writeLine(str(f.get_as_text()))
 	# Show some info
 	var v = Engine.get_version_info()

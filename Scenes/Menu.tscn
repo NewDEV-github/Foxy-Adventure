@@ -1,48 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Graphics/NewTheFox/recolour4.png" type="Texture" id=2]
+[ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Fonts/Ubuntu-L20.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=7]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/ja.jpg" type="Texture" id=9]
 [ext_resource path="res://Graphics/bg.jpg" type="Texture" id=10]
-
-[sub_resource type="Animation" id=1]
-resource_name = "bg"
-length = 100.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("IMG_0008:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 50, 100 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -850 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("IMG_0009:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 50, 100 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -850 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "end_transition"
-length = 1.5
 
 [node name="Menu" type="Control"]
 pause_mode = 2
@@ -51,7 +17,7 @@ anchor_bottom = 1.0
 margin_top = -1.0
 margin_bottom = -1.0
 mouse_filter = 1
-theme = ExtResource( 7 )
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 845.36
 rect_clip_content = true
-texture = ExtResource( 2 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 7
 __meta__ = {
@@ -171,12 +137,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-pause_mode = 2
-autoplay = "bg"
-anims/bg = SubResource( 1 )
-anims/end_transition = SubResource( 2 )
-
 [node name="Control" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.110352
 anchor_top = 0.388
@@ -247,7 +207,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="RichTextLabel" parent="."]
+[node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -42.0
@@ -258,14 +218,9 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 6
 custom_constants/shadow_offset_y = 5
 bbcode_enabled = true
-bbcode_text = "[wave amp=50 freq=1]Support: support@new-dev.ml
-Version 0.0.1.2-alpha, Copyright 2020 - present, New DEV[/wave]"
-text = "Support: support@new-dev.ml
-Version 0.0.1.2-alpha, Copyright 2020 - present, New DEV"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_World1_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_Website_pressed"]

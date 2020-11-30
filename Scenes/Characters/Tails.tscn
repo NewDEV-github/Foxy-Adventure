@@ -1,66 +1,12 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Graphics/Sprites/instaShield.png" type="Texture" id=1]
-[ext_resource path="res://tails_sprite.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Characters/character_control.gd" type="Script" id=7]
-[ext_resource path="res://Graphics/Sprites/spinDash.png" type="Texture" id=13]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=23]
 [ext_resource path="res://Graphics/pause_button.png" type="Texture" id=24]
-[ext_resource path="res://Graphics/Sprites/tails.png" type="Texture" id=28]
+[ext_resource path="res://Graphics/tails_sprite.png" type="Texture" id=28]
 
 [sub_resource type="Animation" id=1]
-resource_name = "jump_roll"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 5, 6, 7, 8 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "normal"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "spindash_push"
-length = 0.3
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 9, 10, 11 ]
-}
-
-[sub_resource type="Animation" id=17]
 resource_name = "falling"
 length = 0.2
 loop = true
@@ -77,7 +23,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -93,10 +39,10 @@ tracks/0/keys = {
 "values": [ 1, 1 ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=3]
 resource_name = "jumping"
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=4]
 resource_name = "run"
 length = 1.6
 loop = true
@@ -114,47 +60,14 @@ tracks/0/keys = {
 "values": [ 17, 18, 19, 20, 21, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=20]
-length = 0.28
-loop = true
-step = 0.04
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6 ]
-}
-
-[sub_resource type="Animation" id=21]
-length = 0.12
-step = 0.02
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
-}
-
-[sub_resource type="CapsuleShape2D" id=22]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 9.03
 height = 6.05999
 
-[sub_resource type="CircleShape2D" id=23]
+[sub_resource type="CircleShape2D" id=6]
 radius = 9.0
 
-[sub_resource type="RayShape2D" id=24]
+[sub_resource type="RayShape2D" id=7]
 
 [node name="Tails" type="Node2D"]
 
@@ -186,63 +99,29 @@ __meta__ = {
 [node name="Characters" type="Node2D" parent="Tails"]
 position = Vector2( 0, -4 )
 
-[node name="tails" type="Sprite" parent="Tails/Characters"]
-visible = false
-position = Vector2( -11.7897, 11.7516 )
-scale = Vector2( 0.990566, 1 )
-texture = ExtResource( 28 )
-hframes = 12
-frame = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/tails"]
-anims/jump_roll = SubResource( 1 )
-anims/normal = SubResource( 2 )
-anims/spindash_push = SubResource( 3 )
-
 [node name="Sonic" type="Sprite" parent="Tails/Characters"]
 position = Vector2( 51.5, 30.5 )
-texture = ExtResource( 6 )
+texture = ExtResource( 28 )
 hframes = 9
 frame = 1
 region_rect = Rect2( 0, 0, 48, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/Sonic"]
-anims/falling = SubResource( 17 )
-anims/idle = SubResource( 18 )
-anims/jumping = SubResource( 25 )
-anims/run = SubResource( 19 )
-
-[node name="VFX" type="Node2D" parent="Tails/Characters"]
-
-[node name="ChargeDust" type="Sprite" parent="Tails/Characters/VFX"]
-visible = false
-position = Vector2( -19, 13 )
-texture = ExtResource( 13 )
-hframes = 7
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/VFX/ChargeDust"]
-anims/ChargeDust = SubResource( 20 )
-
-[node name="InstaShield" type="Sprite" parent="Tails/Characters/VFX"]
-visible = false
-position = Vector2( 0, 9 )
-texture = ExtResource( 1 )
-hframes = 6
-frame = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tails/Characters/VFX/InstaShield"]
-anims/InstaShield = SubResource( 21 )
+anims/falling = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/jumping = SubResource( 3 )
+anims/run = SubResource( 4 )
 
 [node name="HighCollider" type="CollisionShape2D" parent="Tails"]
 position = Vector2( 0, -5 )
-shape = SubResource( 22 )
+shape = SubResource( 5 )
 
 [node name="LowCollider" type="CollisionShape2D" parent="Tails"]
 position = Vector2( 0, 5 )
-shape = SubResource( 23 )
+shape = SubResource( 6 )
 
 [node name="RayShape" type="CollisionShape2D" parent="Tails"]
-shape = SubResource( 24 )
+shape = SubResource( 7 )
 
 [node name="LeftGroundSensor" type="RayCast2D" parent="Tails"]
 position = Vector2( -9, 0 )
@@ -292,5 +171,4 @@ action = "ui_accept"
 position = Vector2( 62.2255, 492.147 )
 normal = ExtResource( 23 )
 action = "ui_left"
-
 [connection signal="timeout" from="Tails/fly_timer" to="Tails" method="_on_fly_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/background_load.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Start_transtition.tscn" type="PackedScene" id=2]
-[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=3]
+[ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start_transition"

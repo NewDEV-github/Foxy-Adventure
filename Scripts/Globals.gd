@@ -21,14 +21,19 @@ var character_position
 var last_world_position = Vector2(0,0)
 var cfile = ConfigFile.new()
 var file =  File.new()
-var timer = Timer.new()
-var hour
+var version_string:String = "alpha"
+var version_commit:String = "unknown"
 var current_save_name = ""
 var new_characters:Array = [
 #	"NewTheFox",
 	"Tails",
 ]
+func construct_game_version():
+	var text = "Support: suport@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
+	return text
 func _init():
+	file.open("game_version.txt", File.READ)
+	version_commit = file.get_line()
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 var dlcs:Array = [
@@ -103,26 +108,13 @@ func _ready():
 		ProjectSettings.save()
 		ProjectSettings.save_custom('user://project.godot')
 	set_process(false)
-	timer.wait_time = game_hour
-	timer.connect("timeout", self, "on_timer_timeout")
+
 	if str(OS.get_name()) == 'Android':
 		debugMode = false
 	emit_signal("debugModeSet", debugMode)
 	emit_signal("loaded")
-func set_day_night_mode(mode:String):
-	gc_mode = mode
-	if mode == 'realtime':
-		hour = OS.get_time().hour
-		set_process(true)
-	if mode == 'gametime':
-		timer.start()
 
-func _process(_delta):
-#	fmod_perf_data = Fmod.get_performance_data()
-	hour = OS.get_time().hour
 
-func on_timer_timeout():
-	hour += 1
 func set_variable(variable, value):
 	set(variable, value)
 

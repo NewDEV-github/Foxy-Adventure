@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://FeedBack/Main.gd" type="Script" id=1]
-[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=2]
+[ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=3]
 
 [node name="HTTPRequest" type="HTTPRequest"]
 script = ExtResource( 1 )
@@ -13,9 +13,9 @@ one_shot = true
 
 [node name="FeedBack" type="WindowDialog" parent="."]
 visible = true
-margin_right = 291.0
+margin_right = 404.0
 margin_bottom = 237.0
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,7 +31,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 34.0
+margin_top = 36.0
 margin_right = -5.0
 margin_bottom = -5.0
 
@@ -47,54 +47,56 @@ __meta__ = {
 }
 
 [node name="DM" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
-margin_right = 250.0
-margin_bottom = 27.0
+margin_right = 342.0
+margin_bottom = 29.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="FeedBack/TabContainer/Discord/options/DM"]
-margin_right = 150.0
-margin_bottom = 27.0
+margin_top = 4.0
+margin_right = 156.0
+margin_bottom = 25.0
 text = "Via Direct Message"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DSCdm" type="Button" parent="FeedBack/TabContainer/Discord/options/DM"]
-margin_left = 154.0
-margin_right = 187.0
-margin_bottom = 27.0
+margin_left = 160.0
+margin_right = 195.0
+margin_bottom = 29.0
 size_flags_vertical = 4
 text = "Go"
 
 [node name="JOIN" type="HBoxContainer" parent="FeedBack/TabContainer/Discord/options"]
-margin_top = 31.0
-margin_right = 250.0
-margin_bottom = 58.0
+margin_top = 33.0
+margin_right = 342.0
+margin_bottom = 62.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="FeedBack/TabContainer/Discord/options/JOIN"]
-margin_right = 213.0
-margin_bottom = 27.0
+margin_top = 4.0
+margin_right = 222.0
+margin_bottom = 25.0
 text = "Join our community server"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DSCServer" type="Button" parent="FeedBack/TabContainer/Discord/options/JOIN"]
-margin_left = 217.0
-margin_right = 250.0
-margin_bottom = 27.0
+margin_left = 226.0
+margin_right = 261.0
+margin_bottom = 29.0
 size_flags_vertical = 4
 text = "Go"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FeedBack/TabContainer/Discord/options"]
-margin_top = 62.0
-margin_right = 250.0
-margin_bottom = 175.0
+margin_top = 66.0
+margin_right = 342.0
+margin_bottom = 173.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -104,7 +106,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 34.0
+margin_top = 36.0
 margin_right = -5.0
 margin_bottom = -5.0
 
@@ -177,7 +179,7 @@ bbcode_enabled = true
 [node name="DscDMCreator" type="WindowDialog" parent="."]
 margin_right = 242.0
 margin_bottom = 174.0
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -255,7 +257,7 @@ __meta__ = {
 [node name="Expand" type="WindowDialog" parent="."]
 margin_right = 474.0
 margin_bottom = 350.0
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 
 [node name="TextEdit" type="TextEdit" parent="Expand"]
 anchor_right = 1.0
@@ -269,7 +271,7 @@ __meta__ = {
 [node name="ThanksDialog" type="AcceptDialog" parent="."]
 margin_right = 483.0
 margin_bottom = 304.0
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 window_title = ""
 resizable = true
 dialog_text = "Thanks for your feedback!

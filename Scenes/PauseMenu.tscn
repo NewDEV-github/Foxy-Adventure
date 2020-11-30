@@ -4,9 +4,8 @@
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Audio/BGM/pause_menu.ogg" type="AudioStream" id=4]
-[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=5]
+[ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=5]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=6]
-
 
 [node name="PauseMenu" type="WindowDialog"]
 pause_mode = 2
@@ -39,6 +38,7 @@ margin_bottom = -47.6371
 [node name="QuitTOMenuDIalog" type="ConfirmationDialog" parent="."]
 margin_right = 200.0
 margin_bottom = 124.0
+rect_min_size = Vector2( 150, 52.5 )
 window_title = ""
 dialog_text = "KEY_EXIT_GAME_CONFIRMATION"
 dialog_autowrap = true
@@ -101,6 +101,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Feedback"
+
 [connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
 [connection signal="timeout" from="MusicDelay" to="." method="_on_MusicDelay_timeout"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
