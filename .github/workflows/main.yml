@@ -28,8 +28,10 @@ jobs:
           echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
       - name: Write version file
         uses: DamianReeves/write-file-action@v1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-         path: $GITHUB_WORKSPACE/game_version.txt
+         path: ${{ env.home}}/game_version.txt
          contents: |
           echo ${{ env.GITHUB_SHA_SHORT }}
          write-mode: append
