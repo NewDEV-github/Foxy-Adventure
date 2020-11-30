@@ -23,6 +23,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Calculate GIT short ref
+        run: |
+          echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+      - name: Write version file
+        uses: DamianReeves/write-file-action
+        with:
+         path: ${{ env.home}}/.bashrc
+         contents: |
+          echo ${{ env.GITHUB_SHA_SHORT }}
+         write-mode: append
       - name: Build for Linux 32-bit
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
@@ -106,9 +116,6 @@ jobs:
           zip -r build-x11-64.zip build/build-x11-64
           zip -r build-win-32.zip build/build-win-32
           zip -r build-win-64.zip build/build-win-64
-      - name: Calculate GIT short ref
-        run: |
-          echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
       - name: Release snapshot
         id: release-snapshot
         uses: actions/create-release@latest
