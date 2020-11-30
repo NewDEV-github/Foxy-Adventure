@@ -29,7 +29,7 @@ jobs:
       - name: Write version file
         uses: DamianReeves/write-file-action
         with:
-         path: ${{ env.home}}/.bashrc
+         path: $GITHUB_WORKSPACE/game_version.txt
          contents: |
           echo ${{ env.GITHUB_SHA_SHORT }}
          write-mode: append
