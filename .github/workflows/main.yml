@@ -50,7 +50,7 @@ jobs:
       - name: Build for Linux 32-bit
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
-        uses: josephbmanley/build-godot-action@v1.4.0
+        uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
          name: FoxyAdventure.32
@@ -65,7 +65,7 @@ jobs:
       - name: Build for Linux 64-bit
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
-        uses: josephbmanley/build-godot-action@v1.4.0
+        uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
          name: FoxyAdventure.64
@@ -80,7 +80,7 @@ jobs:
       - name: Build for Windows 32-bit
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
-        uses: josephbmanley/build-godot-action@v1.4.0
+        uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
          name: FoxyAdventure.exe
@@ -95,7 +95,7 @@ jobs:
       - name: Build for Windows 64-bit
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
-        uses: josephbmanley/build-godot-action@v1.4.0
+        uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
          name: FoxyAdventure.exe
@@ -110,7 +110,7 @@ jobs:
       - name: Build for Mac OS X
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
-        uses: josephbmanley/build-godot-action@v1.4.0
+        uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
          name: FoxyAdventure.zip
