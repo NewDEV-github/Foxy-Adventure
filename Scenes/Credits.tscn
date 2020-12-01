@@ -430,8 +430,9 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
+margin_top = 600.0
 margin_right = 510.0
-margin_bottom = 3986.0
+margin_bottom = 4766.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/bold_font = ExtResource( 2 )
@@ -462,11 +463,11 @@ NewTheFox
 [b][wave amp=50 freq=1]Godot-Videodecoder Development Team[/wave][/b]
 
 [b]Developers[/b]
-kidrigger
+Anish Bhobe (KidRigger)
 jamie-pate
 starryalley
 [rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow]
-akien-mga
+Rémi Verschelde (akien-mga)
 
 [b][tornado radius=5 freq=2]Godot Engine Devlopment Team[/tornado][/b]
 
@@ -559,7 +560,8 @@ Julian Murgia (StraToN)
 Justo Delgado (mrcdk)
 Kelly Thomas (KellyThomas)
 Kostadin Damyanov (Max-Might)
-K. S. Ernest (iFire) Lee (fire)
+K. S. Ernest (iFire)
+Lee (fire)
 lawnjelly
 Leon Krause (eska014)
 Lucien Menassol (Kanabenki)
@@ -634,6 +636,9 @@ Yuri Roubinsky (Chaosus)
 Zak Stam (zaksnet)
 Zher Huei Lee (leezh)
 ZuBsPaCe
+
+[b]Special Thanks[/b]
+LeD
 [/center]"
 text = "
 New DEV Development Team
@@ -660,11 +665,11 @@ JezSonic
 Godot-Videodecoder Development Team
 
 Developers
-kidrigger
+Anish Bhobe (KidRigger)
 jamie-pate
 starryalley
 JezSonic
-akien-mga
+Rémi Verschelde (akien-mga)
 
 Godot Engine Devlopment Team
 
@@ -757,7 +762,8 @@ Julian Murgia (StraToN)
 Justo Delgado (mrcdk)
 Kelly Thomas (KellyThomas)
 Kostadin Damyanov (Max-Might)
-K. S. Ernest (iFire) Lee (fire)
+K. S. Ernest (iFire)
+Lee (fire)
 lawnjelly
 Leon Krause (eska014)
 Lucien Menassol (Kanabenki)
@@ -832,6 +838,9 @@ Yuri Roubinsky (Chaosus)
 Zak Stam (zaksnet)
 Zher Huei Lee (leezh)
 ZuBsPaCe
+
+Special Thanks
+LeD
 "
 fit_content_height = true
 scroll_active = false
@@ -843,7 +852,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 3986.0
+margin_bottom = 4166.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -856,4 +865,5 @@ bus = "Music"
 autoplay = "credits"
 anims/credits = ExtResource( 6 )
 anims/credits_easteregg = SubResource( 1 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

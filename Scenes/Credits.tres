@@ -14,7 +14,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 237 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 600 ), Vector2( 0, -3075 ) ]
+"values": [ Vector2( 0, 600 ), Vector2( 0, -3800 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("HBoxContainer/RichTextLabel:modulate")

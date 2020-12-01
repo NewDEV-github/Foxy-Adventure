@@ -42,7 +42,7 @@ jobs:
         uses: brettdorrans/write-version-to-file@v1.0.0
         with:
     # The filename to write the version tag to
-         filename: /game_version.txt
+         filename: ./game_version.txt
       - name: Build for Linux 32-bit
   # You may pin to the exact commit or the version.
   # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
