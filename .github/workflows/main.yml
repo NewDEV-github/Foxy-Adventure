@@ -34,7 +34,7 @@ jobs:
           git config --local user.name "JezSonic"
           git config --local user.email "karoltomaszewskimusic@gmail.com"
           git add game_version.txt
-          git commit -m "Updating the repository GitHub html pages in the docs folder"
+          git commit -m "Updating game verion file..."
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
         with:
