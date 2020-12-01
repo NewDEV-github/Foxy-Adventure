@@ -31,7 +31,6 @@ jobs:
       - name: Update game_version.txt file # transfer the new html files back into the repository
         run: |
           echo ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
-          ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
           git config --local user.name "JezSonic"
           git config --local user.email "karoltomaszewskimusic@gmail.com"
           git add game_version.txt
@@ -41,16 +40,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
-      - name: Release snapshot
-        id: release-snapshot
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.GITHUB_SHA_SHORT }}
-          release_name: Release from ${{ env.GITHUB_SHA_SHORT }} commit
-          draft: false
-          prerelease: false
       #- name: Write Version to File
   # You may pin to the exact commit or the version.
   # uses: brettdorrans/write-version-to-file@ea48c38c3afc479e8b2645a19743c24200966f3d
@@ -141,6 +130,16 @@ jobs:
           zip -r build-x11-64.zip build/build-x11-64
           zip -r build-win-32.zip build/build-win-32
           zip -r build-win-64.zip build/build-win-64
+      - name: Release snapshot
+        id: release-snapshot
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.GITHUB_SHA_SHORT }}
+          release_name: Release from ${{ env.GITHUB_SHA_SHORT }} commit
+          draft: false
+          prerelease: false
       - name: Upload Release Asset (Linux 32-bit)
         uses: actions/upload-release-asset@v1
         env:
