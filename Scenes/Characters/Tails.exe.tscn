@@ -1,0 +1,325 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Characters/character_control.gd" type="Script" id=2]
+[ext_resource path="res://Graphics/Sprites/sprite.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/pause_button.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle1"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1.03526 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:region_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 13, 380, 37 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "jump"
+length = 0.7
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.346, 0.699 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -180.0, -90.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:region_enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 465.807, 45.5556, 234.193, 47.5556 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "run"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 291.833, 95.5, 496.146, 34.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:region_enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12.6547, 12.7782 )
+
+[node name="Tails" type="KinematicBody2D"]
+z_index = 1
+collision/safe_margin = 0.1
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+drag_margin_left = 0.08
+drag_margin_top = 0.4
+drag_margin_right = 0.0
+drag_margin_bottom = 0.15
+editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 6 )]
+
+[node name="right" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2( 212.132, 492.147 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+normal = ExtResource( 1 )
+action = "ui_right"
+visibility_mode = 1
+
+[node name="pause" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2( 907.926, 5.65686 )
+normal = ExtResource( 5 )
+action = "ui_cancel"
+visibility_mode = 1
+
+[node name="jump" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2( 975.808, 478.005 )
+rotation = 1.5708
+normal = ExtResource( 1 )
+action = "ui_accept"
+visibility_mode = 1
+
+[node name="left" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2( 62.2255, 492.147 )
+normal = ExtResource( 1 )
+action = "ui_left"
+visibility_mode = 1
+
+[node name="Anim" type="Node2D" parent="."]
+position = Vector2( 0, -4 )
+
+[node name="Sprite" type="Sprite" parent="Anim"]
+position = Vector2( 0.5, 4.5 )
+texture = ExtResource( 4 )
+hframes = 8
+frame = 4
+region_enabled = true
+region_rect = Rect2( 0, 13, 380, 37 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Anim/Sprite"]
+playback_speed = 0.3
+anims/idle1 = SubResource( 1 )
+anims/jump = SubResource( 2 )
+anims/run = SubResource( 3 )
+
+[node name="LowCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 1.06067, -1.01041 )
+shape = SubResource( 4 )
+
+[node name="LeftGroundSensor" type="RayCast2D" parent="."]
+position = Vector2( -9, 0 )
+enabled = true
+cast_to = Vector2( 0, 36 )
+
+[node name="RightGroundSensor" type="RayCast2D" parent="."]
+position = Vector2( 9, 0 )
+enabled = true
+cast_to = Vector2( 0, 36 )
+
+[node name="RightWallSensor" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 11, 0 )
+
+[node name="LeftWallSensor" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -11, 0 )

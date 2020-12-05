@@ -1,0 +1,4 @@
+# Import cache
+.import/
+.mono/
+android/

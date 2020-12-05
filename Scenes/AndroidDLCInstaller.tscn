@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/AndroidDLCInstaller.gd" type="Script" id=1]
+
+[node name="Control" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dlc_foxes" type="HTTPRequest" parent="."]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+margin_right = 1024.0
+margin_bottom = 582.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dlcfoxes" type="Button" parent="VBoxContainer2/VBoxContainer"]
+margin_left = 473.0
+margin_right = 551.0
+margin_bottom = 582.0
+text = "DLC Foxes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+margin_top = 586.0
+margin_right = 1024.0
+margin_bottom = 600.0
+[connection signal="request_completed" from="dlc_foxes" to="." method="_on_dlc_foxes_request_completed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/dlcfoxes" to="." method="_on_dlcfoxes_pressed"]

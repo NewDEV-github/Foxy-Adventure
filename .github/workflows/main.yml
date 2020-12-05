@@ -1,0 +1,187 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    tags:
+      - '*'
+    branches: [ master ]
+    paths-ignore:
+    - 'game_version.txt'
+  pull_request:
+    branches: [ master ]
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Calculate GIT short ref
+        run: |
+          echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+      - name: Update game_version.txt file # transfer the new html files back into the repository
+        run: |
+          echo ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
+          git config --local user.name "JezSonic"
+          git config --local user.email "karoltomaszewskimusic@gmail.com"
+          git add game_version.txt
+          git commit -m "Updating game verion file..."
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+      #- name: Write Version to File
+  # You may pin to the exact commit or the version.
+  # uses: brettdorrans/write-version-to-file@ea48c38c3afc479e8b2645a19743c24200966f3d
+       # uses: brettdorrans/write-version-to-file@v1.0.0
+        #with:
+    # The filename to write the version tag to
+         #filename: game_version.txt
+      - name: Build for Linux 32-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.32
+    # Name of the preset in `export_presets.cfg` to use
+         preset: x11-32
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-x11-32
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+      # Runs a single command using the runners shell
+      - name: Build for Linux 64-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.64
+    # Name of the preset in `export_presets.cfg` to use
+         preset: x11-64
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-x11-64
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+    # Whether or not to use `--export-debug`
+      - name: Build for Windows 32-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.exe
+    # Name of the preset in `export_presets.cfg` to use
+         preset: win-32
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-win-32
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+    # Whether or not to use `--export-debug`
+      - name: Build for Windows 64-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.exe
+    # Name of the preset in `export_presets.cfg` to use
+         preset: win-64
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-win-64
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+         # Whether or not to use `--export-debug`
+      - name: Build for Mac OS X
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.zip
+    # Name of the preset in `export_presets.cfg` to use
+         preset: osx
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-osx
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+    # Whether or not to use `--export-debug`
+      - name: ZIP Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          zip -r build-x11-32.zip build/build-x11-32
+          zip -r build-x11-64.zip build/build-x11-64
+          zip -r build-win-32.zip build/build-win-32
+          zip -r build-win-64.zip build/build-win-64
+      - name: Release snapshot
+        id: release-snapshot
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.GITHUB_SHA_SHORT }}
+          release_name: Release from ${{ env.GITHUB_SHA_SHORT }} commit
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset (Linux 32-bit)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./build-x11-32.zip
+          asset_name: build-x11-32.zip
+          asset_content_type: application/zip
+      - name: Upload Release Asset (Linux 64-bit)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./build-x11-64.zip
+          asset_name: build-x11-64.zip
+          asset_content_type: application/zip
+      - name: Upload Release Asset (Windows 32-bit)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./build-win-32.zip
+          asset_name: build-win-32.zip
+          asset_content_type: application/zip
+      - name: Upload Release Asset (Windows 64-bit)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./build-win-64.zip
+          asset_name: build-win-64.zip
+          asset_content_type: application/zip
+      - name: Upload Release Asset (Mac OS X)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: build/build-osx/FoxyAdventure.zip
+          asset_name: build-osx.zip
+          asset_content_type: application/zip

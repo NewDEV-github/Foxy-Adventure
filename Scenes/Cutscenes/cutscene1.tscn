@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/cutscene_player.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CutsceneVideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+subtitles_enanled = true
+subtitles_file = "user://subs.srt"
+skip_button = NodePath("../Button")
+subtitles_text_rich_text_label = NodePath("../RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -98.0
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "skip"
