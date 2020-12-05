@@ -43,7 +43,7 @@ var version_commit:String = "unknown"
 var current_save_name = ""
 var new_characters:Array = [
 #	"NewTheFox",
-	"Tails.exe",
+#	"Tails.exe",
 	"Tails",
 ]
 func construct_game_version():
@@ -94,28 +94,17 @@ func _ready():
 	cfile.load(Globals.install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
 	##LOAD DLCS
-	#LEO
+	#Tails.exe
 	
-	if file.file_exists('res://dlcs/dlc_leo.gd') and file.file_exists('user://dlcs/dlc_leo.pck'):
-		var script = load('res://dlcs/dlc_leo.gd').new()
+	if file.file_exists('res://dlcs/dlc_tails_exe.gd'):
+		var script = load('res://dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
-		ProjectSettings.load_resource_pack("user://dlcs/dlc_leo.pck")
+		if file.file_exists('user://dlcs/%s.pck' % script.pack_name):
+			ProjectSettings.load_resource_pack('user://dlcs/%s.pck' % script.pack_name)
 	#Classic Sonic
-	if file.file_exists('res://dlcs/dlc_classic_sonic.gd') and file.file_exists('user://dlcs/dlc_classic_sonic.pck'):
-		var script = load('res://dlcs/dlc_classic_sonic.gd').new()
-		script.add_characters()
-		script.add_stages()
-		script.add_dlc()
-		ProjectSettings.load_resource_pack("user://dlcs/dlc_classic_sonic.pck")
-	#New.exe
-	if file.file_exists('res://dlcs/dlc_new_exe.gd') and file.file_exists('user://dlcs/dlc_new_exe.pck'):
-		var script = load('res://dlcs/dlc_new_exe.gd').new()
-		script.add_characters()
-		script.add_stages()
-		script.add_dlc()
-		ProjectSettings.load_resource_pack("user://dlcs/dlc_new_exe.pck")
+	
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
