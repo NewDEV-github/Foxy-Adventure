@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_1.gd" type="Script" id=2]
 [ext_resource path="res://Audio/BGM/1stage.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Characters/enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184, 192 )
@@ -20,6 +21,8 @@ extents = Vector2( 24, 10 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 
 [node name="start_position" type="Position2D" parent="."]
 position = Vector2( 166.82, 78.468 )

@@ -20,7 +20,8 @@ func _ready() -> void:
 		vp.play()
 		yield($VideoPlayer,"finished")
 	else:
-		OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
+		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
+		print(str(player))
 	file = File.new()
 #	print(str(PI))
 #	if Globals.release_mode:

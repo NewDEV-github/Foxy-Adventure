@@ -10,7 +10,9 @@ func generate_download_link() -> String:
 		"Windows": "win",
 		"X11": "x11"
 	}
-	var os_short = os_shorts[OS.get_name()]
+	var os_short
+	if os_shorts.has(OS.get_name()):
+		os_short = os_shorts[OS.get_name()]
 	var bits = Globals.bits
 #	var tag_name = "Release from "+ tag
 	var request_url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/latest/build-%s-%s.zip" % [os_short, bits]
