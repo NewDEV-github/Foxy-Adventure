@@ -101,8 +101,7 @@ func _ready():
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
-		if file.file_exists('user://dlcs/%s.pck' % script.pack_name):
-			ProjectSettings.load_resource_pack('user://dlcs/%s.pck' % script.pack_name)
+#		ProjectSettings.load_resource_pack('res://dlcs/dlc_tails_exe.pck')
 	#Classic Sonic
 	
 	var save_file = ConfigFile.new()

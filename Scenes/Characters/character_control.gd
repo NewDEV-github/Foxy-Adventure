@@ -119,6 +119,16 @@ func _physics_process(delta):
 			sprite.scale.x = -1
 		if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
 			sprite.scale.x = 1
+#		if on_floor:
+#			if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
+#				sprite.scale.x = -1
+#			if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
+#				sprite.scale.x = 1
+#		else:
+#			if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
+#				sprite.scale.y = -1
+#			if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
+#				sprite.scale.y = 1
 		if linear_vel.y < 0:
 			new_anim = "jump"
 		else:
