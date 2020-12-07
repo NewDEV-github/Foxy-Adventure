@@ -31,8 +31,8 @@ jobs:
       - name: Update game_version.txt file # transfer the new html files back into the repository
         run: |
           echo ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
-          git config --local user.name "JezSonic"
-          git config --local user.email "karoltomaszewskimusic@gmail.com"
+          git config --local user.name "Github Actions"
+          git config --local user.email "githubactions@github.com"
           git add game_version.txt
           git commit -m "Updating game verion file..."
       - name: Push changes # push the output folder to your repo
