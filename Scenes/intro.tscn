@@ -36,7 +36,6 @@ __meta__ = {
 [node name="CFGDownloader" type="HTTPRequest" parent="."]
 
 [node name="PCKDownloader" type="HTTPRequest" parent="."]
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

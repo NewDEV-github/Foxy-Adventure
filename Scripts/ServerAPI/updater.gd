@@ -3,7 +3,7 @@ var intro_played = false
 var file = File.new()
 
 func _ready() -> void:
-	if not str(OS.get_name()) == "Android":
+	if not str(OS.get_name()) == "":
 		var stream = VideoStreamGDNative.new()
 		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
 		print(file)
@@ -19,9 +19,9 @@ func _ready() -> void:
 		vp.stream_position = sp
 		vp.play()
 		yield($VideoPlayer,"finished")
-	else:
-		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
-		print(str(player))
+#	else:
+#		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
+#		print(str(player))
 	file = File.new()
 #	print(str(PI))
 #	if Globals.release_mode:

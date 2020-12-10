@@ -96,12 +96,12 @@ func _ready():
 	##LOAD DLCS
 	#Tails.exe
 	
-	if file.file_exists('res://dlcs/dlc_tails_exe.gd'):
-		var script = load('res://dlcs/dlc_tails_exe.gd').new()
+	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
+		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()
 		script.add_stages()
 		script.add_dlc()
-#		ProjectSettings.load_resource_pack('res://dlcs/dlc_tails_exe.pck')
+		ProjectSettings.load_resource_pack(install_base_path + 'dlcs/dlc_tails_exe.pck')
 	#Classic Sonic
 	
 	var save_file = ConfigFile.new()

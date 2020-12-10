@@ -10,7 +10,7 @@ var invalid_session_is_resumable : bool
 
 func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true):
 	if text != "":
-		var new_text = "<test@&763764844381864007>\n\n\n**Message: **\n" + text + "\n\n\n**Response Email: **" + resp_email + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
+		var new_text = "<@&763764844381864007>\n\n\n**Message: **\n" + text + "\n\n\n**Response Email: **" + resp_email + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
 		var myEmbed = {
 			"author": {
 				"name": "Foxy Adventure"
@@ -26,7 +26,7 @@ func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true)
 		}
 		var query = JSON.print(params)
 #		var channel_id = "763763543073226822/763802916032872488" #feedback channel
-		request("https://discord.com/api/webhooks/779088328225587271/wIT90qaOW2LA0PrrQZiSbglEPzyxoNSOjNDoeyCpTKIhsyONC9g5DyEVTWLedPguDEW_", headers, true, HTTPClient.METHOD_POST, query)
+		request(Marshalls.base64_to_utf8("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvNzc5MDg4MzI4MjI1NTg3MjcxL3dJVDkwcWFPVzJMQTBQcnJRWmlTYmdsRVB6eXhvTlNPak5Eb2V5Q3BUS0loc3lPTkM5ZzVEeUVWVFdMZWRQZ3VERVdf"), headers, true, HTTPClient.METHOD_POST, query)
 		yield(self, "request_completed")
 		if thanks_popup:
 			$Expand.hide()
@@ -74,8 +74,8 @@ func _on_Facebook_pressed():
 
 func send_err_log_msg():
 	var f = File.new()
-	f.open("user://logs/engine_log.txt", File.READ)
-	var new_text = "<test@&763764844381864007> \n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
+	yield(f.open("user://logs/engine_log.txt", File.READ))
+	var new_text = "<@&763764844381864007> \n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
 	var headers := ["Content-Type: application/json"]
 	var myEmbed = {
 		"author": {
@@ -94,4 +94,4 @@ func send_err_log_msg():
 	var query = JSON.print(params)
 #	var channel_id = "773150027106484234"
 	f.close()
-	request("https://discord.com/api/webhooks/779088315675574313/c6iXQGxNQNcc6c_owGOhv1fAcE3BQDN3Ryhl5qWOWU_l2k_ZSWC-LplfT7-Y1uD1xuLp", headers, true, HTTPClient.METHOD_POST, query)
+	request(Marshalls.base64_to_utf8("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvNzc5MDg4MzE1Njc1NTc0MzEzL2M2aVhRR3hOUU5jYzZjX293R09odjFmQWNFM0JRRE4zUnlobDVxV09XVV9sMmtfWlNXQy1McGxmVDctWTF1RDF4dUxw"), headers, true, HTTPClient.METHOD_POST, query)
