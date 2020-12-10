@@ -9,4 +9,5 @@ About the game:
 Authors: NewTheFox, JezSonic (aka sonic, sonic.exe), GeKaGD (aka Gekon)
 
 Copyright 2020 - present New-DEV
+
 Made with [Godot Engine](https://godotengine.org)
