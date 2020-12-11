@@ -5,7 +5,7 @@
 [ext_resource path="res://Graphics/bullet.png" type="Texture" id=3]
 [ext_resource path="res://Audio/SFX/sound_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/SFX/sound_explode.wav" type="AudioStream" id=5]
-[ext_resource path="res://Audio/SFX/walk.wav" type="AudioStream" id=6]
+[ext_resource path="res://walk.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "explode"
@@ -131,7 +131,10 @@ height = 10.3945
 blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id=7]
+<<<<<<< HEAD
 extents = Vector2( 236.667, 110 )
+=======
+>>>>>>> 4b83866ec90cf8b52da973fa78fa5639410a7446
 
 [node name="Enemy" type="KinematicBody2D"]
 scale = Vector2( 0.6, 0.6 )
@@ -205,3 +208,7 @@ shape = SubResource( 7 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D"]
 stream = ExtResource( 6 )
 autoplay = true
+<<<<<<< HEAD
+=======
+bus = "SFX"
+>>>>>>> 4b83866ec90cf8b52da973fa78fa5639410a7446

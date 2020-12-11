@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/Ubuntu-L20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=2]
+[ext_resource path="res://Graphics/pause_button.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="PauseMenu" type="WindowDialog" parent="." instance=ExtResource( 6 )]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.5
+margin_top = -206.5
+margin_right = 138.5
+margin_bottom = 206.5
+theme = ExtResource( 2 )
+custom_fonts/title_font = ExtResource( 1 )
+window_title = "KEY_PAUSE_MENU"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="topright" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="TouchScreenButton" parent="topright"]
+position = Vector2( -83.074, -0.34314 )
+normal = ExtResource( 3 )
+action = "ui_cancel"
+visibility_mode = 1
+
+[node name="downright" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jump" type="TouchScreenButton" parent="downright"]
+position = Vector2( 4, -119 )
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+normal = ExtResource( 4 )
+action = "ui_accept"
+visibility_mode = 1
+
+[node name="downleft2" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="right" type="TouchScreenButton" parent="downleft2"]
+position = Vector2( 323, -9 )
+rotation = -3.14159
+scale = Vector2( 2, 2 )
+normal = ExtResource( 4 )
+action = "ui_right"
+visibility_mode = 1
+
+[node name="downleft1" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="TouchScreenButton" parent="downleft1"]
+position = Vector2( 34, -137 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 4 )
+action = "ui_left"
+visibility_mode = 1

@@ -17,12 +17,17 @@ var anim=""
 var speed = 0.5
 var scene
 onready var sprite = $Anim/Sprite
+func _ready() -> void:
+	if str(OS.get_name()) == "Android":
+		$Camera2D.zoom = Vector2(1.4,1.4)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
 #	$ui/Control/GameUI.connect("FPSHide", self, "_on_fps_hide")
 #	$ui/Control/GameUI.connect("FPSShow", self, "_on_fps_show")
 func _physics_process(delta):
+	$Camera2D.smoothing_enabled = Globals.camera_smoothing_enabled
+	$Camera2D.smoothing_speed = Globals.camera_smoothing_speed
 #	if Input.is_action_just_pressed("console"):
 #		if $console/console.visible == false:
 #			$console/console.show()

@@ -68,6 +68,8 @@ var levels_scan_path:Array = [
 var dlc_name_list:Array = [
 	
 ]
+var camera_smoothing_enabled = false
+var camera_smoothing_speed = 0
 var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
 #var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
