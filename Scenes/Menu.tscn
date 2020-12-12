@@ -213,6 +213,7 @@ __meta__ = {
 }
 
 [node name="NewSave" type="WindowDialog" parent="."]
+visible = true
 margin_left = 234.0
 margin_top = 11.0
 margin_right = 605.0

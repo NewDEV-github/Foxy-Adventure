@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Ubuntu-L20.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
-[ext_resource path="res://Audio/BGM/pause_menu.ogg" type="AudioStream" id=4]
 [ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=5]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=6]
 
@@ -47,13 +46,6 @@ __meta__ = {
 }
 
 [node name="HTTPRequest" parent="." instance=ExtResource( 6 )]
-
-[node name="PauseMenu" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-bus = "PauseMenu"
-
-[node name="MusicDelay" type="Timer" parent="."]
-one_shot = true
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 pause_mode = 2
@@ -103,7 +95,6 @@ custom_fonts/font = ExtResource( 1 )
 text = "Feedback"
 
 [connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
-[connection signal="timeout" from="MusicDelay" to="." method="_on_MusicDelay_timeout"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Buttons/QuitGame" to="." method="_on_QuitGame_pressed"]
