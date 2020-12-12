@@ -74,7 +74,7 @@ func _on_Facebook_pressed():
 
 func send_err_log_msg():
 	var f = File.new()
-	yield(f.open("user://logs/engine_log.txt", File.READ))
+	f.open("user://logs/engine_log.txt", File.READ)
 	var new_text = "<@&763764844381864007> \n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
 	var headers := ["Content-Type: application/json"]
 	var myEmbed = {

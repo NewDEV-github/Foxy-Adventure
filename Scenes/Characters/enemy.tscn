@@ -131,10 +131,7 @@ height = 10.3945
 blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id=7]
-<<<<<<< HEAD
 extents = Vector2( 236.667, 110 )
-=======
->>>>>>> 4b83866ec90cf8b52da973fa78fa5639410a7446
 
 [node name="Enemy" type="KinematicBody2D"]
 scale = Vector2( 0.6, 0.6 )
@@ -207,8 +204,6 @@ shape = SubResource( 7 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D"]
 stream = ExtResource( 6 )
+volume_db = -10.0
 autoplay = true
-<<<<<<< HEAD
-=======
 bus = "SFX"
->>>>>>> 4b83866ec90cf8b52da973fa78fa5639410a7446

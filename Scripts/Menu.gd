@@ -126,6 +126,7 @@ func dir_contents(path):
 		print("An error occurred when trying to access the path.")
 
 
+
 func _on_Menu_tree_exiting():
 	pass
 

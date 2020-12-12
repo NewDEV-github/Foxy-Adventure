@@ -42,7 +42,7 @@ var version_string:String = "alpha"
 var version_commit:String = "unknown"
 var current_save_name = ""
 var new_characters:Array = [
-	"NewTheFox",
+	"New The Fox",
 	"Tails",
 ]
 func construct_game_version():

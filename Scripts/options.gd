@@ -83,8 +83,6 @@ func load_settings():
 			TranslationServer.set_locale(str(save_file.get_value('Game', 'locale', 'en')))
 #		if save_file.has_section_key('Game', 'minimap_enabled'):
 #			$tabs/Rozgrywka/box/minimapenabled/minimap.set_pressed(bool(str(save_file.get_value('Game', 'minimap_enabled', true))))
-		if save_file.has_section_key('Game', 'game_clock'):
-			Globals.set_day_night_mode(str(save_file.get_value('Game', 'target_fps', 60)))
 #		if save_file.has_section_key('Game', 'nsfw_enabled'):
 		
 #			Globals.set_nsfw(bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
