@@ -3,7 +3,7 @@ var intro_played = false
 var file = File.new()
 
 func _ready() -> void:
-	if not str(OS.get_name()) == "":
+	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
 		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
 		print(file)
