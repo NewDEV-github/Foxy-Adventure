@@ -4,7 +4,7 @@ var save_file_names = []
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-
+signal no_saves_found
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 #	popup()
@@ -21,9 +21,13 @@ func _ready() -> void:
 					save_file_names.append(get_save_name(file_name.get_basename()))
 			file_name = dir.get_next()
 	else:
+		
 		print("An error occurred when trying to access the path.")
-	for i in save_file_names:
-		$ItemList.add_item(i)
+	if save_file_names.size() == 0:
+		emit_signal("no_saves_found")
+	else:
+		for i in save_file_names:
+			$ItemList.add_item(i)
 
 func get_save_name(file_name:String):
 	return file_name.trim_prefix("save_")

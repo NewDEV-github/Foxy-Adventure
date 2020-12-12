@@ -148,6 +148,13 @@ func _on_LoadGame_pressed() -> void:
 
 
 func _on_CreateNewSave_pressed() -> void:
-	Globals.current_save_name = $NewSave/LineEdit.text
+	if not $NewSave/LineEdit.text == "":
+		Globals.current_save_name = $NewSave/LineEdit.text
+	else:
+		print("Enter the save name!")
 	$CharacterSelect.popup_centered()
 	#Globals.save_level(0, $NewSave/LineEdit.text)
+
+
+func _on_SaveLoader_no_saves_found() -> void:
+	$VBoxContainer/LoadGame.disabled = true

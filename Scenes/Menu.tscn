@@ -255,4 +255,5 @@ __meta__ = {
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/dsc" to="." method="_on_Options2_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="no_saves_found" from="SaveLoader" to="." method="_on_SaveLoader_no_saves_found"]
 [connection signal="pressed" from="NewSave/CreateNewSave" to="." method="_on_CreateNewSave_pressed"]
