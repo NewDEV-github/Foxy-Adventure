@@ -3,22 +3,7 @@ var intro_played = false
 var file = File.new()
 
 func _ready() -> void:
-	if not str(OS.get_name()) == "Android":
-		var stream = VideoStreamGDNative.new()
-		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
-		print(file)
-		stream.set_file(file)
-		var vp = $VideoPlayer
-		vp.stream = stream
-		var sp = vp.stream_position
-		# hack: to get the stream length, set the position to a negative number
-		# the plugin will set the position to the end of the stream instead.
-		vp.stream_position = -1
-		var duration = vp.stream_position
-	#	$ProgressBar.max_value = duration
-		vp.stream_position = sp
-		vp.play()
-		yield($VideoPlayer,"finished")
+	
 #	else:
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))
@@ -43,7 +28,7 @@ func _ready() -> void:
 	$Timer.start()
 	$VideoPlayer.stop()
 	#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
-	_on_VideoPlayer_finished()
+	
 #	if intro_played:
 #		get_tree().change_scene("res://Scenes/Menu.tscn")
 func copy_recursive(from, to):
@@ -68,19 +53,26 @@ func copy_recursive(from, to):
 	else:
 		print("Error copying " + from + " to " + to)
 func _on_AnimationPlayer_animation_finished(_anim_name):
-#	intro_played = true
-	get_tree().change_scene('res://Scenes/Menu.tscn')
-
-	
+	if not str(OS.get_name()) == "Android":
+		var stream = VideoStreamGDNative.new()
+		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
+		print(file)
+		stream.set_file(file)
+		var vp = $VideoPlayer
+		vp.stream = stream
+		var sp = vp.stream_position
+		# hack: to get the stream length, set the position to a negative number
+		# the plugin will set the position to the end of the stream instead.
+		vp.stream_position = -1
+		var duration = vp.stream_position
+	#	$ProgressBar.max_value = duration
+		vp.stream_position = sp
+		vp.play()
+		yield($VideoPlayer,"finished")
+		_on_VideoPlayer_finished()
 ###DLC DOWNLOADING
 
-func play_native_video(videopath)-> void:
-	var stream_gdn = VideoStreamGDNative.new()
-	stream_gdn.set_file(videopath)
-	$VideoPlayer.stream = stream_gdn
-	$VideoPlayer.stream_position = 0
-	$VideoPlayer.play()
-	print("Playing: " + videopath)
+
 func _on_VideoPlayer_finished():
 	if not get_tree().change_scene('res://Scenes/Menu.tscn'):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
