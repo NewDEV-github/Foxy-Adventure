@@ -5,7 +5,7 @@
 [ext_resource path="res://Graphics/bullet.png" type="Texture" id=3]
 [ext_resource path="res://Audio/SFX/sound_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/SFX/sound_explode.wav" type="AudioStream" id=5]
-[ext_resource path="res://walk.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SFX/walk.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "explode"
