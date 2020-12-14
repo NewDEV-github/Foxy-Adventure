@@ -77,7 +77,7 @@ position = Vector2( 4, -119 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 normal = ExtResource( 4 )
-action = "ui_accept"
+action = "jump"
 visibility_mode = 1
 
 [node name="downleft2" type="Control" parent="."]

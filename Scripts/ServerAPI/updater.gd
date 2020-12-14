@@ -69,7 +69,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 		vp.stream_position = sp
 		vp.play()
 		yield($VideoPlayer,"finished")
-		_on_VideoPlayer_finished()
+	_on_VideoPlayer_finished()
 ###DLC DOWNLOADING
 
 

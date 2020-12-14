@@ -124,7 +124,7 @@ func load_level(save_name:String):
 	sonyk.load("user://save_"+save_name+".cfg")
 	var stage = sonyk.get_value("save", "stage")
 	var character_pth = sonyk.get_value("save", "character")
-	coins = sonyk.get_value("save", "coins")
+	coins = int(sonyk.get_value("save", "coins"))
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]

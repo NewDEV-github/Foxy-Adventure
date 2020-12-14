@@ -144,7 +144,7 @@ func _on_NewGame_pressed() -> void:
 
 
 func _on_LoadGame_pressed() -> void:
-	$SaveLoader.popup()
+	$SaveLoader.popup_centered()
 
 
 func _on_CreateNewSave_pressed() -> void:

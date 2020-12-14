@@ -18,7 +18,9 @@ func _ready() -> void:
 			else:
 				print("Found file: " + file_name)
 				if file_name.get_extension() == "cfg" and file_name.begins_with("save_"):
-					save_file_names.append(get_save_name(file_name.get_basename()))
+					var save_name = get_save_name(file_name.get_basename())
+					if not save_name == "":
+						save_file_names.append(save_name)
 			file_name = dir.get_next()
 	else:
 		
