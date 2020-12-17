@@ -156,7 +156,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 169.0
 margin_bottom = 17.0
-text = "Facebook"
+text = "FaQ"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -283,6 +283,7 @@ dialog_autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="timeout" from="HeartbeatTimer" to="." method="_on_HeartbeatTimer_timeout"]
 [connection signal="timeout" from="InvalidSessionTimer" to="." method="_on_InvalidSessionTimer_timeout"]
 [connection signal="pressed" from="FeedBack/TabContainer/Discord/options/DM/DSCdm" to="." method="_on_DSCdm_pressed"]

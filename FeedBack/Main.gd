@@ -26,7 +26,7 @@ func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true)
 		}
 		var query = JSON.print(params)
 #		var channel_id = "763763543073226822/763802916032872488" #feedback channel
-		request(Marshalls.base64_to_utf8("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvNzc5MDg4MzI4MjI1NTg3MjcxL3dJVDkwcWFPVzJMQTBQcnJRWmlTYmdsRVB6eXhvTlNPak5Eb2V5Q3BUS0loc3lPTkM5ZzVEeUVWVFdMZWRQZ3VERVdf"), headers, true, HTTPClient.METHOD_POST, query)
+		request(Marshalls.base64_to_utf8(str(SharedLibManager.webhook_feedback.get_data())), headers, true, HTTPClient.METHOD_POST, query)
 		yield(self, "request_completed")
 		if thanks_popup:
 			$Expand.hide()
@@ -62,15 +62,15 @@ func _on_TextEdit_text_changed():
 
 
 func _on_DSCServer_pressed():
-	OS.shell_open("https://discord.gg/MJmygUC")
+	OS.shell_open(SharedLibManager.discord_server.get_data())
 
 
 func _on_Website_pressed():
-	OS.shell_open("https://www.new-dev.ml")
+	OS.shell_open(SharedLibManager.website_main.get_data())
 
 
 func _on_Facebook_pressed():
-	pass # Replace with function body.
+	OS.shell_open(SharedLibManager.website_faq.get_data())
 
 func send_err_log_msg():
 	var f = File.new()
@@ -94,4 +94,4 @@ func send_err_log_msg():
 	var query = JSON.print(params)
 #	var channel_id = "773150027106484234"
 	f.close()
-	request(Marshalls.base64_to_utf8("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvNzc5MDg4MzE1Njc1NTc0MzEzL2M2aVhRR3hOUU5jYzZjX293R09odjFmQWNFM0JRRE4zUnlobDVxV09XVV9sMmtfWlNXQy1McGxmVDctWTF1RDF4dUxw"), headers, true, HTTPClient.METHOD_POST, query)
+	request(Marshalls.base64_to_utf8(str(SharedLibManager.webhook_err.get_data())), headers, true, HTTPClient.METHOD_POST, query)

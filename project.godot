@@ -101,6 +101,7 @@ ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
 GlobalsEditor="*res://Editor/GlobalsEditor.gd"
 Firebase="*res://addons/GDFirebase/Firebase.gd"
+SharedLibManager="*res://Scripts/SharedLibManager.gd"
 
 [config]
 

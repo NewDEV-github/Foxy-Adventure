@@ -93,7 +93,7 @@ func _on_Quit_pressed():
 
 
 func _on_Website_pressed():
-	website = OS.shell_open('https://www.new-dev.ml/games/foxy-adventure/')
+	website = OS.shell_open(SharedLibManager.website_project.get_data())
 #	pass     
 
 

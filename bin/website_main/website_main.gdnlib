@@ -1,0 +1,28 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+Android.armeabi-v7a="res://bin/website_main/libs/armeabi-v7a/libwebsite_main.so"
+Android.arm64-v8a="res://bin/website_main/libs/arm64-v8a/libwebsite_main.so"
+Android.x86="res://bin/website_main/libs/x86/libwebsite_main.so"
+Android.x86_64="res://bin/website_main/libs/x86_64/libwebsite_main.so"
+Windows.64="res://bin/website_main/win64/libwebsite_main.dll"
+Windows.32="res://bin/website_main/win32/libwebsite_main.dll"
+X11.64="res://bin/website_main/x11/libwebsite_main.so"
+X11.32="res://bin/website_main/x11_32/libwebsite_main.so"
+
+[dependencies]
+
+Android.armeabi-v7a=[  ]
+Android.arm64-v8a=[  ]
+Android.x86=[  ]
+Android.x86_64=[  ]
+Windows.64=[  ]
+Windows.32=[  ]
+X11.64=[  ]
+X11.32=[  ]

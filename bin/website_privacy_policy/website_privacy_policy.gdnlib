@@ -1,0 +1,28 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+Android.armeabi-v7a="res://bin/website_privacy_policy/libs/armeabi-v7a/libwebsite_privacy_policy.so"
+Android.arm64-v8a="res://bin/website_privacy_policy/libs/arm64-v8a/libwebsite_privacy_policy.so"
+Android.x86="res://bin/website_privacy_policy/libs/x86/libwebsite_privacy_policy.so"
+Android.x86_64="res://bin/website_privacy_policy/libs/x86_64/libwebsite_privacy_policy.so"
+Windows.64="res://bin/website_privacy_policy/win64/libwebsite_privacy_policy.dll"
+Windows.32="res://bin/website_privacy_policy/win32/libwebsite_privacy_policy.dll"
+X11.64="res://bin/website_privacy_policy/x11/libwebsite_privacy_policy.so"
+X11.32="res://bin/website_privacy_policy/x11_32/libwebsite_privacy_policy.so"
+
+[dependencies]
+
+Android.armeabi-v7a=[  ]
+Android.arm64-v8a=[  ]
+Android.x86=[  ]
+Android.x86_64=[  ]
+Windows.64=[  ]
+Windows.32=[  ]
+X11.64=[  ]
+X11.32=[  ]

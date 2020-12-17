@@ -4,7 +4,6 @@ var file = File.new()
 
 func _ready() -> void:
 	
-#	else:
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))
 	file = File.new()

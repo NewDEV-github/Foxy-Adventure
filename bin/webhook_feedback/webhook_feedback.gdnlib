@@ -1,0 +1,28 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+Android.armeabi-v7a="res://bin/webhook_feedback/libs/armeabi-v7a/libwebhook_feedback.so"
+Android.arm64-v8a="res://bin/webhook_feedback/libs/arm64-v8a/libwebhook_feedback.so"
+Android.x86="res://bin/webhook_feedback/libs/x86/libwebhook_feedback.so"
+Android.x86_64="res://bin/webhook_feedback/libs/x86_64/libwebhook_feedback.so"
+Windows.64="res://bin/webhook_feedback/win64/libwebhook_feedback.dll"
+Windows.32="res://bin/webhook_feedback/win32/libwebhook_feedback.dll"
+X11.64="res://bin/webhook_feedback/x11/libwebhook_feedback.so"
+X11.32="res://bin/webhook_feedback/x11_32/libwebhook_feedback.so"
+
+[dependencies]
+
+Android.armeabi-v7a=[  ]
+Android.arm64-v8a=[  ]
+Android.x86=[  ]
+Android.x86_64=[  ]
+Windows.64=[  ]
+Windows.32=[  ]
+X11.64=[  ]
+X11.32=[  ]
