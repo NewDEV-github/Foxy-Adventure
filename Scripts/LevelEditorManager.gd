@@ -2,7 +2,9 @@ extends HTTPRequest
 
 class_name LevelEditorManager
 signal editor_installed
+signal file_downloaded
 var dir = Directory.new()
+var f = File.new()
 var temp_download_path = "user://temp/"
 func generate_download_link() -> String:
 	var tag = ""
@@ -14,11 +16,14 @@ func generate_download_link() -> String:
 	if os_shorts.has(OS.get_name()):
 		os_short = os_shorts[OS.get_name()]
 	var bits = Globals.bits
-#	var tag_name = "Release from "+ tag
-	var request_url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/latest/build-%s-%s.zip" % [os_short, bits]
+	download_file = temp_download_path + "editor_version.txt"
+	request("https://newdev-github.github.io/Foxy-Adventure-Level-Editor/editor_version.txt")
+	yield(self, "request_completed")
+	f.open(temp_download_path + "editor_version.txt", File.READ)
+	var release_tag = f.get_line()
+	var request_url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/%s/build-%s-%s.zip" % [release_tag, os_short, bits]
 	print(request_url)
 	return request_url
-
 func execute_editor():
 	var file = File.new()
 	if file.file_exists(Globals.install_base_path + "editor.exe") && OS.get_name() == "Windows":
@@ -32,8 +37,8 @@ func execute_editor():
 func _init():
 	dir.open("user://")
 	dir.make_dir("temp")
-	download_file = temp_download_path + generate_download_link().get_basename() + ".zip"
 func download_editor(auto_install:bool = true):
+	download_file = temp_download_path + generate_download_link().get_basename() + ".zip"
 	request(generate_download_link())
 	if auto_install:
 		install_editor()
