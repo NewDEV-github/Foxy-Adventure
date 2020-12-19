@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_1.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Characters/enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Graphics/bubbles.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184, 192 )
@@ -214,6 +215,36 @@ position = Vector2( 1856, 593.95 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area4"]
 position = Vector2( 8, -25.95 )
 shape = SubResource( 4 )
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 7 )]
+position = Vector2( 338.727, 890.741 )
+
+[node name="AnimatedSprite2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 501.361, 784.853 )
+
+[node name="AnimatedSprite3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 294.886, 663.231 )
+
+[node name="AnimatedSprite4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1517.09, 683.03 )
+
+[node name="AnimatedSprite5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1751.85, 591.106 )
+
+[node name="AnimatedSprite6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1569.42, 859.806 )
+
+[node name="AnimatedSprite7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1753.26, 842.836 )
+
+[node name="AnimatedSprite8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1863.57, 647.674 )
+
+[node name="AnimatedSprite9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1925.8, 864.049 )
+
+[node name="AnimatedSprite10" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2198.32, 865.463 )
 
 [connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area2" to="." method="toxic_entered"]

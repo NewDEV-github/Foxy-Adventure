@@ -192,7 +192,9 @@ text = "Smoothed Camera Speed"
 margin_left = 434.0
 margin_right = 498.0
 margin_bottom = 40.0
+min_value = 1.0
 max_value = 1e+14
+value = 1.0
 
 [node name="side_right" type="VBoxContainer" parent="tabs/Graphics/Options"]
 margin_left = 502.0
