@@ -261,7 +261,8 @@ anims/jump = SubResource( 2 )
 anims/run = SubResource( 3 )
 
 [node name="LowCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0.8995, -1.51041 )
+position = Vector2( 0.899, -1.51 )
+scale = Vector2( 0.7, 1 )
 shape = SubResource( 4 )
 
 [node name="LeftGroundSensor" type="RayCast2D" parent="."]
