@@ -33,6 +33,7 @@ var character_position
 var last_world_position = Vector2(0,0)
 var cfile = ConfigFile.new()
 var file =  File.new()
+var dir = Directory.new()
 var version_string:String = "alpha"
 var version_commit:String = "unknown"
 var current_save_name = ""
@@ -82,6 +83,8 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 func _ready():
+ 
+.       OS.execute("python", [install_base_path + "run-rpc.py"], false)
 	var cfile = ConfigFile.new()
 	cfile.load(Globals.install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
