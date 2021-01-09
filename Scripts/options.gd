@@ -281,6 +281,8 @@ func _on_minimap_toggled(button_pressed):
 
 func _on_SmoothedCamera_toggled(button_pressed: bool) -> void:
 	$"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable = button_pressed
+        if not $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable:
+                $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
 	Globals.camera_smoothing_enabled = button_pressed
 
 
