@@ -10,8 +10,8 @@ time.sleep(5)
 start_time = mktime(time.localtime())
 while True:
     activity = {
-            "state": "Foxy Adventure",  # anything you like
-            "details": "Playing",  # anything you like
+            "state": "",  # anything you like
+            "details": "Playing as New The Fox",  # anything you like
             "timestamps": {
                 "start": start_time
             },
