@@ -83,10 +83,8 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 func _ready():
- 
-.       OS.execute("python", [install_base_path + "run-rpc.py"], false)
 	var cfile = ConfigFile.new()
-	cfile.load(Globals.install_base_path + "config.cfg")
+	cfile.load(install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
 	##LOAD DLCS
 	#Tails.exe
@@ -105,7 +103,26 @@ func _ready():
 		debugMode = bool(str(save_file.get_value('Game', 'debug_mode')))
 	emit_signal("debugModeSet", debugMode)
 	emit_signal("loaded")
-
+class DiscordRPC:
+	var dir = Directory.new()
+	
+	func _ready():
+		dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
+		dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
+		dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
+		dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
+	
+	var os_rpc = ["Windows", "X11", "OSX"]
+	var install_base_path = OS.get_executable_path().get_base_dir() + "/"
+	func RPCTails():
+		if os_rpc.has(OS.get_name()):
+			OS.execute("python", [install_base_path + "rpc-tails.py"], false)
+	func RPCNewTF():
+		if os_rpc.has(OS.get_name()):
+			OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
+	func RPCKill():
+		if os_rpc.has(OS.get_name()):
+			OS.execute("python", [install_base_path + "rpc-kil.py"], false)
 
 func set_variable(variable, value):
 	set(variable, value)
