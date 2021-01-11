@@ -6,7 +6,7 @@ extends Control
 # var b = "text"
 #var new_chrs = Globals.new_characters
 #var discord_rpc = DISCORD_RPC.new()
-
+var discord_rpc = Globals.DiscordRPC.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var new_chrs = Globals.new_characters
@@ -25,6 +25,10 @@ func after_selecting_player():
 
 func _on_ItemList_item_selected(index):
 	var item_name = $ItemList.get_item_text(index)
+	if item_name == 'Miles "Tails" Prower':
+		discord_rpc.RPCTails()
+	if item_name == 'New The Fox':
+		discord_rpc.RPCNewTF()
 #	discord_rpc.set_details('Playing as ' + str(item_name))
 	Globals.character_path = "res://Scenes/Characters/" + str(item_name) + ".tscn"
 	Globals.selected_character = load("res://Scenes/Characters/" + str(item_name) + ".tscn").instance()

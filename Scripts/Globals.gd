@@ -126,7 +126,12 @@ class DiscordRPC:
 
 func set_variable(variable, value):
 	set(variable, value)
-
+func _notification(what: int) -> void:
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or MainLoop.NOTIFICATION_CRASH or MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+		DiscordRPC.new().RPCKill()
+		get_tree().quit()
+	if what == MainLoop.NOTIFICATION_CRASH:
+		OS.alert("App crashed", "Error!")
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
 
