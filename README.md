@@ -8,7 +8,7 @@ Requirements: Python3 Installed
 [Licenses](https://github.com/NewDEV-github/Foxy-Adventure/tree/master/Licenses)
 [Credits](https://github.com/NewDEV-github/Foxy-Adventure/tree/master/CREDITS.txt)
 
-Authors: NewTheFox, JezSonic (aka sonic, sonic.exe), GeKaGD (aka Gekon)
+Authors: NewTheFox/New The Hedgefox, JezSonic (aka sonic, sonic.exe), GeKaGD (aka Gekon)
 
 Copyright 2020 - present New-DEV
 
