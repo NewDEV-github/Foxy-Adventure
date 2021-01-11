@@ -103,10 +103,32 @@ func _ready():
 		debugMode = bool(str(save_file.get_value('Game', 'debug_mode')))
 	emit_signal("debugModeSet", debugMode)
 	emit_signal("loaded")
+func copy_recursive(from, to):
+	var directory = Directory.new()
+	
+	# If it doesn't exists, create target directory
+	if not directory.dir_exists(to):
+		directory.make_dir_recursive(to)
+	
+	# Open directory
+	var error = directory.open(from)
+	if error == OK:
+		# List directory content
+		directory.list_dir_begin(true)
+		var file_name = directory.get_next()
+		while file_name != "":
+			if directory.current_is_dir():
+				copy_recursive(from + "/" + file_name, to + "/" + file_name)
+			else:
+				directory.copy(from + "/" + file_name, to + "/" + file_name)
+			file_name = directory.get_next()
+	else:
+		print("Error copying " + from + " to " + to)
 class DiscordRPC:
 	var dir = Directory.new()
 	
 	func _ready():
+		Globals.copy_recursive("res://rpc", install_base_path)
 		dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
 		dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
 		dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
@@ -122,14 +144,13 @@ class DiscordRPC:
 			OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
 	func RPCKill():
 		if os_rpc.has(OS.get_name()):
-			OS.execute("python", [install_base_path + "rpc-kil.py"], false)
+			OS.execute("python", [install_base_path + "rpc-kill.py"], false)
 
 func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or MainLoop.NOTIFICATION_CRASH or MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		DiscordRPC.new().RPCKill()
-		get_tree().quit()
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed", "Error!")
 func apply_custom_resolution():

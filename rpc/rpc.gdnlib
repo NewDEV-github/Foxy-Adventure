@@ -1,0 +1,24 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+OSX.64="res://rpc/rpc.py"
+OSX.32="res://rpc/rpc.py"
+Windows.64="res://rpc/rpc.py"
+Windows.32="res://rpc/rpc.py"
+X11.64="res://rpc/rpc.py"
+X11.32="res://rpc/rpc.py"
+
+[dependencies]
+
+OSX.64=[ "res://rpc/rpc-kill.py", "res://rpc/rpc-newtf.py", "res://rpc/rpc-tails.py" ]
+OSX.32=[ "res://rpc/rpc-kill.py", "res://rpc/rpc-newtf.py", "res://rpc/rpc-tails.py" ]
+Windows.64=[ "res://rpc/rpc-kill.py", "res://rpc/rpc-newtf.py", "res://rpc/rpc-tails.py" ]
+Windows.32=[ "res://rpc/rpc-kill.py", "res://rpc/rpc-newtf.py", "res://rpc/rpc-tails.py" ]
+X11.64=[ "res://rpc/rpc-kill.py", "res://rpc/rpc-newtf.py", "res://rpc/rpc-tails.py" ]
+X11.32=[ "res://rpc/rpc-kill.py", "res://rpc/rpc-newtf.py", "res://rpc/rpc-tails.py" ]

@@ -25,7 +25,7 @@ func after_selecting_player():
 
 func _on_ItemList_item_selected(index):
 	var item_name = $ItemList.get_item_text(index)
-	if item_name == 'Miles "Tails" Prower':
+	if item_name == 'Tails':
 		discord_rpc.RPCTails()
 	if item_name == 'New The Fox':
 		discord_rpc.RPCNewTF()
