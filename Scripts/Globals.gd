@@ -1,5 +1,5 @@
 extends Node
-var bits = 32
+var bits = "32"
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
