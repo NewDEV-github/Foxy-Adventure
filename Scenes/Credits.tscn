@@ -430,7 +430,7 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 margin_right = 510.0
-margin_bottom = 4088.0
+margin_bottom = 4108.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/bold_font = ExtResource( 2 )
@@ -456,6 +456,7 @@ NewTheFox
 
 [b]Graphics[/b]
 NewTheFox
+Deneツ
 [rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow]
 
 [b][wave amp=50 freq=1]Godot-Videodecoder Development Team[/wave][/b]
@@ -659,6 +660,7 @@ JezSonic
 
 Graphics
 NewTheFox
+Deneツ
 JezSonic
 
 Godot-Videodecoder Development Team
@@ -852,7 +854,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 4088.0
+margin_bottom = 4108.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
