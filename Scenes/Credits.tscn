@@ -429,9 +429,8 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 510.0
-margin_bottom = 4068.0
+margin_bottom = 4088.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/bold_font = ExtResource( 2 )
@@ -638,6 +637,7 @@ ZuBsPaCe
 
 [b]Special Thanks[/b]
 LeD
+· [rainbow freq=0.1 sat=2 val=20]GeKaGD[/rainbow] ·
 [/center]"
 text = "
 New DEV Development Team
@@ -840,6 +840,7 @@ ZuBsPaCe
 
 Special Thanks
 LeD
+· GeKaGD ·
 "
 fit_content_height = true
 scroll_active = false
@@ -851,7 +852,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 4068.0
+margin_bottom = 4088.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

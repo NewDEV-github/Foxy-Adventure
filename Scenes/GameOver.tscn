@@ -4,7 +4,6 @@
 [ext_resource path="res://Fonts/Ubuntu-L64.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "game_over"
 length = 5.0
@@ -33,7 +32,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("buttons:rect_position")
+tracks/2/path = NodePath("buttons:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -41,28 +40,16 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 2.8, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 316.5, 500 ), Vector2( 316.5, 500 ), Vector2( 316.5, 400 ) ]
+"update": 1,
+"values": [ false, true, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("buttons:visible")
+tracks/3/path = NodePath("buttons:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2.8, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("buttons:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 2.8, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
@@ -101,6 +88,8 @@ __meta__ = {
 }
 
 [node name="intro" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -113,33 +102,35 @@ autoplay = "game_over"
 anims/game_over = SubResource( 1 )
 
 [node name="buttons" type="HBoxContainer" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.166667 )
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -195.5
-margin_top = 200.0
+margin_top = -175.0
 margin_right = 195.5
-margin_bottom = 240.0
-custom_constants/separation = 150
+margin_bottom = -135.0
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="quitgame" type="Button" parent="buttons"]
-margin_left = 2.0
-margin_right = 95.0
-margin_bottom = 39.0
+margin_left = 66.0
+margin_right = 166.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quit Game"
 flat = true
 
 [node name="gotomenu" type="Button" parent="buttons"]
-margin_left = 245.0
-margin_right = 389.0
-margin_bottom = 39.0
+margin_left = 170.0
+margin_right = 325.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "Go to Main Menu"
 flat = true
+
 [connection signal="pressed" from="buttons/quitgame" to="." method="_on_quitgame_pressed"]
 [connection signal="pressed" from="buttons/gotomenu" to="." method="_on_gotomenu_pressed"]
