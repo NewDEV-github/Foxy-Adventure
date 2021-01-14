@@ -64,6 +64,8 @@ func copy_files_rpc():
 #RPC Kill Script
 		dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
 		cfile.set_value("files", "res://rpc/rpc-kill.py", "rpc-kill.py")
+		
+		cfile.save(install_base_path + "config.cfg")
 func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
 	return text
@@ -106,7 +108,6 @@ func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 func _ready():
 	copy_files_rpc()
-	var cfile = ConfigFile.new()
 	cfile.load(install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
 	##LOAD DLCS
