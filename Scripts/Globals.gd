@@ -49,14 +49,21 @@ var new_characters:Array = [
 	"New The Fox",
 	"Tails",
 ]
-func copy_files_from_list(list = copy_file_list, copy_path = install_base_path):
+func copy_files_rpc():
 	if file.file_exists(install_base_path + "config.cfg"):
-		cfile.open(install_base_path + "config.cfg")
-		for i in list:
-			var base_name = str(i).get_basename()
-			var extension = str(i).get_extension()
-			dir.copy(i, install_base_path + base_name + "." + extension)
-			cfile.set_value("files", str(i), base_name + "." + extension)
+		cfile.load(install_base_path + "config.cfg")
+#RPC Script
+		dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
+		cfile.set_value("files", "res://rpc/rpc.py", "rpc.py")
+#RPC Tails Script
+		dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
+		cfile.set_value("files", "res://rpc/rpc-tails.py", "rpc-tails.py")
+#RPC New The Fox Script
+		dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
+		cfile.set_value("files", "res://rpc/rpc-newtf.py", "rpc-newtf.py")
+#RPC Kill Script
+		dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
+		cfile.set_value("files", "res://rpc/rpc-kill.py", "rpc-kill.py")
 func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
 	return text
@@ -65,7 +72,6 @@ func _init():
 	version_commit = file.get_line()
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
-	copy_files_from_list()
 var dlcs:Array = [
 	
 ]
@@ -99,6 +105,7 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 func _ready():
+	copy_files_rpc()
 	var cfile = ConfigFile.new()
 	cfile.load(install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
