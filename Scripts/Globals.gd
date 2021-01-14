@@ -1,5 +1,11 @@
 extends Node
 var bits = "32"
+var copy_file_list = [
+	"res://rpc/rpc.py",
+	"res://rpc/rpc-kill.py",
+	"res://rpc/rpc-newtf.py",
+	"res://rpc/rpc-tails.py",
+]
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
@@ -17,6 +23,7 @@ var stage_list = {
 	"13": "res://Scenes/Stages/poziom_14.tscn",
 	"14": "res://Scenes/Stages/poziom_15.tscn",
 }
+
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -42,6 +49,14 @@ var new_characters:Array = [
 	"New The Fox",
 	"Tails",
 ]
+func copy_files_from_list(list = copy_file_list, copy_path = install_base_path):
+	if file.file_exists(install_base_path + "config.cfg"):
+		cfile.open(install_base_path + "config.cfg")
+		for i in list:
+			var base_name = str(i).get_basename()
+			var extension = str(i).get_extension()
+			dir.copy(i, install_base_path + base_name + "." + extension)
+			cfile.set_value("files", str(i), base_name + "." + extension)
 func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
 	return text
@@ -50,6 +65,7 @@ func _init():
 	version_commit = file.get_line()
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
+	copy_files_from_list()
 var dlcs:Array = [
 	
 ]
@@ -138,13 +154,19 @@ class DiscordRPC:
 	var install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	func RPCTails():
 		if os_rpc.has(OS.get_name()):
+			print("Starting RPC...")
 			OS.execute("python", [install_base_path + "rpc-tails.py"], false)
+			print("RPC started as Tails")
 	func RPCNewTF():
+		print("Starting RPC...")
 		if os_rpc.has(OS.get_name()):
 			OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
+			print("RPC started as New The Fox")
 	func RPCKill():
+		print("Killing RPC...")
 		if os_rpc.has(OS.get_name()):
 			OS.execute("python", [install_base_path + "rpc-kill.py"], false)
+			print("RPC killed")
 
 func set_variable(variable, value):
 	set(variable, value)
