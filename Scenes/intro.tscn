@@ -103,7 +103,6 @@ Other characters from other franchises are properties of their respective owners
 autoplay = "intro"
 playback_speed = 0.5
 anims/intro = SubResource( 1 )
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
