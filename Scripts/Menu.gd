@@ -2,6 +2,7 @@ extends Control
 var tekst = "Hello World"
 var world_scene
 var website
+var current_submenu_page:NodePath
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -76,7 +77,13 @@ func _ready():
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
 
-
+func show_submenu_page(page:NodePath):
+    if current_submenu_page != null:
+        page.show()
+        current_submenu_page.hide()
+    else:
+        page.show()
+    current_submenu_page = page
 func load_easterregg_animation(name_:String):
 	randomize()
 	if name_ == 'ntf':
