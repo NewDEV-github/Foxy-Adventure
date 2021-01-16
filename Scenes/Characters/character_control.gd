@@ -104,7 +104,7 @@ func _physics_process(delta):
 	linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 
 	# Jumping
-	if on_floor and Input.is_action_just_pressed("jump"):
+	if on_floor and Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump2"):
 		linear_vel.y = -JUMP_SPEED
 #		$AudioPlayer/jump.play()
 	# Shooting
