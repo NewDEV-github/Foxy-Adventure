@@ -158,7 +158,12 @@ class DiscordRPC:
 			cfile.save(install_base_path + "config.cfg")
 	func _ready():
 		copy_files_rpc()
-	
+	func RPCDevelopment():
+		if os_rpc.has(OS.get_name()):
+			print("Starting RPC...")
+			if file.file_exists("rpc/rpc-development.py"):
+				OS.execute("python", ["rpc/rpc-developmnet.py"], false)
+			print("RPC started as mysterious developer")
 	var os_rpc = ["Windows", "X11", "OSX"]
 	var install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	func RPCTails():
