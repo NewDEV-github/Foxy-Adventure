@@ -1,4 +1,4 @@
-extends WindowDialog
+extends Panel
 var dir = Directory.new()
 var save_file = ConfigFile.new()
 var file = File.new()

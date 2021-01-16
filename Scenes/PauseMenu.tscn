@@ -6,8 +6,9 @@
 [ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=5]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=6]
 
-[node name="PauseMenu" type="WindowDialog"]
+[node name="PauseMenu" type="Panel"]
 pause_mode = 2
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -17,22 +18,7 @@ margin_top = -206.5
 margin_right = 138.5
 margin_bottom = 206.5
 theme = ExtResource( 5 )
-custom_fonts/title_font = ExtResource( 1 )
-window_title = "KEY_PAUSE_MENU"
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" parent="." instance=ExtResource( 2 )]
-anchor_left = 0.172688
-anchor_top = 0.31126
-anchor_right = 0.891438
-anchor_bottom = 1.04793
-margin_left = -134.93
-margin_top = -47.6371
-margin_right = 92.0698
-margin_bottom = -47.6371
 
 [node name="QuitTOMenuDIalog" type="ConfirmationDialog" parent="."]
 margin_right = 200.0
@@ -93,6 +79,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Feedback"
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -372.5
+margin_top = -227.5
+margin_right = 372.5
+margin_bottom = 227.5
 
 [connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]

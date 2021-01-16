@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/ja.jpg" type="Texture" id=9]
 [ext_resource path="res://Graphics/1610708405988.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/SaveLoader.gd" type="Script" id=11]
 
 [node name="Menu" type="Control"]
 pause_mode = 2
@@ -148,26 +149,31 @@ __meta__ = {
 }
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
-anchor_left = 0.110352
-anchor_top = 0.388
-anchor_right = 0.892023
-anchor_bottom = 1.01333
-margin_top = 0.199982
-margin_right = -0.432007
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -187.499
+margin_right = 400.0
+margin_bottom = 187.499
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
 bus = "Music"
 
-[node name="CharacterSelect" type="WindowDialog" parent="."]
-margin_left = 183.0
-margin_top = 206.0
-margin_right = 681.0
-margin_bottom = 495.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CharacterSelect" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -249.0
+margin_top = -144.5
+margin_right = 249.0
+margin_bottom = 144.5
 
 [node name="Control" parent="CharacterSelect" instance=ExtResource( 6 )]
 anchor_left = 0.5
@@ -194,7 +200,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveLoader" parent="." instance=ExtResource( 7 )]
+[node name="SaveLoader" type="Panel" parent="." instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -108.0
+margin_top = -45.5
+margin_right = 108.0
+margin_bottom = 45.5
+theme = ExtResource( 2 )
+script = ExtResource( 11 )
 
 [node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
@@ -211,13 +227,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewSave" type="WindowDialog" parent="."]
-visible = true
-margin_left = 234.0
-margin_top = 11.0
-margin_right = 605.0
-margin_bottom = 206.0
-window_title = "New Game Name"
+[node name="NewSave" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -185.5
+margin_top = -97.5
+margin_right = 185.5
+margin_bottom = 97.5
 
 [node name="LineEdit" type="LineEdit" parent="NewSave"]
 anchor_left = 0.5
@@ -245,6 +264,7 @@ text = "GO!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]

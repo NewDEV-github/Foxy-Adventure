@@ -35,6 +35,7 @@ func send_feedback_msg(text:String, resp_email:String, thanks_popup:bool = true)
 			$ThanksDialog.popup_centered()
 		if $DscDMCreator/VBoxContainer/error_log.pressed:
 			send_err_log_msg()
+		$FeedBack.hide()
 func _on_Send_pressed():
 #	var fd = 
 	send_feedback_msg(str($DscDMCreator/VBoxContainer/text/text.text),str($DscDMCreator/VBoxContainer/email/email.text), true)
@@ -45,7 +46,7 @@ func _on_Send_pressed():
 #
 
 func send_feedback():
-	$FeedBack.popup_centered()
+	$FeedBack.show()
 
 
 func _on_DSCdm_pressed():
