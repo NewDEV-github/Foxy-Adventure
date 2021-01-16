@@ -1,4 +1,5 @@
 extends KinematicBody2D
+export (String) var character_name
 export (NodePath) var camera
 const GRAVITY_VEC = Vector2(0, 750)
 const FLOOR_NORMAL = Vector2(0, -1)
@@ -19,6 +20,10 @@ var speed = 0.5
 var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
+	if character_name == "Tails":
+		Globals.DiscordRPC.new().RPCTails()
+	if character_name == "New The Fox":
+		Globals.DiscordRPC.new().RPCNewTF()
 	if str(OS.get_name()) == "Android":
 		camera.zoom = Vector2(0.6, 0.6)
 #func restart_position():

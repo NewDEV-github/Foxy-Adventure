@@ -242,6 +242,7 @@ position = Vector2( 130.108, 141.421 )
 z_index = 1
 collision/safe_margin = 0.1
 script = ExtResource( 2 )
+character_name = "New The Fox"
 camera = NodePath("Camera2D")
 
 [node name="Anim" type="Node2D" parent="."]
