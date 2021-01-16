@@ -30,16 +30,16 @@ jobs:
           echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
       - name: Update game_version.txt file # transfer the new html files back into the repository
         run: |
-          echo ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
-          git config --local user.name "Github Actions"
-          git config --local user.email "githubactions@github.com"
-          git add game_version.txt
-          git commit -m "Updating game verion file..."
-      - name: Push changes # push the output folder to your repo
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+#          echo ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
+#          git config --local user.name "Github Actions"
+#          git config --local user.email "githubactions@github.com"
+#          git add game_version.txt
+#          git commit -m "Updating game verion file..."
+#      - name: Push changes # push the output folder to your repo
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          force: true
       #- name: Write Version to File
   # You may pin to the exact commit or the version.
   # uses: brettdorrans/write-version-to-file@ea48c38c3afc479e8b2645a19743c24200966f3d
@@ -121,67 +121,29 @@ jobs:
     # Set true to output an artifact zip file
          package: false
          projectDir: ./
-    # Whether or not to use `--export-debug`
-      - name: ZIP Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          zip -r build-x11-32.zip build/build-x11-32
-          zip -r build-x11-64.zip build/build-x11-64
-          zip -r build-win-32.zip build/build-win-32
-          zip -r build-win-64.zip build/build-win-64
-      - name: Release snapshot
-        id: release-snapshot
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # Whether or not to use `--export-debug
+      - name: Upload a Build Artifact (x11-32)
+        uses: actions/upload-artifact@v2.2.2
         with:
-          tag_name: ${{ env.GITHUB_SHA_SHORT }}
-          release_name: Release from ${{ env.GITHUB_SHA_SHORT }} commit
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset (Linux 32-bit)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # A file, directory or wildcard pattern that describes what to upload
+         path: build/build-x11-64
+      - name: Upload a Build Artifact (x11-64)
+        uses: actions/upload-artifact@v2.2.2
         with:
-          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./build-x11-32.zip
-          asset_name: build-x11-32.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset (Linux 64-bit)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # A file, directory or wildcard pattern that describes what to upload
+         path: build/build-x11-64
+      - name: Upload a Build Artifact (win-32)
+        uses: actions/upload-artifact@v2.2.2
         with:
-          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./build-x11-64.zip
-          asset_name: build-x11-64.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset (Windows 32-bit)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # A file, directory or wildcard pattern that describes what to upload
+         path: build/build-win-32
+      - name: Upload a Build Artifact (win-64)
+        uses: actions/upload-artifact@v2.2.2
         with:
-          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./build-win-32.zip
-          asset_name: build-win-32.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset (Windows 64-bit)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # A file, directory or wildcard pattern that describes what to upload
+         path: build/build-win-64
+      - name: Upload a Build Artifact (osx)
+        uses: actions/upload-artifact@v2.2.2
         with:
-          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./build-win-64.zip
-          asset_name: build-win-64.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset (Mac OS X)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.release-snapshot.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: build/build-osx/FoxyAdventure.zip
-          asset_name: build-osx.zip
-          asset_content_type: application/zip
+    # A file, directory or wildcard pattern that describes what to upload
+         path: build/build-osx
