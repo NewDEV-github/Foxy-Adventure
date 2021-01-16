@@ -358,7 +358,7 @@ text = "STEREO"
 items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", null, false, 2, null, "RAW", null, false, 3, null, "5.1", null, false, 4, null, "7.1", null, false, 5, null, "7.1.4", null, false, 6, null, "SURROUND", null, false, 7, null, "DEFAULT", null, false, 8, null ]
 selected = 1
 
-[node name="Sterowanie" type="Tabs" parent="tabs"]
+[node name="Controls" type="Tabs" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -368,7 +368,7 @@ margin_right = -5.0
 margin_bottom = -5.0
 drag_to_rearrange_enabled = true
 
-[node name="controls_ui" parent="tabs/Sterowanie" instance=ExtResource( 3 )]
+[node name="controls_ui" parent="tabs/Controls" instance=ExtResource( 3 )]
 
 [node name="Control" parent="." instance=ExtResource( 4 )]
 

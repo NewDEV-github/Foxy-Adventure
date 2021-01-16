@@ -73,6 +73,7 @@ func _input(event):
 		# Register the event as handled and stop polling
 		get_tree().set_input_as_handled()
 		set_process_input(false)
+		$contextual_help.text = "Press button to assign selected action"
 		# Reinitialise the contextual help label
 		if not event.is_action("ui_cancel"):
 			# Display the string corresponding to the pressed key
