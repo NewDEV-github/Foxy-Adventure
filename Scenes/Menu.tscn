@@ -87,7 +87,7 @@ margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
-text = "KEY_PROJECT_WEBSITE"
+text = "Project Website"
 
 [node name="LoadGame" type="Button" parent="VBoxContainer"]
 margin_top = 92.0
@@ -124,7 +124,7 @@ margin_bottom = 89.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
-text = "KEY_GAME_OPTIONS"
+text = "Options"
 
 [node name="dsc" type="Button" parent="VBoxContainer2"]
 margin_top = 93.0
@@ -133,7 +133,7 @@ margin_bottom = 136.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
-text = "KEY_AUTHORS"
+text = "Credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
 margin_top = 140.0
@@ -142,7 +142,7 @@ margin_bottom = 183.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
-text = "KEY_EXIT"
+text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
