@@ -224,7 +224,7 @@ jump={
 
 [locale]
 
-translations=PoolStringArray( "res://translations/foxy_adventure.csv", "res://translations/foxy_adventure.de.translation", "res://translations/foxy_adventure.en.translation", "res://translations/foxy_adventure.es.translation", "res://translations/foxy_adventure.pl.translation" )
+translations=PoolStringArray(  )
 
 [logging]
 

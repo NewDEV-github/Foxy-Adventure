@@ -3,12 +3,10 @@
 [ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/SaveLoader.gd" type="Script" id=2]
 
-[node name="WindowDialog" type="WindowDialog"]
+[node name="WindowDialog" type="Panel"]
 margin_right = 216.0
 margin_bottom = 91.0
 theme = ExtResource( 1 )
-window_title = "Select save file"
-resizable = true
 script = ExtResource( 2 )
 
 [node name="ItemList" type="ItemList" parent="."]

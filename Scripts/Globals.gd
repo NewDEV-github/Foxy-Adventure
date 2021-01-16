@@ -167,7 +167,7 @@ class DiscordRPC:
 			if file.file_exists(install_base_path +"rpc-tails.py"):
 				OS.execute("python", [install_base_path + "rpc-tails.py"], false)
 			elif not file.file_exists(install_base_path + "rpc-tails.py"):
-				OS.execute("python", ["res://rpc/rpc-tails.py"], false)
+				OS.execute("python", ["rpc/rpc-tails.py"], false)
 			print("RPC started as Tails")
 			
 	func RPCNewTF():
@@ -176,7 +176,7 @@ class DiscordRPC:
 			if file.file_exists(install_base_path + "rpc-newtf.py"):
 				OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
 			elif not file.file_exists(install_base_path + "rpc-newtf.py"):
-				OS.execute("python", ["res://rpc/rpc-newtf.py"], false)
+				OS.execute("python", ["rpc/rpc-newtf.py"], false)
 			print("RPC started as New The Fox")
 	func RPCKill():
 		print("Killing RPC...")
@@ -184,7 +184,7 @@ class DiscordRPC:
 			if file.file_exists(install_base_path + "rpc-kill.py"):
 				OS.execute("python", [install_base_path + "rpc-kill.py"], false)
 			elif not file.file_exists(install_base_path + "rpc-kill.py"):
-				OS.execute("python", ["res://rpc/rpc-kill.py"], false)
+				OS.execute("python", ["rpc/rpc-kill.py"], false)
 			print("RPC killed")
 
 func set_variable(variable, value):
