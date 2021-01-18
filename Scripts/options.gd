@@ -49,8 +49,8 @@ func _process(_delta):
 	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/Graphics/Options/side_left/VSync".pressed))
 	save_file.set_value('Graphics', 'window_x_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/x".value))
 	save_file.set_value('Graphics', 'window_y_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
-	save_file.set_value('Graphics', 'camera_smoothing_enabled', Globals.camera_smoothing_enabled)
-	save_file.set_value('Graphics', 'camera_smoothing_speed', Globals.camera_smoothing_speed)
+	# save_file.set_value('Graphics', 'camera_smoothing_enabled', Globals.camera_smoothing_enabled)
+	# save_file.set_value('Graphics', 'camera_smoothing_speed', Globals.camera_smoothing_speed)
 	save_file.save('user://settings.cfg')
 	hide()
 	set_process(false)
@@ -96,10 +96,10 @@ func load_settings():
 		$"tabs/Graphics/Options/side_left/custom_resolution/SpinBox".set_text(str($"tabs/Graphics/Options/side_left/custom_resolution/x".value) + 'x' + str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
 		if save_file.has_section_key('Game', 'debug_mode'):
 			Globals.debugMode = bool(str(save_file.get_value('Graphics', 'debug_mode', false)))
-		if save_file.has_section_key('Graphics', 'camera_smoothing_enabled'):
-			$"tabs/Graphics/Options/side_left/SmoothedCamera".pressed = bool(str(save_file.get_value('Graphics', 'camera_smoothing_enabled', false)))
-		if save_file.has_section_key('Graphics', 'camera_smoothing_speed'):
-			$"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = int(str(save_file.get_value('Graphics', 'camera_smoothing_speed', 0)))
+		# if save_file.has_section_key('Graphics', 'camera_smoothing_enabled'):
+			# $"tabs/Graphics/Options/side_left/SmoothedCamera".pressed = bool(str(save_file.get_value('Graphics', 'camera_smoothing_enabled', false)))
+		# if save_file.has_section_key('Graphics', 'camera_smoothing_speed'):
+			# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = int(str(save_file.get_value('Graphics', 'camera_smoothing_speed', 0)))
 		else:
 			pass
 	else:
@@ -257,8 +257,8 @@ func default_settings():
 	$tabs/Rozgrywka/box/game_clock/gcbutton.select(0)
 	$"tabs/Graphics/Options/side_left/lang/lang".select(0)
 	$tabs/Sterowanie/controls_ui._ready()
-	$"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
-	$"tabs/Graphics/Options/side_left/SmoothedCamera".pressed = true
+	# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
+	# $"tabs/Graphics/Options/side_left/SmoothedCamera".pressed = true
 func _on_RESETSETTINGS_pressed():
 	var dir = Directory.new()
 	dir.open('user://')
@@ -279,17 +279,17 @@ func _on_minimap_toggled(button_pressed):
 	Globals.set_minimap_enabled(button_pressed)
 
 
-func _on_SmoothedCamera_toggled(button_pressed: bool) -> void:
-	$"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable = button_pressed
-	if not $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable:
-		$"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
-		Globals.camera_smoothing_enabled = false
-		Globals.camera_smoothing_speed = 0
-	Globals.camera_smoothing_enabled = button_pressed
+ #func _on_SmoothedCamera_toggled(button_pressed: bool) -> void:
+	# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable = button_pressed
+	# if not $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable:
+		# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
+		# Globals.camera_smoothing_enabled = false
+		# Globals.camera_smoothing_speed = 0
+	# Globals.camera_smoothing_enabled = button_pressed
 
 
-func _on_SCSpeed_value_changed(value: float) -> void:
-	Globals.camera_smoothing_speed = value
+# func _on_SCSpeed_value_changed(value: float) -> void:
+	# Globals.camera_smoothing_speed = value
 
 
 func _on_show_fps_toggled(button_pressed: bool) -> void:
