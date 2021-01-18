@@ -224,3 +224,4 @@ func load_level(save_name:String):
 
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
+	DiscordRPC.new().RPCKill()
