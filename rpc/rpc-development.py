@@ -10,16 +10,16 @@ time.sleep(5)
 start_time = mktime(time.localtime())
 while True:
     activity = {
-            "state": "",  # anything you like
-            "details": "Working on the game for You :D",  # anything you like
+            "state": "Coding",  # anything you like
+            "details": "Godot Engine",  # anything you like
             "timestamps": {
                 "start": start_time
             },
             "assets": {
-                "small_text": "Adobe",  # anything you like
-                "small_image": "adobe",  # must match the image key
-                "large_text": "Illustrator",  # anything you like
-                "large_image": "Illustrator"  # must match the image key
+                "small_text": "Coding",  # anything you like
+                "small_image": "code",  # must match the image key
+                "large_text": "Godot Engine",  # anything you like
+                "large_image": "godot"  # must match the image key
             }
         }
     rpc_obj.set_activity(activity)

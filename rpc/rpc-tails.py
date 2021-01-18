@@ -10,16 +10,16 @@ time.sleep(5)
 start_time = mktime(time.localtime())
 while True:
     activity = {
-            "state": "",  # anything you like
-            "details": "Playing as New The Fox",  # anything you like
+            "state": "Playing as Tails",  # anything you like
+            "details": "Foxy Adventure",  # anything you like
             "timestamps": {
                 "start": start_time
             },
             "assets": {
-                "small_text": "Adobe",  # anything you like
-                "small_image": "adobe",  # must match the image key
-                "large_text": "Illustrator",  # anything you like
-                "large_image": "Illustrator"  # must match the image key
+                "small_text": "Playing",  # anything you like
+                "small_image": "play1",  # must match the image key
+                "large_text": "Miles Tails Prower",  # anything you like
+                "large_image": "abcd"  # must match the image key
             }
         }
     rpc_obj.set_activity(activity)
