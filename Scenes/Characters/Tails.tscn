@@ -241,6 +241,7 @@ extents = Vector2( 15.1005, 12.4917 )
 z_index = 1
 collision/safe_margin = 0.1
 script = ExtResource( 2 )
+character_name = "Tails"
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]

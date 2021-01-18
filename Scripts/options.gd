@@ -1,4 +1,4 @@
-extends WindowDialog
+extends Panel
 var dir = Directory.new()
 var save_file = ConfigFile.new()
 var file = File.new()
@@ -8,16 +8,6 @@ var tr_en_fallback = [
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
 	set_process(false)
-#	$tabs.set_tab_disabled(1, true)
-#	$tabs/Inne/VBoxContainer/InstallDLC.set_disabled(!dlc_web_avaliable)
-	if tr_en_fallback.has(str(TranslationServer.get_locale().to_upper())):
-		$"tabs/Language/lang/lang".text = tr("KEY_OPTIONS_LANG_" + str(TranslationServer.get_locale().to_upper()))
-	else:
-		$"tabs/Language/lang/lang".text = tr("KEY_OPTIONS_LANG_EN")
-	$tabs.set_tab_title(0, "KEY_OPTIONS_GENERAL")
-	$tabs.set_tab_title(1, "KEY_OPTIONS_STEERING")
-#	$tabs.set_tab_title(2, "KEY_OPTIONS_GAMEPLAY")
-#	$tabs.set_tab_title(3, "KEY_OPTIONS_OTHER")
 	$"tabs/Graphics/Options/side_left/fps/target".value = Engine.target_fps
 	
 	load_settings()

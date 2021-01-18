@@ -2,6 +2,7 @@ extends Control
 var tekst = "Hello World"
 var world_scene
 var website
+var current_submenu_page
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -42,7 +43,6 @@ func _ready():
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
-	nsfw_connection = Globals.connect("nsfw", self, "globals_nsfw_changed")
 	if day == 21 and month == 6:
 		$IMG_0008.hide()
 		load_easterregg_animation('ntf')
@@ -76,7 +76,13 @@ func _ready():
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
 
-
+func show_submenu_page(page):
+	if current_submenu_page != null:
+		page.show()
+		current_submenu_page.hide()
+	else:
+		page.show()
+		current_submenu_page = page
 func load_easterregg_animation(name_:String):
 	randomize()
 	if name_ == 'ntf':
@@ -85,7 +91,7 @@ func load_easterregg_animation(name_:String):
 		$IMG_0009.texture = load(str(bs_imgs[randi()%bs_imgs.size()]))
 
 func _on_Options_pressed():
-	$Control.popup_centered()
+	show_submenu_page($Control)
 
 
 func _on_Quit_pressed():
@@ -140,11 +146,11 @@ func _on_Feedback_pressed():
 
 
 func _on_NewGame_pressed() -> void:
-	$NewSave.popup_centered()
+	show_submenu_page($NewSave)
 
 
 func _on_LoadGame_pressed() -> void:
-	$SaveLoader.popup_centered()
+	show_submenu_page($SaveLoader)
 
 
 func _on_CreateNewSave_pressed() -> void:
@@ -152,7 +158,7 @@ func _on_CreateNewSave_pressed() -> void:
 		Globals.current_save_name = $NewSave/LineEdit.text
 	else:
 		print("Enter the save name!")
-	$CharacterSelect.popup_centered()
+	show_submenu_page($CharacterSelect)
 	#Globals.save_level(0, $NewSave/LineEdit.text)
 
 

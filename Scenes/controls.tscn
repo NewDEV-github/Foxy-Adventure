@@ -20,7 +20,7 @@ margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_READY_TO_ASSIGN"
+text = "Press button to assign selected action"
 align = 1
 
 [node name="bindings" type="GridContainer" parent="."]
@@ -38,7 +38,7 @@ columns = 2
 margin_right = 510.0
 margin_bottom = 21.0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_PRIMARY_BUTTONS"
+text = "Primary"
 align = 1
 valign = 1
 
@@ -47,14 +47,14 @@ margin_left = 514.0
 margin_right = 1024.0
 margin_bottom = 21.0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_SECONDARY_BUTTONS"
+text = "Secondary"
 align = 1
 valign = 1
 
 [node name="ui_up" type="Control" parent="bindings"]
 visible = false
-margin_top = 25.0
-margin_bottom = 25.0
+margin_left = 514.0
+margin_right = 514.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -65,7 +65,7 @@ margin_bottom = 23.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_UP"
+text = "Up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,7 +95,7 @@ margin_bottom = 23.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_UP"
+text = "Up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -124,7 +124,7 @@ margin_bottom = 24.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_DOWN"
+text = "Down"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -152,7 +152,7 @@ margin_bottom = 24.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_DOWN"
+text = "Down"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -166,8 +166,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="ui_left" type="Control" parent="bindings"]
-margin_top = 202.0
-margin_bottom = 202.0
+margin_top = 159.0
+margin_bottom = 159.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -178,7 +178,7 @@ margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_LEFT"
+text = "Left"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -193,9 +193,9 @@ size_flags_vertical = 2
 
 [node name="ui_left2" type="Control" parent="bindings"]
 margin_left = 514.0
-margin_top = 202.0
+margin_top = 159.0
 margin_right = 514.0
-margin_bottom = 202.0
+margin_bottom = 159.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -206,7 +206,7 @@ margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_LEFT"
+text = "Left"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -220,8 +220,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="ui_right" type="Control" parent="bindings"]
-margin_top = 379.0
-margin_bottom = 379.0
+margin_top = 293.0
+margin_bottom = 293.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -233,7 +233,7 @@ margin_bottom = 23.8787
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_RIGHT"
+text = "Right"
 
 [node name="Button" type="Button" parent="bindings/ui_right"]
 margin_left = 104.0
@@ -248,9 +248,9 @@ __meta__ = {
 
 [node name="ui_right2" type="Control" parent="bindings"]
 margin_left = 514.0
-margin_top = 379.0
+margin_top = 293.0
 margin_right = 514.0
-margin_bottom = 379.0
+margin_bottom = 293.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -262,7 +262,7 @@ margin_bottom = 23.8787
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "KEY_OPTIONS_STERRING_RIGHT"
+text = "Right"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -279,11 +279,8 @@ __meta__ = {
 }
 
 [node name="jump" type="Control" parent="bindings"]
-visible = false
-margin_left = 50.0
-margin_top = 250.0
-margin_right = 90.0
-margin_bottom = 290.0
+margin_top = 427.0
+margin_bottom = 427.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -294,9 +291,39 @@ margin_right = 45.0
 margin_bottom = 21.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Jump"
 
 [node name="Button" type="Button" parent="bindings/jump"]
+margin_left = 84.0
+margin_top = -1.0
+margin_right = 144.0
+margin_bottom = 29.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="jump2" type="Control" parent="bindings"]
+margin_left = 514.0
+margin_top = 427.0
+margin_right = 514.0
+margin_bottom = 427.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/jump2"]
+margin_left = 5.0
+margin_top = 8.0
+margin_right = 45.0
+margin_bottom = 21.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/jump2"]
 margin_left = 84.0
 margin_top = -1.0
 margin_right = 144.0

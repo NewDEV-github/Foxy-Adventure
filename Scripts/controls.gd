@@ -12,7 +12,7 @@ extends VBoxContainer
 # button.connect("pressed", self, "wait_for_input", [ button, action ])
 
 # Constants
-const INPUT_ACTIONS = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_up2", "ui_down2", "ui_left2", "ui_right2"]
+const INPUT_ACTIONS = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_up2", "ui_down2", "ui_left2", "ui_right2", "jump", "jump2"]
 const CONFIG_FILE = "user://settings.cfg"
 
 # Member variables
@@ -63,7 +63,7 @@ func wait_for_input(action_bind):
 	action = action_bind
 	# See note at the beginning of the script
 	button = get_node("bindings").get_node(action).get_node("Button")
-	get_node("contextual_help").text = 'KEY_OPTIONS_ASSIGNING'
+	get_node("contextual_help").text = 'Assigining to selected action, press ESC to cancel'
 	set_process_input(true)
 
 
@@ -73,8 +73,8 @@ func _input(event):
 		# Register the event as handled and stop polling
 		get_tree().set_input_as_handled()
 		set_process_input(false)
+		$contextual_help.text = "Press button to assign selected action"
 		# Reinitialise the contextual help label
-		get_node("contextual_help").text = "KEY_OPTIONS_READY_TO_ASSIGN"
 		if not event.is_action("ui_cancel"):
 			# Display the string corresponding to the pressed key
 			var scancode = OS.get_scancode_string(event.scancode)

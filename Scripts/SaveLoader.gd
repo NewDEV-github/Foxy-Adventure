@@ -1,4 +1,4 @@
-extends WindowDialog
+extends Panel
 
 var save_file_names = []
 # Declare member variables here. Examples:

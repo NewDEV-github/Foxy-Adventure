@@ -1,4 +1,5 @@
 extends Node
+#var project_root_dir = get_project_root_dir()
 var bits = "32"
 var copy_file_list = [
 	"res://rpc/rpc.py",
@@ -49,23 +50,7 @@ var new_characters:Array = [
 	"New The Fox",
 	"Tails",
 ]
-func copy_files_rpc():
-	if file.file_exists(install_base_path + "config.cfg"):
-		cfile.load(install_base_path + "config.cfg")
-#RPC Script
-		dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
-		cfile.set_value("files", "res://rpc/rpc.py", "rpc.py")
-#RPC Tails Script
-		dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
-		cfile.set_value("files", "res://rpc/rpc-tails.py", "rpc-tails.py")
-#RPC New The Fox Script
-		dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
-		cfile.set_value("files", "res://rpc/rpc-newtf.py", "rpc-newtf.py")
-#RPC Kill Script
-		dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
-		cfile.set_value("files", "res://rpc/rpc-kill.py", "rpc-kill.py")
-		
-		cfile.save(install_base_path + "config.cfg")
+
 func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
 	return text
@@ -107,7 +92,7 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 func _ready():
-	copy_files_rpc()
+#	print("Project root dir is at: " + project_root_dir)
 	cfile.load(install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
 	##LOAD DLCS
@@ -148,32 +133,63 @@ func copy_recursive(from, to):
 			file_name = directory.get_next()
 	else:
 		print("Error copying " + from + " to " + to)
+func get_project_root_dir():
+	return "res://".get_base_dir()
 class DiscordRPC:
+	var file = File.new()
 	var dir = Directory.new()
-	
+	var cfile = ConfigFile.new()
+	func copy_files_rpc():
+		if file.file_exists(install_base_path + "config.cfg"):
+			cfile.load(install_base_path + "config.cfg")
+	#RPC Script
+			dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
+			cfile.set_value("files", "res://rpc/rpc.py", "rpc.py")
+	#RPC Tails Script
+			dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
+			cfile.set_value("files", "res://rpc/rpc-tails.py", "rpc-tails.py")
+	#RPC New The Fox Script
+			dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
+			cfile.set_value("files", "res://rpc/rpc-newtf.py", "rpc-newtf.py")
+	#RPC Kill Script
+			dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
+			cfile.set_value("files", "res://rpc/rpc-kill.py", "rpc-kill.py")
+			
+			cfile.save(install_base_path + "config.cfg")
 	func _ready():
-		Globals.copy_recursive("res://rpc", install_base_path)
-		dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
-		dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
-		dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
-		dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
-	
+		copy_files_rpc()
+	func RPCDevelopment():
+		if os_rpc.has(OS.get_name()):
+			print("Starting RPC...")
+			if file.file_exists("rpc/rpc-development.py"):
+				OS.execute("python", ["rpc/rpc-developmnet.py"], false)
+			print("RPC started as mysterious developer")
 	var os_rpc = ["Windows", "X11", "OSX"]
 	var install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	func RPCTails():
 		if os_rpc.has(OS.get_name()):
 			print("Starting RPC...")
-			OS.execute("python", [install_base_path + "rpc-tails.py"], false)
+			if file.file_exists(install_base_path +"rpc-tails.py"):
+				OS.execute("python", [install_base_path + "rpc-tails.py"], false)
+			elif not file.file_exists(install_base_path + "rpc-tails.py"):
+				OS.execute("python", ["rpc/rpc-tails.py"], false)
 			print("RPC started as Tails")
+			
 	func RPCNewTF():
 		print("Starting RPC...")
 		if os_rpc.has(OS.get_name()):
-			OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
+			if file.file_exists(install_base_path + "rpc-newtf.py"):
+				OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
+			elif not file.file_exists(install_base_path + "rpc-newtf.py"):
+				OS.execute("python", ["rpc/rpc-newtf.py"], false)
 			print("RPC started as New The Fox")
 	func RPCKill():
 		print("Killing RPC...")
 		if os_rpc.has(OS.get_name()):
-			OS.execute("python", [install_base_path + "rpc-kill.py"], false)
+			if file.file_exists(install_base_path + "rpc-kill.py"):
+				OS.execute("python", [install_base_path + "rpc-kill.py"], false)
+			elif not file.file_exists(install_base_path + "rpc-kill.py"):
+				OS.execute("python", ["rpc/rpc-kill.py"], false)
 			print("RPC killed")
 
 func set_variable(variable, value):
