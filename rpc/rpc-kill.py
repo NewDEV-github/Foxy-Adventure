@@ -6,3 +6,4 @@ client_id = '729429191489093702'  # Your application's client ID as a string. (T
 rpc_obj = rpc.DiscordIpcClient.for_platform(client_id)  # Send the client ID to the rpc module
 print("RPC connection successful.")
 rpc_obj.close()
+exit()

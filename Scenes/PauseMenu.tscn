@@ -50,16 +50,6 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Resume"
 
-[node name="QuitGame" type="Button" parent="Buttons"]
-pause_mode = 2
-margin_top = 208.0
-margin_right = 277.0
-margin_bottom = 308.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
-text = "KEY_EXIT"
-
 [node name="Options" type="Button" parent="Buttons"]
 pause_mode = 2
 margin_top = 104.0
@@ -80,11 +70,21 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Feedback"
 
+[node name="QuitGame" type="Button" parent="Buttons"]
+pause_mode = 2
+margin_top = 208.0
+margin_right = 277.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Quit to Main Menu"
+
 [node name="Control" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="Buttons/QuitGame" to="." method="_on_QuitGame_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Buttons/FeedBack" to="." method="_on_FeedBack_pressed"]
+[connection signal="pressed" from="Buttons/QuitGame" to="." method="_on_QuitGame_pressed"]

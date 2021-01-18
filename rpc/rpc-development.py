@@ -16,10 +16,10 @@ while True:
                 "start": start_time
             },
             "assets": {
-                "small_text": "Coding",  # anything you like
+                "small_text": "Coding Foxy Adventure for You!",  # anything you like
                 "small_image": "code",  # must match the image key
                 "large_text": "Godot Engine",  # anything you like
-                "large_image": "godot"  # must match the image key
+                "large_image": "../icon.png"  # must match the image key
             }
         }
     rpc_obj.set_activity(activity)

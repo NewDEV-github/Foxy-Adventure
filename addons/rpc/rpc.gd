@@ -1,9 +1,9 @@
 tool
 extends EditorPlugin
-
+var globals = preload("res://Scripts/Globals.gd").new()
 
 func _enter_tree() -> void:
-	Globals.DiscordRPC.new().RPCDevelopment()
+	globals.RPCDevelopment()
 
 func _exit_tree() -> void:
-	Globals.DiscordRPC.new().RPCKill()
+	globals.RPCKill()

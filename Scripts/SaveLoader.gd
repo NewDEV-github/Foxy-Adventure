@@ -46,3 +46,7 @@ func get_save_name(file_name:String):
 func _on_ItemList_item_selected(index: int) -> void:
 	var save_name = $ItemList.get_item_text(index)
 	Globals.load_level(save_name)
+
+
+func _on_Cancel_pressed():
+	hide()

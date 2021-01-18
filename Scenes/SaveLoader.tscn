@@ -5,13 +5,25 @@
 
 [node name="WindowDialog" type="Panel"]
 margin_right = 216.0
-margin_bottom = 91.0
+margin_bottom = 203.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="ItemList" type="ItemList" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 29.0
 auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_bottom = 29.0
+text = "X"
 
 [connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]

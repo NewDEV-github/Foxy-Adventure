@@ -21,9 +21,9 @@ var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	if character_name == "Tails":
-		Globals.DiscordRPC.new().RPCTails()
+		Globals.RPCTails()
 	if character_name == "New The Fox":
-		Globals.DiscordRPC.new().RPCNewTF()
+		Globals.RPCNewTF()
 	if str(OS.get_name()) == "Android":
 		camera.zoom = Vector2(0.6, 0.6)
 #func restart_position():
@@ -159,3 +159,7 @@ func _physics_process(delta):
 		anim = new_anim
 		$Anim/Sprite/AnimationPlayer.play(anim)
 	
+
+
+func _on_Tails_tree_exiting():
+	Globals.RPCKill()

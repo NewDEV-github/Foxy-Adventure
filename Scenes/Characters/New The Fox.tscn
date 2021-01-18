@@ -290,3 +290,5 @@ cast_to = Vector2( -11, 0 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_left = 0
+
+[connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]

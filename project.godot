@@ -124,7 +124,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "GDFirebase", "godot-console-dev", "rpc", "screen_debugger", "string_keys" )
+enabled=PoolStringArray( "GDFirebase", "godot-console-dev", "screen_debugger", "string_keys" )
 
 [gdnative]
 

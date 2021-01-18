@@ -259,6 +259,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CancelNewSave" type="Button" parent="NewSave"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_bottom = 29.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
@@ -269,3 +279,4 @@ __meta__ = {
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="no_saves_found" from="SaveLoader" to="." method="_on_SaveLoader_no_saves_found"]
 [connection signal="pressed" from="NewSave/CreateNewSave" to="." method="_on_CreateNewSave_pressed"]
+[connection signal="pressed" from="NewSave/CancelNewSave" to="." method="_on_CanceNewSave_pressed"]

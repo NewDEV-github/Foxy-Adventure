@@ -6,7 +6,6 @@ extends Control
 # var b = "text"
 #var new_chrs = Globals.new_characters
 #var discord_rpc = DISCORD_RPC.new()
-var discord_rpc = Globals.DiscordRPC.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var new_chrs = Globals.new_characters
@@ -32,3 +31,7 @@ func _on_ItemList_item_selected(index):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 	after_selecting_player()
+
+
+func _on_Cancel_pressed():
+	get_parent().hide()

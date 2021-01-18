@@ -182,6 +182,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 
+[node name="Cancel" type="Button" parent="FeedBack"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_bottom = 29.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DscDMCreator" type="WindowDialog" parent="."]
 margin_right = 242.0
 margin_bottom = 174.0
@@ -296,6 +306,7 @@ __meta__ = {
 [connection signal="pressed" from="FeedBack/TabContainer/Discord/options/JOIN/DSCServer" to="." method="_on_DSCServer_pressed"]
 [connection signal="pressed" from="FeedBack/TabContainer/Other/options/DM/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="FeedBack/TabContainer/Other/options/JOIN/Facebook" to="." method="_on_Facebook_pressed"]
+[connection signal="pressed" from="FeedBack/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="DscDMCreator/VBoxContainer/text/ExpandDSCMSG" to="." method="_on_ExpandDSCMSG_pressed"]
 [connection signal="pressed" from="DscDMCreator/Send" to="." method="_on_Send_pressed"]
 [connection signal="text_changed" from="Expand/TextEdit" to="." method="_on_TextEdit_text_changed"]

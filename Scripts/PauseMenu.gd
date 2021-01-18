@@ -18,7 +18,8 @@ func _on_Options_pressed():
 func show_submenu_page(page):
 	if current_submenu_page != null:
 		page.show()
-		current_submenu_page.hide()
+		if not current_submenu_page == page:
+			current_submenu_page.hide()
 	else:
 		page.show()
 		current_submenu_page = page
@@ -29,7 +30,7 @@ func _on_QuitGame_pressed():
 func _on_QuitTOMenuDIalog_confirmed():
 	visible = !visible
 	get_tree().change_scene('res://Scenes/Menu.tscn')
-	Globals.DiscordRPC.new().RPCKill()
+	Globals.RPCKill()
 
 func _on_FeedBack_pressed():
 	$HTTPRequest.send_feedback()

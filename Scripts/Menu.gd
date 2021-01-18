@@ -79,7 +79,8 @@ func _ready():
 func show_submenu_page(page):
 	if current_submenu_page != null:
 		page.show()
-		current_submenu_page.hide()
+		if not current_submenu_page == page:
+			current_submenu_page.hide()
 	else:
 		page.show()
 		current_submenu_page = page
@@ -159,8 +160,15 @@ func _on_CreateNewSave_pressed() -> void:
 	else:
 		print("Enter the save name!")
 	show_submenu_page($CharacterSelect)
+	$NewSave.hide()
 	#Globals.save_level(0, $NewSave/LineEdit.text)
 
 
 func _on_SaveLoader_no_saves_found() -> void:
 	$VBoxContainer/LoadGame.disabled = true
+
+
+
+
+func _on_CanceNewSave_pressed():
+	$NewSave.hide()

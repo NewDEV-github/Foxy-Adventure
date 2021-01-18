@@ -96,3 +96,7 @@ func send_err_log_msg():
 #	var channel_id = "773150027106484234"
 	f.close()
 	request(Marshalls.base64_to_utf8(str(SharedLibManager.webhook_err.get_data())), headers, true, HTTPClient.METHOD_POST, query)
+
+
+func _on_Cancel_pressed():
+	$FeedBack.hide()
