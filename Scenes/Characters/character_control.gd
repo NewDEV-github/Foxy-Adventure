@@ -1,6 +1,5 @@
 extends KinematicBody2D
 export (String) var character_name
-export (NodePath) var camera
 const GRAVITY_VEC = Vector2(0, 750)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
@@ -24,8 +23,6 @@ func _ready() -> void:
 		Globals.RPCTails()
 	if character_name == "New The Fox":
 		Globals.RPCNewTF()
-	if str(OS.get_name()) == "Android":
-		camera.zoom = Vector2(0.6, 0.6)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
