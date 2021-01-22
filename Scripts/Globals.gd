@@ -192,11 +192,12 @@ func RPCKill():
 			OS.execute("python", [install_base_path + "rpc-kill.py"], false)
 		elif not file.file_exists(install_base_path + "rpc-kill.py"):
 			OS.execute("python", ["rpc/rpc-kill.py"], false)
-	if not is_developer:
-		OS.kill(int(rpc_pid))
-	elif is_developer:
-		OS.kill(int(rpc_pid_development))
-	print("RPC killed")
+	if not rpc_pid == null:
+		if not is_developer:
+			OS.kill(int(rpc_pid))
+		elif is_developer:
+			OS.kill(int(rpc_pid_development))
+		print("RPC killed")
 func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
