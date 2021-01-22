@@ -24,9 +24,14 @@ func after_selecting_player():
 
 func _on_ItemList_item_selected(index):
 	var item_name = $ItemList.get_item_text(index)
+	
 #	discord_rpc.set_details('Playing as ' + str(item_name))
-	Globals.character_path = "res://Scenes/Characters/" + str(item_name) + ".tscn"
-	Globals.selected_character = load("res://Scenes/Characters/" + str(item_name) + ".tscn").instance()
+	if OS.get_name() == "Android":
+		Globals.character_path = "res://Scenes/Characters/" + str(item_name) + "_android.tscn"
+		Globals.selected_character = load("res://Scenes/Characters/" + str(item_name) + "_android.tscn").instance()
+	else:
+		Globals.character_path = "res://Scenes/Characters/" + str(item_name) + ".tscn"
+		Globals.selected_character = load("res://Scenes/Characters/" + str(item_name) + ".tscn").instance()
 	if Globals.selected_character == null:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
