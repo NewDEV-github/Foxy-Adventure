@@ -134,7 +134,7 @@ enabled=PoolStringArray( "GDFirebase", "godot-console-dev", "screen_debugger" )
 
 [gdnative]
 
-singletons=[ "res://addons/videodecoder.gdnlib" ]
+singletons=[ "res://addons/videodecoder.gdnlib", "res://git_api.gdnlib" ]
 singletons_disabled=[  ]
 
 [importer_defaults]
