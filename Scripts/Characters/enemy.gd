@@ -33,8 +33,8 @@ func _physics_process(delta):
 		anim = new_anim
 		($Anim as AnimationPlayer).play(anim)
 
-func damage_player(body):
-	if body.name == "Tails" or "New The Fox":
-		body.take_damage()
+
 func hit_by_bullet():
 	state = State_Killed
+
+

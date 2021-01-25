@@ -3,6 +3,7 @@ var tekst = "Hello World"
 var world_scene
 var website
 var current_submenu_page
+export (bool) var is_android
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -22,7 +23,9 @@ onready var bs_imgs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$version_label.bbcode_text = "[wave amp=50 freq=1]" + Globals.construct_game_version() + "[/wave]"
+	if str(OS.get_name()) == "Android" and not is_android:
+		get_tree().change_scene("res://Scenes/Menu_android.tscn")
+	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
 	var lem = LevelEditorManager.new()

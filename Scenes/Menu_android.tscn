@@ -23,6 +23,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+is_android = true
 
 [node name="Feedback" parent="." instance=ExtResource( 8 )]
 

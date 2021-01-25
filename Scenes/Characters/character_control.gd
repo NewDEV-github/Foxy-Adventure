@@ -23,6 +23,7 @@ var speed = 0.5
 var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
+	set_damage_bar_value($CanvasLayer/ProgressBar)
 	if character_name == "Tails":
 		Globals.RPCTails()
 	if character_name == "New The Fox":
@@ -165,6 +166,7 @@ func take_damage():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	hp -= rng.randi_range(damage_value_max, damage_value_min)
+	set_damage_bar_value($CanvasLayer/ProgressBar)
 
 func set_damage_bar_value(damagebar):
 	damagebar.max_value = max_hp
@@ -172,3 +174,8 @@ func set_damage_bar_value(damagebar):
 
 func _on_Tails_tree_exiting():
 	Globals.RPCKill()
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Enemy":
+		take_damage()

@@ -104,10 +104,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.346, 0.699 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -180.0, -90.0, 0.0 ]
+"values": [ -90.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:region_enabled")
@@ -243,18 +243,17 @@ z_index = 1
 collision/safe_margin = 0.1
 script = ExtResource( 2 )
 character_name = "New The Fox"
-camera = NodePath("Camera2D")
 
 [node name="Anim" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
 
 [node name="Sprite" type="Sprite" parent="Anim"]
 position = Vector2( 0.5, 4.5 )
+rotation = -1.5708
 texture = ExtResource( 3 )
 hframes = 8
-frame = 4
 region_enabled = true
-region_rect = Rect2( 0, 13, 380, 37 )
+region_rect = Rect2( 465.807, 45.5556, 234.193, 47.5556 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Anim/Sprite"]
 playback_speed = 0.3
@@ -291,4 +290,7 @@ cast_to = Vector2( -11, 0 )
 current = true
 limit_left = 0
 
+[node name="Area2D" type="Area2D" parent="."]
+
 [connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
