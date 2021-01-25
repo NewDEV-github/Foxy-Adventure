@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # job id, can be anything
+  build_mono:
+    # Always use ubuntu-latest for this action
+    runs-on: ubuntu-latest
+    # Job name, can be anything
+    name: Export Game Job
+    steps:
+    - name: Calculate GIT short ref
+      run: |
+          echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+      # Always include the checkout step so that 
+      # your project is available for Godot to export
+    - name: checkout
+      uses: actions/checkout@v2.3.1
+      # Ensure that you get the entire project history
+      with:
+        fetch-depth: 0
+    - name: export game
+      # Use latest version (see releases for all versions)
+      uses: firebelley/godot-export@v2.6.1
+      with:
+        # Defining all the required inputs
+        # I used the mono version of Godot in this example
+        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/mono/Godot_v3.2.4-beta6_mono_x11_64.zip
+        godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/mono/Godot_v3.2.4-beta6_mono_export_templates.tpz
+        relative_project_path: ./
+        create_release: true
+        update_windows_icons: true
+        base_version:  $${{ env.GITHUB_SHA_SHORT }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
