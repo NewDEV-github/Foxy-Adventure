@@ -18,8 +18,8 @@ X11.32="res://bin/gdsdk/linux-32/libgdsdk.so"
 [dependencies]
 
 OSX.64=[ "res://bin/gdsdk/osx-64/libdiscord_game_sdk.dylib" ]
-OSX.32=[ "res://bin/gdsdk/osx-32/libdiscord_game_sdk.dylib" ]
+OSX.32=[  ]
 Windows.64=[ "res://bin/gdsdk/windows-64/discord_game_sdk.dll" ]
 Windows.32=[ "res://bin/gdsdk/windows-32/discord_game_sdk.dll" ]
 X11.64=[ "res://bin/gdsdk/linux-64/libdiscord_game_sdk.so" ]
-X11.32=[ "res://bin/gdsdk/linux-32/libdiscord_game_sdk.so" ]
+X11.32=[  ]
