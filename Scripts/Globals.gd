@@ -27,6 +27,9 @@ var stage_list = {
 var core: Discord.Core
 var users: Discord.UserManager
 var images: Discord.ImageManager
+var activitytimestamps: Discord.ActivityTimestamps
+var activityassets: Discord.ActivityAssets
+var partysize: Discord.PartySize
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -201,6 +204,9 @@ func _ready():
 	if result != Discord.Result.OK:
 		core = null
 	else:
+		activitytimestamps = Discord.ActivityTimestamps.new()
+		activityassets = Discord.ActivityAssets.new()
+		activityassets.small_text = "D"
 		users = _get_user_manager()
 		users.connect("current_user_update", self, "_on_current_user_update")
 
