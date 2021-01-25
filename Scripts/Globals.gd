@@ -27,7 +27,6 @@ var stage_list = {
 var core: Discord.Core
 var users: Discord.UserManager
 var images: Discord.ImageManager
-
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -193,7 +192,7 @@ func get_current_user_premium_type_callback(
 #			texture_rect.texture = tex
 #			OS.window_size = Vector2(dimensions.width, dimensions.height)
 func _ready():
-	var core = Discord.Core.new()
+	core = Discord.Core.new()
 	var result: int = core.create(
 		793449535632441374,
 		Discord.CreateFlags.DEFAULT
@@ -205,7 +204,7 @@ func _ready():
 		users = _get_user_manager()
 		users.connect("current_user_update", self, "_on_current_user_update")
 
-		users.get_user(425340416531890178, self, "get_user_callback")
+		users.get_user(492970950749323264, self, "get_user_callback")
 
 		images = _get_image_manager()
 	copy_files_rpc()
