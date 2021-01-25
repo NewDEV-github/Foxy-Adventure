@@ -7,6 +7,8 @@ func _ready():
 	+ str(OS.get_date().year) + " - New DEV\nGodot Engine - Copyright 2020 - " +\
 	str(OS.get_date().year) + " - Godot Engine Contributors\n\nGekon, our team wants to say big 'Thank You' to You\nfor putting a lot of non-obligatory job into the game.[/center]"#SilnyGekon
 	$AnimationPlayer.play("credits")
-
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().change_scene("res://Scenes/Menu.tscn")
 func _on_AnimationPlayer_animation_finished(anim_name):
 	get_tree().change_scene("res://Scenes/Menu.tscn")
