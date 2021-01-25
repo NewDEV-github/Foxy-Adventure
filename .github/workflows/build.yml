@@ -53,7 +53,7 @@ jobs:
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
-         name: FoxyAdventure.32
+         name: FoxyAdventure.x86
     # Name of the preset in `export_presets.cfg` to use
          preset: x11-32
     # Optional name of the subdirectory to put exported project in
@@ -68,7 +68,7 @@ jobs:
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
-         name: FoxyAdventure.64
+         name: FoxyAdventure.x86_64
     # Name of the preset in `export_presets.cfg` to use
          preset: x11-64
     # Optional name of the subdirectory to put exported project in
