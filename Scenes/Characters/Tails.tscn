@@ -235,7 +235,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 15.1005, 12.4917 )
+extents = Vector2( 7.5, 10.5 )
 
 [node name="Tails" type="KinematicBody2D"]
 z_index = 1
