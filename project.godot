@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/cutscene_player.gd"
 }, {
+"base": "Reference",
+"class": "Discord",
+"language": "GDScript",
+"path": "res://bin/gdsdk/discord.gd"
+}, {
 "base": "Resource",
 "class": "FirebaseResource",
 "language": "GDScript",
@@ -52,7 +57,7 @@ _global_script_classes=[ {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
-"path": "res://git_api.gdns"
+"path": "res://bin/git_api.gdns"
 }, {
 "base": "HTTPRequest",
 "class": "LevelEditorManager",
@@ -73,6 +78,7 @@ _global_script_class_icons={
 "AudioPlayer": "",
 "CharacterAnimator": "",
 "CutsceneVideoPlayer": "",
+"Discord": "",
 "FirebaseResource": "",
 "FirebaseStorage": "",
 "FirebaseUserData": "",
@@ -134,7 +140,7 @@ enabled=PoolStringArray( "GDFirebase", "godot-console-dev", "screen_debugger" )
 
 [gdnative]
 
-singletons=[ "res://addons/videodecoder.gdnlib", "res://git_api.gdnlib" ]
+singletons=[ "res://addons/videodecoder.gdnlib" ]
 singletons_disabled=[  ]
 
 [importer_defaults]
