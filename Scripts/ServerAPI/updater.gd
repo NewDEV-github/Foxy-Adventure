@@ -35,7 +35,9 @@ func _ready() -> void:
 	
 #	if intro_played:
 #		get_tree().change_scene("res://Scenes/Menu.tscn")
-
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_VideoPlayer_finished()
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
