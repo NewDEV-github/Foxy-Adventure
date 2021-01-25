@@ -6,10 +6,8 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
     branches-ignore: [ android ]
   pull_request:
-    branches: [ master ]
     branches-ignore: [ android ]
 
   # Allows you to run this workflow manually from the Actions tab
