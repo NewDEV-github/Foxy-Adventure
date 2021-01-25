@@ -31,6 +31,9 @@ jobs:
       # Ensure that you get the entire project history
       with:
         fetch-depth: 0
+    - name: install dependencies
+      run: 
+        sudo apt-get install libpulse
     - name: export game
       # Use latest version (see releases for all versions)
       uses: firebelley/godot-export@v2.6.1
@@ -61,13 +64,16 @@ jobs:
       # Ensure that you get the entire project history
       with:
         fetch-depth: 0
+    - name: install dependencies
+      run: 
+        sudo apt-get install libpulse
     - name: export game
       # Use latest version (see releases for all versions)
       uses: firebelley/godot-export@v2.6.1
       with:
         # Defining all the required inputs
         # I used the mono version of Godot in this example
-        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_x11_64.zip
+        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_x11.64.zip
         godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_export_templates.tpz
         relative_project_path: ./
         create_release: true
