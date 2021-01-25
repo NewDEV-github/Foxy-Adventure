@@ -175,13 +175,13 @@ enabled = true
 cast_to = Vector2( 0, 45 )
 
 [node name="DetectWallLeft" type="RayCast2D" parent="."]
-position = Vector2( -12.1361, -0.739977 )
+position = Vector2( -24.6361, 0.510023 )
 rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 20 )
 
 [node name="DetectWallRight" type="RayCast2D" parent="."]
-position = Vector2( 3.2788, -0.381488 )
+position = Vector2( 23.2788, 0.868512 )
 rotation = -1.5708
 enabled = true
 cast_to = Vector2( 0, 20 )
