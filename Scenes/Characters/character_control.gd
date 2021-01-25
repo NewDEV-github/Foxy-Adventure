@@ -1,5 +1,9 @@
 extends KinematicBody2D
 export (String) var character_name
+export (int) var max_hp = 100
+export (int) var damage_value_min = 3
+export (int) var damage_value_max = 7
+var hp = 100
 const GRAVITY_VEC = Vector2(0, 750)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
@@ -19,6 +23,7 @@ var speed = 0.5
 var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
+	set_damage_bar_value($CanvasLayer/ProgressBar)
 	if character_name == "Tails":
 		Globals.RPCTails()
 	if character_name == "New The Fox":
@@ -157,6 +162,20 @@ func _physics_process(delta):
 		$Anim/Sprite/AnimationPlayer.play(anim)
 	
 
+func take_damage():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	hp -= rng.randi_range(damage_value_max, damage_value_min)
+	set_damage_bar_value($CanvasLayer/ProgressBar)
+
+func set_damage_bar_value(damagebar):
+	damagebar.max_value = max_hp
+	damagebar.value = hp
 
 func _on_Tails_tree_exiting():
 	Globals.RPCKill()
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Enemy":
+		take_damage()

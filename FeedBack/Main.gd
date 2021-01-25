@@ -63,7 +63,7 @@ func _on_TextEdit_text_changed():
 
 
 func _on_DSCServer_pressed():
-	OS.shell_open(SharedLibManager.discord_server.get_data())
+	OS.shell_open("https://discord.gg/DAK4Gp2ufS")
 
 
 func _on_Website_pressed():

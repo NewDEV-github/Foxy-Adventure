@@ -8,12 +8,10 @@ on:
   push:
     tags:
       - '*'
-    branches-ignore: [ develop, android ]
+    branches-ignore: [ android ]
     paths-ignore:
     - 'game_version.txt'
-  pull_request:
-    branches-ignore: [ develop, android ]
-  
+  workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -53,7 +51,7 @@ jobs:
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
-         name: FoxyAdventure.32
+         name: FoxyAdventure.x86
     # Name of the preset in `export_presets.cfg` to use
          preset: x11-32
     # Optional name of the subdirectory to put exported project in
@@ -68,7 +66,7 @@ jobs:
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
     # Name of the exported binary
-         name: FoxyAdventure.64
+         name: FoxyAdventure.x86_64
     # Name of the preset in `export_presets.cfg` to use
          preset: x11-64
     # Optional name of the subdirectory to put exported project in
@@ -127,7 +125,7 @@ jobs:
         with:
           name: build-x11-32
     # A file, directory or wildcard pattern that describes what to upload
-          path: build/build-x11-64
+          path: build/build-x11-32
       - name: Upload a Build Artifact (x11-64)
         uses: actions/upload-artifact@v2.2.2
         with:

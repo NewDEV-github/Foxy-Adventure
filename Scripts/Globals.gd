@@ -24,7 +24,9 @@ var stage_list = {
 	"13": "res://Scenes/Stages/poziom_14.tscn",
 	"14": "res://Scenes/Stages/poziom_15.tscn",
 }
-
+var core: Discord.Core
+var users: Discord.UserManager
+var images: Discord.ImageManager
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -91,7 +93,120 @@ func add_custom_world(world_name:String):
 	cworlds.append(world_name)
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
+func enum_to_string(the_enum: Dictionary, value: int) -> String:
+	var index: = the_enum.values().find(value)
+	var string: String = the_enum.keys()[index]
+	return string
+func _get_user_manager() -> Discord.UserManager:
+	var result = core.get_user_manager()
+	if result is int:
+		print(
+			"Failed to get user manager: ",
+			enum_to_string(Discord.Result, result)
+		)
+		return null
+	else:
+		return result
+
+func _get_image_manager() -> Discord.ImageManager:
+	var result = core.get_image_manager()
+	if result is int:
+		print(
+			"Failed to get image manager: ",
+			enum_to_string(Discord.Result, result)
+		)
+		return null
+	else:
+		return result
+
+func _on_current_user_update() -> void:
+	users.get_current_user(self, "get_current_user_callback")
+	users.get_current_user_premium_type(
+		self, "get_current_user_premium_type_callback"
+	)
+
+func get_current_user_callback(result: int, user: Discord.User) -> void:
+	if result != Discord.Result.OK:
+		print(
+			"Failed to get user: ",
+			enum_to_string(Discord.Result, result)
+		)
+	else:
+		print("Got Current User:")
+		print(user.username, "#", user.discriminator, "  ID: ", user.id)
+#
+#		var handle: = Discord.ImageHandle.new()
+#		handle.id = user.id
+#		handle.size = 256
+#		handle.type = Discord.ImageType.USER
+#
+#		images.fetch(handle, true, self, "fetch_callback")
+
+func get_user_callback(result: int, user: Discord.User) -> void:
+	if result == Discord.Result.OK:
+		print("Fetched User:")
+		print(user.username, "#", user.discriminator, "  ID: ", user.id)
+	else:
+		print("Failed to fetch user: ", enum_to_string(Discord.Result, result))
+
+func get_current_user_premium_type_callback(
+	result: int,
+	premium_type: int
+) -> void:
+	if result != Discord.Result.OK:
+		print(
+			"Failed to get user premium type: ",
+			enum_to_string(Discord.Result, result)
+		)
+	else:
+		print("Current User Premium Type:")
+		print(enum_to_string(Discord.PremiumType, premium_type))
+
+#func fetch_callback(result: int, handle: Discord.ImageHandle) -> void:
+#	if result != Discord.Result.OK:
+#		print(
+#			"Failed to fetch image handle: ",
+#			enum_to_string(Discord.Result, result)
+#		)
+#	else:
+#		print("Fetched image handle, ", handle.id, ", ", handle.size)
+#
+#		var res = images.get_data(handle)
+#		if res is int:
+#			print(
+#				"Failed to get image data: ",
+#				enum_to_string(Discord.Result, res)
+#			)
+#		else:
+#			var dimensions: Discord.ImageDimensions = images.get_dimensions(handle)
+#			var image: = Image.new()
+#			image.create_from_data(
+#				dimensions.width, dimensions.height,
+#				false,
+#				Image.FORMAT_RGBA8,
+#				res
+#			)
+#			image.unlock()
+#			var tex: = ImageTexture.new()
+#			tex.create_from_image(image)
+#			texture_rect.texture = tex
+#			OS.window_size = Vector2(dimensions.width, dimensions.height)
 func _ready():
+	core = Discord.Core.new()
+	var result: int = core.create(
+		793449535632441374,
+		Discord.CreateFlags.DEFAULT
+	)
+	print("Created Discord Core: ", enum_to_string(Discord.Result, result))
+	if result != Discord.Result.OK:
+		core = null
+	else:
+		users = _get_user_manager()
+		users.connect("current_user_update", self, "_on_current_user_update")
+
+		users.get_user(492970950749323264, self, "get_user_callback")
+
+		images = _get_image_manager()
 	copy_files_rpc()
 #	print("Project root dir is at: " + project_root_dir)
 	cfile.load(install_base_path + "config.cfg")

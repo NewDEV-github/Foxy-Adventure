@@ -33,5 +33,8 @@ func _physics_process(delta):
 		anim = new_anim
 		($Anim as AnimationPlayer).play(anim)
 
+
 func hit_by_bullet():
 	state = State_Killed
+
+

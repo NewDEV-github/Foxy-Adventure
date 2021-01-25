@@ -157,8 +157,9 @@ margin_bottom = 187.499
 [node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -42.0
+margin_top = -55.0
 margin_right = 533.0
+margin_bottom = -10.0
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -198,7 +199,8 @@ margin_bottom = 145.5
 [node name="Label" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -675.0
+margin_left = -677.119
+margin_right = -2.1189
 margin_bottom = 95.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

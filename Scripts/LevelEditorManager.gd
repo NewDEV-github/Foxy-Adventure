@@ -37,6 +37,7 @@ func execute_editor():
 func _init():
 	dir.open("user://")
 	dir.make_dir("temp")
+
 func download_editor(auto_install:bool = true):
 	download_file = temp_download_path + generate_download_link().get_basename() + ".zip"
 	request(generate_download_link())

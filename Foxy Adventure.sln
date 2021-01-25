@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foxy Adventure", "Foxy Adventure.csproj", "{FCA61B70-B628-4C73-976F-520E34E4E4F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	Release|Any CPU = Release|Any CPU
+	Tools|Any CPU = Tools|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCA61B70-B628-4C73-976F-520E34E4E4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA61B70-B628-4C73-976F-520E34E4E4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA61B70-B628-4C73-976F-520E34E4E4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA61B70-B628-4C73-976F-520E34E4E4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA61B70-B628-4C73-976F-520E34E4E4F7}.Tools|Any CPU.ActiveCfg = Tools|Any CPU
+		{FCA61B70-B628-4C73-976F-520E34E4E4F7}.Tools|Any CPU.Build.0 = Tools|Any CPU
+	EndGlobalSection
+EndGlobal
