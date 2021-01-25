@@ -8,12 +8,12 @@ on:
   push:
     tags:
       - '*'
-    branches-ignore: [ develop ]
+    branches-ignore: [ android ]
     paths-ignore:
     - 'game_version.txt'
   pull_request:
-    branches-ignore: [ develop ]
-  
+    branches-ignore: [ android ]
+  workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
