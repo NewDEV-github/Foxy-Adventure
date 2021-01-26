@@ -1,0 +1,79 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Godot Build Mono
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  godot-build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Runs a set of commands using the runners shell
+      - name: download godot and export templates
+        run: |
+          sudo apt install unzip
+          sudo apt install tree
+          echo *** Downloading Godot Binary ***
+          wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_linux_headless_64.zip
+          echo *** Downloading Godot Server Export Templates ***
+          wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_export_templates.tpz
+          echo *** Unzipping Godot Binary ***
+          unzip Godot_v3.2.4-beta6_linux_headless.64.zip
+          echo *** Unzipping Godot Server Export Templates ***
+          unzip Godot_v3.2.4-beta6_export_templates.tpz
+          echo *** Installing Godot Server Export Templates ***
+          cd /home/runner/
+          sudo mkdir -p .local/share/godot
+          cd .local/share/godot
+          sudo mkdir -p templates/3.2.4.beta6
+          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6
+          echo *** Exporting Files ***
+          cd $GITHUB_WORKSPACE
+          sudo mkdir -p builds/{x11-32,x11-64,win-32,win-64,osx}
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64/FoxyAdventure.x86_64
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32/FoxyAdventure.x86
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx/FoxyAdventure.zip
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32/FoxyAdventure.exe
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64/FoxyAdventure.exe
+          tree -a
+      - name: Upload a Build Artifact x11-64
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: build-x11-64
+          path: builds/x11-64
+      - name: Upload a Build Artifact x11-32
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: build-x11-32
+          path: builds/x11-32
+      - name: Upload a Build Artifact osx
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: build-osx
+          path: builds/osx
+      - name: Upload a Build Artifact win-32
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: build-win-32
+          path: builds/win-32
+      - name: Upload a Build Artifact win-64
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: build-win-64
+          path: builds/win-64
