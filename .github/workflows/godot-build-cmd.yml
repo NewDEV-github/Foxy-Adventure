@@ -28,9 +28,21 @@ jobs:
       - name: download godot and export templates
         run: |
           sudo apt install unzip
+          echo *** Downloading Godot Server Binary ***
           wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_linux_server.64.zip
+          echo *** Downloading Godot Server Export Templates ***
           wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_export_templates.tpz
+          echo *** Unzipping Godot Server Binary ***
           unzip Godot_v3.2.4-beta6_linux_server.64.zip
+          echo *** Unzipping Godot Server Export Templates ***
           unzip Godot_v3.2.4-beta6_export_templates.tpz
+          echo *** List of files and directories ***
           ls
+          echo *** Installing Godot Server Export Templates ***
+          cd /home/runner/work/.local/share/
+          mkdir godot
+          cd godot
+          cp $GITHUB_WORKSPACE/templates templates
+          echo *** Executing Godot Server Binary ***
+          $GITHUB_WORKSPACE/Godot_v3.2.4-beta6_linux_server.64
           
