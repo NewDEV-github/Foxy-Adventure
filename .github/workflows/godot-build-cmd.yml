@@ -41,7 +41,7 @@ jobs:
           echo *** Installing Godot Server Export Templates ***
           cd /home/runner/work/
           ls
-          mkdir -p /.local/share/godot
+          sudo mkdir -p /.local/share/godot
           cd /.local/share/godot
           cp $GITHUB_WORKSPACE/templates templates
           echo *** Executing Godot Server Binary ***
