@@ -41,6 +41,7 @@ jobs:
           echo *** Installing Godot Server Export Templates ***
           cd /home/runner/work/
           ls
+          mkdir /.local/share/
           cd /.local/share/
           mkdir godot
           cd godot
