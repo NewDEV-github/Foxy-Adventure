@@ -41,12 +41,8 @@ jobs:
           cd /home/runner/work/
           sudo mkdir -p /.local/share/godot
           cd /.local/share/godot
-          sudo cp -r $GITHUB_WORKSPACE/templates templates
-          cd templates
-          sudo mkdir 3.2.4.beta6
-          cd 3.2.4.beta6
-          sudo cp  -r ../ ./
-          cd ../../
+          sudo mkdir -p templates/3.2.4.beta6
+          sudo cp -r $GITHUB_WORKSPACE/templates/ templates/3.2.4.beta6
           ls
           tree -a
           echo *** Exporting Files ***
