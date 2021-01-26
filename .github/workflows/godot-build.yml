@@ -48,7 +48,7 @@ jobs:
           sudo mkdir -p builds/{x11-32,x11-64,win-32,win-64,osx}
           sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64/FoxyAdventure.x86_64
           sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32/FoxyAdventure.x86
-          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/$GITHUB_WORKSPACE/builds/osx/FoxyAdventure.zip
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx/FoxyAdventure.zip
           ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32/FoxyAdventure.exe
           ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64/FoxyAdventure.exe
           tree -a
