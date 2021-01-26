@@ -44,7 +44,6 @@ jobs:
           sudo mkdir -p templates/3.2.4.beta6
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6
           cd ../../../
-        tree -a
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/{x11-32,x11-64,win-32,win-64,osx}
