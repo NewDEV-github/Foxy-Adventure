@@ -45,35 +45,35 @@ jobs:
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6.mono
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
-          sudo mkdir -p builds/{x11-32,x11-64,win-32,win-64,osx}
-          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64/FoxyAdventure.x86_64
-          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32/FoxyAdventure.x86
-          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx/FoxyAdventure.zip
-          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32/FoxyAdventure.exe
-          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64/FoxyAdventure.exe
+          sudo mkdir -p builds/{x11-32-mono,x11-64-mono,win-32-mono,win-64-mono,osx-mono}
+          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-mono/FoxyAdventure.x86_64
+          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32-mono/FoxyAdventure.x86
+          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-mono/FoxyAdventure.zip
+          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32-mono/FoxyAdventure.exe
+          sudo ./Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-mono/FoxyAdventure.exe
           tree -a
-      - name: Upload a Build Artifact x11-64
+      - name: Upload a Build Artifact x11-64-mono
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-x11-64
-          path: builds/x11-64
-      - name: Upload a Build Artifact x11-32
+          name: build-x11-64-mono
+          path: builds/x11-64-mono
+      - name: Upload a Build Artifact x11-32-mono
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-x11-32
-          path: builds/x11-32
-      - name: Upload a Build Artifact osx
+          name: build-x11-32-mono
+          path: builds/x11-32-mono
+      - name: Upload a Build Artifact osx-mono
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-osx
-          path: builds/osx
-      - name: Upload a Build Artifact win-32
+          name: build-osx-mono
+          path: builds/osx-mono
+      - name: Upload a Build Artifact win-32-mono
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-win-32
-          path: builds/win-32
-      - name: Upload a Build Artifact win-64
+          name: build-win-32-mono
+          path: builds/win-32-mono
+      - name: Upload a Build Artifact win-64-mono
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-win-64
-          path: builds/win-64
+          name: build-win-64-mono
+          path: builds/win-64-mono
