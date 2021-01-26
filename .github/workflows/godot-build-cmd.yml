@@ -45,6 +45,6 @@ jobs:
           cd /.local/share/godot
           sudo cp -r $GITHUB_WORKSPACE/templates templates
           echo *** Exporting Files ***
-          sudo mkdir $GITHUB_WORKSPACE/builds/
-          $GITHUB_WORKSPACE/Godot_v3.2.4-beta6_linux_server.64 --export "x11-64" $GITHUB_WORKSPACE/builds/
+          sudo mkdir -p $GITHUB_WORKSPACE/builds/{x11-32,x11-64,win-32,win-64,osx}
+          $GITHUB_WORKSPACE/Godot_v3.2.4-beta6_linux_server.64 --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64/FoxyAdventure.x86_64
           
