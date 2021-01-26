@@ -43,7 +43,8 @@ jobs:
           ls
           sudo mkdir -p /.local/share/godot
           cd /.local/share/godot
-          cp -r $GITHUB_WORKSPACE/templates templates
-          echo *** Executing Godot Server Binary ***
-          $GITHUB_WORKSPACE/Godot_v3.2.4-beta6_linux_server.64
+          sudo cp -r $GITHUB_WORKSPACE/templates templates
+          echo *** Exporting Files ***
+          sudo mkdir $GITHUB_WORKSPACE/builds/
+          $GITHUB_WORKSPACE/Godot_v3.2.4-beta6_linux_server.64 --export "x11-64" $GITHUB_WORKSPACE/builds/
           
