@@ -43,7 +43,7 @@ jobs:
           ls
           sudo mkdir -p /.local/share/godot
           cd /.local/share/godot
-          cp $GITHUB_WORKSPACE/templates templates
+          cp -r $GITHUB_WORKSPACE/templates templates
           echo *** Executing Godot Server Binary ***
           $GITHUB_WORKSPACE/Godot_v3.2.4-beta6_linux_server.64
           
