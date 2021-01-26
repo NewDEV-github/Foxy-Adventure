@@ -43,10 +43,8 @@ jobs:
           cd /.local/share/godot
           sudo mkdir -p templates/3.2.4.beta6
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6
-          cd ../../../
+          cd ../../../../../../
           sudo find / -name linux_x11_64_release
-          echo ( cd ../.. ; pwd )
-          ( cd ../.. ; pwd )
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/{x11-32,x11-64,win-32,win-64,osx}
