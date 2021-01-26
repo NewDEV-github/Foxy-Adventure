@@ -45,7 +45,7 @@ jobs:
           cd templates
           sudo mkdir 3.2.4.beta6
           cd 3.2.4.beta6
-          sudo cp  -r ../templates/ .
+          sudo cp  -r ../ ./
           cd ../../
           ls
           tree -a
@@ -53,4 +53,5 @@ jobs:
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/{x11-32,x11-64,win-32,win-64,osx}
           ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "x11-64" builds/x11-64/FoxyAdventure.x86_64
+          tree -a
           
