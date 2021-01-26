@@ -43,6 +43,7 @@ jobs:
           unzip Godot_v3.2.4-beta6_mono_export_templates.tpz
           echo *** Installing Android SDK and platform tools ***
           mkdir android-sdk
+          touch android-sdk/.gdignore
           unzip sdk-tools-linux-4333796.zip -d android-sdk
           echo *** Installing Godot Server Export Templates ***
           cd /home/runner/
@@ -54,8 +55,7 @@ jobs:
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/android-mono
-          sudo Godot_v3.2.4-beta6_mono_linux_headless_64/Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android-mono/FoxyAdventure.android
-          tree -a
+          sudo Godot_v3.2.4-beta6_mono_linux_headless_64/Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android-mono/FoxyAdventure.apk
       - name: Upload a Build Artifact android-mono
         uses: actions/upload-artifact@v2.2.2
         with:
