@@ -39,7 +39,9 @@ jobs:
           echo *** List of files and directories ***
           ls
           echo *** Installing Godot Server Export Templates ***
-          cd /home/runner/work/.local/share/
+          cd /home/runner/work/
+          ls
+          cd /.local/share/
           mkdir godot
           cd godot
           cp $GITHUB_WORKSPACE/templates templates
