@@ -42,7 +42,7 @@ jobs:
           sudo mkdir -p /.local/share/godot
           cd /.local/share/godot
           sudo mkdir -p templates/3.2.4.beta6
-          sudo cp -r $GITHUB_WORKSPACE/templates/ templates/3.2.4.beta6
+          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6
           ls
           tree -a
           echo *** Exporting Files ***
