@@ -34,7 +34,7 @@ jobs:
           echo *** Downloading Godot Server Export Templates ***
           wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/mono/Godot_v3.2.4-beta6_mono_export_templates.tpz
           echo *** Unzipping Godot Binary ***
-          unzip Godot_v3.2.4-beta6_mono_linux_headless.64.zip
+          unzip Godot_v3.2.4-beta6_mono_linux_headless_64.zip
           echo *** Unzipping Godot Server Export Templates ***
           unzip Godot_v3.2.4-beta6_mono_export_templates.tpz
           echo *** Installing Godot Server Export Templates ***
