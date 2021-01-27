@@ -48,14 +48,14 @@ jobs:
           cd /home/runner/
           sudo mkdir -p .local/share/godot
           cd .local/share/godot
-          sudo mkdir -p templates/3.2.4.beta6.mono
-          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6.mono
+          sudo mkdir -p templates/3.2.4.beta6
+          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6
           sudo cp $GITHUB_WORKSPACE/editor_settings-3.tres editor_settings-3.tres
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/android
           sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android/FoxyAdventure.apk
-      - name: Upload a Build Artifact android-mono
+      - name: Upload a Build Artifact android
         uses: actions/upload-artifact@v2.2.2
         with:
           name: build-android
