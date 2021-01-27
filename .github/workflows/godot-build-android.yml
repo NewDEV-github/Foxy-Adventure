@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.2
         with:
           name: build-android-settings
-          path: builds/android
+          path: /home/runner/.local/share/godot/editor_settings-3.tres
       - name: ddd
         run: |
           sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android/FoxyAdventure.apk
