@@ -30,7 +30,6 @@ jobs:
           sudo apt install unzip
           sudo apt install tree
           sudo apt install openjdk-11-jdk-headless
-          sudo find / -name jarsigner
           echo *** Downloading Godot Binary ***
           wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/mono/Godot_v3.2.4-beta6_mono_linux_headless_64.zip
           echo *** Downloading Godot Server Export Templates ***
