@@ -54,7 +54,7 @@ jobs:
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/android
-          sudo Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android/FoxyAdventure.apk
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android/FoxyAdventure.apk
       - name: Upload a Build Artifact android-mono
         uses: actions/upload-artifact@v2.2.2
         with:
