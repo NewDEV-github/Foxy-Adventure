@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/Shaders/start_transition.shader" type="Shader" id=1]
+[ext_resource path="res://assets/Graphics/Transitions/005-Stripe01.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/cutoff = 0.0
+shader_param/smooth_size = null
+shader_param/color = null
+shader_param/mask = ExtResource( 2 )

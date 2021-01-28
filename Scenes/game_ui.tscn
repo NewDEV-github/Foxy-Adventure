@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/game_ui.gd" type="Script" id=1]
-[ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=2]
-[ext_resource path="res://Graphics/pause_button.png" type="Texture" id=3]
-[ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=4]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Graphics/pause_button.png" type="Texture" id=3]
+[ext_resource path="res://assets/Graphics/arrow_button.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
+
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
