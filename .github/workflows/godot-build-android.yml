@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Godot Build Android Mono
+name: Godot Build Android Standard
 
 # Controls when the action will run. 
 on:
@@ -31,15 +31,15 @@ jobs:
           sudo apt install tree
           sudo apt install openjdk-11-jdk-headless
           echo *** Downloading Godot Binary ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/mono/Godot_v3.2.4-beta6_mono_linux_headless_64.zip
+          wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_linux_headless.64.zip
           echo *** Downloading Godot Server Export Templates ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/mono/Godot_v3.2.4-beta6_mono_export_templates.tpz
+          wget https://downloads.tuxfamily.org/godotengine/3.2.4/beta6/Godot_v3.2.4-beta6_export_templates.tpz
           echo *** Downoad Android SDK ***
           wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
           echo *** Unzipping Godot Binary ***
-          unzip Godot_v3.2.4-beta6_mono_linux_headless_64.zip
+          unzip Godot_v3.2.4-beta6_linux_headless.64.zip
           echo *** Unzipping Godot Server Export Templates ***
-          unzip Godot_v3.2.4-beta6_mono_export_templates.tpz
+          unzip Godot_v3.2.4-beta6_export_templates.tpz
           echo *** Installing Android SDK and platform tools ***
           mkdir android-sdk
           touch android-sdk/.gdignore
@@ -48,15 +48,23 @@ jobs:
           cd /home/runner/
           sudo mkdir -p .local/share/godot
           cd .local/share/godot
-          sudo mkdir -p templates/3.2.4.beta6.mono
-          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6.mono
-          sudo cp -r $GITHUB_WORKSPACE/editor_settings-3.tres editor_settings-3.tres
+          sudo mkdir -p templates/3.2.4.beta6
+          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.beta6
+          sudo cp $GITHUB_WORKSPACE/editor_settings-3.tres editor_settings-3.tres
+          tree
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
-          sudo mkdir -p builds/android-mono
-          sudo Godot_v3.2.4-beta6_mono_linux_headless_64/Godot_v3.2.4-beta6_mono_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android-mono/FoxyAdventure.apk
-      - name: Upload a Build Artifact android-mono
+          sudo mkdir -p builds/android
+      - name: Upload a Build Artifact android
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-android-mono
-          path: builds/android-mono
+          name: build-android
+          path: builds/android
+      - name: Upload a Build Artifact android settings
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: build-android-settings
+          path: /home/runner/.local/share/godot/editor_settings-3.tres
+      - name: ddd
+        run: |
+          sudo ./Godot_v3.2.4-beta6_linux_headless.64 --path "." --export "Android-GithubActions" $GITHUB_WORKSPACE/builds/android/FoxyAdventure.apk
