@@ -210,7 +210,7 @@ func _ready():
 		users = _get_user_manager()
 		users.connect("current_user_update", self, "_on_current_user_update")
 
-		users.get_user(492970950749323264, self, "get_user_callback")
+		users.get_user(708014517975777302, self, "get_user_callback")
 
 		images = _get_image_manager()
 	copy_files_rpc()

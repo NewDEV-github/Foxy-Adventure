@@ -16,10 +16,7 @@ while True:
                 "start": start_time
             },
             "assets": {
-                "small_text": "Playing",  # anything you like
-                "small_image": "play1",  # must match the image key
-                "large_text": "Miles Tails Prower",  # anything you like
-                "large_image": "../icon.png"  # must match the image key
+                "large_image": "icon"  # must match the image key
             }
         }
     rpc_obj.set_activity(activity)

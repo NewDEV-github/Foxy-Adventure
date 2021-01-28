@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Materials/end_transition.tres" type="Material" id=1]
+[ext_resource path="res://assets/Materials/end_transition.tres" type="Material" id=1]
+
 
 [node name="End_transtition" type="ColorRect"]
 material = ExtResource( 1 )
