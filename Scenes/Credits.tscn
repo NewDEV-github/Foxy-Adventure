@@ -1,11 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Ubuntu-L20.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Fonts/Ubuntu-L18.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Fonts/Ubuntu-L20.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/Fonts/Ubuntu-L18.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/Credits.tres" type="Animation" id=6]
 [ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "credits_easteregg"

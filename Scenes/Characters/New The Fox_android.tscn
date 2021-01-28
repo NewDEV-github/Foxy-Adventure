@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/game_ui.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Characters/character_control.gd" type="Script" id=2]
-[ext_resource path="res://Graphics/Sprites/ntf_sprite.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Characters/character_control.gd" type="Script" id=2]
+[ext_resource path="res://assets/Graphics/Sprites/ntf_sprite.png" type="Texture" id=3]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle1"
