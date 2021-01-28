@@ -57,7 +57,7 @@ _global_script_classes=[ {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
-"path": "res://bin/git_api.gdns"
+"path": "res://bin/gitapi/git_api.gdns"
 }, {
 "base": "HTTPRequest",
 "class": "LevelEditorManager",
