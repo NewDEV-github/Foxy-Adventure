@@ -9,7 +9,7 @@ reloadable=true
 
 OSX.64="res://bin/gitapi/osx/release/libgitapi.dylib"
 Windows.64="res://bin/gitapi/win64/release/libgitapi.dll"
-X11.64="res://bin/x11/gitapi/release/libgitapi.so"
+X11.64="res://bin/gitapi/x11/release/libgitapi.so"
 
 [dependencies]
 
