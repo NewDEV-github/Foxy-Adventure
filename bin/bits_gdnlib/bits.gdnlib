@@ -7,8 +7,6 @@ reloadable=true
 
 [entry]
 
-OSX.64="res://bin/bits_gdnlib/64/config.cfg"
-OSX.32="res://bin/bits_gdnlib/32/config.cfg"
 Windows.64="res://bin/bits_gdnlib/64/config.cfg"
 Windows.32="res://bin/bits_gdnlib/32/config.cfg"
 X11.64="res://bin/bits_gdnlib/64/config.cfg"
