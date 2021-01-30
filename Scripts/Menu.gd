@@ -8,21 +8,13 @@ export (bool) var is_android
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
 var month = OS.get_date().month
-var nsfw_connection
 onready var world_list = Globals.worlds
-onready var ntf_imgs = [
-	'res://Graphics/NewTheFox/2.png',
-	'res://Graphics/NewTheFox/5.png',
-	'res://Graphics/NewTheFox/8.png',
-	'res://Graphics/NewTheFox/recolour3.png',
-	'res://Graphics/NewTheFox/recolour4.png',
-	'res://Graphics/NewTheFox/recolour5.png',
-]
-onready var bs_imgs = [
-	'res://Graphics/BabySonadow/babysonadow.png',
-]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Fmod.add_listener(0, self)
+	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
+	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
+	Fmod.play_sound(Globals.fmod_sound)
 	if str(OS.get_name()) == "Android" and not is_android:
 		get_tree().change_scene("res://Scenes/Menu_android.tscn")
 	$version_label.bbcode_text = Globals.construct_game_version()
@@ -47,32 +39,18 @@ func _ready():
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
-		$IMG_0008.hide()
-		load_easterregg_animation('ntf')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "Foxy Adventure"')
 	elif day == 17 and month == 2:
-		$IMG_0008.hide()
-		load_easterregg_animation('ntf')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
 	elif day == 25 and month == 3:
-		$IMG_0008.hide()
-		load_easterregg_animation('ntf')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
 	elif day == 14 and month == 9:
-		$IMG_0008.hide()
-		load_easterregg_animation('ntf')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Gekon aka "GeKaGD"')
 	elif day == 22 and month == 12:
-		$IMG_0008.hide()
-		load_easterregg_animation('bs')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' thugpro420 aka "Baby Sonadow"')
 	elif day == 16 and month == 10:
-		$IMG_0008.hide()
-#		load_easterregg_animation('bs')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
 	elif day == 16 and month == 4:
-		$IMG_0008.hide()
-#		load_easterregg_animation('bs')
 		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Erwin')
 	BackgroundLoad.play_start_transition = true
 	get_tree().paused = false
@@ -87,13 +65,6 @@ func show_submenu_page(page):
 	else:
 		page.show()
 		current_submenu_page = page
-func load_easterregg_animation(name_:String):
-	randomize()
-	if name_ == 'ntf':
-		$IMG_0009.texture = load(str(ntf_imgs[randi()%ntf_imgs.size()]))
-	elif name_ == 'bs':
-		$IMG_0009.texture = load(str(bs_imgs[randi()%bs_imgs.size()]))
-
 func _on_Options_pressed():
 	show_submenu_page($Control)
 
@@ -138,7 +109,7 @@ func dir_contents(path):
 
 
 func _on_Menu_tree_exiting():
-	pass
+	Fmod.stop_sound(Globals.fmod_sound)
 
 
 func _on_Level_Editor_pressed():

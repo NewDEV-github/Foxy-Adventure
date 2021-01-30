@@ -195,6 +195,8 @@ func get_current_user_premium_type_callback(
 #			texture_rect.texture = tex
 #			OS.window_size = Vector2(dimensions.width, dimensions.height)
 func _ready():
+	Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_STEREO, 0)
+	Fmod.init(1024, Fmod.FMOD_STUDIO_INIT_LIVEUPDATE, Fmod.FMOD_INIT_NORMAL)
 	core = Discord.Core.new()
 	var result: int = core.create(
 		793449535632441374,
@@ -234,27 +236,6 @@ func _ready():
 		debugMode = bool(str(save_file.get_value('Game', 'debug_mode')))
 	emit_signal("debugModeSet", debugMode)
 	emit_signal("loaded")
-func copy_recursive(from, to):
-	var directory = Directory.new()
-	
-	# If it doesn't exists, create target directory
-	if not directory.dir_exists(to):
-		directory.make_dir_recursive(to)
-	
-	# Open directory
-	var error = directory.open(from)
-	if error == OK:
-		# List directory content
-		directory.list_dir_begin(true)
-		var file_name = directory.get_next()
-		while file_name != "":
-			if directory.current_is_dir():
-				copy_recursive(from + "/" + file_name, to + "/" + file_name)
-			else:
-				directory.copy(from + "/" + file_name, to + "/" + file_name)
-			file_name = directory.get_next()
-	else:
-		print("Error copying " + from + " to " + to)
 func get_project_root_dir():
 	return "res://".get_base_dir()
 #DISCORD RPC
@@ -373,7 +354,11 @@ func load_level(save_name:String):
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]
 	BackgroundLoad.load_scene(loaded_stage)
-
+var fmod_sound
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
 	RPCKill()
+func fmod_set_volume(volume:float):
+	if not fmod_sound == null:
+		Fmod.set_event_volume(fmod_sound, volume)
+
