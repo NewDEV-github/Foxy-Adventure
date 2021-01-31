@@ -25,7 +25,7 @@ func _ready():
 	$tails.hide()
 	if File.new().file_exists("user://milestailsprower.txt"):
 		$tails.show()
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
+		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	for world_name in world_list:
 		if world_name == [] or world_name == null:
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
@@ -39,19 +39,15 @@ func _ready():
 		$SelectWorld/WorldList.add_item(tr(world_name))
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "Foxy Adventure"')
+		$Label.set_text(tr("Happy Birthday to") + ' "Foxy Adventure"')
 	elif day == 17 and month == 2:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
+		$Label.set_text(tr("Happy Birthday to") + ' "NewTheFox" ')
 	elif day == 25 and month == 3:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
+		$Label.set_text(tr("Happy Birthday to") + ' "NewTheFox" ')
 	elif day == 14 and month == 9:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Gekon aka "GeKaGD"')
-	elif day == 22 and month == 12:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' thugpro420 aka "Baby Sonadow"')
+		$Label.set_text(tr("Happy Birthday to") + ' Gekon aka "GeKaGD"')
 	elif day == 16 and month == 10:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
-	elif day == 16 and month == 4:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Erwin')
+		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	BackgroundLoad.play_start_transition = true
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
