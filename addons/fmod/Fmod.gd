@@ -114,7 +114,7 @@ const FMOD_STUDIO_PLAYBACK_FORCEINT = 65536
 
 
 var started := false
-
+var music_instances:Dictionary = {}
 ############
 ###SYSTEM###
 ############
@@ -528,7 +528,13 @@ func set_bus_volume(bus_path: String, volume: float) -> void:
 	
 func stop_all_bus_events(bus_path: String, stopMode: int) -> void:
 	godot_fmod.stop_all_bus_events(bus_path, stopMode)
+func play_music_sound_instance(file:String, instance_name:String):
+	load_file_as_music(file)
+	music_instances[instance_name] = create_sound_instance(file)
+	play_sound(music_instances[instance_name])
 	
+func get_music_instances():
+	return music_instances
 #########
 ###Signal###
 #########

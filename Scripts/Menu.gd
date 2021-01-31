@@ -12,9 +12,11 @@ onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Fmod.add_listener(0, self)
-	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
-	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
-	Fmod.play_sound(Globals.fmod_sound)
+	Fmod.play_music_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg", "MainMenu")
+#	print(Fmod.get_music_instances())
+#	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
+#	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
+#	Fmod.play_sound(Globals.fmod_sound)
 	if str(OS.get_name()) == "Android" and not is_android:
 		get_tree().change_scene("res://Scenes/Menu_android.tscn")
 	$version_label.bbcode_text = Globals.construct_game_version()
@@ -105,7 +107,7 @@ func dir_contents(path):
 
 
 func _on_Menu_tree_exiting():
-	Fmod.stop_sound(Globals.fmod_sound)
+	Fmod.stop_sound(Fmod.music_instances["MainMenu"])
 
 
 func _on_Level_Editor_pressed():

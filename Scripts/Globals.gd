@@ -354,11 +354,7 @@ func load_level(save_name:String):
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]
 	BackgroundLoad.load_scene(loaded_stage)
-var fmod_sound
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
 	RPCKill()
-func fmod_set_volume(volume:float):
-	if not fmod_sound == null:
-		Fmod.set_event_volume(fmod_sound, volume)
 
