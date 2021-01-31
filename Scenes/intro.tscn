@@ -162,7 +162,6 @@ stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
