@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Windows.Forms;
+using System.IO;
 //using System.String;
 
 public class Node2D : Godot.Node2D
@@ -22,6 +24,8 @@ public class Node2D : Godot.Node2D
 	public override void _Ready()
 	{
 		GD.Print("TEST!");
+		validateUserEntry();
+		fileDialog();
 	}
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,6 +55,45 @@ public class Node2D : Godot.Node2D
 		#elif GODOT_OSX
 			GD.Print("OSX");
 		#endif
+	}
+	private void validateUserEntry()
+	{
+		// Checks the value of the text.
+		// Initializes the variables to pass to the MessageBox.Show method.
+		string message = "You did not enter a server name. Cancel this operation?";
+		string caption = "Error Detected in Input";
+		MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+		DialogResult result;
+		// Displays the MessageBox.
+		result = MessageBox.Show(message, caption, buttons);
+		
+	}
+	void fileDialog()
+	{
+		var fileContent = string.Empty;
+		var filePath = string.Empty;
+		
+		using (OpenFileDialog openFileDialog = new OpenFileDialog())
+		{
+			openFileDialog.InitialDirectory = "c:\\";
+			openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+			openFileDialog.FilterIndex = 2;
+			openFileDialog.RestoreDirectory = true;
+		
+			if (openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				//Get the path of specified file
+				filePath = openFileDialog.FileName;
+		
+				//Read the contents of the file into a stream
+				var fileStream = openFileDialog.OpenFile();
+		
+				using (StreamReader reader = new StreamReader(fileStream))
+				{
+					fileContent = reader.ReadToEnd();
+				}
+			}
+		}
 	}
 }
 

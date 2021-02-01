@@ -11,5 +11,5 @@ dest_files=[ "res://.import/credits_gekagd.ogg-14d7a1b76a68ea5c011f2c1e1fbaba0f.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

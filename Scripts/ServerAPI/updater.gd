@@ -14,8 +14,6 @@ func _ready() -> void:
 	var dir = Directory.new()
 	dir.open('user://')
 	dir.make_dir('dlcs')
-	dir.make_dir('Licenses')
-	Globals.copy_recursive('res://Licenses/', 'user://Licenses/')
 	if not file.file_exists('user://logs/engine_log.txt'):
 		dir = Directory.new()
 		dir.open('user://')
