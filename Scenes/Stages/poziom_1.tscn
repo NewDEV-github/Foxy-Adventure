@@ -8,20 +8,19 @@
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
 
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184, 154.485 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 60.1925, 32 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 40, 16 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 24, 10 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 3346.5, 88.0487 )
 
 [node name="Node2D" type="Node2D"]
@@ -194,35 +193,35 @@ position = Vector2( 448, 808 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area"]
 position = Vector2( 8, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="dead_area2" type="Area2D" parent="dead_areas"]
 position = Vector2( 1539.81, 592 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area2"]
 position = Vector2( 3, 28 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="dead_area3" type="Area2D" parent="dead_areas"]
 position = Vector2( 1728, 584 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area3"]
 position = Vector2( 10, 23 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="dead_area4" type="Area2D" parent="dead_areas"]
 position = Vector2( 1856, 593.95 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area4"]
 position = Vector2( 6, 7.05 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="dead_area5" type="Area2D" parent="dead_areas"]
 position = Vector2( 1429.65, 1503.84 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area5"]
 position = Vector2( 15.1021, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 7 )]
 position = Vector2( 338.727, 890.741 )
@@ -254,6 +253,7 @@ position = Vector2( 1925.8, 864.049 )
 [node name="AnimatedSprite10" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2198.32, 865.463 )
 
+[connection signal="tree_exited" from="." to="." method="_on_Node2D_tree_exited"]
 [connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area2" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area3" to="." method="toxic_entered"]
