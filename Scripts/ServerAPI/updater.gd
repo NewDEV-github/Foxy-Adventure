@@ -73,3 +73,4 @@ func _on_pck_request_completed(result, response_code, headers, body):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_DATA_FILES)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_INITIALIZING_GAME)
+	

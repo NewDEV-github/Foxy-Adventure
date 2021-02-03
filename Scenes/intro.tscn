@@ -146,6 +146,9 @@ Other characters from other franchises are properties of their respective owners
 
 FMOD Audio Engine, FMOD Studio and FMOD Logo were used in this game under license from Firelight Technologies Pty Ltd
 FMOD Audio Engine, FMOD Studio and FMOD Logo are properties of Firelight Technologies Pty Ltd"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"

@@ -134,6 +134,7 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mono\BackgroundLoad.cs" />
     <Compile Include="mono\Node2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="mono\**.cs" />
