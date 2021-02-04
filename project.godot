@@ -117,6 +117,8 @@ Firebase="*res://addons/GDFirebase/Firebase.gd"
 SharedLibManager="*res://Scripts/SharedLibManager.gd"
 Fmod="*res://addons/fmod/Fmod.gd"
 BackgroundLoad="*res://mono/BackgroundLoad.cs"
+Console="*res://addons/godot-console-dev/src/Console.tscn"
+Globals="*res://Scripts/Globals.gd"
 
 [config]
 
@@ -138,7 +140,12 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "GDFirebase", "fmod", "godot-console-dev", "screen_debugger" )
+enabled=PoolStringArray( "GDFirebase", "fmod", "gd2cs.py", "godot-console-dev", "screen_debugger" )
+
+[gd2cs]
+
+config/ask_no_python=true
+config/python="python"
 
 [gdnative]
 
