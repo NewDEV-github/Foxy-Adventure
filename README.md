@@ -5,6 +5,7 @@
 
 ## Requirements: 
 - Python3 Installed
+- Visual C++ Redistributable for Visual Studio 2015
 - Build Tools Installed (only for development)
 
 [Licenses](https://github.com/NewDEV-github/Foxy-Adventure/tree/master/Licenses)
