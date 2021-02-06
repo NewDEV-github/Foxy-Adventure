@@ -112,13 +112,11 @@ config/version="1.0.0"
 [autoload]
 
 Screenshot="*res://Scripts/screenshot.gd"
-ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
-Firebase="*res://addons/GDFirebase/Firebase.gd"
 SharedLibManager="*res://Scripts/SharedLibManager.gd"
 Fmod="*res://addons/fmod/Fmod.gd"
 BackgroundLoad="*res://mono/BackgroundLoad.cs"
-Console="*res://addons/godot-console-dev/src/Console.tscn"
 Globals="*res://Scripts/Globals.gd"
+ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 
 [config]
 
@@ -140,7 +138,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "GDFirebase", "fmod", "gd2cs.py", "godot-console-dev", "screen_debugger" )
+enabled=PoolStringArray( "fmod", "gd2cs.py" )
 
 [gd2cs]
 
