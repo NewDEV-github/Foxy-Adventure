@@ -134,9 +134,8 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="mono\Node2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="mono\**.cs" />
+    <Compile Include="mono\WindowPopupWithVisualStyles.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

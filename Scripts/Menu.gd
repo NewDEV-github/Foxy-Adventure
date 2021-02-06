@@ -3,6 +3,7 @@ var tekst = "Hello World"
 var world_scene
 var website
 var current_submenu_page
+var lem = LevelEditorManager.new()
 export (bool) var is_android
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
@@ -22,7 +23,6 @@ func _ready():
 	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
-	var lem = LevelEditorManager.new()
 	lem.install_editor("user://test.zip")
 	$tails.hide()
 	if File.new().file_exists("user://milestailsprower.txt"):
@@ -50,7 +50,6 @@ func _ready():
 		$Label.set_text(tr("Happy Birthday to") + ' Gekon aka "GeKaGD"')
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
-	BackgroundLoad.play_start_transition = true
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
@@ -111,9 +110,8 @@ func _on_Menu_tree_exiting():
 
 
 func _on_Level_Editor_pressed():
-	var lvm = LevelEditorManager.new()
-	if !lvm.execute_editor():
-		lvm.download_editor()
+	if !lem.execute_editor():
+		lem.download_editor()
 func _on_Feedback_pressed():
 	$Feedback.send_feedback()
 

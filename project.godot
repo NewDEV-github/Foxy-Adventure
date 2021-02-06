@@ -54,12 +54,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/GDFirebase/FirebaseFirestoreDocument.gd"
 }, {
-"base": "",
+"base": "Node",
 "class": "FmodNative",
 "language": "NativeScript",
 "path": "res://addons/fmod/Fmod.gdns"
 }, {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
@@ -105,27 +105,22 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://assets/Graphics/icon.png"
-config/windows_native_icon="res://Graphics/icon.ico"
+config/windows_native_icon="res://assets/Graphics/icon.ico"
 config/project_creator="New DEV"
 config/version="1.0.0"
 
 [autoload]
 
-BackgroundLoad="*res://Scenes/background_load.tscn"
-Console="*res://addons/godot-console-dev/src/Console.tscn"
-Globals="*res://Scripts/Globals.gd"
 Screenshot="*res://Scripts/screenshot.gd"
-ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
-ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
-GlobalsEditor="*res://Scripts/GlobalsEditor.gd"
-Firebase="*res://addons/GDFirebase/Firebase.gd"
 SharedLibManager="*res://Scripts/SharedLibManager.gd"
 Fmod="*res://addons/fmod/Fmod.gd"
+BackgroundLoad="*res://mono/BackgroundLoad.cs"
+Globals="*res://Scripts/Globals.gd"
+ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 
 [config]
 
 project_creator=""
-project_creator/project_creator=""
 
 [debug]
 
@@ -143,7 +138,12 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "GDFirebase", "fmod", "godot-console-dev", "screen_debugger" )
+enabled=PoolStringArray( "fmod", "gd2cs.py" )
+
+[gd2cs]
+
+config/ask_no_python=true
+config/python="python"
 
 [gdnative]
 
@@ -256,6 +256,11 @@ translations=PoolStringArray(  )
 file_logging/enable_file_logging=true
 file_logging/log_path="user://logs/engine_log.txt"
 file_logging/max_log_files=30000
+
+[mono]
+
+export/include_scripts_content=true
+export/export_assemblies_inside_pck=false
 
 [network]
 
