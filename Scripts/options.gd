@@ -13,7 +13,7 @@ func _ready():
 	load_settings()
 	if str(OS.get_name()) == 'Android':
 #		$tabs/Sterowanie.hide()
-		$tabs.set_tab_disabled(1, true)
+		$tabs.set_tab_disabled(2, true)
 		$"tabs/Audio/Options/Audio/SPEAKERMODE".set_disabled(true)
 		$"tabs/Graphics/Options/side_left/custom_resolution".hide()
 	else:

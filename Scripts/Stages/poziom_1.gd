@@ -9,6 +9,7 @@ onready var root = get_tree().root
 var character = load(str(Globals.character_path)).instance()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.current_stage = 0
 	Fmod.add_listener(0, self)
 	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)

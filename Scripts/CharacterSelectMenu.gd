@@ -20,7 +20,7 @@ func _ready():
 func after_selecting_player():
 	Globals.save_level(0, Globals.current_save_name)
 	BackgroundLoad.PreloadScene("res://Scenes/Stages/poziom_1.tscn")
-
+#	BackgroundLoad
 
 func _on_ItemList_item_selected(index):
 	var item_name = $ItemList.get_item_text(index)

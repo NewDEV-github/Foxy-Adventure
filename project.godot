@@ -114,9 +114,9 @@ config/version="1.0.0"
 Screenshot="*res://Scripts/screenshot.gd"
 SharedLibManager="*res://Scripts/SharedLibManager.gd"
 Fmod="*res://addons/fmod/Fmod.gd"
-BackgroundLoad="*res://mono/BackgroundLoad.cs"
 Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
+BackgroundLoad="*res://mono/BackgroundLoad.cs"
 
 [config]
 
