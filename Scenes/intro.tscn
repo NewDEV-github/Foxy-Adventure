@@ -173,4 +173,3 @@ __meta__ = {
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
 [connection signal="request_completed" from="PCKDownloader" to="." method="_on_pck_request_completed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="result" from="WindowPopupWithVisualStyles" to="." method="_on_WindowPopupWithVisualStyles_result"]
