@@ -12,8 +12,6 @@ var month = OS.get_date().month
 onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Fmod.add_listener(0, self)
-	Fmod.play_music_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg", "MainMenu")
 #	print(Fmod.get_music_instances())
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
@@ -105,8 +103,6 @@ func dir_contents(path):
 
 
 
-func _on_Menu_tree_exiting():
-	Fmod.stop_sound(Fmod.music_instances["MainMenu"])
 
 
 func _on_Level_Editor_pressed():

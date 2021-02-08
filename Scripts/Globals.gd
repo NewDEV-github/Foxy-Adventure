@@ -135,8 +135,6 @@ func _process(_delta: float) -> void:
 func _ready():
 	
 #	execute_debugging_tools()
-	Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_STEREO, 0)
-	Fmod.init(1024, Fmod.FMOD_STUDIO_INIT_LIVEUPDATE, Fmod.FMOD_INIT_NORMAL)
 	core = Discord.Core.new()
 	var result: int = core.create(
 		729429191489093702,
@@ -254,7 +252,8 @@ func load_level(save_name:String):
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]
-	BackgroundLoad.PreloadScene(loaded_stage)
+	BackgroundLoad.play_start_transition = true
+	BackgroundLoad.load_scene(loaded_stage)
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
 	RPCKill()

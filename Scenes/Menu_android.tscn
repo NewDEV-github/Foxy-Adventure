@@ -11,7 +11,6 @@
 [ext_resource path="res://assets/Graphics/ja.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
 
-
 [node name="Menu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0

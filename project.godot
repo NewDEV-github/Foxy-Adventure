@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/GDFirebase/FirebaseFirestoreDocument.gd"
 }, {
-"base": "Node",
-"class": "FmodNative",
-"language": "NativeScript",
-"path": "res://addons/fmod/Fmod.gdns"
-}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -89,7 +84,6 @@ _global_script_class_icons={
 "FirebaseUserData": "",
 "FirestoreCollection": "",
 "FirestoreDocument": "",
-"FmodNative": "",
 "GitAPI": "",
 "LevelEditorManager": "",
 "PlayerCamera": "",
@@ -113,10 +107,9 @@ config/version="1.0.0"
 
 Screenshot="*res://Scripts/screenshot.gd"
 SharedLibManager="*res://Scripts/SharedLibManager.gd"
-Fmod="*res://addons/fmod/Fmod.gd"
 Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
-BackgroundLoad="*res://mono/BackgroundLoad.cs"
+BackgroundLoad="*res://Scenes/background_load.tscn"
 
 [config]
 
@@ -138,7 +131,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "fmod", "gd2cs.py" )
+enabled=PoolStringArray( "gd2cs.py" )
 
 [gd2cs]
 

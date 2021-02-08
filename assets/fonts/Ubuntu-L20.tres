@@ -1,8 +1,7 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/fonts/Comfortaa-Bold.TTF"
+[ext_resource path="res://assets/Fonts/comic.ttf" type="DynamicFontData" id=1]
 
 [resource]
 size = 20
-font_data = SubResource( 1 )
+font_data = ExtResource( 1 )
