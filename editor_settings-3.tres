@@ -1,12 +1,8 @@
-[gd_resource type="EditorSettings" load_steps=2 format=2]
-
-[sub_resource type="InputEventKey" id=1]
-shift = true
-scancode = 16777244
-unicode = 16777244
+[gd_resource type="EditorSettings" format=2]
 
 [resource]
 interface/editor/code_font_size = 13.3333
+filesystem/file_dialog/show_hidden_files = true
 text_editor/highlighting/symbol_color = Color( 0.67, 0.785, 1, 1 )
 text_editor/highlighting/keyword_color = Color( 1, 0.44, 0.52, 1 )
 text_editor/highlighting/base_type_color = Color( 0.26, 1, 0.76, 1 )
@@ -37,23 +33,23 @@ text_editor/highlighting/breakpoint_color = Color( 1, 0.47, 0.42, 1 )
 text_editor/highlighting/code_folding_color = Color( 1, 1, 1, 0.7 )
 text_editor/highlighting/search_result_color = Color( 1, 1, 1, 0.07 )
 asset_library/use_threads = true
-export/android/adb = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/android-sdk/platform-tools/adb"
-export/android/jarsigner = "/usr/lib/jvm/java-11-openjdk-amd64/bin/jarsigner"
-export/android/debug_keystore = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/debug.keystore"
+export/android/adb = "C:/Users/karol/OneDrive/Dokumenty/android-sdk/platform-tools/adb.exe"
+export/android/jarsigner = "C:/Program Files/Java/jdk1.8.0_221/bin/jarsigner.exe"
+export/android/debug_keystore = "C:/Users/karol/OneDrive/Dokumenty/Sonadow RPG/debug.keystore"
 export/android/debug_keystore_user = "androiddebugkey"
 export/android/debug_keystore_pass = "android"
 export/android/force_system_user = false
-export/android/custom_build_sdk_path = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/android-sdk/"
+export/android/custom_build_sdk_path = "C:/Users/karol/OneDrive/Dokumenty/android-sdk/"
 export/android/timestamping_authority_url = ""
 export/android/shutdown_adb_on_exit = true
 export/web/http_host = "localhost"
 export/web/http_port = 8060
-export/uwp/signtool = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/Windows Kits/10/bin/10.0.18362.0/x64/signtool.exe"
+export/uwp/signtool = "C:/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x64/signtool.exe"
 export/uwp/debug_certificate = ""
 export/uwp/debug_password = ""
 export/uwp/debug_algorithm = 2
-export/windows/rcedit = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/rcedit-x64.exe"
-export/windows/signtool = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/Windows Kits/10/bin/10.0.18362.0/x64/signtool.exe"
+export/windows/rcedit = "C:/Users/karol/OneDrive/Dokumenty/rcedit-x64.exe"
+export/windows/signtool = "C:/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x64/signtool.exe"
 interface/scene_tabs/always_show_close_button = false
 interface/editor/show_update_spinner = false
 interface/editor/update_continuously = false
@@ -130,10 +126,14 @@ editors/3d_gizmos/gizmo_colors/joint_body_b = Color( 0.6, 0.9, 1, 1 )
 text_editor/highlighting/gdscript/function_definition_color = Color( 0.4, 0.9, 1, 1 )
 text_editor/highlighting/gdscript/node_path_color = Color( 0.39, 0.76, 0.35, 1 )
 text_editor/help/sort_functions_alphabetically = true
-projects/::home::runner::works::Foxy-Adventure::Foxy-Adventure = "/home/runner/works/Foxy-Adventure/Foxy-Adventure"
-export/android/android_sdk_path = "/home/runner/works/Foxy-Adventure/Foxy-Adventure/android-sdk/"
+projects/C:::Users::karol::OneDrive::Dokumenty::GitHub::Foxy-Adventure = "C:/Users/karol/OneDrive/Dokumenty/GitHub/Foxy-Adventure"
+export/android/android_sdk_path = "C:/Users/karol/OneDrive/Dokumenty/android-sdk/"
 editors/3d/navigation/show_viewport_rotation_gizmo = true
 mono/editor/show_info_on_start = true
-mono/editor/external_editor = 0
+mono/editor/external_editor = 4
 mono/builds/build_tool = 1
 mono/assembly_watch_interval_sec = 0.5
+projects/C:::Users::karol::OneDrive::Desktop::test = "C:/Users/karol/OneDrive/Desktop/test"
+projects/C:::Users::karol::OneDrive::Desktop::mono-discord = "C:/Users/karol/OneDrive/Desktop/mono-discord"
+mono/builds/print_build_output = true
+"projects/C:::Users::karol::OneDrive::Desktop::FMOD Test" = "C:/Users/karol/OneDrive/Desktop/FMOD Test"

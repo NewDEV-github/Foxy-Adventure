@@ -24,10 +24,7 @@ var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	set_damage_bar_value($CanvasLayer/ProgressBar)
-	if character_name == "Tails":
-		Globals.RPCTails()
-	if character_name == "New The Fox":
-		Globals.RPCNewTF()
+	Globals.run_rpc(false, true, character_name)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():

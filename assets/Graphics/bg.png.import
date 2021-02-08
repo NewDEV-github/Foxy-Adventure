@@ -14,7 +14,7 @@ dest_files=[ "res://.import/bg.png-1915f571a688c17b6195699c0186919f.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
@@ -25,8 +25,8 @@ flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
-process/premult_alpha=false
-process/HDR_as_SRGB=false
+process/premult_alpha=true
+process/HDR_as_SRGB=true
 process/invert_color=false
 stream=false
 size_limit=0
