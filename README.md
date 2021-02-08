@@ -4,7 +4,6 @@
 2D platformer with New The Fox and Miles "Tails" Prower as a playable characters
 
 ## Requirements: 
-- Python3 Installed
 - Visual C++ Redistributable for Visual Studio 2015
 - Build Tools Installed (only for development)
 
