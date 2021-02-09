@@ -62,11 +62,10 @@ var new_characters:Array = [
 ]
 
 func construct_game_version():
-	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
+	var text = "Support: support@new-dev.ml\n%s version: %s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, OS.get_date().year]
 	return text
 func _init():
-	file.open("game_version.txt", File.READ)
-	version_commit = file.get_line()
+	version_commit = "idk"
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 var dlcs:Array = [

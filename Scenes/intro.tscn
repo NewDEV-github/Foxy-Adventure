@@ -90,6 +90,7 @@ __meta__ = {
 [node name="PCKDownloader" type="HTTPRequest" parent="."]
 
 [node name="CharacterCopyright" type="RichTextLabel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
