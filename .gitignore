@@ -2,3 +2,8 @@
 .import/
 .mono/
 android/
+*.crt
+*.pem
+*.p12
+*.pkcs
+*.pfx
