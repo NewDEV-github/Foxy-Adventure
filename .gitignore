@@ -5,6 +5,9 @@ android/
 *.crt
 *.pem
 *.p12
+foxyadventure.pem
+foxyadventure.p12
+foxyadventure.keystore
 *.pkcs
 *.pfx
 *.cer
