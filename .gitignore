@@ -2,13 +2,17 @@
 .import/
 .mono/
 android/
+
+#cert files
 *.crt
 *.pem
 *.p12
-foxyadventure.pem
-foxyadventure.p12
-foxyadventure.keystore
 *.pkcs
 *.pfx
 *.cer
 *.keystore
+
+#single files
+foxyadventure.pem
+foxyadventure.p12
+foxyadventure.keystore
