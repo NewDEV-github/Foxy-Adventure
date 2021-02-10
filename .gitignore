@@ -11,6 +11,13 @@ android/
 *.pfx
 *.cer
 *.keystore
+*.[crt]
+*.[pem]
+*.[p12]
+*.[pkcs]
+*.[pfx]
+*.[cer]
+*.[keystore]
 
 #single files
 foxyadventure.pem
