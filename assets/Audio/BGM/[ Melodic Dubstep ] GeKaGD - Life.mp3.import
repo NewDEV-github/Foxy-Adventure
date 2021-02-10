@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/[ Melodic Dubstep ] GeKaGD - Life.mp3-d6a9bc24e51a17aac7ad9e0becf3e041.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/[ Melodic Dubstep ] GeKaGD - Life.mp3"
+dest_files=[ "res://.import/[ Melodic Dubstep ] GeKaGD - Life.mp3-d6a9bc24e51a17aac7ad9e0becf3e041.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

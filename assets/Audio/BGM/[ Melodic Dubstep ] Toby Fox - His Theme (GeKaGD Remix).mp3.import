@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/[ Melodic Dubstep ] Toby Fox - His Theme (GeKaGD Remix).mp3-bb416fb82ec9e7dda02a66b83f852720.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/[ Melodic Dubstep ] Toby Fox - His Theme (GeKaGD Remix).mp3"
+dest_files=[ "res://.import/[ Melodic Dubstep ] Toby Fox - His Theme (GeKaGD Remix).mp3-bb416fb82ec9e7dda02a66b83f852720.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

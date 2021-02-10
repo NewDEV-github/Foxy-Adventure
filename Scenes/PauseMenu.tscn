@@ -93,14 +93,12 @@ custom_fonts/font = ExtResource( 1 )
 text = "Quit to Main Menu"
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+visible = false
 margin_left = -512.0
 margin_top = -300.0
 margin_right = 512.0
 margin_bottom = 300.0
+
 [connection signal="confirmed" from="QuitTOMenuDIalog" to="." method="_on_QuitTOMenuDIalog_confirmed"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Buttons/Restart" to="." method="_on_Restart_pressed"]

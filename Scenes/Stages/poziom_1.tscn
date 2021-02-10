@@ -2,8 +2,8 @@
 
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_1.gd" type="Script" id=2]
+[ext_resource path="res://assets/Audio/BGM/1stage.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Characters/enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
 
@@ -146,38 +146,6 @@ position = Vector2( 992, 288 )
 [node name="coin34" parent="coins" instance=ExtResource( 4 )]
 position = Vector2( 1024, 288 )
 
-[node name="enemy" type="Node2D" parent="."]
-
-[node name="Enemy" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 384, 248 )
-
-[node name="Enemy3" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 912, 536 )
-
-[node name="Enemy4" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 2009.57, 1051.74 )
-
-[node name="Enemy5" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 248, 96 )
-
-[node name="Enemy7" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 1224, 92 )
-
-[node name="Enemy8" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 2004, 140 )
-
-[node name="Enemy9" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 2364, 164 )
-
-[node name="Enemy10" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 2628, 592 )
-
-[node name="Enemy11" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 2452, 972 )
-
-[node name="Enemy12" parent="enemy" instance=ExtResource( 5 )]
-position = Vector2( 2792, 980 )
-
 [node name="dead_areas" type="Node2D" parent="."]
 
 [node name="dead_area" type="Area2D" parent="dead_areas"]
@@ -244,6 +212,12 @@ position = Vector2( 1925.8, 864.049 )
 
 [node name="AnimatedSprite10" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2198.32, 865.463 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Music"
+
 [connection signal="tree_exited" from="." to="." method="_on_Node2D_tree_exited"]
 [connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area2" to="." method="toxic_entered"]

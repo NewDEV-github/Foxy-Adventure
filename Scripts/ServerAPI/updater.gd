@@ -3,7 +3,6 @@ var intro_played = false
 var file = File.new()
 
 func _ready() -> void:
-	$WindowPopupWithVisualStyles.ShowMessageBox()
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))
 	file = File.new()
@@ -22,7 +21,6 @@ func _ready() -> void:
 	OS.request_permissions()
 	
 #	$icon.show()
-	$Timer.start()
 	$VideoPlayer.stop()
 	#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
 	
@@ -54,8 +52,3 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 func _on_VideoPlayer_finished():
 	if not get_tree().change_scene('res://Scenes/Menu.tscn'):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
-
-
-
-func _on_WindowPopupWithVisualStyles_result(_result):
-	print(str(_result))
