@@ -7,3 +7,5 @@ android/
 *.p12
 *.pkcs
 *.pfx
+*.cer
+*.keystore
