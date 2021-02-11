@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Characters/character_control.gd" type="Script" id=2]
 [ext_resource path="res://assets/Graphics/Sprites/ntf_sprite.png" type="Texture" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "idle1"
 length = 0.7
@@ -292,4 +291,4 @@ current = true
 zoom = Vector2( 0.6, 0.6 )
 limit_left = 0
 
-[connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]
+[connection signal="tree_exited" from="." to="." method="_on_Tails_tree_exited"]

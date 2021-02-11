@@ -169,10 +169,11 @@ func set_damage_bar_value(damagebar):
 	damagebar.max_value = max_hp
 	damagebar.value = hp
 
-func _on_Tails_tree_exiting():
-	Globals.RPCKill()
-
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Enemy":
 		take_damage()
+
+
+func _on_Tails_tree_exited():
+	Globals.RPCKill()

@@ -132,7 +132,6 @@ func _process(_delta: float) -> void:
 			print("Callbacks failed: ", enum_to_string(Discord.Result, result))
 
 func _ready():
-	
 #	execute_debugging_tools()
 	core = Discord.Core.new()
 	var result: int = core.create(
@@ -193,16 +192,14 @@ func run_rpc(developer, display_stage, character="Tails"):
 		else:
 			print("RPC started as mysterious developer")
 func RPCKill():
-#	print("Killing RPC...")
-#	if os_rpc.has(OS.get_name()):
-#		activities.clear_activity()
-#		print("RPC killed")
+	print("Killing RPC...")
+	if os_rpc.has(OS.get_name()):
+		activities.clear_activity()
+		print("RPC killed")
 	pass
 func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or what== MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
-		RPCKill()
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed. Error log was sent to Developers!", "Error!")
 		send_crash_log_msg()
@@ -241,7 +238,8 @@ func save_level(stage:int, save_name:String):
 	sonyk.set_value("save", "coins", str(coins))
 	sonyk.save("user://save_"+save_name+".cfg")
 #	sonyk.close()
-
+func delete_save(save_name:String):
+	dir.remove("user://save_"+save_name+".cfg")
 func load_level(save_name:String):
 	var sonyk = ConfigFile.new()
 	sonyk.load("user://save_"+save_name+".cfg")
