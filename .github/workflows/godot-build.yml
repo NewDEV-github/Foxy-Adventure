@@ -1,22 +1,21 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Godot Build PC Standard
+name: Build
 
-# Controls when the action will run. 
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master, develop ]
-  pull_request:
-    branches: [ master, develop ]
-
-  # Allows you to run this workflow manually from the Actions tab
+    tags:
+      - '*'
+    branches-ignore: [ android ]
+    paths-ignore:
+    - 'game_version.txt'
   workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  godot-build:
+  build-game:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -24,56 +23,130 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # Runs a set of commands using the runners shell
-      - name: download godot and export templates
+      - name: Calculate GIT short ref
         run: |
-          sudo apt install unzip
-          sudo apt install tree
-          echo *** Downloading Godot Binary ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc1/Godot_v3.2.4-rc1_linux_headless.64.zip
-          echo *** Downloading Godot Server Export Templates ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc1/Godot_v3.2.4-rc1_export_templates.tpz
-          echo *** Unzipping Godot Binary ***
-          unzip Godot_v3.2.4-rc1_linux_headless.64.zip
-          echo *** Unzipping Godot Server Export Templates ***
-          unzip Godot_v3.2.4-rc1_export_templates.tpz
-          echo *** Installing Godot Server Export Templates ***
-          cd /home/runner/
-          sudo mkdir -p .local/share/godot
-          cd .local/share/godot
-          sudo mkdir -p templates/3.2.4.rc1
-          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc1
-          echo *** Exporting Files ***
-          cd $GITHUB_WORKSPACE
-          sudo mkdir -p builds/{x11-32-standard,x11-64-standard,win-32-standard,win-64-standard,osx-standard}
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32-standard/FoxyAdventure.x86
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32-standard/FoxyAdventure.exe
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
-          tree -a
-      - name: Upload a Build Artifact x11-64-standard
+          echo "GITHUB_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+      - name: Update game_version.txt file # transfer the new html files back into the repository
+        run: |
+#          echo ${{ env.GITHUB_SHA_SHORT }} > game_version.txt
+#          git config --local user.name "Github Actions"
+#          git config --local user.email "githubactions@github.com"
+#          git add game_version.txt
+#          git commit -m "Updating game verion file..."
+#      - name: Push changes # push the output folder to your repo
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          force: true
+      #- name: Write Version to File
+  # You may pin to the exact commit or the version.
+  # uses: brettdorrans/write-version-to-file@ea48c38c3afc479e8b2645a19743c24200966f3d
+       # uses: brettdorrans/write-version-to-file@v1.0.0
+        #with:
+    # The filename to write the version tag to
+         #filename: game_version.txt
+      - name: Build for Linux 32-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.x86
+    # Name of the preset in `export_presets.cfg` to use
+         preset: x11-32
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-x11-32
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+      # Runs a single command using the runners shell
+      - name: Build for Linux 64-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.x86_64
+    # Name of the preset in `export_presets.cfg` to use
+         preset: x11-64
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-x11-64
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+    # Whether or not to use `--export-debug`
+      - name: Build for Windows 32-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.exe
+    # Name of the preset in `export_presets.cfg` to use
+         preset: win-32
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-win-32
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+    # Whether or not to use `--export-debug`
+      - name: Build for Windows 64-bit
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.exe
+    # Name of the preset in `export_presets.cfg` to use
+         preset: win-64
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-win-64
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+         # Whether or not to use `--export-debug`
+      - name: Build for Mac OS X
+  # You may pin to the exact commit or the version.
+  # uses: josephbmanley/build-godot-action@5206884b2f984e37d89c07e535590129a29eb182
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+    # Name of the exported binary
+         name: FoxyAdventure.zip
+    # Name of the preset in `export_presets.cfg` to use
+         preset: osx
+    # Optional name of the subdirectory to put exported project in
+         subdirectory: build-osx
+    # Set true to output an artifact zip file
+         package: false
+         projectDir: ./
+    # Whether or not to use `--export-debug
+      - name: Upload a Build Artifact (x11-32)
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-x11-64-standard
-          path: builds/x11-64-standard
-      - name: Upload a Build Artifact x11-32-standard
+          name: build-x11-32
+    # A file, directory or wildcard pattern that describes what to upload
+          path: build/build-x11-32
+      - name: Upload a Build Artifact (x11-64)
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-x11-32-standard
-          path: builds/x11-32-standard
-      - name: Upload a Build Artifact osx-standard
+          name: build-x11-64
+    # A file, directory or wildcard pattern that describes what to upload
+          path: build/build-x11-64
+      - name: Upload a Build Artifact (win-32)
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-osx-standard
-          path: builds/osx-standard
-      - name: Upload a Build Artifact win-32-standard
+          name: build-win-32
+    # A file, directory or wildcard pattern that describes what to upload
+          path: build/build-win-32
+      - name: Upload a Build Artifact (win-64)
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-win-32-standard
-          path: builds/win-32-standard
-      - name: Upload a Build Artifact win-64-standard
+          name: build-win-64
+    # A file, directory or wildcard pattern that describes what to upload
+          path: build/build-win-64
+      - name: Upload a Build Artifact (osx)
         uses: actions/upload-artifact@v2.2.2
         with:
-          name: build-win-64-standard
-          path: builds/win-64-standard
+          name: build-osx
+    # A file, directory or wildcard pattern that describes what to upload
+          path: build/build-osx
