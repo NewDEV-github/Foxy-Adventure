@@ -175,17 +175,19 @@ func get_project_root_dir():
 
 var os_rpc = ["Windows", "X11", "OSX"]
 
-func run_rpc(developer, display_stage, character="Tails"):
+func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 	if Discord.Core != null:
 		if os_rpc.has(OS.get_name()):
 			print("Starting RPC...")
 			var activity: = Discord.Activity.new()
-			if not developer:
+			if not developer and not is_in_menu:
 				activity.details = "Playing as %s" % [character]
 				if display_stage:
 					activity.state = "At %s" % [stage_names[str(current_stage)]]
-			else:
+			elif developer:
 				activity.details = "I'm making the game for You now"
+			elif is_in_menu:
+				activity.details = "At main menu"
 			activity.assets.large_image = "icon"
 
 			activity.timestamps.start = OS.get_unix_time()
@@ -253,7 +255,8 @@ func load_level(save_name:String):
 	sonyk.load("user://save_"+save_name+".cfg")
 	var stage = sonyk.get_value("save", "stage")
 	var character_pth = sonyk.get_value("save", "character")
-	coins = int(sonyk.get_value("save", "coins"))
+	if sonyk.has_section_key("save", "coins"):
+		coins = int(sonyk.get_value("save", "coins"))
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]

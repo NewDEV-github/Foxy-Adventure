@@ -60,7 +60,7 @@ func _on_DelSave_pressed():
 
 func _on_RunSave_pressed():
 	var save_name = $ItemList.get_item_text(current_item_index)
-	Globals.load_level(current_item_index)
+	Globals.load_level(str(save_name))
 
 
 func _on_ConfirmationDialog_confirmed():
