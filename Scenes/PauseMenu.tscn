@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Fonts/Ubuntu-L20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/Ubuntu-L20.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
