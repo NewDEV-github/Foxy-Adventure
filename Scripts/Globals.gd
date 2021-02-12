@@ -133,20 +133,23 @@ func _process(_delta: float) -> void:
 
 func _ready():
 #	execute_debugging_tools()
-	core = Discord.Core.new()
-	var result: int = core.create(
-		729429191489093702,
-		Discord.CreateFlags.DEFAULT
-	)
-	print("Created Discord Core: ", enum_to_string(Discord.Result, result))
-	if result != Discord.Result.OK:
-		core = null
+	if Discord.Core != null:
+		core = Discord.Core.new()
+		var result: int = core.create(
+			729429191489093702,
+			Discord.CreateFlags.DEFAULT
+		)
+		print("Created Discord Core: ", enum_to_string(Discord.Result, result))
+		if result != Discord.Result.OK:
+			core = null
+		else:
+			users = _get_user_manager()
+			users.connect("current_user_update", self, "_on_current_user_update")
+			activities = _get_activity_manager()
+			core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
+			activities.register_command(str(OS.get_executable_path()))
 	else:
-		users = _get_user_manager()
-		users.connect("current_user_update", self, "_on_current_user_update")
-		activities = _get_activity_manager()
-		core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
-		activities.register_command(str(OS.get_executable_path()))
+		print("Can not start Discord Core")
 #	print("Project root dir is at: " + project_root_dir)
 	cfile.load(install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
@@ -173,30 +176,35 @@ func get_project_root_dir():
 var os_rpc = ["Windows", "X11", "OSX"]
 
 func run_rpc(developer, display_stage, character="Tails"):
-	if os_rpc.has(OS.get_name()):
-		print("Starting RPC...")
-		var activity: = Discord.Activity.new()
-		if not developer:
-			activity.details = "Playing as %s" % [character]
-			if display_stage:
-				activity.state = "At %s" % [stage_names[str(current_stage)]]
-		else:
-			activity.details = "I'm making the game for You now"
-		activity.assets.large_image = "icon"
+	if Discord.Core != null:
+		if os_rpc.has(OS.get_name()):
+			print("Starting RPC...")
+			var activity: = Discord.Activity.new()
+			if not developer:
+				activity.details = "Playing as %s" % [character]
+				if display_stage:
+					activity.state = "At %s" % [stage_names[str(current_stage)]]
+			else:
+				activity.details = "I'm making the game for You now"
+			activity.assets.large_image = "icon"
 
-		activity.timestamps.start = OS.get_unix_time()
-		
-		activities.update_activity(activity, self, "update_activity_callback")
-		if not developer:
-			print("RPC started as %s" % [character])
-		else:
-			print("RPC started as mysterious developer")
+			activity.timestamps.start = OS.get_unix_time()
+
+			activities.update_activity(activity, self, "update_activity_callback")
+			if not developer:
+				print("RPC started as %s" % [character])
+			else:
+				print("RPC started as mysterious developer")
+	else:
+		print("Can not start Discord Core")
 func RPCKill():
-	print("Killing RPC...")
-	if os_rpc.has(OS.get_name()):
-		activities.clear_activity()
-		print("RPC killed")
-	pass
+	if Discord.Core != null:
+		print("Killing RPC...")
+		if os_rpc.has(OS.get_name()):
+			activities.clear_activity()
+			print("RPC killed")
+	else:
+		print("Can not start Discord Core")
 func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
