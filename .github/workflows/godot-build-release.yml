@@ -70,15 +70,15 @@ jobs:
       - name: ZIP Builds
         run: |
           cd $GITHUB_WORKSPACE/builds/win-64-standard
-          zip build-win-64.zip *
+          sudo zip build-win-64.zip *
           cd $GITHUB_WORKSPACE/builds/win-32-standard
-          zip build-win-32.zip *
+          sudo zip build-win-32.zip *
           cd $GITHUB_WORKSPACE/builds/x11-64-standard
-          zip build-x11-64.zip *
+          sudo zip build-x11-64.zip *
           cd $GITHUB_WORKSPACE/builds/x11-32-standard
-          zip build-x11-32.zip *
+          sudo zip build-x11-32.zip *
           cd $GITHUB_WORKSPACE/builds/osx-standard
-          zip build-osx-64.zip *
+          sudo zip build-osx-64.zip *
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
