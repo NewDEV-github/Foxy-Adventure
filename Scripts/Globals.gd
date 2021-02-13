@@ -132,22 +132,24 @@ func _process(_delta: float) -> void:
 			print("Callbacks failed: ", enum_to_string(Discord.Result, result))
 
 func _ready():
-	
 #	execute_debugging_tools()
-	core = Discord.Core.new()
-	var result: int = core.create(
-		729429191489093702,
-		Discord.CreateFlags.DEFAULT
-	)
-	print("Created Discord Core: ", enum_to_string(Discord.Result, result))
-	if result != Discord.Result.OK:
-		core = null
+	if Discord.Core != null:
+		core = Discord.Core.new()
+		var result: int = core.create(
+			729429191489093702,
+			Discord.CreateFlags.DEFAULT
+		)
+		print("Created Discord Core: ", enum_to_string(Discord.Result, result))
+		if result != Discord.Result.OK:
+			core = null
+		else:
+			users = _get_user_manager()
+			users.connect("current_user_update", self, "_on_current_user_update")
+			activities = _get_activity_manager()
+			core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
+			activities.register_command(str(OS.get_executable_path()))
 	else:
-		users = _get_user_manager()
-		users.connect("current_user_update", self, "_on_current_user_update")
-		activities = _get_activity_manager()
-		core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
-		activities.register_command(str(OS.get_executable_path()))
+		print("Can not start Discord Core")
 #	print("Project root dir is at: " + project_root_dir)
 	cfile.load(install_base_path + "config.cfg")
 	bits = str(cfile.get_value("config", "bits", "32"))
@@ -173,36 +175,41 @@ func get_project_root_dir():
 
 var os_rpc = ["Windows", "X11", "OSX"]
 
-func run_rpc(developer, display_stage, character="Tails"):
-	if os_rpc.has(OS.get_name()):
-		print("Starting RPC...")
-		var activity: = Discord.Activity.new()
-		if not developer:
-			activity.details = "Playing as %s" % [character]
-			if display_stage:
-				activity.state = "At %s" % [stage_names[str(current_stage)]]
-		else:
-			activity.details = "I'm making the game for You now"
-		activity.assets.large_image = "icon"
+func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
+	if Discord.Core != null:
+		if os_rpc.has(OS.get_name()):
+			print("Starting RPC...")
+			var activity: = Discord.Activity.new()
+			if not developer and not is_in_menu:
+				activity.details = "Playing as %s" % [character]
+				if display_stage:
+					activity.state = "At %s" % [stage_names[str(current_stage)]]
+			elif developer:
+				activity.details = "I'm making the game for You now"
+			elif is_in_menu:
+				activity.details = "At main menu"
+			activity.assets.large_image = "icon"
 
-		activity.timestamps.start = OS.get_unix_time()
-		
-		activities.update_activity(activity, self, "update_activity_callback")
-		if not developer:
-			print("RPC started as %s" % [character])
-		else:
-			print("RPC started as mysterious developer")
+			activity.timestamps.start = OS.get_unix_time()
+
+			activities.update_activity(activity, self, "update_activity_callback")
+			if not developer:
+				print("RPC started as %s" % [character])
+			else:
+				print("RPC started as mysterious developer")
+	else:
+		print("Can not start Discord Core")
 func RPCKill():
-#	print("Killing RPC...")
-#	if os_rpc.has(OS.get_name()):
-#		activities.clear_activity()
-#		print("RPC killed")
-	pass
+	if Discord.Core != null:
+		print("Killing RPC...")
+		if os_rpc.has(OS.get_name()):
+			activities.clear_activity()
+			print("RPC killed")
+	else:
+		print("Can not start Discord Core")
 func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or what== MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
-		RPCKill()
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed. Error log was sent to Developers!", "Error!")
 		send_crash_log_msg()
@@ -241,13 +248,15 @@ func save_level(stage:int, save_name:String):
 	sonyk.set_value("save", "coins", str(coins))
 	sonyk.save("user://save_"+save_name+".cfg")
 #	sonyk.close()
-
+func delete_save(save_name:String):
+	dir.remove("user://save_"+save_name+".cfg")
 func load_level(save_name:String):
 	var sonyk = ConfigFile.new()
 	sonyk.load("user://save_"+save_name+".cfg")
 	var stage = sonyk.get_value("save", "stage")
 	var character_pth = sonyk.get_value("save", "character")
-	coins = int(sonyk.get_value("save", "coins"))
+	if sonyk.has_section_key("save", "coins"):
+		coins = int(sonyk.get_value("save", "coins"))
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]

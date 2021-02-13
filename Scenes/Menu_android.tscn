@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/Fonts/Ubuntu-L20.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/Ubuntu-L20.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Feedback.tscn" type="PackedScene" id=8]
@@ -167,9 +167,9 @@ margin_bottom = 187.499
 [node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -55.0
-margin_right = 533.0
-margin_bottom = -10.0
+margin_top = -79.0
+margin_right = 395.0
+margin_bottom = -4.0
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -279,7 +279,6 @@ text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]

@@ -7,6 +7,8 @@ var save_file_names = []
 signal no_saves_found
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$buttons/DelSave.disabled = true
+	$buttons/RunSave.disabled = true
 #	popup()
 	var dir = Directory.new()
 	if dir.open("user://") == OK:
@@ -30,7 +32,6 @@ func _ready() -> void:
 	else:
 		for i in save_file_names:
 			$ItemList.add_item(i)
-
 func get_save_name(file_name:String):
 	return file_name.trim_prefix("save_")
 #	var regex = RegEx.new()
@@ -41,12 +42,33 @@ func get_save_name(file_name:String):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
-
+var current_item_index
 
 func _on_ItemList_item_selected(index: int) -> void:
-	var save_name = $ItemList.get_item_text(index)
-	Globals.load_level(save_name)
+	$buttons/DelSave.disabled = false
+	$buttons/RunSave.disabled = false
+	current_item_index = index
 
 
 func _on_Cancel_pressed():
 	hide()
+
+
+func _on_DelSave_pressed():
+	$ConfirmationDialog.popup_centered()
+
+
+func _on_RunSave_pressed():
+	var save_name = $ItemList.get_item_text(current_item_index)
+	Globals.load_level(str(save_name))
+
+
+func _on_ConfirmationDialog_confirmed():
+	Globals.delete_save($ItemList.get_item_text(current_item_index))
+	$ItemList.clear()
+	save_file_names.clear()
+	_ready()
+
+func _on_ItemList_nothing_selected():
+	$buttons/DelSave.disabled = true
+	$buttons/RunSave.disabled = true

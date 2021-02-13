@@ -29,31 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://bin/gdsdk/discord.gd"
 }, {
-"base": "Resource",
-"class": "FirebaseResource",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseResource.gd"
-}, {
-"base": "HTTPRequest",
-"class": "FirebaseStorage",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseStorage.gd"
-}, {
-"base": "Reference",
-"class": "FirebaseUserData",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseUserData.gd"
-}, {
-"base": "Node",
-"class": "FirestoreCollection",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseFirestoreCollection.gd"
-}, {
-"base": "Node",
-"class": "FirestoreDocument",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseFirestoreDocument.gd"
-}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -79,11 +54,6 @@ _global_script_class_icons={
 "CharacterAnimator": "",
 "CutsceneVideoPlayer": "",
 "Discord": "",
-"FirebaseResource": "",
-"FirebaseStorage": "",
-"FirebaseUserData": "",
-"FirestoreCollection": "",
-"FirestoreDocument": "",
 "GitAPI": "",
 "LevelEditorManager": "",
 "PlayerCamera": "",
@@ -128,10 +98,6 @@ window/vsync/vsync_via_compositor=true
 [editor]
 
 convert_text_resources_to_binary_on_export=true
-
-[editor_plugins]
-
-enabled=PoolStringArray( "gd2cs.py" )
 
 [gd2cs]
 

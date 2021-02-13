@@ -12,6 +12,7 @@ var month = OS.get_date().month
 onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.run_rpc(false, false,"", true)
 #	print(Fmod.get_music_instances())
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
