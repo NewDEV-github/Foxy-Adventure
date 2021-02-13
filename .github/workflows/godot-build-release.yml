@@ -96,7 +96,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: $GITHUB_WORKSPACE/builds/x11-64-standard/build-x11-64.zip
+          asset_path: builds/x11-64-standard/build-x11-64.zip
           asset_name: build-x11-64.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - x11-32
@@ -106,7 +106,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: $GITHUB_WORKSPACE/builds/x11-32-standard/build-x11-32.zip
+          asset_path: builds/x11-32-standard/build-x11-32.zip
           asset_name: build-x11-32.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - osx-64
@@ -116,7 +116,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: $GITHUB_WORKSPACE/builds/osx-standard/build-osx-64.zip
+          asset_path: builds/osx-standard/build-osx-64.zip
           asset_name: build-osx-64.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win-32
@@ -126,7 +126,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: $GITHUB_WORKSPACE/builds/win-32-standard/build-win-32.zip
+          asset_path: builds/win-32-standard/build-win-32.zip
           asset_name: build-win-32.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win-64
@@ -136,6 +136,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: $GITHUB_WORKSPACE/builds/win-64-standard/build-win-64.zip
+          asset_path: builds/win-64-standard/build-win-64.zip
           asset_name: build-win-64.zip
           asset_content_type: application/zip
