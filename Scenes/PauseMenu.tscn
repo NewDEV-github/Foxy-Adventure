@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/fonts/Ubuntu-L20.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
-[ext_resource path="res://Scenes/Feedback.tscn" type="PackedScene" id=6]
 
 [node name="PauseMenu" type="Panel"]
 pause_mode = 2
@@ -33,8 +31,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HTTPRequest" parent="." instance=ExtResource( 6 )]
-
 [node name="Buttons" type="VBoxContainer" parent="."]
 pause_mode = 2
 anchor_right = 1.0
@@ -46,50 +42,36 @@ __meta__ = {
 [node name="Resume" type="Button" parent="Buttons"]
 pause_mode = 2
 margin_right = 277.0
-margin_bottom = 79.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
 text = "Resume"
 
 [node name="Restart" type="Button" parent="Buttons"]
 pause_mode = 2
-margin_top = 83.0
+margin_top = 104.0
 margin_right = 277.0
-margin_bottom = 162.0
+margin_bottom = 204.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
 text = "Restart"
 
 [node name="Options" type="Button" parent="Buttons"]
 pause_mode = 2
-margin_top = 166.0
+margin_top = 208.0
 margin_right = 277.0
-margin_bottom = 246.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
 text = "Options"
-
-[node name="FeedBack" type="Button" parent="Buttons"]
-pause_mode = 2
-margin_top = 250.0
-margin_right = 277.0
-margin_bottom = 329.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
-text = "Feedback"
 
 [node name="QuitGame" type="Button" parent="Buttons"]
 pause_mode = 2
-margin_top = 333.0
+margin_top = 312.0
 margin_right = 277.0
 margin_bottom = 413.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
 text = "Quit to Main Menu"
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
@@ -103,5 +85,4 @@ margin_bottom = 300.0
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Buttons/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Buttons/FeedBack" to="." method="_on_FeedBack_pressed"]
 [connection signal="pressed" from="Buttons/QuitGame" to="." method="_on_QuitGame_pressed"]

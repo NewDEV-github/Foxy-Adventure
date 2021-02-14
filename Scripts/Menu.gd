@@ -4,7 +4,6 @@ var world_scene
 var website
 var current_submenu_page
 var lem = LevelEditorManager.new()
-export (bool) var is_android
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -17,8 +16,6 @@ func _ready():
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Fmod.play_sound(Globals.fmod_sound)
-	if str(OS.get_name()) == "Android" and not is_android:
-		get_tree().change_scene("res://Scenes/Menu_android.tscn")
 	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null

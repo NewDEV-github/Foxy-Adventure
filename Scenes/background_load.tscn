@@ -77,6 +77,10 @@ __meta__ = {
 }
 
 [node name="Start_transtition" parent="." instance=ExtResource( 2 )]
+margin_left = -197.06
+margin_top = -27.546
+margin_right = -197.06
+margin_bottom = -27.546
 mouse_filter = 1
 
 [node name="progress" type="ProgressBar" parent="."]
@@ -95,4 +99,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/start_transition = SubResource( 1 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

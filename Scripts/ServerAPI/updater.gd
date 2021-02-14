@@ -46,9 +46,14 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 		vp.stream_position = sp
 		vp.play()
 		yield($VideoPlayer,"finished")
-	_on_VideoPlayer_finished()
+	else:
+		_on_VideoPlayer_finished()
 ###DLC DOWNLOADING
 
 func _on_VideoPlayer_finished():
-	if not get_tree().change_scene('res://Scenes/Menu.tscn'):
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+	if not OS.get_name() == "Android":
+		if not get_tree().change_scene('res://Scenes/Menu.tscn'):
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+	elif OS.get_name() == "Android":
+		if not get_tree().change_scene("res://Scenes/Menu_android.tscn"):
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
