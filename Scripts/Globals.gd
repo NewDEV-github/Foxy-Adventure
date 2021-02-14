@@ -3,13 +3,8 @@ extends Node
 var bits = "32"
 var activities: Discord.ActivityManager
 var users: Discord.UserManager
+var os_rpc = ["Windows", "X11", "OSX"]
 
-var copy_file_list = [
-	"res://rpc/rpc.py",
-	"res://rpc/rpc-kill.py",
-	"res://rpc/rpc-newtf.py",
-	"res://rpc/rpc-tails.py",
-]
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
@@ -133,7 +128,7 @@ func _process(_delta: float) -> void:
 
 func _ready():
 #	execute_debugging_tools()
-	if Discord.Core != null:
+	if os_rpc.has(OS.get_name()):
 		core = Discord.Core.new()
 		var result: int = core.create(
 			729429191489093702,
@@ -151,8 +146,10 @@ func _ready():
 	else:
 		print("Can not start Discord Core")
 #	print("Project root dir is at: " + project_root_dir)
-	cfile.load(install_base_path + "config.cfg")
-	bits = str(cfile.get_value("config", "bits", "32"))
+	if OS.has_feature("64") or OS.has_feature("x86_64"):
+		bits == "64"
+	elif OS.has_feature("32") or OS.has_feature("x86"):
+		bits == "32"
 	##LOAD DLCS
 	#Tails.exe
 	
@@ -172,8 +169,6 @@ func _ready():
 	emit_signal("loaded")
 func get_project_root_dir():
 	return "res://".get_base_dir()
-
-var os_rpc = ["Windows", "X11", "OSX"]
 
 func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 	if Discord.Core != null:
@@ -212,33 +207,8 @@ func set_variable(variable, value):
 func _notification(what: int) -> void:
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed. Error log was sent to Developers!", "Error!")
-		send_crash_log_msg()
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
-func send_crash_log_msg():
-	var http = HTTPRequest.new()
-	var f = File.new()
-	f.open("user://logs/engine_log.txt", File.READ)
-	var new_text = "<@&763764844381864007> \n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
-	var headers := ["Content-Type: application/json"]
-	var myEmbed = {
-		"author": {
-			"name": "Foxy Adventure"
-		},
-		"title": "Game Crashed!!!",
-		"description": new_text,
-		"color": "16711680"
-		}
-#	var headers := ["Content-Type: application/json"]
-	var params = {
-		"username": "In-game errors",
-		"embeds": [myEmbed],
-	}
-	var msg = {"content": "", "embed": {"title": "New error catched up!", "description": new_text}}
-	var query = JSON.print(params)
-#	var channel_id = "773150027106484234"
-	f.close()
-	http.request(Marshalls.base64_to_utf8(str(SharedLibManager.webhook_err.get_data())), headers, true, HTTPClient.METHOD_POST, query)
 
 func save_level(stage:int, save_name:String):
 	var sonyk = ConfigFile.new()

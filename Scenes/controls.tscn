@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Ubuntu-L20.tres" type="DynamicFont" id=2]
-
 
 [node name="controls_ui" type="VBoxContainer"]
 anchor_right = 1.0
@@ -17,15 +15,14 @@ __meta__ = {
 
 [node name="contextual_help" type="Label" parent="."]
 margin_right = 1024.0
-margin_bottom = 21.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
 text = "Press button to assign selected action"
 align = 1
 
 [node name="bindings" type="GridContainer" parent="."]
-margin_top = 39.0
+margin_top = 32.0
 margin_right = 1024.0
 margin_bottom = 600.0
 grow_horizontal = 2
@@ -37,8 +34,7 @@ columns = 2
 
 [node name="1buttons" type="Label" parent="bindings"]
 margin_right = 510.0
-margin_bottom = 21.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 14.0
 text = "Primary"
 align = 1
 valign = 1
@@ -46,8 +42,7 @@ valign = 1
 [node name="2buttons" type="Label" parent="bindings"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 21.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 14.0
 text = "Secondary"
 align = 1
 valign = 1
@@ -65,7 +60,6 @@ margin_right = 78.0
 margin_bottom = 23.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,7 +89,6 @@ margin_right = 78.0
 margin_bottom = 23.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,8 +106,8 @@ __meta__ = {
 }
 
 [node name="ui_down" type="Control" parent="bindings"]
-margin_top = 25.0
-margin_bottom = 25.0
+margin_top = 18.0
+margin_bottom = 18.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -124,7 +117,6 @@ margin_right = 67.0
 margin_bottom = 24.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Down"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -140,9 +132,9 @@ size_flags_vertical = 2
 
 [node name="ui_down2" type="Control" parent="bindings"]
 margin_left = 514.0
-margin_top = 25.0
+margin_top = 18.0
 margin_right = 514.0
-margin_bottom = 25.0
+margin_bottom = 18.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -152,7 +144,6 @@ margin_right = 67.0
 margin_bottom = 24.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Down"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -167,8 +158,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="ui_left" type="Control" parent="bindings"]
-margin_top = 159.0
-margin_bottom = 159.0
+margin_top = 155.0
+margin_bottom = 155.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -178,7 +169,6 @@ margin_right = 74.0
 margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Left"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -194,9 +184,9 @@ size_flags_vertical = 2
 
 [node name="ui_left2" type="Control" parent="bindings"]
 margin_left = 514.0
-margin_top = 159.0
+margin_top = 155.0
 margin_right = 514.0
-margin_bottom = 159.0
+margin_bottom = 155.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -206,7 +196,6 @@ margin_right = 74.0
 margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Left"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,8 +210,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="ui_right" type="Control" parent="bindings"]
-margin_top = 293.0
-margin_bottom = 293.0
+margin_top = 292.0
+margin_bottom = 292.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -233,7 +222,6 @@ margin_right = 82.7072
 margin_bottom = 23.8787
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Right"
 
 [node name="Button" type="Button" parent="bindings/ui_right"]
@@ -249,9 +237,9 @@ __meta__ = {
 
 [node name="ui_right2" type="Control" parent="bindings"]
 margin_left = 514.0
-margin_top = 293.0
+margin_top = 292.0
 margin_right = 514.0
-margin_bottom = 293.0
+margin_bottom = 292.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -262,7 +250,6 @@ margin_right = 82.7072
 margin_bottom = 23.8787
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Right"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -280,8 +267,8 @@ __meta__ = {
 }
 
 [node name="jump" type="Control" parent="bindings"]
-margin_top = 427.0
-margin_bottom = 427.0
+margin_top = 429.0
+margin_bottom = 429.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -292,7 +279,6 @@ margin_right = 45.0
 margin_bottom = 21.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Jump"
 
 [node name="Button" type="Button" parent="bindings/jump"]
@@ -305,9 +291,9 @@ size_flags_vertical = 2
 
 [node name="jump2" type="Control" parent="bindings"]
 margin_left = 514.0
-margin_top = 427.0
+margin_top = 429.0
 margin_right = 514.0
-margin_bottom = 427.0
+margin_bottom = 429.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -318,7 +304,6 @@ margin_right = 45.0
 margin_bottom = 21.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 text = "Jump"
 __meta__ = {
 "_edit_use_anchors_": false

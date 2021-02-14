@@ -87,8 +87,9 @@ project_creator=""
 
 [debug]
 
-settings/crash_handler/message="Please include this when reporting the bug on https://github.com/MasterPolska123/sonadow-rpg/issues/"
-settings/fps/force_fps=30
+settings/crash_handler/message="Please include this when reporting the bug on https://github.com/NewDEv-github/Foxy-Adventure/issues"
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
 
 [display]
 
