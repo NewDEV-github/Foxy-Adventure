@@ -29,37 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://bin/gdsdk/discord.gd"
 }, {
-"base": "Resource",
-"class": "FirebaseResource",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseResource.gd"
-}, {
-"base": "HTTPRequest",
-"class": "FirebaseStorage",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseStorage.gd"
-}, {
-"base": "Reference",
-"class": "FirebaseUserData",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseUserData.gd"
-}, {
-"base": "Node",
-"class": "FirestoreCollection",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseFirestoreCollection.gd"
-}, {
-"base": "Node",
-"class": "FirestoreDocument",
-"language": "GDScript",
-"path": "res://addons/GDFirebase/FirebaseFirestoreDocument.gd"
-}, {
-"base": "",
-"class": "FmodNative",
-"language": "NativeScript",
-"path": "res://addons/fmod/Fmod.gdns"
-}, {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
@@ -84,12 +54,6 @@ _global_script_class_icons={
 "CharacterAnimator": "",
 "CutsceneVideoPlayer": "",
 "Discord": "",
-"FirebaseResource": "",
-"FirebaseStorage": "",
-"FirebaseUserData": "",
-"FirestoreCollection": "",
-"FirestoreDocument": "",
-"FmodNative": "",
 "GitAPI": "",
 "LevelEditorManager": "",
 "PlayerCamera": "",
@@ -105,32 +69,27 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://assets/Graphics/icon.png"
-config/windows_native_icon="res://Graphics/icon.ico"
+config/windows_native_icon="res://assets/Graphics/icon.ico"
 config/project_creator="New DEV"
 config/version="1.0.0"
 
 [autoload]
 
-BackgroundLoad="*res://Scenes/background_load.tscn"
-Console="*res://addons/godot-console-dev/src/Console.tscn"
-Globals="*res://Scripts/Globals.gd"
 Screenshot="*res://Scripts/screenshot.gd"
-ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
-ScreenDebugger="*res://addons/screen_debugger/S_ScreenDebugger.gd"
-GlobalsEditor="*res://Scripts/GlobalsEditor.gd"
-Firebase="*res://addons/GDFirebase/Firebase.gd"
 SharedLibManager="*res://Scripts/SharedLibManager.gd"
-Fmod="*res://addons/fmod/Fmod.gd"
+Globals="*res://Scripts/Globals.gd"
+ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
+BackgroundLoad="*res://Scenes/background_load.tscn"
 
 [config]
 
 project_creator=""
-project_creator/project_creator=""
 
 [debug]
 
-settings/crash_handler/message="Please include this when reporting the bug on https://github.com/MasterPolska123/sonadow-rpg/issues/"
-settings/fps/force_fps=30
+settings/crash_handler/message="Please include this when reporting the bug on https://github.com/NewDEv-github/Foxy-Adventure/issues"
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
 
 [display]
 
@@ -141,9 +100,10 @@ window/vsync/vsync_via_compositor=true
 
 convert_text_resources_to_binary_on_export=true
 
-[editor_plugins]
+[gd2cs]
 
-enabled=PoolStringArray( "GDFirebase", "fmod", "godot-console-dev", "screen_debugger" )
+config/ask_no_python=true
+config/python="python"
 
 [gdnative]
 
@@ -256,6 +216,11 @@ translations=PoolStringArray(  )
 file_logging/enable_file_logging=true
 file_logging/log_path="user://logs/engine_log.txt"
 file_logging/max_log_files=30000
+
+[mono]
+
+export/include_scripts_content=true
+export/export_assemblies_inside_pck=false
 
 [network]
 

@@ -24,10 +24,7 @@ var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	set_damage_bar_value($CanvasLayer/ProgressBar)
-	if character_name == "Tails":
-		Globals.RPCTails()
-	if character_name == "New The Fox":
-		Globals.RPCNewTF()
+	Globals.run_rpc(false, true, character_name)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
@@ -172,10 +169,11 @@ func set_damage_bar_value(damagebar):
 	damagebar.max_value = max_hp
 	damagebar.value = hp
 
-func _on_Tails_tree_exiting():
-	Globals.RPCKill()
-
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Enemy":
 		take_damage()
+
+
+func _on_Tails_tree_exited():
+	Globals.RPCKill()

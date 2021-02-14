@@ -1,12 +1,10 @@
 extends Node
 #var project_root_dir = get_project_root_dir()
 var bits = "32"
-var copy_file_list = [
-	"res://rpc/rpc.py",
-	"res://rpc/rpc-kill.py",
-	"res://rpc/rpc-newtf.py",
-	"res://rpc/rpc-tails.py",
-]
+var activities: Discord.ActivityManager
+var users: Discord.UserManager
+var os_rpc = ["Windows", "X11", "OSX"]
+
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
@@ -24,12 +22,14 @@ var stage_list = {
 	"13": "res://Scenes/Stages/poziom_14.tscn",
 	"14": "res://Scenes/Stages/poziom_15.tscn",
 }
+var stage_names:Dictionary = {
+	"0": "Metallic Madness Act 1",
+	"1": "Metallic Madness Act 2",
+	"2": "Metallic Madness Act 3",
+	
+}
+var current_stage = 0
 var core: Discord.Core
-var users: Discord.UserManager
-var images: Discord.ImageManager
-var activitytimestamps: Discord.ActivityTimestamps
-var activityassets: Discord.ActivityAssets
-var partysize: Discord.PartySize
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -57,11 +57,10 @@ var new_characters:Array = [
 ]
 
 func construct_game_version():
-	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
+	var text = "Support: support@new-dev.ml\n%s version: %s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, OS.get_date().year]
 	return text
 func _init():
-	file.open("game_version.txt", File.READ)
-	version_commit = file.get_line()
+	version_commit = "idk"
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 var dlcs:Array = [
@@ -121,104 +120,36 @@ func _get_image_manager() -> Discord.ImageManager:
 		return null
 	else:
 		return result
+func _process(_delta: float) -> void:
+	if core:
+		var result: int = core.run_callbacks()
+		if result != Discord.Result.OK:
+			print("Callbacks failed: ", enum_to_string(Discord.Result, result))
 
-func _on_current_user_update() -> void:
-	users.get_current_user(self, "get_current_user_callback")
-	users.get_current_user_premium_type(
-		self, "get_current_user_premium_type_callback"
-	)
-
-func get_current_user_callback(result: int, user: Discord.User) -> void:
-	if result != Discord.Result.OK:
-		print(
-			"Failed to get user: ",
-			enum_to_string(Discord.Result, result)
-		)
-	else:
-		print("Got Current User:")
-		print(user.username, "#", user.discriminator, "  ID: ", user.id)
-#
-#		var handle: = Discord.ImageHandle.new()
-#		handle.id = user.id
-#		handle.size = 256
-#		handle.type = Discord.ImageType.USER
-#
-#		images.fetch(handle, true, self, "fetch_callback")
-
-func get_user_callback(result: int, user: Discord.User) -> void:
-	if result == Discord.Result.OK:
-		print("Fetched User:")
-		print(user.username, "#", user.discriminator, "  ID: ", user.id)
-	else:
-		print("Failed to fetch user: ", enum_to_string(Discord.Result, result))
-
-func get_current_user_premium_type_callback(
-	result: int,
-	premium_type: int
-) -> void:
-	if result != Discord.Result.OK:
-		print(
-			"Failed to get user premium type: ",
-			enum_to_string(Discord.Result, result)
-		)
-	else:
-		print("Current User Premium Type:")
-		print(enum_to_string(Discord.PremiumType, premium_type))
-
-#func fetch_callback(result: int, handle: Discord.ImageHandle) -> void:
-#	if result != Discord.Result.OK:
-#		print(
-#			"Failed to fetch image handle: ",
-#			enum_to_string(Discord.Result, result)
-#		)
-#	else:
-#		print("Fetched image handle, ", handle.id, ", ", handle.size)
-#
-#		var res = images.get_data(handle)
-#		if res is int:
-#			print(
-#				"Failed to get image data: ",
-#				enum_to_string(Discord.Result, res)
-#			)
-#		else:
-#			var dimensions: Discord.ImageDimensions = images.get_dimensions(handle)
-#			var image: = Image.new()
-#			image.create_from_data(
-#				dimensions.width, dimensions.height,
-#				false,
-#				Image.FORMAT_RGBA8,
-#				res
-#			)
-#			image.unlock()
-#			var tex: = ImageTexture.new()
-#			tex.create_from_image(image)
-#			texture_rect.texture = tex
-#			OS.window_size = Vector2(dimensions.width, dimensions.height)
 func _ready():
-	Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_STEREO, 0)
-	Fmod.init(1024, Fmod.FMOD_STUDIO_INIT_LIVEUPDATE, Fmod.FMOD_INIT_NORMAL)
-	core = Discord.Core.new()
-	var result: int = core.create(
-		793449535632441374,
-		Discord.CreateFlags.DEFAULT
-	)
-	print("Created Discord Core: ", enum_to_string(Discord.Result, result))
-	if result != Discord.Result.OK:
-		core = null
+#	execute_debugging_tools()
+	if os_rpc.has(OS.get_name()):
+		core = Discord.Core.new()
+		var result: int = core.create(
+			729429191489093702,
+			Discord.CreateFlags.DEFAULT
+		)
+		print("Created Discord Core: ", enum_to_string(Discord.Result, result))
+		if result != Discord.Result.OK:
+			core = null
+		else:
+			users = _get_user_manager()
+			users.connect("current_user_update", self, "_on_current_user_update")
+			activities = _get_activity_manager()
+			core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
+			activities.register_command(str(OS.get_executable_path()))
 	else:
-		activitytimestamps = Discord.ActivityTimestamps.new()
-		activityassets = Discord.ActivityAssets.new()
-		activityassets.small_text = "D"
-		users = _get_user_manager()
-		users.connect("current_user_update", self, "_on_current_user_update")
-
-		users.get_user(708014517975777302, self, "get_user_callback")
-
-		images = _get_image_manager()
-	copy_files_rpc()
+		print("Can not start Discord Core")
 #	print("Project root dir is at: " + project_root_dir)
-	cfile.load(install_base_path + "config.cfg")
-	bits = str(cfile.get_value("config", "bits", "32"))
+	if OS.has_feature("64") or OS.has_feature("x86_64"):
+		bits == "64"
+	elif OS.has_feature("32") or OS.has_feature("x86"):
+		bits == "32"
 	##LOAD DLCS
 	#Tails.exe
 	
@@ -238,102 +169,46 @@ func _ready():
 	emit_signal("loaded")
 func get_project_root_dir():
 	return "res://".get_base_dir()
-#DISCORD RPC
-var rpc_pid
-var rpc_pid_development
-var is_developer = false
-func copy_files_rpc():
-	if file.file_exists(install_base_path + "config.cfg"):
-		cfile.load(install_base_path + "config.cfg")
-#RPC Script
-		dir.copy("res://rpc/rpc.py", install_base_path + "rpc.py")
-		cfile.set_value("files", "res://rpc/rpc.py", "rpc.py")
-#RPC Tails Script
-		dir.copy("res://rpc/rpc-tails.py", install_base_path + "rpc-tails.py")
-		cfile.set_value("files", "res://rpc/rpc-tails.py", "rpc-tails.py")
-#RPC New The Fox Script
-		dir.copy("res://rpc/rpc-newtf.py", install_base_path + "rpc-newtf.py")
-		cfile.set_value("files", "res://rpc/rpc-newtf.py", "rpc-newtf.py")
-#RPC Kill Script
-		dir.copy("res://rpc/rpc-kill.py", install_base_path + "rpc-kill.py")
-		cfile.set_value("files", "res://rpc/rpc-kill.py", "rpc-kill.py")
-		
-		cfile.save(install_base_path + "config.cfg")
 
-func RPCDevelopment():
-	is_developer = true
-	if os_rpc.has(OS.get_name()):
-		print("Starting RPC...")
-		if file.file_exists("rpc/rpc-development.py"):
-			rpc_pid_development = OS.execute("python", ["rpc/rpc-developmnet.py"], false)
-		print("RPC started as mysterious developer, with pid: " + str(rpc_pid_development))
-var os_rpc = ["Windows", "X11", "OSX"]
-func RPCTails():
-	is_developer = false
-	if os_rpc.has(OS.get_name()):
-		print("Starting RPC...")
-		if file.file_exists(install_base_path +"rpc-tails.py"):
-			rpc_pid = OS.execute("python", [install_base_path + "rpc-tails.py"], false)
-		elif not file.file_exists(install_base_path + "rpc-tails.py"):
-			rpc_pid = OS.execute("python", ["rpc/rpc-tails.py"], false)
-		print("RPC started as Tails, with pid: " + str(rpc_pid))
-		
-func RPCNewTF():
-	is_developer = false
-	print("Starting RPC...")
-	if os_rpc.has(OS.get_name()):
-		if file.file_exists(install_base_path + "rpc-newtf.py"):
-			rpc_pid = OS.execute("python", [install_base_path + "rpc-newtf.py"], false)
-		elif not file.file_exists(install_base_path + "rpc-newtf.py"):
-			rpc_pid = OS.execute("python", ["rpc/rpc-newtf.py"], false)
-		print("RPC started as New The Fox, with pid: " + str(rpc_pid))
+func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
+	if Discord.Core != null:
+		if os_rpc.has(OS.get_name()):
+			print("Starting RPC...")
+			var activity: = Discord.Activity.new()
+			if not developer and not is_in_menu:
+				activity.details = "Playing as %s" % [character]
+				if display_stage:
+					activity.state = "At %s" % [stage_names[str(current_stage)]]
+			elif developer:
+				activity.details = "I'm making the game for You now"
+			elif is_in_menu:
+				activity.details = "At main menu"
+			activity.assets.large_image = "icon"
+
+			activity.timestamps.start = OS.get_unix_time()
+
+			activities.update_activity(activity, self, "update_activity_callback")
+			if not developer:
+				print("RPC started as %s" % [character])
+			else:
+				print("RPC started as mysterious developer")
+	else:
+		print("Can not start Discord Core")
 func RPCKill():
-	print("Killing RPC...")
-	if os_rpc.has(OS.get_name()):
-		if file.file_exists(install_base_path + "rpc-kill.py"):
-			OS.execute("python", [install_base_path + "rpc-kill.py"], false)
-		elif not file.file_exists(install_base_path + "rpc-kill.py"):
-			OS.execute("python", ["rpc/rpc-kill.py"], false)
-	if not rpc_pid == null:
-		if not is_developer:
-			OS.kill(int(rpc_pid))
-		elif is_developer:
-			OS.kill(int(rpc_pid_development))
-		print("RPC killed")
+	if Discord.Core != null:
+		print("Killing RPC...")
+		if os_rpc.has(OS.get_name()):
+			activities.clear_activity()
+			print("RPC killed")
+	else:
+		print("Can not start Discord Core")
 func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or what== MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
-		RPCKill()
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed. Error log was sent to Developers!", "Error!")
-		send_crash_log_msg()
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
-func send_crash_log_msg():
-	var http = HTTPRequest.new()
-	var f = File.new()
-	f.open("user://logs/engine_log.txt", File.READ)
-	var new_text = "<@&763764844381864007> \n\n" + str(f.get_as_text()) + "\n\n**OS:** " + str(OS.get_name()) + "\n**Godot version:** " + str(Engine.get_version_info()) + "\n**Debug build:** " + str(OS.is_debug_build())
-	var headers := ["Content-Type: application/json"]
-	var myEmbed = {
-		"author": {
-			"name": "Foxy Adventure"
-		},
-		"title": "Game Crashed!!!",
-		"description": new_text,
-		"color": "16711680"
-		}
-#	var headers := ["Content-Type: application/json"]
-	var params = {
-		"username": "In-game errors",
-		"embeds": [myEmbed],
-	}
-	var msg = {"content": "", "embed": {"title": "New error catched up!", "description": new_text}}
-	var query = JSON.print(params)
-#	var channel_id = "773150027106484234"
-	f.close()
-	http.request(Marshalls.base64_to_utf8(str(SharedLibManager.webhook_err.get_data())), headers, true, HTTPClient.METHOD_POST, query)
 
 func save_level(stage:int, save_name:String):
 	var sonyk = ConfigFile.new()
@@ -343,18 +218,63 @@ func save_level(stage:int, save_name:String):
 	sonyk.set_value("save", "coins", str(coins))
 	sonyk.save("user://save_"+save_name+".cfg")
 #	sonyk.close()
-
+func delete_save(save_name:String):
+	dir.remove("user://save_"+save_name+".cfg")
 func load_level(save_name:String):
 	var sonyk = ConfigFile.new()
 	sonyk.load("user://save_"+save_name+".cfg")
 	var stage = sonyk.get_value("save", "stage")
 	var character_pth = sonyk.get_value("save", "character")
-	coins = int(sonyk.get_value("save", "coins"))
+	if sonyk.has_section_key("save", "coins"):
+		coins = int(sonyk.get_value("save", "coins"))
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]
+	BackgroundLoad.play_start_transition = true
 	BackgroundLoad.load_scene(loaded_stage)
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
 	RPCKill()
+#func execute_debugging_tools():
+#	if file.file_exists(install_base_path + "DebuggingTools.exe"):
+#		OS.execute(install_base_path + "DebuggingTools.exe", [], false)
+func update_activity_callback(result: int):
+	if result == Discord.Result.OK:
+		print("Updated Activity Successfully")
+	else:
+		print(
+			"Failed to update activity: ",
+			enum_to_string(Discord.Result, result)
+		)
+func _get_activity_manager() -> Discord.ActivityManager:
+	var result = core.get_activity_manager()
+	if result is int:
+		print(
+			"Failed to get activity manager: ",
+			enum_to_string(Discord.Result, result)
+		)
+		return null
+	else:
+		return result
+func log_hook(level: int, message: String) -> void:
+	print(
+		"[Discord SDK] ",
+		enum_to_string(Discord.LogLevel, level),
+		": ", message
+	)
+func get_current_user_callback(result: int, user: Discord.User) -> void:
+	if result != Discord.Result.OK:
+		print(
+			"Failed to get user: ",
+			enum_to_string(Discord.Result, result)
+		)
+	else:
+		print("Got Current User:")
+		print(user.username, "#", user.discriminator, "  ID: ", user.id)
+func _on_current_user_update() -> void:
+	users.get_current_user(self, "get_current_user_callback")
+	users.get_current_user_premium_type(
+		self, "get_current_user_premium_type_callback"
+	)
+
 

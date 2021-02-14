@@ -4,15 +4,23 @@
 [ext_resource path="res://Scripts/SaveLoader.gd" type="Script" id=2]
 
 [node name="WindowDialog" type="Panel"]
-margin_right = 216.0
-margin_bottom = 203.0
+margin_right = 315.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 315, 280 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemList" type="ItemList" parent="."]
+anchor_top = 0.108
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 29.0
+anchor_bottom = 0.833
+margin_top = -0.348001
+margin_bottom = 5.92699
+allow_reselect = true
+max_text_lines = 900
 auto_height = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,9 +29,43 @@ __meta__ = {
 [node name="Cancel" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -24.0
-margin_bottom = 29.0
+margin_left = -26.0
+margin_bottom = 37.0
 text = "X"
 
+[node name="buttons" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DelSave" type="Button" parent="buttons"]
+margin_left = 35.0
+margin_right = 159.0
+margin_bottom = 37.0
+text = "Delete Save"
+
+[node name="RunSave" type="Button" parent="buttons"]
+margin_left = 184.0
+margin_right = 280.0
+margin_bottom = 37.0
+text = "Run Save"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+margin_right = 406.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "Proszę potwierdzić..."
+dialog_text = "Are you sure, You want to delete this save?"
+
 [connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="nothing_selected" from="ItemList" to="." method="_on_ItemList_nothing_selected"]
 [connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="buttons/DelSave" to="." method="_on_DelSave_pressed"]
+[connection signal="pressed" from="buttons/RunSave" to="." method="_on_RunSave_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

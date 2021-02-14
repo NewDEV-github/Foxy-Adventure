@@ -3,7 +3,7 @@ var tekst = "Hello World"
 var world_scene
 var website
 var current_submenu_page
-export (bool) var is_android
+var lem = LevelEditorManager.new()
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -11,18 +11,14 @@ var month = OS.get_date().month
 onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Fmod.add_listener(0, self)
-	Fmod.play_music_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg", "MainMenu")
+	Globals.run_rpc(false, false,"", true)
 #	print(Fmod.get_music_instances())
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Fmod.play_sound(Globals.fmod_sound)
-	if str(OS.get_name()) == "Android" and not is_android:
-		get_tree().change_scene("res://Scenes/Menu_android.tscn")
 	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
-	var lem = LevelEditorManager.new()
 	lem.install_editor("user://test.zip")
 	$tails.hide()
 	if File.new().file_exists("user://milestailsprower.txt"):
@@ -50,7 +46,6 @@ func _ready():
 		$Label.set_text(tr("Happy Birthday to") + ' Gekon aka "GeKaGD"')
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
-	BackgroundLoad.play_start_transition = true
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
@@ -106,14 +101,11 @@ func dir_contents(path):
 
 
 
-func _on_Menu_tree_exiting():
-	Fmod.stop_sound(Fmod.music_instances["MainMenu"])
 
 
 func _on_Level_Editor_pressed():
-	var lvm = LevelEditorManager.new()
-	if !lvm.execute_editor():
-		lvm.download_editor()
+	if !lem.execute_editor():
+		lem.download_editor()
 func _on_Feedback_pressed():
 	$Feedback.send_feedback()
 

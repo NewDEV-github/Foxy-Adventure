@@ -21,7 +21,6 @@ func _ready() -> void:
 	OS.request_permissions()
 	
 #	$icon.show()
-	$Timer.start()
 	$VideoPlayer.stop()
 	#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
 	
@@ -47,29 +46,14 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 		vp.stream_position = sp
 		vp.play()
 		yield($VideoPlayer,"finished")
-	_on_VideoPlayer_finished()
+	else:
+		_on_VideoPlayer_finished()
 ###DLC DOWNLOADING
 
-
 func _on_VideoPlayer_finished():
-	if not get_tree().change_scene('res://Scenes/Menu.tscn'):
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
-
-
-func _on_pck_request_completed(result, response_code, headers, body):
-	if result == 2:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_CONNECT)
-	if result == 3:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_RESOLVE)
-	if result == 4:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CONNECTION_ERR)
-	if result == 6:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_NO_RESPONSE)
-	if result == 9:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_OPEN)
-	if result == 10:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_HTTPREQ_CANT_WRITE)
-	if not result == 0:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_MISSING_DATA_FILES)
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_INITIALIZING_GAME)
+	if not OS.get_name() == "Android":
+		if not get_tree().change_scene('res://Scenes/Menu.tscn'):
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+	elif OS.get_name() == "Android":
+		if not get_tree().change_scene("res://Scenes/Menu_android.tscn"):
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)

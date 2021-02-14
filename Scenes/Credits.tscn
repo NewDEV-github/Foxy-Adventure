@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
-[ext_resource path="res://assets/Fonts/Ubuntu-L20.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/Fonts/Ubuntu-L18.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Credits.tres" type="Animation" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -416,12 +416,12 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 600.0
 margin_right = 510.0
-margin_bottom = 4108.0
+margin_bottom = 3675.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/bold_font = ExtResource( 2 )
-custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[center]
 [b][wave amp=50 freq=1]New DEV Development Team[/wave][/b]
@@ -626,6 +626,7 @@ ZuBsPaCe
 [b]Special Thanks[/b]
 LeD
 · [rainbow freq=0.1 sat=2 val=20]GeKaGD[/rainbow] ·
+LennyPhoenix
 [/center]"
 text = "
 New DEV Development Team
@@ -830,6 +831,7 @@ ZuBsPaCe
 Special Thanks
 LeD
 · GeKaGD ·
+LennyPhoenix
 "
 fit_content_height = true
 scroll_active = false
@@ -841,7 +843,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 4108.0
+margin_bottom = 3075.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -849,6 +851,19 @@ size_flags_vertical = 3
 autoplay = "credits"
 anims/credits = ExtResource( 6 )
 anims/credits_easteregg = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Music"
+
+[node name="spectrum" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -427.0
+audio_player = NodePath("../AudioStreamPlayer")
 
 [connection signal="tree_exiting" from="." to="." method="_on_Control_tree_exiting"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

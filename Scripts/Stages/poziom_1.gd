@@ -9,8 +9,9 @@ onready var root = get_tree().root
 var character = load(str(Globals.character_path)).instance()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Fmod.add_listener(0, self)
-	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
+	Globals.current_stage = 0
+#	Fmod.add_listener(0, self)
+#	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)
 	add_child(character)
 #	character.set_owner(root)
@@ -24,4 +25,5 @@ func toxic_entered(body):
 
 
 func _on_Node2D_tree_exited():
-	Fmod.stop_sound(Fmod.music_instances["1stage"])
+#	Fmod.stop_sound(Fmod.music_instances["1stage"])
+	pass

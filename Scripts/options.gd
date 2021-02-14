@@ -13,7 +13,7 @@ func _ready():
 	load_settings()
 	if str(OS.get_name()) == 'Android':
 #		$tabs/Sterowanie.hide()
-		$tabs.set_tab_disabled(1, true)
+		$tabs.set_tab_disabled(2, true)
 		$"tabs/Audio/Options/Audio/SPEAKERMODE".set_disabled(true)
 		$"tabs/Graphics/Options/side_left/custom_resolution".hide()
 	else:
@@ -95,8 +95,6 @@ func load_settings():
 	else:
 		pass
 func _on_Master_slider_value_changed(value):
-	for i in Fmod.get_music_instances():
-		Fmod.set_sound_volume(Fmod.music_instances[i],value)
 	AudioServer.set_bus_volume_db(0, value)
 
 
@@ -109,8 +107,6 @@ func _on_Master_on_toggled(button_pressed):
 	$"tabs/Audio/Options/Audio/SFX/SFX_on".set_disabled(!button_pressed)
 
 func _on_Music_slider_value_changed(value):
-	for i in Fmod.get_music_instances():
-		Fmod.set_sound_volume(Fmod.music_instances[i],value)
 	AudioServer.set_bus_volume_db(1, value)
 	AudioServer.set_bus_volume_db(3, value)
 
