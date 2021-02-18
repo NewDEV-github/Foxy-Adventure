@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Credits.tres" type="Animation" id=6]
@@ -417,11 +418,11 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 600.0
 margin_right = 510.0
-margin_bottom = 3675.0
+margin_bottom = 3075.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]
 [b][wave amp=50 freq=1]New DEV Development Team[/wave][/b]
