@@ -3,7 +3,7 @@ extends Node
 var bits = "32"
 var activities: Discord.ActivityManager
 var users: Discord.UserManager
-var os_rpc = ["Windows", "X11", "OSX"]
+var os_rpc = ["Windows_32", "Windows_64", "X11_32", "OSX_32"]
 
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
@@ -128,7 +128,11 @@ func _process(_delta: float) -> void:
 
 func _ready():
 #	execute_debugging_tools()
-	if os_rpc.has(OS.get_name()):
+	if OS.has_feature("64") or OS.has_feature("x86_64"):
+		bits == "64"
+	elif OS.has_feature("32") or OS.has_feature("x86"):
+		bits == "32"
+	if os_rpc.has(OS.get_name() + "_" + bits):
 		core = Discord.Core.new()
 		var result: int = core.create(
 			729429191489093702,
@@ -146,10 +150,6 @@ func _ready():
 	else:
 		print("Can not start Discord Core")
 #	print("Project root dir is at: " + project_root_dir)
-	if OS.has_feature("64") or OS.has_feature("x86_64"):
-		bits == "64"
-	elif OS.has_feature("32") or OS.has_feature("x86"):
-		bits == "32"
 	##LOAD DLCS
 	#Tails.exe
 	
@@ -172,7 +172,7 @@ func get_project_root_dir():
 
 func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 	if Discord.Core != null:
-		if os_rpc.has(OS.get_name()):
+		if os_rpc.has(OS.get_name() + "_" + bits):
 			print("Starting RPC...")
 			var activity: = Discord.Activity.new()
 			if not developer and not is_in_menu:
@@ -197,7 +197,7 @@ func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 func RPCKill():
 	if Discord.Core != null:
 		print("Killing RPC...")
-		if os_rpc.has(OS.get_name()):
+		if os_rpc.has(OS.get_name() + "_" + bits):
 			activities.clear_activity()
 			print("RPC killed")
 	else:
