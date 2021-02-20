@@ -38,7 +38,7 @@ var timer_visible = true
 var install_base_path = OS.get_executable_path().get_base_dir() + "/"
 var debugMode = false
 var selected_character
-var character_path
+var character_path = "res://Scenes/Characters/Tails.tscn"
 var release_mode = false
 var window_x_resolution = 1024
 var window_y_resolution = 600

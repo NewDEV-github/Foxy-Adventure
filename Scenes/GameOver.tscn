@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/fonts/Ubuntu-L20.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/fonts/Ubuntu-L64.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=3]
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "game_over"
@@ -84,13 +82,13 @@ margin_right = 147.5
 margin_bottom = 32.5
 custom_fonts/font = ExtResource( 2 )
 text = "Game Over"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="intro" type="ColorRect" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -103,7 +101,8 @@ autoplay = "game_over"
 anims/game_over = SubResource( 1 )
 
 [node name="buttons" type="HBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0.166667 )
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -118,18 +117,18 @@ __meta__ = {
 }
 
 [node name="quitgame" type="Button" parent="buttons"]
-margin_left = 66.0
-margin_right = 166.0
+margin_left = 83.0
+margin_right = 170.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Quit Game"
 flat = true
 
 [node name="gotomenu" type="Button" parent="buttons"]
-margin_left = 170.0
-margin_right = 325.0
+margin_left = 174.0
+margin_right = 308.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Go to Main Menu"
 flat = true
 

@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 184, 154.485 )
+extents = Vector2( 184, 121.458 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 60.1925, 32 )
@@ -26,6 +26,7 @@ extents = Vector2( 3346.5, 88.0487 )
 script = ExtResource( 2 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
+scroll_ignore_camera_zoom = true
 
 [node name="start_position" type="Position2D" parent="."]
 position = Vector2( 166.82, 78.468 )
@@ -149,7 +150,7 @@ position = Vector2( 1024, 288 )
 [node name="dead_areas" type="Node2D" parent="."]
 
 [node name="dead_area" type="Area2D" parent="dead_areas"]
-position = Vector2( 448, 808 )
+position = Vector2( 452.49, 774.326 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area"]
 position = Vector2( 8, 0 )
@@ -183,40 +184,42 @@ position = Vector2( 1429.65, 1503.84 )
 position = Vector2( 15.1021, 0 )
 shape = SubResource( 5 )
 
-[node name="AnimatedSprite" parent="." instance=ExtResource( 7 )]
-position = Vector2( 338.727, 890.741 )
-
-[node name="AnimatedSprite2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 501.361, 784.853 )
-
-[node name="AnimatedSprite3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 294.886, 663.231 )
-
-[node name="AnimatedSprite4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1517.09, 683.03 )
-
-[node name="AnimatedSprite5" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1751.85, 591.106 )
-
-[node name="AnimatedSprite6" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1569.42, 859.806 )
-
-[node name="AnimatedSprite7" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1753.26, 842.836 )
-
-[node name="AnimatedSprite8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1863.57, 647.674 )
-
-[node name="AnimatedSprite9" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1925.8, 864.049 )
-
-[node name="AnimatedSprite10" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2198.32, 865.463 )
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
+
+[node name="bubbles" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 338.727, 890.741 )
+
+[node name="AnimatedSprite2" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 501.361, 784.853 )
+
+[node name="AnimatedSprite3" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 294.886, 663.231 )
+
+[node name="AnimatedSprite4" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 1517.09, 683.03 )
+
+[node name="AnimatedSprite5" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 1751.85, 591.106 )
+
+[node name="AnimatedSprite6" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 1569.42, 859.806 )
+
+[node name="AnimatedSprite7" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 1753.26, 842.836 )
+
+[node name="AnimatedSprite8" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 1863.57, 647.674 )
+
+[node name="AnimatedSprite9" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 1925.8, 864.049 )
+
+[node name="AnimatedSprite10" parent="bubbles" instance=ExtResource( 7 )]
+position = Vector2( 2198.32, 865.463 )
 
 [connection signal="tree_exited" from="." to="." method="_on_Node2D_tree_exited"]
 [connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]
