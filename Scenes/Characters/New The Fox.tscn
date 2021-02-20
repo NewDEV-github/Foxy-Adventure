@@ -235,12 +235,11 @@ tracks/5/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 17.9241
+radius = 14.6283
 
 [node name="Tails" type="KinematicBody2D"]
 position = Vector2( 130.108, 141.421 )
 z_index = 1
-motion/sync_to_physics = true
 script = ExtResource( 2 )
 character_name = "New The Fox"
 

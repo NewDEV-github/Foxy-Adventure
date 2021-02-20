@@ -235,7 +235,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 12.7556
+radius = 10.8013
 
 [node name="Tails" type="KinematicBody2D"]
 z_index = 1

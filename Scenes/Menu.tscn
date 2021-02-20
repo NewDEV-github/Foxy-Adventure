@@ -222,7 +222,6 @@ stream = ExtResource( 4 )
 autoplay = true
 bus = "Music"
 
-[connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]

@@ -24,7 +24,7 @@ var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	set_damage_bar_value($CanvasLayer/ProgressBar)
-	Globals.run_rpc(false, true, character_name)
+	DiscordSDK.run_rpc(false, true, character_name)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
@@ -176,4 +176,4 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Tails_tree_exited():
-	Globals.RPCKill()
+	DiscordSDK.kill_rpc()
