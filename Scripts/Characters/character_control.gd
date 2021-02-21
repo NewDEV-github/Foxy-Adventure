@@ -59,9 +59,7 @@ func _physics_process(delta):
 	# Detect Floor
 	if is_on_floor():
 		onair_time = 0
-
 	on_floor = onair_time < MIN_ONAIR_TIME
-
 	### CONTROL ###
 
 	# Horizontal Movement
@@ -148,8 +146,6 @@ func _physics_process(delta):
 #				sprite.scale.y = 1
 		if linear_vel.y < 0:
 			new_anim = "jump"
-		else:
-			new_anim = "falling"
 
 #	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
 #		new_anim += "_weapon"
