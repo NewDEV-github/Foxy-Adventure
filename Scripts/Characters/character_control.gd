@@ -24,7 +24,7 @@ var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	set_damage_bar_value($CanvasLayer/ProgressBar)
-	Globals.run_rpc(false, true, character_name)
+	DiscordSDK.run_rpc(false, true, character_name)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
@@ -59,9 +59,7 @@ func _physics_process(delta):
 	# Detect Floor
 	if is_on_floor():
 		onair_time = 0
-
 	on_floor = onair_time < MIN_ONAIR_TIME
-
 	### CONTROL ###
 
 	# Horizontal Movement
@@ -148,8 +146,6 @@ func _physics_process(delta):
 #				sprite.scale.y = 1
 		if linear_vel.y < 0:
 			new_anim = "jump"
-		else:
-			new_anim = "falling"
 
 #	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
 #		new_anim += "_weapon"
@@ -176,4 +172,4 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Tails_tree_exited():
-	Globals.RPCKill()
+	DiscordSDK.kill_rpc()

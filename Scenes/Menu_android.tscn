@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/fonts/Ubuntu-L20.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/Graphics/ja.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
 
 [node name="Menu" type="Control"]
@@ -22,22 +21,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-is_android = true
 
-[node name="IMG_0008" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 845.36
-rect_clip_content = true
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="IMG_0009" type="TextureRect" parent="."]
+[node name="bg" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.23792
@@ -47,19 +32,6 @@ margin_bottom = 2.1189
 rect_clip_content = true
 texture = ExtResource( 10 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="tails" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 845.36
-rect_clip_content = true
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -152,11 +124,10 @@ margin_bottom = 187.499
 [node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -79.0
+margin_top = -91.0
 margin_right = 395.0
 margin_bottom = -4.0
 mouse_filter = 1
-custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 6
 custom_constants/shadow_offset_y = 5

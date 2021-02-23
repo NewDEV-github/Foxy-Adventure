@@ -1,9 +1,7 @@
 extends Control
-var tekst = "Hello World"
 var world_scene
 var website
 var current_submenu_page
-var lem = LevelEditorManager.new()
 #onready var editor_lib = load("res://bin/gdexample.gdns").new()
 #var discord_rpc = DISCORD_RPC.new()
 var day = OS.get_date().day
@@ -11,7 +9,7 @@ var month = OS.get_date().month
 onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globals.run_rpc(false, false,"", true)
+	DiscordSDK.run_rpc(false, false,"", true)
 #	print(Fmod.get_music_instances())
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
@@ -19,11 +17,6 @@ func _ready():
 	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
-	lem.install_editor("user://test.zip")
-	$tails.hide()
-	if File.new().file_exists("user://milestailsprower.txt"):
-		$tails.show()
-		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	for world_name in world_list:
 		if world_name == [] or world_name == null:
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
@@ -103,9 +96,6 @@ func dir_contents(path):
 
 
 
-func _on_Level_Editor_pressed():
-	if !lem.execute_editor():
-		lem.download_editor()
 func _on_Feedback_pressed():
 	$Feedback.send_feedback()
 

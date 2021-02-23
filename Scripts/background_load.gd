@@ -3,7 +3,7 @@ var pth
 var thread = null
 var play_start_transition = false
 onready var progress = $progress
-
+signal loaded
 var SIMULATED_DELAY_SEC = 1.0
 
 func _thread_load(path):
@@ -57,12 +57,15 @@ func _thread_done(resource):
 	progress.visible = false
 	$Start_transtition.hide()
 	$bg.hide()
+	emit_signal("loaded")
+#	SavingDataIcon.show_up(true, 4)
 func load_scene(path):
 	if not File.new().file_exists(path):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 		print("CAN NOT LOAD: "+path)
 	pth = path
+#	SavingDataIcon.show_up(true, 4)
 	if play_start_transition:
 		$Start_transtition.show()
 		raise()

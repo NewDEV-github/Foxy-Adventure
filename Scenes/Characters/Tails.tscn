@@ -234,8 +234,8 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 7.5, 10.5 )
+[sub_resource type="CircleShape2D" id=4]
+radius = 10.8013
 
 [node name="Tails" type="KinematicBody2D"]
 z_index = 1
@@ -275,23 +275,5 @@ anims/run = SubResource( 3 )
 [node name="LowCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.8995, -1.51041 )
 shape = SubResource( 4 )
-
-[node name="LeftGroundSensor" type="RayCast2D" parent="."]
-position = Vector2( -9, 0 )
-enabled = true
-cast_to = Vector2( 0, 36 )
-
-[node name="RightGroundSensor" type="RayCast2D" parent="."]
-position = Vector2( 9, 0 )
-enabled = true
-cast_to = Vector2( 0, 36 )
-
-[node name="RightWallSensor" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 11, 0 )
-
-[node name="LeftWallSensor" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( -11, 0 )
 
 [connection signal="tree_exited" from="." to="." method="_on_Tails_tree_exited"]

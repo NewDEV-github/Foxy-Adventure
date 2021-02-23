@@ -29,7 +29,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://bin/gdsdk/discord.gd"
 }, {
-"base": "EditorVCSInterface",
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/Characters/enemy.gd"
+}, {
+"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
@@ -38,26 +43,15 @@ _global_script_classes=[ {
 "class": "LevelEditorManager",
 "language": "GDScript",
 "path": "res://Scripts/LevelEditorManager.gd"
-}, {
-"base": "Node2D",
-"class": "PlayerCamera",
-"language": "GDScript",
-"path": "res://Scripts/player_camera.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "PlayerPhysics",
-"language": "GDScript",
-"path": "res://Scripts/player_physics.gd"
 } ]
 _global_script_class_icons={
 "AudioPlayer": "",
 "CharacterAnimator": "",
 "CutsceneVideoPlayer": "",
 "Discord": "",
+"Enemy": "",
 "GitAPI": "",
-"LevelEditorManager": "",
-"PlayerCamera": "",
-"PlayerPhysics": ""
+"LevelEditorManager": ""
 }
 
 [application]
@@ -80,6 +74,7 @@ SharedLibManager="*res://Scripts/SharedLibManager.gd"
 Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
+DiscordSDK="*res://Scripts/DiscordSDK.gd"
 
 [config]
 

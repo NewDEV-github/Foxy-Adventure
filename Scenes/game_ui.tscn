@@ -1,12 +1,40 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/game_ui.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://assets/Graphics/pause_button.png" type="Texture" id=3]
 [ext_resource path="res://assets/Graphics/arrow_button.png" type="Texture" id=4]
+[ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Materials/texture_mask.material" type="Material" id=7]
 
-
+[sub_resource type="Animation" id=1]
+resource_name = "save"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Icon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -122,8 +150,19 @@ normal = ExtResource( 4 )
 action = "ui_left"
 visibility_mode = 1
 
+[node name="Icon" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+material = ExtResource( 7 )
+position = Vector2( 944.591, 532.192 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
 [node name="ms" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "save"
+anims/save = SubResource( 1 )
 
 [connection signal="timeout" from="ms" to="." method="_on_ms_timeout"]

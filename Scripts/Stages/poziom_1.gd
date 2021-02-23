@@ -19,8 +19,7 @@ func _ready():
 
 
 func toxic_entered(body):
-	var characters = Globals.new_characters
-	if characters.has(body.name):
+	if Globals.new_characters.has(body.name):
 		Globals.game_over()
 
 
