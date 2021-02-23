@@ -32,7 +32,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 29.0
+margin_top = 34.0
 margin_right = -5.0
 margin_bottom = -5.0
 tab_close_display_policy = 1
@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="side_left" type="VBoxContainer" parent="tabs/Graphics/Options"]
 margin_right = 408.0
-margin_bottom = 461.0
+margin_bottom = 456.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -74,22 +74,22 @@ margin_bottom = 149.0
 text = "KEY_OPTIONS_FULLSCREEN_MODE"
 
 [node name="VSync" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
-margin_top = 113.0
+margin_top = 164.0
 margin_right = 408.0
-margin_bottom = 153.0
+margin_bottom = 204.0
 text = "VSync"
 
 [node name="fps" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
-margin_top = 157.0
+margin_top = 208.0
 margin_right = 408.0
-margin_bottom = 197.0
+margin_bottom = 248.0
 rect_min_size = Vector2( 0, 40 )
 alignment = 2
 
 [node name="Label" type="Label" parent="tabs/Graphics/Options/side_left/fps"]
-margin_top = 13.0
+margin_top = 10.0
 margin_right = 340.0
-margin_bottom = 27.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Forced FPS"
@@ -101,16 +101,16 @@ margin_bottom = 40.0
 max_value = 1e+14
 
 [node name="custom_resolution" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
-margin_top = 201.0
+margin_top = 252.0
 margin_right = 408.0
-margin_bottom = 241.0
+margin_bottom = 292.0
 rect_min_size = Vector2( 40, 40 )
 alignment = 1
 
 [node name="Label" type="Label" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_top = 13.0
-margin_right = 120.0
-margin_bottom = 27.0
+margin_top = 10.0
+margin_right = 131.0
+margin_bottom = 29.0
 size_flags_horizontal = 2
 size_flags_vertical = 6
 text = "Window resolution"
@@ -118,8 +118,8 @@ align = 1
 valign = 1
 
 [node name="x" type="SpinBox" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_left = 183.0
-margin_right = 247.0
+margin_left = 175.0
+margin_right = 239.0
 margin_bottom = 40.0
 min_value = 640.0
 max_value = 8192.0
@@ -127,8 +127,8 @@ value = 1024.0
 align = 1
 
 [node name="y" type="SpinBox" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_left = 251.0
-margin_right = 315.0
+margin_left = 243.0
+margin_right = 307.0
 margin_bottom = 40.0
 min_value = 480.0
 max_value = 8192.0
@@ -136,77 +136,33 @@ value = 600.0
 align = 1
 
 [node name="SpinBox" type="OptionButton" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_left = 319.0
+margin_left = 311.0
 margin_right = 408.0
 margin_bottom = 40.0
 text = "1024x600"
 items = [ "640x480", null, false, 0, false, "800x480", null, false, 1, false, "800x600", null, false, 2, false, "1024x600", null, false, 3, false, "1280x720", null, false, 4, false, "1280x800", null, false, 5, false, "1366x768", null, false, 6, false, "1440x900", null, false, 7, false, "1920x1080", null, false, 8, false, "2048x1152", null, false, 9, false, "2048x1024", null, false, 10, false, "2560x1600", null, false, 11, false, "2560x2048", null, false, 12, false, "3072x1728", null, false, 13, false, "4096x2304", null, false, 14, false, "8192x4608", null, false, 15, false ]
 selected = 3
 
-[node name="Other" type="Label" parent="tabs/Graphics/Options/side_left"]
-margin_top = 245.0
-margin_right = 408.0
-margin_bottom = 259.0
-text = "Other"
-align = 1
-valign = 1
-
-[node name="ClearDownloadedAssets" type="Button" parent="tabs/Graphics/Options/side_left"]
-visible = false
-margin_top = 270.0
-margin_right = 478.0
-margin_bottom = 295.0
-text = "KEY_OPTIONS_DOWNLOAD_ASSETS_AGAIN"
-
-[node name="SmoothedCamera" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
-margin_top = 263.0
-margin_right = 408.0
-margin_bottom = 303.0
-text = "Smoothed Camera"
-
-[node name="SmoothedCameraSpeed" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
-margin_top = 307.0
-margin_right = 408.0
-margin_bottom = 347.0
-rect_min_size = Vector2( 0, 40 )
-alignment = 2
-
-[node name="Label" type="Label" parent="tabs/Graphics/Options/side_left/SmoothedCameraSpeed"]
-margin_top = 13.0
-margin_right = 340.0
-margin_bottom = 27.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-text = "Smoothed Camera Speed"
-
-[node name="SCSpeed" type="SpinBox" parent="tabs/Graphics/Options/side_left/SmoothedCameraSpeed"]
-margin_left = 344.0
-margin_right = 408.0
-margin_bottom = 40.0
-min_value = 1.0
-max_value = 1e+14
-value = 1.0
-
 [node name="side_right" type="VBoxContainer" parent="tabs/Graphics/Options"]
 margin_left = 412.0
 margin_right = 821.0
-margin_bottom = 461.0
+margin_bottom = 456.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="show_timer" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
-margin_top = 188.0
+margin_top = 186.0
 margin_right = 409.0
-margin_bottom = 228.0
+margin_bottom = 226.0
 pressed = true
 text = "Show Timer"
 
 [node name="show_fps" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
-margin_top = 232.0
+margin_top = 230.0
 margin_right = 409.0
-margin_bottom = 272.0
+margin_bottom = 270.0
 pressed = true
 text = "Show FPS"
 
@@ -215,7 +171,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 29.0
+margin_top = 34.0
 margin_right = -5.0
 margin_bottom = -5.0
 tab_close_display_policy = 1
@@ -347,7 +303,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 29.0
+margin_top = 34.0
 margin_right = -5.0
 margin_bottom = -5.0
 drag_to_rearrange_enabled = true
@@ -373,8 +329,6 @@ __meta__ = {
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/custom_resolution/x" to="." method="_on_x_value_changed"]
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/custom_resolution/y" to="." method="_on_y_value_changed"]
 [connection signal="item_selected" from="tabs/Graphics/Options/side_left/custom_resolution/SpinBox" to="." method="_on_SpinBox_item_selected"]
-[connection signal="toggled" from="tabs/Graphics/Options/side_left/SmoothedCamera" to="." method="_on_SmoothedCamera_toggled"]
-[connection signal="value_changed" from="tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed" to="." method="_on_SCSpeed_value_changed"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_fps" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Master/Master_slider" to="." method="_on_Master_slider_value_changed"]
