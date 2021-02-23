@@ -265,19 +265,6 @@ func _on_minimap_toggled(button_pressed):
 	Globals.set_minimap_enabled(button_pressed)
 
 
- #func _on_SmoothedCamera_toggled(button_pressed: bool) -> void:
-	# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable = button_pressed
-	# if not $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".editable:
-		# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
-		# Globals.camera_smoothing_enabled = false
-		# Globals.camera_smoothing_speed = 0
-	# Globals.camera_smoothing_enabled = button_pressed
-
-
-# func _on_SCSpeed_value_changed(value: float) -> void:
-	# Globals.camera_smoothing_speed = value
-
-
 func _on_show_fps_toggled(button_pressed: bool) -> void:
 	Globals.fps_visible = button_pressed
 
