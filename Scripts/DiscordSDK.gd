@@ -2,7 +2,7 @@ extends Node
 var activities: Discord.ActivityManager
 var users: Discord.UserManager
 var images: Discord.ImageManager
-var os_rpc = ["Windows_32", "Windows_64", "X11_32", "OSX_32"]
+var os_rpc = ["Windows_64", "X11_64", "OSX_64"]
 var core: Discord.Core
 var discord_user_img = null
 signal user_avatar_loaded

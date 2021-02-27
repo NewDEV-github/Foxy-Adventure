@@ -76,10 +76,6 @@ ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 
-[config]
-
-project_creator=""
-
 [debug]
 
 settings/crash_handler/message="Please include this when reporting the bug on https://github.com/NewDEv-github/Foxy-Adventure/issues"

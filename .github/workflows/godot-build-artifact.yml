@@ -45,19 +45,13 @@ jobs:
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc1
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
-          sudo mkdir -p builds/{x11-32-standard,x11-64-standard,win-32-standard,win-64-standard,osx-standard}
+          sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
       - name: Export x11-64
         run: |
           sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-      - name: Export x11-32
-        run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32-standard/FoxyAdventure.x86
       - name: Export osx
         run: |
           sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
-      - name: Export win-32
-        run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32-standard/FoxyAdventure.exe
       - name: Export win-64
         run: |
           sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
@@ -67,21 +61,11 @@ jobs:
         with:
           name: build-x11-64
           path: builds/x11-64-standard
-      - name: Upload a Build Artifact x11-32
-        uses: actions/upload-artifact@v2.2.2
-        with:
-          name: build-x11-32
-          path: builds/x11-32
       - name: Upload a Build Artifact osx-64
         uses: actions/upload-artifact@v2.2.2
         with:
           name: build-osx-64
           path: builds/osx-standard
-      - name: Upload a Build Artifact win-32
-        uses: actions/upload-artifact@v2.2.2
-        with:
-          name: build-win-32
-          path: builds/win-32-standard
       - name: Upload a Build Artifact win-64
         uses: actions/upload-artifact@v2.2.2
         with:

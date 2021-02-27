@@ -50,19 +50,13 @@ jobs:
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc1
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
-          sudo mkdir -p builds/{x11-32-standard,x11-64-standard,win-32-standard,win-64-standard,osx-standard}
+          sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
       - name: Export x11-64
         run: |
           sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-      - name: Export x11-32
-        run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-32" $GITHUB_WORKSPACE/builds/x11-32-standard/FoxyAdventure.x86
       - name: Export osx
         run: |
           sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
-      - name: Export win-32
-        run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-32" $GITHUB_WORKSPACE/builds/win-32-standard/FoxyAdventure.exe
       - name: Export win-64
         run: |
           sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
@@ -71,12 +65,8 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/builds/win-64-standard
           sudo zip build-win-64.zip *
-          cd $GITHUB_WORKSPACE/builds/win-32-standard
-          sudo zip build-win-32.zip *
           cd $GITHUB_WORKSPACE/builds/x11-64-standard
           sudo zip build-x11-64.zip *
-          cd $GITHUB_WORKSPACE/builds/x11-32-standard
-          sudo zip build-x11-32.zip *
           cd $GITHUB_WORKSPACE/builds/osx-standard
           sudo zip build-osx-64.zip *
       - name: Create Release
@@ -99,16 +89,6 @@ jobs:
           asset_path: builds/x11-64-standard/build-x11-64.zip
           asset_name: build-x11-64.zip
           asset_content_type: application/zip
-      - name: Upload Release Asset - x11-32
-        id: upload-release-asset-x1132
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: builds/x11-32-standard/build-x11-32.zip
-          asset_name: build-x11-32.zip
-          asset_content_type: application/zip
       - name: Upload Release Asset - osx-64
         id: upload-release-asset-osx64
         uses: actions/upload-release-asset@v1
@@ -118,16 +98,6 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: builds/osx-standard/build-osx-64.zip
           asset_name: build-osx-64.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset - win-32
-        id: upload-release-asset-win32
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: builds/win-32-standard/build-win-32.zip
-          asset_name: build-win-32.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win-64
         id: upload-release-asset-win64
