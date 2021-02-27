@@ -1,7 +1,5 @@
 extends Node
 #var project_root_dir = get_project_root_dir()
-var bits = "32"
-signal user_avatar_loaded
 
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
@@ -96,10 +94,6 @@ func add_custom_world_scan_path(path:String):
 
 func _ready():
 #	execute_debugging_tools()
-	if OS.has_feature("64") or OS.has_feature("x86_64"):
-		bits == "64"
-	elif OS.has_feature("32") or OS.has_feature("x86"):
-		bits == "32"
 #	print("Project root dir is at: " + project_root_dir)
 	##LOAD DLCS
 	#Tails.exe
@@ -126,7 +120,7 @@ func set_variable(variable, value):
 	set(variable, value)
 func _notification(what: int) -> void:
 	if what == MainLoop.NOTIFICATION_CRASH:
-		OS.alert("App crashed. Error log was sent to Developers!", "Error!")
+		OS.alert("App crashed!", "Error!")
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
 
