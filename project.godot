@@ -38,11 +38,6 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
-}, {
-"base": "HTTPRequest",
-"class": "LevelEditorManager",
-"language": "GDScript",
-"path": "res://Scripts/LevelEditorManager.gd"
 } ]
 _global_script_class_icons={
 "AudioPlayer": "",
@@ -50,8 +45,7 @@ _global_script_class_icons={
 "CutsceneVideoPlayer": "",
 "Discord": "",
 "Enemy": "",
-"GitAPI": "",
-"LevelEditorManager": ""
+"GitAPI": ""
 }
 
 [application]
@@ -75,10 +69,6 @@ Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
-
-[config]
-
-project_creator=""
 
 [debug]
 

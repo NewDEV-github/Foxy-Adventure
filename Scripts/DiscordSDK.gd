@@ -2,7 +2,6 @@ extends Node
 var activities: Discord.ActivityManager
 var users: Discord.UserManager
 var images: Discord.ImageManager
-var os_rpc = ["Windows_32", "Windows_64", "X11_32", "OSX_32"]
 var core: Discord.Core
 var discord_user_img = null
 signal user_avatar_loaded
@@ -195,28 +194,24 @@ func get_current_user_premium_type_callback(
 
 func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 	if Discord.Core != null:
-		if os_rpc.has(OS.get_name() + "_" + Globals.bits):
-			print("Starting RPC...")
-			var activity: = Discord.Activity.new()
-			if not developer and not is_in_menu:
-				activity.details = "Playing as %s" % [character]
-				if display_stage:
-					activity.state = "At %s" % [Globals.stage_names[str(Globals.current_stage)]]
-			elif developer:
-				activity.details = "I'm making the game for You now"
-			elif is_in_menu:
-				activity.details = "At main menu"
-			activity.assets.large_image = "icon"
+		print("Starting RPC...")
+		var activity: = Discord.Activity.new()
+		if not developer and not is_in_menu:
+			activity.details = "Playing as %s" % [character]
+			if display_stage:
+				activity.state = "At %s" % [Globals.stage_names[str(Globals.current_stage)]]
+		elif developer:
+			activity.details = "I'm making the game for You now"
+		elif is_in_menu:
+			activity.details = "At main menu"
+		activity.assets.large_image = "icon"
 
-			activity.timestamps.start = OS.get_unix_time()
+		activity.timestamps.start = OS.get_unix_time()
 
-			activities.update_activity(activity, self, "update_activity_callback")
-			if not developer:
-				print("RPC started as %s" % [character])
-			else:
-				print("RPC started as mysterious developer")
-	else:
-		print("Can not start Discord Core")
-
+		activities.update_activity(activity, self, "update_activity_callback")
+		if not developer:
+			print("RPC started as %s" % [character])
+		else:
+			print("RPC started as mysterious developer")
 func kill_rpc():
 	activities.clear_activity()

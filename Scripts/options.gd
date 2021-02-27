@@ -264,7 +264,6 @@ func _on_Licenses_pressed():
 func _on_minimap_toggled(button_pressed):
 	Globals.set_minimap_enabled(button_pressed)
 
-
 func _on_show_fps_toggled(button_pressed: bool) -> void:
 	Globals.fps_visible = button_pressed
 
