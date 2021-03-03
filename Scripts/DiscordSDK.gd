@@ -16,7 +16,7 @@ func _ready() -> void:
 	core = Discord.Core.new()
 	var result: int = core.create(
 		729429191489093702,
-		Discord.CreateFlags.DEFAULT
+		Discord.CreateFlags.NO_REQUIRE_DISCORD
 	)
 	print("Created Discord Core: ", enum_to_string(Discord.Result, result))
 	if result != Discord.Result.OK:
