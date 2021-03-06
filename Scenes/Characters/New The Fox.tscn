@@ -270,4 +270,22 @@ shape = SubResource( 4 )
 current = true
 limit_left = 0
 
+[node name="LeftGroundSensor" type="RayCast2D" parent="."]
+position = Vector2( -9, 0 )
+enabled = true
+cast_to = Vector2( 0, 36 )
+
+[node name="RightGroundSensor" type="RayCast2D" parent="."]
+position = Vector2( 9, 0 )
+enabled = true
+cast_to = Vector2( 0, 36 )
+
+[node name="RightWallSensor" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 11, 0 )
+
+[node name="LeftWallSensor" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -11, 0 )
+
 [connection signal="tree_exited" from="." to="." method="_on_Tails_tree_exited"]
