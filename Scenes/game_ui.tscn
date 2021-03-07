@@ -39,15 +39,6 @@ tracks/1/keys = {
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-margin_top = 25.0
-margin_right = 172.0
-margin_bottom = 14.0
-theme = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="fps" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -60,7 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="coin_label" type="Label" parent="."]
+[node name="stats_label" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
 theme = ExtResource( 2 )
