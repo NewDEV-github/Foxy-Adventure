@@ -47,6 +47,7 @@ var version_string:String = "alpha"
 var version_commit:String = "unknown"
 var current_save_name = ""
 var coins = 0
+var lives = 5
 var new_characters:Array = [
 	"New The Fox",
 	"Tails",
@@ -131,6 +132,7 @@ func save_level(stage:int, save_name:String):
 	sonyk.set_value("save", "stage", stage)
 	sonyk.set_value("save", "character", character_path)
 	sonyk.set_value("save", "coins", str(coins))
+	sonyk.set_value("save", "lives", str(lives))
 	sonyk.save("user://save_"+save_name+".cfg")
 #	sonyk.close()
 func delete_save(save_name:String):
@@ -143,14 +145,17 @@ func load_level(save_name:String):
 	var character_pth = sonyk.get_value("save", "character")
 	if sonyk.has_section_key("save", "coins"):
 		coins = int(sonyk.get_value("save", "coins"))
+	if sonyk.has_section_key("save", "lives"):
+		lives = int(sonyk.get_value("save", "lives"))
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]
 	BackgroundLoad.play_start_transition = true
 	BackgroundLoad.load_scene(loaded_stage)
 func game_over():
-	get_tree().change_scene("res://Scenes/GameOver.tscn")
-	DiscordSDK.kill_rpc()
-#func execute_debugging_tools():
-#	if file.file_exists(install_base_path + "DebuggingTools.exe"):
-#		OS.execute(install_base_path + "DebuggingTools.exe", [], false)
+	if lives != 1:
+		get_tree().reload_current_scene()
+		lives -= 1
+	elif lives == 1:
+		get_tree().change_scene("res://Scenes/GameOver.tscn")
+		DiscordSDK.kill_rpc()
