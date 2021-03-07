@@ -38,9 +38,9 @@ jobs:
           echo *** Unzipping Godot Server Export Templates ***
           unzip Godot_v3.2.4-rc1_export_templates.tpz
           echo *** Installing Godot Server Export Templates ***
-          cd /root/
+          sudo cd /root/
           sudo mkdir -p .local/share/godot
-          cd .local/share/godot
+          sudo cd .local/share/godot
           sudo mkdir -p templates/3.2.4.rc1
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc1
           echo *** Exporting Files ***
