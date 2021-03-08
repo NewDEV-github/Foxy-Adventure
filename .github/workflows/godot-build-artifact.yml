@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   godot-build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,31 +30,31 @@ jobs:
           sudo apt install unzip
           sudo apt install tree
           echo *** Downloading Godot Binary ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc1/Godot_v3.2.4-rc1_linux_headless.64.zip
+          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc3/Godot_v3.2.4-rc3_linux_headless.64.zip
           echo *** Downloading Godot Server Export Templates ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc1/Godot_v3.2.4-rc1_export_templates.tpz
+          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc3/Godot_v3.2.4-rc3_export_templates.tpz
           echo *** Unzipping Godot Binary ***
-          unzip Godot_v3.2.4-rc1_linux_headless.64.zip
+          unzip Godot_v3.2.4-rc3_linux_headless.64.zip
           echo *** Unzipping Godot Server Export Templates ***
-          unzip Godot_v3.2.4-rc1_export_templates.tpz
+          unzip Godot_v3.2.4-rc3_export_templates.tpz
           echo *** Installing Godot Server Export Templates ***
           cd /home/runner/
           sudo mkdir -p .local/share/godot
           cd .local/share/godot
-          sudo mkdir -p templates/3.2.4.rc1
-          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc1
+          sudo mkdir -p templates/3.2.4.rc3
+          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc3
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
       - name: Export x11-64
         run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
+          sudo ./Godot_v3.2.4-rc3_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
       - name: Export osx
         run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
+          sudo ./Godot_v3.2.4-rc3_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
       - name: Export win-64
         run: |
-          sudo ./Godot_v3.2.4-rc1_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
+          sudo ./Godot_v3.2.4-rc3_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
           tree -a
       - name: Upload a Build Artifact x11-64
         uses: actions/upload-artifact@v2.2.2
