@@ -45,8 +45,8 @@ jobs:
           cd /home/runner/
           mkdir -p .local/share/godot
           cd .local/share/godot
-          mkdir -p templates/3.2.4.rc3
-          cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc3
+          sudo mkdir -p templates/3.2.4.rc3
+          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc3
           echo *** Exporting Files ***
           cd $GITHUB_WORKSPACE
           sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
