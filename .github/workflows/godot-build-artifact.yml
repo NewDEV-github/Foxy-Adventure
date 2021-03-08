@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   godot-build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -38,9 +38,9 @@ jobs:
           echo *** Unzipping Godot Server Export Templates ***
           unzip Godot_v3.2.4-rc3_export_templates.tpz
           echo *** Installing Godot Server Export Templates ***
-          sudo /usr/bin/cd /root/
+          cd /home/runner/
           sudo mkdir -p .local/share/godot
-          sudo /usr/bin/cd .local/share/godot
+          cd .local/share/godot
           sudo mkdir -p templates/3.2.4.rc3
           sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc3
           echo *** Exporting Files ***
