@@ -15,6 +15,7 @@ unzip $GODOT_TPZ_FILENAME
 
 cd /home/runner/
 sudo mkdir -p .local/share/godot
+cd .local/share/godot
 sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
 
