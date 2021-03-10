@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/Graphics/Tilesets/Babelki2.png" type="Texture" id=4]
 [ext_resource path="res://assets/Graphics/bubbles.gd" type="Script" id=5]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ) ],
@@ -17,6 +16,7 @@ animations = [ {
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 3
+frame = 2
 speed_scale = 0.2
+playing = true
 script = ExtResource( 5 )

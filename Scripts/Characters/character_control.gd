@@ -1,9 +1,5 @@
 extends KinematicBody2D
 export (String) var character_name
-export (int) var max_hp = 100
-export (int) var damage_value_min = 3
-export (int) var damage_value_max = 7
-var hp = 100
 const GRAVITY_VEC = Vector2(0, 750)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
@@ -19,24 +15,17 @@ var onair_time = 0 #
 var on_floor = false
 var shoot_time=99999 #time since last shot
 var anim=""
+var can_jump = true
 var speed = 0.5
 var scene
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
-	set_damage_bar_value($CanvasLayer/ProgressBar)
-	Globals.run_rpc(false, true, character_name)
+	DiscordSDK.run_rpc(false, true, character_name)
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
 #	$ui/Control/GameUI.connect("FPSHide", self, "_on_fps_hide")
 #	$ui/Control/GameUI.connect("FPSShow", self, "_on_fps_show")
-func _process(delta: float) -> void:
-	if Globals.camera_smoothing_enabled == true:
-		$Camera2D.smoothing_enabled = true
-		$Camera2D.smoothing_speed = Globals.camera_smoothing_speed
-	elif Globals.camera_smoothing_enabled == false:
-		$Camera2D.smoothing_enabled = false
-		$Camera2D.smoothing_speed = 0
 #	pass
 func _physics_process(delta):
 	
@@ -83,14 +72,14 @@ func _physics_process(delta):
 		#braking if movig left
 		if Input.is_action_pressed("ui_right"):
 			speed = 0 
-			target_speed += 1.1
+			target_speed += 0.5
 	#moving right
 	if Input.is_action_pressed("ui_right"):
 		target_speed += 1
 		#braking if moving right
 		if Input.is_action_pressed("ui_left"):
 			speed = 0 
-			target_speed -= 1.1
+			target_speed -= 0.5
 	#setting 'speed' to 0 so that the character can accelerate again
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		speed = 0.5
@@ -103,8 +92,12 @@ func _physics_process(delta):
 	linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 
 	# Jumping
-	if on_floor and Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump2"):
-		linear_vel.y = -JUMP_SPEED
+	if can_jump:
+		if on_floor and Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump2"):
+			can_jump = false
+			linear_vel.y = -JUMP_SPEED
+			
+	can_jump = is_on_floor()
 #		$AudioPlayer/jump.play()
 	# Shooting
 #	if Input.is_action_just_pressed("shoot"):
@@ -120,7 +113,7 @@ func _physics_process(delta):
 
 	var new_anim = "idle1"
 
-	if on_floor:
+	if is_on_floor():
 		if linear_vel.x < -SIDING_CHANGE_SPEED:
 			sprite.scale.x = -1
 			new_anim = "run"
@@ -132,25 +125,15 @@ func _physics_process(delta):
 		# We want the character to immediately change facing side when the player
 		# tries to change direction, during air control.
 		# This allows for example the player to shoot quickly left then right.
-		if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_left"):
 			sprite.scale.x = -1
-		if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("ui_right"):
 			sprite.scale.x = 1
-#		if on_floor:
-#			if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
-#				sprite.scale.x = -1
-#			if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
-#				sprite.scale.x = 1
-#		else:
-#			if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
-#				sprite.scale.y = -1
-#			if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
-#				sprite.scale.y = 1
 		if linear_vel.y < 0:
-			new_anim = "jump"
+			new_anim = "jump_" + str(sprite.scale.x)
 		else:
 			new_anim = "falling"
-
+#	print(str(Globals.lives))
 #	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
 #		new_anim += "_weapon"
 
@@ -159,21 +142,6 @@ func _physics_process(delta):
 		$Anim/Sprite/AnimationPlayer.play(anim)
 	
 
-func take_damage():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	hp -= rng.randi_range(damage_value_max, damage_value_min)
-	set_damage_bar_value($CanvasLayer/ProgressBar)
 
-func set_damage_bar_value(damagebar):
-	damagebar.max_value = max_hp
-	damagebar.value = hp
-
-
-func _on_Area2D_body_entered(body):
-	if body.name == "Enemy":
-		take_damage()
-
-
-func _on_Tails_tree_exited():
-	Globals.RPCKill()
+func _on_Tails_tree_exiting():
+	DiscordSDK.kill_rpc()

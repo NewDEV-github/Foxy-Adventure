@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/Graphics/ja.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
 
 [node name="Menu" type="Control"]
@@ -22,37 +21,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IMG_0008" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 845.36
-rect_clip_content = true
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="IMG_0009" type="TextureRect" parent="."]
+[node name="bg" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_clip_content = true
 texture = ExtResource( 10 )
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="tails" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 845.36
-rect_clip_content = true
-texture = ExtResource( 9 )
-expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -138,9 +111,8 @@ margin_bottom = 187.499
 [node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -83.0
+margin_top = -67.0
 margin_right = 533.0
-margin_bottom = -10.0
 mouse_filter = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 6
@@ -250,7 +222,6 @@ stream = ExtResource( 4 )
 autoplay = true
 bus = "Music"
 
-[connection signal="tree_exiting" from="." to="." method="_on_Menu_tree_exiting"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]

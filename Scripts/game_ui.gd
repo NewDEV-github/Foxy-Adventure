@@ -7,14 +7,14 @@ var m = 0
 # var a: int = 2
 # var b: String = "text"
 
-
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+
 
 
 func _process(delta: float) -> void:
-	$coin_label.set_text("COINS: " + str(Globals.coins))
+	if DiscordSDK.discord_user_img:
+		$Icon.texture = DiscordSDK.discord_user_img
+	$stats_label.set_text("COINS: " + str(Globals.coins) + "\nLIVES: " + str(Globals.lives))
 	$fps.visible = Globals.fps_visible
 	if Globals.fps_visible:
 		$fps.set_text("FPS: " + str(Engine.get_frames_per_second()))
