@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/Materials/texture_mask.material" type="Material" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro"
-length = 2.0
+length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:visible")
 tracks/0/interp = 1
@@ -14,7 +16,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -26,7 +28,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -38,10 +40,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5, 2, 2.5, 6.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CharacterCopyright:bbcode_text")
@@ -50,13 +52,40 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "[center][color=red]WARNING[/color][color=white]
 \"Tails\" and other characters from SEGA's franchise's are property of SEGA, Inc.
 Other characters from other franchises are properties of their respective owners.
+[/color][/center]", "[center][color=red]WARNING[/color][color=white]
+This game uses auto save
+Please do not turn off the game while this icon is being displayed
 [/color][/center]" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CharacterCopyright:bbcode_enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Icon:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2, 3, 6.2, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="Updater" type="Control"]
@@ -78,6 +107,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -90,6 +120,7 @@ __meta__ = {
 [node name="PCKDownloader" type="HTTPRequest" parent="."]
 
 [node name="CharacterCopyright" type="RichTextLabel" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -104,12 +135,12 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_constants/table_hseparation = -1
 bbcode_enabled = true
 bbcode_text = "[center][color=red]WARNING[/color][color=white]
-\"Tails\" and other characters from SEGA's franchise's are property of SEGA, Inc.
-Other characters from other franchises are properties of their respective owners.
+This game uses auto save
+Please do not turn off the game while this icon is being displayed
 [/color][/center]"
 text = "WARNING
-\"Tails\" and other characters from SEGA's franchise's are property of SEGA, Inc.
-Other characters from other franchises are properties of their respective owners.
+This game uses auto save
+Please do not turn off the game while this icon is being displayed
 "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,6 +150,23 @@ __meta__ = {
 autoplay = "intro"
 playback_speed = 0.5
 anims/intro = SubResource( 1 )
+
+[node name="Icon" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+material = ExtResource( 5 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
