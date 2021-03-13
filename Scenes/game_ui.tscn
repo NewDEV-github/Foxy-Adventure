@@ -141,12 +141,22 @@ normal = ExtResource( 4 )
 action = "ui_left"
 visibility_mode = 1
 
-[node name="Icon" type="Sprite" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 material = ExtResource( 7 )
-position = Vector2( 944.591, 532.192 )
-scale = Vector2( 0.8, 0.8 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ms" type="Timer" parent="."]
 wait_time = 0.1

@@ -26,7 +26,9 @@ func _ready() -> void:
 	
 #	if intro_played:
 #		get_tree().change_scene("res://Scenes/Menu.tscn")
-func _process(delta):
+func _process(delta: float) -> void:
+	if DiscordSDK.discord_user_img:
+		$Icon.texture = DiscordSDK.discord_user_img
 	if Input.is_action_just_pressed("ui_accept"):
 		_on_VideoPlayer_finished()
 func _on_AnimationPlayer_animation_finished(_anim_name):

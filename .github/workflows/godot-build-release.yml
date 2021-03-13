@@ -29,37 +29,10 @@ jobs:
         run: |
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-      - name: Download Godot and export templates
+      - name: Build everything
         run: |
-          sudo apt install unzip
-          sudo apt install tree
-          echo *** Downloading Godot Binary ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc3/Godot_v3.2.4-rc3_linux_headless.64.zip
-          echo *** Downloading Godot Server Export Templates ***
-          wget https://downloads.tuxfamily.org/godotengine/3.2.4/rc3/Godot_v3.2.4-rc3_export_templates.tpz
-          echo *** Unzipping Godot Binary ***
-          unzip Godot_v3.2.4-rc3_linux_headless.64.zip
-          echo *** Unzipping Godot Server Export Templates ***
-          unzip Godot_v3.2.4-rc3_export_templates.tpz
-          echo *** Installing Godot Server Export Templates ***
-          cd /home/runner/
-          mkdir -p .local/share/godot
-          cd .local/share/godot
-          sudo mkdir -p templates/3.2.4.rc3
-          sudo cp -r $GITHUB_WORKSPACE/templates/* templates/3.2.4.rc3
-          echo *** Exporting Files ***
-          cd $GITHUB_WORKSPACE
-          sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
-      - name: Export x11-64
-        run: |
-          sudo ./Godot_v3.2.4-rc3_linux_headless.64 --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-      - name: Export osx
-        run: |
-          sudo ./Godot_v3.2.4-rc3_linux_headless.64 --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
-      - name: Export win-64
-        run: |
-          sudo ./Godot_v3.2.4-rc3_linux_headless.64 --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
-          tree -a
+          sudo chmod +x ./build_game.sh
+          ./build_game.sh
       - name: ZIP Builds
         run: |
           cd $GITHUB_WORKSPACE/builds/win-64-standard
