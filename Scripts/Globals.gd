@@ -121,6 +121,8 @@ func _ready():
 	if save_file.has_section_key('Game', 'debug_mode'):
 		debugMode = bool(str(save_file.get_value('Game', 'debug_mode')))
 	emit_signal("debugModeSet", debugMode)
+	if not file.file_exists("user://achievements.cfg"):
+		generate_achievements_file()
 	emit_signal("loaded")
 func get_project_root_dir():
 	return "res://".get_base_dir()
