@@ -1,6 +1,15 @@
 extends Node
 #var project_root_dir = get_project_root_dir()
-
+var all_achievements = [
+	"I'm not toxic",
+	"Up to five times"
+]
+var done_achievements = []
+var not_done_achievements = all_achievements
+var achievements_desc = {
+	"I'm not toxic": "Don't touch the toxics in 1st stage",
+	"Up to five times": "Lose all 5 lives",
+}
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
@@ -159,3 +168,15 @@ func game_over():
 	elif lives == 1:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
 		DiscordSDK.kill_rpc()
+		
+var cnf = ConfigFile.new()
+func generate_achievements_file():
+	cnf.load("user://achievements.cfg")
+	cnf.set_value("achievements", "all", all_achievements)
+	cnf.set_value("achievements", "desc", achievements_desc)
+	cnf.set_value("achievements", "not_done", not_done_achievements)
+	cnf.set_value("achievements", "done", done_achievements)
+func set_achievement_done(achievement_name:String):
+	not_done_achievements.remove(not_done_achievements.find(achievement_name))
+	done_achievements.append(achievement_name)
+	generate_achievements_file()
