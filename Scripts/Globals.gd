@@ -178,6 +178,7 @@ func generate_achievements_file():
 	cnf.set_value("achievements", "desc", achievements_desc)
 	cnf.set_value("achievements", "not_done", not_done_achievements)
 	cnf.set_value("achievements", "done", done_achievements)
+	cnf.save("user://achievements.cfg")
 func set_achievement_done(achievement_name:String):
 	not_done_achievements.remove(not_done_achievements.find(achievement_name))
 	done_achievements.append(achievement_name)
