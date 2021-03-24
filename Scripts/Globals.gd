@@ -2,13 +2,25 @@ extends Node
 #var project_root_dir = get_project_root_dir()
 var all_achievements = [
 	"I'm not toxic",
-	"Up to five times"
+	"Up to five times",
+        "Amateur sewage purifier",
+        "Advanced sewage purifier",
+        "Money collector",
+        "Rich man",
+        "Like a cat",
+        "Like a cat, but... Better"
 ]
 var done_achievements = []
 var not_done_achievements = all_achievements
 var achievements_desc = {
 	"I'm not toxic": "Don't touch the toxics in 1st stage",
 	"Up to five times": "Lose all 5 lives",
+	"Amateur sewage purifier": "Fall into toxins 5 times",
+        "Advanced sewage purifier": "Fall into toxins 15 times",
+        "Money collector": "Collect 50 coins",
+        "Rich man": "Collect 100 coins",
+        "Like a cat": "Get 9 lifes in game",
+        "Like a cat, but... Better": "Get more than 9 lives in game",
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
@@ -17,21 +29,14 @@ var stage_list = {
 	"3": "res://Scenes/Stages/poziom_4.tscn",
 	"4": "res://Scenes/Stages/poziom_5.tscn",
 	"5": "res://Scenes/Stages/poziom_6.tscn",
-	"6": "res://Scenes/Stages/poziom_7.tscn",
-	"7": "res://Scenes/Stages/poziom_8.tscn",
-	"8": "res://Scenes/Stages/poziom_9.tscn",
-	"9": "res://Scenes/Stages/poziom_10.tscn",
-	"10": "res://Scenes/Stages/poziom_11.tscn",
-	"11": "res://Scenes/Stages/poziom_12.tscn",
-	"12": "res://Scenes/Stages/poziom_13.tscn",
-	"13": "res://Scenes/Stages/poziom_14.tscn",
-	"14": "res://Scenes/Stages/poziom_15.tscn",
 }
 var stage_names:Dictionary = {
-	"0": "Metallic Madness Act 1",
-	"1": "Metallic Madness Act 2",
-	"2": "Metallic Madness Act 3",
-	
+	"0": "Laboratory",
+	"1": "Laboratory",
+	"2": "Laboratory",
+	"3": "Laboratory",
+	"4": "Laboratory",
+	"5": "Laboratory",
 }
 var current_stage = 0
 
