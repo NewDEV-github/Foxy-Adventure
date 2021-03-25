@@ -276,7 +276,7 @@ position = Vector2( 3042.05, 1502.54 )
 frame = 3
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3549.42, 952.44 )
+position = Vector2( 3546.33, 735.92 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
