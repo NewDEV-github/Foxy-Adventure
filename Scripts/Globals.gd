@@ -8,7 +8,10 @@ var all_achievements = [
         "Money collector",
         "Rich man",
         "Like a cat",
-        "Like a cat, but... Better"
+        "Like a cat, but... Better",
+	"Fast like a wind",
+	"I am clever",
+	"I'm clumsy",
 ]
 var done_achievements = []
 var not_done_achievements = all_achievements
@@ -21,6 +24,9 @@ var achievements_desc = {
         "Rich man": "Collect 100 coins",
         "Like a cat": "Get 9 lifes in game",
         "Like a cat, but... Better": "Get more than 9 lives in game",
+	"Fast like a wind": "Be running for one minute without stopping",
+	"I am clever": "Solve 5 logic puzzles",
+	"I'm clumsy": "Die 5 times by the same obstacle",
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
