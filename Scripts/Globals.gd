@@ -1,14 +1,15 @@
 extends Node
+var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var all_achievements = [
-	"I'm not toxic",
-	"Up to five times",
-	"Amateur sewage purifier",
-	"Advanced sewage purifier",
-	"Money collector",
-	"Rich man",
-	"Like a cat",
-	"Like a cat, but... Better",
+	"I'm not toxic",#done
+	"Up to five times",#done
+	"Amateur sewage purifier",#done
+	"Advanced sewage purifier",#done
+	"Money collector",#done
+	"Rich man",#done
+	"Like a cat",#done
+	"Like a cat, but... Better",#done
 	"Fast like a wind",
 	"I am clever",
 	"I'm clumsy",
@@ -63,8 +64,6 @@ var last_world_position = Vector2(0,0)
 var cfile = ConfigFile.new()
 var file =  File.new()
 var dir = Directory.new()
-var version_string:String = "alpha"
-var version_commit:String = "unknown"
 var current_save_name = ""
 var coins = 0
 var lives = 5
@@ -74,10 +73,9 @@ var new_characters:Array = [
 ]
 
 func construct_game_version():
-	var text = "Support: support@new-dev.ml\n%s version: %s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, OS.get_date().year]
+	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 	return text
 func _init():
-	version_commit = "idk"
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 var dlcs:Array = [
@@ -113,12 +111,28 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 
+func add_life():
+	lives += 1
+	if lives == 9:
+		set_achievement_done("Like a cat")
+	elif lives >= 9:
+		set_achievement_done("Like a cat, but... Better")
+
+func add_coin(anmount):
+	coins += anmount
+	if coins == 50:
+		set_achievement_done("Money collector")
+	elif coins == 100:
+		set_achievement_done("Rich man")
+
+func felt_into_toxine():
+	fallen_into_toxins += 1
+	if fallen_into_toxins == 5:
+		set_achievement_done("Amateur sewage purifier")
+	elif fallen_into_toxins == 15:
+		set_achievement_done("Advanced sewage purifier")
+
 func _ready():
-#	execute_debugging_tools()
-#	print("Project root dir is at: " + project_root_dir)
-	##LOAD DLCS
-	#Tails.exe
-	
 	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
 		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()

@@ -335,11 +335,10 @@ position = Vector2( 0, -4 )
 
 [node name="Sprite" type="Sprite" parent="Anim"]
 position = Vector2( 0.5, 4.5 )
-rotation = -3.14159
 texture = ExtResource( 3 )
 hframes = 8
 region_enabled = true
-region_rect = Rect2( 465.807, 45.5556, 234.193, 47.5556 )
+region_rect = Rect2( 0, 13, 380, 37 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Anim/Sprite"]
 playback_speed = 0.3
