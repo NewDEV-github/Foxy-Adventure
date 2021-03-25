@@ -70,19 +70,20 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -225.0
-margin_top = -135.0
+margin_top = -90.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Options" type="Button" parent="VBoxContainer2"]
 margin_right = 225.0
-margin_bottom = 42.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Options"
 
 [node name="dsc" type="Button" parent="VBoxContainer2"]
+visible = false
 margin_top = 46.0
 margin_right = 225.0
 margin_bottom = 88.0
@@ -91,9 +92,9 @@ size_flags_vertical = 3
 text = "Credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
-margin_top = 92.0
+margin_top = 47.0
 margin_right = 225.0
-margin_bottom = 135.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Quit"

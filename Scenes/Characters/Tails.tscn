@@ -81,7 +81,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "jump_-1"
 length = 0.7
 step = 0.001
@@ -158,8 +158,7 @@ tracks/5/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "jump_1"
+[sub_resource type="Animation" id=3]
 length = 0.7
 step = 0.001
 tracks/0/type = "value"
@@ -235,8 +234,7 @@ tracks/5/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "run"
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -311,7 +309,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 15.1005, 12.4917 )
 
 [node name="Tails" type="KinematicBody2D"]
@@ -346,14 +344,14 @@ region_rect = Rect2( 465.807, 45.5556, 234.193, 47.5556 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Anim/Sprite"]
 playback_speed = 0.3
 anims/idle1 = SubResource( 1 )
-anims/jump_-1 = SubResource( 5 )
-anims/jump_1 = SubResource( 2 )
-anims/run = SubResource( 3 )
+anims/jump_-1 = SubResource( 2 )
+anims/jump_1 = SubResource( 3 )
+anims/run = SubResource( 4 )
 
 [node name="LowCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.8995, -1.51041 )
 scale = Vector2( 0.7, 1 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="LeftGroundSensor" type="RayCast2D" parent="."]
 position = Vector2( -9, 0 )

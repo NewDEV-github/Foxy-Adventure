@@ -1,14 +1,14 @@
 extends Node
-#var project_root_dir = get_project_root_dir()
+signal achivement_done(achivement)
 var all_achievements = [
 	"I'm not toxic",
 	"Up to five times",
-        "Amateur sewage purifier",
-        "Advanced sewage purifier",
-        "Money collector",
-        "Rich man",
-        "Like a cat",
-        "Like a cat, but... Better",
+	"Amateur sewage purifier",
+	"Advanced sewage purifier",
+	"Money collector",
+	"Rich man",
+	"Like a cat",
+	"Like a cat, but... Better",
 	"Fast like a wind",
 	"I am clever",
 	"I'm clumsy",
@@ -19,11 +19,11 @@ var achievements_desc = {
 	"I'm not toxic": "Don't touch the toxics in 1st stage",
 	"Up to five times": "Lose all 5 lives",
 	"Amateur sewage purifier": "Fall into toxins 5 times",
-        "Advanced sewage purifier": "Fall into toxins 15 times",
-        "Money collector": "Collect 50 coins",
-        "Rich man": "Collect 100 coins",
-        "Like a cat": "Get 9 lifes in game",
-        "Like a cat, but... Better": "Get more than 9 lives in game",
+	"Advanced sewage purifier": "Fall into toxins 15 times",
+	"Money collector": "Collect 50 coins",
+	"Rich man": "Collect 100 coins",
+	"Like a cat": "Get 9 lifes in game",
+	"Like a cat, but... Better": "Get more than 9 lives in game",
 	"Fast like a wind": "Be running for one minute without stopping",
 	"I am clever": "Solve 5 logic puzzles",
 	"I'm clumsy": "Die 5 times by the same obstacle",
@@ -180,6 +180,7 @@ func game_over():
 		lives -= 1
 	elif lives == 1:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
+		set_achievement_done("Up to five times")
 		DiscordSDK.kill_rpc()
 		
 var cnf = ConfigFile.new()
@@ -191,6 +192,10 @@ func generate_achievements_file():
 	cnf.set_value("achievements", "done", done_achievements)
 	cnf.save("user://achievements.cfg")
 func set_achievement_done(achievement_name:String):
-	not_done_achievements.remove(not_done_achievements.find(achievement_name))
-	done_achievements.append(achievement_name)
-	generate_achievements_file()
+	if not_done_achievements.has(achievement_name):
+		not_done_achievements.remove(not_done_achievements.find(achievement_name))
+		done_achievements.append(achievement_name)
+		generate_achievements_file()
+		emit_signal("achivement_done", achievement_name)
+	else:
+		print("This achievement has been already done")

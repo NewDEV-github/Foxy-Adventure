@@ -18,7 +18,7 @@ func _ready():
 	get_node(str(character.name)).position = startup_position
 
 func change_level():
-	get_tree().change_scene("res://Scenes/Stages/poziom_2.tscn")
+	get_tree().change_scene("res://Scenes/Stages/poziom_6.tscn")
 func toxic_entered(body):
 	if Globals.new_characters.has(body.name):
 		Globals.game_over()
