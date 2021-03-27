@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/game_ui.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
@@ -7,29 +7,18 @@
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Materials/texture_mask.material" type="Material" id=7]
+[ext_resource path="res://Scenes/AchivementPanel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "save"
 length = 5.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Icon:rotation_degrees")
+tracks/0/path = NodePath("Icon:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 360.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Icon:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 4, 5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
@@ -165,5 +154,15 @@ autostart = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "save"
 anims/save = SubResource( 1 )
+
+[node name="AchivementPanel" parent="." instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -361.0
+margin_top = -80.0
+margin_right = 0.0
+margin_bottom = 0.0
 
 [connection signal="timeout" from="ms" to="." method="_on_ms_timeout"]

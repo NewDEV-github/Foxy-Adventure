@@ -36,5 +36,6 @@ text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]

@@ -30,7 +30,7 @@ func _on_QuitGame_pressed():
 func _on_QuitTOMenuDIalog_confirmed():
 	visible = !visible
 	get_tree().change_scene('res://Scenes/Menu.tscn')
-	Globals.kill_rpc()
+	DiscordSDK.kill_rpc()
 
 func _on_FeedBack_pressed():
 	$HTTPRequest.send_feedback()

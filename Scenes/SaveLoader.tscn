@@ -45,14 +45,14 @@ __meta__ = {
 }
 
 [node name="DelSave" type="Button" parent="buttons"]
-margin_left = 35.0
-margin_right = 159.0
+margin_left = 58.0
+margin_right = 153.0
 margin_bottom = 37.0
 text = "Delete Save"
 
 [node name="RunSave" type="Button" parent="buttons"]
-margin_left = 184.0
-margin_right = 280.0
+margin_left = 178.0
+margin_right = 257.0
 margin_bottom = 37.0
 text = "Run Save"
 

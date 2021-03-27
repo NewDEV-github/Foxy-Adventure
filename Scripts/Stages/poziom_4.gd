@@ -18,11 +18,8 @@ func _ready():
 	get_node(str(character.name)).position = startup_position
 
 func change_level():
-	if Globals.fallen_into_toxins == 0:
-		Globals.set_achievement_done("I'm not toxic")
-	get_tree().change_scene("res://Scenes/Stages/poziom_2.tscn")
+	get_tree().change_scene("res://Scenes/Stages/poziom_5.tscn")
 func toxic_entered(body):
-	Globals.felt_into_toxine()
 	if Globals.new_characters.has(body.name):
 		Globals.game_over()
 

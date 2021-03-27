@@ -1,14 +1,18 @@
 extends Node
-#var project_root_dir = get_project_root_dir()
+var fallen_into_toxins = 0
+signal achivement_done(achivement)
 var all_achievements = [
-	"I'm not toxic",
-	"Up to five times",
-        "Amateur sewage purifier",
-        "Advanced sewage purifier",
-        "Money collector",
-        "Rich man",
-        "Like a cat",
-        "Like a cat, but... Better"
+	"I'm not toxic",#done
+	"Up to five times",#done
+	"Amateur sewage purifier",#done
+	"Advanced sewage purifier",#done
+	"Money collector",#done
+	"Rich man",#done
+	"Like a cat",#done
+	"Like a cat, but... Better",#done
+	"Fast like a wind",
+	"I am clever",
+	"I'm clumsy",
 ]
 var done_achievements = []
 var not_done_achievements = all_achievements
@@ -16,11 +20,14 @@ var achievements_desc = {
 	"I'm not toxic": "Don't touch the toxics in 1st stage",
 	"Up to five times": "Lose all 5 lives",
 	"Amateur sewage purifier": "Fall into toxins 5 times",
-        "Advanced sewage purifier": "Fall into toxins 15 times",
-        "Money collector": "Collect 50 coins",
-        "Rich man": "Collect 100 coins",
-        "Like a cat": "Get 9 lifes in game",
-        "Like a cat, but... Better": "Get more than 9 lives in game",
+	"Advanced sewage purifier": "Fall into toxins 15 times",
+	"Money collector": "Collect 50 coins",
+	"Rich man": "Collect 100 coins",
+	"Like a cat": "Get 9 lifes in game",
+	"Like a cat, but... Better": "Get more than 9 lives in game",
+	"Fast like a wind": "Be running for one minute without stopping",
+	"I am clever": "Solve 5 logic puzzles",
+	"I'm clumsy": "Die 5 times by the same obstacle",
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
@@ -57,8 +64,6 @@ var last_world_position = Vector2(0,0)
 var cfile = ConfigFile.new()
 var file =  File.new()
 var dir = Directory.new()
-var version_string:String = "alpha"
-var version_commit:String = "unknown"
 var current_save_name = ""
 var coins = 0
 var lives = 5
@@ -68,10 +73,9 @@ var new_characters:Array = [
 ]
 
 func construct_game_version():
-	var text = "Support: support@new-dev.ml\n%s version: %s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, OS.get_date().year]
+	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 	return text
 func _init():
-	version_commit = "idk"
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 var dlcs:Array = [
@@ -107,12 +111,28 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 
+func add_life():
+	lives += 1
+	if lives == 9:
+		set_achievement_done("Like a cat")
+	elif lives >= 9:
+		set_achievement_done("Like a cat, but... Better")
+
+func add_coin(anmount):
+	coins += anmount
+	if coins == 50:
+		set_achievement_done("Money collector")
+	elif coins == 100:
+		set_achievement_done("Rich man")
+
+func felt_into_toxine():
+	fallen_into_toxins += 1
+	if fallen_into_toxins == 5:
+		set_achievement_done("Amateur sewage purifier")
+	elif fallen_into_toxins == 15:
+		set_achievement_done("Advanced sewage purifier")
+
 func _ready():
-#	execute_debugging_tools()
-#	print("Project root dir is at: " + project_root_dir)
-	##LOAD DLCS
-	#Tails.exe
-	
 	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
 		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()
@@ -174,6 +194,7 @@ func game_over():
 		lives -= 1
 	elif lives == 1:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
+		set_achievement_done("Up to five times")
 		DiscordSDK.kill_rpc()
 		
 var cnf = ConfigFile.new()
@@ -185,6 +206,10 @@ func generate_achievements_file():
 	cnf.set_value("achievements", "done", done_achievements)
 	cnf.save("user://achievements.cfg")
 func set_achievement_done(achievement_name:String):
-	not_done_achievements.remove(not_done_achievements.find(achievement_name))
-	done_achievements.append(achievement_name)
-	generate_achievements_file()
+	if not_done_achievements.has(achievement_name):
+		not_done_achievements.remove(not_done_achievements.find(achievement_name))
+		done_achievements.append(achievement_name)
+		generate_achievements_file()
+		emit_signal("achivement_done", achievement_name)
+	else:
+		print("This achievement has been already done")
