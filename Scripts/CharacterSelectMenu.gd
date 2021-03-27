@@ -1,5 +1,5 @@
 extends Control
-
+export (bool) var tooltip_enabled = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -13,8 +13,8 @@ func _ready():
 	print(str(new_chrs))
 	for character in new_chrs:
 		$ItemList.add_item(str(character))
-
-
+		var item_id = $ItemList.get_item_count() -1
+		$ItemList.set_item_tooltip_enabled(item_id, tooltip_enabled)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

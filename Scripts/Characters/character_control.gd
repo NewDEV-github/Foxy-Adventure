@@ -131,8 +131,6 @@ func _physics_process(delta):
 			sprite.scale.x = 1
 		if linear_vel.y < 0:
 			new_anim = "jump_" + str(sprite.scale.x)
-		else:
-			new_anim = "falling"
 #	print(str(Globals.lives))
 #	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
 #		new_anim += "_weapon"

@@ -1,5 +1,5 @@
 extends Panel
-
+export (bool) var tooltip_enabled = false
 var save_file_names = []
 # Declare member variables here. Examples:
 # var a: int = 2
@@ -32,6 +32,8 @@ func _ready() -> void:
 	else:
 		for i in save_file_names:
 			$ItemList.add_item(i)
+			var item_id = $ItemList.get_item_count() -1
+			$ItemList.set_item_tooltip_enabled(item_id, tooltip_enabled)
 func get_save_name(file_name:String):
 	return file_name.trim_prefix("save_")
 #	var regex = RegEx.new()
