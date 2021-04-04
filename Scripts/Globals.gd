@@ -88,7 +88,8 @@ var cworlds:Array = [
 	
 ]
 var levels_scan_path:Array = [
-	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Foxy Adventure/Levels/Editor/")
+	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/"),
+	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure Level Editor/")
 ]
 var dlc_name_list:Array = [
 	
@@ -107,7 +108,10 @@ func add_dlc(dlc_name:String):
 func add_world(world_name:String):
 	worlds.append(world_name)
 func add_custom_world(world_name:String):
-	cworlds.append(world_name)
+	if not cworlds.has(world_name):
+		cworlds.append(world_name)
+	else:
+		OS.alert("Stage named " + world_name + "\nis already imported into the game.", "Oops!")
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 
@@ -120,6 +124,8 @@ func add_life():
 
 func add_coin(anmount):
 	coins += anmount
+	if coins %100 == 0:
+		add_life()
 	if coins == 50:
 		set_achievement_done("Money collector")
 	elif coins == 100:
@@ -133,6 +139,10 @@ func felt_into_toxine():
 		set_achievement_done("Advanced sewage purifier")
 
 func _ready():
+	var date = OS.get_date()
+	if date.day == 1 and date.month == 4:
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
 	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
 		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()

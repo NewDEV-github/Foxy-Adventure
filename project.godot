@@ -64,11 +64,10 @@ config/version="1.0.0"
 [autoload]
 
 Screenshot="*res://Scripts/screenshot.gd"
-SharedLibManager="*res://Scripts/SharedLibManager.gd"
-Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [debug]
 

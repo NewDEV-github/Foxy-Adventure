@@ -14,15 +14,17 @@ func take_screen():
 	yield(get_tree(), "idle_frame")
 	var image = get_viewport().get_texture().get_data()
 	image.flip_y()
-	image.save_png(docs_dir + "/Foxy Adventure/Screenshots/Screenshot_%s%s%s_%s%s%s.png"%[year, month, day, hour, minute, second])
+	image.save_png(docs_dir + "/New DEV/Foxy Adventure/Screenshots/Screenshot_%s%s%s_%s%s%s.png"%[year, month, day, hour, minute, second])
 func _input(event):
 	if event.is_action_pressed("screen"):
 		take_screen()
 func _ready():
-	if directory.dir_exists(docs_dir + "/Foxy Adventure/Screenshots/"):
+	if directory.dir_exists(docs_dir + "/New DEV/Foxy Adventure/Screenshots/"):
 		pass
 	else:
 		directory.open(docs_dir)
+		directory.make_dir("New DEV")
+		directory.open(docs_dir + "/New DEV")
 		directory.make_dir("Foxy Adventure")
-		directory.open(docs_dir + "/Foxy Adventure")
+		directory.open(docs_dir + "/New DEV/Foxy Adventure")
 		directory.make_dir("Screenshots")

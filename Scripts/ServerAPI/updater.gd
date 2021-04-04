@@ -54,8 +54,9 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 func _on_VideoPlayer_finished():
 	if not OS.get_name() == "Android":
-		if not get_tree().change_scene('res://Scenes/Menu.tscn'):
+		if not get_tree().change_scene('res://Scenes/Menu.tscn') == 0:
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+			print(get_tree().change_scene('res://Scenes/Menu.tscn'))
 	elif OS.get_name() == "Android":
-		if not get_tree().change_scene("res://Scenes/Menu_android.tscn"):
+		if not get_tree().change_scene("res://Scenes/Menu_android.tscn") == 0:
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)

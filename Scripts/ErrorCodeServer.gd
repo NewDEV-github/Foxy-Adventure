@@ -22,10 +22,12 @@ const FILE_ERR = "0x2000"
 const FILE_ERR_ALREADY_IN_USE = "0x2001"
 const FILE_ERR_LOCKED = "0x2002"
 const FILE_ERR_CORRUPTED = "0x2003"
-const ERR_PC_ON_FIRE = "You'r PC is being burned now"
+const ERR_PC_ON_FIRE = "Your PC is being burned now"
 const ERR_WTF = "WTF?!"
 # Called when the node enters the scene tree for the first time.
-func treat_error(error_code):
-	print("Error happened!\n\nError code: " + str(error_code))
-	if str(OS.get_name()) == "Android" and treat_on_android:
+func treat_error(error_code, treat_alert=true):
+	printerr("Error happened!\n\nError code: " + str(error_code))
+	if treat_alert:
+		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")
+	if str(OS.get_name()) == "Android" and treat_on_android and treat_alert:
 		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")

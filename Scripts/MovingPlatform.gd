@@ -36,7 +36,7 @@ func _draw() -> void:
 	var shape: = $CollisionShape2D
 	var extents: Vector2 = shape.shape.extents * 2.0
 	var rect: = Rect2(shape.position - extents / 2.0, extents)
-	draw_rect(rect, Color('fff'))
+	#draw_rect(rect, Color('fff'))
 
 
 func set_editor_process(value:bool) -> void:
