@@ -39,6 +39,8 @@ func _ready():
 		$Label.set_text(tr("Happy Birthday to") + ' Gekon aka "GeKaGD"')
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
+	elif day == 7 and month == 4:
+		$Label.set_text(tr("Happy Birthday to") + ' JezSonic/Futrzak or the main developer')
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
