@@ -199,5 +199,6 @@ ZuBsPaCe
 
 --SPECIAL THANKS--
 LeD
+NewTheFox
 
 Copyright © 2020 - present New DEV
