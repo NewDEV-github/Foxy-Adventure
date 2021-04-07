@@ -1,9 +1,7 @@
 # Security Policy
 
 ## Supported Versions
-No asking for private data, game encrypts and decrypts
-private data
-
-| Version | Supported          |
+| Version | Kind of security   |
 | ------- | ------------------ |
-|  alpha  | :white_check_mark: |
+|  alpha  | No asking for private data, game encrypts and decrypts private data when it's needed|
+|  current (alpha) | No asking for private data, game encrypts and decrypts private data when it's needed|
