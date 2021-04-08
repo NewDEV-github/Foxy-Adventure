@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Characters/enemy.gd"
 }, {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
@@ -77,8 +77,11 @@ settings/stdout/verbose_stdout=true
 
 [display]
 
+window/size/borderless=true
 window/dpi/allow_hidpi=true
 window/vsync/vsync_via_compositor=true
+window/per_pixel_transparency/allowed=true
+window/per_pixel_transparency/enabled=true
 
 [editor]
 

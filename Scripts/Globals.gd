@@ -76,6 +76,7 @@ func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 	return text
 func _init():
+	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 var dlcs:Array = [
@@ -124,7 +125,7 @@ func add_life():
 
 func add_coin(anmount):
 	coins += anmount
-	if coins %100 == 0:
+	if not coins %100:
 		add_life()
 	if coins == 50:
 		set_achievement_done("Money collector")
