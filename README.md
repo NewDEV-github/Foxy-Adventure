@@ -23,7 +23,7 @@ But don't worry, You can delete uploaded stage and while deleting account all yo
 
 [Credits](https://github.com/NewDEV-github/Foxy-Adventure/tree/master/CREDITS.txt)
 
-**Authors**: NewTheFox/New The Hedgefox, JezSonic (aka sonic, sonic.exe), GeKaGD (aka Gekon)
+**Authors**: NewTheFox/New The Hedgefox, JezSonic (aka Futrzak, sonic, sonic.exe), GeKaGD (aka Gekon)
 
 ### Copyright 2020 - present New-DEV
 
