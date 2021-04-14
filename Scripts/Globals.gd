@@ -68,7 +68,6 @@ var current_save_name = ""
 var coins = 0
 var lives = 5
 var new_characters:Array = [
-	"New The Fox",
 	"Tails",
 ]
 
