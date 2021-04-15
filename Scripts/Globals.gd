@@ -10,10 +10,8 @@ var all_achievements = [
 	"Rich man",#done
 	"Like a cat",#done
 	"Like a cat, but... Better",#done
-	"Fast like a wind",
-	"I am clever",
-	"I'm clumsy",
 ]
+var discord_sdk_enabled = false
 var done_achievements = []
 var not_done_achievements = all_achievements
 var achievements_desc = {
@@ -25,9 +23,6 @@ var achievements_desc = {
 	"Rich man": "Collect 100 coins",
 	"Like a cat": "Get 9 lifes in game",
 	"Like a cat, but... Better": "Get more than 9 lives in game",
-	"Fast like a wind": "Be running for one minute without stopping",
-	"I am clever": "Solve 5 logic puzzles",
-	"I'm clumsy": "Die 5 times by the same obstacle",
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
@@ -99,6 +94,8 @@ var camera_smoothing_enabled = false
 var camera_smoothing_speed = 0
 var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
+func enable_discord_sdk(en):
+	discord_sdk_enabled = en
 #var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):
 #	new_characters.insert(1, chr_name)
@@ -140,6 +137,9 @@ func felt_into_toxine():
 		set_achievement_done("Advanced sewage purifier")
 
 func _ready():
+	var conf = ConfigFile.new()
+	conf.load("user://settings.cfg")
+	discord_sdk_enabled = bool(conf.get_value('Game', 'discord_sdk_enabled'))
 	var date = OS.get_date()
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
@@ -151,7 +151,8 @@ func _ready():
 		script.add_dlc()
 		ProjectSettings.load_resource_pack(install_base_path + 'dlcs/dlc_tails_exe.pck')
 	#Classic Sonic
-	
+	if file.file_exists("user://achivements.cfg"):
+		load_achivements()
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
@@ -222,5 +223,12 @@ func set_achievement_done(achievement_name:String):
 		done_achievements.append(achievement_name)
 		generate_achievements_file()
 		emit_signal("achivement_done", achievement_name)
-	else:
+	elif done_achievements.has(achievement_name):
 		print("This achievement has been already done")
+
+func load_achivements():
+	cnf.load("user://achivements.cfg")
+	not_done_achievements = cnf.get_value('achivements', 'not_done')
+	done_achievements = cnf.get_value('achivements', 'done')
+#func _process(delta):
+#	print(lives)

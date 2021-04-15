@@ -28,6 +28,7 @@ func _process(_delta):
 	save_file.set_value('Game', 'locale', str(TranslationServer.get_locale()))
 	save_file.set_value('Game', 'fps_visible', str(Globals.fps_visible))
 	save_file.set_value('Game', 'timer_visible', str(Globals.timer_visible))
+	save_file.set_value('Game', 'discord_sdk_enabled', str(Globals.discord_sdk_enabled))
 	save_file.set_value('Audio', 'master_bus_volume', str($"tabs/Audio/Options/Audio/Master/Master_slider".value))
 	save_file.set_value('Audio', 'master_bus_enabled', str($"tabs/Audio/Options/Audio/Master/Master_on".pressed))
 	save_file.set_value('Audio', 'music_bus_volume', str($"tabs/Audio/Options/Audio/Music/Music_slider".value))
@@ -78,7 +79,8 @@ func load_settings():
 #		if save_file.has_section_key('Game', 'minimap_enabled'):
 #			$tabs/Rozgrywka/box/minimapenabled/minimap.set_pressed(bool(str(save_file.get_value('Game', 'minimap_enabled', true))))
 #		if save_file.has_section_key('Game', 'nsfw_enabled'):
-		
+		if save_file.has_section_key('Game', 'discord_sdk_enabled'):
+			$tabs/Discord/DSDK.pressed = bool(save_file.get_value('Game', 'discord_sdk_enabled'))
 #			Globals.set_nsfw(bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 #			$tabs/Rozgrywka/box/nsfwmode/nsfw.set_pressed(!bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 		if not str(OS.get_name()) == 'Android':
@@ -270,3 +272,7 @@ func _on_show_fps_toggled(button_pressed: bool) -> void:
 
 func _on_show_timer_toggled(button_pressed: bool) -> void:
 	Globals.timer_visible = button_pressed
+
+
+func _on_DSDK_toggled(button_pressed):
+	Globals.enable_discord_sdk(button_pressed)

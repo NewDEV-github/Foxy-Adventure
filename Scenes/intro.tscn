@@ -166,7 +166,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+pause_mode = 2
+visible = true
+margin_right = 270.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 150, 52.5 )
+theme = ExtResource( 2 )
+window_title = "Proszę potwierdzić..."
+dialog_text = "Would you like to give the game permission to
+acces your discord account by Discord Game SDK?
+
+You can enable/disable this in options later"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
 [connection signal="request_completed" from="PCKDownloader" to="." method="_on_pck_request_completed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="about_to_show" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_about_to_show"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
+[connection signal="popup_hide" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_popup_hide"]

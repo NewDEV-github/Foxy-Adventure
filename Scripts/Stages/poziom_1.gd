@@ -22,9 +22,10 @@ func change_level():
 		Globals.set_achievement_done("I'm not toxic")
 	get_tree().change_scene("res://Scenes/Stages/poziom_2.tscn")
 func toxic_entered(body):
-	Globals.felt_into_toxine()
-	if Globals.new_characters.has(body.name):
-		Globals.game_over()
+	if body.name == "Tails":
+		Globals.felt_into_toxine()
+		if Globals.new_characters.has(body.name):
+			Globals.game_over()
 
 
 func _on_Node2D_tree_exited():
@@ -33,4 +34,5 @@ func _on_Node2D_tree_exited():
 
 
 func _on_Doors_body_entered(body):
-	change_level()
+	if body.name == "Tails":
+		change_level()

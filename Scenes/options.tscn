@@ -29,6 +29,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -188,7 +189,7 @@ __meta__ = {
 
 [node name="Audio" type="VBoxContainer" parent="tabs/Audio/Options"]
 margin_right = 811.0
-margin_bottom = 495.0
+margin_bottom = 456.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
@@ -198,25 +199,25 @@ __meta__ = {
 }
 
 [node name="Audio" type="Label" parent="tabs/Audio/Options/Audio"]
-margin_top = 120.0
+margin_top = 91.0
 margin_right = 811.0
-margin_bottom = 134.0
+margin_bottom = 110.0
 text = "Audio"
 align = 1
 valign = 1
 
 [node name="Master_label" type="Label" parent="tabs/Audio/Options/Audio"]
-margin_top = 159.0
+margin_top = 135.0
 margin_right = 811.0
-margin_bottom = 173.0
+margin_bottom = 154.0
 text = "Master"
 align = 1
 valign = 1
 
 [node name="Master" type="HBoxContainer" parent="tabs/Audio/Options/Audio"]
-margin_top = 198.0
+margin_top = 179.0
 margin_right = 811.0
-margin_bottom = 214.0
+margin_bottom = 195.0
 
 [node name="Master_slider" type="HSlider" parent="tabs/Audio/Options/Audio/Master"]
 margin_right = 811.0
@@ -234,17 +235,17 @@ margin_bottom = 40.0
 pressed = true
 
 [node name="Music_label" type="Label" parent="tabs/Audio/Options/Audio"]
-margin_top = 239.0
+margin_top = 220.0
 margin_right = 811.0
-margin_bottom = 253.0
+margin_bottom = 239.0
 text = "Music"
 align = 1
 valign = 1
 
 [node name="Music" type="HBoxContainer" parent="tabs/Audio/Options/Audio"]
-margin_top = 278.0
+margin_top = 264.0
 margin_right = 811.0
-margin_bottom = 294.0
+margin_bottom = 280.0
 
 [node name="Music_slider" type="HSlider" parent="tabs/Audio/Options/Audio/Music"]
 margin_right = 811.0
@@ -262,17 +263,17 @@ margin_bottom = 40.0
 pressed = true
 
 [node name="SFX_label" type="Label" parent="tabs/Audio/Options/Audio"]
-margin_top = 319.0
+margin_top = 305.0
 margin_right = 811.0
-margin_bottom = 333.0
+margin_bottom = 324.0
 text = "SFX"
 align = 1
 valign = 1
 
 [node name="SFX" type="HBoxContainer" parent="tabs/Audio/Options/Audio"]
-margin_top = 358.0
+margin_top = 349.0
 margin_right = 811.0
-margin_bottom = 374.0
+margin_bottom = 365.0
 
 [node name="SFX_slider" type="HSlider" parent="tabs/Audio/Options/Audio/SFX"]
 margin_right = 811.0
@@ -310,6 +311,26 @@ drag_to_rearrange_enabled = true
 
 [node name="controls_ui" parent="tabs/Controls" instance=ExtResource( 3 )]
 
+[node name="Discord" type="Tabs" parent="tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
+drag_to_rearrange_enabled = true
+
+[node name="DSDK" type="CheckButton" parent="tabs/Discord"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_bottom = 20.0
+text = "Enable integration with DIscord by Discord SDK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SAVE" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -337,4 +358,5 @@ __meta__ = {
 [connection signal="toggled" from="tabs/Audio/Options/Audio/Music/Music_on" to="." method="_on_Music_on_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/SFX/SFX_slider" to="." method="_on_SFX_slider_value_changed"]
 [connection signal="toggled" from="tabs/Audio/Options/Audio/SFX/SFX_on" to="." method="_on_SFX_on_toggled"]
+[connection signal="toggled" from="tabs/Discord/DSDK" to="." method="_on_DSDK_toggled"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]

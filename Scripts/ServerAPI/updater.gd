@@ -3,6 +3,8 @@ var intro_played = false
 var file = File.new()
 
 func _ready() -> void:
+	if not file.file_exists("user://settings.cfg"):
+		$ConfirmationDialog.popup_centered()
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))
 	file = File.new()
@@ -60,3 +62,16 @@ func _on_VideoPlayer_finished():
 	elif OS.get_name() == "Android":
 		if not get_tree().change_scene("res://Scenes/Menu_android.tscn") == 0:
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+
+
+func _on_ConfirmationDialog_confirmed():
+	get_tree().paused = false
+	Globals.enable_discord_sdk(true)
+
+
+func _on_ConfirmationDialog_popup_hide():
+	get_tree().paused = false
+
+
+func _on_ConfirmationDialog_about_to_show():
+	get_tree().paused = true

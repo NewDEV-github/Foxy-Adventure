@@ -147,9 +147,10 @@ func _on_current_user_update() -> void:
 	image.unlock()
 	var tex: = ImageTexture.new()
 	tex.create_from_image(image)
-	discord_user_img = tex
-	tex.set_size_override(Vector2(100, 100))
-	emit_signal("user_avatar_loaded")
+	if Globals.discord_sdk_enabled == true:
+		discord_user_img = tex
+		tex.set_size_override(Vector2(100, 100))
+		emit_signal("user_avatar_loaded")
 	users.get_current_user_premium_type(
 		self, "get_current_user_premium_type_callback"
 	)

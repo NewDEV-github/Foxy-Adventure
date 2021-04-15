@@ -17,7 +17,8 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	Globals.coins += 1
-	if Globals.coins % 4 == 0:
-		Globals.add_life()
-	queue_free() # Replace with function body.
+	if body.name == "Tails":
+		Globals.coins += 1
+		if Globals.coins % 4 == 0:
+			Globals.add_life()
+		queue_free() # Replace with function body.

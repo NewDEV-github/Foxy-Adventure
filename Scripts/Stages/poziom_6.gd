@@ -20,8 +20,9 @@ func _ready():
 func change_level():
 	get_tree().change_scene("res://Scenes/Credits.tscn")
 func toxic_entered(body):
-	if Globals.new_characters.has(body.name):
-		Globals.game_over()
+	if body.name == "Tails":
+		if Globals.new_characters.has(body.name):
+			Globals.game_over()
 
 
 func _on_Node2D_tree_exited():
@@ -30,4 +31,5 @@ func _on_Node2D_tree_exited():
 
 
 func _on_Doors_body_entered(body):
-	change_level()
+	if body.name == "Tails":
+		change_level()
