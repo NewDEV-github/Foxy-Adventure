@@ -706,7 +706,7 @@ frame = 1
 position = Vector2( 5640.18, 2536.06 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3408.78, 1355.64 )
+position = Vector2( 3761.86, 257.677 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -752,7 +752,7 @@ position = Vector2( -152.391, -25.3983 )
 position = Vector2( -76.1957, -79.3699 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3962.05, 1051.72 )
+position = Vector2( 4468.61, 1528.5 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -801,7 +801,7 @@ position = Vector2( -48.895, 1030.39 )
 position = Vector2( -122.167, 532.46 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5729.5, 1470.76 )
+position = Vector2( 5236.69, 1472.73 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]
@@ -823,10 +823,9 @@ position = Vector2( 350.353, 86.9634 )
 position = Vector2( 0.352966, 84.9634 )
 
 [node name="Doors" type="Area2D" parent="."]
-position = Vector2( 10623.6, 1453.81 )
+position = Vector2( 10668.9, 1431.18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors"]
-position = Vector2( 10739.7, 1436.75 )
 shape = SubResource( 9 )
 
 [connection signal="tree_exited" from="." to="." method="_on_Node2D_tree_exited"]
