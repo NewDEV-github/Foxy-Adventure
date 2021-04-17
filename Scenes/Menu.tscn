@@ -86,31 +86,30 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -225.0
-margin_top = -90.0
+margin_top = -135.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="VBoxContainer2"]
+[node name="Achivements" type="Button" parent="VBoxContainer2"]
 margin_right = 225.0
-margin_bottom = 43.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Options"
+text = "Achivements"
 
-[node name="dsc" type="Button" parent="VBoxContainer2"]
-visible = false
+[node name="Options" type="Button" parent="VBoxContainer2"]
 margin_top = 46.0
 margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Credits"
+text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
-margin_top = 47.0
+margin_top = 92.0
 margin_right = 225.0
-margin_bottom = 90.0
+margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Quit"
@@ -225,12 +224,78 @@ stream = ExtResource( 4 )
 autoplay = true
 bus = "Music"
 
+[node name="AchivementPanel" type="WindowDialog" parent="."]
+visible = true
+margin_right = 758.0
+margin_bottom = 478.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AchivementPanel"]
+anchor_right = 1.0
+anchor_bottom = 0.863
+margin_top = 31.0
+margin_bottom = -0.514008
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Done" type="ItemList" parent="AchivementPanel/HBoxContainer"]
+margin_right = 377.0
+margin_bottom = 381.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NotDone" type="ItemList" parent="AchivementPanel/HBoxContainer"]
+margin_left = 381.0
+margin_right = 758.0
+margin_bottom = 381.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Desc" type="Label" parent="AchivementPanel"]
+anchor_top = 0.856707
+anchor_right = 0.989899
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AchivementPanel"]
+anchor_right = 1.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AchivementPanel/HBoxContainer2"]
+margin_right = 377.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Done"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="AchivementPanel/HBoxContainer2"]
+margin_left = 381.0
+margin_right = 758.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Not Done"
+align = 1
+valign = 1
+
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="VBoxContainer2/dsc" to="." method="_on_Options2_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="no_saves_found" from="SaveLoader" to="." method="_on_SaveLoader_no_saves_found"]
 [connection signal="pressed" from="NewSave/CreateNewSave" to="." method="_on_CreateNewSave_pressed"]
 [connection signal="pressed" from="NewSave/CancelNewSave" to="." method="_on_CanceNewSave_pressed"]
+[connection signal="item_selected" from="AchivementPanel/HBoxContainer/Done" to="." method="_on_Done_item_selected"]
+[connection signal="item_selected" from="AchivementPanel/HBoxContainer/NotDone" to="." method="_on_NotDone_item_selected"]

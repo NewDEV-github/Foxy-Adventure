@@ -70,6 +70,8 @@ func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 	return text
 func _init():
+	if file.file_exists("user://achievements.cfg"):
+		load_achivements()
 	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
@@ -95,6 +97,10 @@ var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
 func enable_discord_sdk(en):
 	discord_sdk_enabled = en
+	var cfg = ConfigFile.new()
+	cfg.load("user://settings.cfg")
+	cfg.set_value('Game', 'discord_sdk_enabled', str(en))
+	cfg.save("user://settings.cfg")
 #var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
 func add_character(chr_name:String):
 #	new_characters.insert(1, chr_name)
@@ -137,8 +143,10 @@ func felt_into_toxine():
 
 func _ready():
 	var conf = ConfigFile.new()
-	conf.load("user://settings.cfg")
-	discord_sdk_enabled = bool(conf.get_value('Game', 'discord_sdk_enabled'))
+	if file.file_exists("user://setings.cfg"):
+		conf.load("user://settings.cfg")
+		if conf.has_section_key('Game', 'discord_sdk_enabled'):
+			discord_sdk_enabled = bool(conf.get_value('Game', 'discord_sdk_enabled'))
 	var date = OS.get_date()
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
@@ -150,8 +158,7 @@ func _ready():
 		script.add_dlc()
 		ProjectSettings.load_resource_pack(install_base_path + 'dlcs/dlc_tails_exe.pck')
 	#Classic Sonic
-	if file.file_exists("user://achivements.cfg"):
-		load_achivements()
+
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
@@ -225,9 +232,14 @@ func set_achievement_done(achievement_name:String):
 	elif done_achievements.has(achievement_name):
 		print("This achievement has been already done")
 
+
+#signal achivements_loaded
 func load_achivements():
-	cnf.load("user://achivements.cfg")
-	not_done_achievements = cnf.get_value('achivements', 'not_done')
-	done_achievements = cnf.get_value('achivements', 'done')
+	cnf.load("user://achievements.cfg")
+	not_done_achievements = cnf.get_value('achievements', 'not_done')
+	done_achievements = cnf.get_value('achievements', 'done')
+#	print(not_done_achievements)
+#	print(done_achievements)
+#	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(lives)

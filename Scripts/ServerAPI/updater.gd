@@ -1,9 +1,12 @@
 extends Control
 var intro_played = false
 var file = File.new()
-
+var cfg = ConfigFile.new()
 func _ready() -> void:
-	if not file.file_exists("user://settings.cfg"):
+	cfg.load("user://settings.cfg")
+	if file.file_exists("user://settings.cfg") and not cfg.has_section_key('Game', 'discord_sdk_enabled'):
+		$ConfirmationDialog.popup_centered()
+	elif not file.file_exists("user://settings.cfg"):
 		$ConfirmationDialog.popup_centered()
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))

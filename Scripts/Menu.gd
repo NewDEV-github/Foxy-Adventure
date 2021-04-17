@@ -9,6 +9,14 @@ var month = OS.get_date().month
 onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	Globals.load_achivements()
+#	yield(Globals,"achivements_loaded")
+	$AchivementPanel/HBoxContainer/Done.clear()
+	for i in Globals.done_achievements:
+		$AchivementPanel/HBoxContainer/Done.add_item(i)
+	$AchivementPanel/HBoxContainer/NotDone.clear()
+	for i in Globals.not_done_achievements:
+		$AchivementPanel/HBoxContainer/NotDone.add_item(i)
 	DiscordSDK.run_rpc(false, false,"", true)
 #	print(Fmod.get_music_instances())
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
@@ -128,3 +136,15 @@ func _on_SaveLoader_no_saves_found() -> void:
 
 func _on_CanceNewSave_pressed():
 	$NewSave.hide()
+
+
+func _on_Achivements_pressed():
+	$AchivementPanel.popup_centered()
+
+
+func _on_NotDone_item_selected(index):
+	$AchivementPanel/Desc.text = Globals.achievements_desc[$AchivementPanel/HBoxContainer/NotDone.get_item_text(index)]
+
+
+func _on_Done_item_selected(index):
+	$AchivementPanel/Desc.text = Globals.achievements_desc[$AchivementPanel/HBoxContainer/Done.get_item_text(index)]
