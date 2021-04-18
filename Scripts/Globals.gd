@@ -142,8 +142,9 @@ func felt_into_toxine():
 		set_achievement_done("Advanced sewage purifier")
 
 func _ready():
+	
 	var conf = ConfigFile.new()
-	if file.file_exists("user://setings.cfg"):
+	if file.file_exists("user://settings.cfg"):
 		conf.load("user://settings.cfg")
 		if conf.has_section_key('Game', 'discord_sdk_enabled'):
 			discord_sdk_enabled = bool(conf.get_value('Game', 'discord_sdk_enabled'))
@@ -242,4 +243,4 @@ func load_achivements():
 #	print(done_achievements)
 #	emit_signal("achivements_loaded")
 #func _process(delta):
-#	print(lives)
+#	print(discord_sdk_enabled)

@@ -168,7 +168,6 @@ __meta__ = {
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 pause_mode = 2
-visible = true
 margin_right = 270.0
 margin_bottom = 149.0
 rect_min_size = Vector2( 150, 52.5 )

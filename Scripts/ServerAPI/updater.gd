@@ -2,7 +2,25 @@ extends Control
 var intro_played = false
 var file = File.new()
 var cfg = ConfigFile.new()
+
+func _on_FirebaseAuth_login_succeeded(auth):
+	Firebase.Auth.get_user_data()
+	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
+	var db_ref = Firebase.Database.get_database_reference("users", {})
+	print(db_ref)
+func on_login_failed(error_code, message):
+	print("error code: " + str(error_code))
+	print("message: " + str(message))
+func on_userdata_recived(userdata):
+	print(userdata)
 func _ready() -> void:
+	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
+	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
+	Firebase.Auth.connect("login_failed", self, "on_login_failed")
+	Firebase.Auth.login_with_email_and_password("karoltomaszewskimusic@gmail.com", "Flet2005")
+#	yield(Firebase.Auth, "login_succeeded")
+#	print("requesting user data")
+#	print(Firebase.Auth.get_user_data())
 	cfg.load("user://settings.cfg")
 	if file.file_exists("user://settings.cfg") and not cfg.has_section_key('Game', 'discord_sdk_enabled'):
 		$ConfirmationDialog.popup_centered()
