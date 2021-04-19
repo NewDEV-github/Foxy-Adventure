@@ -1,6 +1,7 @@
 extends Node
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
+var user_data
 var all_achievements = [
 	"I'm not toxic",#done
 	"Up to five times",#done

@@ -20,6 +20,7 @@ var photo_url : String = ""
 
 func _init(p_userdata : Dictionary) ->  void:
 #	print(p_userdata)
+	Globals.user_data = p_userdata
 	local_id = p_userdata.localId
 	email = p_userdata.email
 	email_verified = p_userdata.emailVerified

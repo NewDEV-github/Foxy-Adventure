@@ -265,6 +265,7 @@ func _on_FirebaseAuth_request_completed(result : int, response_code : int, heade
 					begin_refresh_countdown()
 				RESPONSE_USERDATA:
 					var userdata = FirebaseUserData.new(res.users[0])
+#					Globals.user_data = userdata
 					emit_signal("userdata_received", userdata)
 			emit_signal("auth_request", 1, auth)
 	else:
@@ -316,12 +317,13 @@ func remove_auth() -> void:
 
 # Function to check if there is an encrypted auth data file
 # If there is, the game will load it and refresh the token
-func check_auth_file() -> void:
+func check_auth_file():
 	var dir = Directory.new()
 	if (dir.file_exists("user://user.auth")):
-		load_auth()
+		return true
 	else:
 		Firebase._printerr("No encrypted auth file exists")
+		return false
 
 # Function used to change the email account for the currently logged in user
 func change_user_email(email : String) -> void:

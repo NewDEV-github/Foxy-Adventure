@@ -8,7 +8,32 @@ var day = OS.get_date().day
 var month = OS.get_date().month
 onready var world_list = Globals.worlds
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _on_FirebaseAuth_login_succeeded(auth):
+	Firebase.Auth.save_auth(auth)
+	Globals.user_data = auth
+	$Account.load_account_info()
+#	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
+#	var db_ref = Firebase.Database.get_database_reference("users", {})
+#	print("Db ref: " + db_ref)
+func on_login_failed(error_code, message):
+	print("error code: " + str(error_code))
+	print("message: " + str(message))
+#func on_userdata_recived(userdata):
+#	print(Globals.user_data)
+func _ready() -> void:
+	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
+	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
+	Firebase.Auth.connect("login_failed", self, "on_login_failed")
+	if Firebase.Auth.check_auth_file():
+		Firebase.Auth.load_auth()
+		Globals.user_data = Firebase.Auth.auth
+		$Account.load_account_info()
+#		print(Firebase.Auth.auth)
+#		print(Globals.user_data['displayname'])
+#		print(Globals.user_data['profilepicture'])
+#		$TextureRect.textureUrl = Globals.user_data['profilepicture']
+#	else:
+#		Firebase.Auth.login_with_email_and_password("karoltomaszewskimusic@gmail.com", "Flet2005")
 #	Globals.load_achivements()
 #	yield(Globals,"achivements_loaded")
 	$AchivementPanel/HBoxContainer/Done.clear()
@@ -148,3 +173,17 @@ func _on_NotDone_item_selected(index):
 
 func _on_Done_item_selected(index):
 	$AchivementPanel/Desc.text = Globals.achievements_desc[$AchivementPanel/HBoxContainer/Done.get_item_text(index)]
+
+
+func _on_Info_pressed():
+	$Account.show()
+
+
+func _on_Logout_pressed():
+	Firebase.Auth.remove_auth()
+	Firebase.Auth.logout()
+
+
+func _on_Login_pressed():
+	var text = $VBoxContainer3/Login.text
+	print(text)

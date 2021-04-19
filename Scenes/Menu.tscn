@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Account.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
@@ -80,6 +81,41 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load Game"
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -225.0
+margin_bottom = 135.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Button" parent="VBoxContainer3"]
+margin_right = 225.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logout" type="Button" parent="VBoxContainer3"]
+margin_top = 46.0
+margin_right = 225.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Logout"
+
+[node name="Info" type="Button" parent="VBoxContainer3"]
+margin_top = 92.0
+margin_right = 225.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Info"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -146,15 +182,16 @@ margin_right = 249.0
 margin_bottom = 145.5
 
 [node name="Label" type="Label" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -677.119
-margin_right = -2.1189
+anchor_left = 0.222
+anchor_right = 0.78
+margin_left = -0.328018
+margin_right = 0.279968
 margin_bottom = 95.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-align = 2
+align = 1
+valign = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -225,7 +262,6 @@ autoplay = true
 bus = "Music"
 
 [node name="AchivementPanel" type="WindowDialog" parent="."]
-visible = true
 margin_right = 758.0
 margin_bottom = 478.0
 __meta__ = {
@@ -243,14 +279,14 @@ __meta__ = {
 
 [node name="Done" type="ItemList" parent="AchivementPanel/HBoxContainer"]
 margin_right = 377.0
-margin_bottom = 381.0
+margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NotDone" type="ItemList" parent="AchivementPanel/HBoxContainer"]
 margin_left = 381.0
 margin_right = 758.0
-margin_bottom = 381.0
+margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -288,9 +324,15 @@ text = "Not Done"
 align = 1
 valign = 1
 
+[node name="Account" parent="." instance=ExtResource( 5 )]
+visible = false
+
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]
+[connection signal="pressed" from="VBoxContainer3/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="VBoxContainer3/Logout" to="." method="_on_Logout_pressed"]
+[connection signal="pressed" from="VBoxContainer3/Info" to="." method="_on_Info_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
