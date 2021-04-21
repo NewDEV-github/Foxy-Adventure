@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/LoginPanel.gd" type="Script" id=1]
+
+[node name="LoginPanel" type="WindowDialog"]
+margin_right = 518.0
+margin_bottom = 348.0
+window_title = "Login/Register"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Login" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 257.0
+margin_bottom = 348.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 7
+alignment = 1
+
+[node name="Email" type="LineEdit" parent="HBoxContainer/Login"]
+margin_top = 134.0
+margin_right = 257.0
+margin_bottom = 153.0
+placeholder_text = "Email..."
+
+[node name="Password" type="LineEdit" parent="HBoxContainer/Login"]
+margin_top = 160.0
+margin_right = 257.0
+margin_bottom = 179.0
+placeholder_text = "Password..."
+
+[node name="Login" type="Button" parent="HBoxContainer/Login"]
+margin_top = 186.0
+margin_right = 257.0
+margin_bottom = 213.0
+text = "Login"
+
+[node name="Register" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 261.0
+margin_right = 518.0
+margin_bottom = 348.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 7
+alignment = 1
+
+[node name="Email" type="LineEdit" parent="HBoxContainer/Register"]
+margin_top = 134.0
+margin_right = 257.0
+margin_bottom = 153.0
+placeholder_text = "Email..."
+
+[node name="Password" type="LineEdit" parent="HBoxContainer/Register"]
+margin_top = 160.0
+margin_right = 257.0
+margin_bottom = 179.0
+placeholder_text = "Password..."
+
+[node name="Register" type="Button" parent="HBoxContainer/Register"]
+margin_top = 186.0
+margin_right = 257.0
+margin_bottom = 213.0
+text = "Register"
+
+[connection signal="pressed" from="HBoxContainer/Login/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="HBoxContainer/Register/Register" to="." method="_on_Register_pressed"]

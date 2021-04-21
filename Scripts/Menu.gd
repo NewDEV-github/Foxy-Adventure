@@ -12,8 +12,11 @@ func _on_FirebaseAuth_login_succeeded(auth):
 	Firebase.Auth.save_auth(auth)
 	Globals.user_data = auth
 	$Account.load_account_info()
+	$VBoxContainer3/Info.disabled = false
+	$VBoxContainer3/Logout.disabled = false
+	$VBoxContainer3/Login.disabled = true
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
-#	var db_ref = Firebase.Database.get_database_reference("users", {})
+	var db_ref = Firebase.Database.get_database_reference("users", {})
 #	print("Db ref: " + db_ref)
 func on_login_failed(error_code, message):
 	print("error code: " + str(error_code))
@@ -21,12 +24,18 @@ func on_login_failed(error_code, message):
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
 func _ready() -> void:
+	$VBoxContainer3/Info.disabled = true
+	$VBoxContainer3/Logout.disabled = true
+	$VBoxContainer3/Login.disabled = false
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("login_failed", self, "on_login_failed")
 	if Firebase.Auth.check_auth_file():
 		Firebase.Auth.load_auth()
 		Globals.user_data = Firebase.Auth.auth
+		$VBoxContainer3/Info.disabled = false
+		$VBoxContainer3/Logout.disabled = false
+		$VBoxContainer3/Login.disabled = true
 		$Account.load_account_info()
 #		print(Firebase.Auth.auth)
 #		print(Globals.user_data['displayname'])
@@ -182,8 +191,11 @@ func _on_Info_pressed():
 func _on_Logout_pressed():
 	Firebase.Auth.remove_auth()
 	Firebase.Auth.logout()
+	Globals.user_data = {}
+	$VBoxContainer3/Info.disabled = true
+	$VBoxContainer3/Logout.disabled = true
+	$VBoxContainer3/Login.disabled = false
 
 
 func _on_Login_pressed():
-	var text = $VBoxContainer3/Login.text
-	print(text)
+	$LoginPanel.popup_centered()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Account.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/LoginPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
 
 [node name="Menu" type="Control"]
@@ -95,7 +96,7 @@ margin_right = 225.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Login"
+text = "Login/Register"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -326,6 +327,8 @@ valign = 1
 
 [node name="Account" parent="." instance=ExtResource( 5 )]
 visible = false
+
+[node name="LoginPanel" parent="." instance=ExtResource( 8 )]
 
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
