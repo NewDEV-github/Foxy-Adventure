@@ -25,6 +25,6 @@ But don't worry, You can delete uploaded stages and while deleting your account,
 
 **Authors**: NewTheFox (aka NewTHF, Infev), JezSonic (aka Futrzak, sonic, sonic.exe), GeKaGD (aka Gekon)
 
-### Copyright 2020 - present New-DEV
+### Copyright 2020 - present New DEV
 
 ### Made with [Godot Engine](https://godotengine.org)
