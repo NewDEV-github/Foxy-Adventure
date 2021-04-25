@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/RichTextEffects/pulse.tres" type="RichTextEffect" id=1]
+[ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/RichTextEffects/matrix.tres" type="RichTextEffect" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 4.67194
+margin_top = 7.67533
+margin_right = 356.672
+margin_bottom = 226.675
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[matrix span=2 dirty=2][pulse color=#034bfc freq=1]ivip[/pulse][/matrix]"
+text = "ivip"
+custom_effects = [ ExtResource( 1 ), ExtResource( 3 ) ]
+__meta__ = {
+"_edit_use_anchors_": false
+}

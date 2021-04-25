@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/RichTextEffects/matrix.tres" type="RichTextEffect" id=4]
 [ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Credits.tres" type="Animation" id=6]
 
@@ -419,13 +420,13 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 510.0
-margin_bottom = 4080.0
+margin_bottom = 4025.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]
-[b][wave amp=50 freq=1]New DEV Development Team[/wave][/b]
+[matrix span=20 dirty=2 clean=2]New DEV Development Team[/matrix]
 
 [b]Directors[/b]
 [rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
@@ -443,7 +444,7 @@ NewTheFox
 
 [b]Graphics[/b]
 NewTheFox
-Deneツ
+Dene
 [rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
 
 [b][wave amp=50 freq=1]Godot-Videodecoder Development Team[/wave][/b]
@@ -455,7 +456,7 @@ starryalley
 [rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
 Rémi Verschelde (akien-mga)
 
-[b][tornado radius=5 freq=2]Godot Engine Devlopment Team[/tornado][/b]
+[matrix]Godot Engine[/matrix] Devlopment Team
 
 [b]Project Founders[/b]
 Juan Linietsky (reduz)
@@ -611,7 +612,6 @@ Timo (toger5)
 Tomasz Chabora (KoBeWi)
 Twarit Waikar (IronicallySerious)
 Vinzenz Feenstra (vinzenz)
-박한얼 (volzhs)
 V. Vamsi Krishna (vkbsb)
 Wilhem Barbier (nounoursheureux)
 Will Nations (willnationsdev)
@@ -647,7 +647,7 @@ JezSonic aka Futrzak
 
 Graphics
 NewTheFox
-Deneツ
+Dene
 JezSonic aka Futrzak
 
 Godot-Videodecoder Development Team
@@ -815,7 +815,6 @@ Timo (toger5)
 Tomasz Chabora (KoBeWi)
 Twarit Waikar (IronicallySerious)
 Vinzenz Feenstra (vinzenz)
-박한얼 (volzhs)
 V. Vamsi Krishna (vkbsb)
 Wilhem Barbier (nounoursheureux)
 Will Nations (willnationsdev)
@@ -835,6 +834,7 @@ NewTheFox"
 fit_content_height = true
 scroll_active = false
 scroll_following = true
+custom_effects = [ ExtResource( 4 ) ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -842,13 +842,12 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 4080.0
+margin_bottom = 4025.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "credits"
-playback_speed = 0.5
 anims/credits = ExtResource( 6 )
 anims/credits_easteregg = SubResource( 1 )
 
