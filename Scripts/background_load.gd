@@ -6,6 +6,14 @@ onready var progress = $progress
 signal loaded
 var SIMULATED_DELAY_SEC = 1.0
 
+var hints = [
+	#"Test hint",
+	"Use WASD or Arrow keys on your keyboard to control Your character in the game.",
+	#"Test hint 2",
+	"Tails can't fly!",
+	
+]
+
 func _thread_load(path):
 	var ril = ResourceLoader.load_interactive(path)
 	assert(ril)
@@ -57,6 +65,7 @@ func _thread_done(resource):
 	progress.visible = false
 	$Start_transtition.hide()
 	$bg.hide()
+	$hint.hide()
 	emit_signal("loaded")
 #	SavingDataIcon.show_up(true, 4)
 func load_scene(path):
@@ -77,10 +86,16 @@ func load_scene(path):
 		thread.start( self, "_thread_load", pth)
 		raise() # show on top
 		progress.visible = true
+	$hint.show()
+	randomize_hint()
 
-	
-
-
+func randomize_hint():
+	randomize()
+	var hint = hints[randi() % hints.size()]
+	$hint.bbcode_text = "[center]" + hint + "[/center]"
+	$hintanimator.play("normal")
+	yield($hintanimator,"animation_finished")
+	randomize_hint()
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if str(anim_name) == 'start_transition':
 		thread = Thread.new()

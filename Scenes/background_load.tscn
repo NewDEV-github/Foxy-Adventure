@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/background_load.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Start_transtition.tscn" type="PackedScene" id=2]
@@ -56,6 +56,34 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "normal"
+length = 4.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("hint:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 3, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hintanimator:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+
 [node name="bgload" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -95,5 +123,21 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/start_transition = SubResource( 1 )
+
+[node name="hint" type="RichTextLabel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 300.0
+margin_top = 348.0
+margin_right = 730.0
+margin_bottom = 457.0
+theme = ExtResource( 3 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hintanimator" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/normal = SubResource( 2 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
