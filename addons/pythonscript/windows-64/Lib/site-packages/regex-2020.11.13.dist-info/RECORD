@@ -1,0 +1,15 @@
+regex-2020.11.13.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+regex-2020.11.13.dist-info/LICENSE.txt,sha256=PSIMBllLgmu6vxEDEvYPOF-Z5X5Sn6S55Tb3kJH4tMc,11792
+regex-2020.11.13.dist-info/METADATA,sha256=IKu6GQ5Efde5OPqQaQBTfYs02IGru7RcGqYC3lpBz44,39034
+regex-2020.11.13.dist-info/RECORD,,
+regex-2020.11.13.dist-info/WHEEL,sha256=9MdUI0OzwjYaHl3jWlKFDIJ5MFBPjwppNgWNtexntqg,105
+regex-2020.11.13.dist-info/top_level.txt,sha256=aQmiDMhNTF26cCK4_7D-qaVvhbxClG0wyCTnEhkzYBs,6
+regex/__init__.py,sha256=6giZBSRLmTZfvQrcVoS6MaL5gKcwtfZlSXATBex49lU,68
+regex/__pycache__/__init__.cpython-38.pyc,,
+regex/__pycache__/_regex_core.cpython-38.pyc,,
+regex/__pycache__/regex.cpython-38.pyc,,
+regex/__pycache__/test_regex.cpython-38.pyc,,
+regex/_regex.cp38-win_amd64.pyd,sha256=PIRcdfHDdKYM4DHs9yV8Izv_4QPe-T1UEgBa-L1Tios,667136
+regex/_regex_core.py,sha256=hdNpZYOAQbjdDiu8niRyDtbNSMUb96mVuqzVAO0DsUo,144681
+regex/regex.py,sha256=-6pPH0XVvefgtfS8AYtqlqHsvrmEu_2eoUwSFRXlzbs,33182
+regex/test_regex.py,sha256=ZtvvjiFcvkJ3rO4xPLZ708Wwemwc0noc5RKUrDNyXRY,218052

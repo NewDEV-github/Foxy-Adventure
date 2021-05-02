@@ -14,16 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/silicon.util.custom_docs/doc_item/argument_doc_item.gd"
 }, {
-"base": "Node2D",
-"class": "AudioPlayer",
-"language": "GDScript",
-"path": "res://Scripts/audio_player.gd"
-}, {
-"base": "AnimationPlayer",
-"class": "CharacterAnimator",
-"language": "GDScript",
-"path": "res://Scripts/character_animator.gd"
-}, {
 "base": "DocItem",
 "class": "ClassDocItem",
 "language": "GDScript",
@@ -166,8 +156,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ArgumentDocItem": "",
-"AudioPlayer": "",
-"CharacterAnimator": "",
 "ClassDocItem": "",
 "ConstantDocItem": "",
 "CutsceneVideoPlayer": "",
@@ -240,7 +228,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/textureRectUrl/plugin.cfg" )
+enabled=PoolStringArray( "godot-firebase", "http-sse-client", "python-export", "pythonscript_repl", "textureRectUrl" )
 
 [firebase]
 
@@ -264,7 +252,7 @@ config/python="python"
 
 [gdnative]
 
-singletons=[ "res://addons/videodecoder.gdnlib" ]
+singletons=[ "res://addons/videodecoder.gdnlib", "res://pythonscript.gdnlib" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

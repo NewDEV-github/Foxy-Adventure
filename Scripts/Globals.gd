@@ -128,7 +128,8 @@ func add_life():
 
 func add_coin(anmount):
 	coins += anmount
-	if not coins %100:
+	print(str(int(coins) % 100))
+	if int(coins) % 100 == 0:
 		add_life()
 	if coins == 50:
 		set_achievement_done("Money collector")
@@ -245,3 +246,54 @@ func load_achivements():
 #	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(discord_sdk_enabled)
+class FMODPlayer:
+	var music_instances = {}
+	var sfx_instances = {}
+	var menu_music_events = []
+	var sfx_music_events = []
+	var credits_music_events = []
+	var stages_music_events = []
+	var bank_list = ['Master.strings.bank', 'Master.bank', 'sfx.bank', 'bgm_stages.bank', 'bgm_menu.bank', 'bgm_credits.bank']
+	func _ready():
+		initialize_fmod()
+		load_banks()
+		create_sound_instances()
+	func initialize_fmod():
+		pass
+	func load_banks():
+		for i in bank_list:
+			var bank = "res://asset/Audio/Banks/" + i
+	func create_sound_instances():
+		for i in stages_music_events:
+			var inst #=  FMOD.create_event_instance(i)
+			music_instances[i] = inst
+		for i in credits_music_events:
+			var inst #=  FMOD.create_event_instance(i)
+			music_instances[i] = inst
+		for i in menu_music_events:
+			var inst #=  FMOD.create_event_instance(i)
+			music_instances[i] = inst
+		for i in sfx_music_events:
+			var inst #=  FMOD.create_event_instance(i)
+			sfx_instances[i] = inst
+	func play_event_music(event_name, oneshot=false):
+		#FMOD.play_event(music_instances[event_name])
+		pass
+	func play_event_sfx(event_name, oneshot=false):
+		#FMOD.play_event(sfx_instances[event_name])
+		pass
+	func stop_event_sfx(event_name):
+		pass
+	func stop_event_music(event_name):
+		pass
+	func set_sfx_volume_db(volume):
+		for i in sfx_instances:
+			#FMOD.set_event_volume_db(i, volume)
+			pass
+	func set_music_volume_db(volume):
+		for i in music_instances:
+			#FMOD.set_event_volume_db(i, volume)
+			pass
+	func set_all_volume_db(volume):
+		set_music_volume_db(volume)
+		set_sfx_volume_db(volume)

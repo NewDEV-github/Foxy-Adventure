@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_1.gd" type="Script" id=2]
@@ -32,9 +32,6 @@ extents = Vector2( 36, 10 )
 extents = Vector2( 210.088, 10 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 3346.5, 88.0487 )
-
-[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 56.9336, 73.5143 )
 
 [node name="Node2D" type="Node2D"]
@@ -587,126 +584,144 @@ position = Vector2( 3053.25, 1168.78 )
 shape = SubResource( 7 )
 
 [node name="dead_area5" type="Area2D" parent="dead_areas"]
-position = Vector2( 1963.02, 2329.29 )
+position = Vector2( 5467.02, 2665.29 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area5"]
-position = Vector2( 15.1021, 0 )
-shape = SubResource( 8 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dead_areas/dead_area5"]
+polygon = PoolVector2Array( -5256.32, -461.29, -248.322, -429.29, -216.322, 2.70996, 407.678, 34.71, 1767.68, -221.29, 3559.68, -285.29, 5063.68, -557.29, 5207.68, -1005.29, 5687.68, -1021.29, 5655.68, 2.70996, -1624.32, 1154.71, -5624.32, 626.71, -6136.32, -413.29 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
-bus = "Music"
 
 [node name="bubbles" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 338.727, 890.741 )
+frame = 0
 
 [node name="AnimatedSprite2" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 501.361, 784.853 )
+frame = 0
 
 [node name="AnimatedSprite3" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 294.886, 663.231 )
+frame = 0
 
 [node name="AnimatedSprite4" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1517.09, 683.03 )
+frame = 0
 
 [node name="AnimatedSprite5" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1751.85, 591.106 )
+frame = 0
 
 [node name="AnimatedSprite6" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1569.42, 859.806 )
+frame = 0
 
 [node name="AnimatedSprite7" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1753.26, 842.836 )
+frame = 0
 
 [node name="AnimatedSprite8" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1863.57, 647.674 )
+frame = 0
 
 [node name="AnimatedSprite9" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1925.8, 864.049 )
+frame = 0
 
 [node name="AnimatedSprite10" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2198.32, 865.463 )
+frame = 0
 
 [node name="AnimatedSprite11" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2892.84, 1242.21 )
+frame = 0
 
 [node name="AnimatedSprite12" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3057.93, 1302.53 )
+frame = 0
 
 [node name="AnimatedSprite13" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2978.56, 1181.89 )
+frame = 0
 
 [node name="AnimatedSprite14" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3203.97, 1162.84 )
+frame = 0
 
 [node name="AnimatedSprite15" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3099.2, 1219.98 )
+frame = 0
 
 [node name="AnimatedSprite16" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3172.22, 1343.8 )
+frame = 0
 
 [node name="AnimatedSprite17" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2949.99, 1353.33 )
+frame = 0
 
 [node name="AnimatedSprite18" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2959.51, 1454.92 )
+frame = 0
 
 [node name="AnimatedSprite19" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3169.05, 1470.79 )
+frame = 0
 
 [node name="AnimatedSprite20" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3042.05, 1502.54 )
+frame = 0
 
 [node name="AnimatedSprite21" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5398.18, 1984.06 )
-frame = 0
 
 [node name="AnimatedSprite22" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5412.18, 2078.06 )
+frame = 0
 
 [node name="AnimatedSprite23" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5400.18, 2158.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite24" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5408.18, 2258.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite25" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5410.18, 2366.06 )
+frame = 0
 
 [node name="AnimatedSprite26" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5404.18, 2482.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite27" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5654.18, 2038.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite28" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5642.18, 2166.06 )
-frame = 0
 
 [node name="AnimatedSprite29" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5646.18, 2250.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite30" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5646.18, 2332.06 )
-frame = 0
 
 [node name="AnimatedSprite31" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5650.18, 2434.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite32" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5640.18, 2536.06 )
+frame = 0
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3781.34, 1218.14 )
+position = Vector2( 3549.11, 932.443 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -752,7 +767,7 @@ position = Vector2( 1.60899, 82.6017 )
 position = Vector2( 1.8043, 42.6301 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4469.6, 1685.52 )
+position = Vector2( 4695.56, 704.404 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -804,7 +819,7 @@ position = Vector2( -122.167, 532.46 )
 position = Vector2( -126.167, 6.46002 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5372.8, 1926.8 )
+position = Vector2( 5143.35, 1473.1 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]
@@ -829,7 +844,7 @@ position = Vector2( 0.352966, 84.9634 )
 position = Vector2( 10668.9, 1431.18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors"]
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [connection signal="tree_exited" from="." to="." method="_on_Node2D_tree_exited"]
 [connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]

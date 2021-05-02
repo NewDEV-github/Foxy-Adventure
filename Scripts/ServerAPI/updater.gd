@@ -4,6 +4,7 @@ var file = File.new()
 var cfg = ConfigFile.new()
 
 func _ready():
+	$Node
 #	yield(Firebase.Auth, "login_succeeded")
 #	print("requesting user data")
 #	print(Firebase.Auth.get_user_data())
