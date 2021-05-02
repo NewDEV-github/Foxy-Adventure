@@ -369,5 +369,4 @@ cast_to = Vector2( 11, 0 )
 [node name="LeftWallSensor" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -11, 0 )
-
 [connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]

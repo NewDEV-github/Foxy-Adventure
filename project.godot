@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_task.gd"
 }, {
+"base": "Node2D",
+"class": "FmodFlags",
+"language": "GDScript",
+"path": "res://bin/fmod/FmodFlags.gd"
+}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -176,6 +181,7 @@ _global_script_class_icons={
 "FirestoreDocument": "",
 "FirestoreQuery": "",
 "FirestoreTask": "",
+"FmodFlags": "",
 "GitAPI": "",
 "MethodDocItem": "",
 "PropertyDocItem": "",
@@ -207,6 +213,7 @@ BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Globals="*res://Scripts/Globals.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+Fmod="*res://bin/fmod/Fmod.gd"
 
 [debug]
 
