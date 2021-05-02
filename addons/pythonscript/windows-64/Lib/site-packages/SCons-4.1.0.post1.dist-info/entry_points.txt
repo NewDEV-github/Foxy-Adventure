@@ -1,5 +1,0 @@
-[console_scripts]
-scons = SCons.Script.Main:main
-scons-configure-cache = SCons.Utilities.ConfigureCache:main
-sconsign = SCons.Utilities.sconsign:main
-
