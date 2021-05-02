@@ -12,28 +12,16 @@ wget $GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK
 
 unzip $GODOT_ZIP_FILENAME
 unzip $GODOT_TPZ_FILENAME
-unzip templates/$GODOT_VERSION/osx.zip
+
+cd /home/runner/
+sudo mkdir -p .local/share/godot
+cd .local/share/godot
+sudo mkdir -p templates/$GODOT_VERSION
+sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
 
 cd $GITHUB_WORKSPACE
-mkdir -p builds/tmp/{x11-64-standard,win-64-standard,osx-standard}
-mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
+sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
 
-sudo ./$GODOT_BINARY_FILENAME --path "." --export-zip "x11-64" $GITHUB_WORKSPACE/builds/tmp/x11-64-standard/FoxyAdventure.zip
-sudo ./$GODOT_BINARY_FILENAME --path "." --export-zip "osx" $GITHUB_WORKSPACE/builds/tmp/osx-standard/FoxyAdventure.zip
-sudo ./$GODOT_BINARY_FILENAME --path "." --export-zip "win-64" $GITHUB_WORKSPACE/builds/tmp/win-64-standard/FoxyAdventure.zip
-
-unzip $GITHUB_WORKSPACE/builds/tmp/x11-64-standard/FoxyAdventure.zip
-unzip $GITHUB_WORKSPACE/builds/tmp/osx-standard/FoxyAdventure.zip
-unzip $GITHUB_WORKSPACE/builds/tmp/win-64-standard/FoxyAdventure.zip
-
-rm $GITHUB_WORKSPACE/builds/tmp/x11-64-standard/FoxyAdventure.zip
-rm $GITHUB_WORKSPACE/builds/tmp/osx-standard/FoxyAdventure.zip
-rm $GITHUB_WORKSPACE/builds/tmp/win-64-standard/FoxyAdventure.zip
-
-cp -r $GITHUB_WORKSPACE/builds/tmp/x11-64-standard/  $GITHUB_WORKSPACE/builds/x11-64-standard/
-cp -r $GITHUB_WORKSPACE/builds/tmp/osx-standard/  $GITHUB_WORKSPACE/builds/osx-standard/
-cp -r $GITHUB_WORKSPACE/builds/tmp/win-64-standard/  $GITHUB_WORKSPACE/builds/win-64-standard/
-
-cp $GITHUB_WORKSPACE/templates/windows_64_release.exe $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
-cp $GITHUB_WORKSPACE/templates/linux_x11_64_release $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-cp $GITHUB_WORKSPACE/templates/osx_template.app $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.app
+sudo ./$GODOT_BINARY_FILENAME --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
+sudo ./$GODOT_BINARY_FILENAME --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
+sudo ./$GODOT_BINARY_FILENAME --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
