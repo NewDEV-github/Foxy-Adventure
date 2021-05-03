@@ -114,10 +114,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_task.gd"
 }, {
-"base": "Node2D",
-"class": "FmodFlags",
-"language": "GDScript",
-"path": "res://bin/fmod/FmodFlags.gd"
+"base": "",
+"class": "FmodNative",
+"language": "NativeScript",
+"path": "res://addons/fmod/Fmod.gdns"
 }, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
@@ -181,7 +181,7 @@ _global_script_class_icons={
 "FirestoreDocument": "",
 "FirestoreQuery": "",
 "FirestoreTask": "",
-"FmodFlags": "",
+"FmodNative": "",
 "GitAPI": "",
 "MethodDocItem": "",
 "PropertyDocItem": "",
@@ -207,17 +207,17 @@ config/version="1.0.0"
 
 [autoload]
 
+Fmod="*res://addons/fmod/Fmod.tscn"
 Screenshot="*res://Scripts/screenshot.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Globals="*res://Scripts/Globals.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
-Fmod="*res://bin/fmod/Fmod.gd"
 
 [debug]
 
-settings/crash_handler/message="Please include this when reporting the bug on https://github.com/NewDEv-github/Foxy-Adventure/issues"
+settings/crash_handler/message="Please include this when reporting the bug on https://github.com/NewDEV-github/Foxy-Adventure/issues"
 settings/stdout/print_fps=true
 settings/stdout/verbose_stdout=true
 
@@ -235,7 +235,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "godot-firebase", "http-sse-client", "python-export", "pythonscript_repl", "textureRectUrl" )
+enabled=PoolStringArray( "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/textureRectUrl/plugin.cfg" )
 
 [firebase]
 
@@ -259,7 +259,7 @@ config/python="python"
 
 [gdnative]
 
-singletons=[ "res://addons/videodecoder.gdnlib", "res://pythonscript.gdnlib" ]
+singletons=[ "res://addons/videodecoder.gdnlib" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

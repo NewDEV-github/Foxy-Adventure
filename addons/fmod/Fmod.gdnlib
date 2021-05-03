@@ -1,0 +1,26 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="fmod_"
+reloadable=true
+
+[entry]
+
+Android.arm64-v8a="res://addons/fmod/libs/android/arm64-v8a/libGodotFmod.android.release.arm64-v8a.so"
+OSX.64="res://addons/fmod/libs/osx/libGodotFmod.osx.release.64.dylib"
+Windows.64="res://addons/fmod/libs/windows/x86_64/libGodotFmod.windows.release.64.dll"
+X11.64="res://addons/fmod/libs/linux/x86_64/libGodotFmod.linux.release.64.so"
+iOS.arm64="res://addons/fmod/libs/iOS/libGodotFmod.ios.release.arm64.a"
+Windows.32="res://addons/fmod/libs/windows/x86/libGodotFmod.windows.release.32.dll"
+X11.32="res://addons/fmod/libs/linux/x86/libGodotFmod.linux.release.32.so"
+
+[dependencies]
+
+Android.arm64-v8a=[ "res://addons/fmod/libs/android/arm64-v8a/libfmod.so", "res://addons/fmod/libs/android/arm64-v8a/libfmodstudio.so" ]
+OSX.64=[ "res://addons/fmod/libs/osx/libfmod.dylib", "res://addons/fmod/libs/osx/libfmodstudio.dylib" ]
+Windows.64=[ "res://addons/fmod/libs/windows/x86_64/fmod.dll", "res://addons/fmod/libs/windows/x86_64/fmodstudio.dll" ]
+X11.64=[ "res://addons/fmod/libs/linux/x86_64/libfmod.so", "res://addons/fmod/libs/linux/x86_64/libfmodstudio.so" ]
+iOS.arm64=[ "res://addons/fmod/libs/iOS/libfmodstudio_iphoneos.a", "res://addons/fmod/libs/iOS/libfmod_iphoneos.a", "res://addons/fmod/libs/iOS/libgodot-cpp.ios.release.arm64.a" ]
+Windows.32=[ "res://addons/fmod/libs/windows/x86/fmod.dll", "res://addons/fmod/libs/windows/x86/fmodstudio.dll" ]
+X11.32=[ "res://addons/fmod/libs/linux/x86/libfmod.so", "res://addons/fmod/libs/linux/x86/libfmodstudio.so" ]

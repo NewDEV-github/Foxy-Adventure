@@ -420,7 +420,7 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 510.0
-margin_bottom = 4025.0
+margin_bottom = 4005.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
@@ -429,10 +429,10 @@ bbcode_text = "[center]
 [matrix span=20 dirty=2 clean=2]New DEV Development Team[/matrix]
 
 [b]Directors[/b]
-[rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
 
 [b]Programmers[/b]
-[rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
 NewTheFox
 
 [b]Music[/b]
@@ -440,12 +440,12 @@ NewTheFox
 
 [b]Game Desing[/b]
 NewTheFox
-[rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
 
 [b]Graphics[/b]
 NewTheFox
 Dene
-[rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
 
 [b][wave amp=50 freq=1]Godot-Videodecoder Development Team[/wave][/b]
 
@@ -453,7 +453,7 @@ Dene
 Anish Bhobe (KidRigger)
 jamie-pate
 starryalley
-[rainbow freq=0.1 sat=1 val=20]JezSonic[/rainbow] aka Futrzak
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
 Rémi Verschelde (akien-mga)
 
 [matrix]Godot Engine[/matrix] Devlopment Team
@@ -632,10 +632,10 @@ text = "
 New DEV Development Team
 
 Directors
-JezSonic aka Futrzak
+DoS
 
 Programmers
-JezSonic aka Futrzak
+DoS
 NewTheFox
 
 Music
@@ -643,12 +643,12 @@ Music
 
 Game Desing
 NewTheFox
-JezSonic aka Futrzak
+DoS
 
 Graphics
 NewTheFox
 Dene
-JezSonic aka Futrzak
+DoS
 
 Godot-Videodecoder Development Team
 
@@ -656,7 +656,7 @@ Developers
 Anish Bhobe (KidRigger)
 jamie-pate
 starryalley
-JezSonic aka Futrzak
+DoS
 Rémi Verschelde (akien-mga)
 
 Godot Engine Devlopment Team
@@ -842,7 +842,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 4025.0
+margin_bottom = 4005.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

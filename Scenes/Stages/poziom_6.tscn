@@ -1,14 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_6.gd" type="Script" id=2]
-[ext_resource path="res://assets/Audio/BGM/1stage.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Waypoints.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/MovingPlatform_fast.tscn" type="PackedScene" id=8]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184, 121.458 )
@@ -190,74 +188,92 @@ position = Vector2( 15.1021, 0 )
 shape = SubResource( 5 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-autoplay = true
 bus = "Music"
 
 [node name="bubbles" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 338.727, 890.741 )
+frame = 0
 
 [node name="AnimatedSprite2" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 501.361, 784.853 )
+frame = 0
 
 [node name="AnimatedSprite3" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 294.886, 663.231 )
+frame = 0
 
 [node name="AnimatedSprite4" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1517.09, 683.03 )
+frame = 0
 
 [node name="AnimatedSprite5" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1751.85, 591.106 )
+frame = 0
 
 [node name="AnimatedSprite6" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1569.42, 859.806 )
+frame = 0
 
 [node name="AnimatedSprite7" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1753.26, 842.836 )
+frame = 0
 
 [node name="AnimatedSprite8" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1863.57, 647.674 )
+frame = 0
 
 [node name="AnimatedSprite9" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1925.8, 864.049 )
+frame = 0
 
 [node name="AnimatedSprite10" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2198.32, 865.463 )
+frame = 0
 
 [node name="AnimatedSprite11" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2892.84, 1242.21 )
+frame = 0
 
 [node name="AnimatedSprite12" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3057.93, 1302.53 )
+frame = 0
 
 [node name="AnimatedSprite13" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2978.56, 1181.89 )
+frame = 0
 
 [node name="AnimatedSprite14" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3203.97, 1162.84 )
+frame = 0
 
 [node name="AnimatedSprite15" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3099.2, 1219.98 )
+frame = 0
 
 [node name="AnimatedSprite16" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3172.22, 1343.8 )
+frame = 0
 
 [node name="AnimatedSprite17" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2949.99, 1353.33 )
+frame = 0
 
 [node name="AnimatedSprite18" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2959.51, 1454.92 )
+frame = 0
 
 [node name="AnimatedSprite19" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3169.05, 1470.79 )
+frame = 0
 
 [node name="AnimatedSprite20" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3042.05, 1502.54 )
+frame = 0
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3547.33, 575.922 )
+position = Vector2( 3615.81, 244.225 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]

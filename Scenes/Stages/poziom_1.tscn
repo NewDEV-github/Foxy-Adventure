@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_1.gd" type="Script" id=2]
-[ext_resource path="res://assets/Audio/BGM/1stage.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Waypoints.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
@@ -467,7 +466,7 @@ position = Vector2( 4930.06, 1658.82 )
 position = Vector2( 3846.77, 1774.78 )
 
 [node name="coin138" parent="coins" instance=ExtResource( 4 )]
-position = Vector2( 3880.71, 1777.61 )
+position = Vector2( 3880.71, 1761.61 )
 
 [node name="coin139" parent="coins" instance=ExtResource( 4 )]
 position = Vector2( 3447.96, 1885.09 )
@@ -590,8 +589,7 @@ position = Vector2( 5467.02, 2665.29 )
 polygon = PoolVector2Array( -5256.32, -461.29, -248.322, -429.29, -216.322, 2.70996, 407.678, 34.71, 1767.68, -221.29, 3559.68, -285.29, 5063.68, -557.29, 5207.68, -1005.29, 5687.68, -1021.29, 5655.68, 2.70996, -1624.32, 1154.71, -5624.32, 626.71, -6136.32, -413.29 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-autoplay = true
+bus = "Music"
 
 [node name="bubbles" type="Node2D" parent="."]
 
@@ -721,7 +719,7 @@ position = Vector2( 5640.18, 2536.06 )
 frame = 0
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3549.11, 932.443 )
+position = Vector2( 3741.88, 793.297 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -767,7 +765,7 @@ position = Vector2( 1.60899, 82.6017 )
 position = Vector2( 1.8043, 42.6301 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4695.56, 704.404 )
+position = Vector2( 4820.11, 423.664 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -819,7 +817,7 @@ position = Vector2( -122.167, 532.46 )
 position = Vector2( -126.167, 6.46002 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5143.35, 1473.1 )
+position = Vector2( 5483.35, 1471.75 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]

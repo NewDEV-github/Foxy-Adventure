@@ -1,14 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/poziom_5.gd" type="Script" id=2]
-[ext_resource path="res://assets/Audio/BGM/1stage.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Waypoints.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/MovingPlatform_fast.tscn" type="PackedScene" id=8]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184, 121.458 )
@@ -190,8 +188,6 @@ position = Vector2( 15.1021, 0 )
 shape = SubResource( 5 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-autoplay = true
 bus = "Music"
 
 [node name="bubbles" type="Node2D" parent="."]
@@ -277,7 +273,7 @@ position = Vector2( 3042.05, 1502.54 )
 frame = 3
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3792.89, 646.995 )
+position = Vector2( 3457.35, 777.826 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]

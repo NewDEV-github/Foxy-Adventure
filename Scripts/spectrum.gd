@@ -1,9 +1,7 @@
 extends Control
 
-# Gonkee's audio visualiser for Godot 3.2 - full tutorial https://youtu.be/AwgSICbGxJM
-# If you use this, I would prefer if you gave credit to me and my channel
 export (NodePath) var audio_player
-onready var spectrum = AudioServer.get_bus_effect_instance(1, 0)
+onready var spectrum = AudioServer.get_bus_effect_instance(2, 0)
 
 var definition = 20
 var total_w = 400

@@ -8,7 +8,12 @@ onready var startup_position = $start_position.position
 onready var root = get_tree().root
 var character = load(str(Globals.character_path)).instance()
 # Called when the node enters the scene tree for the first time.
+var music_files = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
 func _ready():
+	randomize()
+	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = audio
+	$AudioStreamPlayer2D.play()
 	Globals.current_stage = 0
 #	Fmod.add_listener(0, self)
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
