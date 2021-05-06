@@ -10,7 +10,7 @@ func _ready():
 	print("Initializing FMOD...")
 	###initializing
 	Fmod.set_software_format(0, Fmod.FMOD_SPEAKERMODE_DEFAULT, 0)
-	Fmod.init(1024, Fmod.FMOD_STUDIO_INIT_LIVEUPDATE, Fmod.FMOD_INIT_NORMAL)
+	Fmod.init(1024, Fmod.FMOD_STUDIO_INIT_NORMAL, Fmod.FMOD_INIT_NORMAL)
 	###loading banks
 	for i in bank_list:
 		var bank = "res://assets/Audio/Banks/" + i
