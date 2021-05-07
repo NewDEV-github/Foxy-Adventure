@@ -33,9 +33,9 @@ func _on_ItemList_item_selected(index):
 	else:
 		Globals.character_path = "res://Scenes/Characters/" + str(item_name) + ".tscn"
 		Globals.selected_character = load("res://Scenes/Characters/" + str(item_name) + ".tscn").instance()
-	if Globals.selected_character == null:
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+#	if Globals.selected_character == null:
+#		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
+#		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 	after_selecting_player()
 
 

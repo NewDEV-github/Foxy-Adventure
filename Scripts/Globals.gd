@@ -169,6 +169,9 @@ func _ready():
 	emit_signal("debugModeSet", debugMode)
 	if not file.file_exists("user://achievements.cfg"):
 		generate_achievements_file()
+	scan_and_load_modifications_cfg()
+	for i in modifications:
+		load_modification(i)
 	emit_signal("loaded")
 func get_project_root_dir():
 	return "res://".get_base_dir()
@@ -246,3 +249,44 @@ func load_achivements():
 #	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(discord_sdk_enabled)
+
+
+
+var modifications = {}
+func scan_and_load_modifications_cfg():
+	var cfg = ConfigFile.new()
+	var dir = Directory.new()
+	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
+		dir.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
+		dir.make_dir_recursive("/New DEV/Foxy Adventure/Mods/")
+	if dir.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/") == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				if file_name.get_extension() == "cfg":
+					var tmp = {}
+					cfg.load(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
+					tmp["name"] = cfg.get_value("mod_info", "name")
+					tmp["author"] = cfg.get_value("mod_info", "author")
+					tmp["description"] = cfg.get_value("mod_info", "description")
+					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
+					tmp["enabled"] = cfg.get_value("mod_info", "enabled")
+					tmp["main_script_file"] = cfg.get_value("mod_info", "main_script_file")
+					modifications[file_name.get_basename()] = tmp
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	print(modifications)
+
+
+func load_modification(mod_name):
+	var mod = modifications[mod_name]
+	if mod["enabled"] == "True":
+		for i in mod["pck_files"]:
+			ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
+		var main_script = load(mod["main_script_file"]).new()
+		main_script.add_characters()
+		main_script.add_stages()
