@@ -5,8 +5,13 @@ var file = File.new()
 var tr_en_fallback = [
 	"EN_US"
 ]
+var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
+	for i in Globals.modifications:
+		var mod = Globals.modifications[i]
+		mod_names[mod["name"]] = i
+		$tabs/Modifications/ItemList.add_item(mod["name"])
 	set_process(false)
 	$"tabs/Graphics/Options/side_left/fps/target".value = Engine.target_fps
 	
@@ -276,3 +281,26 @@ func _on_show_timer_toggled(button_pressed: bool) -> void:
 
 func _on_DSDK_toggled(button_pressed):
 	Globals.enable_discord_sdk(button_pressed)
+var mod_item_name
+
+
+
+func _on_Enable_toggled(button_pressed):
+	if not mod_item_name == null:
+		$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.disabled = false
+		if button_pressed:
+			$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.set_text("Disable")
+		else:
+			$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.set_text("Enable")
+		Globals.set_modification_enable(mod_names[mod_item_name], button_pressed)
+	else:
+		$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.disabled = true
+
+
+
+
+
+func _on_ItemList_item_selected(index):
+	mod_item_name = $tabs/Modifications/ItemList.get_item_text(index)
+	var mod = Globals.modifications[mod_names[mod_item_name]]
+	$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.pressed = bool(mod["enabled"])

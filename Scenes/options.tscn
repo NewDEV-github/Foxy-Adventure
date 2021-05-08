@@ -312,6 +312,7 @@ drag_to_rearrange_enabled = true
 [node name="controls_ui" parent="tabs/Controls" instance=ExtResource( 3 )]
 
 [node name="Discord" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -327,6 +328,65 @@ anchor_bottom = 0.5
 margin_top = -20.0
 margin_bottom = 20.0
 text = "Enable integration with DIscord by Discord SDK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Modifications" type="Tabs" parent="tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
+drag_to_rearrange_enabled = true
+
+[node name="ItemList" type="ItemList" parent="tabs/Modifications"]
+anchor_right = 1.0
+anchor_bottom = 0.882
+margin_top = -4.0
+margin_bottom = -0.192017
+allow_reselect = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tabs/Modifications"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="tabs/Modifications/VBoxContainer"]
+margin_right = 821.0
+margin_bottom = 19.0
+text = "NOTE: Restart game for changes to take effect!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tabs/Modifications/VBoxContainer"]
+margin_top = 23.0
+margin_right = 821.0
+margin_bottom = 50.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enable" type="Button" parent="tabs/Modifications/VBoxContainer/HBoxContainer"]
+margin_left = 380.0
+margin_right = 440.0
+margin_bottom = 27.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+text = "Enable"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -359,4 +419,6 @@ __meta__ = {
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/SFX/SFX_slider" to="." method="_on_SFX_slider_value_changed"]
 [connection signal="toggled" from="tabs/Audio/Options/Audio/SFX/SFX_on" to="." method="_on_SFX_on_toggled"]
 [connection signal="toggled" from="tabs/Discord/DSDK" to="." method="_on_DSDK_toggled"]
+[connection signal="item_selected" from="tabs/Modifications/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="toggled" from="tabs/Modifications/VBoxContainer/HBoxContainer/Enable" to="." method="_on_Enable_toggled"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]

@@ -275,12 +275,21 @@ func scan_and_load_modifications_cfg():
 					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
 					tmp["enabled"] = cfg.get_value("mod_info", "enabled")
 					tmp["main_script_file"] = cfg.get_value("mod_info", "main_script_file")
+					cfg.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
 					modifications[file_name.get_basename()] = tmp
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
 	print(modifications)
 
+func set_modification_enable(m_name:String, enable:bool):
+	var mod = modifications[m_name]
+	mod["enabled"] = enable
+	modifications[m_name]
+	cfile.load(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + m_name + ".cfg")
+	cfile.set_value("mod_info", "enabled", str(enable))
+	cfile.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + m_name + ".cfg")
+	print(modifications)
 
 func load_modification(mod_name):
 	var mod = modifications[mod_name]
