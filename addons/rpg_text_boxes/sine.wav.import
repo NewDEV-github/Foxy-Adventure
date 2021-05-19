@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sine.wav-755a0cf1f75dfd37bc4ba6375d6f8806.sample"
+
+[deps]
+
+source_file="res://addons/rpg_text_boxes/sine.wav"
+dest_files=[ "res://.import/sine.wav-755a0cf1f75dfd37bc4ba6375d6f8806.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Camera",
+"class": "AnaglyphCamera",
+"language": "GDScript",
+"path": "res://addons/silicon.3d.anaglyph/anaglyph_camera.gd"
+}, {
 "base": "DocItem",
 "class": "ArgumentDocItem",
 "language": "GDScript",
@@ -23,6 +28,11 @@ _global_script_classes=[ {
 "class": "ConstantDocItem",
 "language": "GDScript",
 "path": "res://addons/silicon.util.custom_docs/doc_item/constant_doc_item.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ContributorClass",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/ContributorClass.gd"
 }, {
 "base": "VideoPlayer",
 "class": "CutsceneVideoPlayer",
@@ -124,10 +134,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/foxyadventure_modcreator/export.gd"
 }, {
+"base": "PanelContainer",
+"class": "GistItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/GistItem.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
+}, {
+"base": "Container",
+"class": "HFlowContainer",
+"language": "GDScript",
+"path": "res://h_flow_container/h_flow_container.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InvitationItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/InvitationItem.gd"
 }, {
 "base": "DocItem",
 "class": "MethodDocItem",
@@ -138,6 +163,11 @@ _global_script_classes=[ {
 "class": "PropertyDocItem",
 "language": "GDScript",
 "path": "res://addons/silicon.util.custom_docs/doc_item/property_doc_item.gd"
+}, {
+"base": "PanelContainer",
+"class": "RepositoryItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
 }, {
 "base": "RichTextEffect",
 "class": "RichTextMatrix",
@@ -165,9 +195,11 @@ _global_script_classes=[ {
 "path": "res://addons/godot-firebase/storage/storage_task.gd"
 } ]
 _global_script_class_icons={
+"AnaglyphCamera": "res://addons/silicon.3d.anaglyph/anaglyph_camera.svg",
 "ArgumentDocItem": "",
 "ClassDocItem": "",
 "ConstantDocItem": "",
+"ContributorClass": "",
 "CutsceneVideoPlayer": "",
 "Discord": "",
 "DocExporter": "",
@@ -188,9 +220,13 @@ _global_script_class_icons={
 "FirestoreTask": "",
 "FmodNative": "",
 "FoxyAdventureMODCfgExport": "",
+"GistItem": "",
 "GitAPI": "",
+"HFlowContainer": "res://h_flow_container/h_flow_container.svg",
+"InvitationItem": "",
 "MethodDocItem": "",
 "PropertyDocItem": "",
+"RepositoryItem": "",
 "RichTextMatrix": "",
 "RichTextPulse": "",
 "SignalDocItem": "",
@@ -241,7 +277,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg" )
 
 [firebase]
 

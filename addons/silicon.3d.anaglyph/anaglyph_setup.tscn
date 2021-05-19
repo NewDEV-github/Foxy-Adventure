@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D left_camera;
+uniform sampler2D right_camera;
+
+uniform float black_and_white : hint_range(0.0, 1.0);
+uniform float half_res : hint_range(0.0, 1.0);
+
+float rgb2bw(vec3 rgb) {
+	return dot(rgb, vec3(0.21, 0.71, 0.07));
+}
+
+void fragment() {
+	vec2 uv = mix(SCREEN_UV, vec2(0.5), vec2(0.0, -1.0));
+	uv = mix(uv, vec2(0.5), 0.5);
+	uv = mix(SCREEN_UV, uv, half_res);
+	
+	vec3 left = texture(left_camera, uv).rgb;
+	vec3 right = texture(right_camera, uv).rgb;
+	
+	left = mix(left, vec3(rgb2bw(left)), black_and_white) * vec3(1.0, 0.0, 0.0);
+	right = mix(right, vec3(rgb2bw(right)), black_and_white) * vec3(0.0, 1.0, 1.0);
+	
+	COLOR.rgb = left + right;
+	
+	// Split screen effect
+//	vec4 left = texture(left_camera, SCREEN_UV * vec2(2.0, 1.0));// * vec4(1, 0, 0, 1);
+//	vec4 right = texture(right_camera, SCREEN_UV * vec2(2.0, 1.0) - vec2(1.0, 0.0));// * vec4(0, 1, 1, 1);
+//
+//	COLOR.rgb = SCREEN_UV.x > 0.5 ? right.rgb : left.rgb;
+}"
+
+[sub_resource type="ViewportTexture" id=2]
+flags = 4
+viewport_path = NodePath("Left")
+
+[sub_resource type="ViewportTexture" id=3]
+flags = 4
+viewport_path = NodePath("Right")
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/black_and_white = null
+shader_param/half_res = null
+shader_param/left_camera = SubResource( 2 )
+shader_param/right_camera = SubResource( 3 )
+
+[node name="Anaglyph" type="Spatial"]
+
+[node name="Left" type="Viewport" parent="."]
+size = Vector2( 128, 128 )
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Left"]
+projection = 2
+size = 0.1
+
+[node name="Right" type="Viewport" parent="."]
+size = Vector2( 128, 128 )
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Right"]
+projection = 2
+size = 0.1
+
+[node name="Composite" type="ColorRect" parent="."]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

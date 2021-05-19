@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/btree/Editor/inverter/inverter.gd" type="Script" id=1]
+
+[node name="inverter" type="GraphNode"]
+margin_right = 92.0
+margin_bottom = 43.0
+hint_tooltip = "the child result always succeed"
+title = "inverter"
+show_close = true
+resizable = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 0, 0.0156863, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 0.0784314, 0, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot0" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 79.0
+margin_bottom = 38.0

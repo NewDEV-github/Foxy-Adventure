@@ -5,6 +5,7 @@ var images: Discord.ImageManager
 var core: Discord.Core
 var discord_user_img = null
 signal user_avatar_loaded
+signal initialized
 var av_en
 func enum_to_string(the_enum: Dictionary, value: int) -> String:
 	var index: = the_enum.values().find(value)
@@ -41,6 +42,7 @@ func _ready() -> void:
 				"Failed to update activity: ",
 				enum_to_string(Discord.Result, result)
 			)
+		emit_signal("initialized")
 
 
 func _process(_delta: float) -> void:
@@ -197,10 +199,10 @@ func get_current_user_premium_type_callback(
 func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 	if Discord.Core != null:
 		print("Starting RPC...")
-		var activity: = Discord.Activity.new()
+		var activity = Discord.Activity.new()
 		if not developer and not is_in_menu:
 			activity.details = "Playing as %s" % [character]
-			if display_stage:
+			if display_stage != null:
 				activity.state = "At %s" % [Globals.stage_names[str(Globals.current_stage)]]
 		elif developer:
 			activity.details = "I'm making the game for You now"

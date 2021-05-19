@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/vowel.wav-63b87f601bc167b19f8f4585fdc01264.sample"
+
+[deps]
+
+source_file="res://addons/rpg_text_boxes/vowel.wav"
+dest_files=[ "res://.import/vowel.wav-63b87f601bc167b19f8f4585fdc01264.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

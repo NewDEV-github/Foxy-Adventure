@@ -15,9 +15,10 @@ func _on_FirebaseAuth_login_succeeded(auth):
 	$VBoxContainer3/Info.disabled = false
 	$VBoxContainer3/Logout.disabled = false
 	$VBoxContainer3/Login.disabled = true
+	var db_ref = Firebase.Database.get_database_reference("test")
+#	print("Db ref: " + db_ref.get_data())
+	db_ref.push({"f": "df"})
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
-	var db_ref = Firebase.Database.get_database_reference("users", {})
-#	print("Db ref: " + db_ref)
 func on_login_failed(error_code, message):
 	print("error code: " + str(error_code))
 	print("message: " + str(message))
@@ -36,7 +37,10 @@ func _ready() -> void:
 		$VBoxContainer3/Info.disabled = false
 		$VBoxContainer3/Logout.disabled = false
 		$VBoxContainer3/Login.disabled = true
-		$Account.load_account_info()
+#		var db_ref = Firebase.Database.get_database_reference("test")
+	#	print("Db ref: " + db_ref.get_data())
+#		db_ref.push({"f": ""})
+#		$Account.load_account_info()
 #		print(Firebase.Auth.auth)
 #		print(Globals.user_data['displayname'])
 #		print(Globals.user_data['profilepicture'])
@@ -199,3 +203,7 @@ func _on_Logout_pressed():
 
 func _on_Login_pressed():
 	$LoginPanel.popup_centered()
+
+
+func _on_Leaderboard_pressed():
+	$Leaderboard.popup_centered()

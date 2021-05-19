@@ -1,0 +1,48 @@
+extends WindowDialog
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+var userdata
+var scorelist
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	get_data()
+
+
+func get_data():
+	$Userdata.request('https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/app/api/get_users_data')
+	yield($Userdata, "request_completed")
+	$Scorelist.request('https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/app/api/foxyadventure/leaderboard-all-scores')
+	yield($Scorelist, "request_completed")
+	render_board()
+func _on_Userdata_request_completed(result, response_code, headers, body):
+	var res = JSON.parse(body.get_string_from_utf8())
+	userdata = res.result
+	print(userdata)
+
+
+func _on_Scorelist_request_completed(result, response_code, headers, body):
+	var res = JSON.parse(body.get_string_from_utf8())
+	scorelist = res.result
+	print(scorelist)
+
+func get_username_or_email_by_uid(uid:String):
+	for i in userdata:
+#		print(i)
+		if i == uid:
+			var tmp_userdata = userdata[i]
+			print(tmp_userdata)
+			if tmp_userdata['username'] != null:
+				return tmp_userdata['username']
+			elif tmp_userdata['username'] == null:
+				return tmp_userdata['email']
+var number = 1
+func render_board():
+	for i in scorelist:
+		print(i)
+		print("Found score from %s: %s" % [get_username_or_email_by_uid(i), scorelist[i]])
+		$ItemList.add_item("%s. %s: %s" % [number, get_username_or_email_by_uid(i), scorelist[i]])
+		number += 1

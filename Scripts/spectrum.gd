@@ -8,7 +8,8 @@ var total_w = 400
 var total_h = 200
 var min_freq = 20
 var max_freq = 20000
-
+var linear_color = Color.crimson
+var round_color = Color.dodgerblue
 var max_db = 0
 var min_db = -80
 
@@ -57,7 +58,7 @@ func _draw():
 #	draw_line(Vector2(0, -total_h), Vector2(total_w, -total_h), Color.crimson, 2.0, true)
 	
 	for i in range(definition):
-		draw_line(draw_pos, draw_pos + Vector2(0, -histogram[i] * total_h), Color.crimson, 4.0, true)
+		draw_line(draw_pos, draw_pos + Vector2(0, -histogram[i] * total_h), linear_color, 4.0, true)
 		draw_pos.x += w_interval
 	
 	# Round Visualiser
@@ -70,5 +71,5 @@ func _draw():
 		var normal = Vector2(0, -1).rotated(angle)
 		var start_pos = normal * radius
 		var end_pos = normal * (radius + histogram[i] * length)
-		draw_line(start_pos, end_pos, Color.dodgerblue, 4.0, true)
+		draw_line(start_pos, end_pos, round_color, 4.0, true)
 		angle += angle_interval

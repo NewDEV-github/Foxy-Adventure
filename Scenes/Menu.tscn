@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/LoginPanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Leaderboard.gd" type="Script" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
 
 [node name="Menu" type="Control"]
@@ -124,7 +125,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -225.0
-margin_top = -135.0
+margin_top = -180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -136,18 +137,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Achivements"
 
-[node name="Options" type="Button" parent="VBoxContainer2"]
+[node name="Leaderboard" type="Button" parent="VBoxContainer2"]
 margin_top = 46.0
 margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "Leaderboard"
+
+[node name="Options" type="Button" parent="VBoxContainer2"]
+margin_top = 92.0
+margin_right = 225.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
-margin_top = 92.0
+margin_top = 138.0
 margin_right = 225.0
-margin_bottom = 135.0
+margin_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Quit"
@@ -331,6 +340,28 @@ visible = false
 
 [node name="LoginPanel" parent="." instance=ExtResource( 8 )]
 
+[node name="Leaderboard" type="WindowDialog" parent="."]
+margin_right = 408.0
+margin_bottom = 354.0
+window_title = "Leaderboard"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Userdata" type="HTTPRequest" parent="Leaderboard"]
+
+[node name="Scorelist" type="HTTPRequest" parent="Leaderboard"]
+
+[node name="ItemList" type="ItemList" parent="Leaderboard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_right = -2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]
@@ -338,6 +369,7 @@ visible = false
 [connection signal="pressed" from="VBoxContainer3/Logout" to="." method="_on_Logout_pressed"]
 [connection signal="pressed" from="VBoxContainer3/Info" to="." method="_on_Info_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Leaderboard" to="." method="_on_Leaderboard_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="no_saves_found" from="SaveLoader" to="." method="_on_SaveLoader_no_saves_found"]
@@ -345,3 +377,5 @@ visible = false
 [connection signal="pressed" from="NewSave/CancelNewSave" to="." method="_on_CanceNewSave_pressed"]
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/Done" to="." method="_on_Done_item_selected"]
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/NotDone" to="." method="_on_NotDone_item_selected"]
+[connection signal="request_completed" from="Leaderboard/Userdata" to="Leaderboard" method="_on_Userdata_request_completed"]
+[connection signal="request_completed" from="Leaderboard/Scorelist" to="Leaderboard" method="_on_Scorelist_request_completed"]
