@@ -20,7 +20,7 @@ func _ready():
 #	if Globals.release_mode:
 #		load_assets()
 #	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
-#	BackgroundLoad.load_scene("res://s.tscn")
+#	BackgroundLoad.get_node("bgload").load_scene("res://s.tscn")
 	var dir = Directory.new()
 	dir.open('user://')
 	dir.make_dir('dlcs')

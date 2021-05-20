@@ -84,7 +84,9 @@ tracks/1/keys = {
 "values": [ 0.8 ]
 }
 
-[node name="bgload" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="bgload" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -94,7 +96,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="ColorRect" parent="."]
+[node name="bg" type="ColorRect" parent="bgload"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -104,10 +106,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start_transtition" parent="." instance=ExtResource( 2 )]
+[node name="Start_transtition" parent="bgload" instance=ExtResource( 2 )]
 mouse_filter = 1
 
-[node name="progress" type="ProgressBar" parent="."]
+[node name="progress" type="ProgressBar" parent="bgload"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -121,10 +123,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bgload"]
 anims/start_transition = SubResource( 1 )
 
-[node name="hint" type="RichTextLabel" parent="."]
+[node name="hint" type="RichTextLabel" parent="bgload"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 300.0
 margin_top = 348.0
@@ -136,8 +138,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hintanimator" type="AnimationPlayer" parent="."]
+[node name="hintanimator" type="AnimationPlayer" parent="bgload"]
 playback_speed = 0.8
 anims/normal = SubResource( 2 )
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="bgload/AnimationPlayer" to="bgload" method="_on_AnimationPlayer_animation_finished"]

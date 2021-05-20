@@ -43,7 +43,6 @@ func _on_Timer_timeout():
 var pressed_1 = false
 var pressed_2 = false
 func _process(delta):
-
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 		if pressed_1 == false:
 			$CanvasLayer/Control/ColorRect/MessageBox.message = "Great!"
@@ -54,9 +53,15 @@ func _process(delta):
 			$CanvasLayer/Control/ColorRect/MessageBox.message = "Now press space bar to jump over toxins or between platforms."
 			$Timer.start()
 			yield($Timer, "timeout")
-	if Input.is_action_pressed("ui_accept"):
+			pressed_2 = true
+	if Input.is_action_pressed("ui_accept") and pressed_2 == true:
 		$CanvasLayer/Control/ColorRect/MessageBox.message = "You're ready to go!!"
-		BackgroundLoad.load_scene("res://Scenes/Stages/poziom_1.tscn")
+		$Timer.wait_time = 1.5
+		$Timer.start()
+		yield($Timer, "timeout")
+		BackgroundLoad.get_node("bgload").play_start_transition = true
+		BackgroundLoad.get_node("bgload").load_scene("res://Scenes/Stages/poziom_1.tscn")
+		$CanvasLayer/Control.hide()
 		set_process(false)
 func _on_MessageBox_message_done():
 	$Timer.start()

@@ -11,7 +11,8 @@ var hints = [
 	"Use WASD or Arrow keys on your keyboard to control Your character in the game.",
 	#"Test hint 2",
 	"Tails can't fly!",
-	
+	"Better don't jump into toxins...",
+	"OK!",
 ]
 
 func _thread_load(path):

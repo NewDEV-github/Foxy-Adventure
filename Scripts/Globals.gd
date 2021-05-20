@@ -210,8 +210,8 @@ func load_level(save_name:String):
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
 	var loaded_stage = stage_list[str(stage)]
-	BackgroundLoad.play_start_transition = true
-	BackgroundLoad.load_scene(loaded_stage)
+	BackgroundLoad.get_node("bgload").play_start_transition = true
+	BackgroundLoad.get_node("bgload").load_scene(loaded_stage)
 func game_over():
 	if lives != 1:
 		get_tree().reload_current_scene()

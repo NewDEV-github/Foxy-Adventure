@@ -8,7 +8,7 @@ export (bool) var tooltip_enabled = false
 #var discord_rpc = DISCORD_RPC.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	BackgroundLoad.play_start_transition = true
+	BackgroundLoad.get_node("bgload").play_start_transition = true
 	var new_chrs = Globals.new_characters
 	print(str(new_chrs))
 	for character in new_chrs:
@@ -20,7 +20,7 @@ func _ready():
 #	pass
 func after_selecting_player():
 #	Globals.save_level(0, Globals.current_save_name)
-	BackgroundLoad.load_scene("res://Scenes/Stages/poziom_1.tscn")
+	BackgroundLoad.get_node("bgload").load_scene("res://Scenes/Stages/tutorial.tscn")
 #	BackgroundLoad
 
 func _on_ItemList_item_selected(index):
