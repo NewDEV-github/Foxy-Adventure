@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Stages/tutorial.gd" type="Script" id=2]
-[ext_resource path="res://addons/rpg_text_boxes/rpg_label.gd" type="Script" id=3]
+[ext_resource path="res://addons/messagebox/message_box.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Stages/bg1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
@@ -595,128 +595,129 @@ bus = "Music"
 
 [node name="AnimatedSprite" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 338.727, 890.741 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite2" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 501.361, 784.853 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite3" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 294.886, 663.231 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite4" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1517.09, 683.03 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite5" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1751.85, 591.106 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite6" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1569.42, 859.806 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite7" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1753.26, 842.836 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite8" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1863.57, 647.674 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite9" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1925.8, 864.049 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite10" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2198.32, 865.463 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite11" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2892.84, 1242.21 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite12" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3057.93, 1302.53 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite13" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2978.56, 1181.89 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite14" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3203.97, 1162.84 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite15" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3099.2, 1219.98 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite16" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3172.22, 1343.8 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite17" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2949.99, 1353.33 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite18" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2959.51, 1454.92 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite19" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3169.05, 1470.79 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite20" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3042.05, 1502.54 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite21" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5398.18, 1984.06 )
+frame = 1
 
 [node name="AnimatedSprite22" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5412.18, 2078.06 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite23" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5400.18, 2158.06 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite24" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5408.18, 2258.06 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite25" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5410.18, 2366.06 )
-frame = 0
+frame = 3
 
 [node name="AnimatedSprite26" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5404.18, 2482.06 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite27" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5654.18, 2038.06 )
-frame = 3
 
 [node name="AnimatedSprite28" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5642.18, 2166.06 )
+frame = 1
 
 [node name="AnimatedSprite29" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5646.18, 2250.06 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite30" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5646.18, 2332.06 )
+frame = 1
 
 [node name="AnimatedSprite31" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5650.18, 2434.06 )
-frame = 3
 
 [node name="AnimatedSprite32" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5640.18, 2536.06 )
-frame = 0
+frame = 3
 
 [node name="Doors" type="Area2D" parent="."]
 position = Vector2( 1945.96, 475.176 )
@@ -744,18 +745,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RPGLabel" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect"]
+[node name="MessageBox" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"
+scroll_active = false
 script = ExtResource( 3 )
-volume_db = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+speed = 15.0
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 2
-wait_time = 6.0
-autostart = true
+wait_time = 5.0
+one_shot = true
 
 [connection signal="tree_exited" from="." to="." method="_on_Node2D_tree_exited"]
 [connection signal="body_entered" from="dead_areas/dead_area" to="." method="toxic_entered"]
@@ -767,4 +771,5 @@ autostart = true
 [connection signal="body_entered" from="dead_areas/dead_area7" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area5" to="." method="toxic_entered"]
 [connection signal="body_entered" from="Doors" to="." method="_on_Doors_body_entered"]
+[connection signal="message_done" from="CanvasLayer/Control/ColorRect/MessageBox" to="." method="_on_MessageBox_message_done"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -10,25 +10,14 @@ var character = load(str(Globals.character_path)).instance()
 # Called when the node enters the scene tree for the first time.
 var music_files = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
 func _ready():
-	$CanvasLayer/Control/ColorRect/RPGLabel.set_text("Welcome to Foxy Adventure.\nFollow that tutorial to learn controls in the game and much more :3")
-	$Timer.start()
+	set_process(false)
+	get_tree().paused = true
+	$CanvasLayer/Control/ColorRect/MessageBox.message = "Welcome to Foxy Adventure.\nFollow that tutorial to learn controls in the game and much more :3"
 	randomize()
 	var audio = load(music_files[randi()%music_files.size()])
 	$AudioStreamPlayer2D.stream = audio
 	$AudioStreamPlayer2D.play()
-	Globals.current_stage = 0
-#	Fmod.add_listener(0, self)
-#	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
-	Globals.save_level(0, Globals.current_save_name)
-	add_child(character)
-#	character.set_owner(root)
-	get_node(str(character.name)).position = startup_position
-	get_tree().paused = true
 
-func change_level():
-	if Globals.fallen_into_toxins == 0:
-		Globals.set_achievement_done("I'm not toxic")
-	get_tree().change_scene("res://Scenes/Stages/poziom_2.tscn")
 func toxic_entered(body):
 	if body.name == "Tails":
 		Globals.felt_into_toxine()
@@ -36,16 +25,38 @@ func toxic_entered(body):
 			Globals.game_over()
 
 
-func _on_Node2D_tree_exited():
-#	Fmod.stop_sound(Fmod.music_instances["1stage"])
-	pass
-
-
-func _on_Doors_body_entered(body):
-	if body.name == "Tails":
-		change_level()
-
-
 func _on_Timer_timeout():
+	var prs = false
+	Globals.current_stage = 0
+#	Fmod.add_listener(0, self)
+#	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
+	Globals.save_level(0, Globals.current_save_name)
+	add_child(character)
+#	character.set_owner(root)
+	get_node(str(character.name)).position = startup_position
 	get_tree().paused = false
-	$CanvasLayer/Control/ColorRect/RPGLabel.set_text("Use WASD or Arrow Keys to control your character.")
+	$Timer.disconnect("timeout", self, "_on_Timer_timeout")
+	$CanvasLayer/Control/ColorRect/MessageBox.disconnect("timeout", self, "_on_MessageBox_message_done")
+	$CanvasLayer/Control/ColorRect/MessageBox.message = "Use WASD or Arrow Keys to control your character."
+	set_process(true)
+	
+var pressed_1 = false
+var pressed_2 = false
+func _process(delta):
+
+	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+		if pressed_1 == false:
+			$CanvasLayer/Control/ColorRect/MessageBox.message = "Great!"
+			pressed_1 = true
+			yield($CanvasLayer/Control/ColorRect/MessageBox,"message_done")
+			$Timer.start()
+			yield($Timer, "timeout")
+			$CanvasLayer/Control/ColorRect/MessageBox.message = "Now press space bar to jump over toxins or between platforms."
+			$Timer.start()
+			yield($Timer, "timeout")
+	if Input.is_action_pressed("ui_accept"):
+		$CanvasLayer/Control/ColorRect/MessageBox.message = "You're ready to go!!"
+		BackgroundLoad.load_scene("res://Scenes/Stages/poziom_1.tscn")
+		set_process(false)
+func _on_MessageBox_message_done():
+	$Timer.start()
