@@ -84,18 +84,17 @@ size_flags_vertical = 3
 text = "Load Game"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -225.0
-margin_bottom = 135.0
+margin_bottom = 90.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Login" type="Button" parent="VBoxContainer3"]
 margin_right = 225.0
-margin_bottom = 42.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Login/Register"
@@ -104,14 +103,15 @@ __meta__ = {
 }
 
 [node name="Logout" type="Button" parent="VBoxContainer3"]
-margin_top = 46.0
+margin_top = 47.0
 margin_right = 225.0
-margin_bottom = 88.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Logout"
 
 [node name="Info" type="Button" parent="VBoxContainer3"]
+visible = false
 margin_top = 92.0
 margin_right = 225.0
 margin_bottom = 135.0

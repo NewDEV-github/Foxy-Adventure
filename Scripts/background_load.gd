@@ -5,7 +5,8 @@ var play_start_transition = false
 onready var progress = $progress
 signal loaded
 var SIMULATED_DELAY_SEC = 1.0
-
+func _ready():
+	hide()
 var hints = [
 	#"Test hint",
 	"Use WASD or Arrow keys on your keyboard to control Your character in the game.",
@@ -68,8 +69,10 @@ func _thread_done(resource):
 	$bg.hide()
 	$hint.hide()
 	emit_signal("loaded")
+	hide()
 #	SavingDataIcon.show_up(true, 4)
 func load_scene(path):
+	show()
 	if not File.new().file_exists(path):
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)

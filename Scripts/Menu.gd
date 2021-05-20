@@ -11,13 +11,13 @@ onready var world_list = Globals.worlds
 func _on_FirebaseAuth_login_succeeded(auth):
 	Firebase.Auth.save_auth(auth)
 	Globals.user_data = auth
-	$Account.load_account_info()
+#	$Account.load_account_info()
 	$VBoxContainer3/Info.disabled = false
 	$VBoxContainer3/Logout.disabled = false
 	$VBoxContainer3/Login.disabled = true
-	var db_ref = Firebase.Database.get_database_reference("test")
+#	var db_ref = Firebase.Database.get_database_reference("test")
 #	print("Db ref: " + db_ref.get_data())
-	db_ref.push({"f": "df"})
+#	db_ref.push({"f": "df"})
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
 func on_login_failed(error_code, message):
 	print("error code: " + str(error_code))

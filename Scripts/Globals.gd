@@ -1,7 +1,7 @@
 extends Node
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
-var user_data
+var user_data = {}
 var all_achievements = [
 	"I'm not toxic",#done
 	"Up to five times",#done
@@ -127,8 +127,12 @@ func add_life():
 		set_achievement_done("Like a cat, but... Better")
 
 func add_coin(anmount):
+	if not user_data == {}:
+#		print(user_data["localid"])
+		Api.update_score(user_data["localid"], 1)
 	coins += anmount
-	print(str(int(coins) % 100))
+	
+#	print(str(int(coins) % 100))
 	if int(coins) % 100 == 0:
 		add_life()
 	if coins == 50:
@@ -143,6 +147,7 @@ func felt_into_toxine():
 	elif fallen_into_toxins == 15:
 		set_achievement_done("Advanced sewage purifier")
 
+	emit_signal("scoredatarecived")
 func _ready():
 	
 	var conf = ConfigFile.new()

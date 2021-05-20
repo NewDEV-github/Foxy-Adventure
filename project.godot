@@ -256,6 +256,7 @@ BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Globals="*res://Scripts/Globals.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+Api="*res://Scenes/api.tscn"
 
 [debug]
 
@@ -277,7 +278,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg" )
 
 [firebase]
 
