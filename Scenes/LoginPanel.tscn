@@ -3,6 +3,7 @@
 [ext_resource path="res://Scripts/LoginPanel.gd" type="Script" id=1]
 
 [node name="LoginPanel" type="WindowDialog"]
+visible = true
 margin_right = 518.0
 margin_bottom = 348.0
 window_title = "Login/Register"
@@ -24,21 +25,21 @@ custom_constants/separation = 7
 alignment = 1
 
 [node name="Email" type="LineEdit" parent="HBoxContainer/Login"]
-margin_top = 134.0
+margin_top = 133.0
 margin_right = 257.0
-margin_bottom = 153.0
+margin_bottom = 157.0
 placeholder_text = "Email..."
 
 [node name="Password" type="LineEdit" parent="HBoxContainer/Login"]
-margin_top = 160.0
+margin_top = 164.0
 margin_right = 257.0
-margin_bottom = 179.0
+margin_bottom = 188.0
 placeholder_text = "Password..."
 
 [node name="Login" type="Button" parent="HBoxContainer/Login"]
-margin_top = 186.0
+margin_top = 195.0
 margin_right = 257.0
-margin_bottom = 213.0
+margin_bottom = 215.0
 text = "Login"
 
 [node name="Register" type="VBoxContainer" parent="HBoxContainer"]
@@ -51,21 +52,21 @@ custom_constants/separation = 7
 alignment = 1
 
 [node name="Email" type="LineEdit" parent="HBoxContainer/Register"]
-margin_top = 134.0
+margin_top = 133.0
 margin_right = 257.0
-margin_bottom = 153.0
+margin_bottom = 157.0
 placeholder_text = "Email..."
 
 [node name="Password" type="LineEdit" parent="HBoxContainer/Register"]
-margin_top = 160.0
+margin_top = 164.0
 margin_right = 257.0
-margin_bottom = 179.0
+margin_bottom = 188.0
 placeholder_text = "Password..."
 
 [node name="Register" type="Button" parent="HBoxContainer/Register"]
-margin_top = 186.0
+margin_top = 195.0
 margin_right = 257.0
-margin_bottom = 213.0
+margin_bottom = 215.0
 text = "Register"
 
 [connection signal="pressed" from="HBoxContainer/Login/Login" to="." method="_on_Login_pressed"]

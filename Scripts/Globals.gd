@@ -127,9 +127,14 @@ func add_life():
 		set_achievement_done("Like a cat, but... Better")
 
 func add_coin(anmount):
-	if not user_data == {}:
+	var tmp_up = true
+	if user_data.has("localid"):
 #		print(user_data["localid"])
-		Api.update_score(user_data["localid"], 1)
+		Api.update_score(user_data["localid"], anmount)
+	else: #wait when we will be able to upload scores and update one
+		while tmp_up == true and user_data.has("localid"):
+			Api.update_score(user_data["localid"], anmount)
+			tmp_up = false
 	coins += anmount
 	
 #	print(str(int(coins) % 100))
@@ -294,7 +299,7 @@ func set_modification_enable(m_name:String, enable:bool):
 	cfile.load(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + m_name + ".cfg")
 	cfile.set_value("mod_info", "enabled", str(enable))
 	cfile.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + m_name + ".cfg")
-	print(modifications)
+#	print(modifications)
 
 func load_modification(mod_name):
 	var mod = modifications[mod_name]

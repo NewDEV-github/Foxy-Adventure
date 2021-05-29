@@ -18,12 +18,12 @@ func _ready():
 
 func _on_Login_pressed():
 	Firebase.Auth.login_with_email_and_password($HBoxContainer/Login/Email.text, $HBoxContainer/Login/Password.text)
-
+	hide()
 
 
 func _on_Register_pressed():
-	Firebase.Auth.connect("signup_succeeded", self, "send_email")
+#	Firebase.Auth.connect("signup_succeeded", self, "send_email")
 	Firebase.Auth.signup_with_email_and_password($HBoxContainer/Register/Email.text, $HBoxContainer/Register/Password.text)
-
-func send_email():
+#func send_email():
 	Firebase.Auth.send_account_verification_email()
+	hide()

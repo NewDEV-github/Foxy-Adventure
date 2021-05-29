@@ -63,5 +63,6 @@ func _process(delta):
 		BackgroundLoad.get_node("bgload").load_scene("res://Scenes/Stages/poziom_1.tscn")
 		$CanvasLayer/Control.hide()
 		set_process(false)
+		get_node(str(character.name)).queue_free()
 func _on_MessageBox_message_done():
 	$Timer.start()
