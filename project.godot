@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Camera",
-"class": "AnaglyphCamera",
-"language": "GDScript",
-"path": "res://addons/silicon.3d.anaglyph/anaglyph_camera.gd"
-}, {
 "base": "DocItem",
 "class": "ArgumentDocItem",
 "language": "GDScript",
@@ -144,11 +139,6 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
 }, {
-"base": "Container",
-"class": "HFlowContainer",
-"language": "GDScript",
-"path": "res://h_flow_container/h_flow_container.gd"
-}, {
 "base": "HBoxContainer",
 "class": "InvitationItem",
 "language": "GDScript",
@@ -195,7 +185,6 @@ _global_script_classes=[ {
 "path": "res://addons/godot-firebase/storage/storage_task.gd"
 } ]
 _global_script_class_icons={
-"AnaglyphCamera": "res://addons/silicon.3d.anaglyph/anaglyph_camera.svg",
 "ArgumentDocItem": "",
 "ClassDocItem": "",
 "ConstantDocItem": "",
@@ -222,7 +211,6 @@ _global_script_class_icons={
 "FoxyAdventureMODCfgExport": "",
 "GistItem": "",
 "GitAPI": "",
-"HFlowContainer": "res://h_flow_container/h_flow_container.svg",
 "InvitationItem": "",
 "MethodDocItem": "",
 "PropertyDocItem": "",
@@ -425,11 +413,14 @@ ssl/certificates="res://ca-bundle.crt"
 
 quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
+2d/options/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 quality/reflections/texture_array_reflections.mobile=true
 quality/reflections/high_quality_ggx.mobile=true
+2d/opengl/batching_stream=2
 batching/options/single_rect_fallback=true
 batching/debug/flash_batching=true
 batching/debug/diagnose_frame=true

@@ -1,8 +1,8 @@
 #!/bin/bash
 sudo apt-get install unzip
-GODOT_VERSION="3.3.stable"
-GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3/Godot_v3.3-stable_linux_headless.64.zip"
-GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3/Godot_v3.3-stable_export_templates.tpz"
+GODOT_VERSION="3.3.2.stable"
+GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3.2/Godot_v3.3.2-stable_linux_headless.64.zip"
+GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3.2/Godot_v3.3.2-stable_export_templates.tpz"
 
 GODOT_BINARY_FILENAME="$(basename -s .zip $GODOT_BINARY_DOWNLOAD_LINK)"
 GODOT_ZIP_FILENAME="$(basename $GODOT_BINARY_DOWNLOAD_LINK)"

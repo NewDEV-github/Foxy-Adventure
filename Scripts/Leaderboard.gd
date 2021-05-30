@@ -13,9 +13,11 @@ func _ready():
 
 
 func get_data():
-	$Userdata.request('https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/app/api/get_users_data')
+	$Userdata.request('https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/db/get_users_data')
 	yield($Userdata, "request_completed")
-	$Scorelist.request('https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/app/api/foxyadventure/leaderboard-all-scores')
+	var t = {'game': 'FoxyAdventure'}
+	var params = JSON.print(t)
+	$Scorelist.request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/leaderboard/get-scores", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
 	yield($Scorelist, "request_completed")
 	render_board()
 func _on_Userdata_request_completed(result, response_code, headers, body):

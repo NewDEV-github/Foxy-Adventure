@@ -19,9 +19,7 @@ func _on_FirebaseAuth_login_succeeded(auth):
 #	print("Db ref: " + db_ref.get_data())
 #	db_ref.push({"f": "df"})
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
-func on_login_failed(error_code, message):
-	print("error code: " + str(error_code))
-	print("message: " + str(message))
+
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
 func _ready() -> void:
@@ -30,7 +28,6 @@ func _ready() -> void:
 	$VBoxContainer3/Login.disabled = false
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
-	Firebase.Auth.connect("login_failed", self, "on_login_failed")
 	if Firebase.Auth.check_auth_file():
 		Firebase.Auth.load_auth()
 		Globals.user_data = Firebase.Auth.auth

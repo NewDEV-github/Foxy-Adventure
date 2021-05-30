@@ -34,6 +34,8 @@ placeholder_text = "Email..."
 margin_top = 164.0
 margin_right = 257.0
 margin_bottom = 188.0
+secret = true
+secret_character = "•"
 placeholder_text = "Password..."
 
 [node name="Login" type="Button" parent="HBoxContainer/Login"]
@@ -61,6 +63,8 @@ placeholder_text = "Email..."
 margin_top = 164.0
 margin_right = 257.0
 margin_bottom = 188.0
+secret = true
+secret_character = "•"
 placeholder_text = "Password..."
 
 [node name="Register" type="Button" parent="HBoxContainer/Register"]
@@ -69,5 +73,16 @@ margin_right = 257.0
 margin_bottom = 215.0
 text = "Register"
 
+[node name="Error" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 288.0
+margin_bottom = 154.0
+window_title = "Error!"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="HBoxContainer/Login/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="HBoxContainer/Register/Register" to="." method="_on_Register_pressed"]
+[connection signal="confirmed" from="Error" to="." method="_on_Error_confirmed"]

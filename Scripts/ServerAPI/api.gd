@@ -15,7 +15,9 @@ var tmp_current_scene = ""
 func update_score(uid, score):
 	_tmp_uid = uid
 	connect("request_completed", self, "get_scores")
-	request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/app/api/foxyadventure/leaderboard-all-scores")
+	var t = {'game': 'FoxyAdventure'}
+	var params = JSON.print(t)
+	request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/leaderboard/get-scores", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
 	yield(self, "request_completed")
 	if temp_score == -1:
 		temp_score = int(current_user_score[uid])
@@ -34,5 +36,5 @@ func _upload_score():
 	var t = {'userid': _tmp_uid, 'score': temp_score}
 	var params = JSON.print(t)
 	print("Posting new score")
-	request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/app/api/foxyadventure/leaderboard-new-score", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
+	request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/leaderboard/new-score", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
 	t = {}
