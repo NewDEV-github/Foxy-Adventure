@@ -1,0 +1,33 @@
+{
+  "application": {
+    "id": 729429191489093702,
+    "manifests": [
+      {
+        "label": "Foxy Adventure/windows64",
+        "platforms": ["win64"],
+        "locales": [],
+        "local_root": "./builds/win64/",
+        "file_rules": {
+          "mappings": [
+            {
+              "local_path": ".",
+              "install_path": "."
+            }
+          ]
+        },
+        "storage": {
+          "sync": false
+        },
+        "launch_options": [
+          {
+            "name": "Foxy Adventure/win64",
+            "executable": "FoxyAdventure.exe",
+            "arguments": [],
+            "platforms": ["win64"],
+            "working_dir": "./"
+          }
+        ]
+      }
+    ]
+  }
+}

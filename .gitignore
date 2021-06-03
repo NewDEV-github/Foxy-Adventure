@@ -2,6 +2,7 @@
 .import/
 .mono/
 android/
+builds/
 
 #cert files
 *.crt
