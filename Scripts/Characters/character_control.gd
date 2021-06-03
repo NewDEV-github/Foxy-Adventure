@@ -143,3 +143,8 @@ func _physics_process(delta):
 
 func _on_Tails_tree_exiting():
 	DiscordSDK.kill_rpc()
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Enemy":
+		body.hit_by_bulet()

@@ -313,8 +313,6 @@ tracks/5/keys = {
 extents = Vector2( 15.1005, 12.4917 )
 
 [node name="Tails" type="KinematicBody2D"]
-z_index = 1
-collision/safe_margin = 0.1
 script = ExtResource( 2 )
 character_name = "Tails"
 
@@ -369,4 +367,13 @@ cast_to = Vector2( 11, 0 )
 [node name="LeftWallSensor" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -11, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="LowCollider2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.8995, -1.51041 )
+scale = Vector2( 0.7, 1 )
+shape = SubResource( 5 )
+
 [connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -314,8 +314,6 @@ extents = Vector2( 15.1005, 12.4917 )
 
 [node name="Tails" type="KinematicBody2D"]
 position = Vector2( 130.108, 141.421 )
-z_index = 1
-collision/safe_margin = 0.1
 script = ExtResource( 2 )
 character_name = "New The Fox"
 
@@ -366,4 +364,12 @@ cast_to = Vector2( -11, 0 )
 current = true
 limit_left = 0
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="LowCollider2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.899002, -1.50999 )
+scale = Vector2( 0.7, 1 )
+shape = SubResource( 5 )
+
 [connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
