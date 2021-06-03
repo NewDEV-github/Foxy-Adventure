@@ -18,6 +18,7 @@ var anim=""
 var can_jump = true
 var speed = 0.5
 var scene
+var controls_blocked = false
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	DiscordSDK.run_rpc(false, true, character_name)
@@ -29,6 +30,7 @@ func _ready() -> void:
 #	pass
 func _physics_process(delta):
 	
+	
 #	if Input.is_action_just_pressed("console"):
 #		if $console/console.visible == false:
 #			$console/console.show()
@@ -38,66 +40,52 @@ func _physics_process(delta):
 #		scene = get_tree().change_scene("scenes/GameOver.tscn")
 	onair_time += delta
 	shoot_time += delta
-
-	### MOVEMENT ###
-
-	# Apply Gravity
+		### MOVEMENT ###
+		# Apply Gravity
 	linear_vel += delta * GRAVITY_VEC
 	# Move and Slide
 	linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 	# Detect Floor
 	if is_on_floor():
 		onair_time = 0
-
-	on_floor = onair_time < MIN_ONAIR_TIME
-
-	### CONTROL ###
-
-	# Horizontal Movement
-	#speeding
+		on_floor = onair_time < MIN_ONAIR_TIME
+		### CONTROL ###
+		# Horizontal Movement
+	
 	var target_speed = 0
-#	real-time speeding
-#	timer += delta
-#	if timer > TIMER_LIMIT:
-#		if not speed == 1.1:
-#			$anim.playback_speed = speed
-#			timer = 0.0
-#			speed += 0.2
-#			TIMER_LIMIT -= 0.2
-#		if speed == 1.1 or speed > 1.1:
-#			pass
-	#moving left
-	if Input.is_action_pressed("ui_left"):
-		target_speed -= 1
-		#braking if movig left
-		if Input.is_action_pressed("ui_right"):
-			speed = 0 
-			target_speed += 0.5
-	#moving right
-	if Input.is_action_pressed("ui_right"):
-		target_speed += 1
-		#braking if moving right
-		if Input.is_action_pressed("ui_left"):
-			speed = 0 
-			target_speed -= 0.5
-	#setting 'speed' to 0 so that the character can accelerate again
-	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		speed = 0.5
-		TIMER_LIMIT = 2.5
-#	if Input.is_action_pressed("speed") and Input.is_action_pressed("move_left"):
-#		target_speed += -1.1
-#	if Input.is_action_pressed("speed") and Input.is_action_pressed("move_right"):
-#		target_speed += 1.1
-	target_speed *= WALK_SPEED
-	linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
+		
+	if controls_blocked == false:
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_left2"):
+			target_speed -= 1
+			#braking if movig left
+			if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_right2"):
+				speed = 0 
+				target_speed += 0.5
+		#moving right
+		if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_right2"):
+			target_speed += 1
+			#braking if moving right
+			if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_left2"):
+				speed = 0 
+				target_speed -= 0.5
+		#setting 'speed' to 0 so that the character can accelerate again
+		if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_left2") or Input.is_action_just_released("ui_right2") or Input.is_action_just_released("ui_right"):
+			speed = 0.5
+			TIMER_LIMIT = 2.5
+	#	if Input.is_action_pressed("speed") and Input.is_action_pressed("move_left"):
+	#		target_speed += -1.1
+	#	if Input.is_action_pressed("speed") and Input.is_action_pressed("move_right"):
+	#		target_speed += 1.1
+		target_speed *= WALK_SPEED
+		linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 
-	# Jumping
-	if can_jump:
-		if on_floor and Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump2"):
-			can_jump = false
-			linear_vel.y = -JUMP_SPEED
-			
-	can_jump = is_on_floor()
+		# Jumping
+		if can_jump:
+			if on_floor and Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump2"):
+				can_jump = false
+				linear_vel.y = -JUMP_SPEED
+				
+		can_jump = is_on_floor()
 #		$AudioPlayer/jump.play()
 	# Shooting
 #	if Input.is_action_just_pressed("shoot"):
@@ -148,3 +136,25 @@ func _on_Tails_tree_exiting():
 func _on_Area2D_body_entered(body):
 	if body.name == "Enemy":
 		body.hit_by_bulet()
+var queued_messages = []
+signal msg_done
+func show_message_box(block_controls:bool=false):
+	controls_blocked = block_controls
+	$CanvasLayer/MessageDisplay.show()
+func hide_message_box():
+	controls_blocked = false
+	$CanvasLayer/MessageDisplay.hide()
+func render_message(message):
+	$CanvasLayer/MessageDisplay.display_message(message)
+	emit_signal("msg_done")
+func clear_message():
+	$CanvasLayer/MessageDisplay.clear()
+func set_render_messages_delay(delay):
+	$CanvasLayer/MessageDisplay/delay.wait_time = delay
+func render_messages(messages:Array):
+	for i in messages:
+		$CanvasLayer/MessageDisplay.display_message(i)
+		yield($CanvasLayer/MessageDisplay/MessageBox, "message_done")
+		$CanvasLayer/MessageDisplay/delay.start()
+		yield($CanvasLayer/MessageDisplay/delay, "timeout")
+	emit_signal("msg_done")

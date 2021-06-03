@@ -20,13 +20,20 @@ func _ready():
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)
 	add_child(character)
-#	character.set_owner(root)
 	get_node(str(character.name)).position = startup_position
+	character.set_render_messages_delay(1.5)
+	character.show_message_box(false)
+	var msg = ["Strange place...", "I've never been there...", "I'd better go..."]
+	character.render_messages(msg)
+	yield(character, "msg_done")
+	character.hide_message_box()
+#	character.set_owner(root)
+
 
 func change_level():
 	if Globals.fallen_into_toxins == 0:
 		Globals.set_achievement_done("I'm not toxic")
-	get_tree().change_scene("res://Scenes/Stages/poziom_2.tscn")
+	get_tree().change_scene("res://Scenes/Demo_ThankYou.tscn")
 func toxic_entered(body):
 	if body.name == "Tails":
 		Globals.felt_into_toxine()
@@ -42,3 +49,13 @@ func _on_Node2D_tree_exited():
 func _on_Doors_body_entered(body):
 	if body.name == "Tails":
 		change_level()
+
+
+func _on_messagearea_body_entered(body):
+	if body.name == "Tails":
+		body.set_render_messages_delay(1.5)
+		body.show_message_box(true)
+		var msg = ["It looks like there is only one way out of here.\nLet's go and see what happens next"]
+		body.render_messages(msg)
+		yield(body, "msg_done")
+		body.hide_message_box()
