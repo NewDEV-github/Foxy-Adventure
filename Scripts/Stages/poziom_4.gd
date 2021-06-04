@@ -39,3 +39,8 @@ func _on_Node2D_tree_exited():
 func _on_Doors_body_entered(body):
 	if body.name == "Tails":
 		change_level()
+
+func _on_AudioStreamPlayer2D_finished():
+	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = audio
+	$AudioStreamPlayer2D.play()

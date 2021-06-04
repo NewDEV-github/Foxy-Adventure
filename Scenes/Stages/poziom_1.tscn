@@ -44,7 +44,7 @@ script = ExtResource( 2 )
 scroll_ignore_camera_zoom = true
 
 [node name="start_position" type="Position2D" parent="."]
-position = Vector2( 8803.02, 1039.6 )
+position = Vector2( 206.02, 59.6 )
 __meta__ = {
 "_gizmo_extents_": 1.0
 }
@@ -607,9 +607,6 @@ position = Vector2( 4095.67, 1112.93 )
 [node name="coin121" parent="coins" instance=ExtResource( 4 )]
 position = Vector2( 4132.44, 1112.93 )
 
-[node name="coin122" parent="coins" instance=ExtResource( 4 )]
-position = Vector2( 4085.21, 1228.93 )
-
 [node name="coin123" parent="coins" instance=ExtResource( 4 )]
 position = Vector2( 4191.84, 1721.04 )
 
@@ -1051,7 +1048,7 @@ position = Vector2( 7952.18, 2014.06 )
 frame = 3
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3650.84, 1398.78 )
+position = Vector2( 3546.36, 751.919 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -1097,7 +1094,7 @@ position = Vector2( 1.60899, 82.6017 )
 position = Vector2( 1.8043, 42.6301 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4115.09, 1628.03 )
+position = Vector2( 4661.41, 132.476 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -1149,7 +1146,7 @@ position = Vector2( -122.167, 532.46 )
 position = Vector2( -126.167, 6.46002 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5725.66, 1662.8 )
+position = Vector2( 5023.36, 1473.58 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]
@@ -1171,7 +1168,7 @@ position = Vector2( 356.01, 98.2771 )
 position = Vector2( 0.352966, 84.9634 )
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 7067.51, 1246.97 )
+position = Vector2( 6794.79, 1185.32 )
 waypoints_path = NodePath("../Waypoints4")
 
 [node name="Waypoints4" parent="." instance=ExtResource( 5 )]
@@ -1221,9 +1218,6 @@ position = Vector2( 3481.83, 1410.94 )
 
 [node name="Enemy15" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3855.19, 1880.46 )
-
-[node name="Enemy16" parent="." instance=ExtResource( 3 )]
-position = Vector2( 5167.57, 862.226 )
 
 [node name="Enemy17" parent="." instance=ExtResource( 3 )]
 position = Vector2( 5331.62, 449.276 )
@@ -1336,5 +1330,6 @@ shape = SubResource( 9 )
 [connection signal="body_entered" from="dead_areas/dead_area11" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area7" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area5" to="." method="toxic_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
 [connection signal="body_entered" from="Doors" to="." method="_on_Doors_body_entered"]
 [connection signal="body_entered" from="messagearea" to="." method="_on_messagearea_body_entered"]

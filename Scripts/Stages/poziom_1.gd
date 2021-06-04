@@ -54,8 +54,14 @@ func _on_Doors_body_entered(body):
 func _on_messagearea_body_entered(body):
 	if body.name == "Tails":
 		body.set_render_messages_delay(1.5)
-		body.show_message_box(true)
+		body.show_message_box(false)
 		var msg = ["It looks like there is only one way out of here.\nLet's go and see what happens next"]
 		body.render_messages(msg)
 		yield(body, "msg_done")
 		body.hide_message_box()
+
+
+func _on_AudioStreamPlayer2D_finished():
+	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = audio
+	$AudioStreamPlayer2D.play()

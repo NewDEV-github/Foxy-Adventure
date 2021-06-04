@@ -49,3 +49,8 @@ func _physics_process(delta):
 
 func hit_by_bullet():
 	state = STATE_KILLED
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Tails":
+		hit_by_bullet()

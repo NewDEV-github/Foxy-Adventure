@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=4]
-[ext_resource path="res://assets/Materials/texture_mask.material" type="Material" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro"
@@ -151,7 +150,6 @@ anims/intro = SubResource( 1 )
 
 [node name="Icon" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
-material = ExtResource( 5 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -162,6 +160,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
 texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

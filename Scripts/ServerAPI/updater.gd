@@ -4,15 +4,13 @@ var file = File.new()
 var cfg = ConfigFile.new()
 
 func _ready():
-	$Node
-#	yield(Firebase.Auth, "login_succeeded")
-#	print("requesting user data")
-#	print(Firebase.Auth.get_user_data())
 	cfg.load("user://settings.cfg")
-	if file.file_exists("user://settings.cfg") and not cfg.has_section_key('Game', 'discord_sdk_enabled'):
-		$ConfirmationDialog.popup_centered()
-	elif not file.file_exists("user://settings.cfg"):
-		$ConfirmationDialog.popup_centered()
+	if cfg.has_section_key('Graphics', 'window_x_resolution') and cfg.has_section_key('Graphics', 'window_y_resolution'):
+		OS.set_window_size(Vector2(float(str(cfg.get_value('Graphics', 'window_x_resolution', 1024))), float(str(cfg.get_value('Graphics', 'window_y_resolution', 600)))))
+#	if file.file_exists("user://settings.cfg") and not cfg.has_section_key('Game', 'discord_sdk_enabled'):
+#		$ConfirmationDialog.popup_centered()
+#	elif not file.file_exists("user://settings.cfg"):
+#		$ConfirmationDialog.popup_centered()
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))
 	file = File.new()

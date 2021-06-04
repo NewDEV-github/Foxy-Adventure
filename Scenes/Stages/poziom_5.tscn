@@ -273,7 +273,7 @@ position = Vector2( 3042.05, 1502.54 )
 frame = 3
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3457.35, 777.826 )
+position = Vector2( 3514.65, 796.925 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -330,4 +330,5 @@ shape = SubResource( 6 )
 [connection signal="body_entered" from="dead_areas/dead_area3" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area4" to="." method="toxic_entered"]
 [connection signal="body_entered" from="dead_areas/dead_area5" to="." method="toxic_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
 [connection signal="body_entered" from="Doors" to="." method="_on_Doors_body_entered"]

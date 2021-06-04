@@ -6,7 +6,7 @@ var core: Discord.Core
 var discord_user_img = null
 signal user_avatar_loaded
 signal initialized
-var av_en
+var av_en = false
 func enum_to_string(the_enum: Dictionary, value: int) -> String:
 	var index: = the_enum.values().find(value)
 	var string: String = the_enum.keys()[index]
@@ -46,7 +46,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	av_en = Globals.discord_sdk_enabled
+#	av_en = Globals.discord_sdk_enabled
 	if core:
 		var result: int = core.run_callbacks()
 		if result != Discord.Result.OK:

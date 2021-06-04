@@ -30,8 +30,11 @@ __meta__ = {
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -26.0
-margin_bottom = 37.0
+margin_bottom = 31.0
 text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="buttons" type="HBoxContainer" parent="."]
 anchor_top = 1.0
