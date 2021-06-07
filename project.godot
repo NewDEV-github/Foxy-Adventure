@@ -119,11 +119,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_task.gd"
 }, {
-"base": "Node",
-"class": "FmodNative",
-"language": "NativeScript",
-"path": "res://addons/fmod/Fmod.gdns"
-}, {
 "base": "EditorExportPlugin",
 "class": "FoxyAdventureMODCfgExport",
 "language": "GDScript",
@@ -207,7 +202,6 @@ _global_script_class_icons={
 "FirestoreDocument": "",
 "FirestoreQuery": "",
 "FirestoreTask": "",
-"FmodNative": "",
 "FoxyAdventureMODCfgExport": "",
 "GistItem": "",
 "GitAPI": "",
@@ -237,7 +231,6 @@ config/version="1.0.0"
 
 [autoload]
 
-Fmod="*res://addons/fmod/Fmod.tscn"
 Screenshot="*res://Scripts/screenshot.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
