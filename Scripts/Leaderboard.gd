@@ -5,8 +5,8 @@ extends WindowDialog
 # var a = 2
 # var b = "text"
 
-var userdata
-var scorelist
+var userdata = {}
+var scorelist = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_data()
@@ -43,8 +43,26 @@ func get_username_or_email_by_uid(uid:String):
 				return tmp_userdata['email']
 var number = 1
 func render_board():
-	for i in scorelist:
-		print(i)
-		print("Found score from %s: %s" % [get_username_or_email_by_uid(i), scorelist[i]])
-		$ItemList.add_item("%s. %s: %s" % [number, get_username_or_email_by_uid(i), scorelist[i]])
+	var scorelist_values = scorelist.values()
+	scorelist_values.sort_custom(Sorter, "sort_ascending")
+	var scorelist_keys = scorelist.keys()
+#	print(scorelist_keys)
+#	scorelist_keys.sort_custom(Sorter, "sort_ascending")
+	var temp_scorelist = {}
+	var tmp_n = 0
+	for i in scorelist_values:
+		temp_scorelist[i] = scorelist_keys[tmp_n]
+		tmp_n += 1
+		
+#	print(temp_scorelist)
+	for i in temp_scorelist:
+#		print(i)
+#		print("Found score from %s: %s" % [get_username_or_email_by_uid(temp_scorelist[i]), i])
+		$ItemList.add_item("%s. %s: %s" % [number, get_username_or_email_by_uid(temp_scorelist[i]),i])
 		number += 1
+class Sorter:
+	static func sort_ascending(a, b):
+		if a > b:
+			return true
+		return false
+

@@ -115,7 +115,6 @@ func _on_Master_on_toggled(button_pressed):
 
 func _on_Music_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(2, value)
-	AudioServer.set_bus_volume_db(3, value)
 
 func _on_Music_on_toggled(button_pressed):
 	AudioServer.set_bus_mute(2, !button_pressed)
@@ -295,7 +294,6 @@ func _on_Enable_toggled(button_pressed):
 		Globals.set_modification_enable(mod_names[mod_item_name], button_pressed)
 	else:
 		$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.disabled = true
-
 
 
 

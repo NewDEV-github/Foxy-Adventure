@@ -231,7 +231,6 @@ config/version="1.0.0"
 
 [autoload]
 
-Fmod="*res://addons/fmod/Fmod.tscn"
 Screenshot="*res://Scripts/screenshot.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
