@@ -118,7 +118,11 @@ func _on_WorldList_item_selected(index):
 
 func custom_level_research():
 	for path in Globals.levels_scan_path:
-		dir_contents(path)
+		var dir = Directory.new()
+		if not dir.dir_exists(path):
+			dir.make_dir_recursive(path)
+		elif dir.dir_exists(path):
+			dir_contents(path)
 
 func dir_contents(path):
 	var dir = Directory.new()
