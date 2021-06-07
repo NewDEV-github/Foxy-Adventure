@@ -135,7 +135,7 @@ func _on_Tails_tree_exiting():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Enemy":
-		body.hit_by_bulet()
+		body.hit_by_bullet()
 var queued_messages = []
 signal msg_done
 func show_message_box(block_controls:bool=false):

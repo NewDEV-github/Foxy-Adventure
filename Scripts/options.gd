@@ -114,21 +114,21 @@ func _on_Master_on_toggled(button_pressed):
 	$"tabs/Audio/Options/Audio/SFX/SFX_on".set_disabled(!button_pressed)
 
 func _on_Music_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(1, value)
+	AudioServer.set_bus_volume_db(2, value)
 	AudioServer.set_bus_volume_db(3, value)
 
 func _on_Music_on_toggled(button_pressed):
-	AudioServer.set_bus_mute(1, !button_pressed)
+	AudioServer.set_bus_mute(2, !button_pressed)
 	$"tabs/Audio/Options/Audio/Music/Music_slider".editable = button_pressed
 
 
 func _on_SFX_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(2, value)
+	AudioServer.set_bus_volume_db(1, value)
 	
 
 func _on_SFX_on_toggled(button_pressed):
 	
-	AudioServer.set_bus_mute(2, !button_pressed)
+	AudioServer.set_bus_mute(1, !button_pressed)
 	$"tabs/Audio/Options/Audio/SFX/SFX_slider".editable = button_pressed
 
 

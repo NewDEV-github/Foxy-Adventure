@@ -9,7 +9,8 @@ func _process(_delta):
 		visible = !visible
 		get_tree().paused = visible
 func _on_Resume_pressed():
-	visible = !visible
+	hide()
+	get_tree().paused = false
 
 
 func _on_Options_pressed():
