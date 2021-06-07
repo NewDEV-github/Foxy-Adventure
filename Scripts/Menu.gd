@@ -120,6 +120,7 @@ func custom_level_research():
 	for path in Globals.levels_scan_path:
 		var dir = Directory.new()
 		if not dir.dir_exists(path):
+			dir.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
 			dir.make_dir_recursive(path)
 		elif dir.dir_exists(path):
 			dir_contents(path)
