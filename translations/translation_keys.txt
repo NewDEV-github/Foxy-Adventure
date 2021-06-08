@@ -1,0 +1,1 @@
+https://docs.godotengine.org/pl/stable/tutorials/i18n/locales.html#doc-locales - list
