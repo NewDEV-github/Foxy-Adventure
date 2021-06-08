@@ -1,4 +1,7 @@
 extends Node
+
+var gdsdk_enabled = false
+signal scoredatarecived
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}

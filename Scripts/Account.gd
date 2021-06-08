@@ -16,10 +16,10 @@ func _ready():
 #	pass
 
 func load_account_info():
-	print(Globals.user_data['displayname'])
-	print(Globals.user_data['profilepicture'])
-	print(Globals.user_data['registered'])
-	print(Globals.user_data['email'])
+#	print(Globals.user_data['displayname'])
+#	print(Globals.user_data['profilepicture'])
+#	print(Globals.user_data['registered'])
+#	print(Globals.user_data['email'])
 #	print(Globals.user_data)
 	$HBoxContainer/CenterContainer/Profile.textureUrl = Globals.user_data['profilepicture']
 	$HBoxContainer/VBoxContainer/EmailStatus.text = "Email Verified: " + str(Globals.user_data['registered'])

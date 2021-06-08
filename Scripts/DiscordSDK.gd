@@ -14,35 +14,38 @@ func enum_to_string(the_enum: Dictionary, value: int) -> String:
 
 
 func _ready() -> void:
-	core = Discord.Core.new()
-	var result: int = core.create(
-		729429191489093702,
-		Discord.CreateFlags.NO_REQUIRE_DISCORD
-	)
-	print("Created Discord Core: ", enum_to_string(Discord.Result, result))
-	if result != Discord.Result.OK:
-		core = null
-	else:
-		core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
-
-		users = _get_user_manager()
-		images = _get_image_manager()
-		activities = _get_activity_manager()
-
-		users.connect("current_user_update", self, "_on_current_user_update")
-
-		users.get_user(425340416531890178, self, "get_user_callback")
-
-		result = yield(activities, "update_activity_callback")
-
-		if result == Discord.Result.OK:
-			print("Updated activity successfully!")
+	if Globals.gdsdk_enabled:
+		core = Discord.Core.new()
+		var result: int = core.create(
+			729429191489093702,
+			Discord.CreateFlags.NO_REQUIRE_DISCORD
+		)
+		print("Created Discord Core: ", enum_to_string(Discord.Result, result))
+		if result != Discord.Result.OK:
+			core = null
 		else:
-			print(
-				"Failed to update activity: ",
-				enum_to_string(Discord.Result, result)
-			)
-		emit_signal("initialized")
+			core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
+
+			users = _get_user_manager()
+			images = _get_image_manager()
+			activities = _get_activity_manager()
+
+			users.connect("current_user_update", self, "_on_current_user_update")
+
+			users.get_user(425340416531890178, self, "get_user_callback")
+
+			result = yield(activities, "update_activity_callback")
+
+			if result == Discord.Result.OK:
+				print("Updated activity successfully!")
+			else:
+				print(
+					"Failed to update activity: ",
+					enum_to_string(Discord.Result, result)
+				)
+			emit_signal("initialized")
+	else:
+		pass
 
 
 func _process(_delta: float) -> void:
@@ -197,7 +200,7 @@ func get_current_user_premium_type_callback(
 
 
 func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
-	if Discord.Core != null:
+	if core != null:
 		print("Starting RPC...")
 		var activity = Discord.Activity.new()
 		if not developer and not is_in_menu:
@@ -218,4 +221,5 @@ func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 		else:
 			print("RPC started as mysterious developer")
 func kill_rpc():
-	activities.clear_activity()
+	if core != null:
+		activities.clear_activity()
