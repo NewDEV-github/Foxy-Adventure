@@ -390,7 +390,7 @@ jump2={
 
 [locale]
 
-translations=PoolStringArray( "res://translations/translation_keys_1.csv" )
+translations=PoolStringArray( "res://translations/translation_keys_1.csv", "res://translations/translation_keys_cutscenes_1.csv", "res://translations/translation_keys_options_1.csv" )
 locale_filter=[ 0, [  ] ]
 
 [logging]

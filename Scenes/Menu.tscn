@@ -247,9 +247,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -21.0
-margin_top = -29.0
-margin_right = 21.0
+margin_left = -20.0
+margin_top = -27.0
+margin_right = 22.0
+margin_bottom = 2.0
 text = "GO!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -337,6 +338,7 @@ valign = 1
 visible = false
 
 [node name="LoginPanel" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="Leaderboard" type="WindowDialog" parent="."]
 margin_right = 408.0
