@@ -79,6 +79,7 @@ func _init():
 	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
+	ProjectSettings.load_resource_pack(install_base_path + "translations.pck")
 var dlcs:Array = [
 	
 ]
