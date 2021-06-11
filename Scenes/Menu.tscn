@@ -162,13 +162,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" parent="." instance=ExtResource( 3 )]
-visible = false
-margin_left = -400.0
-margin_top = -187.499
-margin_right = 400.0
-margin_bottom = 187.499
-
 [node name="CharacterSelect" type="Panel" parent="."]
 visible = false
 anchor_left = 0.5
@@ -218,7 +211,6 @@ margin_right = 108.0
 margin_bottom = 45.5
 
 [node name="NewSave" type="Panel" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -227,17 +219,6 @@ margin_left = -185.5
 margin_top = -97.5
 margin_right = 185.5
 margin_bottom = 97.5
-
-[node name="LineEdit" type="LineEdit" parent="NewSave"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -177.5
-margin_top = -18.5
-margin_right = 177.5
-margin_bottom = 18.5
-placeholder_text = "New Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,6 +243,28 @@ anchor_right = 1.0
 margin_left = -24.0
 margin_bottom = 29.0
 text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewSave"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Label" type="Label" parent="NewSave/VBoxContainer"]
+margin_top = 76.0
+margin_right = 371.0
+margin_bottom = 95.0
+text = "Enter save name below"
+align = 1
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="NewSave/VBoxContainer"]
+margin_top = 99.0
+margin_right = 371.0
+margin_bottom = 118.0
+placeholder_text = "New Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -361,6 +364,17 @@ margin_right = -2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" parent="." instance=ExtResource( 3 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
 
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]

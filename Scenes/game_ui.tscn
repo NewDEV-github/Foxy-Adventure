@@ -65,6 +65,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MessageDisplay" type="Control" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -208.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MessageDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageBox" type="RichTextLabel" parent="MessageDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = ExtResource( 11 )
+scroll_active = false
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+speed = 9.0
+
+[node name="delay" type="Timer" parent="MessageDisplay"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AchivementPanel" parent="." instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -361.0
+margin_top = -80.0
+margin_right = 0.0
+margin_bottom = 0.0
+
 [node name="PauseMenu" parent="." instance=ExtResource( 6 )]
 visible = false
 
@@ -155,49 +199,5 @@ autostart = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "save"
 anims/save = SubResource( 1 )
-
-[node name="AchivementPanel" parent="." instance=ExtResource( 8 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -361.0
-margin_top = -80.0
-margin_right = 0.0
-margin_bottom = 0.0
-
-[node name="MessageDisplay" type="Control" parent="."]
-visible = false
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -208.0
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="MessageDisplay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MessageBox" type="RichTextLabel" parent="MessageDisplay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/normal_font = ExtResource( 11 )
-scroll_active = false
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-speed = 9.0
-
-[node name="delay" type="Timer" parent="MessageDisplay"]
-wait_time = 5.0
-one_shot = true
 
 [connection signal="timeout" from="ms" to="." method="_on_ms_timeout"]

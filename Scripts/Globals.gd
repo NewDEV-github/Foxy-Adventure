@@ -45,7 +45,7 @@ var stage_names:Dictionary = {
 	"5": "Laboratory",
 }
 var current_stage = 0
-
+var arguments = {}
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -74,12 +74,20 @@ func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 	return text
 func _init():
+	for argument in OS.get_cmdline_args():
+		# Parse valid command-line arguments into a dictionary
+		if argument.find("=") > -1:
+			var key_value = argument.split("=")
+			arguments[key_value[0].lstrip("--")] = key_value[1]
 	if file.file_exists("user://achievements.cfg"):
 		load_achivements()
 	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 	ProjectSettings.load_resource_pack(install_base_path + "translations.pck")
+	print(arguments)
+	if arguments.has("locale"):
+		TranslationServer.set_locale(arguments["locale"])
 var dlcs:Array = [
 	
 ]

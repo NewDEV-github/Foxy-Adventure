@@ -14,6 +14,7 @@ var hints = [
 	"Tails can't fly!",
 	"Better don't jump into toxins...",
 	"OK!",
+	"Thank You for playing Foxy Adventure",
 ]
 
 func _thread_load(path):
@@ -74,8 +75,8 @@ func _thread_done(resource):
 func load_scene(path):
 	show()
 	if not File.new().file_exists(path):
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA, false)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA, false)
 		print("CAN NOT LOAD: "+path)
 	pth = path
 #	SavingDataIcon.show_up(true, 4)
