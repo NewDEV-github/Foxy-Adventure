@@ -1,13 +1,13 @@
 # Foxy Adventure
 <p align="center">
-  <a href="https://www.new-dev.ml/games/foxy-adventure">
+  <a href="https://newdev.web.app/games/foxy-adventure">
     <img src="https://dl.new-dev.tk/img/games/foxy-adventure/bg.png" width="400" alt="Godot Engine logo">
   </a>
 </p>
 
 
 ## About the game:
-A 2D platformer with New The Fox and Miles "Tails" Prower as a playable characters.
+A 2D platformer with Miles "Tails" Prower as main character.
 
 Our game is open-source, because we ❤️ open-source projects. Like Godot Engine (which is powering all of our games)
 You can download it for free, build with it, modify it etc.
