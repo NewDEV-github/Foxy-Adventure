@@ -2,8 +2,8 @@ extends Control
 var intro_played = false
 var file = File.new()
 var cfg = ConfigFile.new()
-
 func _ready():
+	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
 	cfg.load("user://settings.cfg")
 	if cfg.has_section_key('Graphics', 'window_x_resolution') and cfg.has_section_key('Graphics', 'window_y_resolution'):
 		OS.set_window_size(Vector2(float(str(cfg.get_value('Graphics', 'window_x_resolution', 1024))), float(str(cfg.get_value('Graphics', 'window_y_resolution', 600)))))

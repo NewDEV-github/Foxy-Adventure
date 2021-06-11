@@ -51,13 +51,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "[center][color=red]WARNING[/color][color=white]
-\"Tails\" and other characters from SEGA's franchise's are property of SEGA, Inc.
-Other characters from other franchises are properties of their respective owners.
-[/color][/center]", "[center][color=red]WARNING[/color][color=white]
 This game uses auto save
 Please do not turn off the game while this icon is being displayed
 [/color][/center]" ]
@@ -131,13 +128,11 @@ theme = ExtResource( 2 )
 custom_fonts/normal_font = ExtResource( 3 )
 custom_constants/table_hseparation = -1
 bbcode_enabled = true
-bbcode_text = "[center][color=red]WARNING[/color][color=white]
-\"Tails\" and other characters from SEGA's franchise's are property of SEGA, Inc.
-Other characters from other franchises are properties of their respective owners.
+bbcode_text = "[center][color=red]KEY_TEXT_WARNING[/color][color=white]
+KEY_TEXT_INTRO_1
 [/color][/center]"
-text = "WARNING
-\"Tails\" and other characters from SEGA's franchise's are property of SEGA, Inc.
-Other characters from other franchises are properties of their respective owners.
+text = "KEY_TEXT_WARNING
+KEY_TEXT_INTRO_1
 "
 __meta__ = {
 "_edit_use_anchors_": false
