@@ -70,7 +70,7 @@ func _ready() -> void:
 #		if world_name == [] or world_name == null:
 ##			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
-		$SelectWorld/WorldList.add_item(tr(world_name))
+		$SelectWorld/WorldList.add_item(world_name)
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
 		$Label.set_text(tr("Happy Birthday to") + ' "Foxy Adventure"')
@@ -87,6 +87,9 @@ func _ready() -> void:
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
+	if Globals.arguments.has("locale"):
+		print("Setting locale to: " + Globals.arguments["locale"])
+		TranslationServer.set_locale(Globals.arguments["locale"])
 
 func show_submenu_page(page):
 	if current_submenu_page != null:

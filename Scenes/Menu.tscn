@@ -60,7 +60,7 @@ margin_right = 225.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "New Game"
+text = "KEY_TEXT_NEW_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,7 +71,7 @@ margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Project Website"
+text = "KEY_TEXT_WEBSITE"
 
 [node name="LoadGame" type="Button" parent="VBoxContainer"]
 margin_top = 92.0
@@ -79,7 +79,7 @@ margin_right = 225.0
 margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Load Game"
+text = "KEY_TEXT_LOAD"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -95,7 +95,7 @@ margin_right = 225.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Login/Register"
+text = "KEY_TEXT_LOG_REG"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +106,7 @@ margin_right = 225.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Logout"
+text = "KEY_TEXT_LOGOUT"
 
 [node name="Info" type="Button" parent="VBoxContainer3"]
 visible = false
@@ -133,7 +133,7 @@ margin_right = 225.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Achivements"
+text = "KEY_TEXT_ACHIEVEMENTS"
 
 [node name="Leaderboard" type="Button" parent="VBoxContainer2"]
 margin_top = 46.0
@@ -141,7 +141,7 @@ margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Leaderboard"
+text = "KEY_TEXT_LEADERBOARD"
 
 [node name="Options" type="Button" parent="VBoxContainer2"]
 margin_top = 92.0
@@ -149,7 +149,7 @@ margin_right = 225.0
 margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Options"
+text = "KEY_TEXT_OPTIONS"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
 margin_top = 138.0
@@ -157,7 +157,7 @@ margin_right = 225.0
 margin_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Quit"
+text = "KEY_TEXT_QUIT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -229,11 +229,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -27.0
-margin_right = 22.0
-margin_bottom = 2.0
-text = "GO!"
+margin_left = -58.0
+margin_top = -29.0
+margin_right = 58.0
+text = "KEY_TEXT_GO"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -251,13 +250,18 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="NewSave"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.41425
+margin_right = 1.41425
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="NewSave/VBoxContainer"]
 margin_top = 76.0
 margin_right = 371.0
 margin_bottom = 95.0
-text = "Enter save name below"
+text = "KEY_TEXT_NEW_SAVE"
 align = 1
 valign = 1
 
@@ -265,7 +269,7 @@ valign = 1
 margin_top = 99.0
 margin_right = 371.0
 margin_bottom = 118.0
-placeholder_text = "New Save"
+placeholder_text = "KEY_TEXT_NAME_OF_SAVE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -278,6 +282,7 @@ bus = "Music"
 [node name="AchivementPanel" type="WindowDialog" parent="."]
 margin_right = 758.0
 margin_bottom = 478.0
+window_title = "KEY_TEXT_ACHIEVEMENTS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -324,7 +329,7 @@ margin_right = 377.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "Done"
+text = "KEY_TEXT_ACH_DONE"
 align = 1
 valign = 1
 
@@ -334,7 +339,7 @@ margin_right = 758.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "Not Done"
+text = "KEY_TEXT_ACH_NOT_DONE"
 align = 1
 valign = 1
 
@@ -342,12 +347,11 @@ valign = 1
 visible = false
 
 [node name="LoginPanel" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="Leaderboard" type="WindowDialog" parent="."]
 margin_right = 408.0
 margin_bottom = 354.0
-window_title = "Leaderboard"
+window_title = "KEY_TEXT_LEADERBOARD"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false

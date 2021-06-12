@@ -86,8 +86,6 @@ func _init():
 	print("Installed at: " + install_base_path)
 	ProjectSettings.load_resource_pack(install_base_path + "translations.pck")
 	print(arguments)
-	if arguments.has("locale"):
-		TranslationServer.set_locale(arguments["locale"])
 var dlcs:Array = [
 	
 ]
@@ -166,6 +164,9 @@ func felt_into_toxine():
 
 	emit_signal("scoredatarecived")
 func _ready():
+	if arguments.has("locale"):
+		print("Setting locale to: " + arguments["locale"])
+		TranslationServer.set_locale(arguments["locale"])
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")
