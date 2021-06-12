@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "explode"
-length = 5.0
+length = 3.5
 step = 0.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -173,6 +173,7 @@ anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.975 )
 material = SubResource( 4 )
 texture = ExtResource( 3 )
 flip_h = true
@@ -216,4 +217,5 @@ position = Vector2( -1, -11 )
 rotation = -3.14159
 shape = SubResource( 6 )
 
+[connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

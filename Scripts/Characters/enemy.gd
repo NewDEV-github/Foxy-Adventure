@@ -54,3 +54,8 @@ func hit_by_bullet():
 func _on_Area2D_body_entered(body):
 	if body.name == "Tails":
 		hit_by_bullet()
+
+
+func _on_Anim_animation_finished(anim_name):
+	if anim_name == "explode":
+		queue_free()
