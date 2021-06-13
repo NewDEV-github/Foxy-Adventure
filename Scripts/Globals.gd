@@ -84,10 +84,22 @@ func _init():
 	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
-	ProjectSettings.load_resource_pack(install_base_path + "translations.pck")
+	var cfg = ConfigFile.new()
+	var dir = Directory.new()
+	if dir.open(install_base_path + 'translations') == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				if file_name.get_extension() == "pck":
+					ProjectSettings.load_resource_pack(install_base_path + 'translations/' + file_name.get_file())
+					var tra = load("res://translations/" + file_name.get_file().get_basename())
+					print("Found translation: " + "res://translations/" + file_name.get_file().get_basename())
+					TranslationServer.add_translation(tra)
+			file_name = dir.get_next()
 	print(arguments)
-	if arguments.has("locale"):
-		TranslationServer.set_locale(arguments["locale"])
 var dlcs:Array = [
 	
 ]
@@ -166,6 +178,9 @@ func felt_into_toxine():
 
 	emit_signal("scoredatarecived")
 func _ready():
+	if arguments.has("locale"):
+		print("Setting locale to: " + arguments["locale"])
+		TranslationServer.set_locale(arguments["locale"])
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")

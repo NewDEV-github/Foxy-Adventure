@@ -7,6 +7,9 @@ var save_file_names = []
 signal no_saves_found
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Globals.arguments.has("locale"):
+		print("Setting locale to: " + Globals.arguments["locale"])
+		TranslationServer.set_locale(Globals.arguments["locale"])
 	$buttons/DelSave.disabled = true
 	$buttons/RunSave.disabled = true
 #	popup()

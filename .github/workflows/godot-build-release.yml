@@ -36,11 +36,11 @@ jobs:
       - name: ZIP Builds
         run: |
           cd $GITHUB_WORKSPACE/builds/win-64-standard
-          sudo zip build-win-64.zip *
+          sudo zip -r build-win-64.zip *
           cd $GITHUB_WORKSPACE/builds/x11-64-standard
-          sudo zip build-x11-64.zip *
+          sudo zip -r build-x11-64.zip *
           cd $GITHUB_WORKSPACE/builds/osx-standard
-          sudo zip build-osx-64.zip *
+          sudo zip -r build-osx-64.zip *
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4

@@ -178,6 +178,11 @@ _global_script_classes=[ {
 "class": "StorageTask",
 "language": "GDScript",
 "path": "res://addons/godot-firebase/storage/storage_task.gd"
+}, {
+"base": "EditorExportPlugin",
+"class": "TranslationsExport",
+"language": "GDScript",
+"path": "res://addons/texp/export.gd"
 } ]
 _global_script_class_icons={
 "ArgumentDocItem": "",
@@ -213,7 +218,8 @@ _global_script_class_icons={
 "RichTextPulse": "",
 "SignalDocItem": "",
 "StorageReference": "",
-"StorageTask": ""
+"StorageTask": "",
+"TranslationsExport": ""
 }
 
 [application]
@@ -253,9 +259,13 @@ window/vsync/vsync_via_compositor=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 
+[editor]
+
+main_run_args="--locale=\"ko\""
+
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg", "res://addons/terminal/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
 
 [editors]
 
@@ -386,8 +396,11 @@ jump2={
 
 [locale]
 
-translations=PoolStringArray( "res://translations/translation_keys_1.af.translation", "res://translations/translation_keys_1.am_ET.translation", "res://translations/translation_keys_1.ar.translation", "res://translations/translation_keys_1.ar_AE.translation", "res://translations/translation_keys_1.ar_BH.translation", "res://translations/translation_keys_1.ar_DZ.translation", "res://translations/translation_keys_1.ar_EG.translation", "res://translations/translation_keys_1.ar_IQ.translation", "res://translations/translation_keys_1.ar_JO.translation", "res://translations/translation_keys_1.ar_KW.translation", "res://translations/translation_keys_1.ar_LB.translation", "res://translations/translation_keys_1.ar_LY.translation", "res://translations/translation_keys_1.ar_MA.translation", "res://translations/translation_keys_1.ar_OM.translation", "res://translations/translation_keys_1.ar_QA.translation", "res://translations/translation_keys_1.ar_SA.translation", "res://translations/translation_keys_1.ar_SD.translation", "res://translations/translation_keys_1.ar_SS.translation", "res://translations/translation_keys_1.ar_SY.translation", "res://translations/translation_keys_1.ar_TN.translation", "res://translations/translation_keys_1.ar_YE.translation", "res://translations/translation_keys_1.be.translation", "res://translations/translation_keys_1.be_BY.translation", "res://translations/translation_keys_1.bg.translation", "res://translations/translation_keys_1.bg_BG.translation", "res://translations/translation_keys_1.bn.translation", "res://translations/translation_keys_1.bn_BD.translation", "res://translations/translation_keys_1.bn_IN.translation", "res://translations/translation_keys_1.bs_BA.translation", "res://translations/translation_keys_1.ca.translation", "res://translations/translation_keys_1.ca_AD.translation", "res://translations/translation_keys_1.ca_ES.translation", "res://translations/translation_keys_1.ca_FR.translation", "res://translations/translation_keys_1.ca_IT.translation", "res://translations/translation_keys_1.cs.translation", "res://translations/translation_keys_1.cs_CZ.translation", "res://translations/translation_keys_1.da.translation", "res://translations/translation_keys_1.da_DK.translation", "res://translations/translation_keys_1.de.translation", "res://translations/translation_keys_1.de_AT.translation", "res://translations/translation_keys_1.de_BE.translation", "res://translations/translation_keys_1.de_CH.translation", "res://translations/translation_keys_1.de_DE.translation", "res://translations/translation_keys_1.de_IT.translation", "res://translations/translation_keys_1.de_LU.translation", "res://translations/translation_keys_1.el.translation", "res://translations/translation_keys_1.el_CY.translation", "res://translations/translation_keys_1.el_GR.translation", "res://translations/translation_keys_1.en.translation", "res://translations/translation_keys_1.en_AG.translation", "res://translations/translation_keys_1.en_AU.translation", "res://translations/translation_keys_1.en_BW.translation", "res://translations/translation_keys_1.en_CA.translation", "res://translations/translation_keys_1.en_DK.translation", "res://translations/translation_keys_1.en_GB.translation", "res://translations/translation_keys_1.en_HK.translation", "res://translations/translation_keys_1.en_IE.translation", "res://translations/translation_keys_1.en_IL.translation", "res://translations/translation_keys_1.en_IN.translation", "res://translations/translation_keys_1.en_NG.translation", "res://translations/translation_keys_1.en_NZ.translation", "res://translations/translation_keys_1.en_PH.translation", "res://translations/translation_keys_1.en_SG.translation", "res://translations/translation_keys_1.en_US.translation", "res://translations/translation_keys_1.en_ZA.translation", "res://translations/translation_keys_1.en_ZM.translation", "res://translations/translation_keys_1.en_ZW.translation", "res://translations/translation_keys_1.eo.translation", "res://translations/translation_keys_1.es.translation", "res://translations/translation_keys_1.es_AR.translation", "res://translations/translation_keys_1.es_BO.translation", "res://translations/translation_keys_1.es_CL.translation", "res://translations/translation_keys_1.es_CO.translation", "res://translations/translation_keys_1.es_CR.translation", "res://translations/translation_keys_1.es_CU.translation", "res://translations/translation_keys_1.es_DO.translation", "res://translations/translation_keys_1.es_EC.translation", "res://translations/translation_keys_1.es_ES.translation", "res://translations/translation_keys_1.es_GT.translation", "res://translations/translation_keys_1.es_HN.translation", "res://translations/translation_keys_1.es_MX.translation", "res://translations/translation_keys_1.es_NI.translation", "res://translations/translation_keys_1.es_PA.translation", "res://translations/translation_keys_1.es_PE.translation", "res://translations/translation_keys_1.es_PR.translation", "res://translations/translation_keys_1.es_PY.translation", "res://translations/translation_keys_1.es_SV.translation", "res://translations/translation_keys_1.es_US.translation", "res://translations/translation_keys_1.es_UY.translation", "res://translations/translation_keys_1.es_VE.translation", "res://translations/translation_keys_1.et.translation", "res://translations/translation_keys_1.et_EE.translation", "res://translations/translation_keys_1.eu.translation", "res://translations/translation_keys_1.eu_ES.translation" )
+translations=PoolStringArray(  )
 locale_filter=[ 0, [  ] ]
+translation_remaps={
+"res://assets/fonts/RobotoRegular.tres": PoolStringArray( "res://assets/fonts/arabic.tres:ar", "res://assets/fonts/chinese.tres:zh", "res://assets/fonts/japanese.tres:ja", "res://assets/fonts/korean.tres:ko" )
+}
 
 [logging]
 
