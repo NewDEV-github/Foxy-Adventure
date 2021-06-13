@@ -259,6 +259,10 @@ window/vsync/vsync_via_compositor=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 
+[editor]
+
+main_run_args="--locale=\"ko\""
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
@@ -394,6 +398,9 @@ jump2={
 
 translations=PoolStringArray(  )
 locale_filter=[ 0, [  ] ]
+translation_remaps={
+"res://assets/fonts/RobotoRegular.tres": PoolStringArray( "res://assets/fonts/arabic.tres:ar", "res://assets/fonts/chinese.tres:zh", "res://assets/fonts/japanese.tres:ja", "res://assets/fonts/korean.tres:ko" )
+}
 
 [logging]
 
