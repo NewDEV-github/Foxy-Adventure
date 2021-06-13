@@ -90,7 +90,6 @@ func _ready() -> void:
 	if Globals.arguments.has("locale"):
 		print("Setting locale to: " + Globals.arguments["locale"])
 		TranslationServer.set_locale(Globals.arguments["locale"])
-
 func show_submenu_page(page):
 	if current_submenu_page != null:
 		page.show()

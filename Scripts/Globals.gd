@@ -84,7 +84,21 @@ func _init():
 	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
-	ProjectSettings.load_resource_pack(install_base_path + "translations.pck")
+	var cfg = ConfigFile.new()
+	var dir = Directory.new()
+	if dir.open(install_base_path + 'translations') == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				if file_name.get_extension() == "pck":
+					ProjectSettings.load_resource_pack(install_base_path + 'translations/' + file_name.get_file())
+					var tra = load("res://translations/" + file_name.get_file().get_basename())
+					print("Found translation: " + "res://translations/" + file_name.get_file().get_basename())
+					TranslationServer.add_translation(tra)
+			file_name = dir.get_next()
 	print(arguments)
 var dlcs:Array = [
 	
