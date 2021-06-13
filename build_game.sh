@@ -27,4 +27,3 @@ sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPA
 sudo ./$GODOT_BINARY_FILENAME --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
 sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/osx-standard/translations.pck
 sudo ./$GODOT_BINARY_FILENAME --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/win-64-standard/translations.pck
