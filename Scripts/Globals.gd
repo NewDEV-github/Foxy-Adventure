@@ -201,6 +201,7 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
+	
 	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
 		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()
