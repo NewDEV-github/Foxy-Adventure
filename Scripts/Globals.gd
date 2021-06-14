@@ -79,6 +79,8 @@ func _init():
 		if argument.find("=") > -1:
 			var key_value = argument.split("=")
 			arguments[key_value[0].lstrip("--")] = key_value[1]
+		else:
+			arguments[argument.lstrip("--")] = ""
 	if file.file_exists("user://achievements.cfg"):
 		load_achivements()
 	OS.window_borderless = false
@@ -177,7 +179,13 @@ func felt_into_toxine():
 		set_achievement_done("Advanced sewage purifier")
 
 	emit_signal("scoredatarecived")
+
 func _ready():
+	if arguments.has("send-log"):
+		Api.send_debug_log_to_database()
+		yield(Api, "recived_log_id")
+		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(Api.tmp_log_id))
+		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])
 		TranslationServer.set_locale(arguments["locale"])
@@ -221,6 +229,7 @@ func set_variable(variable, value):
 func _notification(what: int) -> void:
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed!", "Error!")
+		OS.shell_open(OS.get_executable_path() + " --send-log")
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
 

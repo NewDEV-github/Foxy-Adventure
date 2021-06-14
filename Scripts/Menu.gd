@@ -153,7 +153,7 @@ func _on_Feedback_pressed():
 
 
 func _on_NewGame_pressed() -> void:
-	show_submenu_page($NewSave)
+	$NewSave.popup_centered()
 
 
 func _on_LoadGame_pressed() -> void:
@@ -161,8 +161,8 @@ func _on_LoadGame_pressed() -> void:
 
 
 func _on_CreateNewSave_pressed() -> void:
-	if not $NewSave/LineEdit.text == "":
-		Globals.current_save_name = $NewSave/LineEdit.text
+	if not $NewSave/VBoxContainer/LineEdit.text == "":
+		Globals.current_save_name = $NewSave/VBoxContainer/LineEdit.text
 	else:
 		print("Enter the save name!")
 	show_submenu_page($CharacterSelect)

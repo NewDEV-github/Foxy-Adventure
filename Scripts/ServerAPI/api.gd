@@ -4,7 +4,9 @@ extends HTTPRequest
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+signal recived_log_id
+var dir = Directory.new()
+var file = File.new()
 
 # Called when the node enters the scene tree for the first time.
 var current_user_score
@@ -38,3 +40,30 @@ func _upload_score():
 	print("Posting new score")
 	request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/leaderboard/new-score", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
 	t = {}
+var tmp_log_id
+func send_debug_log_to_database():
+	var log_id
+	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/logs/send-log"
+	var params = {'game': 'FoxyAdventure'}
+	dir.open("user://logs/")
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	var av = ["engine_log.txt", ".", ".."]
+	while av.has(file_name.get_file()):
+		file_name = dir.get_next()
+	print("user://logs/" + file_name.get_file())
+	file.open("user://logs/" + file_name.get_file(), File.READ)
+	params['log_text'] = file.get_as_text()
+#	print("REQUEST PARAMS: " + str(params))
+	var query = JSON.print(params)
+	connect("request_completed", self, "log_sent")
+	request(url, ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, query)
+	yield(self, "request_completed")
+	disconnect("request_completed", self, "log_sent")
+func log_sent(result, response_code, headers, body):
+#	print(str(result))
+#	print(str(response_code))
+#	print(str(headers))
+	var json = JSON.parse(body.get_string_from_utf8())
+	tmp_log_id = json.result
+	emit_signal("recived_log_id")
