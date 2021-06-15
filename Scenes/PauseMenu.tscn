@@ -29,7 +29,7 @@ margin_right = -6.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 150, 52.5 )
 window_title = ""
-dialog_text = "KEY_QUIT_TO_MENU_CONFIRM"
+dialog_text = "KEY_TEXT_QUIT_TO_MENU_CONFIRM"
 dialog_autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

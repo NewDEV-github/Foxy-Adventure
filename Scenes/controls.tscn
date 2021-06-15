@@ -18,7 +18,7 @@ margin_right = 1024.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Press button to assign selected action"
+text = "KEY_TEXT_OPTIONS_CONTROLS_MESSAGE"
 align = 1
 
 [node name="bindings" type="GridContainer" parent="."]
@@ -35,7 +35,7 @@ columns = 2
 [node name="1buttons" type="Label" parent="bindings"]
 margin_right = 510.0
 margin_bottom = 14.0
-text = "Primary"
+text = "KEY_TEXT_OPTIONS_CONTROLS_PRIMARY"
 align = 1
 valign = 1
 
@@ -43,7 +43,7 @@ valign = 1
 margin_left = 514.0
 margin_right = 1024.0
 margin_bottom = 14.0
-text = "Secondary"
+text = "KEY_TEXT_OPTIONS_CONTROLS_SECONDARY"
 align = 1
 valign = 1
 
@@ -117,7 +117,7 @@ margin_right = 67.0
 margin_bottom = 24.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Down"
+text = "KEY_TEXT_OPTIONS_CONTROLS_DOWN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -142,9 +142,10 @@ size_flags_vertical = 2
 margin_top = 5.0
 margin_right = 67.0
 margin_bottom = 24.0
+rect_pivot_offset = Vector2( 643.587, 35.8144 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Down"
+text = "KEY_TEXT_OPTIONS_CONTROLS_DOWN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -169,7 +170,7 @@ margin_right = 74.0
 margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Left"
+text = "KEY_TEXT_OPTIONS_CONTROLS_LEFT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -196,7 +197,7 @@ margin_right = 74.0
 margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Left"
+text = "KEY_TEXT_OPTIONS_CONTROLS_LEFT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -222,7 +223,7 @@ margin_right = 82.7072
 margin_bottom = 23.8787
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Right"
+text = "KEY_TEXT_OPTIONS_CONTROLS_RIGHT"
 
 [node name="Button" type="Button" parent="bindings/ui_right"]
 margin_left = 104.0
@@ -250,7 +251,7 @@ margin_right = 82.7072
 margin_bottom = 23.8787
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Right"
+text = "KEY_TEXT_OPTIONS_CONTROLS_RIGHT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -279,7 +280,7 @@ margin_right = 45.0
 margin_bottom = 21.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Jump"
+text = "KEY_TEXT_OPTIONS_CONTROLS_JUMP"
 
 [node name="Button" type="Button" parent="bindings/jump"]
 margin_left = 84.0
@@ -298,13 +299,12 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="Label" type="Label" parent="bindings/jump2"]
-margin_left = 5.0
 margin_top = 8.0
-margin_right = 45.0
-margin_bottom = 21.0
+margin_right = 242.0
+margin_bottom = 22.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-text = "Jump"
+text = "KEY_TEXT_OPTIONS_CONTROLS_JUMP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
