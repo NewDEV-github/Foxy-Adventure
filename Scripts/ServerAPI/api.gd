@@ -1,5 +1,5 @@
 extends HTTPRequest
-
+var is_requesting = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -19,9 +19,11 @@ func update_score(uid, score):
 	connect("request_completed", self, "get_scores")
 	var t = {'game': 'FoxyAdventure'}
 	var params = JSON.print(t)
-	if not ERR_BUSY:
+	while not is_requesting:
+		is_requesting = true
 		request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/leaderboard/get-scores", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
-	yield(self, "request_completed")
+		yield(self, "request_completed")
+		is_requesting = false
 	if temp_score == -1:
 		temp_score = int(current_user_score[uid])
 		temp_score += score
@@ -39,8 +41,11 @@ func _upload_score():
 	var t = {'userid': _tmp_uid, 'score': temp_score}
 	var params = JSON.print(t)
 	print("Posting new score")
-	if not ERR_BUSY:
+	while not is_requesting:
+		is_requesting = true
 		request("https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/leaderboard/new-score", ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, params)
+		yield(self, "request_completed")
+		is_requesting = false
 	t = {}
 var tmp_log_id
 func send_debug_log_to_database():
@@ -59,9 +64,11 @@ func send_debug_log_to_database():
 #	print("REQUEST PARAMS: " + str(params))
 	var query = JSON.print(params)
 	connect("request_completed", self, "log_sent")
-	if not ERR_BUSY:
+	while not is_requesting:
+		is_requesting = true
 		request(url, ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, query)
-	yield(self, "request_completed")
+		yield(self, "request_completed")
+		is_requesting = false
 	disconnect("request_completed", self, "log_sent")
 func log_sent(result, response_code, headers, body):
 #	print(str(result))
