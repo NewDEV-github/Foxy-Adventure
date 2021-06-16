@@ -102,6 +102,11 @@ func _init():
 					TranslationServer.add_translation(tra)
 			file_name = dir.get_next()
 	print(arguments)
+	if arguments["send-log"] == "y":
+		Api.send_debug_log_to_database()
+		yield(Api, "recived_log_id")
+		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(Api.tmp_log_id))
+		get_tree().quit()
 var dlcs:Array = [
 	
 ]
@@ -181,11 +186,6 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
-	if arguments.has("send-log"):
-		Api.send_debug_log_to_database()
-		yield(Api, "recived_log_id")
-		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(Api.tmp_log_id))
-		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])
 		TranslationServer.set_locale(arguments["locale"])
