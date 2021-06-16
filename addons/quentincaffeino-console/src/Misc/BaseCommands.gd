@@ -30,6 +30,10 @@ func _init(console):
 		.set_description('Outputs usage instructions.')\
 		.add_argument('command', TYPE_STRING)\
 		.register()
+	self._console.add_command('change_scene', self, '_change_scene')\
+		.set_description('Changes scene.')\
+		.add_argument('path', TYPE_STRING)\
+		.register()
 	self._console.add_command('set_locale', self, '_set_locale')\
 		.set_description('Sets locale to given.')\
 		.add_argument('locale', TYPE_STRING)\
@@ -91,3 +95,7 @@ func _send_log():
 func _quit():
 	self._console.Log.warn('Quitting application...')
 	self._console.get_tree().quit()
+func _change_scene(path):
+	self._console.Log.warn('Changing scene to ' + path + '...')
+	BackgroundLoad.get_node("bgload").load_scene(path)
+	
