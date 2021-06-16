@@ -64,11 +64,8 @@ func send_debug_log_to_database():
 #	print("REQUEST PARAMS: " + str(params))
 	var query = JSON.print(params)
 	connect("request_completed", self, "log_sent")
-	while not is_requesting:
-		is_requesting = true
-		request(url, ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, query)
-		yield(self, "request_completed")
-		is_requesting = false
+	request(url, ["Content-Type: application/json"], false, HTTPClient.METHOD_POST, query)
+	yield(self, "request_completed")
 	disconnect("request_completed", self, "log_sent")
 func log_sent(result, response_code, headers, body):
 #	print(str(result))
