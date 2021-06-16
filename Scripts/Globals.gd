@@ -152,15 +152,10 @@ func add_life():
 	elif lives >= 9:
 		set_achievement_done("Like a cat, but... Better")
 
-func add_coin(anmount):
-	var tmp_up = true
+func add_coin(anmount, upload_score=false):
 	if user_data.has("localid"):
 #		print(user_data["localid"])
-		Api.update_score(user_data["localid"], anmount)
-	else: #wait when we will be able to upload scores and update one
-		while tmp_up == true and user_data.has("localid"):
-			Api.update_score(user_data["localid"], anmount)
-			tmp_up = false
+		Api.update_score(user_data["localid"], anmount, upload_score)
 	coins += anmount
 	
 #	print(str(int(coins) % 100))
@@ -181,7 +176,10 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
-	if arguments["send-log"] == "y":
+#	OS.execute(OS.get_executable_path(), ["--send-log"], false)
+#	OS.shell_open(OS.get_executable_path() + " --send-log")
+#	get_tree().quit()
+	if arguments.has("send-log"):
 		Api.send_debug_log_to_database()
 		yield(Api, "recived_log_id")
 		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(Api.tmp_log_id))
@@ -230,7 +228,9 @@ func set_variable(variable, value):
 func _notification(what: int) -> void:
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed!", "Error!")
-		OS.shell_open(OS.get_executable_path() + " --send-log")
+#		OS.shell_open(OS.get_executable_path() + " --send-log")
+		OS.execute(OS.get_executable_path(), ["--send-log"], false)
+		get_tree().quit()
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
 

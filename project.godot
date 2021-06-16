@@ -244,6 +244,7 @@ DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Globals="*res://Scripts/Globals.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 Api="*res://Scenes/api.tscn"
+Console="*res://addons/quentincaffeino-console/src/Console.tscn"
 
 [debug]
 
@@ -259,13 +260,9 @@ window/vsync/vsync_via_compositor=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 
-[editor]
-
-main_run_args="--locale=\"en\""
-
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
 
 [editors]
 
@@ -391,6 +388,11 @@ jump={
 jump2={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777225,"unicode":0,"echo":false,"script":null)
+ ]
+}
+quentincaffeino_console_toggle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":true,"meta":false,"command":true,"pressed":false,"scancode":16777240,"unicode":0,"echo":false,"script":null)
  ]
 }
 
