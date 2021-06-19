@@ -30,7 +30,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install appdirs easygui pyinstaller
-        run: |
           sudo chmod +x ./build_crashreport_windows.bat
           ./build_crashreport_windows.bat
       - name: Upload a Build Artifact Windows
@@ -53,7 +52,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install appdirs easygui pyinstaller
-        run: |
           sudo chmod +x ./build_crashreport_osx.sh
           ./build_crashreport_osx.sh
       - name: Upload a Build Artifact osx
@@ -76,7 +74,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install appdirs easygui pyinstaller
-        run: |
           sudo chmod +x ./build_crashreport_linux.sh
           ./build_crashreport_linux.sh
       - name: Upload a Build Artifact x11-64
@@ -113,3 +110,15 @@ jobs:
         with:
           name: build-win-64
           path: builds/win-64-standard
+  do-release:
+    needs: [godot-build, crashreport-build-windows, crashreport-build-linux, crashreport-build-osx]
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/download-artifact@v2
+      with:
+        path: artifacts
+        
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: artifacts
