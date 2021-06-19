@@ -1,0 +1,1 @@
+pyinstaller --onedir send_log.py --distpath "./crashreport/osx/dist" --workpath "./crashreport/osx/build"

@@ -1,0 +1,1 @@
+pyinstaller --onedir send_log.py --distpath "./crashreport/x11/dist" --workpath "./crashreport/x11/build"
