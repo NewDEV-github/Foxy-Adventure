@@ -16,7 +16,7 @@ def cumpute_file_path():
     for (dirpath, dirnames, filenames) in walk(file_path):
         f.extend(filenames)
         break
-    file_path += f[0]
+    file_path += f[1]
     return file_path
 def prepare_log(file):
     f = open(file, "r")
@@ -29,7 +29,7 @@ def send_log(l_text):
     return r.text
 if __name__ == '__main__':
     log_id = send_log(prepare_log(cumpute_file_path()))
-    print(str(log_id))
+    # print(str(log_id))
     easygui.msgbox(
         'Your log was sent!\n\nLog id is: '+ str(log_id),
         'Foxy Adventure Crash Report'

@@ -1,4 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import collect_data_files
+
+datas = []
+datas += collect_data_files('easygui')
 
 
 block_cipher = None
@@ -7,7 +11,7 @@ block_cipher = None
 a = Analysis(['send_log.py'],
              pathex=['C:\\Users\\DoS\\Documents\\GitHub\\Foxy-Adventure'],
              binaries=[],
-             datas=[],
+             datas=datas,
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],

@@ -1,6 +1,6 @@
 extends Node
 
-var gdsdk_enabled = false
+var gdsdk_enabled = true
 signal scoredatarecived
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
@@ -176,6 +176,7 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
+	OS.execute(install_base_path + "send_log/send_log", [])
 #	OS.execute(OS.get_executable_path(), ["--send-log"], false)
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
