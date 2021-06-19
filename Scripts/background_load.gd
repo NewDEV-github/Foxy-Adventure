@@ -41,6 +41,8 @@ func _thread_load(path):
 		elif err != OK:
 			# Not OK, there was an error
 			print("There was an error loading")
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA, false)
+			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA, false)
 			break
 	
 	# Send whathever we did (or not) get
@@ -74,10 +76,6 @@ func _thread_done(resource):
 #	SavingDataIcon.show_up(true, 4)
 func load_scene(path):
 	show()
-	if not File.new().file_exists(path):
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA, false)
-		ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA, false)
-		print("CAN NOT LOAD: "+path)
 	pth = path
 #	SavingDataIcon.show_up(true, 4)
 	if play_start_transition:

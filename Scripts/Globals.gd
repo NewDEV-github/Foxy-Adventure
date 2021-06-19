@@ -83,7 +83,6 @@ func _init():
 			arguments[argument.lstrip("--")] = ""
 	if file.file_exists("user://achievements.cfg"):
 		load_achivements()
-	OS.window_borderless = false
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
 	print("Installed at: " + install_base_path)
 	var cfg = ConfigFile.new()
@@ -102,6 +101,7 @@ func _init():
 					TranslationServer.add_translation(tra)
 			file_name = dir.get_next()
 	print(arguments)
+	OS.window_borderless = false
 var dlcs:Array = [
 	
 ]
@@ -176,7 +176,7 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
-	OS.execute(install_base_path + "send_log/send_log", [])
+#	OS.shell_open(install_base_path + "send_log/send_log")
 #	OS.execute(OS.get_executable_path(), ["--send-log"], false)
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
@@ -230,7 +230,7 @@ func _notification(what: int) -> void:
 	if what == MainLoop.NOTIFICATION_CRASH:
 		OS.alert("App crashed!", "Error!")
 #		OS.shell_open(OS.get_executable_path() + " --send-log")
-		OS.execute(OS.get_executable_path(), ["--send-log"], false)
+		OS.shell_open(install_base_path + "send_log/send_log")
 		get_tree().quit()
 func apply_custom_resolution():
 	OS.set_window_size(Vector2(window_x_resolution, window_y_resolution))
