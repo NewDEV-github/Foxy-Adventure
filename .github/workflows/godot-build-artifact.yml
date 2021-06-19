@@ -111,6 +111,7 @@ jobs:
           name: build-win-64
           path: builds/win-64-standard
   do-release:
+    runs-on: ubuntu-18.04
     needs: [godot-build, crashreport-build-windows, crashreport-build-linux, crashreport-build-osx]
     steps:
     - uses: actions/checkout@v2
