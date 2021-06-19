@@ -209,7 +209,7 @@ def site_config_dir(appname=None, appauthor=None, version=None, multipath=False)
         "appname" is the name of application.
             If None, just the system directory is returned.
         "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
+            appathor or distributing body for this application. Typically
             it is the owning company name. This falls back to appname. You may
             pass False to disable it.
         "version" is an optional version path element to append to the

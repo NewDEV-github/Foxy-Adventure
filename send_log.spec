@@ -8,7 +8,7 @@ datas += collect_data_files('easygui')
 block_cipher = None
 
 
-a = Analysis(['send_log.py', 'appdirs.py'],
+a = Analysis(['send_log.py'],
              pathex=['C:\\Users\\DoS\\Documents\\GitHub\\Foxy-Adventure'],
              binaries=[],
              datas=datas,
