@@ -118,7 +118,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         path: artifacts
-    - name: make release
+    - name: Prepare files for releasing
       run: |
         cd $GITHUB_WORKSPACE/artifacts
         cp -r build-crashreport-osx/ build-osx-64
@@ -131,45 +131,45 @@ jobs:
         cd $GITHUB_WORKSPACE/artifacts/build-win-64
         sudo zip -r build-win-64.zip *
     - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ steps.vars.outputs.sha_short }}
-          release_name: Release ${{ steps.vars.outputs.sha_short }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset - x11-64
-        id: upload-release-asset-x1164
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: artifacts/build-x11-64/build-x11-64.zip
-          asset_name: build-x11-64.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset - osx-64
-        id: upload-release-asset-osx64
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: artifacts/build-osx-64/build-osx-64.zip
-          asset_name: build-osx-64.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset - win-64
-        id: upload-release-asset-win64
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: artifacts/build-win-64/build-win-64.zip
-          asset_name: build-win-64.zip
-          asset_content_type: application/zip
+      id: create_release
+      uses: actions/create-release@v1.1.4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ steps.vars.outputs.sha_short }}
+        release_name: Release ${{ steps.vars.outputs.sha_short }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset - x11-64
+      id: upload-release-asset-x1164
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: artifacts/build-x11-64/build-x11-64.zip
+        asset_name: build-x11-64.zip
+        asset_content_type: application/zip
+    - name: Upload Release Asset - osx-64
+      id: upload-release-asset-osx64
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: artifacts/build-osx-64/build-osx-64.zip
+        asset_name: build-osx-64.zip
+        asset_content_type: application/zip
+    - name: Upload Release Asset - win-64
+      id: upload-release-asset-win64
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: artifacts/build-win-64/build-win-64.zip
+        asset_name: build-win-64.zip
+        asset_content_type: application/zip
   delete-artifacts:
     runs-on: ubuntu-18.04
     needs: [do-release, godot-build, crashreport-build-windows, crashreport-build-linux, crashreport-build-osx]
