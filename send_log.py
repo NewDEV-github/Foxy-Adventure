@@ -1,7 +1,6 @@
 import requests
 import os
 import sys
-import easygui
 import platform
 from os import walk
 import tkinter
