@@ -25,7 +25,11 @@ func _init(console):
 	self._console.add_command('send_log', self, '_send_log')\
 		.set_description('Sends log to developer\'s database.')\
 		.register()
-
+	self._console.add_command('update_score', self, '_update_score')\
+		.set_description('SUpdates score for given user uid.')\
+		.add_argument('score', TYPE_INT)\
+		.add_argument('uid', TYPE_STRING)\
+		.register()
 	self._console.add_command('help', self, '_help')\
 		.set_description('Outputs usage instructions.')\
 		.add_argument('command', TYPE_STRING)\
@@ -88,10 +92,13 @@ func _list_commands():
 		self._console.write_line('[color=#ffff66][url=%s]%s[/url][/color]' % [ name, name ])
 func _set_locale(locale):
 	TranslationServer.set_locale(locale)
+func _update_score(score, uid):
+	ApiScores.update_score(uid, score)
+	self._console.write_line("Score for %s was updated :3" % [uid])
 func _send_log():
-	Api.send_debug_log_to_database()
-	yield(Api, "recived_log_id")
-	self._console.write_line('Your log id is: (0)' + str(Api.tmp_log_id))
+	ApiLogs.send_debug_log_to_database()
+	yield(ApiLogs, "recived_log_id")
+	self._console.write_line('Your log id is: (0)' + str(ApiLogs.tmp_log_id))
 func _quit():
 	self._console.Log.warn('Quitting application...')
 	self._console.get_tree().quit()

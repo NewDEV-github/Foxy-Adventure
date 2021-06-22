@@ -243,8 +243,9 @@ BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Globals="*res://Scripts/Globals.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
-Api="*res://Scenes/api.tscn"
+ApiScores="*res://Scenes/api_scores.tscn"
 Console="*res://addons/quentincaffeino-console/src/Console.tscn"
+ApiLogs="*res://Scenes/api_logs.tscn"
 
 [debug]
 

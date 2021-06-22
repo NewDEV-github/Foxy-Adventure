@@ -153,9 +153,9 @@ func add_life():
 		set_achievement_done("Like a cat, but... Better")
 
 func add_coin(anmount, upload_score=false):
-	if user_data.has("localid"):
+#	if user_data.has("localid"):
 #		print(user_data["localid"])
-		Api.update_score(user_data["localid"], anmount, upload_score)
+#		ApiScores.update_score(user_data["localid"], anmount)
 	coins += anmount
 	
 #	print(str(int(coins) % 100))
@@ -181,9 +181,9 @@ func _ready():
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
 	if arguments.has("send-log"):
-		Api.send_debug_log_to_database()
-		yield(Api, "recived_log_id")
-		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(Api.tmp_log_id))
+		ApiLogs.send_debug_log_to_database()
+		yield(ApiLogs, "recived_log_id")
+		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
 		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])

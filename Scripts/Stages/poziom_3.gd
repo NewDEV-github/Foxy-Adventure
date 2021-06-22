@@ -10,6 +10,7 @@ var character = load(str(Globals.character_path)).instance()
 # Called when the node enters the scene tree for the first time.
 var music_files = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
 func _ready():
+	ApiScores.force_upload()
 	Globals.add_coin(0, true)
 	randomize()
 	var audio = load(music_files[randi()%music_files.size()])

@@ -14,27 +14,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Discord" type="Tabs" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 34.0
-margin_right = -5.0
-margin_bottom = -5.0
-drag_to_rearrange_enabled = true
-
-[node name="DSDK" type="CheckButton" parent="Discord"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -20.0
-margin_bottom = 20.0
-text = "KEY_TEXT_OPTIONS_ENABLE_DISCORD_SDK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Modifications" type="Tabs" parent="."]
 visible = false
 anchor_right = 1.0
@@ -386,6 +365,27 @@ drag_to_rearrange_enabled = true
 
 [node name="controls_ui" parent="tabs/Controls" instance=ExtResource( 3 )]
 
+[node name="Discord" type="Tabs" parent="tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
+drag_to_rearrange_enabled = true
+
+[node name="DSDK" type="CheckButton" parent="tabs/Discord"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_bottom = 20.0
+text = "KEY_TEXT_OPTIONS_ENABLE_DISCORD_SDK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SAVE" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -399,7 +399,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="toggled" from="Discord/DSDK" to="." method="_on_DSDK_toggled"]
 [connection signal="item_selected" from="Modifications/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="toggled" from="Modifications/VBoxContainer/HBoxContainer/Enable" to="." method="_on_Enable_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/Fullscreen" to="." method="_on_Fullscreen_toggled"]
@@ -416,4 +415,5 @@ __meta__ = {
 [connection signal="toggled" from="tabs/Audio/Options/Audio/Music/Music_on" to="." method="_on_Music_on_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/SFX/SFX_slider" to="." method="_on_SFX_slider_value_changed"]
 [connection signal="toggled" from="tabs/Audio/Options/Audio/SFX/SFX_on" to="." method="_on_SFX_on_toggled"]
+[connection signal="toggled" from="tabs/Discord/DSDK" to="." method="_on_DSDK_toggled"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]
