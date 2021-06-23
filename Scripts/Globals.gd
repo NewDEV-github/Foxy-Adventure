@@ -176,6 +176,7 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
+	get_tree().get_root().set_transparent_background(true)
 #	OS.shell_open(install_base_path + "send_log/send_log")
 #	OS.execute(OS.get_executable_path(), ["--send-log"], false)
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
@@ -220,6 +221,7 @@ func _ready():
 	for i in modifications:
 		load_modification(i)
 	emit_signal("loaded")
+	get_tree().get_root().set_transparent_background(false)
 func get_project_root_dir():
 	return "res://".get_base_dir()
 

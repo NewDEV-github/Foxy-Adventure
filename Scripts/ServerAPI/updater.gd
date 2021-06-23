@@ -5,9 +5,11 @@ var cfg = ConfigFile.new()
 func change_text_autosave():
 	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_AUTOSAVE") + "\n[/color][/center]"
 func _ready():
-	$ColorRect.hide()
+#	$bootsplash.show()
+#	$ColorRect.hide()
 	yield(Globals, "loaded")
-	$ColorRect.show()
+#	$bootsplash.hide()
+#	$ColorRect.show()
 	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
 	cfg.load("user://settings.cfg")
 	if cfg.has_section_key('Graphics', 'window_x_resolution') and cfg.has_section_key('Graphics', 'window_y_resolution'):
@@ -67,11 +69,11 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 func _on_VideoPlayer_finished():
 	if not OS.get_name() == "Android":
-		if not get_tree().change_scene('res://Scenes/Menu.tscn') == 0:
+		if not get_tree().change_scene('res://Scenes/Menu.tscn') == OK:
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 			print(get_tree().change_scene('res://Scenes/Menu.tscn'))
 	elif OS.get_name() == "Android":
-		if not get_tree().change_scene("res://Scenes/Menu_android.tscn") == 0:
+		if not get_tree().change_scene("res://Scenes/Menu_android.tscn") == OK:
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
 
 
