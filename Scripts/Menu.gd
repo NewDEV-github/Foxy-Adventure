@@ -19,7 +19,8 @@ func _on_FirebaseAuth_login_succeeded(auth):
 #	print("Db ref: " + db_ref.get_data())
 #	db_ref.push({"f": "df"})
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
-
+func load_level_editor():
+	pass
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
 func _ready() -> void:
