@@ -22,6 +22,8 @@ func _on_FirebaseAuth_login_succeeded(auth):
 
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
+func load_level_editor():
+	pass
 func _ready() -> void:
 	$VBoxContainer3/Info.disabled = true
 	$VBoxContainer3/Logout.disabled = true
