@@ -137,9 +137,9 @@ func dir_contents(path):
 				print("Found directory: " + file_name)
 			else:
 				print("Found file: " + file_name)
-				if file_name.get_extension() == "tscn":
+				if file_name.get_extension() == "pck":
 					Globals.add_custom_world(file_name.get_basename())
-					dir.copy(path + file_name, Globals.temp_custom_stages_dir + file_name)
+					ProjectSettings.load_resource_pack(path + "/" + file_name.get_file())
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")

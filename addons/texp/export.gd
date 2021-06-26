@@ -19,6 +19,7 @@ func _export_begin(features, is_debug, path, flags):
 		else:
 			dir.make_dir(base_path + '/translations/')
 		if dir.open("res://translations/") == OK:
+			pck.pck_start(base_path + '/translations/translations.pck')
 			dir.list_dir_begin()
 			var file_name = dir.get_next()
 			while file_name != "":
@@ -26,7 +27,8 @@ func _export_begin(features, is_debug, path, flags):
 					print("Found directory: " + file_name)
 				else:
 					if file_name.get_extension() == "translation":
-						pck.pck_start(base_path + '/translations/' + file_name.get_file() + ".pck")
 						pck.add_file('res://translations/' + file_name.get_file(), 'res://translations/' + file_name.get_file())
-						pck.flush()
+						
 				file_name = dir.get_next()
+			pck.flush()
+		

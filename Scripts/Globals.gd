@@ -1,5 +1,5 @@
 extends Node
-
+var loaded = false
 var gdsdk_enabled = true
 signal scoredatarecived
 var fallen_into_toxins = 0
@@ -87,17 +87,17 @@ func _init():
 	print("Installed at: " + install_base_path)
 	var cfg = ConfigFile.new()
 	var dir = Directory.new()
-	if dir.open(install_base_path + 'translations') == OK:
+	ProjectSettings.load_resource_pack(install_base_path + 'translations/translations.pck')
+	if dir.open("res://translations/") == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
 				print("Found directory: " + file_name)
 			else:
-				if file_name.get_extension() == "pck":
-					ProjectSettings.load_resource_pack(install_base_path + 'translations/' + file_name.get_file())
-					var tra = load("res://translations/" + file_name.get_file().get_basename())
-					print("Found translation: " + "res://translations/" + file_name.get_file().get_basename())
+				if file_name.get_extension() == "translation":
+					var tra = load("res://translations/" + file_name.get_file())
+					print("Found translation: " + "res://translations/" + file_name.get_file())
 					TranslationServer.add_translation(tra)
 			file_name = dir.get_next()
 	print(arguments)
@@ -220,7 +220,7 @@ func _ready():
 	scan_and_load_modifications_cfg()
 	for i in modifications:
 		load_modification(i)
-	emit_signal("loaded")
+	loaded = true
 	get_tree().get_root().set_transparent_background(false)
 func get_project_root_dir():
 	return "res://".get_base_dir()

@@ -5,42 +5,40 @@ var cfg = ConfigFile.new()
 func change_text_autosave():
 	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_AUTOSAVE") + "\n[/color][/center]"
 func _ready():
-#	$bootsplash.show()
-#	$ColorRect.hide()
-	yield(Globals, "loaded")
-#	$bootsplash.hide()
-#	$ColorRect.show()
-	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
-	cfg.load("user://settings.cfg")
-	if cfg.has_section_key('Graphics', 'window_x_resolution') and cfg.has_section_key('Graphics', 'window_y_resolution'):
-		OS.set_window_size(Vector2(float(str(cfg.get_value('Graphics', 'window_x_resolution', 1024))), float(str(cfg.get_value('Graphics', 'window_y_resolution', 600)))))
-#	if file.file_exists("user://settings.cfg") and not cfg.has_section_key('Game', 'discord_sdk_enabled'):
-#		$ConfirmationDialog.popup_centered()
-#	elif not file.file_exists("user://settings.cfg"):
-#		$ConfirmationDialog.popup_centered()
-#		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
-#		print(str(player))
-	file = File.new()
-#	print(str(PI))
-#	if Globals.release_mode:
-#		load_assets()
-#	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
-#	BackgroundLoad.get_node("bgload").load_scene("res://s.tscn")
-	var dir = Directory.new()
-	dir.open('user://')
-	dir.make_dir('dlcs')
-	if not file.file_exists('user://logs/engine_log.txt'):
-		dir = Directory.new()
+	while Globals.loaded == true:
+		$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
+		$AnimationPlayer.play("intro")
+		cfg.load("user://settings.cfg")
+		if cfg.has_section_key('Graphics', 'window_x_resolution') and cfg.has_section_key('Graphics', 'window_y_resolution'):
+			OS.set_window_size(Vector2(float(str(cfg.get_value('Graphics', 'window_x_resolution', 1024))), float(str(cfg.get_value('Graphics', 'window_y_resolution', 600)))))
+	#	if file.file_exists("user://settings.cfg") and not cfg.has_section_key('Game', 'discord_sdk_enabled'):
+	#		$ConfirmationDialog.popup_centered()
+	#	elif not file.file_exists("user://settings.cfg"):
+	#		$ConfirmationDialog.popup_centered()
+	#		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
+	#		print(str(player))
+		file = File.new()
+	#	print(str(PI))
+	#	if Globals.release_mode:
+	#		load_assets()
+	#	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
+	#	BackgroundLoad.get_node("bgload").load_scene("res://s.tscn")
+		var dir = Directory.new()
 		dir.open('user://')
-		dir.make_dir('logs')
-	OS.request_permissions()
-	
-#	$icon.show()
-	$VideoPlayer.stop()
-	#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
-	
-#	if intro_played:
-#		get_tree().change_scene("res://Scenes/Menu.tscn")
+		dir.make_dir('dlcs')
+		if not file.file_exists('user://logs/engine_log.txt'):
+			dir = Directory.new()
+			dir.open('user://')
+			dir.make_dir('logs')
+		OS.request_permissions()
+		
+	#	$icon.show()
+		$VideoPlayer.stop()
+		#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
+		
+	#	if intro_played:
+	#		get_tree().change_scene("res://Scenes/Menu.tscn")
+		break
 func _process(delta: float) -> void:
 	if DiscordSDK.discord_user_img:
 		$Icon.texture = DiscordSDK.discord_user_img
