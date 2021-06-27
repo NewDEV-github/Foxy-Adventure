@@ -1,0 +1,1 @@
+sudo cp $GITHUB_WORKSPACE/Scripts/Globals.gd $GITHUB_WORKSPACE/addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd
