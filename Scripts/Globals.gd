@@ -36,6 +36,9 @@ var stage_list = {
 	"4": "res://Scenes/Stages/poziom_5.tscn",
 	"5": "res://Scenes/Stages/poziom_6.tscn",
 }
+var custom_achievements_requirements = {
+	
+}
 var stage_names:Dictionary = {
 	"0": "Laboratory",
 	"1": "Laboratory",
@@ -302,7 +305,10 @@ func load_achivements():
 #func _process(delta):
 #	print(discord_sdk_enabled)
 
-
+func _process(delta):
+	for i in custom_achievements_requirements:
+		if custom_achievements_requirements[i][0] == get(custom_achievements_requirements[i][0]):
+			set_achievement_done(i)
 
 var modifications = {}
 func scan_and_load_modifications_cfg():

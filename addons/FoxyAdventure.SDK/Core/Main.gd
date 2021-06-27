@@ -3,6 +3,7 @@ class_name FoxyAdventureSDK
 const Lifes = preload("res://addons/FoxyAdventure.SDK/Core/Lifes.gd")
 const Coins = preload("res://addons/FoxyAdventure.SDK/Core/Coins.gd")
 const Worlds = preload("res://addons/FoxyAdventure.SDK/Core/Worlds.gd")
+const Achievements = preload("res://addons/FoxyAdventure.SDK/Core/Achievements.gd")
 const Characters = preload("res://addons/FoxyAdventure.SDK/Core/Characters.gd")
 var _cfg = ConfigFile.new()
 func get_version():
