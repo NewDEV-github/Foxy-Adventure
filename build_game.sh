@@ -35,6 +35,8 @@ sudo mkdir translations
 cd $GITHUB_WORKSPACE/win-64-standard
 sudo mkdir translations
 
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/x11-64-standard/translations/translations.pck
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/osx-standard/translations/translations.pck
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/win-64-standard/translations/translations.pck
+sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/translations.pck
+
+sudo cp $GITHUB_WORKSPACE/translations.pck $GITHUB_WORKSPACE/builds/x11-64-standard/translations/translations.pck
+sudo cp $GITHUB_WORKSPACE/translations.pck $GITHUB_WORKSPACE/builds/osx-standard/translations/translations.pck
+sudo cp $GITHUB_WORKSPACE/translations.pck $GITHUB_WORKSPACE/builds/win-64-standard/translations/translations.pck
