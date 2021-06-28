@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Editor/ui/navbar.gd" type="Script" id=1]
+[ext_resource path="res://Editor/ui/NewFile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Editor/ui/FileLoadPopup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=4]
+
+[node name="Control" type="Panel"]
+anchor_right = 1.0
+margin_bottom = 23.0
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewFile" parent="." instance=ExtResource( 2 )]
+
+[node name="FileLoadPopup" parent="." instance=ExtResource( 3 )]
+
+[node name="Container" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File" type="MenuButton" parent="Container"]
+margin_right = 37.0
+margin_bottom = 27.0
+text = "File"
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false, "Save as...", null, 0, false, false, 3, 0, null, "", false, "Options", null, 0, false, false, 4, 0, null, "", false, "Quit", null, 0, false, false, 5, 0, null, "", false ]
+
+[node name="Audio" type="MenuButton" parent="Container"]
+margin_left = 41.0
+margin_right = 94.0
+margin_bottom = 27.0
+focus_mode = 2
+text = "Audio"
+items = [ "Add/change audio", null, 0, false, false, 0, 0, null, "", false, "Add/change audio from file...", null, 0, false, false, 1, 0, null, "", false, "Remove audio", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Bg" type="MenuButton" parent="Container"]
+margin_left = 98.0
+margin_right = 195.0
+margin_bottom = 27.0
+focus_mode = 2
+text = "Background"
+items = [ "Add/change background", null, 0, false, false, 0, 0, null, "", false, "Remove background", null, 0, false, false, 1, 0, null, "", false ]

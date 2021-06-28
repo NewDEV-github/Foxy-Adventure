@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Editor/ui/FileLoadPopup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Editor/Main.gd" type="Script" id=2]
+[ext_resource path="res://Editor/ui/NewFile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=4]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+theme = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewFile" parent="." instance=ExtResource( 3 )]
+visible = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 387.485
+margin_top = 314.686
+margin_right = 587.485
+margin_bottom = 414.686
+
+[node name="FileLoadPopup" parent="." instance=ExtResource( 1 )]
+current_dir = "/Users/DoS/Documents/GitHub/Foxy-Adventure-Level-Editor"
+current_path = "/Users/DoS/Documents/GitHub/Foxy-Adventure-Level-Editor/"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -22.0
+margin_right = 21.0
+margin_bottom = 22.0
+
+[node name="New" type="Button" parent="Menu"]
+margin_right = 48.0
+margin_bottom = 27.0
+text = "New"
+
+[node name="Load" type="Button" parent="Menu"]
+margin_top = 31.0
+margin_right = 48.0
+margin_bottom = 58.0
+text = "Load"
+
+[connection signal="pressed" from="Menu/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="Menu/Load" to="." method="_on_Load_pressed"]
