@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Editor/Editor.gd" type="Script" id=2]
+[ext_resource path="res://Editor/TilePainter.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+compatibility_mode = true
+format = 1
+script = ExtResource( 3 )
