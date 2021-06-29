@@ -47,3 +47,7 @@ func _on_BgList_item_activated(index):
 
 func _on_AudioPopup_file_selected(path):
 	Editor.add_audio_from_file(path)
+
+
+func _on_FileLoadPopup_dir_selected(dir):
+	Editor.load_stage(dir)

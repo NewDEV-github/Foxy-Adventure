@@ -26,6 +26,9 @@ margin_right = 587.485
 margin_bottom = 414.686
 
 [node name="FileLoadPopup" parent="." instance=ExtResource( 1 )]
+visible = true
+window_title = "Otwórz katalog"
+mode = 2
 current_dir = "/Users/DoS/Documents/GitHub/Foxy-Adventure-Level-Editor"
 current_path = "/Users/DoS/Documents/GitHub/Foxy-Adventure-Level-Editor/"
 
@@ -50,5 +53,6 @@ margin_right = 48.0
 margin_bottom = 58.0
 text = "Load"
 
+[connection signal="dir_selected" from="FileLoadPopup" to="." method="_on_FileLoadPopup_dir_selected"]
 [connection signal="pressed" from="Menu/New" to="." method="_on_New_pressed"]
 [connection signal="pressed" from="Menu/Load" to="." method="_on_Load_pressed"]

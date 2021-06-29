@@ -15,3 +15,4 @@ format = 1
 script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true

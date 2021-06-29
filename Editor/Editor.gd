@@ -5,7 +5,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-var modes = ["custom_audio", "custom_tiles", "finished"]
+var modes = ["custom_audio", "custom_tiles", "scripts", "configuration", "finished"]
 signal stage_preloaded
 var audio_file_path:String = ""
 var scripts:Array = []
@@ -17,8 +17,16 @@ func preload_stage(path):
 # var a: int = 2
 # var b: String = "text"
 func load_stage(path):
-	var p_scn = PackedScene.new()
-# Called when the node enters the scene tree for the first time.
+	var cfg = ConfigFile.new()
+	cfg.load(path + "/configuration/main.cfg")
+	for i in $".".get_children():
+		remove_child(i)
+	for i in Array(cfg.get_value("nodes", ".")):
+		print("Adding " + str(i) + " to scene...")
+		i.name = i.get_class()
+		add_child(i)
+	_tmp_audio_path = cfg.get_value("values_AudioStreamPlayer", "stream_path")
+#	$AudioStreamPlayer.autoplay = cfg.get_value("values_AudioStreamPlayer", "autoplay")
 func _ready() -> void:
 	var dir = Directory.new()
 	var mode_num = 0
@@ -66,14 +74,17 @@ func build_level():
 	OS.alert("Level built to path:\n" + Globals.level_path + "/" + Globals.level_name + ".pck")
 func assign_script_to_scene(script_path):
 	$".".set_script(script_path)
+var _tmp_audio_path = ""
 func save_level():
-	var p_scn = PackedScene.new()
-	p_scn.pack(get_node("."))
-	p_scn.pack(get_node("TileMap"))
-	ResourceSaver.save(Globals.level_path + "/" + Globals.level_name + ".tscn", p_scn)
+	var cfg = ConfigFile.new()
+	cfg.load("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
+	cfg.set_value("nodes", ".", $".".get_children())
+	cfg.set_value("values_AudioStreamPlayer", "stream_path", _tmp_audio_path)
+	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
 func add_audio_from_file(path:String):
 	var dir = Directory.new()
 	if dir.copy(path, "user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file()) == OK:
+		_tmp_audio_path = "user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file()
 		var audio = load("user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file())
 	#	var stream = AudioStream.new()
 		$AudioStreamPlayer.stream = audio

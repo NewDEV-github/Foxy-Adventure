@@ -26,3 +26,8 @@ func _on_Load_pressed() -> void:
 	$FileLoadPopup.show_popup()
 func editor_stage_preloaded():
 	get_tree().change_scene("res://Editor/Editor.tscn")
+
+
+func _on_FileLoadPopup_dir_selected(dir):
+	print("Loading: " + str(dir).get_basename() + "...")
+	Editor.load_stage(str(dir).get_basename())

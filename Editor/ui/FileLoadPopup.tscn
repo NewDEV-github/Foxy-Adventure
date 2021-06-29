@@ -11,7 +11,6 @@ theme = ExtResource( 2 )
 window_title = "Otwórz plik"
 mode = 0
 access = 2
-filters = PoolStringArray( "*.tscn; Stage Files" )
 show_hidden_files = true
 current_dir = "/Users/DoS/Documents/GitHub/Foxy-Adventure"
 current_path = "/Users/DoS/Documents/GitHub/Foxy-Adventure/"
@@ -19,5 +18,3 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="file_selected" from="." to="." method="_on_FileLoadPopup_file_selected"]
