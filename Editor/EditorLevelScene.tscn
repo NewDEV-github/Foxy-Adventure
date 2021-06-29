@@ -13,3 +13,5 @@ cell_size = Vector2( 16, 16 )
 compatibility_mode = true
 format = 1
 script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
