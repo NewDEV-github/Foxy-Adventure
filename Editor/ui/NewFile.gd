@@ -9,6 +9,6 @@ extends WindowDialog
 
 func _on_Button_pressed() -> void:
 	if not $LineEdit.text == "":
-		Globals.level_name = $LineEdit.text
+		Globals.level_name = $LineEdit.text.replace(' ', '_').replace("'", '_').replace('"', '_').replace('.', '_').replace('/', '_').replace('\\', '_')
 		preload("res://Editor/Editor.gd").new().clear_all()
 		get_tree().change_scene("res://Editor/Editor.tscn")

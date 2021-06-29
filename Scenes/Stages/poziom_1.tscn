@@ -1026,7 +1026,7 @@ frame = 3
 position = Vector2( 7952.18, 2014.06 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3546.52, 980.459 )
+position = Vector2( 3752.98, 912.783 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -1072,7 +1072,7 @@ position = Vector2( 1.60899, 82.6017 )
 position = Vector2( 1.8043, 42.6301 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4610.49, 774.397 )
+position = Vector2( 3998.3, 1364.58 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -1124,7 +1124,7 @@ position = Vector2( -122.167, 532.46 )
 position = Vector2( -126.167, 6.46002 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5438.36, 1890.62 )
+position = Vector2( 5022.45, 1839.84 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]
@@ -1146,7 +1146,7 @@ position = Vector2( 356.01, 98.2771 )
 position = Vector2( 0.352966, 84.9634 )
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 7507.57, 1091.46 )
+position = Vector2( 6787.75, 1466.6 )
 waypoints_path = NodePath("../Waypoints4")
 
 [node name="Waypoints4" parent="." instance=ExtResource( 5 )]

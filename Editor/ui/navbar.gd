@@ -4,7 +4,7 @@ extends Panel
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-onready var Editor = preload("res://Editor/Editor.gd").new()
+onready var Editor = $"../../Node2D"
 onready var file_menu = $Container/File.get_popup()
 onready var audio_menu = $Container/Audio.get_popup()
 onready var bg_menu = $Container/Bg.get_popup()

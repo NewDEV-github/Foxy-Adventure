@@ -73,7 +73,7 @@ func save_level():
 	ResourceSaver.save(Globals.level_path + "/" + Globals.level_name + ".tscn", p_scn)
 func add_audio_from_file(path:String):
 	var dir = Directory.new()
-	dir.copy(path, "user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file())
-	var audio = load("user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file())
-#	var stream = AudioStream.new()
-	$AudioStreamPlayer.set_stream(audio)
+	if dir.copy(path, "user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file()) == OK:
+		var audio = load("user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file())
+	#	var stream = AudioStream.new()
+		$AudioStreamPlayer.stream = audio
