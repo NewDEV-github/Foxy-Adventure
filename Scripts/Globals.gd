@@ -112,8 +112,7 @@ var cworlds:Array = [
 	
 ]
 var levels_scan_path:Array = [
-	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/"),
-	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure Level Editor/")
+	level_path,
 ]
 var dlc_name_list:Array = [
 	
@@ -301,9 +300,12 @@ func load_achivements():
 #	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(discord_sdk_enabled)
-
-
-
+var level_name = "nonunnamed"
+var level_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/")
+var erase_tiles = false
+var flip_tiles_x = false
+var flip_tiles_y = false
+var current_tile_name = "sci-fi-tileset.png 4"
 var modifications = {}
 func scan_and_load_modifications_cfg():
 	var cfg = ConfigFile.new()
