@@ -28,6 +28,8 @@ func load_stage(path):
 	_tmp_audio_path = cfg.get_value("values_AudioStreamPlayer", "stream_path")
 #	$AudioStreamPlayer.autoplay = cfg.get_value("values_AudioStreamPlayer", "autoplay")
 func _ready() -> void:
+	config_dirs()
+func config_dirs():
 	var dir = Directory.new()
 	var mode_num = 0
 	var mode = modes[mode_num]
@@ -66,7 +68,7 @@ func build_level():
 		while not file_name == "":
 			var av = ['.', '..']
 			if not dir.current_is_dir():
-				pck.add_file(Globals.level_name + "/%s/" + file_name.get_file() % mode, "user://level_data/" + Globals.level_name + "/%s/" + file_name.get_file() % mode)
+				pck.add_file(Globals.level_name + "/" + mode + "/" + file_name.get_file(), "user://level_data/" + Globals.level_name + "/" + mode + "/" + file_name.get_file())
 			file_name = dir.get_next()
 		mode_num += 1
 		mode = modes[mode_num]
@@ -77,9 +79,14 @@ func assign_script_to_scene(script_path):
 var _tmp_audio_path = ""
 func save_level():
 	var cfg = ConfigFile.new()
+	config_dirs()
 	cfg.load("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
 	cfg.set_value("nodes", ".", $".".get_children())
 	cfg.set_value("values_AudioStreamPlayer", "stream_path", _tmp_audio_path)
+	cfg.set_value("info", "author", Globals.level_author)
+	cfg.set_value("info", "description", Globals.level_description)
+	cfg.set_value("info", "version", Globals.level_version)
+	cfg.set_value("info", "name", Globals.level_name)
 	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
 func add_audio_from_file(path:String):
 	var dir = Directory.new()

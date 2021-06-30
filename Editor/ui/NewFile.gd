@@ -8,7 +8,10 @@ extends WindowDialog
 
 
 func _on_Button_pressed() -> void:
-	if not $LineEdit.text == "":
-		Globals.level_name = $LineEdit.text.replace(' ', '_').replace("'", '_').replace('"', '_').replace('.', '_').replace('/', '_').replace('\\', '_')
-		preload("res://Editor/Editor.gd").new().clear_all()
-		get_tree().change_scene("res://Editor/Editor.tscn")
+	if not $VBoxContainer/LevelName.text == "":
+		Globals.level_name_org = $VBoxContainer/LevelName.text
+		Globals.level_name = $VBoxContainer/LevelName.text.replace(' ', '_').replace("'", '_').replace('"', '_').replace('.', '_').replace('/', '_').replace('\\', '_')
+		Globals.level_author = $VBoxContainer/LevelAuthor.text
+		Globals.level_description = $VBoxContainer/LevelDescription.text
+		Globals.level_version = $VBoxContainer/LevelVersion.text
+		$"../".Editor.clear_all()

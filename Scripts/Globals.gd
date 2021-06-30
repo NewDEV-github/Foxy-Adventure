@@ -300,6 +300,10 @@ func load_achivements():
 #	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(discord_sdk_enabled)
+var level_name_org = "nounnamed"
+var level_description = "example"
+var level_author = "DoS"
+var level_version = "v1.0.0"
 var level_name = "nonunnamed"
 var level_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/")
 var erase_tiles = false

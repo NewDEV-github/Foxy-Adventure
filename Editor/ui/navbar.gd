@@ -21,13 +21,19 @@ func bg_menu_selected(id:int):
 
 func file_menu_selected(id:int):
 	if id == 0:
-		$NewFile.popup_centered()
+		$ConfigurationMenu.popup_centered()
 	if id == 1:
 		$FileLoadPopup.popup_centered()
 	if id == 2:
 		Editor.save_level()
-	if id == 4:
+	if id == 3:
 		Editor.build_level()
+	if id == 4:
+		OS.shell_open(OS.get_user_data_dir() + "/level_data/" + Globals.level_name + "/")
+	if id == 5:
+		$OptionsMenu.popup_centered()
+	if id == 6:
+		get_tree().change_scene("res://Scenes/Menu.tscn")
 func add_bg_to_list(name:String, file_path:String):
 	$BackgroundPanel/VBoxContainer/BgList.add_item(name)
 	bg_file_paths[name] = file_path
@@ -48,6 +54,11 @@ func _on_BgList_item_activated(index):
 func _on_AudioPopup_file_selected(path):
 	Editor.add_audio_from_file(path)
 
+func popup_new_file_window():
+	$ConfigurationMenu.popup_centered()
+
+func popup_options_window():
+	$OptionsMenu.popup_centered()
 
 func _on_FileLoadPopup_dir_selected(dir):
 	Editor.load_stage(dir)
