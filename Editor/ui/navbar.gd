@@ -18,7 +18,8 @@ var bg_file_paths = {"Laboratory": "res://Scenes/Stages/bg1.tscn"}
 func bg_menu_selected(id:int):
 	if id == 0:
 		$BackgroundPanel.popup_centered()
-
+func set_status_label_text(text:String):
+	$Container/StatusLabel.text = text
 func file_menu_selected(id:int):
 	if id == 0:
 		$ConfigurationMenu.popup_centered()

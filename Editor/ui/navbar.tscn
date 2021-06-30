@@ -7,7 +7,7 @@
 
 [node name="Control" type="Panel"]
 anchor_right = 1.0
-margin_bottom = 23.0
+margin_bottom = 25.0
 theme = ExtResource( 4 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -186,8 +186,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -16.5
-margin_top = -20.0
-margin_right = 16.5
+margin_top = -20.7071
+margin_right = 17.5
+margin_bottom = 6.29288
 text = "GO"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -204,6 +205,7 @@ mode = 2
 [node name="Container" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -229,6 +231,17 @@ margin_bottom = 27.0
 focus_mode = 2
 text = "Background"
 items = [ "Manage Backgrounds", null, 0, false, false, 0, 0, null, "", false ]
+
+[node name="StatusLabel" type="Label" parent="Container"]
+anchor_left = -0.000976563
+anchor_right = -0.000976563
+margin_left = 199.0
+margin_right = 1014.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+align = 2
+valign = 1
 
 [node name="BackgroundPanel" type="WindowDialog" parent="."]
 margin_right = 537.0
