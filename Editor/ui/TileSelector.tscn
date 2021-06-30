@@ -1,0 +1,761 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Editor/ui/TileSelector.gd" type="Script" id=1]
+[ext_resource path="res://assets/Graphics/Tilesets/sci-fi-tileset.png" type="Texture" id=2]
+[ext_resource path="res://assets/Graphics/Tilesets/sci-fi-tileset-2.png" type="Texture" id=3]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=4]
+
+[node name="TileSelector" type="Panel"]
+anchor_left = 1.0
+anchor_top = 0.058
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -8.28529
+margin_bottom = -8.48529
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 89.0
+margin_bottom = 305.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tile1" type="Button" parent="Container"]
+margin_right = 89.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile1"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 15, 15 )
+
+[node name="Tile2" type="Button" parent="Container"]
+margin_top = 34.0
+margin_right = 89.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile2"]
+position = Vector2( 15, 14 )
+rotation = 1.5708
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 15, 0, 15, 15 )
+
+[node name="Tile3" type="Button" parent="Container"]
+margin_top = 68.0
+margin_right = 89.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile3"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+
+[node name="Tile4" type="Button" parent="Container"]
+margin_top = 102.0
+margin_right = 89.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile4"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 15, 15, 15 )
+
+[node name="Tile5" type="Button" parent="Container"]
+margin_top = 136.0
+margin_right = 89.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile5"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 16, 16 )
+
+[node name="Tile6" type="Button" parent="Container"]
+margin_top = 170.0
+margin_right = 89.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile6"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 32, 16, 16 )
+
+[node name="Tile7" type="Button" parent="Container"]
+margin_top = 204.0
+margin_right = 89.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile7"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 16, 16 )
+
+[node name="Tile8" type="Button" parent="Container"]
+margin_top = 238.0
+margin_right = 89.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile8"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 32, 48, 16, 16 )
+
+[node name="Tile9" type="Button" parent="Container"]
+margin_top = 272.0
+margin_right = 89.0
+margin_bottom = 302.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile9"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 16, 16 )
+
+[node name="Tile10" type="Button" parent="Container"]
+margin_top = 306.0
+margin_right = 89.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile10"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 16, 16 )
+
+[node name="Tile11" type="Button" parent="Container"]
+margin_top = 340.0
+margin_right = 89.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile11"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 64, 16, 16 )
+
+[node name="Tile12" type="Button" parent="Container"]
+margin_top = 374.0
+margin_right = 89.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile12"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 32, 64, 16, 16 )
+
+[node name="Tile13" type="Button" parent="Container"]
+margin_top = 408.0
+margin_right = 89.0
+margin_bottom = 438.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile13"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Tile14" type="Button" parent="Container"]
+margin_top = 442.0
+margin_right = 89.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile14"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 80, 16, 16 )
+
+[node name="Tile15" type="Button" parent="Container"]
+margin_top = 476.0
+margin_right = 89.0
+margin_bottom = 506.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile15"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 32, 16, 16 )
+
+[node name="Tile16" type="Button" parent="Container"]
+margin_top = 510.0
+margin_right = 89.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile16"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 16, 16 )
+
+[node name="Tile17" type="Button" parent="Container"]
+margin_top = 544.0
+margin_right = 89.0
+margin_bottom = 574.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile17"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 16, 16 )
+
+[node name="Tile18" type="Button" parent="Container"]
+margin_top = 578.0
+margin_right = 89.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile18"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 16, 16, 16 )
+
+[node name="Tile19" type="Button" parent="Container"]
+margin_top = 612.0
+margin_right = 89.0
+margin_bottom = 642.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile19"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 16, 16, 16 )
+
+[node name="Tile20" type="Button" parent="Container"]
+margin_top = 646.0
+margin_right = 89.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile20"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 82, 2, 14, 14 )
+
+[node name="Tile21" type="Button" parent="Container"]
+margin_top = 680.0
+margin_right = 89.0
+margin_bottom = 710.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile21"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 96, 2, 16, 14 )
+
+[node name="Tile22" type="Button" parent="Container"]
+margin_top = 714.0
+margin_right = 89.0
+margin_bottom = 744.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile22"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 48, 16, 16 )
+
+[node name="Tile23" type="Button" parent="Container"]
+margin_top = 748.0
+margin_right = 89.0
+margin_bottom = 778.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile23"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 64, 16, 16 )
+
+[node name="Tile24" type="Button" parent="Container"]
+margin_top = 782.0
+margin_right = 89.0
+margin_bottom = 812.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile24"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 82, 50, 14, 14 )
+
+[node name="Tile25" type="Button" parent="Container"]
+margin_top = 816.0
+margin_right = 89.0
+margin_bottom = 846.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile25"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 96, 50, 16, 14 )
+
+[node name="Tile26" type="Button" parent="Container"]
+margin_top = 850.0
+margin_right = 89.0
+margin_bottom = 880.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile26"]
+position = Vector2( 15, 14 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 15, 15 )
+
+[node name="Tile27" type="Button" parent="Container"]
+margin_top = 884.0
+margin_right = 89.0
+margin_bottom = 914.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile27"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 15, 0, 15, 15 )
+
+[node name="Tile28" type="Button" parent="Container"]
+margin_top = 918.0
+margin_right = 89.0
+margin_bottom = 948.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile28"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="Tile29" type="Button" parent="Container"]
+margin_top = 952.0
+margin_right = 89.0
+margin_bottom = 982.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile29"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 15, 15, 15 )
+
+[node name="Tile30" type="Button" parent="Container"]
+margin_top = 986.0
+margin_right = 89.0
+margin_bottom = 1016.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile30"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+
+[node name="Tile31" type="Button" parent="Container"]
+margin_top = 1020.0
+margin_right = 89.0
+margin_bottom = 1050.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile31"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 16, 16, 16 )
+
+[node name="Tile32" type="Button" parent="Container"]
+margin_top = 1054.0
+margin_right = 89.0
+margin_bottom = 1084.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile32"]
+position = Vector2( 16.4142, 12.5857 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 16, 16 )
+
+[node name="Tile33" type="Button" parent="Container"]
+margin_top = 1088.0
+margin_right = 89.0
+margin_bottom = 1118.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile33"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 32, 16, 16 )
+
+[node name="Tile35" type="Button" parent="Container"]
+margin_top = 1122.0
+margin_right = 89.0
+margin_bottom = 1152.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile35"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 16, 16 )
+
+[node name="Tile36" type="Button" parent="Container"]
+margin_top = 1156.0
+margin_right = 89.0
+margin_bottom = 1186.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile36"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 48, 32, 16, 16 )
+
+[node name="Tile37" type="Button" parent="Container"]
+margin_top = 1190.0
+margin_right = 89.0
+margin_bottom = 1220.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile37"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 16, 16 )
+
+[node name="Tile38" type="Button" parent="Container"]
+margin_top = 1224.0
+margin_right = 89.0
+margin_bottom = 1254.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile38"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 48, 16, 16 )
+
+[node name="Tile39" type="Button" parent="Container"]
+margin_top = 1258.0
+margin_right = 89.0
+margin_bottom = 1288.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile39"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 48, 16, 16 )
+
+[node name="Tile40" type="Button" parent="Container"]
+margin_top = 1292.0
+margin_right = 89.0
+margin_bottom = 1322.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile40"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 16, 16 )
+
+[node name="Tile52" type="Button" parent="Container"]
+margin_top = 1326.0
+margin_right = 89.0
+margin_bottom = 1356.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile52"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 64, 16, 16 )
+
+[node name="Tile41" type="Button" parent="Container"]
+margin_top = 1360.0
+margin_right = 89.0
+margin_bottom = 1390.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile41"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 64, 16, 16 )
+
+[node name="Tile42" type="Button" parent="Container"]
+margin_top = 1394.0
+margin_right = 89.0
+margin_bottom = 1424.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile42"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Tile43" type="Button" parent="Container"]
+margin_top = 1428.0
+margin_right = 89.0
+margin_bottom = 1458.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile43"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 16, 80, 16, 16 )
+
+[node name="Tile44" type="Button" parent="Container"]
+margin_top = 1462.0
+margin_right = 89.0
+margin_bottom = 1492.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile44"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 16, 16 )
+
+[node name="Tile45" type="Button" parent="Container"]
+margin_top = 1496.0
+margin_right = 89.0
+margin_bottom = 1526.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile45"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 16, 16 )
+
+[node name="Tile46" type="Button" parent="Container"]
+margin_top = 1530.0
+margin_right = 89.0
+margin_bottom = 1560.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile46"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 48, 16, 16, 16 )
+
+[node name="Tile47" type="Button" parent="Container"]
+margin_top = 1564.0
+margin_right = 89.0
+margin_bottom = 1594.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile47"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 64, 16, 16, 16 )
+
+[node name="Tile48" type="Button" parent="Container"]
+margin_top = 1598.0
+margin_right = 89.0
+margin_bottom = 1628.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile48"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 82, 2, 14, 14 )
+
+[node name="Tile49" type="Button" parent="Container"]
+margin_top = 1632.0
+margin_right = 89.0
+margin_bottom = 1662.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile49"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 96, 2, 16, 14 )
+
+[node name="Tile50" type="Button" parent="Container"]
+margin_top = 1666.0
+margin_right = 89.0
+margin_bottom = 1696.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile50"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 82, 50, 14, 14 )
+
+[node name="Tile51" type="Button" parent="Container"]
+visible = false
+margin_top = 1700.0
+margin_right = 89.0
+margin_bottom = 1730.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Sprite" type="Sprite" parent="Container/Tile51"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 96, 50, 16, 14 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rotateleft" type="Button" parent="Panel/HBoxContainer"]
+visible = false
+margin_right = 16.0
+margin_bottom = 20.0
+text = "l"
+
+[node name="rotateright" type="Button" parent="Panel/HBoxContainer"]
+visible = false
+margin_left = 20.0
+margin_right = 37.0
+margin_bottom = 20.0
+text = "r"
+
+[node name="flipx" type="Button" parent="Panel/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 27.0
+toggle_mode = true
+text = "x"
+
+[node name="flipy" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 24.0
+margin_right = 44.0
+margin_bottom = 27.0
+toggle_mode = true
+text = "y"
+
+[node name="clear" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 48.0
+margin_right = 94.0
+margin_bottom = 27.0
+toggle_mode = true
+text = "clear"
+
+[node name="VScrollBar" type="VSlider" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.95
+margin_left = -13.0
+margin_right = -5.0
+margin_bottom = -27.75
+max_value = 1730.0
+
+[connection signal="pressed" from="Container/Tile1" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 4" ]]
+[connection signal="pressed" from="Container/Tile2" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 7" ]]
+[connection signal="pressed" from="Container/Tile3" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 8" ]]
+[connection signal="pressed" from="Container/Tile4" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 9" ]]
+[connection signal="pressed" from="Container/Tile5" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 10" ]]
+[connection signal="pressed" from="Container/Tile6" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 11" ]]
+[connection signal="pressed" from="Container/Tile7" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 12" ]]
+[connection signal="pressed" from="Container/Tile8" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 13" ]]
+[connection signal="pressed" from="Container/Tile9" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 15" ]]
+[connection signal="pressed" from="Container/Tile10" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 16" ]]
+[connection signal="pressed" from="Container/Tile11" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 17" ]]
+[connection signal="pressed" from="Container/Tile12" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 18" ]]
+[connection signal="pressed" from="Container/Tile13" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 19" ]]
+[connection signal="pressed" from="Container/Tile14" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 20" ]]
+[connection signal="pressed" from="Container/Tile15" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 31" ]]
+[connection signal="pressed" from="Container/Tile16" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 49" ]]
+[connection signal="pressed" from="Container/Tile17" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 50" ]]
+[connection signal="pressed" from="Container/Tile18" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 51" ]]
+[connection signal="pressed" from="Container/Tile19" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 52" ]]
+[connection signal="pressed" from="Container/Tile20" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 53" ]]
+[connection signal="pressed" from="Container/Tile21" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 54" ]]
+[connection signal="pressed" from="Container/Tile22" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 55" ]]
+[connection signal="pressed" from="Container/Tile23" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 56" ]]
+[connection signal="pressed" from="Container/Tile24" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 57" ]]
+[connection signal="pressed" from="Container/Tile25" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 58" ]]
+[connection signal="pressed" from="Container/Tile26" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 22" ]]
+[connection signal="pressed" from="Container/Tile27" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 23" ]]
+[connection signal="pressed" from="Container/Tile28" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 24" ]]
+[connection signal="pressed" from="Container/Tile29" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 25" ]]
+[connection signal="pressed" from="Container/Tile30" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 26" ]]
+[connection signal="pressed" from="Container/Tile31" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 27" ]]
+[connection signal="pressed" from="Container/Tile32" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 28" ]]
+[connection signal="pressed" from="Container/Tile33" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 29" ]]
+[connection signal="pressed" from="Container/Tile35" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 30" ]]
+[connection signal="pressed" from="Container/Tile36" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 32" ]]
+[connection signal="pressed" from="Container/Tile37" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 33" ]]
+[connection signal="pressed" from="Container/Tile38" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 34" ]]
+[connection signal="pressed" from="Container/Tile39" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 35" ]]
+[connection signal="pressed" from="Container/Tile40" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 36" ]]
+[connection signal="pressed" from="Container/Tile52" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 37" ]]
+[connection signal="pressed" from="Container/Tile41" to="." method="tile_selected" binds= [ "sci-ti-tileset-2.png 38" ]]
+[connection signal="pressed" from="Container/Tile42" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 39" ]]
+[connection signal="pressed" from="Container/Tile43" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 40" ]]
+[connection signal="pressed" from="Container/Tile44" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 41" ]]
+[connection signal="pressed" from="Container/Tile45" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 42" ]]
+[connection signal="pressed" from="Container/Tile46" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 43" ]]
+[connection signal="pressed" from="Container/Tile47" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 44" ]]
+[connection signal="pressed" from="Container/Tile48" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 45" ]]
+[connection signal="pressed" from="Container/Tile49" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 46" ]]
+[connection signal="pressed" from="Container/Tile50" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 47" ]]
+[connection signal="pressed" from="Container/Tile51" to="." method="tile_selected" binds= [ "sci-fi-tileset-2.png 48" ]]
+[connection signal="pressed" from="Panel/HBoxContainer/rotateleft" to="." method="_on_rotateleft_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/rotateright" to="." method="_on_rotateright_pressed"]
+[connection signal="toggled" from="Panel/HBoxContainer/flipx" to="." method="_on_flipx_toggled"]
+[connection signal="toggled" from="Panel/HBoxContainer/flipy" to="." method="_on_flipy_toggled"]
+[connection signal="toggled" from="Panel/HBoxContainer/clear" to="." method="_on_clear_toggled"]
+[connection signal="value_changed" from="VScrollBar" to="." method="_on_VScrollBar_value_changed"]
