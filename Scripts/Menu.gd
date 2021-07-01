@@ -21,6 +21,8 @@ func _on_FirebaseAuth_login_succeeded(auth):
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
+func load_level_editor():
+	pass
 func _ready() -> void:
 	$VBoxContainer3/Info.disabled = true
 	$VBoxContainer3/Logout.disabled = true
@@ -82,7 +84,7 @@ func _ready() -> void:
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	elif day == 7 and month == 4:
-		$Label.set_text(tr("Happy Birthday to") + ' JezSonic/Futrzak or the main developer')
+		$Label.set_text(tr("Happy Birthday to") + ' DoS or the main developer')
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
