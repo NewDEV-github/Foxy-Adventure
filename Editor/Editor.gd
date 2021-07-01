@@ -5,6 +5,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
+var bg_path = 'none'
 onready var navbar = $"../CanvasLayer/navbar"
 var modes = ["custom_audio", "custom_tiles", "custom_backgrounds", "scripts", "configuration", "finished"]
 signal stage_preloaded
@@ -39,6 +40,9 @@ func load_stage(path):
 	Globals.level_description = cfg.get_value("info", "description")
 	Globals.level_version = cfg.get_value("info", "version")
 	Globals.level_name = cfg.get_value("info", "name")
+	navbar.audio_file_paths = cfg.get_value("data", "audio_file_paths")
+	if cfg.get_value("data", "bg_path") != 'none':
+		add_bg(cfg.get_value("data", "bg_path"))
 	navbar.set_status_label_text("Project setup done")
 #	$AudioStreamPlayer.autoplay = cfg.get_value("values_AudioStreamPlayer", "autoplay")
 func _ready() -> void:
@@ -64,7 +68,10 @@ func clear_all():
 	if $TileMap:
 		$TileMap.clear()
 func add_bg(file_path:String):
-	var n = load(file_path).instance()
+	bg_path = "user://level_data/" + Globals.level_name + "/custom_backgrounds/" + file_path.get_file()
+	var dir = Directory.new()
+	dir.copy(file_path, bg_path)
+	var n = load(bg_path).instance()
 	add_child(n)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -123,6 +130,8 @@ func save_level():
 	cfg.set_value("info", "description", Globals.level_description)
 	cfg.set_value("info", "version", Globals.level_version)
 	cfg.set_value("info", "name", Globals.level_name)
+	cfg.set_value("data", "audio_file_paths", navbar.audio_file_paths)
+	cfg.set_value("data", "bg_path", bg_path)
 	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
 	navbar.set_status_label_text("Project saved!")
 func add_audio_from_file(path:String):

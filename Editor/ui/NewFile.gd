@@ -15,3 +15,5 @@ func _on_Button_pressed() -> void:
 		Globals.level_description = $VBoxContainer/LevelDescription.text
 		Globals.level_version = $VBoxContainer/LevelVersion.text
 		$"../".Editor.clear_all()
+		$"../".Editor.save_level()
+		hide()

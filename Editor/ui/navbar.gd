@@ -1,9 +1,6 @@
 extends Panel
 
-
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+var audio_file_paths = {}
 onready var Editor = $"../../Node2D"
 onready var file_menu = $Container/File.get_popup()
 onready var audio_menu = $Container/Audio.get_popup()
@@ -21,6 +18,7 @@ func bg_menu_selected(id:int):
 func set_status_label_text(text:String):
 	$Container/StatusLabel.text = text
 func file_menu_selected(id:int):
+	print("sel: " + str(id))
 	if id == 0:
 		$ConfigurationMenu.popup_centered()
 	if id == 1:
@@ -41,7 +39,7 @@ func add_bg_to_list(name:String, file_path:String):
 	refresh_bg_list()
 func audio_menu_selected(id:int):
 	if id == 0:
-		$AudioPopup.popup_centered()
+		$AudioDialog.popup_centered()
 func refresh_bg_list():
 	$BackgroundPanel/VBoxContainer/BgList.clear()
 	for i in bg_file_paths:
@@ -53,7 +51,8 @@ func _on_BgList_item_activated(index):
 
 
 func _on_AudioPopup_file_selected(path):
-	Editor.add_audio_from_file(path)
+	audio_file_paths[str(path).get_file()] = str(path)
+	$AudioDialog/ItemListAudio.add_item(str(path).get_file())
 
 func popup_new_file_window():
 	$ConfigurationMenu.popup_centered()
@@ -63,3 +62,31 @@ func popup_options_window():
 
 func _on_FileLoadPopup_dir_selected(dir):
 	Editor.load_stage(dir)
+
+var _tmp_aufio_file_name = "null"
+var _tmp_aufio_file_id = -1
+var _prev_selected_audio_item_id
+func _on_DeleteAudio_pressed():
+	$AudioDialog/ItemListAudio.remove_item(_tmp_aufio_file_id)
+	audio_file_paths[_tmp_aufio_file_name] = null
+
+
+func _on_UseAudio_pressed():
+	if not _tmp_aufio_file_name == "null":
+		Editor.add_audio_from_file(audio_file_paths[_tmp_aufio_file_name])
+		$AudioDialog/ItemListAudio.set_item_text(_tmp_aufio_file_id, $AudioDialog/ItemListAudio.get_item_text(_tmp_aufio_file_id) + " (currently used)")
+		$AudioDialog/ItemListAudio.set_item_text(_prev_selected_audio_item_id, $AudioDialog/ItemListAudio.get_item_text(_prev_selected_audio_item_id).rstrip(" (currently used)"))
+func _on_ItemListAudio_item_selected(index):
+	
+	var item_text = $AudioDialog/ItemListAudio.get_item_text(index)
+	if $AudioDialog/ItemListAudio.get_item_text(index).ends_with(" (currently used)"):
+		_tmp_aufio_file_name = item_text.rstrip(" (currently used)")
+	else:
+		_tmp_aufio_file_name = item_text
+	print("Selected: " + _tmp_aufio_file_name)
+	_prev_selected_audio_item_id = _tmp_aufio_file_id
+	_tmp_aufio_file_id = index
+
+
+func _on_AddAudio_pressed():
+	$AudioPopup.popup_centered()

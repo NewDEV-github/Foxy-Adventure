@@ -214,7 +214,7 @@ __meta__ = {
 margin_right = 37.0
 margin_bottom = 27.0
 text = "File"
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false, "Build level", null, 0, false, false, 4, 0, null, "", false, "Open Data Directory", null, 0, false, false, 5, 0, null, "", false, "Options", null, 0, false, false, 6, 0, null, "", false, "Quit", null, 0, false, false, 6, 0, null, "", false ]
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false, "Build level", null, 0, false, false, 3, 0, null, "", false, "Open Data Directory", null, 0, false, false, 4, 0, null, "", false, "Options", null, 0, false, false, 5, 0, null, "", false, "Quit", null, 0, false, false, 6, 0, null, "", false ]
 
 [node name="Audio" type="MenuButton" parent="Container"]
 margin_left = 41.0
@@ -233,14 +233,11 @@ text = "Background"
 items = [ "Manage Backgrounds", null, 0, false, false, 0, 0, null, "", false ]
 
 [node name="StatusLabel" type="Label" parent="Container"]
-anchor_left = -0.000976563
-anchor_right = -0.000976563
 margin_left = 199.0
-margin_right = 1014.0
-margin_bottom = 25.0
+margin_right = 1024.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-align = 2
 valign = 1
 
 [node name="BackgroundPanel" type="WindowDialog" parent="."]
@@ -286,8 +283,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioDialog" type="WindowDialog" parent="."]
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 395.0
+margin_bottom = 250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemListAudio" type="ItemList" parent="AudioDialog"]
+anchor_right = 1.025
+anchor_bottom = 0.879
+margin_right = -9.90002
+margin_bottom = -5.87102
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AudioDialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_bottom = -5.0
+custom_constants/separation = 125
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UseAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+margin_left = 6.0
+margin_right = 44.0
+margin_bottom = 27.0
+text = "Use"
+
+[node name="AddAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+margin_left = 169.0
+margin_right = 209.0
+margin_bottom = 27.0
+text = "Add"
+
+[node name="DeleteAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+margin_left = 334.0
+margin_right = 390.0
+margin_bottom = 27.0
+text = "Delete"
+
 [connection signal="pressed" from="ConfigurationMenu/Button" to="ConfigurationMenu" method="_on_Button_pressed"]
 [connection signal="pressed" from="OptionsMenu/Button" to="OptionsMenu" method="_on_Button_pressed"]
 [connection signal="dir_selected" from="FileLoadPopup" to="." method="_on_FileLoadPopup_dir_selected"]
 [connection signal="item_activated" from="BackgroundPanel/VBoxContainer/BgList" to="." method="_on_BgList_item_activated"]
 [connection signal="file_selected" from="AudioPopup" to="." method="_on_AudioPopup_file_selected"]
+[connection signal="item_selected" from="AudioDialog/ItemListAudio" to="." method="_on_ItemListAudio_item_selected"]
+[connection signal="pressed" from="AudioDialog/HBoxContainer/UseAudio" to="." method="_on_UseAudio_pressed"]
+[connection signal="pressed" from="AudioDialog/HBoxContainer/AddAudio" to="." method="_on_AddAudio_pressed"]
+[connection signal="pressed" from="AudioDialog/HBoxContainer/DeleteAudio" to="." method="_on_DeleteAudio_pressed"]
