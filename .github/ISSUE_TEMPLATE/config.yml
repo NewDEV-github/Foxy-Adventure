@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Community Support
+    url: https://github.com/NewDEV-github/Foxy-Adventure/discussions
+    about: Please ask and answer questions here.
+  - name: Contact
+    url: https://newdev.web.app/contact
+    about: Please contact us here.
