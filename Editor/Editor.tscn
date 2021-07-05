@@ -17,4 +17,7 @@ margin_top = -0.799999
 margin_bottom = -8.0
 
 [node name="navbar" parent="CanvasLayer" instance=ExtResource( 6 )]
-margin_bottom = 34.0
+margin_left = -1.41418
+margin_top = 1.41425
+margin_right = -1.41418
+margin_bottom = 35.4142

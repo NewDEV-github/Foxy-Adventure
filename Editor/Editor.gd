@@ -7,7 +7,7 @@ extends Node2D
 # var b: String = "text"
 var bg_path = 'none'
 onready var navbar = $"../CanvasLayer/navbar"
-var modes = ["custom_audio", "custom_tiles", "custom_backgrounds", "scripts", "configuration", "finished"]
+var modes = ["custom_audio", "custom_tiles", "custom_backgrounds", "custom_backgrounds/sprites", "scripts", "configuration", "finished"]
 signal stage_preloaded
 var audio_file_path:String = ""
 var scripts:Array = []
