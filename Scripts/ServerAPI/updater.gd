@@ -48,7 +48,6 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
 		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
-		print(file)
 		stream.set_file(file)
 		var vp = $VideoPlayer
 		vp.stream = stream

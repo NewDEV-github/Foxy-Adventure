@@ -7,3 +7,5 @@ func _ready() -> void:
 
 func on_new_tile_selected(tile_name):
 	Globals.current_tile_name = tile_name
+
+

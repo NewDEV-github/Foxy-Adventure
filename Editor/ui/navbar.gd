@@ -22,7 +22,7 @@ func file_menu_selected(id:int):
 	if id == 0:
 		$ConfigurationMenu.popup_centered()
 	if id == 1:
-		$FileLoadPopup.popup_centered()
+		$"../ProjectSelect".show()
 	if id == 2:
 		Editor.save_level()
 	if id == 3:

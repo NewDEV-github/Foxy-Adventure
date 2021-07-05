@@ -114,8 +114,8 @@ func build_level():
 		mode = modes[mode_num]
 	pck.flush()
 	navbar.set_status_label_text("Saving PCK file...")
-	OS.alert("Level built to path:\n" + Globals.level_path + "\\" + Globals.level_name + ".pck")
-	navbar.set_status_label_text("Level built to path:\n" + Globals.level_path + "\\" + Globals.level_name + ".pck")
+	OS.alert("Level built to path:\n" + Globals.level_path + Globals.level_name + ".pck")
+	navbar.set_status_label_text("Level built to path: " + Globals.level_path + Globals.level_name + ".pck")
 func assign_script_to_scene(script_path):
 	$".".set_script(script_path)
 var _tmp_audio_path = ""
@@ -130,6 +130,7 @@ func save_level():
 	cfg.set_value("info", "description", Globals.level_description)
 	cfg.set_value("info", "version", Globals.level_version)
 	cfg.set_value("info", "name", Globals.level_name)
+	cfg.set_value("info", "name_org", Globals.level_name_org)
 	cfg.set_value("data", "audio_file_paths", navbar.audio_file_paths)
 	cfg.set_value("data", "bg_path", bg_path)
 	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
