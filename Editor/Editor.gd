@@ -12,6 +12,8 @@ signal stage_preloaded
 var audio_file_path:String = ""
 var scripts:Array = []
 var custom_tile_sets:Array = []
+
+
 func preload_stage(path):
 	load_stage(path)
 	emit_signal("stage_preloaded")
@@ -19,6 +21,7 @@ func preload_stage(path):
 # var a: int = 2
 # var b: String = "text"
 func load_stage(path):
+	$"../CanvasLayer/TileSelector".set_disabled(false)
 	navbar.set_status_label_text("Loading project from: " + path + "...")
 	var cfg = ConfigFile.new()
 	cfg.load(path + "/configuration/main.cfg")
@@ -46,7 +49,8 @@ func load_stage(path):
 	navbar.set_status_label_text("Project setup done")
 #	$AudioStreamPlayer.autoplay = cfg.get_value("values_AudioStreamPlayer", "autoplay")
 func _ready() -> void:
-	config_dirs()
+#	config_dirs()
+	$"../CanvasLayer/TileSelector".set_disabled(true)
 func config_dirs():
 	var dir = Directory.new()
 	var mode_num = 0
@@ -77,25 +81,39 @@ func add_bg(file_path:String):
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("paint_tile"):
 		$TileMap.paint_tile(get_global_mouse_position(), 8)
+func cumpute_file_path(original_path:String):
+	if original_path.begins_with("user://"):
+		var _tmp_original_path = original_path.split("/")
+		_tmp_original_path.remove(0)
+		_tmp_original_path.remove(0)
+		_tmp_original_path.remove(0)
+		var _tmp_cumputed_path = "res:/"
+		for i in _tmp_original_path:
+			_tmp_cumputed_path += "/" + i
+		return _tmp_cumputed_path
+
 func build_level():
 	var cfg = ConfigFile.new()
 	config_dirs()
+	var dir = Directory.new()
+	dir.copy("user://level_data/" + Globals.level_name + "/configuration/main.cfg", "user://level_data/" + Globals.level_name + "/configuration/main_compiled.cfg")
 	## FOR BUILDING ALL PATHS OF DEPENDENCIES NEEDS TO BE REDEFINED
 	navbar.set_status_label_text("Reconfiguring paths for dependencies...")
-	cfg.load("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
+	cfg.load("user://level_data/" + Globals.level_name + "/configuration/main_compiled.cfg")
 	cfg.set_value("nodes", ".", $".".get_children())
-	cfg.set_value("values_AudioStreamPlayer", "stream_path", _tmp_audio_path.replace("user://", "res://"))
+#	cumpute_file_path("user://level_data/drthfs/sdfsdf/dgfsdg/dfsd.cfgs") #[user:, , level_data, drthfs, sdfsdf, dgfsdg, dfsd.cfgs]
+	cfg.set_value("values_AudioStreamPlayer", "stream_path", cumpute_file_path(_tmp_audio_path))
+	cfg.set_value("vdata", "bg_path", cumpute_file_path(bg_path))
 	cfg.set_value("info", "author", Globals.level_author)
 	cfg.set_value("info", "description", Globals.level_description)
 	cfg.set_value("info", "version", Globals.level_version)
 	cfg.set_value("info", "name", Globals.level_name)
-	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
+	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main_compiled.cfg")
 	navbar.set_status_label_text("Done")
 	var pck = PCKPacker.new()
 	navbar.set_status_label_text("Creating PCK file...")
 	pck.pck_start(Globals.level_path + Globals.level_name + ".pck")
 	navbar.set_status_label_text("Created")
-	var dir = Directory.new()
 	#custom_audio
 	var mode_num = 0
 	var mode = modes[mode_num]
@@ -120,6 +138,7 @@ func assign_script_to_scene(script_path):
 	$".".set_script(script_path)
 var _tmp_audio_path = ""
 func save_level():
+	$"../CanvasLayer/TileSelector".set_disabled(false)
 	var cfg = ConfigFile.new()
 	config_dirs()
 	navbar.set_status_label_text("Saving data...")

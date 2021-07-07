@@ -12,6 +12,9 @@ signal erase_tiles_toggle
 func _ready() -> void:
 	$VScrollBar.max_value = $Container.rect_size.y - $VScrollBar.rect_size.y
 
+func set_disabled(disable:bool):
+	for i in $Container.get_children():
+		get_node("Container/" + i.name).disabled = disable
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

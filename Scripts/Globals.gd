@@ -181,13 +181,16 @@ func _ready():
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
 	if arguments.has("send-log"):
-		ApiLogs.send_debug_log_to_database()
-		yield(ApiLogs, "recived_log_id")
-		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
+		OS.shell_open(install_base_path + "/send_log/send_log")
+#		ApiLogs.send_debug_log_to_database()
+#		yield(ApiLogs, "recived_log_id")
+#		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
 		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])
 		TranslationServer.set_locale(arguments["locale"])
+	if arguments.has("run-editor"):
+		get_tree().change_scene("res://Editor/Editor.tscn")
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")
