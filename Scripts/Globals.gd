@@ -112,8 +112,7 @@ var cworlds:Array = [
 	
 ]
 var levels_scan_path:Array = [
-	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/"),
-	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure Level Editor/")
+	level_path,
 ]
 var dlc_name_list:Array = [
 	
@@ -182,13 +181,16 @@ func _ready():
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
 	if arguments.has("send-log"):
-		ApiLogs.send_debug_log_to_database()
-		yield(ApiLogs, "recived_log_id")
-		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
+		OS.shell_open(install_base_path + "/send_log/send_log")
+#		ApiLogs.send_debug_log_to_database()
+#		yield(ApiLogs, "recived_log_id")
+#		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
 		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])
 		TranslationServer.set_locale(arguments["locale"])
+	if arguments.has("run-editor"):
+		get_tree().change_scene("res://Editor/Editor.tscn")
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")
@@ -301,9 +303,16 @@ func load_achivements():
 #	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(discord_sdk_enabled)
-
-
-
+var level_name_org = "nounnamed"
+var level_description = "example"
+var level_author = "DoS"
+var level_version = "v1.0.0"
+var level_name = "nonunnamed"
+var level_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/")
+var erase_tiles = false
+var flip_tiles_x = false
+var flip_tiles_y = false
+var current_tile_name = "sci-fi-tileset.png 4"
 var modifications = {}
 func scan_and_load_modifications_cfg():
 	var cfg = ConfigFile.new()
