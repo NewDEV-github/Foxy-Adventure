@@ -119,9 +119,18 @@ func add_command(name, target, target_name=null):
 
 ### Coins
 
-func add_coin(anmount):
+func add_coins(anmount):
 	Globals.add_coin(anmount)
 
+func remove_coins(anmount):
+	Globals.remove_coins(anmount)
+
+func set_coins(anmount):
+	Globals.set_coins(anmount)
+
+func get_coins():
+	return Globals.coins
+	
 ### Characters
 
 func register_character(character_name:String, path:String):

@@ -132,7 +132,6 @@ func enable_discord_sdk(en):
 func add_character(chr_name:String, path:String):
 #	new_characters.insert(1, chr_name)
 	new_characters[chr_name] = path
-	print(str(new_characters))
 func add_dlc(dlc_name:String):
 	dlcs.append(dlc_name)
 func add_world(world_name:String, path:String):
@@ -157,6 +156,12 @@ func remove_lifes(anmount):
 
 func set_lifes(anmount):
 	lives = anmount
+
+func remove_coins(anmount):
+	coins -= anmount
+
+func set_coins(anmount):
+	coins = anmount
 
 func add_coin(anmount, upload_score=false):
 #	if user_data.has("localid"):
