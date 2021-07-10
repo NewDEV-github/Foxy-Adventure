@@ -169,7 +169,7 @@ func add_coin(anmount, upload_score=false):
 	
 #	print(str(int(coins) % 100))
 	if int(coins) % 100 == 0:
-		add_life()
+		add_lifes(0)
 	if coins == 50:
 		set_achievement_done("Money collector")
 	elif coins == 100:
