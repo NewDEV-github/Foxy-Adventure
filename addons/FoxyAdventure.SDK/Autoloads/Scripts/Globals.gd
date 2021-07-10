@@ -66,9 +66,9 @@ var dir = Directory.new()
 var current_save_name = ""
 var coins = 0
 var lives = 5
-var new_characters:Array = [
-	"Tails",
-]
+var new_characters:Dictionary = {
+	"Tails": "res://Scenes/Characters/Tails.tscn",
+}
 
 func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
@@ -105,9 +105,9 @@ func _init():
 var dlcs:Array = [
 	
 ]
-var worlds:Array = [
+var worlds:Dictionary = {
 	
-]
+}
 var cworlds:Array = [
 	
 ]
@@ -129,14 +129,14 @@ func enable_discord_sdk(en):
 	cfg.set_value('Game', 'discord_sdk_enabled', str(en))
 	cfg.save("user://settings.cfg")
 #var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
-func add_character(chr_name:String):
+func add_character(chr_name:String, path:String):
 #	new_characters.insert(1, chr_name)
-	new_characters.append(chr_name)
+	new_characters[chr_name] = path
 	print(str(new_characters))
 func add_dlc(dlc_name:String):
 	dlcs.append(dlc_name)
-func add_world(world_name:String):
-	worlds.append(world_name)
+func add_world(world_name:String, path:String):
+	worlds[world_name] = path
 func add_custom_world(world_name:String):
 	if not cworlds.has(world_name):
 		cworlds.append(world_name)
@@ -145,12 +145,18 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 
-func add_life():
-	lives += 1
+func add_lifes(anmount):
+	lives += anmount
 	if lives == 9:
 		set_achievement_done("Like a cat")
 	elif lives >= 9:
 		set_achievement_done("Like a cat, but... Better")
+
+func remove_lifes(anmount):
+	lives -= anmount
+
+func set_lifes(anmount):
+	lives = anmount
 
 func add_coin(anmount, upload_score=false):
 #	if user_data.has("localid"):
@@ -160,7 +166,7 @@ func add_coin(anmount, upload_score=false):
 	
 #	print(str(int(coins) % 100))
 	if int(coins) % 100 == 0:
-		add_life()
+		add_lifes(1)
 #	if coins == 50:
 ##		set_achievement_done("Money collector")
 #	elif coins == 100:

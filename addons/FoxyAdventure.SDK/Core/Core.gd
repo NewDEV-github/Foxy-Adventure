@@ -89,17 +89,23 @@ func throw_warning(where:String, what:String = ""):
 
 ### Lifes
 
-func add_life():
-	Globals.add_life()
+func add_lifes(anmount):
+	Globals.add_life(anmount)
+
+func remove_lifes(anmount):
+	Globals.remove_lifes(anmount)
+
+func set_lifes(anmount):
+	Globals.set_lifes(anmount)
 
 func get_lifes():
 	return Globals.lives
 
 ### Worlds
 
-func register_world(world_name:String):
-	throw_warning("Worlds", "Registering world: " + world_name)
-	Globals.add_world(world_name)
+func register_world(world_name:String, path:String):
+	throw_warning("Worlds", "Registering world: " + world_name + "at path: " + path)
+	Globals.add_world(world_name, path)
 
 ### Console
 
@@ -118,9 +124,9 @@ func add_coin(anmount):
 
 ### Characters
 
-func register_character(character_name:String):
-	throw_warning("Characters", "Registering world: " + character_name)
-	Globals.add_character(character_name)
+func register_character(character_name:String, path:String):
+	throw_warning("Characters", "Registering world: " + character_name + " at path: " + path)
+	Globals.add_character(character_name, path)
 
 ### Achievements
 

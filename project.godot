@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "EditorExportPlugin",
+"class": "FoxyAdventureMODCfgExport",
+"language": "GDScript",
+"path": "res://addons/foxyadventure_modcreator/export.gd"
+}, {
 "base": "Node",
 "class": "FoxyAdventureSDK",
 "language": "GDScript",
 "path": "res://addons/FoxyAdventure.SDK/Core/Core.gd"
 } ]
 _global_script_class_icons={
+"FoxyAdventureMODCfgExport": "",
 "FoxyAdventureSDK": ""
 }
 
