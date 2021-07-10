@@ -210,7 +210,6 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
-	
 	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
 		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()
@@ -334,7 +333,7 @@ func scan_and_load_modifications_cfg():
 					tmp["author"] = cfg.get_value("mod_info", "author")
 					tmp["description"] = cfg.get_value("mod_info", "description")
 					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
-					tmp["enabled"] = cfg.get_value("mod_info", "enabled")
+					tmp["enabled"] = cfg.get_value("mod_info", "enabled", "True")
 					tmp["main_script_file"] = cfg.get_value("mod_info", "main_script_file")
 					cfg.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
 					modifications[file_name.get_basename()] = tmp
@@ -358,6 +357,6 @@ func load_modification(mod_name):
 		for i in mod["pck_files"]:
 			ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
 		var main_script = load(mod["main_script_file"]).new()
+		print("Loading mod")
 		main_script.init_mod()
-		main_script.add_characters()
-		main_script.add_stages()
+
