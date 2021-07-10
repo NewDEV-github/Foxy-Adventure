@@ -154,6 +154,13 @@ func remove_lifes(anmount):
 
 func set_lifes(anmount):
 	lives = anmount
+
+func remove_coins(anmount):
+	coins -= anmount
+
+func set_coins(anmount):
+	coins = anmount
+
 func add_coin(anmount, upload_score=false):
 #	if user_data.has("localid"):
 #		print(user_data["localid"])
