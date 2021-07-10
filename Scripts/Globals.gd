@@ -358,5 +358,6 @@ func load_modification(mod_name):
 		for i in mod["pck_files"]:
 			ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
 		var main_script = load(mod["main_script_file"]).new()
+		main_script.init_mod()
 		main_script.add_characters()
 		main_script.add_stages()
