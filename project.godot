@@ -36,7 +36,7 @@ Globals="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/FoxyAdventure.SDK/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/FoxyAdventure.SDK/plugin.cfg", "res://addons/foxyadventure_modcreator/plugin.cfg" )
 
 [physics]
 
