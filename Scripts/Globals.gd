@@ -5,6 +5,11 @@ signal scoredatarecived
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
+var supported_sdk_versions = [
+	100,
+	101,
+	102
+]
 var all_achievements = [
 	"I'm not toxic",#done
 	"Up to five times",#done
@@ -333,7 +338,8 @@ func scan_and_load_modifications_cfg():
 					tmp["author"] = cfg.get_value("mod_info", "author")
 					tmp["description"] = cfg.get_value("mod_info", "description")
 					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
-					tmp["enabled"] = cfg.get_value("mod_info", "enabled", "True")
+					tmp["enabled"] = "True" #cfg.get_value("mod_info", "enabled", "True")
+					tmp["sdk_version"] = cfg.get_value("sdk_info", "version")
 					tmp["main_script_file"] = cfg.get_value("mod_info", "main_script_file")
 					cfg.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
 					modifications[file_name.get_basename()] = tmp
@@ -354,9 +360,13 @@ func set_modification_enable(m_name:String, enable:bool):
 func load_modification(mod_name):
 	var mod = modifications[mod_name]
 	if mod["enabled"] == "True":
-		for i in mod["pck_files"]:
-			ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
-		var main_script = load(mod["main_script_file"]).new()
-		print("Loading mod")
-		main_script.init_mod()
+		if supported_sdk_versions.has(int(mod["sdk_version"])):
+			for i in mod["pck_files"]:
+				ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
+			var main_script = load(mod["main_script_file"]).new()
+			print("Loading mod")
+			main_script.init_mod()
+		else:
+			print("Modification: " + mod["name"] + "\nuses unsupported SDK version and It won't be loaded")
+			OS.alert("Modification: " + mod["name"] + "\nuses unsupported SDK version and It won't be loaded", "Warning!")
 
