@@ -25,4 +25,5 @@ func _export_begin(features, is_debug, path, flags):
 		config.save("res://" + mod_cfg_filename)
 		print("Copying mod cfg file from %s to %s" % ["res://" + mod_cfg_filename, cfg_path + "/" + mod_cfg_filename])
 		dir.copy("res://" + mod_cfg_filename, cfg_path + "/" + mod_cfg_filename)
-		
+	else:
+		OS.alert("Mod configuration file won't be exported.\nPlease fill out all informaiton in \"MOD Info\" tab and click \"Generate .cfg file\", then try again.")

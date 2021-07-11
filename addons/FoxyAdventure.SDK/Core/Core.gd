@@ -14,12 +14,17 @@ enum INIT_FLAGS {
 	INIT_DEBUG = 1
 }
 func get_version():
-	_cfg.open("res://addons/FoxyAdventure.SDK/config.cfg")
-	return _cfg.get_value('information', 'version')
+	if _initialized == true:
+		_cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
+		return _cfg.get_value('information', 'version')
+	else:
+		print("Please, initialize SDK first, before using that function")
 func get_version_string():
-	_cfg.open("res://addons/FoxyAdventure.SDK/config.cfg")
-	return _cfg.get_value('information', 'version_string')
-
+	if _initialized == true:
+		_cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
+		return _cfg.get_value('information', 'version_string')
+	else:
+		print("Please, initialize SDK first, before using that function")
 var ret_init_flag = 0
 func init(init_flag:int):
 	print("[%s.Core] Initializing Core..."  % [debug_text])
@@ -90,60 +95,92 @@ func throw_warning(where:String, what:String = ""):
 ### Lifes
 
 func add_lifes(anmount):
-	Globals.add_life(anmount)
+	if _initialized == true:
+		Globals.add_life(anmount)
+	else:
+		print("Please, initialize SDK first, before using that function")
 
 func remove_lifes(anmount):
-	Globals.remove_lifes(anmount)
+	if _initialized == true:
+		Globals.remove_lifes(anmount)
+	else:
+		print("Please, initialize SDK first, before using that function")
 
 func set_lifes(anmount):
-	Globals.set_lifes(anmount)
+	if _initialized == true:
+		Globals.set_lifes(anmount)
+	else:
+		print("Please, initialize SDK first, before using that function")
 
 func get_lifes():
-	return Globals.lives
-
+	if _initialized == true:
+		return Globals.lives
+	else:
+		print("Please, initialize SDK first, before using that function")
 ### Worlds
 
 func register_world(world_name:String, path:String):
-	throw_warning("Worlds", "Registering world: " + world_name + "at path: " + path)
-	Globals.add_world(world_name, path)
+	throw_warning("Worlds", "Registering world: " + world_name + " at path: " + path)
+	if _initialized == true:
+		Globals.add_world(world_name, path)
+	else:
+		print("Please, initialize SDK first, before using that function")
 
 ### Console
 
 func add_command(name, target, target_name=null):
-	var file = File.new()
-	if file.file_exists("res://addons/quentincaffeino-console/src/Command/CommandService.gd"):
-		throw_warning("Console", "Registering command: " + name + "for target: " + target)
-#		Console.addCommand(name, target, target_name)
+	if _initialized == true:
+		var file = File.new()
+		if file.file_exists("res://addons/quentincaffeino-console/src/Command/CommandService.gd"):
+			throw_warning("Console", "Registering command: " + name + "for target: " + target)
+	#		Console.addCommand(name, target, target_name)
+		else:
+			throw_error("Console", "That command - 'add_command' will work only when modification is runned inside Foxy Adventure!")
 	else:
-		throw_error("Console", "That command - 'add_command' will work only when modification is runned inside Foxy Adventure!")
-
+		print("Please, initialize SDK first, before using that function")
 ### Coins
 
 func add_coins(anmount):
-	Globals.add_coin(anmount)
-
+	if _initialized == true:
+		Globals.add_coin(anmount)
+	else:
+		print("Please, initialize SDK first, before using that function")
 func remove_coins(anmount):
-	Globals.remove_coins(anmount)
-
+	if _initialized == true:
+		Globals.remove_coins(anmount)
+	else:
+		print("Please, initialize SDK first, before using that function")
 func set_coins(anmount):
-	Globals.set_coins(anmount)
-
+	if _initialized == true:
+		Globals.set_coins(anmount)
+	else:
+		print("Please, initialize SDK first, before using that function")
 func get_coins():
-	return Globals.coins
-	
+	if _initialized == true:
+		return Globals.coins
+	else:
+		print("Please, initialize SDK first, before using that function")
 ### Characters
 
 func register_character(character_name:String, path:String):
-	throw_warning("Characters", "Registering world: " + character_name + " at path: " + path)
-	Globals.add_character(character_name, path)
+	throw_warning("Characters", "Registering character: " + character_name + " at path: " + path)
+	if _initialized == true:
+		Globals.add_character(character_name, path)
+	else:
+		print("Please, initialize SDK first, before using that function")
 
 ### Achievements
 
 func add_achievement(name, desc):
 	throw_warning("Achievements", "Registering achievement: " + name)
-	Globals.all_achievements.append(name)
-	Globals.achievements_desc[name] = desc
-
+	if _initialized == true:
+		Globals.all_achievements.append(name)
+		Globals.achievements_desc[name] = desc
+	else:
+		print("Please, initialize SDK first, before using that function")
 func add_achievement_requirement(name, variable, value):
 	throw_warning("Achievements", "Registering requirements for achievement: " + name)
-	Globals.custom_achievements_requirements[name][variable] = value
+	if _initialized == true:
+		Globals.custom_achievements_requirements[name][variable] = value
+	else:
+		print("Please, initialize SDK first, before using that function")
