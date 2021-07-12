@@ -20,30 +20,31 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="name" type="LineEdit" parent="VBoxContainer"]
-margin_top = 220.0
+margin_top = 234.0
 margin_right = 1024.0
-margin_bottom = 244.0
+margin_bottom = 258.0
 placeholder_text = "Name"
 
 [node name="author" type="LineEdit" parent="VBoxContainer"]
-margin_top = 248.0
+margin_top = 262.0
 margin_right = 1024.0
-margin_bottom = 272.0
+margin_bottom = 286.0
 placeholder_text = "Author"
 
 [node name="description" type="LineEdit" parent="VBoxContainer"]
-margin_top = 276.0
+margin_top = 290.0
 margin_right = 1024.0
-margin_bottom = 300.0
+margin_bottom = 314.0
 placeholder_text = "Description"
 
 [node name="main_script_file" type="LineEdit" parent="VBoxContainer"]
-margin_top = 304.0
+margin_top = 318.0
 margin_right = 1024.0
-margin_bottom = 328.0
-placeholder_text = "Main Script File"
+margin_bottom = 342.0
+placeholder_text = "Main Script"
 
 [node name="pck_files" type="LineEdit" parent="VBoxContainer"]
+visible = false
 margin_top = 332.0
 margin_right = 1024.0
 margin_bottom = 356.0
@@ -51,9 +52,9 @@ placeholder_text = "PCK Files"
 
 [node name="Generate" type="Button" parent="VBoxContainer"]
 pause_mode = 2
-margin_top = 360.0
+margin_top = 346.0
 margin_right = 1024.0
-margin_bottom = 380.0
+margin_bottom = 366.0
 text = "Generate .cfg file"
 
 [connection signal="pressed" from="VBoxContainer/Generate" to="." method="_on_Generate_pressed"]

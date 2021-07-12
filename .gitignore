@@ -1,3 +1,9 @@
 # Import cache
 .import/
 .mono/
+animations/
+scenes/
+scripts/
+sounds/
+textures/
+titles/

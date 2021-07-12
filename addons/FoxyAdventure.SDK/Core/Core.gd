@@ -161,11 +161,30 @@ func get_coins():
 	else:
 		print("Please, initialize SDK first, before using that function")
 ### Characters
+func get_current_character_path():
+	if _initialized == true:
+		return Globals.character_path
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+func set_current_character_path(path):
+	if _initialized == true:
+		Globals.character_path = path
+	else:
+		print("Please, initialize SDK first, before using that function")
 
 func register_character(character_name:String, path:String):
 	throw_warning("Characters", "Registering character: " + character_name + " at path: " + path)
 	if _initialized == true:
 		Globals.add_character(character_name, path)
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+### Discord SDK
+
+func run_rpc(stage:String, character:String):
+	if _initialized == true:
+		DiscordSDK.run_rpc(false, stage, character)
 	else:
 		print("Please, initialize SDK first, before using that function")
 

@@ -28,10 +28,9 @@ func _on_Generate_pressed():
 	if not $VBoxContainer/pck_files.text.length() == 0:
 		cfg.set_value("mod_info", "pck_files", $VBoxContainer/pck_files.text)
 	cfg.set_value("mod_info", 'enabled', str(false))
-	if FoxyAdventureSDK.new() != null:
-		var sdk = FoxyAdventureSDK.new()
-		sdk.init(sdk.INIT_FLAGS.INIT_NORMAL)
-		cfg.set_value("sdk_info", "version", sdk.get_version())
+	var sdk = FoxyAdventureSDK.new()
+	sdk.init(sdk.INIT_FLAGS.INIT_NORMAL)
+	cfg.set_value("sdk_info", "version", sdk.get_version())
 	cfg.set_value("mod_info", "main_script_file", $VBoxContainer/main_script_file.text)
 	print("Generating " + "res://" + mod_name.to_lower().replace(' ', '_') + ".cfg" + "...")
 	cfg.save("res://" + mod_name.to_lower().replace(' ', '_') + ".cfg")
