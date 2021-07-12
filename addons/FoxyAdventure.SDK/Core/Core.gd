@@ -35,6 +35,7 @@ func init(init_flag:int):
 			_init_debugger()
 	print("[%s.Core] Core initialized successfully..."  % [debug_text])
 	_initialized = true
+	print("[%s.Core] SDK version is: %s [%s]"  % [debug_text, get_version_string(), get_version()])
 func _notification(what):
 	if what == NOTIFICATION_CRASH:
 		if _debugger_initialized == true:
@@ -173,6 +174,19 @@ func set_current_character_path(path):
 	else:
 		print("Please, initialize SDK first, before using that function")
 
+func get_current_character_instance():
+	if _initialized == true:
+		var _n = load(str(Globals.character_path)).instance()
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+func get_current_character_name():
+	if _initialized == true:
+		var _n = load(str(Globals.character_path)).instance()
+		return _n.name
+	else:
+		print("Please, initialize SDK first, before using that function")
+
 func register_character(character_name:String, path:String):
 	throw_warning("Characters", "Registering character: " + character_name + " at path: " + path)
 	if _initialized == true:
@@ -201,5 +215,24 @@ func add_achievement_requirement(name, variable, value):
 	throw_warning("Achievements", "Registering requirements for achievement: " + name)
 	if _initialized == true:
 		Globals.custom_achievements_requirements[name][variable] = value
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+### Scenes
+enum SCENES {
+	MAIN_MENU = 0,
+	GAME_OVER = 1,
+	CREDITS = 2
+}
+
+func change_scene_to(scene:int):
+	if _initialized == true:
+		match scene:
+			0:
+				get_tree().change_scene("res://Scenes/Menu.tscn")
+			1:
+				get_tree().change_scene("res://Scenes/GameOver.tscn")
+			2:
+				get_tree().change_scene("res://Scenes/Credits.tscn")
 	else:
 		print("Please, initialize SDK first, before using that function")
