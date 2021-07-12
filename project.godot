@@ -12,34 +12,22 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Discord",
 "language": "GDScript",
-"path": "res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Discord.gd"
+"path": "res://addons/FoxyAdventure.SDK/Autoloads/Scripts/discord.gd"
 }, {
 "base": "EditorExportPlugin",
 "class": "FoxyAdventureMODCfgExport",
 "language": "GDScript",
-"path": "res://addons/foxyadventure_modcreator/export.gd"
+"path": "res://addons/FoxyAdventure.SDK/Core/export.gd"
 }, {
 "base": "Node",
 "class": "FoxyAdventureSDK",
 "language": "GDScript",
 "path": "res://addons/FoxyAdventure.SDK/Core/Core.gd"
-}, {
-"base": "Panel",
-"class": "Options_Page",
-"language": "GDScript",
-"path": "res://scripts/scenes/OptionsPage/OptionsPage.gd"
-}, {
-"base": "Control",
-"class": "Pause_Menu",
-"language": "GDScript",
-"path": "res://scripts/GameUI.gd"
 } ]
 _global_script_class_icons={
 "Discord": "",
 "FoxyAdventureMODCfgExport": "",
-"FoxyAdventureSDK": "",
-"Options_Page": "",
-"Pause_Menu": ""
+"FoxyAdventureSDK": ""
 }
 
 [application]
@@ -50,8 +38,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd"
 DiscordSDK="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/DiscordSDK.gd"
+Globals="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd"
 
 [editor_plugins]
 

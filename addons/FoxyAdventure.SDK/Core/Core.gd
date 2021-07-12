@@ -236,3 +236,5 @@ func change_scene_to(scene:int):
 				get_tree().change_scene("res://Scenes/Credits.tscn")
 	else:
 		print("Please, initialize SDK first, before using that function")
+
+###

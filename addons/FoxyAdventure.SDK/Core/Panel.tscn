@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/FoxyAdventure.SDK/Core/Panel.gd" type="Script" id=1]
+[ext_resource path="res://addons/FoxyAdventure.SDK/Assets/Icons/search.png" type="Texture" id=2]
+
+[node name="Panel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 205.0
+margin_bottom = 65.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 14.0
+text = "SDK Configuration"
+
+[node name="version" type="Label" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 32.0
+text = "Version: 1.0.1 [101]"
+
+[node name="version_s2" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 54.0
+margin_right = 205.0
+margin_bottom = 68.0
+text = "Foxy Adventure executable path"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 200.0
+margin_bottom = 60.0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 168.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "C:\\Foxy Adventure.exe"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 172.0
+margin_right = 200.0
+margin_bottom = 24.0
+icon = ExtResource( 2 )
+
+[node name="ButtonMOD" type="Button" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 200.0
+margin_bottom = 84.0
+text = "Test game with current MOD"
+
+[node name="FoxyAdventureExePath" type="FileDialog" parent="."]
+margin_right = 649.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "Otwórz plik"
+mode = 0
+access = 2
+current_dir = "/Users/DoS/Documents/GitHub/Foxy-Adventure — kopia"
+current_path = "/Users/DoS/Documents/GitHub/Foxy-Adventure — kopia/"
+
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonMOD" to="." method="_on_ButtonMOD_pressed"]
+[connection signal="file_selected" from="FoxyAdventureExePath" to="." method="_on_FoxyAdventureExePath_file_selected"]
