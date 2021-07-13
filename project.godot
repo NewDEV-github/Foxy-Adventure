@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "VideoPlayer",
 "class": "CutsceneVideoPlayer",
 "language": "GDScript",
-"path": "res://Scripts/cutscene_player.gd"
+"path": "res://scripts/cutscene_player.gd"
 }, {
 "base": "Reference",
 "class": "Discord",
@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Scripts/Characters/enemy.gd"
+"path": "res://scripts/Characters/enemy.gd"
 }, {
 "base": "HTTPRequest",
 "class": "FirebaseAuth",
@@ -127,7 +127,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "FoxyAdventureSDK",
 "language": "GDScript",
-"path": "res://Scripts/sdk.gd"
+"path": "res://scripts/sdk.gd"
 }, {
 "base": "PanelContainer",
 "class": "GistItem",
