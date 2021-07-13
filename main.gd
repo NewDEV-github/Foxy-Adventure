@@ -6,10 +6,6 @@ extends Control
 # var a = 2
 # var b = "text"
 var sdk
-func _ready():
-	var _sdk = FoxyAdventureSDK.new()
-#	_sdk.init(_sdk.INIT_FLAGS.INIT_DEBUG) #<- test to see what will happen if You don't initialize SDK before calling it's functions
-	print(str(_sdk.get_lifes()))
 var worlds = {
 	"Pixel Adventure": "res://scenes/stages/pixel_adventure/stage.tscn",
 	"Pixel Adventure 2": "res://scenes/stages/pixel_adventure/stage2.tscn",
@@ -35,12 +31,12 @@ var characters = {
 }
 func init_mod():
 	sdk = FoxyAdventureSDK.new()
-#	sdk.init(sdk.INIT_FLAGS.INIT_DEBUG)
+	sdk.init(sdk.INIT_FLAGS.INIT_DEBUG)
 	print(str(sdk.get_lifes()))
 	for i in worlds:
 		sdk.register_world(i, worlds[i])
 	for i in characters:
-		sdk.register_world(i, characters[i])
-#	sdk.register_character("Test character", "res://test_scenes/characters/test_character.tscn")
+		sdk.register_character(i, characters[i])
+	sdk.run_rpc("Testing modification RPC Support", "MOD SUPPORT")
 
 """For more examples, please, take a look at: https://github.com/NewDEV-github/Foxy-Adventure/wiki/SDK"""

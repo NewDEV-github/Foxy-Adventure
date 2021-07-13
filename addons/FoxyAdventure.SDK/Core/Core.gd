@@ -198,6 +198,7 @@ func register_character(character_name:String, path:String):
 
 func run_rpc(stage:String, character:String):
 	if _initialized == true:
+		DiscordSDK._ready()
 		DiscordSDK.run_rpc(false, stage, character)
 	else:
 		print("Please, initialize SDK first, before using that function")

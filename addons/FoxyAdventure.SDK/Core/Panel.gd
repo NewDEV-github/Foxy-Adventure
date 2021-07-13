@@ -5,13 +5,18 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var changelog_text_template = "[b]CHANGELOG:[/b]\n\n "
 var cfg = ConfigFile.new()
 var sdk = FoxyAdventureSDK.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
+	if cfg.has_section_key("information","changelog"):
+		$HBoxContainer/VBoxContainer2/ChangelogText.bbcode_text = changelog_text_template + cfg.get_value("information","changelog")
+	if cfg.has_section_key("information", "executable_path"):
+		$HBoxContainer/VBoxContainer/HBoxContainer/LineEdit.text = cfg.get_value("information", "executable_path")
 	sdk.init(sdk.INIT_FLAGS.INIT_DEBUG)
-	$VBoxContainer/version.text = "Version: " + sdk.get_version_string() + " [%s]" % sdk.get_version()
+	$HBoxContainer/VBoxContainer/version.text = "Version: " + sdk.get_version_string() + " [%s]" % sdk.get_version()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,12 +26,7 @@ func _ready():
 
 
 func _on_FoxyAdventureExePath_file_selected(path):
-	$VBoxContainer/HBoxContainer/LineEdit.text = path
-
-
-func _on_LineEdit_text_entered(new_text):
-	pass # Replace with function body.
-
+	$HBoxContainer/VBoxContainer/HBoxContainer/LineEdit.text = path
 
 func _on_Button_pressed():
 	$FoxyAdventureExePath.popup_centered()
@@ -55,8 +55,8 @@ func export_tmp_mod():
 		if not config.has_section_key("mod_info", "pck_files"):
 			config.set_value("mod_info", "pck_files", ["tmp_mod.pck"])
 		config.save("res://" + mod_cfg_filename)
-		print("Copying mod cfg file from %s to %s" % ["res://" + mod_cfg_filename, cfg_path + "/" + mod_cfg_filename])
-		dir.copy("res://" + mod_cfg_filename, cfg_path + "/" + mod_cfg_filename)
+		print("Copying mod cfg file from %s to %s" % ["res://" + mod_cfg_filename, cfg_path + mod_cfg_filename])
+		dir.copy("res://" + mod_cfg_filename, cfg_path + mod_cfg_filename)
 		dir.remove("user://FoxyAdventureModCreator.temp.cfg")
 		
 	else:
@@ -80,4 +80,14 @@ func scan_files_recursive(path:String):
 
 func _on_ButtonMOD_pressed():
 	export_tmp_mod()
-	OS.shell_open($VBoxContainer/HBoxContainer/LineEdit.text + "--test-mod=tmp_mod.pck")
+	sdk.throw_warning("Game", "Running Foxy Adventure from %s" % $HBoxContainer/VBoxContainer/HBoxContainer/LineEdit.text)
+	OS.shell_open($HBoxContainer/VBoxContainer/HBoxContainer/LineEdit.text)
+
+
+
+
+
+func _on_LineEdit_text_changed(new_text):
+	cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
+	cfg.set_value("information", "executable_path", new_text)
+	cfg.save("res://addons/FoxyAdventure.SDK/config.cfg")
