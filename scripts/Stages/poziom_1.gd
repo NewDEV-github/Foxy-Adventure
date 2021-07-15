@@ -36,7 +36,7 @@ func change_level():
 		Globals.set_achievement_done("I'm not toxic")
 	get_tree().change_scene("res://Scenes/Demo_ThankYou.tscn")
 func toxic_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		Globals.felt_into_toxine()
 		if Globals.new_characters.has(body.name):
 			Globals.game_over()
@@ -48,12 +48,12 @@ func _on_Node2D_tree_exited():
 
 
 func _on_Doors_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		change_level()
 
 
 func _on_messagearea_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		body.set_render_messages_delay(1.5)
 		body.show_message_box(false)
 		var msg = ["It looks like there is only one way out of here.\nLet's go and see what happens next"]

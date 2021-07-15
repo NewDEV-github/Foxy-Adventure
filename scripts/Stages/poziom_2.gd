@@ -27,7 +27,7 @@ func _ready():
 func change_level():
 	get_tree().change_scene("res://Scenes/Stages/poziom_3.tscn")
 func toxic_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		if Globals.new_characters.has(body.name):
 			Globals.game_over()
 
@@ -38,7 +38,7 @@ func _on_Node2D_tree_exited():
 
 
 func _on_Doors_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		change_level()
 
 func _on_AudioStreamPlayer2D_finished():
@@ -49,7 +49,7 @@ func _on_AudioStreamPlayer2D_finished():
 
 
 func _on_messagearea2_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_:
 		body.set_render_messages_delay(1.5)
 		body.show_message_box(false)
 		var msg = ["Hmm...\nThere's more of that vwey strange place..."]

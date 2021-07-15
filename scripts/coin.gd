@@ -17,6 +17,6 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		$AnimationPlayer.play("taken")
 		Globals.add_coin(1)

@@ -247,7 +247,6 @@ Globals="*res://Scripts/Globals.gd"
 ApiLogs="*res://Scenes/api_logs.tscn"
 ApiScores="*res://Scenes/api_scores.tscn"
 Console="*res://addons/quentincaffeino-console/src/Console.tscn"
-Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
@@ -269,7 +268,7 @@ window/per_pixel_transparency/enabled=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
 
 [editors]
 

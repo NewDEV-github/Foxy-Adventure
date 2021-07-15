@@ -49,6 +49,7 @@ var stage_names:Dictionary = {
 	"4": "Laboratory",
 	"5": "Laboratory",
 }
+
 var current_stage = 0
 var arguments = {}
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
@@ -127,6 +128,9 @@ var camera_smoothing_enabled = false
 var camera_smoothing_speed = 0
 var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
+func get_current_character_name():
+	var _n = load(str(character_path)).instance()
+	return _n.name
 func enable_discord_sdk(en):
 	discord_sdk_enabled = en
 	var cfg = ConfigFile.new()
