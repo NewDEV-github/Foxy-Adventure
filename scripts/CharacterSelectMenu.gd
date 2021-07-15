@@ -23,7 +23,10 @@ func _ready():
 #	pass
 func after_selecting_player():
 #	Globals.save_level(0, Globals.current_save_name)
-	BackgroundLoad.get_node("bgload").load_scene("res://Scenes/Stages/poziom_1.tscn")
+	if $"../../".editor_stage == true:
+		$"../../Node2D".load_stage($"../../"._editor_stage_name)
+	else:
+		BackgroundLoad.get_node("bgload").load_scene("res://Scenes/Stages/poziom_1.tscn")
 #	BackgroundLoad
 
 func _on_ItemList_item_selected(index):

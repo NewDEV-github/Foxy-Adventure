@@ -21,6 +21,8 @@ func _on_FirebaseAuth_login_succeeded(auth):
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
+func load_level_editor():
+	pass
 func _ready() -> void:
 	$VBoxContainer3/Info.disabled = true
 	$VBoxContainer3/Logout.disabled = true
@@ -82,7 +84,7 @@ func _ready() -> void:
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	elif day == 7 and month == 4:
-		$Label.set_text(tr("Happy Birthday to") + ' JezSonic/Futrzak or the main developer')
+		$Label.set_text(tr("Happy Birthday to") + ' DoS or the main developer')
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
@@ -113,9 +115,11 @@ func _on_Website_pressed():
 func _on_Options2_pressed():
 	get_tree().change_scene('res://Scenes/Credits.tscn')
 
-
+var editor_stage = false
+var _editor_stage_name = ""
 func _on_WorldList_item_selected(index):
-	pass
+	editor_stage = true
+	_editor_stage_name = $SelectWorld/WorldList.get_item_text(index)
 
 func custom_level_research():
 	for path in Globals.levels_scan_path:
@@ -164,7 +168,7 @@ func _on_CreateNewSave_pressed() -> void:
 		Globals.current_save_name = $NewSave/VBoxContainer/LineEdit.text
 	else:
 		print("Enter the save name!")
-	show_submenu_page($CharacterSelect)
+	$SelectWorld.popup_centered()
 	$NewSave.hide()
 	#Globals.save_level(0, $NewSave/LineEdit.text)
 
@@ -210,3 +214,14 @@ func _on_Login_pressed():
 
 func _on_Leaderboard_pressed():
 	$Leaderboard.popup_centered()
+
+
+func _on_PlaySelected_pressed():
+	show_submenu_page($CharacterSelect)
+	$SelectWorld.hide()
+
+
+func _on_PlayNormal_pressed():
+	editor_stage = false
+	show_submenu_page($CharacterSelect)
+	$SelectWorld.hide()
