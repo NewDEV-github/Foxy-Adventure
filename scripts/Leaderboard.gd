@@ -32,15 +32,16 @@ func _on_Scorelist_request_completed(result, response_code, headers, body):
 #	print(scorelist)
 
 func get_username_or_email_by_uid(uid:String):
-	for i in userdata:
-#		print(i)
-		if i == uid:
-			var tmp_userdata = userdata[i]
-			print(tmp_userdata)
-			if tmp_userdata['username'] != null:
-				return tmp_userdata['username']
-			elif tmp_userdata['username'] == null:
-				return tmp_userdata['email']
+	if not userdata == null:
+		for i in userdata:
+	#		print(i)
+			if i == uid:
+				var tmp_userdata = userdata[i]
+				print(tmp_userdata)
+				if tmp_userdata['username'] != null:
+					return tmp_userdata['username']
+				elif tmp_userdata['username'] == null:
+					return tmp_userdata['email']
 var number = 1
 func render_board():
 	var scorelist_values = scorelist.values()

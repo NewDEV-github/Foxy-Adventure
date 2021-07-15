@@ -61,17 +61,12 @@ func _ready() -> void:
 	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
-	for world_name in world_list:
-		if world_name == null:
-#			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
-			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
+#	for world_name in world_list:
 #		$SelectWorld/WorldList.add_item(tr(world_name))
 	custom_level_research()
-#	for world_name in Globals.cworlds:
-#		if world_name == [] or world_name == null:
-##			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
-#			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
-#		$SelectWorld/WorldList.add_item(world_name)
+	
+	for world_name in Globals.cworlds:
+		$SelectWorld/WorldList.add_item(world_name)
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
 		$Label.set_text(tr("Happy Birthday to") + ' "Foxy Adventure"')

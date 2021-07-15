@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "VideoPlayer",
 "class": "CutsceneVideoPlayer",
 "language": "GDScript",
-"path": "res://scripts/cutscene_player.gd"
+"path": "res://Scripts/cutscene_player.gd"
 }, {
 "base": "Reference",
 "class": "Discord",
@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://scripts/Characters/enemy.gd"
+"path": "res://Scripts/Characters/enemy.gd"
 }, {
 "base": "HTTPRequest",
 "class": "FirebaseAuth",
@@ -127,7 +127,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "FoxyAdventureSDK",
 "language": "GDScript",
-"path": "res://scripts/sdk.gd"
+"path": "res://Scripts/sdk.gd"
 }, {
 "base": "PanelContainer",
 "class": "GistItem",
@@ -251,6 +251,7 @@ ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Screenshot="*res://Scripts/screenshot.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [debug]
 
@@ -268,7 +269,7 @@ window/per_pixel_transparency/enabled=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
 
 [editors]
 

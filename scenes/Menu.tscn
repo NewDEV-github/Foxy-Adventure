@@ -386,8 +386,8 @@ visible = false
 
 [node name="SelectWorld" type="WindowDialog" parent="."]
 visible = true
-margin_right = 525.0
-margin_bottom = 321.0
+margin_right = 848.0
+margin_bottom = 591.0
 
 [node name="WorldList" type="ItemList" parent="SelectWorld"]
 anchor_right = 1.0
@@ -420,20 +420,20 @@ __meta__ = {
 }
 
 [node name="PlayNormal" type="Button" parent="SelectWorld/HBoxContainer"]
-margin_left = 105.0
-margin_right = 204.0
+margin_left = 266.0
+margin_right = 365.0
 margin_bottom = 38.0
 text = "Play Normal"
 
 [node name="PlaySelected" type="Button" parent="SelectWorld/HBoxContainer"]
-margin_left = 208.0
-margin_right = 315.0
+margin_left = 369.0
+margin_right = 476.0
 margin_bottom = 38.0
 text = "Play Selected"
 
 [node name="DeleteStage" type="Button" parent="SelectWorld/HBoxContainer"]
-margin_left = 319.0
-margin_right = 420.0
+margin_left = 480.0
+margin_right = 581.0
 margin_bottom = 38.0
 text = "Delete Stage"
 
