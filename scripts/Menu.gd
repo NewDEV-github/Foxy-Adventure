@@ -19,7 +19,6 @@ func _on_FirebaseAuth_login_succeeded(auth):
 #	print("Db ref: " + db_ref.get_data())
 #	db_ref.push({"f": "df"})
 #	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
-
 #func on_userdata_recived(userdata):
 #	print(Globals.user_data)
 func load_level_editor():
@@ -63,16 +62,16 @@ func _ready() -> void:
 	Globals.selected_character = null
 	Globals.character_path = null
 	for world_name in world_list:
-		if world_name == [] or world_name == null:
+		if world_name == null:
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
-		$SelectWorld/WorldList.add_item(tr(world_name))
+#		$SelectWorld/WorldList.add_item(tr(world_name))
 	custom_level_research()
-	for world_name in Globals.cworlds:
+#	for world_name in Globals.cworlds:
 #		if world_name == [] or world_name == null:
 ##			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
 #			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_GAME_DATA)
-		$SelectWorld/WorldList.add_item(world_name)
+#		$SelectWorld/WorldList.add_item(world_name)
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
 		$Label.set_text(tr("Happy Birthday to") + ' "Foxy Adventure"')

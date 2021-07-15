@@ -25,16 +25,3 @@ sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
 sudo ./$GODOT_BINARY_FILENAME --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
 sudo ./$GODOT_BINARY_FILENAME --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
 sudo ./$GODOT_BINARY_FILENAME --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
-
-cd $GITHUB_WORKSPACE/x11-64-standard
-sudo mkdir translations
-
-cd $GITHUB_WORKSPACE/osx-standard
-sudo mkdir translations
-
-cd $GITHUB_WORKSPACE/win-64-standard
-sudo mkdir translations
-
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/x11-64-standard/translations/translations.pck
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/osx-standard/translations/translations.pck
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "translations" $GITHUB_WORKSPACE/builds/win-64-standard/translations/translations.pck

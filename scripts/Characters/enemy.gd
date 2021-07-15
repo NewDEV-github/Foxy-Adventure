@@ -52,7 +52,7 @@ func hit_by_bullet():
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		hit_by_bullet()
 
 

@@ -19,7 +19,7 @@ func _ready():
 	$AudioStreamPlayer2D.play()
 
 func toxic_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		Globals.felt_into_toxine()
 		if Globals.new_characters.has(body.name):
 			Globals.game_over()

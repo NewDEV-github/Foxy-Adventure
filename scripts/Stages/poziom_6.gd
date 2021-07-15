@@ -25,9 +25,9 @@ func _ready():
 	get_node(str(character.name)).position = startup_position
 
 func change_level():
-	get_tree().change_scene("res://Scenes/Stages/poziom_6.tscn")
+	get_tree().change_scene("res://Scenes/Credits.tscn")
 func toxic_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		if Globals.new_characters.has(body.name):
 			Globals.game_over()
 
@@ -38,7 +38,7 @@ func _on_Node2D_tree_exited():
 
 
 func _on_Doors_body_entered(body):
-	if body.name == "Tails":
+	if body.name == Globals.get_current_character_name():
 		change_level()
 
 func _on_AudioStreamPlayer2D_finished():

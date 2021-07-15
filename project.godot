@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "VideoPlayer",
 "class": "CutsceneVideoPlayer",
 "language": "GDScript",
-"path": "res://Scripts/cutscene_player.gd"
+"path": "res://scripts/cutscene_player.gd"
 }, {
 "base": "Reference",
 "class": "Discord",
@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Scripts/Characters/enemy.gd"
+"path": "res://scripts/Characters/enemy.gd"
 }, {
 "base": "HTTPRequest",
 "class": "FirebaseAuth",
@@ -123,6 +123,11 @@ _global_script_classes=[ {
 "class": "FoxyAdventureMODCfgExport",
 "language": "GDScript",
 "path": "res://addons/foxyadventure_modcreator/export.gd"
+}, {
+"base": "Node",
+"class": "FoxyAdventureSDK",
+"language": "GDScript",
+"path": "res://scripts/sdk.gd"
 }, {
 "base": "PanelContainer",
 "class": "GistItem",
@@ -208,6 +213,7 @@ _global_script_class_icons={
 "FirestoreQuery": "",
 "FirestoreTask": "",
 "FoxyAdventureMODCfgExport": "",
+"FoxyAdventureSDK": "",
 "GistItem": "",
 "GitAPI": "",
 "InvitationItem": "",
@@ -237,15 +243,14 @@ config/version="1.0.0"
 
 [autoload]
 
-Screenshot="*res://Scripts/screenshot.gd"
+Globals="*res://Scripts/Globals.gd"
+ApiLogs="*res://Scenes/api_logs.tscn"
+ApiScores="*res://Scenes/api_scores.tscn"
+Console="*res://addons/quentincaffeino-console/src/Console.tscn"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
-Globals="*res://Scripts/Globals.gd"
-Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
-ApiScores="*res://Scenes/api_scores.tscn"
-Console="*res://addons/quentincaffeino-console/src/Console.tscn"
-ApiLogs="*res://Scenes/api_logs.tscn"
+Screenshot="*res://Scripts/screenshot.gd"
 
 [debug]
 
@@ -263,7 +268,7 @@ window/per_pixel_transparency/enabled=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/messagebox/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/rpg_text_boxes/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/foxyadventure_modcreator/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/quentincaffeino-console/plugin.cfg", "res://addons/terminal/plugin.cfg", "res://addons/texp/plugin.cfg" )
 
 [editors]
 
@@ -351,21 +356,6 @@ ui_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
-console_toggle={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":true,"control":true,"meta":false,"command":true,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_up2={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_down2={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
- ]
-}
 ui_left2={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
@@ -376,9 +366,9 @@ ui_right2={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
  ]
 }
-screen={
+jump2={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777225,"unicode":0,"echo":false,"script":null)
  ]
 }
 jump={
@@ -386,9 +376,24 @@ jump={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
-jump2={
+ui_down2={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777225,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+console_toggle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":true,"control":true,"meta":false,"command":true,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
+screen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
  ]
 }
 quentincaffeino_console_toggle={
@@ -425,6 +430,10 @@ export/export_assemblies_inside_pck=false
 
 ssl/certificates="res://ca-bundle.crt"
 
+[physics]
+
+common/enable_pause_aware_picking=true
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
@@ -434,6 +443,7 @@ quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
+vram_compression/import_etc2=false
 quality/reflections/texture_array_reflections.mobile=true
 quality/reflections/high_quality_ggx.mobile=true
 2d/opengl/batching_stream=2
@@ -441,5 +451,6 @@ batching/options/single_rect_fallback=true
 batching/debug/flash_batching=true
 batching/debug/diagnose_frame=true
 batching/precision/uv_contract=true
+environment/default_environment="res://default_env.tres"
 options/api_usage_batching/flag_stream=true
 options/api_usage_legacy/flag_stream=true

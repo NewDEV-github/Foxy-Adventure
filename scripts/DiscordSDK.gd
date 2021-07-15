@@ -1,8 +1,8 @@
 extends Node
-var activities: Discord.ActivityManager
-var users: Discord.UserManager
-var images: Discord.ImageManager
-var core: Discord.Core
+var activities: Discord.ActivityManager = null
+var users: Discord.UserManager = null
+var images: Discord.ImageManager = null
+var core: Discord.Core = null
 var discord_user_img = null
 signal user_avatar_loaded
 signal initialized
@@ -15,35 +15,36 @@ func enum_to_string(the_enum: Dictionary, value: int) -> String:
 
 func _ready() -> void:
 	if Globals.gdsdk_enabled:
-		core = Discord.Core.new()
-		var result: int = core.create(
-			729429191489093702,
-			Discord.CreateFlags.NO_REQUIRE_DISCORD
-		)
-		print("Created Discord Core: ", enum_to_string(Discord.Result, result))
-		if result != Discord.Result.OK:
-			core = null
-		else:
-			core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
-
-			users = _get_user_manager()
-			images = _get_image_manager()
-			activities = _get_activity_manager()
-
-			users.connect("current_user_update", self, "_on_current_user_update")
-
-			users.get_user(425340416531890178, self, "get_user_callback")
-
-			result = yield(activities, "update_activity_callback")
-
-			if result == Discord.Result.OK:
-				print("Updated activity successfully!")
+		if not core:
+			core = Discord.Core.new()
+			var result: int = core.create(
+				729429191489093702,
+				Discord.CreateFlags.NO_REQUIRE_DISCORD
+			)
+			print("Created Discord Core: ", enum_to_string(Discord.Result, result))
+			if result != Discord.Result.OK:
+				core = null
 			else:
-				print(
-					"Failed to update activity: ",
-					enum_to_string(Discord.Result, result)
-				)
-			emit_signal("initialized")
+				core.set_log_hook(Discord.LogLevel.DEBUG, self, "log_hook")
+
+				users = _get_user_manager()
+				images = _get_image_manager()
+				activities = _get_activity_manager()
+
+				users.connect("current_user_update", self, "_on_current_user_update")
+
+				users.get_user(425340416531890178, self, "get_user_callback")
+
+				result = yield(activities, "update_activity_callback")
+
+				if result == Discord.Result.OK:
+					print("Updated activity successfully!")
+				else:
+					print(
+						"Failed to update activity: ",
+						enum_to_string(Discord.Result, result)
+					)
+				emit_signal("initialized")
 	else:
 		pass
 
