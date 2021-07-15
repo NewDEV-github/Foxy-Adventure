@@ -16,3 +16,22 @@ script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 264.558, 290.014 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_left = 253.144
+margin_top = 280.014
+margin_right = 273.144
+margin_bottom = 300.014
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="ColorRect" to="." method="_on_ColorRect_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect" to="." method="_on_ColorRect_mouse_exited"]

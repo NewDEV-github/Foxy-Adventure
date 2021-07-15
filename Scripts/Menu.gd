@@ -116,9 +116,11 @@ func _on_Website_pressed():
 func _on_Options2_pressed():
 	get_tree().change_scene('res://Scenes/Credits.tscn')
 
-
+var editor_stage = false
+var _editor_stage_name = ""
 func _on_WorldList_item_selected(index):
-	pass
+	editor_stage = true
+	_editor_stage_name = $SelectWorld/WorldList.get_item_text(index)
 
 func custom_level_research():
 	for path in Globals.levels_scan_path:
@@ -167,7 +169,7 @@ func _on_CreateNewSave_pressed() -> void:
 		Globals.current_save_name = $NewSave/VBoxContainer/LineEdit.text
 	else:
 		print("Enter the save name!")
-	show_submenu_page($CharacterSelect)
+	$SelectWorld.popup_centered()
 	$NewSave.hide()
 	#Globals.save_level(0, $NewSave/LineEdit.text)
 
@@ -213,3 +215,14 @@ func _on_Login_pressed():
 
 func _on_Leaderboard_pressed():
 	$Leaderboard.popup_centered()
+
+
+func _on_PlaySelected_pressed():
+	show_submenu_page($CharacterSelect)
+	$SelectWorld.hide()
+
+
+func _on_PlayNormal_pressed():
+	editor_stage = false
+	show_submenu_page($CharacterSelect)
+	$SelectWorld.hide()

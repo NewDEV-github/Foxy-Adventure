@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/LoginPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/Leaderboard.gd" type="Script" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
+[ext_resource path="res://Editor/EditorLevelScene.tscn" type="PackedScene" id=11]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 16777219
@@ -383,6 +384,63 @@ __meta__ = {
 [node name="Control" parent="." instance=ExtResource( 3 )]
 visible = false
 
+[node name="SelectWorld" type="WindowDialog" parent="."]
+visible = true
+margin_right = 525.0
+margin_bottom = 321.0
+
+[node name="WorldList" type="ItemList" parent="SelectWorld"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 42.0
+margin_bottom = -41.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SelectWorld"]
+anchor_right = 1.0
+margin_right = -1.0
+margin_bottom = 25.0
+text = "We have propably found some custom stages. Select one to start game or click 'Play Normal' button to play Foxy Adventure's storyline"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectWorld"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -38.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayNormal" type="Button" parent="SelectWorld/HBoxContainer"]
+margin_left = 105.0
+margin_right = 204.0
+margin_bottom = 38.0
+text = "Play Normal"
+
+[node name="PlaySelected" type="Button" parent="SelectWorld/HBoxContainer"]
+margin_left = 208.0
+margin_right = 315.0
+margin_bottom = 38.0
+text = "Play Selected"
+
+[node name="DeleteStage" type="Button" parent="SelectWorld/HBoxContainer"]
+margin_left = 319.0
+margin_right = 420.0
+margin_bottom = 38.0
+text = "Delete Stage"
+
+[node name="Node2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1.95695, 2.17206 )
+editor_mode = "MODE_PLAY"
+
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]
@@ -400,3 +458,6 @@ visible = false
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/NotDone" to="." method="_on_NotDone_item_selected"]
 [connection signal="request_completed" from="Leaderboard/Userdata" to="Leaderboard" method="_on_Userdata_request_completed"]
 [connection signal="request_completed" from="Leaderboard/Scorelist" to="Leaderboard" method="_on_Scorelist_request_completed"]
+[connection signal="item_selected" from="SelectWorld/WorldList" to="." method="_on_WorldList_item_selected"]
+[connection signal="pressed" from="SelectWorld/HBoxContainer/PlayNormal" to="." method="_on_PlayNormal_pressed"]
+[connection signal="pressed" from="SelectWorld/HBoxContainer/PlaySelected" to="." method="_on_PlaySelected_pressed"]

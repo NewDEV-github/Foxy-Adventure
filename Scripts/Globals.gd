@@ -5,6 +5,21 @@ signal scoredatarecived
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
+var supported_sdk_versions = [
+	100,
+	101,
+	102
+]
+var level_name_org = "nounnamed"
+var level_description = "example"
+var level_author = "DoS"
+var level_version = "v1.0.0"
+var level_name = "nonunnamed"
+var level_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/")
+var erase_tiles = false
+var flip_tiles_x = false
+var flip_tiles_y = false
+var current_tile_name = "sci-fi-tileset.png 4"
 var all_achievements = [
 	"I'm not toxic",#done
 	"Up to five times",#done
@@ -44,6 +59,7 @@ var stage_names:Dictionary = {
 	"4": "Laboratory",
 	"5": "Laboratory",
 }
+
 var current_stage = 0
 var arguments = {}
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
@@ -66,9 +82,9 @@ var dir = Directory.new()
 var current_save_name = ""
 var coins = 0
 var lives = 5
-var new_characters:Array = [
-	"Tails",
-]
+var new_characters:Dictionary = {
+	"Tails": "res://Scenes/Characters/Tails.tscn",
+}
 
 func construct_game_version():
 	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
@@ -105,14 +121,15 @@ func _init():
 var dlcs:Array = [
 	
 ]
-var worlds:Array = [
+var worlds:Dictionary = {
 	
-]
+}
 var cworlds:Array = [
 	
 ]
 var levels_scan_path:Array = [
-	level_path,
+	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/"),
+	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure Level Editor/")
 ]
 var dlc_name_list:Array = [
 	
@@ -121,6 +138,9 @@ var camera_smoothing_enabled = false
 var camera_smoothing_speed = 0
 var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
+func get_current_character_name():
+	var _n = load(str(character_path)).instance()
+	return _n.name
 func enable_discord_sdk(en):
 	discord_sdk_enabled = en
 	var cfg = ConfigFile.new()
@@ -128,14 +148,12 @@ func enable_discord_sdk(en):
 	cfg.set_value('Game', 'discord_sdk_enabled', str(en))
 	cfg.save("user://settings.cfg")
 #var mod_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)) + '/Sonadow RPG/Mods/mod.pck'
-func add_character(chr_name:String):
-#	new_characters.insert(1, chr_name)
-	new_characters.append(chr_name)
-	print(str(new_characters))
+func add_character(chr_name:String, path:String):
+	new_characters[chr_name] = path
 func add_dlc(dlc_name:String):
 	dlcs.append(dlc_name)
-func add_world(world_name:String):
-	worlds.append(world_name)
+func add_world(world_name:String, path:String):
+	worlds[world_name] = path
 func add_custom_world(world_name:String):
 	if not cworlds.has(world_name):
 		cworlds.append(world_name)
@@ -144,12 +162,23 @@ func add_custom_world(world_name:String):
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 
-func add_life():
-	lives += 1
+func add_lifes(anmount):
+	lives += anmount
 	if lives == 9:
 		set_achievement_done("Like a cat")
 	elif lives >= 9:
 		set_achievement_done("Like a cat, but... Better")
+func remove_lifes(anmount):
+	lives -= anmount
+
+func set_lifes(anmount):
+	lives = anmount
+
+func remove_coins(anmount):
+	coins -= anmount
+
+func set_coins(anmount):
+	coins = anmount
 
 func add_coin(anmount, upload_score=false):
 #	if user_data.has("localid"):
@@ -159,7 +188,7 @@ func add_coin(anmount, upload_score=false):
 	
 #	print(str(int(coins) % 100))
 	if int(coins) % 100 == 0:
-		add_life()
+		add_lifes(0)
 	if coins == 50:
 		set_achievement_done("Money collector")
 	elif coins == 100:
@@ -181,16 +210,13 @@ func _ready():
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
 	if arguments.has("send-log"):
-		OS.shell_open(install_base_path + "/send_log/send_log")
-#		ApiLogs.send_debug_log_to_database()
-#		yield(ApiLogs, "recived_log_id")
-#		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
+		ApiLogs.send_debug_log_to_database()
+		yield(ApiLogs, "recived_log_id")
+		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
 		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])
 		TranslationServer.set_locale(arguments["locale"])
-	if arguments.has("run-editor"):
-		get_tree().change_scene("res://Editor/Editor.tscn")
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")
@@ -203,7 +229,6 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
-	
 	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
 		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
 		script.add_characters()
@@ -303,16 +328,9 @@ func load_achivements():
 #	emit_signal("achivements_loaded")
 #func _process(delta):
 #	print(discord_sdk_enabled)
-var level_name_org = "nounnamed"
-var level_description = "example"
-var level_author = "DoS"
-var level_version = "v1.0.0"
-var level_name = "nonunnamed"
-var level_path = str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/")
-var erase_tiles = false
-var flip_tiles_x = false
-var flip_tiles_y = false
-var current_tile_name = "sci-fi-tileset.png 4"
+
+
+
 var modifications = {}
 func scan_and_load_modifications_cfg():
 	var cfg = ConfigFile.new()
@@ -334,7 +352,8 @@ func scan_and_load_modifications_cfg():
 					tmp["author"] = cfg.get_value("mod_info", "author")
 					tmp["description"] = cfg.get_value("mod_info", "description")
 					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
-					tmp["enabled"] = cfg.get_value("mod_info", "enabled")
+					tmp["enabled"] = "True" #cfg.get_value("mod_info", "enabled", "True")
+					tmp["sdk_version"] = cfg.get_value("sdk_info", "version")
 					tmp["main_script_file"] = cfg.get_value("mod_info", "main_script_file")
 					cfg.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
 					modifications[file_name.get_basename()] = tmp
@@ -355,8 +374,15 @@ func set_modification_enable(m_name:String, enable:bool):
 func load_modification(mod_name):
 	var mod = modifications[mod_name]
 	if mod["enabled"] == "True":
-		for i in mod["pck_files"]:
-			ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
-		var main_script = load(mod["main_script_file"]).new()
-		main_script.add_characters()
-		main_script.add_stages()
+		if supported_sdk_versions.has(int(mod["sdk_version"])):
+			for i in mod["pck_files"]:
+				ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
+			var main_script = load(mod["main_script_file"]).new()
+			print("Loading mod")
+			main_script.init_mod()
+		else:
+			print("Modification: " + mod["name"] + "\nuses unsupported SDK version and It won't be loaded")
+			OS.alert("Modification: " + mod["name"] + "\nuses unsupported SDK version and It won't be loaded", "Warning!")
+
+func load_stage_from_editor(stage_name:String, character:String):
+	pass

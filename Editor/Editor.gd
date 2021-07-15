@@ -1,10 +1,7 @@
 
 extends Node2D
-
-
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+export(String, "MODE_EDIT", "MODE_PLAY") var editor_mode
+onready var startup_pos_node = $Position2D
 var bg_path = 'none'
 onready var navbar = $"../CanvasLayer/navbar"
 var modes = ["custom_audio", "custom_tiles", "custom_backgrounds", "custom_backgrounds/sprites", "scripts", "configuration", "finished"]
@@ -13,6 +10,8 @@ var audio_file_path:String = ""
 var scripts:Array = []
 var custom_tile_sets:Array = []
 
+func set_startup_position(pos:Vector2):
+	startup_pos_node.position = pos
 
 func preload_stage(path):
 	load_stage(path)
@@ -21,36 +20,58 @@ func preload_stage(path):
 # var a: int = 2
 # var b: String = "text"
 func load_stage(path):
-	$"../CanvasLayer/TileSelector".set_disabled(false)
-	navbar.set_status_label_text("Loading project from: " + path + "...")
+	if editor_mode == "MODE_EDIT":
+		$"../CanvasLayer/TileSelector".set_disabled(false)
+	if editor_mode == "MODE_EDIT":
+		navbar.set_status_label_text("Loading project from: " + path + "...")
 	var cfg = ConfigFile.new()
 	cfg.load(path + "/configuration/main.cfg")
-	navbar.set_status_label_text("Clearing tree...")
+	if editor_mode == "MODE_EDIT":
+		navbar.set_status_label_text("Clearing tree...")
 	for i in $".".get_children():
-		navbar.set_status_label_text("Removing: " + str(i) + "...")
+		if editor_mode == "MODE_EDIT":
+			navbar.set_status_label_text("Removing: " + str(i) + "...")
 		remove_child(i)
-	navbar.set_status_label_text("Tree cleared")
-	navbar.set_status_label_text("Setting up nodes...")
+	if editor_mode == "MODE_EDIT":
+		navbar.set_status_label_text("Tree cleared")
+		navbar.set_status_label_text("Setting up nodes...")
 	for i in Array(cfg.get_value("nodes", ".")):
 		print("Adding " + str(i) + " to scene...")
-		navbar.set_status_label_text("Setting up: " + str(i) + "...")
+		if editor_mode == "MODE_EDIT":
+			navbar.set_status_label_text("Setting up: " + str(i) + "...")
 		i.name = i.get_class()
 		add_child(i)
-	navbar.set_status_label_text("Nodes set up done")
-	navbar.set_status_label_text("Gathering required information...")
+	if editor_mode == "MODE_EDIT":
+		navbar.set_status_label_text("Nodes set up done")
+		navbar.set_status_label_text("Gathering required information...")
 	_tmp_audio_path = cfg.get_value("values_AudioStreamPlayer", "stream_path")
 	Globals.level_author = cfg.get_value("info", "author")
 	Globals.level_description = cfg.get_value("info", "description")
 	Globals.level_version = cfg.get_value("info", "version")
 	Globals.level_name = cfg.get_value("info", "name")
-	navbar.audio_file_paths = cfg.get_value("data", "audio_file_paths")
+	if editor_mode == "MODE_EDIT":
+		navbar.audio_file_paths = cfg.get_value("data", "audio_file_paths")
 	if cfg.get_value("data", "bg_path") != 'none':
 		add_bg(cfg.get_value("data", "bg_path"))
-	navbar.set_status_label_text("Project setup done")
+	if editor_mode == "MODE_EDIT":
+		navbar.set_status_label_text("Project setup done")
+	if editor_mode == "MODE_PLAY":
+		$ColorRect.hide()
+		$AudioStreamPlayer.play()
+		var character = load(str(Globals.character_path)).instance()
+		add_child(character)
+		character.set_position($Position2D.position)
+		if cfg.has_section_key("data", "bg_path"):
+			var bg = load(str(cfg.get_value("data", "bg_path"))).instance()
+			add_child(bg)
 #	$AudioStreamPlayer.autoplay = cfg.get_value("values_AudioStreamPlayer", "autoplay")
 func _ready() -> void:
 #	config_dirs()
-	$"../CanvasLayer/TileSelector".set_disabled(true)
+	if editor_mode == "MODE_PLAY":
+		$ColorRect.hide()
+	if editor_mode == "MODE_EDIT":
+		$ColorRect.show()
+		$"../CanvasLayer/TileSelector".set_disabled(true)
 func config_dirs():
 	var dir = Directory.new()
 	var mode_num = 0
@@ -79,7 +100,7 @@ func add_bg(file_path:String):
 	add_child(n)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("paint_tile"):
+	if Input.is_action_pressed("paint_tile") and editor_mode == "MODE_EDIT":
 		$TileMap.paint_tile(get_global_mouse_position(), 8)
 func cumpute_file_path(original_path:String):
 	if original_path.begins_with("user://"):
@@ -93,6 +114,7 @@ func cumpute_file_path(original_path:String):
 		return _tmp_cumputed_path
 
 func build_level():
+	$ColorRect.hide()
 	var cfg = ConfigFile.new()
 	config_dirs()
 	var dir = Directory.new()
@@ -103,7 +125,7 @@ func build_level():
 	cfg.set_value("nodes", ".", $".".get_children())
 #	cumpute_file_path("user://level_data/drthfs/sdfsdf/dgfsdg/dfsd.cfgs") #[user:, , level_data, drthfs, sdfsdf, dgfsdg, dfsd.cfgs]
 	cfg.set_value("values_AudioStreamPlayer", "stream_path", cumpute_file_path(_tmp_audio_path))
-	cfg.set_value("vdata", "bg_path", cumpute_file_path(bg_path))
+	cfg.set_value("data", "bg_path", cumpute_file_path(bg_path))
 	cfg.set_value("info", "author", Globals.level_author)
 	cfg.set_value("info", "description", Globals.level_description)
 	cfg.set_value("info", "version", Globals.level_version)
@@ -134,6 +156,7 @@ func build_level():
 	navbar.set_status_label_text("Saving PCK file...")
 	OS.alert("Level built to path:\n" + Globals.level_path + Globals.level_name + ".pck")
 	navbar.set_status_label_text("Level built to path: " + Globals.level_path + Globals.level_name + ".pck")
+	$ColorRect.show()
 func assign_script_to_scene(script_path):
 	$".".set_script(script_path)
 var _tmp_audio_path = ""
@@ -165,3 +188,13 @@ func add_audio_from_file(path:String):
 		$AudioStreamPlayer.stream = audio
 	else:
 		navbar.set_status_label_text("Access to the file denied")
+
+
+func _on_ColorRect_mouse_entered():
+	if Input.is_action_pressed("paint_tile"):
+		$ColorRect.position = get_local_mouse_position()
+	$ColorRect.modulate = Color(255, 255, 255, 255)
+
+
+func _on_ColorRect_mouse_exited():
+	$ColorRect.modulate = Color(255, 255, 255, 160)
