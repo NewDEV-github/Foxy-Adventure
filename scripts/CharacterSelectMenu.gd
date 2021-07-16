@@ -24,7 +24,7 @@ func _ready():
 func after_selecting_player():
 #	Globals.save_level(0, Globals.current_save_name)
 	if $"../../".editor_stage == true:
-		$"../../Node2D".load_stage($"../../"._editor_stage_name)
+		get_tree().change_scene("res://Editor/EditorLevelScene.tscn")
 	else:
 		BackgroundLoad.get_node("bgload").load_scene("res://Scenes/Stages/poziom_1.tscn")
 #	BackgroundLoad

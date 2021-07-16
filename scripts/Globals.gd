@@ -10,6 +10,8 @@ var supported_sdk_versions = [
 	101,
 	102
 ]
+var called_from_menu = false
+var called_from_menu_level_name = ""
 var level_name_org = "nounnamed"
 var level_description = "example"
 var level_author = "DoS"
@@ -124,9 +126,9 @@ var dlcs:Array = [
 var worlds:Dictionary = {
 	
 }
-var cworlds:Array = [
+var cworlds:Dictionary = {
 	
-]
+}
 var levels_scan_path:Array = [
 	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/"),
 	str(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure Level Editor/")
@@ -154,11 +156,11 @@ func add_dlc(dlc_name:String):
 	dlcs.append(dlc_name)
 func add_world(world_name:String, path:String):
 	worlds[world_name] = path
-func add_custom_world(world_name:String):
+func add_custom_world(world_name:String, path:String):
 	if not cworlds.has(world_name):
-		cworlds.append(world_name)
+		cworlds[world_name] = path
 	else:
-		OS.alert("Stage named " + world_name + "\nis already imported into the game.", "Oops!")
+		print("Stage named " + world_name + "\nis already imported into the game.", "Oops!")
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 
@@ -170,7 +172,8 @@ func add_lifes(anmount):
 		set_achievement_done("Like a cat, but... Better")
 func remove_lifes(anmount):
 	lives -= anmount
-
+func is_world_from_dlc_or_mod(world:String):
+	return worlds.has(world) #true if world is from dlc or mod, false if its from editor
 func set_lifes(anmount):
 	lives = anmount
 

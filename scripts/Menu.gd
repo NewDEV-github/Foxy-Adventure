@@ -111,11 +111,14 @@ func _on_Options2_pressed():
 	get_tree().change_scene('res://Scenes/Credits.tscn')
 
 var editor_stage = false
+var world_name
 var _editor_stage_name = ""
 func _on_WorldList_item_selected(index):
-	editor_stage = true
-	_editor_stage_name = $SelectWorld/WorldList.get_item_text(index)
-
+	world_name = $SelectWorld/WorldList.get_item_text(index)
+	if not Globals.is_world_from_dlc_or_mod(world_name):
+		editor_stage = true
+		_editor_stage_name = $SelectWorld/WorldList.get_item_text(index)
+		Globals.called_from_menu_level_name = $SelectWorld/WorldList.get_item_text(index)
 func custom_level_research():
 	for path in Globals.levels_scan_path:
 		var dir = Directory.new()
@@ -136,8 +139,8 @@ func dir_contents(path):
 			else:
 				print("Found file: " + file_name)
 				if file_name.get_extension() == "pck":
-					Globals.add_custom_world(file_name.get_basename())
-					ProjectSettings.load_resource_pack(path + "/" + file_name.get_file())
+					Globals.add_custom_world(file_name.get_basename(), path + "/" + file_name.get_file())
+#					ProjectSettings.load_resource_pack(path + "/" + file_name.get_file())
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
@@ -212,11 +215,16 @@ func _on_Leaderboard_pressed():
 
 
 func _on_PlaySelected_pressed():
+	if editor_stage == true:
+		Globals.called_from_menu = true
+	else:
+		BackgroundLoad.get_node("bgload").load_scene(Globals.worlds[world_name])
 	show_submenu_page($CharacterSelect)
 	$SelectWorld.hide()
 
 
 func _on_PlayNormal_pressed():
+	Globals.called_from_menu = false
 	editor_stage = false
 	show_submenu_page($CharacterSelect)
 	$SelectWorld.hide()

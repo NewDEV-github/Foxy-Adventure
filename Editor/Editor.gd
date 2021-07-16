@@ -19,6 +19,28 @@ func preload_stage(path):
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
+func load_stage_from_pck(path:String):
+	var world_name = path.get_file().get_basename()
+	ProjectSettings.load_resource_pack(path)
+	var base_path = "res://" + world_name
+	var cfg = ConfigFile.new()
+	cfg.load(base_path + "/configuration/main_compiled.cfg")
+	for i in Array(cfg.get_value("nodes", ".")):
+		print("Adding " + str(i) + " to scene...")
+		i.name = i.get_class()
+		add_child(i)
+	if cfg.get_value("data", "bg_path") != 'none':
+		add_bg(cfg.get_value("data", "bg_path"))
+	if cfg.has_section_key("values_AudioStreamPlayer", "stream_path"):
+		if not cfg.get_value("values_AudioStreamPlayer", "stream_path") == "":
+			$AudioStreamPlayer.stream = load(cfg.get_value("values_AudioStreamPlayer", "stream_path"))
+		$AudioStreamPlayer.play()
+	var character = load(str(Globals.character_path)).instance()
+	add_child(character)
+	character.set_position($Position2D.position)
+
+
+
 func load_stage(path):
 	if editor_mode == "MODE_EDIT":
 		$"../CanvasLayer/TileSelector".set_disabled(false)
@@ -57,15 +79,19 @@ func load_stage(path):
 		navbar.set_status_label_text("Project setup done")
 	if editor_mode == "MODE_PLAY":
 		$ColorRect.hide()
+		if cfg.has_section_key("values_AudioStreamPlayer", "stream_path"):
+			if not cfg.get_value("values_AudioStreamPlayer", "stream_path") == "":
+				$AudioStreamPlayer.stream = load(cfg.get_value("values_AudioStreamPlayer", "stream_path"))
 		$AudioStreamPlayer.play()
 		var character = load(str(Globals.character_path)).instance()
 		add_child(character)
 		character.set_position($Position2D.position)
-		if cfg.has_section_key("data", "bg_path"):
-			var bg = load(str(cfg.get_value("data", "bg_path"))).instance()
-			add_child(bg)
 #	$AudioStreamPlayer.autoplay = cfg.get_value("values_AudioStreamPlayer", "autoplay")
 func _ready() -> void:
+	if Globals.called_from_menu:
+		editor_mode = "MODE_PLAY"
+	if Globals.called_from_menu_level_name != "":
+		load_stage_from_pck(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Levels/Editor/" + Globals.called_from_menu_level_name + ".pck")
 #	config_dirs()
 	if editor_mode == "MODE_PLAY":
 		$ColorRect.hide()
@@ -93,10 +119,10 @@ func clear_all():
 	if $TileMap:
 		$TileMap.clear()
 func add_bg(file_path:String):
-	bg_path = "user://level_data/" + Globals.level_name + "/custom_backgrounds/" + file_path.get_file()
-	var dir = Directory.new()
-	dir.copy(file_path, bg_path)
-	var n = load(bg_path).instance()
+#	bg_path = "user://level_data/" + Globals.level_name + "/custom_backgrounds/" + file_path.get_file()
+#	var dir = Directory.new()
+#	dir.copy(file_path, bg_path)
+	var n = load(file_path).instance()
 	add_child(n)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -114,7 +140,8 @@ func cumpute_file_path(original_path:String):
 		return _tmp_cumputed_path
 
 func build_level():
-	$ColorRect.hide()
+	if $ColorRect != null:
+		$ColorRect.hide()
 	var cfg = ConfigFile.new()
 	config_dirs()
 	var dir = Directory.new()
@@ -148,7 +175,7 @@ func build_level():
 			var av = ['.', '..']
 			if not dir.current_is_dir():
 				navbar.set_status_label_text("Packing file: " + file_name.get_file() + "...")
-				pck.add_file(Globals.level_name + "/" + mode + "/" + file_name.get_file(), "user://level_data/" + Globals.level_name + "/" + mode + "/" + file_name.get_file())
+				pck.add_file("res://" + Globals.level_name + "/" + mode + "/" + file_name.get_file(), "user://level_data/" + Globals.level_name + "/" + mode + "/" + file_name.get_file())
 			file_name = dir.get_next()
 		mode_num += 1
 		mode = modes[mode_num]
@@ -156,7 +183,8 @@ func build_level():
 	navbar.set_status_label_text("Saving PCK file...")
 	OS.alert("Level built to path:\n" + Globals.level_path + Globals.level_name + ".pck")
 	navbar.set_status_label_text("Level built to path: " + Globals.level_path + Globals.level_name + ".pck")
-	$ColorRect.show()
+	if $ColorRect != null:
+		$ColorRect.show()
 func assign_script_to_scene(script_path):
 	$".".set_script(script_path)
 var _tmp_audio_path = ""
@@ -186,6 +214,7 @@ func add_audio_from_file(path:String):
 		var audio = load("user://level_data/" + Globals.level_name + "/custom_audio/" + path.get_file())
 	#	var stream = AudioStream.new()
 		$AudioStreamPlayer.stream = audio
+		navbar.set_status_label_text("Audio loaded")
 	else:
 		navbar.set_status_label_text("Access to the file denied")
 

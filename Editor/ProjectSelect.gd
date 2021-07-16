@@ -55,7 +55,7 @@ func edit_existing_project(project_path:String):
 
 func _on_ProjectList_item_activated(index):
 	current_project_id = index
-	edit_existing_project("user://level_data/")
+#	edit_existing_project("user://level_data/")
 
 
 func _on_Edit_pressed():
