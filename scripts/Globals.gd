@@ -140,9 +140,21 @@ var camera_smoothing_enabled = false
 var camera_smoothing_speed = 0
 var temp_custom_stages_dir = "user://custom_stages/"
 var gc_mode = 'realtime'
+var _very_tmp_character_instance = null
+var _very_tmp_character_instance_path = null
+func get_current_character_name_from_list():
+	for i in new_characters:
+		if new_characters[i] == character_path:
+			return i
 func get_current_character_name():
-	var _n = load(str(character_path)).instance()
-	return _n.name
+	if _very_tmp_character_instance == null:
+		_very_tmp_character_instance = load(str(character_path)).instance()
+		_very_tmp_character_instance_path = character_path
+	else:
+		if _very_tmp_character_instance_path != character_path:
+			_very_tmp_character_instance = load(str(character_path)).instance()
+			_very_tmp_character_instance_path = character_path
+	return _very_tmp_character_instance.name
 func enable_discord_sdk(en):
 	discord_sdk_enabled = en
 	var cfg = ConfigFile.new()

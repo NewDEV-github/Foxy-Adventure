@@ -17,7 +17,7 @@ func _ready():
 	$AudioStreamPlayer2D.stream = audio
 	$AudioStreamPlayer2D.play()
 	Globals.current_stage = 0
-	
+	DiscordSDK.run_rpc(false, true, Globals.get_current_character_name_from_list(), false)
 #	Fmod.add_listener(0, self)
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)
