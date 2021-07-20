@@ -203,7 +203,7 @@ func felt_into_toxine():
 		set_achievement_done("Amateur sewage purifier")
 	elif fallen_into_toxins == 15:
 		set_achievement_done("Advanced sewage purifier")
-
+	get_tree().reload_current_scene()
 	emit_signal("scoredatarecived")
 
 func _ready():
@@ -238,6 +238,14 @@ func _ready():
 		script.add_stages()
 		script.add_dlc()
 		ProjectSettings.load_resource_pack(install_base_path + 'dlcs/dlc_tails_exe.pck')
+	### TUZI_EDITION
+	if file.file_exists(install_base_path + 'dlcs/tuzi_edition.cfg'):
+		conf.load(install_base_path + 'dlcs/tuzi_edition.cfg')
+		for i in conf.get_value("mod_info", "pck_files"):
+			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
+		var script = load(conf.get_value("mod_info", "main_script_file")).new()
+		script.init_mod()
+
 	#Classic Sonic
 
 	var save_file = ConfigFile.new()
@@ -296,7 +304,7 @@ func load_level(save_name:String):
 	BackgroundLoad.get_node("bgload").load_scene(loaded_stage)
 func game_over():
 	if lives != 1:
-		get_tree().reload_current_scene()
+#		get_tree().reload_current_scene()
 		lives -= 1
 	elif lives == 1:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")

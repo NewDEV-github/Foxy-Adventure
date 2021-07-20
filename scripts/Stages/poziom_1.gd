@@ -6,10 +6,10 @@ extends Node2D
 # var b = "text"
 onready var startup_position = $start_position.position
 onready var root = get_tree().root
-var character = load(str(Globals.character_path)).instance()
 # Called when the node enters the scene tree for the first time.
 var music_files = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
 func _ready():
+	var character = load(str(Globals.character_path)).instance()
 	ApiScores.force_upload()
 	Globals.add_coin(0, true)
 	randomize()
@@ -17,17 +17,23 @@ func _ready():
 	$AudioStreamPlayer2D.stream = audio
 	$AudioStreamPlayer2D.play()
 	Globals.current_stage = 0
+	
 #	Fmod.add_listener(0, self)
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)
 	add_child(character)
 	get_node(str(character.name)).position = startup_position
-	character.set_render_messages_delay(1.5)
-	character.show_message_box(false)
+	print(Globals.get_current_character_name())
+	if character.has_method("set_render_messages_delay"):
+		character.set_render_messages_delay(1.5)
+	if character.has_method("show_message_box"):
+		character.show_message_box(false)
 	var msg = ["Strange place...", "I've never been there...", "I'd better go..."]
-	character.render_messages(msg)
-	yield(character, "msg_done")
-	character.hide_message_box()
+	if character.has_method("render_messages"):
+		character.render_messages(msg)
+		yield(character, "msg_done")
+	if character.has_method("hide_message_box"):
+		character.hide_message_box()
 #	character.set_owner(root)
 
 
@@ -38,8 +44,8 @@ func change_level():
 func toxic_entered(body):
 	if body.name == Globals.get_current_character_name():
 		Globals.felt_into_toxine()
-		if Globals.new_characters.has(body.name):
-			Globals.game_over()
+		Globals.game_over()
+	
 
 
 func _on_Node2D_tree_exited():

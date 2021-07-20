@@ -61,8 +61,8 @@ func _ready() -> void:
 	$version_label.bbcode_text = Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
-#	for world_name in world_list:
-#		$SelectWorld/WorldList.add_item(tr(world_name))
+	for world_name in world_list:
+		$SelectWorld/WorldList.add_item(tr(world_name))
 	custom_level_research()
 	
 	for world_name in Globals.cworlds:
