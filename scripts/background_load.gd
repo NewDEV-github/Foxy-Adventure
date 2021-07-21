@@ -16,6 +16,8 @@ var hints = [
 	"OK!",
 	"Thank You for playing Foxy Adventure",
 ]
+func add_hint(text:String):
+	hints.append(text)
 
 func _thread_load(path):
 	var ril = ResourceLoader.load_interactive(path)

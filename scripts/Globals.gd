@@ -10,6 +10,8 @@ var supported_sdk_versions = [
 	101,
 	102
 ]
+var custom_menu_bg = ""
+var custom_menu_audio = ""
 var called_from_menu = false
 var called_from_menu_level_name = ""
 var level_name_org = "nounnamed"

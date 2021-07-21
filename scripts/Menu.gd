@@ -24,6 +24,10 @@ func _on_FirebaseAuth_login_succeeded(auth):
 func load_level_editor():
 	pass
 func _ready() -> void:
+	if Globals.custom_menu_bg != "":
+		$bg.texture = load(Globals.custom_menu_bg)
+	if Globals.custom_menu_audio != "":
+		$AudioStreamPlayer.stream = load(Globals.custom_menu_audio)
 	$VBoxContainer3/Info.disabled = true
 	$VBoxContainer3/Logout.disabled = true
 	$VBoxContainer3/Login.disabled = false
