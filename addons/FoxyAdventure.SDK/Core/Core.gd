@@ -249,6 +249,10 @@ func add_hint_on_loading_screen(text):
 
 ### Main Menu
 
+func set_version_label_menu_bbcode_text(text:String):
+	Globals.game_version_text = text
+	Globals.construct_game_version()
+
 func add_custom_menu_bg(path:String):
 	if _initialized == true:
 		Globals.custom_menu_bg = path
