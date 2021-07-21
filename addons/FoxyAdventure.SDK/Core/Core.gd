@@ -212,6 +212,7 @@ func add_achievement(name, desc):
 		Globals.achievements_desc[name] = desc
 	else:
 		print("Please, initialize SDK first, before using that function")
+
 func add_achievement_requirement(name, variable, value):
 	throw_warning("Achievements", "Registering requirements for achievement: " + name)
 	if _initialized == true:
@@ -238,4 +239,24 @@ func change_scene_to(scene:int):
 	else:
 		print("Please, initialize SDK first, before using that function")
 
-###
+### Loading Screen
+
+func add_hint_on_loading_screen(text):
+	if _initialized == true:
+		BackgroundLoad.get_node("bgload").add_hint(text)
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+### Main Menu
+
+func add_custom_menu_bg(path:String):
+	if _initialized == true:
+		Globals.custom_menu_bg = path
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+func add_custom_menu_audio(path:String):
+	if _initialized == true:
+		Globals.custom_menu_audio = path
+	else:
+		print("Please, initialize SDK first, before using that function")

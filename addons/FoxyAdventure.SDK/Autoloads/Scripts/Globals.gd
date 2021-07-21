@@ -46,6 +46,8 @@ var stage_names:Dictionary = {
 }
 var current_stage = 0
 var arguments = {}
+var custom_menu_bg = ""
+var custom_menu_audio = ""
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
