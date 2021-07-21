@@ -15,15 +15,12 @@ func _on_FirebaseAuth_login_succeeded(auth):
 	$VBoxContainer3/Info.disabled = false
 	$VBoxContainer3/Logout.disabled = false
 	$VBoxContainer3/Login.disabled = true
-#	var db_ref = Firebase.Database.get_database_reference("test")
-#	print("Db ref: " + db_ref.get_data())
-#	db_ref.push({"f": "df"})
-#	Firebase.Auth.connect("userdata_received", self, "on_userdata_recived")
-#func on_userdata_recived(userdata):
-#	print(Globals.user_data)
+func change_game_version_bbcode_text(text):
+	$version_label.bbcode_text = text
 func load_level_editor():
 	pass
 func _ready() -> void:
+	Globals.connect("game_version_text_changed", self, "change_game_version_bbcode_text")
 	if Globals.custom_menu_bg != "":
 		$bg.texture = load(Globals.custom_menu_bg)
 	if Globals.custom_menu_audio != "":
@@ -62,7 +59,7 @@ func _ready() -> void:
 #	Fmod.load_file_as_music("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Globals.fmod_sound = Fmod.create_sound_instance("res://assets/Audio/BGM/music_gekagd.ogg")
 #	Fmod.play_sound(Globals.fmod_sound)
-	$version_label.bbcode_text = Globals.construct_game_version()
+	Globals.construct_game_version()
 	Globals.selected_character = null
 	Globals.character_path = null
 	for world_name in world_list:

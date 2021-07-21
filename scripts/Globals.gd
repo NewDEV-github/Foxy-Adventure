@@ -89,10 +89,10 @@ var lives = 5
 var new_characters:Dictionary = {
 	"Tails": "res://Scenes/Characters/Tails.tscn",
 }
-
+var game_version_text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
+signal game_version_text_changed(text)
 func construct_game_version():
-	var text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
-	return text
+	emit_signal("game_version_text_changed", game_version_text)
 func _init():
 	for argument in OS.get_cmdline_args():
 		# Parse valid command-line arguments into a dictionary
