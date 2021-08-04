@@ -2,12 +2,7 @@ tool
 extends EditorExportPlugin
 
 class_name FoxyAdventureMODCfgExport
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _export_begin(features, is_debug, path, flags):
 	var file = File.new()
 	var dir = Directory.new()

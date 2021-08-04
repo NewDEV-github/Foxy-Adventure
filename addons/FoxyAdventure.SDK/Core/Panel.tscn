@@ -1,12 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://addons/FoxyAdventure.SDK/Core/Panel.gd" type="Script" id=1]
-[ext_resource path="res://addons/FoxyAdventure.SDK/Assets/Icons/search.png" type="Texture" id=2]
+[ext_resource path="res://addons/FoxyAdventure.SDK/Autoloads/Assets/Icons/search.png" type="Texture" id=1]
+[ext_resource path="res://addons/FoxyAdventure.SDK/Core/Panel.gd" type="Script" id=2]
 
 [node name="Panel" type="Control"]
+anchor_top = 0.67
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+margin_bottom = 2.0
+rect_min_size = Vector2( 1024, 170 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,7 +37,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 196.0
-margin_bottom = 600.0
+margin_bottom = 200.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -49,7 +52,7 @@ text = "SDK Configuration"
 margin_top = 18.0
 margin_right = 196.0
 margin_bottom = 32.0
-text = "Version: 1.0.1 [101]"
+text = "Version: 1.0.3 [103]"
 
 [node name="version_s2" type="Label" parent="HBoxContainer/VBoxContainer"]
 visible = false
@@ -61,13 +64,13 @@ text = "Foxy Adventure executable path"
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 36.0
 margin_right = 196.0
-margin_bottom = 576.0
+margin_bottom = 176.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_right = 164.0
-margin_bottom = 540.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 clear_button_enabled = true
 placeholder_text = "C:\\Foxy Adventure.exe"
@@ -75,19 +78,19 @@ placeholder_text = "C:\\Foxy Adventure.exe"
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 168.0
 margin_right = 196.0
-margin_bottom = 540.0
-icon = ExtResource( 2 )
+margin_bottom = 140.0
+icon = ExtResource( 1 )
 
 [node name="ButtonMOD" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 580.0
+margin_top = 180.0
 margin_right = 196.0
-margin_bottom = 600.0
+margin_bottom = 200.0
 text = "Test game with current MOD"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 200.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -96,12 +99,16 @@ __meta__ = {
 
 [node name="ChangelogText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2"]
 margin_right = 824.0
-margin_bottom = 600.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[b]CHANGELOG[/b]"
-text = "CHANGELOG"
+bbcode_text = "[b]CHANGELOG:[/b]
+
+ Fix getting version"
+text = "CHANGELOG:
+
+ Fix getting version"
 
 [connection signal="file_selected" from="FoxyAdventureExePath" to="." method="_on_FoxyAdventureExePath_file_selected"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]

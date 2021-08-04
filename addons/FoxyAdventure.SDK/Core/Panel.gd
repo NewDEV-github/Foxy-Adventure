@@ -10,14 +10,11 @@ var cfg = ConfigFile.new()
 var sdk = FoxyAdventureSDK.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
-	if cfg.has_section_key("information","changelog"):
-		$HBoxContainer/VBoxContainer2/ChangelogText.bbcode_text = changelog_text_template + cfg.get_value("information","changelog")
 	if cfg.has_section_key("information", "executable_path"):
 		$HBoxContainer/VBoxContainer/HBoxContainer/LineEdit.text = cfg.get_value("information", "executable_path")
 	sdk.init(sdk.INIT_FLAGS.INIT_DEBUG)
 	$HBoxContainer/VBoxContainer/version.text = "Version: " + sdk.get_version_string() + " [%s]" % sdk.get_version()
-
+	$HBoxContainer/VBoxContainer2/ChangelogText.bbcode_text = changelog_text_template + sdk.get_changelog()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -9,20 +9,24 @@ var _cfg = ConfigFile.new()
 var _initialized = false
 const debug_text = "FoxyAdventure.SDK"
 var _debugger_initialized = false
+var version_script
 enum INIT_FLAGS {
 	INIT_NORMAL = 0,
 	INIT_DEBUG = 1
 }
+func get_changelog():
+	if _initialized == true:
+		return version_script.changelog
+	else:
+		print("Please, initialize SDK first, before using that function")
 func get_version():
 	if _initialized == true:
-		_cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
-		return _cfg.get_value('information', 'version')
+		return version_script.version
 	else:
 		print("Please, initialize SDK first, before using that function")
 func get_version_string():
 	if _initialized == true:
-		_cfg.load("res://addons/FoxyAdventure.SDK/config.cfg")
-		return _cfg.get_value('information', 'version_string')
+		return version_script.version_string
 	else:
 		print("Please, initialize SDK first, before using that function")
 var ret_init_flag = 0
@@ -30,9 +34,12 @@ func init(init_flag:int):
 	print("[%s.Core] Initializing Core..."  % [debug_text])
 	match init_flag:
 		0:
-			pass
+			_test_files()
+			version_script = load("res://addons/FoxyAdventure.SDK/Core/Version.gd").new()
 		1:
 			_init_debugger()
+			_test_files()
+			version_script = load("res://addons/FoxyAdventure.SDK/Core/Version.gd").new()
 	print("[%s.Core] Core initialized successfully..."  % [debug_text])
 	_initialized = true
 	print("[%s.Core] SDK version is: %s [%s]"  % [debug_text, get_version_string(), get_version()])
@@ -40,6 +47,19 @@ func _notification(what):
 	if what == NOTIFICATION_CRASH:
 		if _debugger_initialized == true:
 			throw_crash("Main")
+
+func _test_files():
+	var dir = Directory.new()
+	var scan_paths = ["res://addons/FoxyAdventure.SDK/Core/", "res://addons/FoxyAdventure.SDK/Autoloads/Scenes/", "res://addons/FoxyAdventure.SDK/Autoloads/Scripts/"]
+	for i in scan_paths:
+		dir.open(i)
+		dir.list_dir_begin()
+		var fn = dir.get_next()
+		while fn != "":
+			if not dir.current_is_dir():
+				if _debugger_initialized:
+					throw_warning("Main.FileSystemCheck", "Found file: " + i + fn.get_file())
+			fn = dir.get_next()
 
 
 ### DEBUGGER

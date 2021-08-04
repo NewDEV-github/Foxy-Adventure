@@ -38,14 +38,19 @@ config/icon="res://icon.png"
 
 [autoload]
 
-DiscordSDK="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/DiscordSDK.gd"
 Globals="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd"
-BackgroundLoad="*res://addons/FoxyAdventure.SDK/Autoloads/Scenes/background_load.tscn"
 ErrorCodeServer="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/ErrorCodeServer.gd"
+DiscordSDK="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/DiscordSDK.gd"
+BackgroundLoad="*res://addons/FoxyAdventure.SDK/Autoloads/Scenes/background_load.tscn"
+
+[editor]
+
+search_in_file_extensions=PoolStringArray( "gd", "shader", "gdshader" )
+convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/FoxyAdventure.SDK/plugin.cfg" )
+enabled=PoolStringArray( "FoxyAdventure.SDK" )
 
 [importer_defaults]
 
@@ -74,7 +79,7 @@ texture={
 
 jmp={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
