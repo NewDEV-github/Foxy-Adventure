@@ -8,7 +8,8 @@ var user_data = {}
 var supported_sdk_versions = [
 	100,
 	101,
-	102
+	102,
+	103
 ]
 var custom_menu_bg = ""
 var custom_menu_audio = ""
@@ -258,7 +259,7 @@ func _ready():
 		for i in conf.get_value("mod_info", "pck_files"):
 			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
 		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-		script.init_mod()
+#		script.init_mod()
 
 	#Classic Sonic
 
@@ -358,6 +359,7 @@ func load_achivements():
 
 var modifications = {}
 func scan_and_load_modifications_cfg():
+	print("Scanning all modifications...")
 	var cfg = ConfigFile.new()
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
@@ -373,8 +375,8 @@ func scan_and_load_modifications_cfg():
 				if file_name.get_extension() == "cfg":
 					var tmp = {}
 					cfg.load(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
-					tmp["name"] = cfg.get_value("mod_info", "name")
-					tmp["author"] = cfg.get_value("mod_info", "author")
+					tmp["name"] = cfg.get_value("mod_info", "name","name")
+					tmp["author"] = cfg.get_value("mod_info", "author", "author")
 					tmp["description"] = cfg.get_value("mod_info", "description")
 					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
 					tmp["enabled"] = "True" #cfg.get_value("mod_info", "enabled", "True")
@@ -383,6 +385,7 @@ func scan_and_load_modifications_cfg():
 					cfg.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + file_name)
 					modifications[file_name.get_basename()] = tmp
 			file_name = dir.get_next()
+		print(modifications)
 	else:
 		print("An error occurred when trying to access the path.")
 	print(modifications)
@@ -398,7 +401,10 @@ func set_modification_enable(m_name:String, enable:bool):
 
 func load_modification(mod_name):
 	var mod = modifications[mod_name]
+	print(mod)
 	if mod["enabled"] == "True":
+		print(mod["sdk_version"])
+		print(str(supported_sdk_versions.has(int(mod["sdk_version"]))))
 		if supported_sdk_versions.has(int(mod["sdk_version"])):
 			for i in mod["pck_files"]:
 				ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
