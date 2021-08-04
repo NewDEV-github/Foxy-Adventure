@@ -259,7 +259,7 @@ func _ready():
 		for i in conf.get_value("mod_info", "pck_files"):
 			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
 		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-#		script.init_mod()
+		script.init_mod()
 
 	#Classic Sonic
 
