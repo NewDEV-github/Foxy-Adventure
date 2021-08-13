@@ -50,7 +50,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "FoxyAdventure.SDK" )
+enabled=PoolStringArray( "res://addons/FoxyAdventure.SDK/plugin.cfg" )
 
 [importer_defaults]
 

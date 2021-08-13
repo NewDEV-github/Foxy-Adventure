@@ -35,11 +35,11 @@ func init(init_flag:int):
 	match init_flag:
 		0:
 			_test_files()
-			version_script = load("res://addons/FoxyAdventure.SDK/Core/Version.gd").new()
+			version_script = load("res://addons/FoxyAdventure.SDK/Core/Core.Version.gd").new()
 		1:
 			_init_debugger()
 			_test_files()
-			version_script = load("res://addons/FoxyAdventure.SDK/Core/Version.gd").new()
+			version_script = load("res://addons/FoxyAdventure.SDK/Core/Core.Version.gd").new()
 	print("[%s.Core] Core initialized successfully..."  % [debug_text])
 	_initialized = true
 	print("[%s.Core] SDK version is: %s [%s]"  % [debug_text, get_version_string(), get_version()])
@@ -241,21 +241,16 @@ func add_achievement_requirement(name, variable, value):
 		print("Please, initialize SDK first, before using that function")
 
 ### Scenes
-enum SCENES {
-	MAIN_MENU = 0,
-	GAME_OVER = 1,
-	CREDITS = 2
+const SCENES = {
+	MAIN_MENU = "res://Scenes/Menu.tscn",
+	GAME_OVER = "res://Scenes/GameOver.tscn",
+	CREDITS = "res://Scenes/Credits.tscn",
 }
 
-func change_scene_to(scene:int):
+func change_scene_to(scene:String):
 	if _initialized == true:
-		match scene:
-			0:
-				get_tree().change_scene("res://Scenes/Menu.tscn")
-			1:
-				get_tree().change_scene("res://Scenes/GameOver.tscn")
-			2:
-				get_tree().change_scene("res://Scenes/Credits.tscn")
+		get_tree().change_scene(scene)
+		throw_warning("Core", "Changing scene to: " + scene)
 	else:
 		print("Please, initialize SDK first, before using that function")
 
