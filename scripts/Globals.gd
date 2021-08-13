@@ -6,10 +6,8 @@ var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
 var supported_sdk_versions = [
-	100,
-	101,
-	102,
-	103
+
+	104
 ]
 var custom_menu_bg = ""
 var custom_menu_audio = ""
