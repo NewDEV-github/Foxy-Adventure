@@ -74,6 +74,7 @@ func render_board():
 #		print("Found score from %s: %s" % [get_username_or_email_by_uid(temp_scorelist[i]), i])
 #		$ItemList.add_item("%s. %s: %s" % [number, get_username_or_email_by_uid(temp_scorelist[i]),i])
 #		number += 1
+
 	pass
 class Sorter:
 	static func sort_ascending(a, b):
