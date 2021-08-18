@@ -32,7 +32,7 @@ jobs:
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh
+          ./build_game.sh --platform="linux" --bits="64" --godot-version="3.3.2.stable" --mode="all"
       - name: ZIP Builds
         run: |
           cd $GITHUB_WORKSPACE/builds/win-64-standard
