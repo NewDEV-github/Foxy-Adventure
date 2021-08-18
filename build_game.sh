@@ -1,7 +1,12 @@
 #!/bin/bash
 sudo apt-get install unzip
+OS="linux"
+BITS="64"
+EXEC_EXT="x86_64"
 GODOT_VERSION="3.3.2.stable"
-GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3.2/Godot_v3.3.2-stable_linux_headless.64.zip"
+GODOT_VERSION_NUMBER=$GODOT_VERSION
+GODOT_VERSION_VERSION=$GODOT_VERSION
+GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_VERSION+"/Godot_v" + $GODOT_VERSION_VERSION + "-" + $GODOT_VERSION_NUMBER+"_linux_headless.64.zip"
 GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3.2/Godot_v3.3.2-stable_export_templates.tpz"
 
 GODOT_BINARY_FILENAME="$(basename -s .zip $GODOT_BINARY_DOWNLOAD_LINK)"
@@ -20,8 +25,6 @@ sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
 
 cd $GITHUB_WORKSPACE
-sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
+sudo mkdir -p "builds/" + $OS + "-" + $BITS + "-standard"
 
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "win-64" $GITHUB_WORKSPACE/builds/win-64-standard/FoxyAdventure.exe
+sudo ./$GODOT_BINARY_FILENAME --path "." --export $OS + "-" + $BITS $GITHUB_WORKSPACE+"/builds/" + $OS + "-" + $BITS + "-standard/FoxyAdventure." + $EXEC_EXT
