@@ -4,6 +4,25 @@ OS="linux"
 BITS="64"
 EXEC_EXT="x86_64"
 GODOT_VERSION="3.3.2.stable"
+for i in "$*"
+do
+    if (i == "--platform")
+    do
+      exit
+    done
+    if (i == "--bits")
+    do
+      exit
+    done
+    if (i == "--godot-version")
+    do
+      exit
+    done
+    if (i == "--mode")
+    do
+      exit
+    done
+done
 GODOT_VERSION_NUMBER=$GODOT_VERSION
 GODOT_VERSION_VERSION=$GODOT_VERSION
 GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_VERSION+"/Godot_v" + $GODOT_VERSION_VERSION + "-" + $GODOT_VERSION_NUMBER+"_linux_headless.64.zip"
