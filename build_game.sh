@@ -4,29 +4,34 @@ OS="linux"
 BITS="64"
 EXEC_EXT="x86_64"
 GODOT_VERSION="3.3.2.stable"
-for i in "$*"
+MODE="all"
+while getopts "platform:bits:godot-version:mode" opt
 do
-    if (i == "--platform")
-    do
-      exit
-    done
-    if (i == "--bits")
-    do
-      exit
-    done
-    if (i == "--godot-version")
-    do
-      exit
-    done
-    if (i == "--mode")
-    do
-      exit
-    done
+   case "$opt" in
+      platform ) OS="$OPTARG" ;;
+      bits ) BITS="$OPTARG" ;;
+      godot-version ) GODOT_VERSION="$OPTARG" ;;
+      mode ) MODE="$OPTARG" ;;
+   esac
 done
-GODOT_VERSION_NUMBER=$GODOT_VERSION
-GODOT_VERSION_VERSION=$GODOT_VERSION
-GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_VERSION+"/Godot_v" + $GODOT_VERSION_VERSION + "-" + $GODOT_VERSION_NUMBER+"_linux_headless.64.zip"
-GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/3.3.2/Godot_v3.3.2-stable_export_templates.tpz"
+if $OS == "linux"
+  if $BITS == "64"
+    EXEC_EXT="x86_64"
+  fi
+  if $BITS == "32"
+    EXEC_EXT="x86"
+  fi
+fi
+if $OS == "windows"
+  EXEC_EXT="exe"
+fi
+if $OS == "osx"
+  EXEC_EXT=".zip"
+fi
+GODOT_VERSION_NUMBER=$GODOT_VERSION #3.3.3
+GODOT_VERSION_VERSION=$GODOT_VERSION #stable
+GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_NUMBER+"/Godot_v" + $GODOT_VERSION_NUMBER+ "-" + $GODOT_VERSION_VERSION+"_linux_headless.64.zip"
+GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_NUMBER+"/Godot_v" + $GODOT_VERSION_NUMBER+ "-" + $GODOT_VERSION_VERSION+"_export_templates.tpz"
 
 GODOT_BINARY_FILENAME="$(basename -s .zip $GODOT_BINARY_DOWNLOAD_LINK)"
 GODOT_ZIP_FILENAME="$(basename $GODOT_BINARY_DOWNLOAD_LINK)"
@@ -42,8 +47,9 @@ sudo mkdir -p .local/share/godot
 cd .local/share/godot
 sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
-
-cd $GITHUB_WORKSPACE
-sudo mkdir -p "builds/" + $OS + "-" + $BITS + "-standard"
-
-sudo ./$GODOT_BINARY_FILENAME --path "." --export $OS + "-" + $BITS $GITHUB_WORKSPACE+"/builds/" + $OS + "-" + $BITS + "-standard/FoxyAdventure." + $EXEC_EXT
+if $MODE=="basegame" || $MODE == "all"
+  cd $GITHUB_WORKSPACE
+  sudo mkdir -p "builds/" + $OS + "-" + $BITS + "-standard"
+  
+  sudo ./$GODOT_BINARY_FILENAME --path "." --export $OS + "-" + $BITS $GITHUB_WORKSPACE+"/builds/" + $OS + "-" + $BITS + "-standard/FoxyAdventure." + $EXEC_EXT
+fi
