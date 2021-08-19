@@ -8,6 +8,7 @@ var user_data = {}
 var supported_sdk_versions = [
 	104
 ]
+var packs = install_base_path + "/packs/core.pck"
 var custom_menu_bg = ""
 var custom_menu_audio = ""
 var called_from_menu = false
@@ -119,6 +120,9 @@ func _init():
 					TranslationServer.add_translation(tra)
 			file_name = dir.get_next()
 	print(arguments)
+	if not arguments.has("editor"):
+	    for i in packs:
+	        ProjectSettings.load_resource_pack(i)
 	OS.window_borderless = false
 var dlcs:Array = [
 	
