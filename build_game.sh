@@ -15,22 +15,22 @@ do
    esac
 done
 echo "Building for platform: "$OS", "$BITS"-bits, with Godot Engine version: "$GODOT_VERSION". Build mode: " $MODE
-if $OS == "linux"
+if "$OS" == "linux"
 then
-  if $BITS == "64"
+  if "$BITS" == "64"
   then
     EXEC_EXT="x86_64"
   fi
-  if $BITS == "32"
+  if "$BITS" == "32"
   then
     EXEC_EXT="x86"
   fi
 fi
-if $OS == "windows"
+if "$OS" == "windows"
 then
   EXEC_EXT="exe"
 fi
-if $OS == "osx"
+if "$OS" == "osx"
 then
   EXEC_EXT=".zip"
 fi
