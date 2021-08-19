@@ -14,18 +14,24 @@ do
       mode ) MODE="$OPTARG" ;;
    esac
 done
+echo "Building for platform: " + $OS + ", " + $BITS + "-bits, with Godot Engine version: " + $GODOT_VERSION + ". Build mode: " $MODE
 if $OS == "linux"
+then
   if $BITS == "64"
+  then
     EXEC_EXT="x86_64"
   fi
   if $BITS == "32"
+  then
     EXEC_EXT="x86"
   fi
 fi
 if $OS == "windows"
+then
   EXEC_EXT="exe"
 fi
 if $OS == "osx"
+then
   EXEC_EXT=".zip"
 fi
 
@@ -50,6 +56,7 @@ cd .local/share/godot
 sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
 if $MODE=="basegame" || $MODE == "all"
+then
   cd $GITHUB_WORKSPACE
   sudo mkdir -p "builds/" + $OS + "-" + $BITS + "-standard"
   
