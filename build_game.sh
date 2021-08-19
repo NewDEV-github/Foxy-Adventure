@@ -14,19 +14,19 @@ do
       mode ) MODE="$OPTARG" ;;
    esac
 done
-echo "Building for platform: "$OS", "$BITS"-bits, with Godot Engine version: "$GODOT_VERSION". Build mode: " $MODE
-if [$OS -eq "linux"]; then
-  if [$BITS -eq "64"]; then
+echo "Building for platform: "$OS", "$BITS"-bits, with Godot Engine version: "$GODOT_VERSION". Build mode: "$MODE
+if ["$OS" = "linux"]; then
+  if ["$BITS" = "64"]; then
     EXEC_EXT="x86_64"
   fi
-  if [$BITS -eq "32"]; then
+  if ["$BITS" = "32"]; then
     EXEC_EXT="x86"
   fi
 fi
-if [$OS -eq "windows"]; then
+if ["$OS" = "windows"]; then
   EXEC_EXT="exe"
 fi
-if [$OS -eq "osx"]; then
+if ["$OS" = "osx"]; then
   EXEC_EXT=".zip"
 fi
 
@@ -50,7 +50,7 @@ sudo mkdir -p .local/share/godot
 cd .local/share/godot
 sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
-if ["${MODE}" -eq "all"]; then
+if ["$MODE" = "all"]; then
   cd $GITHUB_WORKSPACE
   sudo mkdir -p "builds/"$OS"-"$BITS"-standard"
   sudo ./$GODOT_BINARY_FILENAME --path "." --export $OS"-"$BITS $GITHUB_WORKSPACE"/builds/"$OS"-"$BITS"-standard/FoxyAdventure."$EXEC_EXT
