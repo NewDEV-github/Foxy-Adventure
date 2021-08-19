@@ -8,7 +8,7 @@ var user_data = {}
 var supported_sdk_versions = [
 	104
 ]
-var packs = install_base_path + "/packs/core.pck"
+var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""
 var custom_menu_audio = ""
 var called_from_menu = false
