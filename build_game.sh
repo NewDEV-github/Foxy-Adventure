@@ -50,8 +50,7 @@ sudo mkdir -p .local/share/godot
 cd .local/share/godot
 sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
-if [$MODE -eq "all"]
-then
+if [$MODE -eq "all"]; then
   cd $GITHUB_WORKSPACE
   sudo mkdir -p "builds/"$OS"-"$BITS"-standard"
   
