@@ -28,8 +28,10 @@ fi
 if $OS == "osx"
   EXEC_EXT=".zip"
 fi
-GODOT_VERSION_NUMBER=$GODOT_VERSION #3.3.3
-GODOT_VERSION_VERSION=$GODOT_VERSION #stable
+
+version=$(echo $GODOT_VERSION | grep -o '[^-]*$')
+GODOT_VERSION_NUMBER=$(echo $version | cut -d. -f1)+"."+$(echo $version | cut -d. -f2)+"."+$(echo $version | cut -d. -f3) #3.3.3
+GODOT_VERSION_VERSION=$(echo $version | cut -d. -f4) #stable
 GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_NUMBER+"/Godot_v" + $GODOT_VERSION_NUMBER+ "-" + $GODOT_VERSION_VERSION+"_linux_headless.64.zip"
 GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/" + $GODOT_VERSION_NUMBER+"/Godot_v" + $GODOT_VERSION_NUMBER+ "-" + $GODOT_VERSION_VERSION+"_export_templates.tpz"
 
