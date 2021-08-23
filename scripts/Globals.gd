@@ -8,7 +8,7 @@ var user_data = {}
 var supported_sdk_versions = [
 	104
 ]
-var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
+#var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""
 var custom_menu_audio = ""
 var called_from_menu = false
@@ -120,9 +120,9 @@ func _init():
 					TranslationServer.add_translation(tra)
 			file_name = dir.get_next()
 	print(arguments)
-	if not arguments.has("editor"):
-	    for i in packs:
-	        ProjectSettings.load_resource_pack(i)
+#	if not arguments.has("editor"):
+#		for i in packs:
+#			ProjectSettings.load_resource_pack(i)
 	OS.window_borderless = false
 var dlcs:Array = [
 	
@@ -265,6 +265,20 @@ func _ready():
 	### ITAM_EDITION
 	if file.file_exists(install_base_path + 'dlcs/itam_edition.cfg'):
 		conf.load(install_base_path + 'dlcs/itam_edition.cfg')
+		for i in conf.get_value("mod_info", "pck_files"):
+			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
+		var script = load(conf.get_value("mod_info", "main_script_file")).new()
+		script.init_mod()
+	### MIZU DLC
+	if file.file_exists(install_base_path + 'dlcs/mizu_dlc.cfg'):
+		conf.load(install_base_path + 'dlcs/mizu_dlc.cfg')
+		for i in conf.get_value("mod_info", "pck_files"):
+			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
+		var script = load(conf.get_value("mod_info", "main_script_file")).new()
+		script.init_mod()
+	### IVIP DLC
+	if file.file_exists(install_base_path + 'dlcs/ivip_dlc.cfg'):
+		conf.load(install_base_path + 'dlcs/ivip_dlc.cfg')
 		for i in conf.get_value("mod_info", "pck_files"):
 			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
 		var script = load(conf.get_value("mod_info", "main_script_file")).new()

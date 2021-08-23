@@ -25,6 +25,7 @@ func _ready() -> void:
 		$bg.texture = load(Globals.custom_menu_bg)
 	if Globals.custom_menu_audio != "":
 		$AudioStreamPlayer.stream = load(Globals.custom_menu_audio)
+	$AudioStreamPlayer.play()
 	$VBoxContainer3/Info.disabled = true
 	$VBoxContainer3/Logout.disabled = true
 	$VBoxContainer3/Login.disabled = false

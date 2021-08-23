@@ -289,7 +289,6 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-autoplay = true
 bus = "Music"
 
 [node name="AchivementPanel" type="WindowDialog" parent="."]
