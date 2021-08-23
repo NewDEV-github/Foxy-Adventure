@@ -257,6 +257,23 @@ func _ready():
 			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
 		var script = load(conf.get_value("mod_info", "main_script_file")).new()
 		script.init_mod()
+		conf.save(install_base_path + 'dlcs/tuzi_edition.cfg')
+	### ITAM_EDITION
+	if file.file_exists(install_base_path + 'dlcs/itam_edition.cfg'):
+		conf.load(install_base_path + 'dlcs/itam_edition.cfg')
+		for i in conf.get_value("mod_info", "pck_files"):
+			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
+		var script = load(conf.get_value("mod_info", "main_script_file")).new()
+		script.init_mod()
+#		conf.save(install_base_path + 'dlcs/itam_edition.cfg')
+	### TOX_EDITION
+	if file.file_exists(install_base_path + 'dlcs/tox_edition.cfg'):
+		conf.load(install_base_path + 'dlcs/tox_edition.cfg')
+		for i in conf.get_value("mod_info", "pck_files"):
+			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
+		var script = load(conf.get_value("mod_info", "main_script_file")).new()
+		script.init_mod()
+#		conf.save(install_base_path + 'dlcs/tox_edition.cfg')
 
 	#Classic Sonic
 

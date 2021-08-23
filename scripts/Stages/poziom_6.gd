@@ -22,6 +22,8 @@ func _ready():
 	Globals.save_level(0, Globals.current_save_name)
 	add_child(character)
 #	character.set_owner(root)
+	var game_ui_scene = preload("res://Scenes/game_ui.tscn").instance()
+	get_node(str(character.name)).add_child(game_ui_scene)
 	get_node(str(character.name)).position = startup_position
 
 func change_level():

@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/game_ui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Characters/character_control.gd" type="Script" id=2]
 [ext_resource path="res://assets/Graphics/Sprites/ntf_sprite.png" type="Texture" id=3]
 
@@ -357,8 +356,6 @@ cast_to = Vector2( 11, 0 )
 [node name="LeftWallSensor" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -11, 0 )
-
-[node name="CanvasLayer" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

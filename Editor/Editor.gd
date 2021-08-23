@@ -36,7 +36,10 @@ func load_stage_from_pck(path:String):
 			$AudioStreamPlayer.stream = load(cfg.get_value("values_AudioStreamPlayer", "stream_path"))
 		$AudioStreamPlayer.play()
 	var character = load(str(Globals.character_path)).instance()
+	
 	add_child(character)
+	var game_ui_scene = preload("res://Scenes/game_ui.tscn").instance()
+	get_node(str(character.name)).add_child(game_ui_scene)
 	character.set_position($Position2D.position)
 
 

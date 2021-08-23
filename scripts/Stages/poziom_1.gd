@@ -22,6 +22,8 @@ func _ready():
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)
 	add_child(character)
+	var game_ui_scene = preload("res://Scenes/game_ui.tscn").instance()
+	get_node(str(character.name)).add_child(game_ui_scene)
 	get_node(str(character.name)).position = startup_position
 	print(Globals.get_current_character_name())
 	if character.has_method("set_render_messages_delay"):
