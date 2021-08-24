@@ -5,6 +5,7 @@
 [ext_resource path="res://Editor/ui/NewFile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=4]
 
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

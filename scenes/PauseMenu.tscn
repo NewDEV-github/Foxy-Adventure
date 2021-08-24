@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
 
 [node name="PauseMenu" type="Panel"]
@@ -16,7 +16,7 @@ margin_top = -206.5
 margin_right = 138.5
 margin_bottom = 206.5
 theme = ExtResource( 5 )
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

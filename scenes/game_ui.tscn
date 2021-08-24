@@ -6,9 +6,9 @@
 [ext_resource path="res://assets/Graphics/arrow_button.png" type="Texture" id=4]
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/MessageDisplay.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/AchivementPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/messagebox/message_box.gd" type="Script" id=9]
-[ext_resource path="res://Scripts/MessageDisplay.gd" type="Script" id=10]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=11]
 
 [sub_resource type="Animation" id=1]
@@ -71,7 +71,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -208.0
-script = ExtResource( 10 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
