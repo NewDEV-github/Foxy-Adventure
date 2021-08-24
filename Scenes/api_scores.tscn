@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ServerAPI/api_scores.gd" type="Script" id=1]
+
+
+[node name="HTTPRequest" type="HTTPRequest"]
+script = ExtResource( 1 )
+
+[node name="scores_getter" type="HTTPRequest" parent="."]
+
+[node name="scores_uploader" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="scores_getter" to="." method="_on_scores_getter_request_completed"]

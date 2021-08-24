@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/background_load.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Start_transtition.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=3]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "start_transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Start_transtition:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Start_transtition:material:shader_param/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1.03526 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Start_transtition:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "normal"
+length = 4.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("hint:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 3, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hintanimator:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="bgload" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="bgload"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start_transtition" parent="bgload" instance=ExtResource( 2 )]
+mouse_filter = 1
+
+[node name="progress" type="ProgressBar" parent="bgload"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -7.0
+margin_right = 100.0
+margin_bottom = 7.0
+step = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bgload"]
+anims/start_transition = SubResource( 1 )
+
+[node name="hint" type="RichTextLabel" parent="bgload"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 0.762
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_top = -109.2
+margin_right = -294.0
+margin_bottom = -143.0
+theme = ExtResource( 3 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="hintanimator" type="AnimationPlayer" parent="bgload"]
+playback_speed = 0.8
+anims/normal = SubResource( 2 )
+
+[connection signal="animation_finished" from="bgload/AnimationPlayer" to="bgload" method="_on_AnimationPlayer_animation_finished"]

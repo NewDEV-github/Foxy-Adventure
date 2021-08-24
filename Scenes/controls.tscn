@@ -1,0 +1,318 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/controls.gd" type="Script" id=1]
+
+[node name="controls_ui" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 18
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="contextual_help" type="Label" parent="."]
+margin_right = 1024.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "KEY_TEXT_OPTIONS_CONTROLS_MESSAGE"
+align = 1
+
+[node name="bindings" type="GridContainer" parent="."]
+margin_top = 32.0
+margin_right = 1024.0
+margin_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="1buttons" type="Label" parent="bindings"]
+margin_right = 510.0
+margin_bottom = 14.0
+text = "KEY_TEXT_OPTIONS_CONTROLS_PRIMARY"
+align = 1
+valign = 1
+
+[node name="2buttons" type="Label" parent="bindings"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "KEY_TEXT_OPTIONS_CONTROLS_SECONDARY"
+align = 1
+valign = 1
+
+[node name="ui_up" type="Control" parent="bindings"]
+visible = false
+margin_left = 514.0
+margin_right = 514.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_up"]
+margin_top = 4.0
+margin_right = 78.0
+margin_bottom = 23.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_up"]
+margin_left = 104.0
+margin_top = -4.0
+margin_right = 164.0
+margin_bottom = 26.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_up2" type="Control" parent="bindings"]
+visible = false
+margin_top = 25.0
+margin_bottom = 25.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_up2"]
+margin_top = 4.0
+margin_right = 78.0
+margin_bottom = 23.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_up2"]
+margin_left = 102.0
+margin_top = -4.0
+margin_right = 162.0
+margin_bottom = 26.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_down" type="Control" parent="bindings"]
+margin_top = 18.0
+margin_bottom = 18.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_down"]
+margin_top = 5.0
+margin_right = 67.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_DOWN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_down"]
+margin_left = 104.0
+margin_top = -3.0
+margin_right = 164.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="ui_down2" type="Control" parent="bindings"]
+margin_left = 514.0
+margin_top = 18.0
+margin_right = 514.0
+margin_bottom = 18.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_down2"]
+margin_top = 5.0
+margin_right = 67.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 643.587, 35.8144 )
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_DOWN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_down2"]
+margin_left = 102.0
+margin_top = -3.0
+margin_right = 162.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="ui_left" type="Control" parent="bindings"]
+margin_top = 155.0
+margin_bottom = 155.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_left"]
+margin_top = 6.0
+margin_right = 74.0
+margin_bottom = 25.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_LEFT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_left"]
+margin_left = 104.0
+margin_top = -2.0
+margin_right = 164.0
+margin_bottom = 28.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="ui_left2" type="Control" parent="bindings"]
+margin_left = 514.0
+margin_top = 155.0
+margin_right = 514.0
+margin_bottom = 155.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_left2"]
+margin_top = 6.0
+margin_right = 74.0
+margin_bottom = 25.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_LEFT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_left2"]
+margin_left = 102.0
+margin_top = -2.0
+margin_right = 162.0
+margin_bottom = 28.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="ui_right" type="Control" parent="bindings"]
+margin_top = 292.0
+margin_bottom = 292.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_right"]
+margin_left = -1.29285
+margin_top = 4.87869
+margin_right = 82.7072
+margin_bottom = 23.8787
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_RIGHT"
+
+[node name="Button" type="Button" parent="bindings/ui_right"]
+margin_left = 104.0
+margin_top = -1.0
+margin_right = 164.0
+margin_bottom = 29.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_right2" type="Control" parent="bindings"]
+margin_left = 514.0
+margin_top = 292.0
+margin_right = 514.0
+margin_bottom = 292.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/ui_right2"]
+margin_left = -1.29285
+margin_top = 4.87869
+margin_right = 82.7072
+margin_bottom = 23.8787
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_RIGHT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/ui_right2"]
+margin_left = 102.0
+margin_top = -1.0
+margin_right = 162.0
+margin_bottom = 29.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jump" type="Control" parent="bindings"]
+margin_top = 429.0
+margin_bottom = 429.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/jump"]
+margin_left = 5.0
+margin_top = 8.0
+margin_right = 45.0
+margin_bottom = 21.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_JUMP"
+
+[node name="Button" type="Button" parent="bindings/jump"]
+margin_left = 84.0
+margin_top = -1.0
+margin_right = 144.0
+margin_bottom = 29.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="jump2" type="Control" parent="bindings"]
+margin_left = 514.0
+margin_top = 429.0
+margin_right = 514.0
+margin_bottom = 429.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="bindings/jump2"]
+margin_top = 8.0
+margin_right = 242.0
+margin_bottom = 22.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "KEY_TEXT_OPTIONS_CONTROLS_JUMP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="bindings/jump2"]
+margin_left = 84.0
+margin_top = -1.0
+margin_right = 144.0
+margin_bottom = 29.0
+size_flags_horizontal = 2
+size_flags_vertical = 2

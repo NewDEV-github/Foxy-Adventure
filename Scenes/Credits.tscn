@@ -1,0 +1,874 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Audio/BGM/credits_gekagd.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/RichTextEffects/matrix.tres" type="RichTextEffect" id=4]
+[ext_resource path="res://Scenes/spectrum.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Credits.tres" type="Animation" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "credits_easteregg"
+length = 60.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/RichTextLabel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 34.97, 57 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 600 ), Vector2( 0, 600 ), Vector2( 0, -3745 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer/RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 35.04, 36.01, 58, 59 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 34.96, 35.03 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.5, 0.3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer/RichTextLabel:bbcode_text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "[center]
+---GODOT ENGINE Devlopment team---
+
+--Project Founders--
+Juan Linietsky (reduz)
+Ariel Manzur (punto-)
+
+--Lead Developer--
+Juan Linietsky (reduz)
+
+--Project Manager--
+Rémi Verschelde (akien-mga)
+
+--Developers--
+Aaron Franke (aaronfranke)
+Alexander Holland (AlexHolly)
+Alexey Khoroshavin (allkhor)
+Alket Rexhepi (alketii)
+Andrea Catania (AndreaCatania)
+Andreas Haas (Hinsbart)
+Andrii Doroshenko (Xrayez)
+Andy Moss (MillionOstrich)
+Anish Bhobe (KidRigger)
+Anton Yabchinskiy (a12n)
+Anutrix
+Aren Villanueva (kurikaesu)
+Ariel Manzur (punto-)
+Bastiaan Olij (BastiaanOlij)
+Ben Brookshire (sheepandshepherd)
+Benjamin Larsson (Nallebeorn)
+Bernard Liebl (poke1024)
+Błażej Szczygieł (zaps166)
+Bojidar Marinov (bojidar-bg)
+Bruno Lourenço (MadEqua)
+bruvzg
+Cameron Reikes (creikey)
+Camille Mohr-Daurat (pouleyKetchoupp)
+Carl Olsson (not-surt)
+Carter Anderson (cart)
+Chris Bradfield (cbscribe)
+Clay John (clayjohn)
+Dana Olson (adolson)
+Daniel J. Ramirez (djrm)
+Daniel Rakos (aqnuep)
+dankan1890
+David Sichma (DavidSichma)
+Dharkael (lupoDharkael)
+Dmitry Koteroff (Krakean)
+Dominik Jasiński (dreamsComeTrue)
+DualMatrix
+Emmanuel Barroga (codecustard)
+Emmanuel Leblond (touilleMan)
+Eoin O'Neill (Eoin-ONeill-Yokai)
+Eric Lasota (elasota)
+Eric Rybicki (ericrybick)
+Erik Selecký (rxlecky)
+est31
+Fabian Mathews (supagu)
+Fabio Alessandrelli (Faless)
+Ferenc Arn (tagcup)
+Franklin Sobrinho (TheHX)
+Fredia Huya-Kouadio (m4gr3d)
+Geequlim
+George Marques (vnen)
+Gerrit Großkopf (Grosskopf)
+Gilles Roudiere (groud)
+Gordon MacPherson (RevoluPowered)
+Guilherme Felipe de C. G. da Silva (guilhermefelipecgs)
+Hanif Bin Ariffin (hbina)
+Haoyu Qiu (timothyqiu)
+Hein-Pieter van Braam-Stewart (hpvb)
+Hiroshi Ogawa (hi-ogawa)
+homer666
+Hubert Jarosz (Marqin)
+Hugo Locurcio (Calinou)
+Ian Bishop (ianb96)
+Ibrahn Sahir (ibrahn)
+Ignacio Etcheverry (neikeq)
+Ilaria Cislaghi (QbieShay)
+Indah Sylvia (ISylvox)
+J08nY
+Jakub Grzesik (kubecz3k)
+James Buck (jbuck3)
+Jérôme Gully (Nutriz)
+Joan Fons Sanchez (JFonS)
+Johan Manuel (29jm)
+Joshua Grams (JoshuaGrams)
+Juan Linietsky (reduz)
+Julian Murgia (StraToN)
+Justo Delgado (mrcdk)
+Kelly Thomas (KellyThomas)
+Kostadin Damyanov (Max-Might)
+K. S. Ernest (iFire) Lee (fire)
+lawnjelly
+Leon Krause (eska014)
+Lucien Menassol (Kanabenki)
+m4nu3lf
+Marcel Admiraal (madmiraal)
+Marcelo Fernandez (marcelofg55)
+Marc Gilleron (Zylann)
+Marcin Zawiejski (dragmz)
+Mariano Javier Suligoy (MarianoGnu)
+Mario Schlack (hurikhan)
+Martin Capitanio (capnm)
+Martin Liška (marxin)
+Martin Sjursen (binbitten)
+marynate
+Masoud BH (masoudbh3)
+Mateo Kuruk Miccino (kuruk-mm)
+Matthias Hölzl (hoelzl)
+Max Hilbrunner (mhilbrunner)
+merumelu
+Michael Alexsander (YeldhamDev)
+MichiRecRoom (LikeLakers2)
+mrezai
+muiroc
+Nathan Warden (NathanWarden)
+Nils André-Chang (NilsIrl)
+Nuno Donato (nunodonato)
+Ovnuniarchos
+Pascal Richter (ShyRed)
+Patrick (firefly2442)
+Paul Batty (Paulb23)
+Paul Joannon (paulloz)
+Paul Trojahn (ptrojahn)
+Pawel Kowal (pkowal1982)
+Pedro J. Estébanez (RandomShaper)
+Pieter-Jan Briers (PJB3005)
+Poommetee Ketson (Noshyaar)
+Przemysław Gołąb (n-pigeon)
+Rafał Mikrut (qarmin)
+Ralf Hölzemer (rollenrolm)
+Ramesh Ravone (RameshRavone)
+raphael10241024
+Ray Koopa (RayKoopa)
+Rémi Verschelde (akien-mga)
+Rhody Lugo (rraallvv)
+Roberto F. Arroyo (robfram)
+Robin Hübner (profan)
+romulox-x
+Ruslan Mustakov (endragor)
+Saniko (sanikoyes)
+santouits
+SaracenOne
+sersoong
+Shiqing (kawa-yoiko)
+Simon Wenner (swenner)
+Swarnim Arun (minraws)
+Thakee Nathees (ThakeeNathees)
+Theo Hallenius (TheoXD)
+Thomas Herzog (karroffel)
+Timo Schwarzer (timoschwarzer)
+Timo (toger5)
+Tomasz Chabora (KoBeWi)
+Twarit Waikar (IronicallySerious)
+Vinzenz Feenstra (vinzenz)
+박한얼 (volzhs)
+V. Vamsi Krishna (vkbsb)
+Wilhem Barbier (nounoursheureux)
+Will Nations (willnationsdev)
+Wilson E. Alvarez (Rubonnek)
+Xavier Cho (mysticfall)
+yg2f (SuperUserNameMan)
+Yuri Roubinsky (Chaosus)
+Zak Stam (zaksnet)
+Zher Huei Lee (leezh)
+ZuBsPaCe
+[/center]", "[center]
+---GODOT ENGINE Devlopment team---
+
+--Project Founders--
+Juan Linietsky (reduz)
+Ariel Manzur (punto-)
+
+--Lead Developer--
+Juan Linietsky (reduz)
+
+--Project Manager--
+Rémi Verschelde (akien-mga)
+
+--Developers--
+Aaron Franke (aaronfranke)
+Alexander Holland (AlexHolly)
+Alexey Khoroshavin (allkhor)
+Alket Rexhepi (alketii)
+Andrea Catania (AndreaCatania)
+Andreas Haas (Hinsbart)
+Andrii Doroshenko (Xrayez)
+Andy Moss (MillionOstrich)
+Anish Bhobe (KidRigger)
+Anton Yabchinskiy (a12n)
+Anutrix
+Aren Villanueva (kurikaesu)
+Ariel Manzur (punto-)
+Bastiaan Olij (BastiaanOlij)
+Ben Brookshire (sheepandshepherd)
+Benjamin Larsson (Nallebeorn)
+Bernard Liebl (poke1024)
+Błażej Szczygieł (zaps166)
+Bojidar Marinov (bojidar-bg)
+Bruno Lourenço (MadEqua)
+bruvzg
+Cameron Reikes (creikey)
+Camille Mohr-Daurat (pouleyKetchoupp)
+Carl Olsson (not-surt)
+Carter Anderson (cart)
+Chris Bradfield (cbscribe)
+Clay John (clayjohn)
+Dana Olson (adolson)
+Daniel J. Ramirez (djrm)
+Daniel Rakos (aqnuep)
+dankan1890
+David Sichma (DavidSichma)
+Dharkael (lupoDharkael)
+Dmitry Koteroff (Krakean)
+Dominik Jasiński (dreamsComeTrue)
+DualMatrix
+Emmanuel Barroga (codecustard)
+Emmanuel Leblond (touilleMan)
+Eoin O'Neill (Eoin-ONeill-Yokai)
+Eric Lasota (elasota)
+Eric Rybicki (ericrybick)
+Erik Selecký (rxlecky)
+est31
+Fabian Mathews (supagu)
+Fabio Alessandrelli (Faless)
+Ferenc Arn (tagcup)
+Franklin Sobrinho (TheHX)
+Fredia Huya-Kouadio (m4gr3d)
+Geequlim
+George Marques (vnen)
+Gerrit Großkopf (Grosskopf)
+Gilles Roudiere (groud)
+Gordon MacPherson (RevoluPowered)
+Guilherme Felipe de C. G. da Silva (guilhermefelipecgs)
+Hanif Bin Ariffin (hbina)
+Haoyu Qiu (timothyqiu)
+Hein-Pieter van Braam-Stewart (hpvb)
+Hiroshi Ogawa (hi-ogawa)
+homer666
+Hubert Jarosz (Marqin)
+Hugo Locurcio (Calinou)
+Ian Bishop (ianb96)
+Ibrahn Sahir (ibrahn)
+Ignacio Etcheverry (neikeq)
+Ilaria Cislaghi (QbieShay)
+Indah Sylvia (ISylvox)
+J08nY
+Jakub Grzesik (kubecz3k)
+James Buck (jbuck3)
+Jérôme Gully (Nutriz)
+Joan Fons Sanchez (JFonS)
+Johan Manuel (29jm)
+Joshua Grams (JoshuaGrams)
+Juan Linietsky (reduz)
+Julian Murgia (StraToN)
+Justo Delgado (mrcdk)
+Kelly Thomas (KellyThomas)
+Kostadin Damyanov (Max-Might)
+K. S. Ernest (iFire) Lee (fire)
+lawnjelly
+Leon Krause (eska014)
+Lucien Menassol (Kanabenki)
+m4nu3lf
+Marcel Admiraal (madmiraal)
+Marcelo Fernandez (marcelofg55)
+Marc Gilleron (Zylann)
+Marcin Zawiejski (dragmz)
+Mariano Javier Suligoy (MarianoGnu)
+Mario Schlack (hurikhan)
+Martin Capitanio (capnm)
+Martin Liška (marxin)
+Martin Sjursen (binbitten)
+marynate
+Masoud BH (masoudbh3)
+Mateo Kuruk Miccino (kuruk-mm)
+Matthias Hölzl (hoelzl)
+Max Hilbrunner (mhilbrunner)
+merumelu
+Michael Alexsander (YeldhamDev)
+MichiRecRoom (LikeLakers2)
+mrezai
+muiroc
+Nathan Warden (NathanWarden)
+Nils André-Chang (NilsIrl)
+Nuno Donato (nunodonato)
+Ovnuniarchos
+Pascal Richter (ShyRed)
+Patrick (firefly2442)
+Paul Batty (Paulb23)
+Paul Joannon (paulloz)
+Paul Trojahn (ptrojahn)
+Pawel Kowal (pkowal1982)
+Pedro J. Estébanez (RandomShaper)
+Pieter-Jan Briers (PJB3005)
+Poommetee Ketson (Noshyaar)
+Przemysław Gołąb (n-pigeon)
+Rafał Mikrut (qarmin)
+Ralf Hölzemer (rollenrolm)
+Ramesh Ravone (RameshRavone)
+raphael10241024
+Ray Koopa (RayKoopa)
+Rémi Verschelde (akien-mga)
+Rhody Lugo (rraallvv)
+Roberto F. Arroyo (robfram)
+Robin Hübner (profan)
+romulox-x
+Ruslan Mustakov (endragor)
+Saniko (sanikoyes)
+santouits
+SaracenOne
+sersoong
+Shiqing (kawa-yoiko)
+Simon Wenner (swenner)
+Swarnim Arun (minraws)
+Thakee Nathees (ThakeeNathees)
+Theo Hallenius (TheoXD)
+Thomas Herzog (karroffel)
+Timo Schwarzer (timoschwarzer)
+Timo (toger5)
+Tomasz Chabora (KoBeWi)
+Twarit Waikar (IronicallySerious)
+Vinzenz Feenstra (vinzenz)
+박한얼 (volzhs)
+V. Vamsi Krishna (vkbsb)
+Wilhem Barbier (nounoursheureux)
+Will Nations (willnationsdev)
+Wilson E. Alvarez (Rubonnek)
+Xavier Cho (mysticfall)
+yg2f (SuperUserNameMan)
+Yuri Roubinsky (Chaosus)
+Zak Stam (zaksnet)
+Zher Huei Lee (leezh)
+ZuBsPaCe
+[/center]" ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 510.0
+margin_bottom = 4060.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]
+[matrix span=20 dirty=2 clean=2]New DEV Development Team[/matrix]
+
+[b]Directors[/b]
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
+
+[b]Programmers[/b]
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
+NewTheFox
+
+[b]Music[/b]
+· [rainbow freq=0.1 sat=2 val=20]GeKaGD[/rainbow] ·
+
+[b]Game Desing[/b]
+NewTheFox
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
+
+[b]Graphics[/b]
+NewTheFox
+Dene
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
+
+[b][wave amp=50 freq=1]Godot-Videodecoder Development Team[/wave][/b]
+
+[b]Developers[/b]
+Anish Bhobe (KidRigger)
+jamie-pate
+starryalley
+[rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
+Rémi Verschelde (akien-mga)
+
+[matrix]Godot Engine[/matrix] Devlopment Team
+
+[b]Project Founders[/b]
+Juan Linietsky (reduz)
+Ariel Manzur (punto-)
+
+[b]Lead Developer[/b]
+Juan Linietsky (reduz)
+
+[b]Project Manager[/b]
+Rémi Verschelde (akien-mga)
+
+[b]Developers[/b]
+Aaron Franke (aaronfranke)
+Alexander Holland (AlexHolly)
+Alexey Khoroshavin (allkhor)
+Alket Rexhepi (alketii)
+Andrea Catania (AndreaCatania)
+Andreas Haas (Hinsbart)
+Andrii Doroshenko (Xrayez)
+Andy Moss (MillionOstrich)
+Anish Bhobe (KidRigger)
+Anton Yabchinskiy (a12n)
+Anutrix
+Aren Villanueva (kurikaesu)
+Ariel Manzur (punto-)
+Bastiaan Olij (BastiaanOlij)
+Ben Brookshire (sheepandshepherd)
+Benjamin Larsson (Nallebeorn)
+Bernard Liebl (poke1024)
+Błażej Szczygieł (zaps166)
+Bojidar Marinov (bojidar-bg)
+Bruno Lourenço (MadEqua)
+bruvzg
+Cameron Reikes (creikey)
+Camille Mohr-Daurat (pouleyKetchoupp)
+Carl Olsson (not-surt)
+Carter Anderson (cart)
+Chris Bradfield (cbscribe)
+Clay John (clayjohn)
+Dana Olson (adolson)
+Daniel J. Ramirez (djrm)
+Daniel Rakos (aqnuep)
+dankan1890
+David Sichma (DavidSichma)
+Dharkael (lupoDharkael)
+Dmitry Koteroff (Krakean)
+Dominik Jasiński (dreamsComeTrue)
+DualMatrix
+Emmanuel Barroga (codecustard)
+Emmanuel Leblond (touilleMan)
+Eoin O'Neill (Eoin-ONeill-Yokai)
+Eric Lasota (elasota)
+Eric Rybicki (ericrybick)
+Erik Selecký (rxlecky)
+est31
+Fabian Mathews (supagu)
+Fabio Alessandrelli (Faless)
+Ferenc Arn (tagcup)
+Franklin Sobrinho (TheHX)
+Fredia Huya-Kouadio (m4gr3d)
+Geequlim
+George Marques (vnen)
+Gerrit Großkopf (Grosskopf)
+Gilles Roudiere (groud)
+Gordon MacPherson (RevoluPowered)
+Guilherme Felipe de C. G. da Silva (guilhermefelipecgs)
+Hanif Bin Ariffin (hbina)
+Haoyu Qiu (timothyqiu)
+Hein-Pieter van Braam-Stewart (hpvb)
+Hiroshi Ogawa (hi-ogawa)
+homer666
+Hubert Jarosz (Marqin)
+Hugo Locurcio (Calinou)
+Ian Bishop (ianb96)
+Ibrahn Sahir (ibrahn)
+Ignacio Etcheverry (neikeq)
+Ilaria Cislaghi (QbieShay)
+Indah Sylvia (ISylvox)
+J08nY
+Jakub Grzesik (kubecz3k)
+James Buck (jbuck3)
+Jérôme Gully (Nutriz)
+Joan Fons Sanchez (JFonS)
+Johan Manuel (29jm)
+Joshua Grams (JoshuaGrams)
+Juan Linietsky (reduz)
+Julian Murgia (StraToN)
+Justo Delgado (mrcdk)
+Kelly Thomas (KellyThomas)
+Kostadin Damyanov (Max-Might)
+K. S. Ernest (iFire)
+Lee (fire)
+lawnjelly
+Leon Krause (eska014)
+Lucien Menassol (Kanabenki)
+m4nu3lf
+Marcel Admiraal (madmiraal)
+Marcelo Fernandez (marcelofg55)
+Marc Gilleron (Zylann)
+Marcin Zawiejski (dragmz)
+Mariano Javier Suligoy (MarianoGnu)
+Mario Schlack (hurikhan)
+Martin Capitanio (capnm)
+Martin Liška (marxin)
+Martin Sjursen (binbitten)
+marynate
+Masoud BH (masoudbh3)
+Mateo Kuruk Miccino (kuruk-mm)
+Matthias Hölzl (hoelzl)
+Max Hilbrunner (mhilbrunner)
+merumelu
+Michael Alexsander (YeldhamDev)
+MichiRecRoom (LikeLakers2)
+mrezai
+muiroc
+Nathan Warden (NathanWarden)
+Nils André-Chang (NilsIrl)
+Nuno Donato (nunodonato)
+Ovnuniarchos
+Pascal Richter (ShyRed)
+Patrick (firefly2442)
+Paul Batty (Paulb23)
+Paul Joannon (paulloz)
+Paul Trojahn (ptrojahn)
+Pawel Kowal (pkowal1982)
+Pedro J. Estébanez (RandomShaper)
+Pieter-Jan Briers (PJB3005)
+Poommetee Ketson (Noshyaar)
+Przemysław Gołąb (n-pigeon)
+Rafał Mikrut (qarmin)
+Ralf Hölzemer (rollenrolm)
+Ramesh Ravone (RameshRavone)
+raphael10241024
+Ray Koopa (RayKoopa)
+Rémi Verschelde (akien-mga)
+Rhody Lugo (rraallvv)
+Roberto F. Arroyo (robfram)
+Robin Hübner (profan)
+romulox-x
+Ruslan Mustakov (endragor)
+Saniko (sanikoyes)
+santouits
+SaracenOne
+sersoong
+Shiqing (kawa-yoiko)
+Simon Wenner (swenner)
+Swarnim Arun (minraws)
+Thakee Nathees (ThakeeNathees)
+Theo Hallenius (TheoXD)
+Thomas Herzog (karroffel)
+Timo Schwarzer (timoschwarzer)
+Timo (toger5)
+Tomasz Chabora (KoBeWi)
+Twarit Waikar (IronicallySerious)
+Vinzenz Feenstra (vinzenz)
+V. Vamsi Krishna (vkbsb)
+Wilhem Barbier (nounoursheureux)
+Will Nations (willnationsdev)
+Wilson E. Alvarez (Rubonnek)
+Xavier Cho (mysticfall)
+yg2f (SuperUserNameMan)
+Yuri Roubinsky (Chaosus)
+Zak Stam (zaksnet)
+Zher Huei Lee (leezh)
+ZuBsPaCe
+
+[b]Special Thanks[/b]
+LeD
+· [rainbow freq=0.1 sat=2 val=20]GeKaGD[/rainbow] ·
+LennyPhoenix
+NewTheFox"
+text = "
+New DEV Development Team
+
+Directors
+DoS
+
+Programmers
+DoS
+NewTheFox
+
+Music
+· GeKaGD ·
+
+Game Desing
+NewTheFox
+DoS
+
+Graphics
+NewTheFox
+Dene
+DoS
+
+Godot-Videodecoder Development Team
+
+Developers
+Anish Bhobe (KidRigger)
+jamie-pate
+starryalley
+DoS
+Rémi Verschelde (akien-mga)
+
+Godot Engine Devlopment Team
+
+Project Founders
+Juan Linietsky (reduz)
+Ariel Manzur (punto-)
+
+Lead Developer
+Juan Linietsky (reduz)
+
+Project Manager
+Rémi Verschelde (akien-mga)
+
+Developers
+Aaron Franke (aaronfranke)
+Alexander Holland (AlexHolly)
+Alexey Khoroshavin (allkhor)
+Alket Rexhepi (alketii)
+Andrea Catania (AndreaCatania)
+Andreas Haas (Hinsbart)
+Andrii Doroshenko (Xrayez)
+Andy Moss (MillionOstrich)
+Anish Bhobe (KidRigger)
+Anton Yabchinskiy (a12n)
+Anutrix
+Aren Villanueva (kurikaesu)
+Ariel Manzur (punto-)
+Bastiaan Olij (BastiaanOlij)
+Ben Brookshire (sheepandshepherd)
+Benjamin Larsson (Nallebeorn)
+Bernard Liebl (poke1024)
+Błażej Szczygieł (zaps166)
+Bojidar Marinov (bojidar-bg)
+Bruno Lourenço (MadEqua)
+bruvzg
+Cameron Reikes (creikey)
+Camille Mohr-Daurat (pouleyKetchoupp)
+Carl Olsson (not-surt)
+Carter Anderson (cart)
+Chris Bradfield (cbscribe)
+Clay John (clayjohn)
+Dana Olson (adolson)
+Daniel J. Ramirez (djrm)
+Daniel Rakos (aqnuep)
+dankan1890
+David Sichma (DavidSichma)
+Dharkael (lupoDharkael)
+Dmitry Koteroff (Krakean)
+Dominik Jasiński (dreamsComeTrue)
+DualMatrix
+Emmanuel Barroga (codecustard)
+Emmanuel Leblond (touilleMan)
+Eoin O'Neill (Eoin-ONeill-Yokai)
+Eric Lasota (elasota)
+Eric Rybicki (ericrybick)
+Erik Selecký (rxlecky)
+est31
+Fabian Mathews (supagu)
+Fabio Alessandrelli (Faless)
+Ferenc Arn (tagcup)
+Franklin Sobrinho (TheHX)
+Fredia Huya-Kouadio (m4gr3d)
+Geequlim
+George Marques (vnen)
+Gerrit Großkopf (Grosskopf)
+Gilles Roudiere (groud)
+Gordon MacPherson (RevoluPowered)
+Guilherme Felipe de C. G. da Silva (guilhermefelipecgs)
+Hanif Bin Ariffin (hbina)
+Haoyu Qiu (timothyqiu)
+Hein-Pieter van Braam-Stewart (hpvb)
+Hiroshi Ogawa (hi-ogawa)
+homer666
+Hubert Jarosz (Marqin)
+Hugo Locurcio (Calinou)
+Ian Bishop (ianb96)
+Ibrahn Sahir (ibrahn)
+Ignacio Etcheverry (neikeq)
+Ilaria Cislaghi (QbieShay)
+Indah Sylvia (ISylvox)
+J08nY
+Jakub Grzesik (kubecz3k)
+James Buck (jbuck3)
+Jérôme Gully (Nutriz)
+Joan Fons Sanchez (JFonS)
+Johan Manuel (29jm)
+Joshua Grams (JoshuaGrams)
+Juan Linietsky (reduz)
+Julian Murgia (StraToN)
+Justo Delgado (mrcdk)
+Kelly Thomas (KellyThomas)
+Kostadin Damyanov (Max-Might)
+K. S. Ernest (iFire)
+Lee (fire)
+lawnjelly
+Leon Krause (eska014)
+Lucien Menassol (Kanabenki)
+m4nu3lf
+Marcel Admiraal (madmiraal)
+Marcelo Fernandez (marcelofg55)
+Marc Gilleron (Zylann)
+Marcin Zawiejski (dragmz)
+Mariano Javier Suligoy (MarianoGnu)
+Mario Schlack (hurikhan)
+Martin Capitanio (capnm)
+Martin Liška (marxin)
+Martin Sjursen (binbitten)
+marynate
+Masoud BH (masoudbh3)
+Mateo Kuruk Miccino (kuruk-mm)
+Matthias Hölzl (hoelzl)
+Max Hilbrunner (mhilbrunner)
+merumelu
+Michael Alexsander (YeldhamDev)
+MichiRecRoom (LikeLakers2)
+mrezai
+muiroc
+Nathan Warden (NathanWarden)
+Nils André-Chang (NilsIrl)
+Nuno Donato (nunodonato)
+Ovnuniarchos
+Pascal Richter (ShyRed)
+Patrick (firefly2442)
+Paul Batty (Paulb23)
+Paul Joannon (paulloz)
+Paul Trojahn (ptrojahn)
+Pawel Kowal (pkowal1982)
+Pedro J. Estébanez (RandomShaper)
+Pieter-Jan Briers (PJB3005)
+Poommetee Ketson (Noshyaar)
+Przemysław Gołąb (n-pigeon)
+Rafał Mikrut (qarmin)
+Ralf Hölzemer (rollenrolm)
+Ramesh Ravone (RameshRavone)
+raphael10241024
+Ray Koopa (RayKoopa)
+Rémi Verschelde (akien-mga)
+Rhody Lugo (rraallvv)
+Roberto F. Arroyo (robfram)
+Robin Hübner (profan)
+romulox-x
+Ruslan Mustakov (endragor)
+Saniko (sanikoyes)
+santouits
+SaracenOne
+sersoong
+Shiqing (kawa-yoiko)
+Simon Wenner (swenner)
+Swarnim Arun (minraws)
+Thakee Nathees (ThakeeNathees)
+Theo Hallenius (TheoXD)
+Thomas Herzog (karroffel)
+Timo Schwarzer (timoschwarzer)
+Timo (toger5)
+Tomasz Chabora (KoBeWi)
+Twarit Waikar (IronicallySerious)
+Vinzenz Feenstra (vinzenz)
+V. Vamsi Krishna (vkbsb)
+Wilhem Barbier (nounoursheureux)
+Will Nations (willnationsdev)
+Wilson E. Alvarez (Rubonnek)
+Xavier Cho (mysticfall)
+yg2f (SuperUserNameMan)
+Yuri Roubinsky (Chaosus)
+Zak Stam (zaksnet)
+Zher Huei Lee (leezh)
+ZuBsPaCe
+
+Special Thanks
+LeD
+· GeKaGD ·
+LennyPhoenix
+NewTheFox"
+fit_content_height = true
+scroll_active = false
+scroll_following = true
+custom_effects = [ ExtResource( 4 ) ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 4060.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "credits"
+anims/credits = ExtResource( 6 )
+anims/credits_easteregg = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Music"
+
+[node name="spectrum" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -427.0
+audio_player = NodePath("../AudioStreamPlayer")
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Tween2" type="Tween" parent="."]
+
+[connection signal="tree_exiting" from="." to="." method="_on_Control_tree_exiting"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="tween_completed" from="Tween2" to="." method="_on_Tween2_tween_completed"]
