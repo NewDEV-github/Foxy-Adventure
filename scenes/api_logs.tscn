@@ -2,6 +2,7 @@
 
 [ext_resource path="res://Scripts/ServerAPI/api_logs.gd" type="Script" id=1]
 
+
 [node name="HTTPRequest" type="HTTPRequest"]
 script = ExtResource( 1 )
 

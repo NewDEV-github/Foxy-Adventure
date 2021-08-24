@@ -3,6 +3,7 @@
 [ext_resource path="res://Scripts/Platforms/Platform.gd" type="Script" id=1]
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=2]
 
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 

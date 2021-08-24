@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/SaveLoader.gd" type="Script" id=2]
 
+
 [node name="WindowDialog" type="Panel"]
 margin_left = 2.0
 margin_top = -2.0

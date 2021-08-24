@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Demo_ThankYou.gd" type="Script" id=2]
 
+
 [sub_resource type="Animation" id=1]
 resource_name = "main"
 length = 6.0

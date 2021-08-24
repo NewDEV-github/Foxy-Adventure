@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Graphics/bubbles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/MovingPlatform_fast.tscn" type="PackedScene" id=8]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184, 121.458 )
 

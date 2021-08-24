@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/Graphics/Masks/circle.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/SavingDataIcon.gd" type="Script" id=4]
 
+
 [sub_resource type="Animation" id=1]
 resource_name = "hide"
 tracks/0/type = "value"

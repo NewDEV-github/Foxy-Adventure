@@ -3,6 +3,7 @@
 [ext_resource path="res://Scripts/MovingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://assets/Tiles/new_tileset.tres" type="TileSet" id=2]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96.3632, 16.3973 )
 
