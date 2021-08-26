@@ -31,6 +31,6 @@ sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
 cd $GITHUB_WORKSPACE
 sudo mkdir -p builds/{x11-64-standard,win-64-standard,osx-standard}
 
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
-sudo ./$GODOT_BINARY_FILENAME --path "." --export "win-64" $GITHUB_WORKSPACE
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/x11-64-standard/FoxyAdventure.x86_64
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $GITHUB_WORKSPACE/builds/osx-standard/FoxyAdventure.zip
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $GITHUB_WORKSPACE
