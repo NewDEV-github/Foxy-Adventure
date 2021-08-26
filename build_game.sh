@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt-get install unzip
+sudo apt-get install osslsigncode
 GODOT_V_N=${2} #3.3.3
 GODOT_V_S=${4} #stable
 GODOT_VERSION=$GODOT_V_N"."$GODOT_V_S #3.3.3.stable
