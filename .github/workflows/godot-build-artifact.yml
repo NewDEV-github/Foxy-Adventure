@@ -146,7 +146,7 @@ jobs:
         cd $GITHUB_WORKSPACE/artifacts/build-x11-64-${{ matrix.godot-version }}
         sudo zip -r build-x11-64-${{ matrix.godot-version }}.zip *
         cd $GITHUB_WORKSPACE/artifacts/build-win-64-${{ matrix.godot-version }}
-        sudo zip -r build-win-64.zip-${{ matrix.godot-version }} *
+        sudo zip -r build-win-64-${{ matrix.godot-version }}.zip *
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.1.4
