@@ -91,7 +91,9 @@ jobs:
   godot-build:
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
-
+    strategy:
+      matrix:
+        godot-version: [3.2.3, 3.3.3]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -100,7 +102,7 @@ jobs:
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh
+          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable"
       - name: Upload a Build Artifact x11-64
         uses: actions/upload-artifact@v2.2.4
         with:
