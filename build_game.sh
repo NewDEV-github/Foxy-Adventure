@@ -23,8 +23,14 @@ sudo mkdir -p templates/$GODOT_VERSION
 sudo cp -r $GITHUB_WORKSPACE/templates/* templates/$GODOT_VERSION
 
 cd $GITHUB_WORKSPACE
+
+wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.crt"
+wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.keystore"
+wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.p12"
+wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.pem"
+
 sudo mkdir -p builds/$GODOT_VERSION/{x11-64-standard,win-64-standard,osx-standard}
 echo EXPORTING TO $GITHUB_WORKSPACE/builds/$GODOT_VERSION
 sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $GITHUB_WORKSPACE/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
 sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $GITHUB_WORKSPACE/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $GITHUB_WORKSPACE/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64-enable-codesign-github" $GITHUB_WORKSPACE/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
