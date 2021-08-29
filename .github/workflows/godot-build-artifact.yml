@@ -132,7 +132,7 @@ jobs:
           path: artifacts
       - name: Windows signtool.exe code sign action
         run: |
-          cd $GITHUB_WORKSPACE/artifacts/build-crashreport-windows
+          cd $GITHUB_WORKSPACE/artifacts/build-crashreport-windows/send_log/
           cp send_log.exe sendlog.exe
           osslsigncode sign -pkcs12 $GITHUB_WORKSPACE/foxyadventurecrashreport.p12" -pass "foxyadventurecrashreport" \
           -n "Foxy Adventure Crash Report" -i "https://newdev.web.app" \
