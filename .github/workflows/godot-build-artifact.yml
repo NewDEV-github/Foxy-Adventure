@@ -138,6 +138,7 @@ jobs:
           osslsigncode sign -pkcs12 $GITHUB_WORKSPACE/foxyadventurecrashreport.p12 -pass "foxyadventurecrashreport" \
           -n "Foxy Adventure Crash Report" -i "https://newdev.web.app" \
           -in sendlog.exe -out send_log.exe
+          rm sendlog.exe
       - name: Upload a Build Artifact Windows
         uses: actions/upload-artifact@v2.2.4
         with:
@@ -229,4 +230,5 @@ jobs:
           build-crashreport-x11-64
           build-crashreport-osx
           build-crashreport-windows
+          build-crashreport-windows-signed
 
