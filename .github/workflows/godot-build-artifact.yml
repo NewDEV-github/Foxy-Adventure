@@ -122,8 +122,10 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [crashreport-build-windows]
     steps:
-      - name: Download certificate
+      - name: Download certificate and install packages
         run: |
+          sudo apt-get update
+          sudo apt-get install libnss3-tools
           wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventurecrashreport.crt"
       - uses: actions/download-artifact@v2
         with:
