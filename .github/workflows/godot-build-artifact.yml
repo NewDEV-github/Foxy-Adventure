@@ -118,9 +118,38 @@ jobs:
         with:
           name: build-win-64-${{ matrix.godot-version }}
           path: builds/${{ matrix.godot-version }}.stable/win-64-standard
+  crashreport-build-windows-signed:
+    runs-on: ubuntu-18.04
+    needs: [crashreport-build-windows]
+    steps:
+      - name: Download certificate
+      - run: |
+          wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventurecrashreport.crt"
+      - uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Windows signtool.exe code sign action
+        # You may pin to the exact commit or the version.
+        # uses: skymatic/code-sign-action@cfcc1c15b32938bab6dea25192045b6d2989e4d0
+        uses: skymatic/code-sign-action@v1.1.0
+        with:
+          # The base64 encoded certificate.
+          certificate: $GITHUB_WORKSPACE/foxyadventurecrashreport.crt
+          # The folder that contains the files to sign.
+          folder: $GITHUB_WORKSPACE/artifacts/build-crashreport-windows/
+          # Recursively search for supported files.
+          recursive: true
+          password: 'foxyadventurecrashreport'
+          certificatename: 'Foxy Adventure Crash Report'
+          description: 'Foxy Adventure Crash Report'
+      - name: Upload a Build Artifact Windows
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: build-crashreport-windows-signed
+          path: artifacts/build-crashreport-windows/
   do-release:
     runs-on: ubuntu-18.04
-    needs: [godot-build, crashreport-build-windows, crashreport-build-linux, crashreport-build-osx]
+    needs: [godot-build, crashreport-build-windows-signed, crashreport-build-linux, crashreport-build-osx]
     strategy:
       matrix:
         godot-version: [3.3.3]
@@ -140,7 +169,7 @@ jobs:
         cd $GITHUB_WORKSPACE/artifacts
         cp -r build-crashreport-osx/send_log/ build-osx-64-${{ matrix.godot-version }}
         cp -r build-crashreport-x11-64/send_log/ build-x11-64-${{ matrix.godot-version }}
-        cp -r build-crashreport-windows/send_log/ build-win-64-${{ matrix.godot-version }}
+        cp -r build-crashreport-windows-signed/send_log/ build-win-64-${{ matrix.godot-version }}
         cd $GITHUB_WORKSPACE/artifacts/build-osx-64-${{ matrix.godot-version }}
         sudo zip -r build-osx-64-${{ matrix.godot-version }}.zip *
         cd $GITHUB_WORKSPACE/artifacts/build-x11-64-${{ matrix.godot-version }}
