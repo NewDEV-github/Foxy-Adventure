@@ -123,7 +123,7 @@ jobs:
     needs: [crashreport-build-windows]
     steps:
       - name: Download certificate
-      - run: |
+        run: |
           wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventurecrashreport.crt"
       - uses: actions/download-artifact@v2
         with:
