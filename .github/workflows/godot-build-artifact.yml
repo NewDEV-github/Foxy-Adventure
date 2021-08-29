@@ -125,25 +125,18 @@ jobs:
       - name: Download certificate and install packages
         run: |
           sudo apt-get update
-          sudo apt-get install libnss3-tools
-          wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventurecrashreport.crt"
+          sudo apt-get install libnss3-tools build-essential pkg-config libssl-dev libcurl4-openssl-dev
+          wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventurecrashreport.p12"
       - uses: actions/download-artifact@v2
         with:
           path: artifacts
       - name: Windows signtool.exe code sign action
-        # You may pin to the exact commit or the version.
-        # uses: skymatic/code-sign-action@cfcc1c15b32938bab6dea25192045b6d2989e4d0
-        uses: skymatic/code-sign-action@v1.1.0
-        with:
-          # The base64 encoded certificate.
-          certificate: $GITHUB_WORKSPACE/foxyadventurecrashreport.crt
-          # The folder that contains the files to sign.
-          folder: $GITHUB_WORKSPACE/artifacts/build-crashreport-windows/
-          # Recursively search for supported files.
-          recursive: true
-          password: 'foxyadventurecrashreport'
-          certificatename: 'Foxy Adventure Crash Report'
-          description: 'Foxy Adventure Crash Report'
+        run: |
+          cd $GITHUB_WORKSPACE/artifacts/build-crashreport-windows
+          cp send_log.exe sendlog.exe
+          osslsigncode sign -pkcs12 $GITHUB_WORKSPACE/foxyadventurecrashreport.p12" -pass "foxyadventurecrashreport" \
+          -n "Foxy Adventure Crash Report" -i "https://newdev.web.app" \
+          -in sendlog.exe -out send_log.exe
       - name: Upload a Build Artifact Windows
         uses: actions/upload-artifact@v2.2.4
         with:
