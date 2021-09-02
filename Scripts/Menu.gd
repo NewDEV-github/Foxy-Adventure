@@ -78,6 +78,8 @@ func _ready() -> void:
 		$Label.set_text(tr("Happy Birthday to") + ' "NewTheFox" ')
 	elif day == 14 and month == 9:
 		$Label.set_text(tr("Happy Birthday to") + ' Gekon aka "GeKaGD"')
+	elif day == 10 and month == 7:
+		$Label.set_text(tr("Happy Birthday to") + ' Tuzi')
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	elif day == 7 and month == 4:
