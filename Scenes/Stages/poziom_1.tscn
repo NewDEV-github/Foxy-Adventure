@@ -12,34 +12,34 @@
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=10]
 [ext_resource path="res://Scripts/Stages/FancyLabel.gd" type="Script" id=11]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 184, 121.458 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 60.1925, 32 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 40, 16 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 24, 10 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 33, 10 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 36, 10 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 210.088, 10 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 56.9336, 73.5143 )
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 34.0848, 43.8964 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 545.944, 110.237 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 10, 131.057 )
 
 [node name="Node2D" type="Node2D"]
@@ -829,64 +829,64 @@ position = Vector2( 452.49, 774.326 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area"]
 position = Vector2( 8, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="dead_area2" type="Area2D" parent="dead_areas"]
 position = Vector2( 1539.81, 592 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area2"]
 position = Vector2( 3, 28 )
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 
 [node name="dead_area3" type="Area2D" parent="dead_areas"]
 position = Vector2( 1728, 584 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area3"]
 position = Vector2( 10, 23 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="dead_area4" type="Area2D" parent="dead_areas"]
 position = Vector2( 1856, 597.95 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area4"]
 position = Vector2( 6, 7.05 )
-shape = SubResource( 4 )
+shape = SubResource( 11 )
 
 [node name="dead_area6" type="Area2D" parent="dead_areas"]
 position = Vector2( 5407, 1982.95 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area6"]
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="dead_area8" type="Area2D" parent="dead_areas"]
 position = Vector2( 5652.66, 1979.29 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area8"]
-shape = SubResource( 6 )
+shape = SubResource( 13 )
 
 [node name="dead_area9" type="Area2D" parent="dead_areas"]
 position = Vector2( 7154.55, 2222.53 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area9"]
-shape = SubResource( 6 )
+shape = SubResource( 13 )
 
 [node name="dead_area10" type="Area2D" parent="dead_areas"]
 position = Vector2( 7236.58, 2222.53 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area10"]
-shape = SubResource( 6 )
+shape = SubResource( 13 )
 
 [node name="dead_area11" type="Area2D" parent="dead_areas"]
 position = Vector2( 7966.58, 1948.53 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area11"]
-shape = SubResource( 6 )
+shape = SubResource( 13 )
 
 [node name="dead_area7" type="Area2D" parent="dead_areas"]
 position = Vector2( 3053.25, 1168.78 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dead_areas/dead_area7"]
-shape = SubResource( 7 )
+shape = SubResource( 14 )
 
 [node name="dead_area5" type="Area2D" parent="dead_areas"]
 position = Vector2( 5467.02, 2665.29 )
@@ -1031,7 +1031,7 @@ frame = 3
 position = Vector2( 7952.18, 2014.06 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3485.54, 1266.66 )
+position = Vector2( 3724, 600.791 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -1077,7 +1077,7 @@ position = Vector2( 1.60899, 82.6017 )
 position = Vector2( 1.8043, 42.6301 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4027.41, 1562.45 )
+position = Vector2( 3952.48, 604.391 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -1129,7 +1129,7 @@ position = Vector2( -122.167, 532.46 )
 position = Vector2( -126.167, 6.46002 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5378.46, 1938.12 )
+position = Vector2( 5430.01, 1471.96 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]
@@ -1151,7 +1151,7 @@ position = Vector2( 356.01, 98.2771 )
 position = Vector2( 0.352966, 84.9634 )
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 6807.81, 985.746 )
+position = Vector2( 6904.96, 1374.59 )
 waypoints_path = NodePath("../Waypoints4")
 
 [node name="Waypoints4" parent="." instance=ExtResource( 5 )]
@@ -1176,7 +1176,7 @@ position = Vector2( -5.30426, 254.669 )
 position = Vector2( 9680.9, 1237.18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors"]
-shape = SubResource( 8 )
+shape = SubResource( 15 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 511.984, 177.747 )
@@ -1299,12 +1299,12 @@ position = Vector2( 281.984, 31.747 )
 position = Vector2( 9045.74, 1092.91 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="messagearea"]
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="FancyLabel" type="Label" parent="."]
 margin_left = 67.8822

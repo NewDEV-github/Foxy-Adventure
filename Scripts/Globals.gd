@@ -224,14 +224,14 @@ func felt_into_toxine():
 
 func _ready():
 	get_tree().get_root().set_transparent_background(true)
-#	OS.shell_open(install_base_path + "send_log/send_log")
 #	OS.execute(OS.get_executable_path(), ["--send-log"], false)
 #	OS.shell_open(OS.get_executable_path() + " --send-log")
 #	get_tree().quit()
 	if arguments.has("send-log"):
-		ApiLogs.send_debug_log_to_database()
-		yield(ApiLogs, "recived_log_id")
-		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
+		OS.shell_open(install_base_path + "send_log/send_log")
+#		ApiLogs.send_debug_log_to_database()
+#		yield(ApiLogs, "recived_log_id")
+#		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
 		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])

@@ -44,7 +44,7 @@ tracks/1/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -60,7 +60,7 @@ font_data = ExtResource( 5 )
 bg_color = Color( 0.0132904, 0.186026, 0.261719, 0.701458 )
 border_blend = true
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 5 )
 
 [node name="Console" type="CanvasLayer"]
@@ -95,7 +95,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-custom_fonts/bold_italics_font = SubResource( 9 )
+custom_fonts/bold_italics_font = SubResource( 4 )
 custom_fonts/italics_font = SubResource( 5 )
 custom_fonts/bold_font = SubResource( 6 )
 custom_fonts/normal_font = SubResource( 7 )
@@ -114,6 +114,5 @@ focus_next = NodePath(".")
 focus_previous = NodePath(".")
 size_flags_horizontal = 3
 custom_styles/focus = SubResource( 8 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Anchor", "Caret", "Grow Direction", "Margin", "Material", "Pause", "Placeholder", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]

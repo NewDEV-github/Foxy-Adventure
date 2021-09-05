@@ -96,6 +96,7 @@ func _update_score(score, uid):
 	ApiScores.update_score(uid, score)
 	self._console.write_line("Score for %s was updated :3" % [uid])
 func _send_log():
+#	OS.shell_open(Globals.install_base_path + "send_log/send_log")
 	ApiLogs.send_debug_log_to_database()
 	yield(ApiLogs, "recived_log_id")
 	self._console.write_line('Your log id is: (0)' + str(ApiLogs.tmp_log_id))
