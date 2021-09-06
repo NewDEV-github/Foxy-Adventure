@@ -6,7 +6,8 @@ var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
 var supported_sdk_versions = [
-	104
+	104,
+	105
 ]
 #var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""
@@ -55,14 +56,27 @@ var stage_list = {
 	"5": "res://Scenes/Stages/poziom_6.tscn",
 }
 var stage_names:Dictionary = {
-	"0": "Laboratory",
-	"1": "Laboratory",
-	"2": "Laboratory",
-	"3": "Laboratory",
-	"4": "Laboratory",
-	"5": "Laboratory",
+	"0": "Laboratory - 1",
+	"1": "Laboratory - 2",
+	"2": "Laboratory - 3",
+	"3": "Laboratory - 4",
+	"4": "Laboratory - 5",
+	"5": "Laboratory - 6",
 }
-
+func change_stage(stage_id:String):
+	BackgroundLoad.get_node("bgload").load_scene(stage_list[stage_id])
+func add_stage_to_list(stage_path:String, stage_name:String):
+	stage_list[stage_list.size()] = stage_path
+	stage_names[stage_list.size()] = stage_name
+func replace_stage_in_list(id:String, stage_path:String, stage_name:String):
+	stage_list[id] = stage_path
+	stage_names[id] = stage_name
+func set_stage_list(list:Dictionary):
+	stage_list = list
+func set_stage_name(id:String, stage_name:String):
+	stage_names[id] = stage_name
+func change_stage_to_next():
+	BackgroundLoad.get_node("bgload").load_scene(stage_list[str(current_stage)])
 var current_stage = 0
 var arguments = {}
 #var feedback_script = preload("res://FeedBack/Main.gd").new()

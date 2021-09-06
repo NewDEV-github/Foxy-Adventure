@@ -16,10 +16,10 @@ func _ready():
 	var audio = load(music_files[randi()%music_files.size()])
 	$AudioStreamPlayer2D.stream = audio
 	$AudioStreamPlayer2D.play()
-	Globals.current_stage = 0
+	Globals.current_stage = 4
 #	Fmod.add_listener(0, self)
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
-	Globals.save_level(0, Globals.current_save_name)
+	Globals.save_level(4, Globals.current_save_name)
 	add_child(character)
 #	character.set_owner(root)
 	var game_ui_scene = preload("res://Scenes/game_ui.tscn").instance()
@@ -27,7 +27,7 @@ func _ready():
 	get_node(str(character.name)).position = startup_position
 
 func change_level():
-	get_tree().change_scene("res://Scenes/Stages/poziom_6.tscn")
+	Globals.change_stage_to_next()
 func toxic_entered(body):
 	if body.name == Globals.get_current_character_name():
 		if Globals.new_characters.has(body.name):
