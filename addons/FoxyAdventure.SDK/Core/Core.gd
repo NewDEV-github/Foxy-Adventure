@@ -1,5 +1,6 @@
 extends Node
 class_name FoxyAdventureSDK
+###104
 var Lifes
 var Coins
 var Worlds
@@ -242,6 +243,14 @@ func add_achievement_requirement(name, variable, value):
 
 ### Scenes
 const SCENES = {
+	###105
+	STAGE_1 = "res://Scenes/Stages/poziom_1.tscn",
+	STAGE_2 = "res://Scenes/Stages/poziom_2.tscn",
+	STAGE_3 = "res://Scenes/Stages/poziom_3.tscn",
+	STAGE_4 = "res://Scenes/Stages/poziom_4.tscn",
+	STAGE_5 = "res://Scenes/Stages/poziom_5.tscn",
+	STAGE_6 = "res://Scenes/Stages/poziom_6.tscn",
+	###104
 	MAIN_MENU = "res://Scenes/Menu.tscn",
 	GAME_OVER = "res://Scenes/GameOver.tscn",
 	CREDITS = "res://Scenes/Credits.tscn",
@@ -277,5 +286,37 @@ func add_custom_menu_bg(path:String):
 func add_custom_menu_audio(path:String):
 	if _initialized == true:
 		Globals.custom_menu_audio = path
+	else:
+		print("Please, initialize SDK first, before using that function")
+
+###105
+func change_stage(stage_id:String):
+	if _initialized == true:
+		Globals.change_stage(stage_id)
+	else:
+		print("Please, initialize SDK first, before using that function")
+func add_stage_to_list(stage_path:String, stage_name:String):
+	if _initialized == true:
+		Globals.add_stage_to_list(stage_path, stage_name)
+	else:
+		print("Please, initialize SDK first, before using that function")
+func replace_stage_in_list(id:String, stage_path:String, stage_name:String):
+	if _initialized == true:
+		Globals.replace_stage_in_list(id, stage_path, stage_name)
+	else:
+		print("Please, initialize SDK first, before using that function")
+func set_stage_list(list:Dictionary):
+	if _initialized == true:
+		Globals.set_stage_list(list)
+	else:
+		print("Please, initialize SDK first, before using that function")
+func change_stage_to_next():
+	if _initialized == true:
+		Globals.change_stage_to_next()
+	else:
+		print("Please, initialize SDK first, before using that function")
+func set_stage_name(id:String, stage_name:String):
+	if _initialized == true:
+		Globals.set_stage_name(id, stage_name)
 	else:
 		print("Please, initialize SDK first, before using that function")
