@@ -1,7 +1,7 @@
 # Foxy Adventure
 <p align="center">
   <a href="https://newdev.web.app/games/foxy-adventure">
-    <img src="https://dl.new-dev.tk/img/games/foxy-adventure/bg.png" width="400" alt="Godot Engine logo">
+    <img src="https://newdev.web.app/dl/img/games/foxy-adventure/bg.png" width="400" alt="Godot Engine logo">
   </a>
 </p>
 
