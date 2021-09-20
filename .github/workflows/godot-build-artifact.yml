@@ -233,6 +233,7 @@ jobs:
           build-crashreport-windows-signed
   compile-godot-cpp-bindings-x11:
     runs-on: ubuntu-18.04
+    steps:
     - name: Set up Python (for SCons)
         uses: actions/setup-python@v2
         with:
@@ -254,6 +255,7 @@ jobs:
           path: bin/
   compile-godot-cpp-bindings-windows:
     runs-on: windows-latest
+    steps:
     - name: Set up Python (for SCons)
         uses: actions/setup-python@v2
         with:
@@ -273,6 +275,7 @@ jobs:
           path: bin/
   compile-godot-cpp-bindings-osx:
     runs-on: windows-latest
+    steps:
     - name: Set up Python (for SCons)
         uses: actions/setup-python@v2
         with:
@@ -294,6 +297,7 @@ jobs:
   compile-gdnative-x11:
     runs-on: ubuntu-18.04
     needs: [compile-godot-cpp-bindings-x11]
+    steps:
     - name: Set up Python (for SCons)
         uses: actions/setup-python@v2
         with:
@@ -316,6 +320,7 @@ jobs:
   compile-gdnative-windows:
     runs-on: windows-latest
     needs: [compile-godot-cpp-bindings-windows]
+    steps:
     - name: Set up Python (for SCons)
         uses: actions/setup-python@v2
         with:
@@ -334,8 +339,9 @@ jobs:
           name: build-godot-cpp-win
           path: bin/
   compile-gdnative-osx:
-  needs: [compile-godot-cpp-bindings-osx]
+    needs: [compile-godot-cpp-bindings-osx]
     runs-on: windows-latest
+    steps:
     - name: Set up Python (for SCons)
         uses: actions/setup-python@v2
         with:
