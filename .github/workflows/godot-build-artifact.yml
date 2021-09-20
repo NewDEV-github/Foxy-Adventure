@@ -91,6 +91,7 @@ jobs:
   godot-build:
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
+    needs: [compile-gdnative-x11, compile-gdnative-windows, compile-gdnative-osx]
     strategy:
       matrix:
         godot-version: [3.3.3]
@@ -247,12 +248,13 @@ jobs:
     - name: Compile
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
+        cd godot-cpp
         scons platform=linux generate_bindings=yes
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-x11
-        path: bin/
+        path: godot-cpp/bin/
   compile-godot-cpp-bindings-windows:
     runs-on: windows-latest
     steps:
@@ -267,12 +269,13 @@ jobs:
     - name: Compile
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
+        cd godot-cpp
         scons platform=windows generate_bindings=yes
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-win
-        path: bin/
+        path: godot-cpp/bin/
   compile-godot-cpp-bindings-osx:
     runs-on: windows-latest
     steps:
@@ -287,12 +290,13 @@ jobs:
     - name: Compile
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
+        cd godot-cpp
         scons platform=osx generate_bindings=yes
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-osx
-        path: bin/libgodot-cpp.osx.release.64.a
+        path: godot-cpp/bin/libgodot-cpp.osx.release.64.a
 
   compile-gdnative-x11:
     runs-on: ubuntu-18.04
