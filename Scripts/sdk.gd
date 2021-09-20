@@ -247,9 +247,6 @@ const SCENES = {
 	STAGE_1 = "res://Scenes/Stages/poziom_1.tscn",
 	STAGE_2 = "res://Scenes/Stages/poziom_2.tscn",
 	STAGE_3 = "res://Scenes/Stages/poziom_3.tscn",
-	STAGE_4 = "res://Scenes/Stages/poziom_4.tscn",
-	STAGE_5 = "res://Scenes/Stages/poziom_5.tscn",
-	STAGE_6 = "res://Scenes/Stages/poziom_6.tscn",
 	###104
 	MAIN_MENU = "res://Scenes/Menu.tscn",
 	GAME_OVER = "res://Scenes/GameOver.tscn",

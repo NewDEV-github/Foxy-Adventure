@@ -51,17 +51,11 @@ var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
 	"2": "res://Scenes/Stages/poziom_3.tscn",
-	"3": "res://Scenes/Stages/poziom_4.tscn",
-	"4": "res://Scenes/Stages/poziom_5.tscn",
-	"5": "res://Scenes/Stages/poziom_6.tscn",
 }
 var stage_names:Dictionary = {
 	"0": "Laboratory - 1",
 	"1": "Laboratory - 2",
 	"2": "Laboratory - 3",
-	"3": "Laboratory - 4",
-	"4": "Laboratory - 5",
-	"5": "Laboratory - 6",
 }
 func change_stage(stage_id:String):
 	BackgroundLoad.get_node("bgload").load_scene(stage_list[stage_id])
