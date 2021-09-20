@@ -235,9 +235,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: Set up Python (for SCons)
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.1'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
 
     - name: Install dependencies
       run: |
@@ -248,18 +248,18 @@ jobs:
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
         scons platform=linux generate_bindings=yes
-      - name: Upload a Build Artifact Linux
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: build-godot-cpp-x11
-          path: bin/
+    - name: Upload a Build Artifact Linux
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: build-godot-cpp-x11
+        path: bin/
   compile-godot-cpp-bindings-windows:
     runs-on: windows-latest
     steps:
     - name: Set up Python (for SCons)
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.1'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
 
     - name: Install dependencies
       run: |
@@ -268,18 +268,18 @@ jobs:
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
         scons platform=windows generate_bindings=yes
-      - name: Upload a Build Artifact Windows
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: build-godot-cpp-win
-          path: bin/
+    - name: Upload a Build Artifact Windows
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: build-godot-cpp-win
+        path: bin/
   compile-godot-cpp-bindings-osx:
     runs-on: windows-latest
     steps:
     - name: Set up Python (for SCons)
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.1'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
 
     - name: Install dependencies
       run: |
@@ -288,20 +288,20 @@ jobs:
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
         scons platform=osx generate_bindings=yes
-      - name: Upload a Build Artifact Windows
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: build-godot-cpp-osx
-          path: bin/libgodot-cpp.osx.release.64.a
+    - name: Upload a Build Artifact Windows
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: build-godot-cpp-osx
+        path: bin/libgodot-cpp.osx.release.64.a
 
   compile-gdnative-x11:
     runs-on: ubuntu-18.04
     needs: [compile-godot-cpp-bindings-x11]
     steps:
     - name: Set up Python (for SCons)
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.1'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
 
     - name: Install dependencies
       run: |
@@ -312,19 +312,19 @@ jobs:
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
         scons platform=linux generate_bindings=yes
-      - name: Upload a Build Artifact Linux
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: build-godot-cpp-x11
-          path: bin/
+    - name: Upload a Build Artifact Linux
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: build-godot-cpp-x11
+        path: bin/
   compile-gdnative-windows:
     runs-on: windows-latest
     needs: [compile-godot-cpp-bindings-windows]
     steps:
     - name: Set up Python (for SCons)
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.1'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
 
     - name: Install dependencies
       run: |
@@ -333,19 +333,19 @@ jobs:
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
         scons platform=windows generate_bindings=yes
-      - name: Upload a Build Artifact Windows
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: build-godot-cpp-win
-          path: bin/
+    - name: Upload a Build Artifact Windows
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: build-godot-cpp-win
+        path: bin/
   compile-gdnative-osx:
     needs: [compile-godot-cpp-bindings-osx]
     runs-on: windows-latest
     steps:
     - name: Set up Python (for SCons)
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.1'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
 
     - name: Install dependencies
       run: |
@@ -354,9 +354,9 @@ jobs:
       run: |
         git clone --recursive https://github.com/godotengine/godot-cpp
         scons platform=osx generate_bindings=yes
-      - name: Upload a Build Artifact Windows
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: build-godot-cpp-osx
-          path: bin/libgodot-cpp.osx.release.64.a
+    - name: Upload a Build Artifact Windows
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: build-godot-cpp-osx
+        path: bin/libgodot-cpp.osx.release.64.a
 
