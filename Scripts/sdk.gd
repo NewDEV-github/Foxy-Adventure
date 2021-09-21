@@ -148,18 +148,6 @@ func register_world(world_name:String, path:String):
 	else:
 		print("Please, initialize SDK first, before using that function")
 
-### Console
-
-func add_command(name, target, target_name=null):
-	if _initialized == true:
-		var file = File.new()
-		if file.file_exists("res://addons/quentincaffeino-console/src/Command/CommandService.gd"):
-			throw_warning("Console", "Registering command: " + name + "for target: " + target)
-	#		Console.addCommand(name, target, target_name)
-		else:
-			throw_error("Console", "That command - 'add_command' will work only when modification is runned inside Foxy Adventure!")
-	else:
-		print("Please, initialize SDK first, before using that function")
 ### Coins
 
 func add_coins(anmount):
@@ -213,35 +201,7 @@ func register_character(character_name:String, path:String):
 	if _initialized == true:
 		Globals.add_character(character_name, path)
 	else:
-		print("Please, initialize SDK first, before using that function")
-
-### Discord SDK
-
-func run_rpc(stage:String, character:String):
-	if _initialized == true:
-		DiscordSDK._ready()
-		DiscordSDK.run_rpc(false, stage, character)
-	else:
-		print("Please, initialize SDK first, before using that function")
-
-### Achievements
-
-func add_achievement(name, desc):
-	throw_warning("Achievements", "Registering achievement: " + name)
-	if _initialized == true:
-		Globals.all_achievements.append(name)
-		Globals.achievements_desc[name] = desc
-	else:
-		print("Please, initialize SDK first, before using that function")
-
-func add_achievement_requirement(name, variable, value):
-	throw_warning("Achievements", "Registering requirements for achievement: " + name)
-	if _initialized == true:
-		Globals.custom_achievements_requirements[name][variable] = value
-	else:
-		print("Please, initialize SDK first, before using that function")
-
-### Scenes
+		print("Please, initialize SDK first, before using that function")### Scenes
 const SCENES = {
 	###105
 	STAGE_1 = "res://Scenes/Stages/poziom_1.tscn",
@@ -252,13 +212,6 @@ const SCENES = {
 	GAME_OVER = "res://Scenes/GameOver.tscn",
 	CREDITS = "res://Scenes/Credits.tscn",
 }
-
-func change_scene_to(scene:String):
-	if _initialized == true:
-		get_tree().change_scene(scene)
-		throw_warning("Core", "Changing scene to: " + scene)
-	else:
-		print("Please, initialize SDK first, before using that function")
 
 ### Loading Screen
 
