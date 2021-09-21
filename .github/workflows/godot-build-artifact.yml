@@ -259,7 +259,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-x11
-        path: cpp
+        path: cpp/demo/bin/
   compile-gdnative-windows:
     runs-on: windows-latest
     steps:
@@ -286,7 +286,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-win
-        path: cpp
+        path: cpp/demo/bin/
   compile-gdnative-osx:
     runs-on: macos-10.15
     steps:
@@ -312,4 +312,4 @@ jobs:
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-osx
-        path: cpp
+        path: cpp/demo/bin/
