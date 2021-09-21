@@ -252,7 +252,7 @@ jobs:
         cd cpp
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
-        scons platform=linux generate_bindings=yes target=relase
+        scons platform=linux generate_bindings=yes target=release
         cd ../
         scons platform=linux target=release
     - name: Upload a Build Artifact Linux
