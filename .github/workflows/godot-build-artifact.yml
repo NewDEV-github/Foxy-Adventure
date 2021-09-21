@@ -277,7 +277,7 @@ jobs:
         name: build-godot-cpp-win
         path: godot-cpp/bin/
   compile-godot-cpp-bindings-osx:
-    runs-on: windows-latest
+    runs-on: macos-10.15
     steps:
     - name: Set up Python (for SCons)
       uses: actions/setup-python@v2
