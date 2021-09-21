@@ -3,7 +3,7 @@
 using namespace godot;
 
 void FoxyAdventureSDK::_register_methods() {
-    register_method("_process", &GDExample::_process);
+    register_method("_process", &FoxyAdventureSDK::_process);
 }
 
 FoxyAdventureSDK::FoxyAdventureSDK() {
