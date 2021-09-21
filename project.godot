@@ -94,10 +94,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/foxyadventure_modcreator/export.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "FoxyAdventureSDK",
-"language": "GDScript",
-"path": "res://Scripts/sdk.gd"
+"language": "NativeScript",
+"path": "res://bin/sdk/sdk.gdns"
 }, {
 "base": "",
 "class": "GitAPI",

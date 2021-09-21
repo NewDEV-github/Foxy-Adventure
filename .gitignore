@@ -3,7 +3,8 @@
 .mono/
 android/
 builds/
-
+cpp/godot-cpp/
+cpp/demo/bin/
 #cert files
 
 

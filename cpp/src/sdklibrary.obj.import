@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/sdklibrary.obj-4e83a8fa86b4106682da7393d9104f6b.mesh"
+
+[deps]
+
+files=[ "res://.import/sdklibrary.obj-4e83a8fa86b4106682da7393d9104f6b.mesh" ]
+
+source_file="res://cpp/src/sdklibrary.obj"
+dest_files=[ "res://.import/sdklibrary.obj-4e83a8fa86b4106682da7393d9104f6b.mesh", "res://.import/sdklibrary.obj-4e83a8fa86b4106682da7393d9104f6b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
