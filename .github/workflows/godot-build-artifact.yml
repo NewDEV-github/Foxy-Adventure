@@ -235,6 +235,7 @@ jobs:
   compile-gdnative-x11:
     runs-on: ubuntu-18.04
     steps:
+    - uses: actions/checkout@v1
     - name: Set up Python (for SCons)
       uses: actions/setup-python@v2
       with:
@@ -261,6 +262,7 @@ jobs:
   compile-gdnative-windows:
     runs-on: windows-latest
     steps:
+    - uses: actions/checkout@v1
     - name: Set up Python (for SCons)
       uses: actions/setup-python@v2
       with:
@@ -285,6 +287,7 @@ jobs:
   compile-gdnative-osx:
     runs-on: macos-10.15
     steps:
+    - uses: actions/checkout@v1
     - name: Set up Python (for SCons)
       uses: actions/setup-python@v2
       with:
