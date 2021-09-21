@@ -252,9 +252,9 @@ jobs:
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
-        scons platform=linux generate_bindings=yes target=release
+        scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
-        scons platform=linux target=release
+        scons platform=linux target=release -j $(nproc)
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -279,9 +279,9 @@ jobs:
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
-        scons platform=windows generate_bindings=yes target=release
+        scons platform=windows generate_bindings=yes target=release -j $env:NUMBER_OF_PROCESSORS
         cd ../
-        scons platform=windows target=release
+        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -305,9 +305,9 @@ jobs:
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
-        scons platform=osx generate_bindings=yes target=release
+        scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu)
         cd ../
-        scons platform=osx target=release
+        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu)
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
