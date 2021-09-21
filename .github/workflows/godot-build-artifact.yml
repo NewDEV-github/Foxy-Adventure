@@ -248,6 +248,7 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
+        mkdir -p demo/bin/
         cd cpp
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
@@ -274,6 +275,7 @@ jobs:
     - name: Compile
       run: |
         cd cpp
+        mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
         scons platform=windows generate_bindings=yes target=release
@@ -298,6 +300,7 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
+        mkdir -p demo/bin/
         cd cpp
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
