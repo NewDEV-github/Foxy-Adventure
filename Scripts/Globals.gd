@@ -6,8 +6,7 @@ var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
 var supported_sdk_versions = [
-	104,
-	105
+	106
 ]
 #var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""

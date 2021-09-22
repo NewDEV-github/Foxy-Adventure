@@ -95,11 +95,6 @@ _global_script_classes=[ {
 "path": "res://addons/foxyadventure_modcreator/export.gd"
 }, {
 "base": "",
-"class": "FoxyAdventureSDK",
-"language": "NativeScript",
-"path": "res://bin/sdk/sdk.gdns"
-}, {
-"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://bin/gitapi/git_api.gdns"
@@ -147,7 +142,6 @@ _global_script_class_icons={
 "FirestoreQuery": "",
 "FirestoreTask": "",
 "FoxyAdventureMODCfgExport": "",
-"FoxyAdventureSDK": "",
 "GitAPI": "",
 "RichTextMatrix": "",
 "RichTextPulse": "",
@@ -180,6 +174,7 @@ BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Screenshot="*res://Scripts/screenshot.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
 
 [debug]
 

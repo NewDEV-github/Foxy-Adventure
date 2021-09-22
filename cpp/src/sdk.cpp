@@ -59,133 +59,298 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
 void FoxyAdventureSDK::init_debugger() {
     godot::Godot::print("Initializing Foxy Adventure SDK Debugger...");
     debugger_initialized = true;
-     godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
+    godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
+}
+
+void FoxyAdventureSDK::throw_error(godot::String where, godot::String what) {
+    if (initialized == true) {
+        if (debugger_initialized == true) {
+            godot::String com = " - ";
+            godot::Godot::print(error_message + where + com + what);
+        }
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
+}
+void FoxyAdventureSDK::throw_warning(godot::String where, godot::String what) {
+    if (initialized == true) {
+        if (debugger_initialized == true) {
+            godot::String com = " - ";
+            godot::Godot::print(warning_message + where + com + what);
+        }
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
+}
+void FoxyAdventureSDK::throw_crash(godot::String where, godot::String what) {
+    if (initialized == true) {
+        if (debugger_initialized == true) {
+            godot::String com = " - ";
+            godot::Godot::print(crash_message + where + com + what);
+        }
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::get_changelog() {
+    if (initialized == true) {
 
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::get_version() {
+    if (initialized == true) {
 
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::get_version_string() {
+    if (initialized == true) {
 
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::add_lives(int lives) {
-    int current_lifes = get_node("/root/Globals")->get("lives");
-    get_node("/root/Globals")->set("lives", (current_lifes += lives));
+    if (initialized == true) {
+        int current_lifes = get_node(NodePath("/root/Globals"))->get("lives");
+        get_node(NodePath("/root/Globals"))->set("lives", (current_lifes += lives));
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::set_lives(int lifes) {
-    godot::Array args{};
-    args.push_back(lifes);
-    get_node("/root/Globals")->call("set_lifes", lifes);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(lifes);
+        get_node(NodePath("/root/Globals"))->call("set_lifes", lifes);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 godot::String FoxyAdventureSDK::get_lives() {
-    return get_node("/root/Globals")->get("lives");
+    if (initialized == true) {
+        return get_node(NodePath("/root/Globals"))->get("lives");
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::remove_lives(int lives) {
-    int current_lifes = get_node("/root/Globals")->get("lives");
-    get_node("/root/Globals")->set("lives", (current_lifes -= lives));
+    if (initialized == true) {
+        int current_lifes = get_node(NodePath("/root/Globals"))->get("lives");
+        get_node(NodePath("/root/Globals"))->set("lives", (current_lifes -= lives));
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::register_world(godot::String name, godot::String path) {
-    godot::Array args{};
-    args.push_back(name);
-    args.push_back(path);
-    get_node("/root/Globals")->call("add_world", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(name);
+        args.push_back(path);
+        get_node(NodePath("/root/Globals"))->call("add_world", args);
+        godot::String txt1 = "Worlds";
+        godot::String txt2 = "Registered world \"" + name + "\" at path: " + path;
+        FoxyAdventureSDK::throw_warning(txt1, txt2);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::add_coins(int coins) {
-    godot::Array args{};
-    args.push_back(coins);
-    get_node("/root/Globals")->call("add_coin", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(coins);
+        get_node(NodePath("/root/Globals"))->call("add_coin", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::set_coins(int coins) {
-    godot::Array args{};
-    args.push_back(coins);
-    get_node("/root/Globals")->call("set_coins", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(coins);
+        get_node(NodePath("/root/Globals"))->call("set_coins", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 godot::String FoxyAdventureSDK::get_coins() {
-    return get_node("root/Globals")->get("coins");
+    if (initialized == true) {
+        return get_node(NodePath("/root/Globals"))->get("coins");
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::remove_coins(int coins) {
-    godot::Array args{};
-    args.push_back(coins);
-    get_node("/root/Globals")->call("remove_coins", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(coins);
+        get_node(NodePath("/root/Globals"))->call("remove_coins", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 godot::String FoxyAdventureSDK::get_current_character_path() {
-    return get_node("/root/Globals")->get("character_path");
+    if (initialized == true) {
+        return get_node(NodePath("/root/Globals"))->get("character_path");
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::set_current_character_path(godot::String path) {
-    godot::Array args{};
-    args.push_back(path);
-    get_node("/root/Globals")->set("character_path", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(path);
+        get_node(NodePath("/root/Globals"))->set("character_path", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::register_character(godot::String name, godot::String path) {
-    godot::Array args{};
-    args.push_back(name);
-    args.push_back(path);
-    get_node("/root/Globals")->call("add_character", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(name);
+        args.push_back(path);
+        get_node(NodePath("/root/Globals"))->call("add_character", args);
+        godot::String txt1 = "Characters";
+        godot::String txt2 = "Registered character \"" + name + "\" at path: " + path;
+        FoxyAdventureSDK::throw_warning(txt1, txt2);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::add_hint_on_loading_screen(godot::String hint) {
-    godot::Array args{};
-    args.push_back(hint);
-    get_node("/root/BackgroundLoad/bgload")->call("add_hint", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(hint);
+        get_node(NodePath("/root/BackgroundLoad/bgload"))->call("add_hint", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::set_version_label_menu_bbcode_text(godot::String text) {
-    godot::Array args{};
-    args.push_back(text);
-    get_node("/root/Globals")->set("game_version_text", args);
-    get_node("/root/Globals")->call("construct_game_version");
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(text);
+        get_node(NodePath("/root/Globals"))->set("game_version_text", args);
+        get_node(NodePath("/root/Globals"))->call("construct_game_version");
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::add_custom_menu_bg(godot::String path)  {
-    godot::Array args{};
-    args.push_back(path);
-    get_node("/root/Globals")->set("custom_menu_bg", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(path);
+        get_node(NodePath("/root/Globals"))->set("custom_menu_bg", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::add_custom_menu_audio(godot::String path) {
-    godot::Array args{};
-    args.push_back(path);
-    get_node("/root/Globals")->set("custom_menu_audio", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(path);
+        get_node(NodePath("/root/Globals"))->set("custom_menu_audio", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::change_stage(godot::String stage_id) {
-    godot::Array args{};
-    args.push_back(stage_id);
-    get_node("/root/Globals")->call("change_stage", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(stage_id);
+        get_node(NodePath("/root/Globals"))->call("change_stage", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::add_stage_to_list(godot::String stage_path, godot::String stage_name) {
-    godot::Array args{};
-    args.push_back(stage_path);
-    args.push_back(stage_name);
-    get_node("/root/Globals")->call("add_stage_to_list", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(stage_path);
+        args.push_back(stage_name);
+        get_node(NodePath("/root/Globals"))->call("add_stage_to_list", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 
 }
 void FoxyAdventureSDK::replace_stage_in_list(godot::String stage_id, godot::String stage_path, godot::String stage_name) {
-    godot::Array args{};
-    args.push_back(stage_id);
-    args.push_back(stage_path);
-    args.push_back(stage_name);
-    get_node("/root/Globals")->call("replace_stage_in_list", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(stage_id);
+        args.push_back(stage_path);
+        args.push_back(stage_name);
+        get_node(NodePath("/root/Globals"))->call("replace_stage_in_list", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::set_stage_list(godot::Dictionary list) {
-    godot::Array args{};
-    args.push_back(list);
-    get_node("/root/Globals")->call("set_stage_list", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(list);
+        get_node(NodePath("/root/Globals"))->call("set_stage_list", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::change_stage_to_next() {
-    get_node("/root/Globals")->call("change_stage_to_next");
+    if (initialized == true) {
+        get_node(NodePath("/root/Globals"))->call("change_stage_to_next");
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }
 void FoxyAdventureSDK::set_stage_name(godot::String stage_id, godot::String stage_name) {
-    godot::Array args{};
-    args.push_back(stage_id);
-    args.push_back(stage_name);
-    get_node("/root/Globals")->call("set_stage_name", args);
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(stage_id);
+        args.push_back(stage_name);
+        get_node(NodePath("/root/Globals"))->call("set_stage_name", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
 }

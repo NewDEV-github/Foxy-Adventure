@@ -15,16 +15,17 @@ private:
     bool initialized = false;
     bool debugger_initialized = false;
     godot::String dt = "FoxyAdventure.SDK";
-    godot::String error_message = "[%s.Debugger] Error at: " + dt;
-    godot::String crash_message = "[%s.Debugger] Crash at: " +dt;
-    godot::String warning_message = "[%s.Debugger] Warning at: " + dt;
+    godot::String error_message = "[" + dt + ".Debugger] Error at: ";
+    godot::String crash_message = "[" + dt + ".Debugger] Crash at: ";
+    godot::String warning_message = "[" + dt + ".Debugger] Warning at: ";
     void init_debugger();
     void throw_error(godot::String where, godot::String what);
     void throw_warning(godot::String where, godot::String what);
     void throw_crash(godot::String where, godot::String what);
 
 public:
-    enum INIT_FLAGS {INIT_NORMAL = 0, INIT_DEBUG = 1};
+    const int INIT_FLAG_NORMAL = 0;
+    const int INIT_FLAG_DEBUG = 1;
     static void _register_methods();
 
     FoxyAdventureSDK();

@@ -5,4 +5,3 @@
 [resource]
 class_name = "FoxyAdventureSDK"
 library = ExtResource( 1 )
-script_class_name = "FoxyAdventureSDK"
