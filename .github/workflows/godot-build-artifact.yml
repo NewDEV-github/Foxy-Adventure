@@ -100,8 +100,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2.3.4
       # Runs a set of commands using the runners shell
+      - uses: actions/download-artifact@v2
+        with:
+          path: cpp/demo
       - name: Build everything
         run: |
+          cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-osx $GITHUB_WORKSPACE/cpp/demo/bin
+          cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-win $GITHUB_WORKSPACE/cpp/demo/bin
+          cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-x11 $GITHUB_WORKSPACE/cpp/demo/bin
           sudo chmod +x ./build_game.sh
           ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable"
       - name: Upload a Build Artifact x11-64
