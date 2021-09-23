@@ -254,9 +254,9 @@ jobs:
         cd godot-cpp
         scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
-        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core
-        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Version target_path_code=src_version/
-        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Debugger target_path_code=src_debugger/
+        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core.dll
+        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Version.dll target_path_code=src_version/
+        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Debugger.dll target_path_code=src_debugger/
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -283,9 +283,9 @@ jobs:
         cd godot-cpp
         scons platform=windows generate_bindings=yes target=release -j $env:NUMBER_OF_PROCESSORS
         cd ../
-        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Core
-        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Version target_path_code=src_version/
-        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Debuggger target_path_code=src_debugger/
+        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Core.so
+        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Version.so target_path_code=src_version/
+        scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Debuggger.so target_path_code=src_debugger/
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -311,9 +311,9 @@ jobs:
         cd godot-cpp
         scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu)
         cd ../
-        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core
-        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Version target_path_code=src_version/
-        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Debuggger target_path_code=src_debugger/
+        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core.dylib
+        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Version.dylib target_path_code=src_version/
+        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Debuggger.dylib target_path_code=src_debugger/
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
