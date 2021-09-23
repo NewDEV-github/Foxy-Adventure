@@ -11,6 +11,9 @@ class FoxyAdventureSDK : public Node {
     GODOT_CLASS(FoxyAdventureSDK, Node)
 
 private:
+    godot::String changelog = "Moved to C++";
+    godot::String version_string = "1.1.0";
+    int version = 110;
     float time_passed;
     bool initialized = false;
     bool debugger_initialized = false;
@@ -33,9 +36,9 @@ public:
 
     void _init(); // our initializer called by Godot
     void init_sdk(int init_flag);
-    void get_changelog();
-    void get_version();
-    void get_version_string();
+    godot::String get_changelog();
+    int get_version();
+    godot::String get_version_string();
 
     void add_lives(int lives);
     void set_lives(int lives);

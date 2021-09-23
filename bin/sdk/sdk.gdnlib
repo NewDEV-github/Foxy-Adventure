@@ -7,7 +7,9 @@ reloadable=true
 
 [entry]
 
-Windows.64="res://cpp/demo/bin/win64/libgdexample.dll"
+Windows.64="res://cpp/demo/bin/win64/FoxyAdventureSDK.Core.dll"
+X11.64="res://cpp/demo/bin/x11/libFoxyAdventureSDK.Core.so"
+OSX.64="res://cpp/demo/bin/osx/libFoxyAdventureSDK.Core.dylib"
 
 [dependencies]
 

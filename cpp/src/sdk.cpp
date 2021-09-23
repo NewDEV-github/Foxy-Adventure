@@ -31,11 +31,9 @@ void FoxyAdventureSDK::_register_methods() {
     register_method("set_stage_name", &FoxyAdventureSDK::set_stage_name);
 
 }
-
 FoxyAdventureSDK::FoxyAdventureSDK() {
 
 }
-
 FoxyAdventureSDK::~FoxyAdventureSDK() {
     // add your cleanup here
 }
@@ -55,13 +53,11 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
         FoxyAdventureSDK::init_debugger();
     }
 }
-
 void FoxyAdventureSDK::init_debugger() {
     godot::Godot::print("Initializing Foxy Adventure SDK Debugger...");
     debugger_initialized = true;
     godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
 }
-
 void FoxyAdventureSDK::throw_error(godot::String where, godot::String what) {
     if (initialized == true) {
         if (debugger_initialized == true) {
@@ -95,25 +91,25 @@ void FoxyAdventureSDK::throw_crash(godot::String where, godot::String what) {
         godot::Godot::print("SDK not initialized - function won't work");
     }
 }
-void FoxyAdventureSDK::get_changelog() {
+godot::String FoxyAdventureSDK::get_changelog() {
     if (initialized == true) {
-
+        return changelog;
     }
     else {
         godot::Godot::print("SDK not initialized - function won't work");
     }
 }
-void FoxyAdventureSDK::get_version() {
+int FoxyAdventureSDK::get_version() {
     if (initialized == true) {
-
+        return version;
     }
     else {
         godot::Godot::print("SDK not initialized - function won't work");
     }
 }
-void FoxyAdventureSDK::get_version_string() {
+godot::String FoxyAdventureSDK::get_version_string() {
     if (initialized == true) {
-
+        return version_string;
     }
     else {
         godot::Godot::print("SDK not initialized - function won't work");
