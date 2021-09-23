@@ -114,6 +114,7 @@ jobs:
           path: cpp/demo
       - name: Build everything
         run: |
+          ls -R
           cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-osx $GITHUB_WORKSPACE/cpp/demo/bin
           cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-win $GITHUB_WORKSPACE/cpp/demo/bin
           cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-x11 $GITHUB_WORKSPACE/cpp/demo/bin
