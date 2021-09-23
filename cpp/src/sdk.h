@@ -3,12 +3,12 @@
 
 #include <string>
 #include <Godot.hpp>
-#include <Sprite.hpp>
+#include <Node.hpp>
 
 namespace godot {
 
-class FoxyAdventureSDK : public Sprite {
-    GODOT_CLASS(FoxyAdventureSDK, Sprite)
+class FoxyAdventureSDK : public Node {
+    GODOT_CLASS(FoxyAdventureSDK, Node)
 
 private:
     float time_passed;
