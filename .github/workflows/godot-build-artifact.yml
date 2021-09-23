@@ -103,21 +103,17 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build-godot-cpp-osx
-          path: cpp/demo
+          path: cpp/demo/bin
       - uses: actions/download-artifact@v2
         with:
           name: build-godot-cpp-win
-          path: cpp/demo
+          path: cpp/demo/bin
       - uses: actions/download-artifact@v2
         with:
           name: build-godot-cpp-x11
-          path: cpp/demo
+          path: cpp/demo/bin
       - name: Build everything
         run: |
-          ls -R
-          cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-osx $GITHUB_WORKSPACE/cpp/demo/bin
-          cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-win $GITHUB_WORKSPACE/cpp/demo/bin
-          cp -r $GITHUB_WORKSPACE/cpp/demo/build-godot-cpp-x11 $GITHUB_WORKSPACE/cpp/demo/bin
           sudo chmod +x ./build_game.sh
           ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable"
       - name: Upload a Build Artifact x11-64
