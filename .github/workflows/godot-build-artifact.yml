@@ -254,7 +254,7 @@ jobs:
         cd godot-cpp
         scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
-        scons platform=linux target=release -j $(nproc)
+        scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -279,7 +279,7 @@ jobs:
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
-        scons platform=windows generate_bindings=yes target=release -j $env:NUMBER_OF_PROCESSORS
+        scons platform=windows generate_bindings=yes target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Core
         cd ../
         scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS
     - name: Upload a Build Artifact Windows
@@ -305,7 +305,7 @@ jobs:
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp
         cd godot-cpp
-        scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu)
+        scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core
         cd ../
         scons platform=osx target=release -j $(sysctl -n hw.logicalcpu)
     - name: Upload a Build Artifact Windows
