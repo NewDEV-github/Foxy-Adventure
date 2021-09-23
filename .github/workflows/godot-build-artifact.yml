@@ -102,6 +102,15 @@ jobs:
       # Runs a set of commands using the runners shell
       - uses: actions/download-artifact@v2
         with:
+          name: build-godot-cpp-osx
+          path: cpp/demo
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-godot-cpp-win
+          path: cpp/demo
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-godot-cpp-x11
           path: cpp/demo
       - name: Build everything
         run: |
