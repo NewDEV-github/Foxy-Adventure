@@ -11,10 +11,6 @@ var _initialized = false
 const debug_text = "FoxyAdventure.SDK"
 var _debugger_initialized = false
 var version_script
-enum INIT_FLAGS {
-	INIT_NORMAL = 0,
-	INIT_DEBUG = 1
-}
 func get_changelog():
 	if _initialized == true:
 		return version_script.changelog
@@ -31,7 +27,7 @@ func get_version_string():
 	else:
 		print("Please, initialize SDK first, before using that function")
 var ret_init_flag = 0
-func init(init_flag:int):
+func init_sdk(init_flag:int):
 	print("[%s.Core] Initializing Core..."  % [debug_text])
 	match init_flag:
 		0:
