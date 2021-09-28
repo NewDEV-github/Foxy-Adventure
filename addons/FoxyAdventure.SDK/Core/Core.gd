@@ -1,5 +1,4 @@
 extends Node
-class_name FoxyAdventureSDK
 ###104
 var Lifes
 var Coins
