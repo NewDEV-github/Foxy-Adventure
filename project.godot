@@ -42,6 +42,7 @@ Globals="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd"
 ErrorCodeServer="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/ErrorCodeServer.gd"
 DiscordSDK="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/DiscordSDK.gd"
 BackgroundLoad="*res://addons/FoxyAdventure.SDK/Autoloads/Scenes/background_load.tscn"
+FoxyAdventureSDK="*res://addons/FoxyAdventure.SDK/Core/Core.gd"
 
 [editor]
 
