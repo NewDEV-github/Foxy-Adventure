@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/options.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/controls.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TagProcessingLabel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/controls.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
 
 [node name="Control" type="Panel"]
@@ -15,6 +16,7 @@ __meta__ = {
 }
 
 [node name="Modifications" type="Tabs" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -82,6 +84,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -353,7 +356,6 @@ items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", 
 selected = 1
 
 [node name="Controls" type="Tabs" parent="tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -361,8 +363,67 @@ margin_top = 34.0
 margin_right = -5.0
 margin_bottom = -5.0
 drag_to_rearrange_enabled = true
+script = ExtResource( 3 )
 
-[node name="controls_ui" parent="tabs/Controls" instance=ExtResource( 3 )]
+[node name="TagProcessedLabel" parent="tabs/Controls" instance=ExtResource( 2 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 83.0
+margin_bottom = -103.0
+theme = ExtResource( 5 )
+original_text = "[color=white][center]
+Move up: {D_UP}
+Move down: {D_DOWN}
+Move right: {D_RIGHT}
+Move left: {D_LEFT}
+
+Jump: {CONFIRM}
+Pause: {SKIP}
+[/center][/color]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tabs/Controls"]
+anchor_right = 1.0
+margin_bottom = 40.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NIN_Button" type="Button" parent="tabs/Controls/HBoxContainer"]
+margin_left = 373.0
+margin_right = 449.0
+margin_bottom = 40.0
+text = "Nintendo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PS_Button" type="Button" parent="tabs/Controls/HBoxContainer"]
+margin_left = 453.0
+margin_right = 547.0
+margin_bottom = 40.0
+text = "PlayStation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XBOX_Button" type="Button" parent="tabs/Controls/HBoxContainer"]
+margin_left = 551.0
+margin_right = 604.0
+margin_bottom = 40.0
+text = "XBOX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PC_Button" type="Button" parent="tabs/Controls/HBoxContainer"]
+margin_left = 608.0
+margin_right = 640.0
+margin_bottom = 40.0
+text = "PC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Discord" type="Tabs" parent="tabs"]
 visible = false
@@ -414,5 +475,9 @@ __meta__ = {
 [connection signal="toggled" from="tabs/Audio/Options/Audio/Music/Music_on" to="." method="_on_Music_on_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/SFX/SFX_slider" to="." method="_on_SFX_slider_value_changed"]
 [connection signal="toggled" from="tabs/Audio/Options/Audio/SFX/SFX_on" to="." method="_on_SFX_on_toggled"]
+[connection signal="pressed" from="tabs/Controls/HBoxContainer/NIN_Button" to="tabs/Controls" method="_on_NIN_Button_pressed"]
+[connection signal="pressed" from="tabs/Controls/HBoxContainer/PS_Button" to="tabs/Controls" method="_on_PS_Button_pressed"]
+[connection signal="pressed" from="tabs/Controls/HBoxContainer/XBOX_Button" to="tabs/Controls" method="_on_XBOX_Button_pressed"]
+[connection signal="pressed" from="tabs/Controls/HBoxContainer/PC_Button" to="tabs/Controls" method="_on_PC_Button_pressed"]
 [connection signal="toggled" from="tabs/Discord/DSDK" to="." method="_on_DSDK_toggled"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]

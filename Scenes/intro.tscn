@@ -124,8 +124,8 @@ margin_top = -48.0
 margin_right = 512.0
 margin_bottom = 59.0
 theme = ExtResource( 2 )
-custom_fonts/normal_font = ExtResource( 3 )
 custom_constants/table_hseparation = -1
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center][color=red]WARNING[/color][color=white]
 This game uses auto save
