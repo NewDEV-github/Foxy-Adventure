@@ -262,7 +262,7 @@ jobs:
       run: |
         cd cpp
         mkdir -p demo/bin/
-        git clone --recursive https://github.com/godotengine/godot-cpp
+        git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
         scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
@@ -289,7 +289,7 @@ jobs:
       run: |
         cd cpp
         mkdir -p demo/bin/
-        git clone --recursive https://github.com/godotengine/godot-cpp
+        git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
         scons platform=windows generate_bindings=yes target=release -j $env:NUMBER_OF_PROCESSORS
         cd ../
@@ -315,7 +315,7 @@ jobs:
       run: |
         cd cpp
         mkdir -p demo/bin/
-        git clone --recursive https://github.com/godotengine/godot-cpp
+        git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
         scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu)
         cd ../
