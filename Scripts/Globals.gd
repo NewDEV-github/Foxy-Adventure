@@ -95,7 +95,7 @@ var lives = 5
 var new_characters:Dictionary = {
 	"Tails": "res://Scenes/Characters/Tails.tscn",
 }
-var game_version_text = "Support: support@new-dev.ml\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
+var game_version_text = "Support: https://newdev.web.app/contact\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 signal game_version_text_changed(text)
 func construct_game_version():
 	emit_signal("game_version_text_changed", game_version_text)

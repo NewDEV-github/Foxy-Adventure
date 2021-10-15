@@ -134,7 +134,7 @@ func _on_Fullscreen_toggled(button_pressed):
 
 
 func _on_SAVE_pressed():
-	Globals.apply_custom_resolution()
+#	Globals.apply_custom_resolution()
 	set_process(true)
 
 

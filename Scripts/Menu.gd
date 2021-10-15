@@ -172,7 +172,7 @@ func _on_CreateNewSave_pressed() -> void:
 		Globals.current_save_name = $NewSave/VBoxContainer/LineEdit.text
 	else:
 		print("Enter the save name!")
-	$SelectWorld.popup_centered()
+#	$SelectWorld.popup_centered()
 	$NewSave.hide()
 	#Globals.save_level(0, $NewSave/LineEdit.text)
 
