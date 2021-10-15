@@ -100,6 +100,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2.3.4
       # Runs a set of commands using the runners shell
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-godot-cpp-osx
+          path: cpp/demo/bin
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-godot-cpp-win
+          path: cpp/demo/bin
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-godot-cpp-x11
+          path: cpp/demo/bin
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
