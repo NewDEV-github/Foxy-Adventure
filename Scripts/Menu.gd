@@ -170,11 +170,10 @@ func _on_LoadGame_pressed() -> void:
 func _on_CreateNewSave_pressed() -> void:
 	if not $NewSave/VBoxContainer/LineEdit.text == "":
 		Globals.current_save_name = $NewSave/VBoxContainer/LineEdit.text
+		$NewSave.hide()
+		show_submenu_page($CharacterSelect)
 	else:
 		print("Enter the save name!")
-#	$SelectWorld.popup_centered()
-	$NewSave.hide()
-	#Globals.save_level(0, $NewSave/LineEdit.text)
 
 
 func _on_SaveLoader_no_saves_found() -> void:
