@@ -29,12 +29,13 @@ var characters = {
 	"Hencko": "res://characters/hencko.tscn",
 	"Tuzi": "res://characters/tuzi.tscn",
 }
+func _ready():
+	init_mod()
 func init_mod():
-	sdk = FoxyAdventureSDK.new()
-	sdk.init(sdk.INIT_FLAGS.INIT_DEBUG)
+	FoxyAdventureSDK.init_sdk(1)
 #	print(str(sdk.get_lifes()))
 	for i in characters:
-		sdk.register_character(i, characters[i])
+		FoxyAdventureSDK.register_character(i, characters[i])
 #	sdk.run_rpc("Testing modification RPC Support", "MOD SUPPORT")
 
 """For more examples, please, take a look at: https://github.com/NewDEV-github/Foxy-Adventure/wiki/SDK"""

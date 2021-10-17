@@ -8,28 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Reference",
-"class": "Discord",
-"language": "GDScript",
-"path": "res://addons/FoxyAdventure.SDK/Autoloads/Scripts/discord.gd"
-}, {
-"base": "EditorExportPlugin",
-"class": "FoxyAdventureMODCfgExport",
-"language": "GDScript",
-"path": "res://addons/FoxyAdventure.SDK/Core/export.gd"
-}, {
-"base": "Node",
-"class": "FoxyAdventureSDK",
-"language": "GDScript",
-"path": "res://addons/FoxyAdventure.SDK/Core/Core.gd"
-} ]
-_global_script_class_icons={
-"Discord": "",
-"FoxyAdventureMODCfgExport": "",
-"FoxyAdventureSDK": ""
-}
-
 [application]
 
 config/name="Foxy- Adventure-SDK-Example"
@@ -38,11 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/Globals.gd"
-ErrorCodeServer="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/ErrorCodeServer.gd"
-DiscordSDK="*res://addons/FoxyAdventure.SDK/Autoloads/Scripts/DiscordSDK.gd"
-BackgroundLoad="*res://addons/FoxyAdventure.SDK/Autoloads/Scenes/background_load.tscn"
-FoxyAdventureSDK="*res://addons/FoxyAdventure.SDK/Core/Core.gd"
+FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
 
 [editor]
 
@@ -51,7 +25,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/FoxyAdventure.SDK/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
@@ -80,7 +54,7 @@ texture={
 
 jmp={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

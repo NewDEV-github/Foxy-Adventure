@@ -1,0 +1,18 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+OSX.64="res://bin/sdk/lib/osx/libFoxyAdventureSDK.Core.dylib"
+Windows.64="res://bin/sdk/lib/win/FoxyAdventureSDK.Core.dll"
+X11.64="res://bin/sdk/lib/x11/libFoxyAdventureSDK.Core.so"
+
+[dependencies]
+
+OSX.64=[  ]
+Windows.64=[  ]
+X11.64=[  ]
