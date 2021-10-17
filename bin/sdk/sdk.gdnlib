@@ -7,10 +7,12 @@ reloadable=true
 
 [entry]
 
-Windows.64="res://cpp/demo/bin/win64/FoxyAdventureSDK.Core.dll"
-X11.64="res://cpp/demo/bin/x11/libFoxyAdventureSDK.Core.so"
-OSX.64="res://cpp/demo/bin/osx/libFoxyAdventureSDK.Core.dylib"
+OSX.64="res://bin/sdk/lib/osx/libFoxyAdventureSDK.Core.dylib"
+Windows.64="res://bin/sdk/lib/win/FoxyAdventureSDK.Core.dll"
+X11.64="res://bin/sdk/lib/x11/libFoxyAdventureSDK.Core.so"
 
 [dependencies]
 
+OSX.64=[  ]
 Windows.64=[  ]
+X11.64=[  ]
