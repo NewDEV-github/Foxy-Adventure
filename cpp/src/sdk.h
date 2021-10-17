@@ -22,6 +22,9 @@ private:
     godot::String crash_message = "[" + dt + ".Debugger] Crash at: ";
     godot::String warning_message = "[" + dt + ".Debugger] Warning at: ";
     void init_debugger();
+    void deinit_debugger();
+    bool contains(C&& c, T e);
+    void check(C&& c, T e);
     void throw_error(godot::String where, godot::String what);
     void throw_warning(godot::String where, godot::String what);
     void throw_crash(godot::String where, godot::String what);
@@ -36,6 +39,7 @@ public:
 
     void _init(); // our initializer called by Godot
     void init_sdk(int init_flag);
+    void deinit_sdk();
     godot::String get_changelog();
     int get_version();
     godot::String get_version_string();

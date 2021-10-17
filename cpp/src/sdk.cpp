@@ -1,9 +1,15 @@
 #include "sdk.h"
+#include <algorithm>
+#include <array>
+#include <string>
+#include <vector>
+#include <iostream>
 
 using namespace godot;
 
 void FoxyAdventureSDK::_register_methods() {
     register_method("init_sdk", &FoxyAdventureSDK::init_sdk);
+    register_method("deinit_sdk", &FoxyAdventureSDK::deinit_sdk);
     register_method("get_changelog", &FoxyAdventureSDK::get_changelog);
     register_method("get_version", &FoxyAdventureSDK::get_version);
     register_method("get_version_string", &FoxyAdventureSDK::get_version_string);
@@ -31,18 +37,49 @@ void FoxyAdventureSDK::_register_methods() {
     register_method("set_stage_name", &FoxyAdventureSDK::set_stage_name);
 
 }
+
+template<typename C, typename T>
+bool FoxyAdventureSDK::contains(C&& c, T e) { 
+    return std::find(std::begin(c), std::end(c), e) != std::end(c);
+};
+
+template<typename C, typename T>
+void FoxyAdventureSDK::check(C&& c, T e) {
+    return FoxyAdventureSDK::contains(c,e)
+}
+
 FoxyAdventureSDK::FoxyAdventureSDK() {
 
 }
 FoxyAdventureSDK::~FoxyAdventureSDK() {
     // add your cleanup here
 }
+
+void FoxyAdventureSDK::deinit_sdk() {
+    godot::Godot::print("De-initializing Foxy Adventure SDK...");
+    initialized = false;
+    godot::Godot::print("Foxy Adventure SDK de-initialized!");
+    if (debugger_initialized == true) {
+        FoxyAdventureSDK::deinit_debuger();
+    }
+}
+
+void FoxyAdventureSDK::deinit_debugger() {
+    godot::Godot::print("De-initializing Foxy Adventure SDK Debugger...");
+    debugger_initialized = false;
+    godot::Godot::print("Foxy Adventure SDK Debugger de-initialized!");
+}
 void FoxyAdventureSDK::_init() {
+    godot::Godot::print("Loaded Foxy Adventure SDK, version: " + version + ", " + version_string);
     initialized = false;
     debugger_initialized = false;
 }
 void FoxyAdventureSDK::init_sdk(int init_flag) {
+    godot::Array supported_versions{};
+    supported_versions = get_node(NodePath("/root/Globals"))->get("supported_sdk_versions")
     godot::Godot::print("Initializing Foxy Adventure SDK...");
+    godot::Godot::print('Checking for SDK support...');
+    std::cout << FoxyAdventureSDK::contains(supported_versions, FoxyAdventureSDK::get_version());
     if (init_flag == 0) {
         initialized = true;
         godot::Godot::print("Foxy Adventure SDK Initialized!");
