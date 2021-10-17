@@ -11,6 +11,10 @@ class FoxyAdventureSDK : public Node {
     GODOT_CLASS(FoxyAdventureSDK, Node)
 
 private:
+    template<typename C, typename T>
+    bool contains(C&& c, T e);
+    template<typename C, typename T>
+    void check(C&& c, T e);
     godot::String changelog = "Moved to C++";
     godot::String version_string = "1.1.0";
     int version = 110;
@@ -23,8 +27,6 @@ private:
     godot::String warning_message = "[" + dt + ".Debugger] Warning at: ";
     void init_debugger();
     void deinit_debugger();
-    bool contains(C&& c, T e);
-    void check(C&& c, T e);
     void throw_error(godot::String where, godot::String what);
     void throw_warning(godot::String where, godot::String what);
     void throw_crash(godot::String where, godot::String what);
