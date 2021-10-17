@@ -28,6 +28,7 @@ func _on_Generate_pressed():
 		cfg.set_value("mod_info", "pck_files", $VBoxContainer/pck_files.text)
 	cfg.set_value("mod_info", 'enabled', str(false))
 	cfg.set_value("mod_info", "main_script_file", $VBoxContainer/main_script_file.text)
+#	cfg.set_value("sdk_info", "version", FoxyAdventureSDK.get_version())
 	print("Generating " + "res://" + mod_name.to_lower().replace(' ', '_') + ".cfg" + "...")
 	cfg.save("res://" + mod_name.to_lower().replace(' ', '_') + ".cfg")
 	var file = File.new()
