@@ -45,8 +45,8 @@ bool contains(C&& c, T e) {
 
 template<typename C, typename T>
 void check(C&& c, T e) {
-    return contains(c,e)
-}
+    return contains(c,e);
+};
 
 FoxyAdventureSDK::FoxyAdventureSDK() {
 
