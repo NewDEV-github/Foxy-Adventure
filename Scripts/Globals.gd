@@ -6,7 +6,8 @@ var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
 var supported_sdk_versions = [
-	106
+	106,
+	110
 ]
 #var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""
@@ -110,6 +111,14 @@ func _init():
 	if file.file_exists("user://achievements.cfg"):
 		load_achivements()
 	install_base_path = OS.get_executable_path().get_base_dir() + "/"
+	
+	var f = File.new()
+	f.open("user://sdk_data", File.WRITE)
+	for i in supported_sdk_versions:
+		var line = str(i)
+		f.store_line(line)
+	f.close()
+	
 	print("Installed at: " + install_base_path)
 	var cfg = ConfigFile.new()
 	var dir = Directory.new()
@@ -119,11 +128,12 @@ func _init():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+#				print("Found directory: " + file_name)
+				pass
 			else:
 				if file_name.get_extension() == "translation":
 					var tra = load("res://translations/" + file_name.get_file())
-					print("Found translation: " + "res://translations/" + file_name.get_file())
+#					print("Found translation: " + "res://translations/" + file_name.get_file())
 					TranslationServer.add_translation(tra)
 			file_name = dir.get_next()
 	print(arguments)

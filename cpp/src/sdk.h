@@ -1,9 +1,19 @@
 #ifndef FOXYADVENTURESDK_H
 #define FOXYADVENTURESDK_H
 
+#include <algorithm>
+#include <array>
 #include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 #include <Godot.hpp>
 #include <Node.hpp>
+#include <OS.hpp>
+#include <Engine.hpp>
+// #include "reference.h"
 
 namespace godot {
 
@@ -11,10 +21,9 @@ class FoxyAdventureSDK : public Node {
     GODOT_CLASS(FoxyAdventureSDK, Node)
 
 private:
-    template<typename C, typename T>
-    bool contains(C&& c, T e);
-    template<typename C, typename T>
-    void check(C&& c, T e);
+    template<typename T>
+    std::string itos(T i);
+
     godot::String changelog = "Moved to C++";
     godot::String version_string = "1.1.0";
     int version = 110;
