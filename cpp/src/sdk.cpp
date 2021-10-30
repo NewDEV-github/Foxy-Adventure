@@ -150,28 +150,13 @@ void FoxyAdventureSDK::throw_crash(godot::String where, godot::String what) {
     }
 }
 godot::String FoxyAdventureSDK::get_changelog() {
-    if (initialized == true) {
-        return changelog;
-    }
-    else {
-        godot::Godot::print("SDK not initialized - function won't work");
-    }
+    return changelog;
 }
 int FoxyAdventureSDK::get_version() {
-    if (initialized == true) {
-        return version;
-    }
-    else {
-        godot::Godot::print("SDK not initialized - function won't work");
-    }
+    return version;
 }
 godot::String FoxyAdventureSDK::get_version_string() {
-    if (initialized == true) {
-        return version_string;
-    }
-    else {
-        godot::Godot::print("SDK not initialized - function won't work");
-    }
+    return version_string;
 }
 void FoxyAdventureSDK::add_lives(int lives) {
     if (initialized == true) {
