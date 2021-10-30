@@ -1,8 +1,10 @@
 extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Tween.interpolate_property($spectrum, "linear_color", Color.red, Color.blue, 4, Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($spectrum, "linear_color", Color.orange, Color.blue, 4, Tween.TRANS_LINEAR)
 	$Tween.start()
+	$Tween3.interpolate_property($spectrum, "round_color", Color.green, Color.yellow, 5, Tween.TRANS_LINEAR)
+	$Tween3.start()
 #	Fmod.add_listener(0, self)
 #	Fmod.play_music_sound_instance("res://assets/Audio/BGM/credits_gekagd.ogg", "Credits")
 	var f = File.new()
@@ -23,10 +25,24 @@ func _on_Control_tree_exiting():
 
 
 func _on_Tween_tween_completed(object, key):
-	$Tween2.interpolate_property($spectrum, "linear_color", Color.blue, Color.red, 5, Tween.TRANS_LINEAR)
-	$Tween2.start()
+	$Tween5.interpolate_property($spectrum, "linear_color", Color.blue, Color.red, 5, Tween.TRANS_LINEAR)
+	$Tween5.start()
 
 
 func _on_Tween2_tween_completed(object, key):
-	$Tween.interpolate_property($spectrum, "linear_color", Color.red, Color.blue, 5, Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($spectrum, "linear_color", Color.orange, Color.blue, 5, Tween.TRANS_LINEAR)
 	$Tween.start()
+
+
+func _on_Tween3_tween_completed(object, key):
+	$Tween4.interpolate_property($spectrum, "round_color", Color.yellow, Color.green, 5, Tween.TRANS_LINEAR)
+	$Tween4.start()
+
+func _on_Tween4_tween_completed(object, key):
+	$Tween3.interpolate_property($spectrum, "round_color", Color.green, Color.yellow, 5, Tween.TRANS_LINEAR)
+	$Tween3.start()
+
+
+func _on_Tween5_tween_completed(object, key):
+	$Tween2.interpolate_property($spectrum, "linear_color", Color.red, Color.orange, 5, Tween.TRANS_LINEAR)
+	$Tween2.start()

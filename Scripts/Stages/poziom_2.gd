@@ -27,7 +27,7 @@ func _ready():
 	get_node(str(character.name)).position = startup_position
 
 func change_level():
-	Globals.change_stage_to_next()
+	get_tree().change_scene(Globals.stage_list[str(int(Globals.get_current_position_in_list_by_path(get_tree().current_scene.filename)) + 1)])
 func toxic_entered(body):
 	if body.name == Globals.get_current_character_name():
 		if Globals.new_characters.has(body.name):

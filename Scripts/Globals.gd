@@ -52,11 +52,13 @@ var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
 	"1": "res://Scenes/Stages/poziom_2.tscn",
 	"2": "res://Scenes/Stages/poziom_3.tscn",
+	"3": "res://Scenes/Credits.tscn"
 }
 var stage_names:Dictionary = {
 	"0": "Laboratory - 1",
 	"1": "Laboratory - 2",
 	"2": "Laboratory - 3",
+	"3": "Credits :3"
 }
 func change_stage(stage_id:String):
 	BackgroundLoad.get_node("bgload").load_scene(stage_list[stage_id])
@@ -70,8 +72,13 @@ func set_stage_list(list:Dictionary):
 	stage_list = list
 func set_stage_name(id:String, stage_name:String):
 	stage_names[id] = stage_name
-func change_stage_to_next():
-	BackgroundLoad.get_node("bgload").load_scene(stage_list[str(current_stage)])
+
+func get_current_position_in_list_by_path(path):
+	for i in stage_list:
+		if stage_list[i] == path:
+			return i
+		else:
+			pass
 var current_stage = 0
 var arguments = {}
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
@@ -97,7 +104,7 @@ var lives = 5
 var new_characters:Dictionary = {
 	"Tails": "res://Scenes/Characters/Tails.tscn",
 }
-var game_version_text = "Support: https://newdev.web.app/contact\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
+var game_version_text = "Support: [url]https://newdev.web.app/contact[/url]\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 signal game_version_text_changed(text)
 func construct_game_version():
 	emit_signal("game_version_text_changed", game_version_text)
@@ -121,23 +128,7 @@ func _init():
 	f.close()
 	
 	print("Installed at: " + install_base_path)
-	var cfg = ConfigFile.new()
-	var dir = Directory.new()
-	ProjectSettings.load_resource_pack(install_base_path + 'translations/translations.pck')
-	if dir.open("res://translations/") == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if dir.current_is_dir():
-#				print("Found directory: " + file_name)
-				pass
-			else:
-				if file_name.get_extension() == "translation":
-					var tra = load("res://translations/" + file_name.get_file())
-#					print("Found translation: " + "res://translations/" + file_name.get_file())
-					TranslationServer.add_translation(tra)
-			file_name = dir.get_next()
-	print(arguments)
+	print("Runned with arguments: " + str(arguments))
 #	if not arguments.has("editor"):
 #		for i in packs:
 #			ProjectSettings.load_resource_pack(i)

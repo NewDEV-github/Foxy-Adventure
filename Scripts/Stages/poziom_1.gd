@@ -42,7 +42,7 @@ func _ready():
 func change_level():
 	if Globals.fallen_into_toxins == 0:
 		Globals.set_achievement_done("I'm not toxic")
-	get_tree().change_scene("res://Scenes/Demo_ThankYou.tscn")
+	get_tree().change_scene(Globals.stage_list[str(int(Globals.get_current_position_in_list_by_path(get_tree().current_scene.filename)) + 1)])
 func toxic_entered(body):
 	if body.name == Globals.get_current_character_name():
 		Globals.felt_into_toxine()
