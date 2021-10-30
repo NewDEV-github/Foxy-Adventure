@@ -54,7 +54,7 @@ func _on_messagearea2_body_entered(body):
 	if body.name == Globals.get_:
 		body.set_render_messages_delay(1.5)
 		body.show_message_box(false)
-		var msg = ["Hmm...\nThere's more of that vwey strange place..."]
+		var msg = [tr("KEY_CUTSCENE_2_1")]
 		body.render_messages(msg)
 		yield(body, "msg_done")
 		body.hide_message_box()

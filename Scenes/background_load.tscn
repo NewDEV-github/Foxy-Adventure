@@ -4,7 +4,6 @@
 [ext_resource path="res://Scenes/Start_transtition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "start_transition"
 length = 1.5
@@ -116,9 +115,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -7.0
+margin_top = -9.5
 margin_right = 100.0
-margin_bottom = 7.0
+margin_bottom = 9.5
 step = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,6 +128,7 @@ anims/start_transition = SubResource( 1 )
 
 [node name="hint" type="RichTextLabel" parent="bgload"]
 modulate = Color( 1, 1, 1, 0 )
+anchor_left = -0.00390625
 anchor_top = 0.762
 anchor_right = 1.0
 anchor_bottom = 1.0

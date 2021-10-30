@@ -14,7 +14,7 @@ var m = 0
 func _process(delta: float) -> void:
 	if DiscordSDK.discord_user_img:
 		$Icon.texture = DiscordSDK.discord_user_img
-	$stats_label.set_text("COINS: " + str(Globals.coins) + "\nLIVES: " + str(Globals.lives))
+	$stats_label.set_text(tr("KEY_COINS_TEXT") + " " + str(Globals.coins) + "\n" + tr("KEY_LIVES_TEXT") + " " + str(Globals.lives))
 	$fps.visible = Globals.fps_visible
 	if Globals.fps_visible:
 		$fps.set_text("FPS: " + str(Engine.get_frames_per_second()))

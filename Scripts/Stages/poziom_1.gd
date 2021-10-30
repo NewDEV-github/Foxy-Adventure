@@ -30,7 +30,7 @@ func _ready():
 		character.set_render_messages_delay(1.5)
 	if character.has_method("show_message_box"):
 		character.show_message_box(false)
-	var msg = ["Strange place...", "I've never been there...", "I'd better go..."]
+	var msg = [tr("KEY_CUTSCENE_1_4"), tr("KEY_CUTSCENE_1_3"), tr("KEY_CUTSCENE_1_2")]
 	if character.has_method("render_messages"):
 		character.render_messages(msg)
 		yield(character, "msg_done")
@@ -41,7 +41,7 @@ func _ready():
 
 func change_level():
 	if Globals.fallen_into_toxins == 0:
-		Globals.set_achievement_done("I'm not toxic")
+		Globals.set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_1"))
 	get_tree().change_scene(Globals.stage_list[str(int(Globals.get_current_position_in_list_by_path(get_tree().current_scene.filename)) + 1)])
 func toxic_entered(body):
 	if body.name == Globals.get_current_character_name():
@@ -64,7 +64,7 @@ func _on_messagearea_body_entered(body):
 	if body.name == Globals.get_current_character_name():
 		body.set_render_messages_delay(1.5)
 		body.show_message_box(false)
-		var msg = ["It looks like there is only one way out of here.\nLet's go and see what happens next"]
+		var msg = [tr("KEY_CUTSCENE_1_1")]
 		body.render_messages(msg)
 		yield(body, "msg_done")
 		body.hide_message_box()

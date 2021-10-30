@@ -8,13 +8,11 @@ var SIMULATED_DELAY_SEC = 1.0
 func _ready():
 	hide()
 var hints = [
-	#"Test hint",
-	"Use WASD or Arrow keys on your keyboard to control Your character in the game.",
-	#"Test hint 2",
-	"Tails can't fly!",
-	"Better don't jump into toxins...",
+	tr("KEY_TEXT_BG_LOAD_HINT_1"),
+	tr("KEY_TEXT_BG_LOAD_HINT_2"),
+	tr("KEY_TEXT_BG_LOAD_HINT_3"),
 	"OK!",
-	"Thank You for playing Foxy Adventure",
+	tr("KEY_TEXT_BG_LOAD_HINT_3"),
 ]
 func add_hint(text:String):
 	hints.append(text)

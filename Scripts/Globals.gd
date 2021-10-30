@@ -26,27 +26,27 @@ var flip_tiles_x = false
 var flip_tiles_y = false
 var current_tile_name = "sci-fi-tileset.png 4"
 var all_achievements = [
-	"I'm not toxic",#done
-	"Up to five times",#done
-	"Amateur sewage purifier",#done
-	"Advanced sewage purifier",#done
-	"Money collector",#done
-	"Rich man",#done
-	"Like a cat",#done
-	"Like a cat, but... Better",#done
+	tr("KEY_TEXT_ACHIVEMENT_1"),
+	tr("KEY_TEXT_ACHIVEMENT_2"),#done
+	tr("KEY_TEXT_ACHIVEMENT_3"),#done
+	tr("KEY_TEXT_ACHIVEMENT_4"),#done
+	tr("KEY_TEXT_ACHIVEMENT_5"),#done
+	tr("KEY_TEXT_ACHIVEMENT_6"),#done
+	tr("KEY_TEXT_ACHIVEMENT_7"),#done
+	tr("KEY_TEXT_ACHIVEMENT_8"),#done
 ]
 var discord_sdk_enabled = false
 var done_achievements = []
 var not_done_achievements = all_achievements
 var achievements_desc = {
-	"I'm not toxic": "Don't touch the toxics in 1st stage",
-	"Up to five times": "Lose all 5 lives",
-	"Amateur sewage purifier": "Fall into toxins 5 times",
-	"Advanced sewage purifier": "Fall into toxins 15 times",
-	"Money collector": "Collect 50 coins",
-	"Rich man": "Collect 100 coins",
-	"Like a cat": "Get 9 lifes in game",
-	"Like a cat, but... Better": "Get more than 9 lives in game",
+	tr("KEY_TEXT_ACHIVEMENT_1"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_1"),
+	tr("KEY_TEXT_ACHIVEMENT_2"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_2"),
+	tr("KEY_TEXT_ACHIVEMENT_3"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_3"),
+	tr("KEY_TEXT_ACHIVEMENT_4"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_4"),
+	tr("KEY_TEXT_ACHIVEMENT_5"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_5"),
+	tr("KEY_TEXT_ACHIVEMENT_6"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_6"),
+	tr("KEY_TEXT_ACHIVEMENT_7"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_7"),
+	tr("KEY_TEXT_ACHIVEMENT_8"): tr("KEY_TEXT_ACHIVEMENT_DESCRIPTION_8"),
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
@@ -55,10 +55,10 @@ var stage_list = {
 	"3": "res://Scenes/Credits.tscn"
 }
 var stage_names:Dictionary = {
-	"0": "Laboratory - 1",
-	"1": "Laboratory - 2",
-	"2": "Laboratory - 3",
-	"3": "Credits :3"
+	"0": tr("KEY_TEXT_STAGE_LABORATORY") + " - 1",
+	"1": tr("KEY_TEXT_STAGE_LABORATORY") + " - 2",
+	"2": tr("KEY_TEXT_STAGE_LABORATORY") + " - 3",
+	"3": tr("KEY_TEXT_STAGE_CREDITS") + " :3"
 }
 func change_stage(stage_id:String):
 	BackgroundLoad.get_node("bgload").load_scene(stage_list[stage_id])
@@ -192,9 +192,9 @@ func add_custom_world_scan_path(path:String):
 func add_lifes(anmount):
 	lives += anmount
 	if lives == 9:
-		set_achievement_done("Like a cat")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_7"))
 	elif lives >= 9:
-		set_achievement_done("Like a cat, but... Better")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_8"))
 func remove_lifes(anmount):
 	lives -= anmount
 func is_world_from_dlc_or_mod(world:String):
@@ -218,16 +218,16 @@ func add_coin(anmount, upload_score=false):
 	if int(coins) % 100 == 0:
 		add_lifes(0)
 	if coins == 50:
-		set_achievement_done("Money collector")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_5"))
 	elif coins == 100:
-		set_achievement_done("Rich man")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_6"))
 
 func felt_into_toxine():
 	fallen_into_toxins += 1
 	if fallen_into_toxins == 5:
-		set_achievement_done("Amateur sewage purifier")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_3"))
 	elif fallen_into_toxins == 15:
-		set_achievement_done("Advanced sewage purifier")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_4"))
 	get_tree().reload_current_scene()
 	emit_signal("scoredatarecived")
 
@@ -364,7 +364,7 @@ func game_over():
 		lives -= 1
 	elif lives == 1:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
-		set_achievement_done("Up to five times")
+		set_achievement_done(tr("KEY_TEXT_ACHIVEMENT_2"))
 		DiscordSDK.kill_rpc()
 		
 var cnf = ConfigFile.new()
@@ -453,8 +453,8 @@ func load_modification(mod_name):
 			print("Loading mod")
 			main_script.init_mod()
 		else:
-			print("Modification: " + mod["name"] + "\nuses unsupported SDK version and It won't be loaded")
-			OS.alert("Modification: " + mod["name"] + "\nuses unsupported SDK version and It won't be loaded", "Warning!")
+			print(mod["name"] + " - " + tr("KEY_TEXT_MODIFICATION_UNSUPPORTED_SDK"))
+			OS.alert(mod["name"] + " - " + tr("KEY_TEXT_MODIFICATION_UNSUPPORTED_SDK"), tr("KEY_TEXT_WARNING"))
 
 func load_stage_from_editor(stage_name:String, character:String):
 	pass

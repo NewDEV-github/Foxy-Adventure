@@ -53,7 +53,7 @@ func _on_messagearea_body_entered(body):
 	if body.name == Globals.get_current_character_name():
 		body.set_render_messages_delay(1.5)
 		body.show_message_box(false)
-		var msg = ["What... What is that?!", "Where I am... ?\nOkay, dude... There's nothing to be worried about.", "Just let's get out of there."]
+		var msg = [tr("KEY_CUTSCENE_3_1"), tr("KEY_CUTSCENE_3_2"), tr("KEY_CUTSCENE_3_3")]
 		body.render_messages(msg)
 		yield(body, "msg_done")
 		body.hide_message_box()

@@ -292,6 +292,7 @@ stream = ExtResource( 4 )
 bus = "Music"
 
 [node name="AchivementPanel" type="WindowDialog" parent="."]
+visible = true
 margin_right = 758.0
 margin_bottom = 478.0
 window_title = "KEY_TEXT_ACHIEVEMENTS"

@@ -155,50 +155,6 @@ margin_right = 505.0
 margin_bottom = 40.0
 max_value = 1e+14
 
-[node name="custom_resolution" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
-visible = false
-margin_top = 287.0
-margin_right = 560.0
-margin_bottom = 327.0
-rect_min_size = Vector2( 40, 40 )
-alignment = 1
-
-[node name="Label" type="Label" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_top = 10.0
-margin_right = 323.0
-margin_bottom = 29.0
-size_flags_horizontal = 2
-size_flags_vertical = 6
-text = "KEY_TEXT_OPTIONS_WINDOW_RESOLUTION"
-align = 1
-valign = 1
-
-[node name="x" type="SpinBox" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_left = 327.0
-margin_right = 391.0
-margin_bottom = 40.0
-min_value = 640.0
-max_value = 8192.0
-value = 1024.0
-align = 1
-
-[node name="y" type="SpinBox" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_left = 395.0
-margin_right = 459.0
-margin_bottom = 40.0
-min_value = 480.0
-max_value = 8192.0
-value = 600.0
-align = 1
-
-[node name="SpinBox" type="OptionButton" parent="tabs/Graphics/Options/side_left/custom_resolution"]
-margin_left = 463.0
-margin_right = 560.0
-margin_bottom = 40.0
-text = "1024x600"
-items = [ "640x480", null, false, 0, false, "800x480", null, false, 1, false, "800x600", null, false, 2, false, "1024x600", null, false, 3, false, "1280x720", null, false, 4, false, "1280x800", null, false, 5, false, "1366x768", null, false, 6, false, "1440x900", null, false, 7, false, "1920x1080", null, false, 8, false, "2048x1152", null, false, 9, false, "2048x1024", null, false, 10, false, "2560x1600", null, false, 11, false, "2560x2048", null, false, 12, false, "3072x1728", null, false, 13, false, "4096x2304", null, false, 14, false, "8192x4608", null, false, 15, false ]
-selected = 3
-
 [node name="side_right" type="VBoxContainer" parent="tabs/Graphics/Options"]
 margin_left = 509.0
 margin_right = 1014.0
@@ -465,9 +421,6 @@ __meta__ = {
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/Fullscreen" to="." method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
-[connection signal="value_changed" from="tabs/Graphics/Options/side_left/custom_resolution/x" to="." method="_on_x_value_changed"]
-[connection signal="value_changed" from="tabs/Graphics/Options/side_left/custom_resolution/y" to="." method="_on_y_value_changed"]
-[connection signal="item_selected" from="tabs/Graphics/Options/side_left/custom_resolution/SpinBox" to="." method="_on_SpinBox_item_selected"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_fps" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Master/Master_slider" to="." method="_on_Master_slider_value_changed"]

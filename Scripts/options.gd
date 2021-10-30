@@ -18,12 +18,12 @@ func _ready():
 #		$tabs/Sterowanie.hide()
 		$tabs.set_tab_disabled(2, true)
 		$"tabs/Audio/Options/Audio/SPEAKERMODE".set_disabled(true)
-		$"tabs/Graphics/Options/side_left/custom_resolution".hide()
+#		$"tabs/Graphics/Options/side_left/custom_resolution".hide()
 	else:
 		$"tabs/Audio/Options/Audio/SPEAKERMODE".set_disabled(false)
 		$tabs.set_tab_disabled(1, false)
 #		$tabs/Sterowanie.show()
-		$"tabs/Graphics/Options/side_left/custom_resolution".show()
+#		$"tabs/Graphics/Options/side_left/custom_resolution".show()
 func _process(_delta):
 	save_file.load('user://settings.cfg')
 	save_file.set_value('Game', 'engine_version', str(Engine.get_version_info()))
@@ -41,8 +41,8 @@ func _process(_delta):
 #	save_file.set_value('Graphics', 'fullscreen', str($"tabs/Graphics/Options/side_left/Fullscreen".pressed))
 	save_file.set_value('Graphics', 'vsync_enabled', str($"tabs/Graphics/Options/side_left/VSync".pressed))
 	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/Graphics/Options/side_left/VSync".pressed))
-	save_file.set_value('Graphics', 'window_x_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/x".value))
-	save_file.set_value('Graphics', 'window_y_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
+#	save_file.set_value('Graphics', 'window_x_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/x".value))
+#	save_file.set_value('Graphics', 'window_y_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
 	# save_file.set_value('Graphics', 'camera_smoothing_enabled', Globals.camera_smoothing_enabled)
 	# save_file.set_value('Graphics', 'camera_smoothing_speed', Globals.camera_smoothing_speed)
 	save_file.save('user://settings.cfg')
@@ -67,10 +67,10 @@ func load_settings():
 #			$"tabs/Graphics/Options/side_left/Fullscreen".pressed = bool(str(save_file.get_value('Graphics', 'fullscreen', false)))
 		if save_file.has_section_key('Graphics', 'vsync_enabled'):
 			$"tabs/Graphics/Options/side_left/VSync".pressed = bool(str(save_file.get_value('Graphics', 'vsync_enabled', true)))
-		if save_file.has_section_key('Graphics', 'window_x_resolution'):
-			$"tabs/Graphics/Options/side_left/custom_resolution/x".value = float(str(save_file.get_value('Graphics', 'window_x_resolution', 1024)))
-		if save_file.has_section_key('Graphics', 'window_y_resolution'):
-			$"tabs/Graphics/Options/side_left/custom_resolution/y".value = float(str(save_file.get_value('Graphics', 'window_y_resolution', 600)))
+#		if save_file.has_section_key('Graphics', 'window_x_resolution'):
+#			$"tabs/Graphics/Options/side_left/custom_resolution/x".value = float(str(save_file.get_value('Graphics', 'window_x_resolution', 1024)))
+#		if save_file.has_section_key('Graphics', 'window_y_resolution'):
+#			$"tabs/Graphics/Options/side_left/custom_resolution/y".value = float(str(save_file.get_value('Graphics', 'window_y_resolution', 600)))
 		if save_file.has_section_key('Game', 'target_fps'):
 			$"tabs/Graphics/Options/side_left/fps/target".value = float(str(save_file.get_value('Game', 'target_fps', 60)))
 		if save_file.has_section_key('Game', 'locale'):
@@ -88,7 +88,7 @@ func load_settings():
 #			$tabs/Rozgrywka/box/nsfwmode/nsfw.set_pressed(!bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 #		if not str(OS.get_name()) == 'Android':
 #			Globals.apply_custom_resolution()
-		$"tabs/Graphics/Options/side_left/custom_resolution/SpinBox".set_text(str($"tabs/Graphics/Options/side_left/custom_resolution/x".value) + 'x' + str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
+#		$"tabs/Graphics/Options/side_left/custom_resolution/SpinBox".set_text(str($"tabs/Graphics/Options/side_left/custom_resolution/x".value) + 'x' + str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
 		if save_file.has_section_key('Game', 'debug_mode'):
 			Globals.debugMode = bool(str(save_file.get_value('Graphics', 'debug_mode', false)))
 		# if save_file.has_section_key('Graphics', 'camera_smoothing_enabled'):

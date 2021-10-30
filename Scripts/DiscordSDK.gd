@@ -205,13 +205,13 @@ func run_rpc(developer, display_stage, character="Tails", is_in_menu=false):
 		print("Starting RPC...")
 		var activity = Discord.Activity.new()
 		if not developer and not is_in_menu:
-			activity.details = "Playing as %s" % [character]
+			activity.details = tr("KEY_TEXT_PLAYING_AS") + " %s" % [character]
 			if display_stage != null:
-				activity.state = "At %s" % [Globals.stage_names[str(Globals.current_stage)]]
+				activity.state = tr("KEY_TEXT_AT") + " %s" % [Globals.stage_names[str(Globals.current_stage)]]
 		elif developer:
 			activity.details = "I'm making the game for You now"
 		elif is_in_menu:
-			activity.details = "At main menu"
+			activity.details = tr("KEY_TEXT_AT_MAIN_MENU")
 		activity.assets.large_image = "icon"
 
 		activity.timestamps.start = OS.get_unix_time()
