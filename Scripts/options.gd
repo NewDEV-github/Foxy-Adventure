@@ -86,8 +86,8 @@ func load_settings():
 #			$tabs/Discord/DSDK.pressed = bool(save_file.get_value('Game', 'discord_sdk_enabled'))
 #			Globals.set_nsfw(bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 #			$tabs/Rozgrywka/box/nsfwmode/nsfw.set_pressed(!bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
-		if not str(OS.get_name()) == 'Android':
-			Globals.apply_custom_resolution()
+#		if not str(OS.get_name()) == 'Android':
+#			Globals.apply_custom_resolution()
 		$"tabs/Graphics/Options/side_left/custom_resolution/SpinBox".set_text(str($"tabs/Graphics/Options/side_left/custom_resolution/x".value) + 'x' + str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
 		if save_file.has_section_key('Game', 'debug_mode'):
 			Globals.debugMode = bool(str(save_file.get_value('Graphics', 'debug_mode', false)))
@@ -134,7 +134,7 @@ func _on_Fullscreen_toggled(button_pressed):
 
 
 func _on_SAVE_pressed():
-	Globals.apply_custom_resolution()
+#	Globals.apply_custom_resolution()
 	set_process(true)
 
 

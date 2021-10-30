@@ -84,7 +84,6 @@ __meta__ = {
 }
 
 [node name="Graphics" type="Tabs" parent="tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -115,7 +114,7 @@ __meta__ = {
 }
 
 [node name="side_left" type="VBoxContainer" parent="tabs/Graphics/Options"]
-margin_right = 560.0
+margin_right = 505.0
 margin_bottom = 527.0
 rect_clip_content = true
 size_flags_horizontal = 3
@@ -130,33 +129,34 @@ margin_bottom = 149.0
 text = "KEY_OPTIONS_FULLSCREEN_MODE"
 
 [node name="VSync" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
-margin_top = 199.0
-margin_right = 560.0
-margin_bottom = 239.0
+margin_top = 221.0
+margin_right = 505.0
+margin_bottom = 261.0
 text = "KEY_TEXT_OPTIONS_VSYNC"
 
 [node name="fps" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
-margin_top = 243.0
-margin_right = 560.0
-margin_bottom = 283.0
+margin_top = 265.0
+margin_right = 505.0
+margin_bottom = 305.0
 rect_min_size = Vector2( 0, 40 )
 alignment = 2
 
 [node name="Label" type="Label" parent="tabs/Graphics/Options/side_left/fps"]
 margin_top = 10.0
-margin_right = 492.0
+margin_right = 437.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "KEY_TEXT_OPTIONS_FORCED_FPS"
 
 [node name="target" type="SpinBox" parent="tabs/Graphics/Options/side_left/fps"]
-margin_left = 496.0
-margin_right = 560.0
+margin_left = 441.0
+margin_right = 505.0
 margin_bottom = 40.0
 max_value = 1e+14
 
 [node name="custom_resolution" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
+visible = false
 margin_top = 287.0
 margin_right = 560.0
 margin_bottom = 327.0
@@ -200,7 +200,7 @@ items = [ "640x480", null, false, 0, false, "800x480", null, false, 1, false, "8
 selected = 3
 
 [node name="side_right" type="VBoxContainer" parent="tabs/Graphics/Options"]
-margin_left = 564.0
+margin_left = 509.0
 margin_right = 1014.0
 margin_bottom = 527.0
 rect_clip_content = true
@@ -210,14 +210,14 @@ alignment = 1
 
 [node name="show_timer" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
 margin_top = 221.0
-margin_right = 450.0
+margin_right = 505.0
 margin_bottom = 261.0
 pressed = true
 text = "KEY_TEXT_OPTIONS_SHOW_TIMER"
 
 [node name="show_fps" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
 margin_top = 265.0
-margin_right = 450.0
+margin_right = 505.0
 margin_bottom = 305.0
 pressed = true
 text = "KEY_TEXT_OPTIONS_SHOW_FPS"
@@ -356,6 +356,7 @@ items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", 
 selected = 1
 
 [node name="Controls" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

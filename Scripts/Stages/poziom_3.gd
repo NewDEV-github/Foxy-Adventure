@@ -57,3 +57,9 @@ func _on_messagearea_body_entered(body):
 		body.render_messages(msg)
 		yield(body, "msg_done")
 		body.hide_message_box()
+
+
+func _on_dead_area_body_entered(body):
+	if body.name == Globals.get_current_character_name():
+		if Globals.new_characters.has(body.name):
+			Globals.game_over()

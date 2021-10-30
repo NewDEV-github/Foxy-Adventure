@@ -24,8 +24,8 @@ private:
     template<typename T>
     std::string itos(T i);
 
-    godot::String changelog = "Moved to C++";
-    godot::String version_string = "1.1.0";
+    godot::String changelog = "Basic updates";
+    godot::String version_string = "1.1.1";
     int version = 110;
     float time_passed;
     bool initialized = false;

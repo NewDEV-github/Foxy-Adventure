@@ -4,9 +4,17 @@ var save_file_names = []
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
+
+func show_slider():
+	$HBoxContainer/VSlider.self_modulate = Color(255, 255, 255, 255)
+
+func hide_slider():
+	$HBoxContainer/VSlider.self_modulate = Color(255, 255, 255, 0)
+
 signal no_saves_found
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hide_slider()
 	if Globals.arguments.has("locale"):
 		print("Setting locale to: " + Globals.arguments["locale"])
 		TranslationServer.set_locale(Globals.arguments["locale"])
@@ -34,9 +42,15 @@ func _ready() -> void:
 		emit_signal("no_saves_found")
 	else:
 		for i in save_file_names:
-			$ItemList.add_item(i)
-			var item_id = $ItemList.get_item_count() -1
-			$ItemList.set_item_tooltip_enabled(item_id, tooltip_enabled)
+			$HBoxContainer/ScrollContainer/ItemList.add_item(i)
+			var item_id = $HBoxContainer/ScrollContainer/ItemList.get_item_count() -1
+			$HBoxContainer/ScrollContainer/ItemList.set_item_tooltip_enabled(item_id, tooltip_enabled)
+		yield(get_tree(), "idle_frame")
+		var scb = $HBoxContainer/ScrollContainer.get_v_scrollbar()
+		print("MS: " + str(scb.max_value))
+		if scb.max_value >= $HBoxContainer/ScrollContainer.rect_size.y:
+			show_slider()
+			$HBoxContainer/VSlider.max_value = scb.max_value - $HBoxContainer/ScrollContainer.rect_size.y
 func get_save_name(file_name:String):
 	return file_name.trim_prefix("save_")
 #	var regex = RegEx.new()
@@ -64,16 +78,22 @@ func _on_DelSave_pressed():
 
 
 func _on_RunSave_pressed():
-	var save_name = $ItemList.get_item_text(current_item_index)
+	var save_name = $HBoxContainer/ScrollContainer/ItemList.get_item_text(current_item_index)
 	Globals.load_level(str(save_name))
 
 
 func _on_ConfirmationDialog_confirmed():
-	Globals.delete_save($ItemList.get_item_text(current_item_index))
-	$ItemList.clear()
+	Globals.delete_save($HBoxContainer/ScrollContainer/ItemList.get_item_text(current_item_index))
+	$HBoxContainer/ScrollContainer/ItemList.clear()
 	save_file_names.clear()
 	_ready()
 
 func _on_ItemList_nothing_selected():
 	$buttons/DelSave.disabled = true
 	$buttons/RunSave.disabled = true
+
+
+func _on_VSlider_value_changed(value):
+	print(str(value))
+#	print(str(value - $HBoxContainer/ScrollContainer.rect_size.y))
+	$HBoxContainer/ScrollContainer.scroll_vertical = value
