@@ -179,7 +179,7 @@ func log_hook(level: int, message: String) -> void:
 func get_user_callback(result: int, user: Discord.User) -> void:
 	if result == Discord.Result.OK:
 		print("Fetched User:")
-		print(user.username, "#", user.discriminator, "  ID: ", user.id)
+#		print(user.username, "#", user.discriminator, "  ID: ", user.id)
 	else:
 		print("Failed to fetch user: ", enum_to_string(Discord.Result, result))
 
@@ -190,11 +190,11 @@ func get_current_user_premium_type_callback(
 ) -> void:
 	if result != Discord.Result.OK:
 		print(
-			"Failed to get user premium type: ",
+#			"Failed to get user premium type: ",
 			enum_to_string(Discord.Result, result)
 		)
 	else:
-		print("Current User Premium Type:")
+#		print("Current User Premium Type:")
 		print(enum_to_string(Discord.PremiumType, premium_type))
 
 

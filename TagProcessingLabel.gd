@@ -42,7 +42,7 @@ func _ready():
 func new_device(device, connected):
 	current_device = device
 	update_text(Input.get_joy_name(current_device))
-	print("device: " + Input.get_joy_name(current_device))
+#	print("device: " + Input.get_joy_name(current_device))
 
 
 func update_text(device_name):
