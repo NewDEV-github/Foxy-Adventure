@@ -23,13 +23,13 @@ func get_data():
 func _on_Userdata_request_completed(result, response_code, headers, body):
 	var res = JSON.parse(body.get_string_from_utf8())
 	userdata = res.result
-	print("USERDATA: " + str(userdata))
+#	print("USERDATA: " + str(userdata))
 
 
 func _on_Scorelist_request_completed(result, response_code, headers, body):
 	var res = JSON.parse(body.get_string_from_utf8())
 	scorelist = res.result
-	print("SCORELIST: " + str(scorelist))
+#	print("sSCORELIST: " + str(scorelist))
 
 func get_username_or_email_by_uid(uid:String):
 	if not userdata == null or userdata == {}:

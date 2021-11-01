@@ -257,49 +257,14 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
-	if file.file_exists(install_base_path + 'dlcs/dlc_tails_exe.gd'):
-		var script = load(install_base_path + 'dlcs/dlc_tails_exe.gd').new()
-		script.add_characters()
-		script.add_stages()
-		script.add_dlc()
-		ProjectSettings.load_resource_pack(install_base_path + 'dlcs/dlc_tails_exe.pck')
-	### TUZI_EDITION
-	if file.file_exists(install_base_path + 'dlcs/tuzi_edition.cfg'):
-		conf.load(install_base_path + 'dlcs/tuzi_edition.cfg')
+	if file.file_exists(install_base_path + 'dlcs/foxy_adventure_dlc01.cfg'):
+		conf.load(install_base_path + 'dlcs/foxy_adventure_dlc01.cfg')
 		for i in conf.get_value("mod_info", "pck_files"):
 			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
 		var script = load(conf.get_value("mod_info", "main_script_file")).new()
 		script.init_mod()
-		conf.save(install_base_path + 'dlcs/tuzi_edition.cfg')
+		conf.save(install_base_path + 'dlcs/foxy_adventure_dlc01.cfg')
 	### ITAM_EDITION
-	if file.file_exists(install_base_path + 'dlcs/itam_edition.cfg'):
-		conf.load(install_base_path + 'dlcs/itam_edition.cfg')
-		for i in conf.get_value("mod_info", "pck_files"):
-			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
-		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-		script.init_mod()
-	### MIZU DLC
-	if file.file_exists(install_base_path + 'dlcs/mizu_dlc.cfg'):
-		conf.load(install_base_path + 'dlcs/mizu_dlc.cfg')
-		for i in conf.get_value("mod_info", "pck_files"):
-			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
-		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-		script.init_mod()
-	### IVIP DLC
-	if file.file_exists(install_base_path + 'dlcs/ivip_dlc.cfg'):
-		conf.load(install_base_path + 'dlcs/ivip_dlc.cfg')
-		for i in conf.get_value("mod_info", "pck_files"):
-			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
-		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-		script.init_mod()
-#		conf.save(install_base_path + 'dlcs/itam_edition.cfg')
-	### TOX_EDITION
-	if file.file_exists(install_base_path + 'dlcs/tox_edition.cfg'):
-		conf.load(install_base_path + 'dlcs/tox_edition.cfg')
-		for i in conf.get_value("mod_info", "pck_files"):
-			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
-		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-		script.init_mod()
 #		conf.save(install_base_path + 'dlcs/tox_edition.cfg')
 
 	#Classic Sonic
