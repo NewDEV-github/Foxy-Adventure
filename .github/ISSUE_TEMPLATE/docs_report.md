@@ -1,7 +1,7 @@
 ---
 name: Documentation
 about: Issue with the documentation
-title: '[Documentation]'
+title: "[Documentation]"
 labels: ''
 assignees: ''
 
