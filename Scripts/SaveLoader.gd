@@ -4,7 +4,7 @@ var save_file_names = []
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-
+var disabled_saves = []
 func show_slider():
 	$HBoxContainer/VSlider.self_modulate = Color(255, 255, 255, 255)
 
@@ -12,7 +12,7 @@ func hide_slider():
 	$HBoxContainer/VSlider.self_modulate = Color(255, 255, 255, 0)
 
 signal no_saves_found
-# Called when the node enters the scene tree for the first time.
+var cfg = ConfigFile.new()
 func _ready() -> void:
 	hide_slider()
 	if Globals.arguments.has("locale"):
@@ -33,6 +33,10 @@ func _ready() -> void:
 				if file_name.get_extension() == "cfg" and file_name.begins_with("save_"):
 					var save_name = get_save_name(file_name.get_basename())
 					if not save_name == "":
+						cfg.load(file_name.get_file())
+						var save_char = cfg.get_value("save", "character")
+						if Globals.new_characters.values().has(save_char):
+							disabled_saves.append(save_name)
 						save_file_names.append(save_name)
 			file_name = dir.get_next()
 	else:
@@ -45,6 +49,8 @@ func _ready() -> void:
 			$HBoxContainer/ScrollContainer/ItemList.add_item(i)
 			var item_id = $HBoxContainer/ScrollContainer/ItemList.get_item_count() -1
 			$HBoxContainer/ScrollContainer/ItemList.set_item_tooltip_enabled(item_id, tooltip_enabled)
+			if disabled_saves.has(i):
+				$HBoxContainer/ScrollContainer/ItemList.set_item_disabled(item_id, true)
 		yield(get_tree(), "idle_frame")
 		var scb = $HBoxContainer/ScrollContainer.get_v_scrollbar()
 		print("MS: " + str(scb.max_value))

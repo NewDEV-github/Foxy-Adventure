@@ -28,7 +28,7 @@ func _process(_delta):
 	save_file.load('user://settings.cfg')
 	save_file.set_value('Game', 'engine_version', str(Engine.get_version_info()))
 	save_file.set_value('Game', 'target_fps', str(Engine.target_fps))
-	save_file.set_value('Game', 'locale', str(TranslationServer.get_locale()))
+#	save_file.set_value('Game', 'locale', str(TranslationServer.get_locale()))
 	save_file.set_value('Game', 'fps_visible', str(Globals.fps_visible))
 	save_file.set_value('Game', 'timer_visible', str(Globals.timer_visible))
 	save_file.set_value('Game', 'discord_sdk_enabled', str(Globals.discord_sdk_enabled))
@@ -73,8 +73,8 @@ func load_settings():
 #			$"tabs/Graphics/Options/side_left/custom_resolution/y".value = float(str(save_file.get_value('Graphics', 'window_y_resolution', 600)))
 		if save_file.has_section_key('Game', 'target_fps'):
 			$"tabs/Graphics/Options/side_left/fps/target".value = float(str(save_file.get_value('Game', 'target_fps', 60)))
-		if save_file.has_section_key('Game', 'locale'):
-			TranslationServer.set_locale(str(save_file.get_value('Game', 'locale', 'en')))
+#		if save_file.has_section_key('Game', 'locale'):
+#			TranslationServer.set_locale(str(save_file.get_value('Game', 'locale', 'en')))
 		if save_file.has_section_key('Game', 'fps_visible'):
 			$tabs/Graphics/Options/side_right/show_fps.pressed = bool(save_file.get_value('Game', 'fps_visible', true))
 		if save_file.has_section_key('Game', 'timer_visible'):
