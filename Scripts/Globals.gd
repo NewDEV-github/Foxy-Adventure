@@ -423,3 +423,16 @@ func load_modification(mod_name):
 
 func load_stage_from_editor(stage_name:String, character:String):
 	pass
+
+
+
+
+
+#
+#func get_used_license_keys():
+#	var keys = []
+#	return keys
+#
+#func get_unused_license_keys():
+#	var keys = []
+#	return keys

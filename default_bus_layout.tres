@@ -4,6 +4,7 @@
 resource_name = "SpectrumAnalyzer"
 
 [resource]
+bus/0/volume_db = -1.45259
 bus/1/name = "SFX"
 bus/1/solo = false
 bus/1/mute = false
@@ -14,7 +15,7 @@ bus/2/name = "Music"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
+bus/2/volume_db = -0.394915
 bus/2/send = "Master"
 bus/2/effect/0/effect = SubResource( 1 )
 bus/2/effect/0/enabled = true

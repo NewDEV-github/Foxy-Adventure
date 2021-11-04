@@ -26,7 +26,7 @@ func _ready() -> void:
 	if Globals.custom_menu_audio != "":
 		$AudioStreamPlayer.stream = load(Globals.custom_menu_audio)
 	$AudioStreamPlayer.play()
-	$VBoxContainer3/Info.disabled = true
+	$VBoxContainer3/DownloadableContent.disabled = true
 	$VBoxContainer3/Logout.disabled = true
 	$VBoxContainer3/Login.disabled = false
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
@@ -34,7 +34,7 @@ func _ready() -> void:
 	if Firebase.Auth.check_auth_file():
 		Firebase.Auth.load_auth()
 		Globals.user_data = Firebase.Auth.auth
-		$VBoxContainer3/Info.disabled = false
+		$VBoxContainer3/DownloadableContent.disabled = false
 		$VBoxContainer3/Logout.disabled = false
 		$VBoxContainer3/Login.disabled = true
 #		var db_ref = Firebase.Database.get_database_reference("test")
@@ -83,7 +83,7 @@ func _ready() -> void:
 	elif day == 16 and month == 10:
 		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
 	elif day == 7 and month == 4:
-		$Label.set_text(tr("Happy Birthday to") + ' DoS or the main developer')
+		$Label.set_text(tr("Happy Birthday to") + ' DoS (the main developer)')
 	elif day == 4 and month == 5:
 		$Label.set_text(tr("Happy Birthday to") + ' Itam :3')
 	get_tree().paused = false
@@ -233,3 +233,7 @@ func _on_PlayNormal_pressed():
 	editor_stage = false
 	show_submenu_page($CharacterSelect)
 	$SelectWorld.hide()
+
+
+func _on_DownloadableContent_pressed():
+	$DownloadableContent.popup_centered()

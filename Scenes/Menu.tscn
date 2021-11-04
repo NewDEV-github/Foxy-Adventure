@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/LoginPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/Leaderboard.gd" type="Script" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/LicenseKeyVaildator.tscn" type="PackedScene" id=11]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 16777219
@@ -90,18 +91,17 @@ size_flags_vertical = 3
 text = "KEY_TEXT_LOAD"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -225.0
-margin_bottom = 90.0
+margin_bottom = 135.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Login" type="Button" parent="VBoxContainer3"]
 margin_right = 225.0
-margin_bottom = 43.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "KEY_TEXT_LOG_REG"
@@ -110,21 +110,20 @@ __meta__ = {
 }
 
 [node name="Logout" type="Button" parent="VBoxContainer3"]
-margin_top = 47.0
+margin_top = 46.0
 margin_right = 225.0
-margin_bottom = 90.0
+margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "KEY_TEXT_LOGOUT"
 
-[node name="Info" type="Button" parent="VBoxContainer3"]
-visible = false
+[node name="DownloadableContent" type="Button" parent="VBoxContainer3"]
 margin_top = 92.0
 margin_right = 225.0
 margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Info"
+text = "Downloadable Content"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -292,7 +291,6 @@ stream = ExtResource( 4 )
 bus = "Music"
 
 [node name="AchivementPanel" type="WindowDialog" parent="."]
-visible = true
 margin_right = 758.0
 margin_bottom = 478.0
 window_title = "KEY_TEXT_ACHIEVEMENTS"
@@ -444,12 +442,43 @@ margin_right = 493.0
 margin_bottom = 38.0
 text = "Delete Stage"
 
+[node name="DownloadableContent" type="WindowDialog" parent="."]
+visible = true
+margin_right = 702.0
+margin_bottom = 436.0
+
+[node name="TabContainer" type="TabContainer" parent="DownloadableContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Installed Content" type="Tabs" parent="DownloadableContent/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="Add license key" type="Tabs" parent="DownloadableContent/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="LicenseKeyVaildator" parent="DownloadableContent/TabContainer/Add license key" instance=ExtResource( 11 )]
+
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Website" to="." method="_on_Website_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]
 [connection signal="pressed" from="VBoxContainer3/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="VBoxContainer3/Logout" to="." method="_on_Logout_pressed"]
-[connection signal="pressed" from="VBoxContainer3/Info" to="." method="_on_Info_pressed"]
+[connection signal="pressed" from="VBoxContainer3/DownloadableContent" to="." method="_on_DownloadableContent_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Leaderboard" to="." method="_on_Leaderboard_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
