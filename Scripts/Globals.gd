@@ -257,13 +257,13 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
-	if file.file_exists(install_base_path + 'dlcs/foxy_adventure_dlc01.cfg'):
-		conf.load(install_base_path + 'dlcs/foxy_adventure_dlc01.cfg')
+	if file.file_exists('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg'):
+		conf.load('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg')
 		for i in conf.get_value("mod_info", "pck_files"):
-			ProjectSettings.load_resource_pack(install_base_path + 'dlcs/'+i)
+			ProjectSettings.load_resource_pack('user://dlcs/fadlc01/' + i)
 		var script = load(conf.get_value("mod_info", "main_script_file")).new()
 		script.init_mod()
-		conf.save(install_base_path + 'dlcs/foxy_adventure_dlc01.cfg')
+		conf.save('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg')
 	### ITAM_EDITION
 #		conf.save(install_base_path + 'dlcs/tox_edition.cfg')
 

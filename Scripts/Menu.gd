@@ -37,6 +37,8 @@ func _ready() -> void:
 		$VBoxContainer3/DownloadableContent.disabled = false
 		$VBoxContainer3/Logout.disabled = false
 		$VBoxContainer3/Login.disabled = true
+	$DownloadableContent/TabContainer.set_tab_title(0, tr("KEY_LICENSES_INSTALLED_CONTENT"))
+	$DownloadableContent/TabContainer.set_tab_title(1, tr("KEY_LICENSES_ADD_LICENSE_KEY"))
 #		var db_ref = Firebase.Database.get_database_reference("test")
 	#	print("Db ref: " + db_ref.get_data())
 #		db_ref.push({"f": ""})
@@ -71,21 +73,23 @@ func _ready() -> void:
 		$SelectWorld/WorldList.add_item(world_name)
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
-		$Label.set_text(tr("Happy Birthday to") + ' "Foxy Adventure"')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "Foxy Adventure"')
 	elif day == 17 and month == 2:
-		$Label.set_text(tr("Happy Birthday to") + ' "NewTheFox" ')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
 	elif day == 25 and month == 3:
-		$Label.set_text(tr("Happy Birthday to") + ' "NewTheFox" ')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
 	elif day == 14 and month == 9:
-		$Label.set_text(tr("Happy Birthday to") + ' Gekon aka "GeKaGD"')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Gekon aka "GeKaGD"')
 	elif day == 10 and month == 7:
-		$Label.set_text(tr("Happy Birthday to") + ' Tuzi')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Tuzi')
+	elif day == 11 and month == 7:
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Asperr_ :3')
 	elif day == 16 and month == 10:
-		$Label.set_text(tr("Happy Birthday to") + ' Miles "Tails" Prower')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
 	elif day == 7 and month == 4:
-		$Label.set_text(tr("Happy Birthday to") + ' DoS (the main developer)')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' DoS (the main developer)')
 	elif day == 4 and month == 5:
-		$Label.set_text(tr("Happy Birthday to") + ' Itam :3')
+		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Itam :3')
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
@@ -237,3 +241,33 @@ func _on_PlayNormal_pressed():
 
 func _on_DownloadableContent_pressed():
 	$DownloadableContent.popup_centered()
+	get_installed_dlc()
+
+
+func _on_DLCVSlider_value_changed(value):
+	$SaveLoader/HBoxContainer/ScrollContainer.scroll_vertical = value
+func show_slider():
+	$SaveLoader/HBoxContainer/VSlider.self_modulate = Color(255, 255, 255, 255)
+
+func hide_slider():
+	$SaveLoader/HBoxContainer/VSlider.self_modulate = Color(255, 255, 255, 0)
+
+func get_activated_products_in_game():
+	var cfg = ConfigFile.new()
+	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
+	return cfg.get_section_keys("keys")
+
+func get_dlc_name_for_activated_key(key:String):
+	var cfg = ConfigFile.new()
+	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
+	return cfg.get_value("keys", key)
+func get_installed_dlc():
+	for i in get_activated_products_in_game():
+		print(get_dlc_name_for_activated_key(i))
+		$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".add_item(get_dlc_name_for_activated_key(i))
+	yield(get_tree(), "idle_frame")
+	var scb = $SaveLoader/HBoxContainer/ScrollContainer.get_v_scrollbar()
+#		print("MS: " + str(scb.max_value))
+	if scb.max_value >= $SaveLoader/HBoxContainer/ScrollContainer.rect_size.y:
+		show_slider()
+		$SaveLoader/HBoxContainer/DLCVSlider.max_value = scb.max_value - $SaveLoader/HBoxContainer/ScrollContainer.rect_size.y

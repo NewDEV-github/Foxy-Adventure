@@ -462,6 +462,50 @@ margin_top = 34.0
 margin_right = -5.0
 margin_bottom = -5.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="DownloadableContent/TabContainer/Installed Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 42.0
+margin_bottom = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DownloadableContent/TabContainer/Installed Content/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 662.0
+margin_bottom = 305.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DLCList" type="ItemList" parent="DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer"]
+margin_right = 662.0
+margin_bottom = 305.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+max_text_lines = 900
+auto_height = true
+same_column_width = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DLCVSlider" type="VSlider" parent="DownloadableContent/TabContainer/Installed Content/HBoxContainer"]
+margin_left = 666.0
+margin_right = 682.0
+margin_bottom = 305.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Add license key" type="Tabs" parent="DownloadableContent/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -493,3 +537,4 @@ margin_bottom = -5.0
 [connection signal="item_selected" from="SelectWorld/WorldList" to="." method="_on_WorldList_item_selected"]
 [connection signal="pressed" from="SelectWorld/HBoxContainer/PlayNormal" to="." method="_on_PlayNormal_pressed"]
 [connection signal="pressed" from="SelectWorld/HBoxContainer/PlaySelected" to="." method="_on_PlaySelected_pressed"]
+[connection signal="value_changed" from="DownloadableContent/TabContainer/Installed Content/HBoxContainer/DLCVSlider" to="." method="_on_DLCVSlider_value_changed"]

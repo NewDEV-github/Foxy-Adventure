@@ -58,7 +58,7 @@ func _ready() -> void:
 				$HBoxContainer/ScrollContainer/ItemList.set_item_disabled(item_id, true)
 		yield(get_tree(), "idle_frame")
 		var scb = $HBoxContainer/ScrollContainer.get_v_scrollbar()
-		print("MS: " + str(scb.max_value))
+#		print("MS: " + str(scb.max_value))
 		if scb.max_value >= $HBoxContainer/ScrollContainer.rect_size.y:
 			show_slider()
 			$HBoxContainer/VSlider.max_value = scb.max_value - $HBoxContainer/ScrollContainer.rect_size.y
