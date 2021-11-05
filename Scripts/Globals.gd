@@ -50,9 +50,7 @@ var achievements_desc = {
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
-	"1": "res://Scenes/Stages/poziom_2.tscn",
-	"2": "res://Scenes/Stages/poziom_3.tscn",
-	"3": "res://Scenes/Credits.tscn"
+	"1": "res://Scenes/Credits.tscn"
 }
 var stage_names:Dictionary = {
 	"0": tr("KEY_TEXT_STAGE_LABORATORY") + " - 1",
@@ -257,6 +255,13 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
+	if file.file_exists('user://dlcs/betatests/config.cfg'):
+		stage_list = {
+			"0": "res://Scenes/Stages/poziom_1.tscn",
+			"1": "res://Scenes/Stages/poziom_2.tscn",
+			"2": "res://Scenes/Stages/poziom_3.tscn",
+			"3": "res://Scenes/Credits.tscn"
+		}
 	if file.file_exists('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg'):
 		conf.load('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg')
 		for i in conf.get_value("mod_info", "pck_files"):

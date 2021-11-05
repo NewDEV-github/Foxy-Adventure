@@ -262,6 +262,7 @@ func get_dlc_name_for_activated_key(key:String):
 	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	return cfg.get_value("keys", key)
 func get_installed_dlc():
+	$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".clear()
 	for i in get_activated_products_in_game():
 		print(get_dlc_name_for_activated_key(i))
 		$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".add_item(get_dlc_name_for_activated_key(i))
