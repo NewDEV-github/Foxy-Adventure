@@ -94,7 +94,7 @@ jobs:
     needs: [compile-gdnative-x11, compile-gdnative-windows, compile-gdnative-osx]
     strategy:
       matrix:
-        godot-version: [3.3.3]
+        godot-version: [3.4]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -162,7 +162,7 @@ jobs:
     needs: [godot-build, crashreport-build-windows-signed, crashreport-build-linux, crashreport-build-osx]
     strategy:
       matrix:
-        godot-version: [3.3.3]
+        godot-version: [3.4]
     steps:
     - uses: actions/checkout@v2.4.0
     - name: Declare some variables
@@ -231,7 +231,7 @@ jobs:
     needs: [do-release, godot-build, crashreport-build-windows, crashreport-build-linux, crashreport-build-osx]
     strategy:
       matrix:
-        godot-version: [3.3.3]
+        godot-version: [3.4]
     steps:
     - uses: actions/checkout@v2.4.0
     - uses: geekyeggo/delete-artifact@v1
