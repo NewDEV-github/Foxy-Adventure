@@ -165,7 +165,7 @@ config/version="1.0.0"
 
 [autoload]
 
-Globals="*res://Scripts/Globals.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 ApiLogs="*res://Scenes/api_logs.tscn"
 ApiScores="*res://Scenes/api_scores.tscn"
 Console="*res://addons/quentincaffeino-console/src/Console.tscn"
@@ -173,9 +173,9 @@ ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Screenshot="*res://Scripts/screenshot.gd"
-Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
 TagProcessor="*res://TagProcessor [SINGLETON].tscn"
+Globals="*res://Scripts/Globals.gd"
 
 [debug]
 

@@ -8,8 +8,8 @@ var user_data = {}
 var supported_sdk_versions = [
 	110,
 	111
-	
 ]
+var not_loaded_content = []
 #var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""
 var custom_menu_audio = ""
@@ -230,15 +230,12 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
+	if Firebase.Auth.check_auth_file():
+		Firebase.Auth.load_auth()
+		user_data = Firebase.Auth.auth
 	get_tree().get_root().set_transparent_background(true)
-#	OS.execute(OS.get_executable_path(), ["--send-log"], false)
-#	OS.shell_open(OS.get_executable_path() + " --send-log")
-#	get_tree().quit()
 	if arguments.has("send-log"):
 		OS.shell_open(install_base_path + "send_log/send_log")
-#		ApiLogs.send_debug_log_to_database()
-#		yield(ApiLogs, "recived_log_id")
-#		OS.alert("Your log was sent\n\nHere is log id: (0)" + str(ApiLogs.tmp_log_id))
 		get_tree().quit()
 	if arguments.has("locale"):
 		print("Setting locale to: " + arguments["locale"])
@@ -262,18 +259,7 @@ func _ready():
 			"2": "res://Scenes/Stages/poziom_3.tscn",
 			"3": "res://Scenes/Credits.tscn"
 		}
-	if file.file_exists('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg'):
-		conf.load('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg')
-		for i in conf.get_value("mod_info", "pck_files"):
-			ProjectSettings.load_resource_pack('user://dlcs/fadlc01/' + i)
-		var script = load(conf.get_value("mod_info", "main_script_file")).new()
-		script.init_mod()
-		conf.save('user://dlcs/fadlc01/foxy_adventure_dlc01.cfg')
-	### ITAM_EDITION
-#		conf.save(install_base_path + 'dlcs/tox_edition.cfg')
-
-	#Classic Sonic
-
+	load_dlcs()
 	var save_file = ConfigFile.new()
 	save_file.load("user://settings.cfg")
 	if save_file.has_section_key('Game', 'debug_mode'):
@@ -432,12 +418,37 @@ func load_stage_from_editor(stage_name:String, character:String):
 
 
 
-
-#
-#func get_used_license_keys():
-#	var keys = []
-#	return keys
-#
-#func get_unused_license_keys():
-#	var keys = []
-#	return keys
+func load_dlcs():
+	var cfg = ConfigFile.new()
+	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
+	var dlc_cfg_instal_dir:String = ""
+	var assigned_user:String = ""
+	var dlc_name:String = ""
+	for i in cfg.get_section_keys("keys"):
+		print(i)
+		if str(i).ends_with("_userid"):
+			assigned_user = cfg.get_value("keys", i)
+		elif str(i).ends_with("_cfg"):
+			dlc_cfg_instal_dir = cfg.get_value("keys", i)
+		else:
+			dlc_name = cfg.get_value("keys", i)
+		if not user_data.has('localid'):
+			if not not_loaded_content.has(dlc_name):
+				OS.alert('DLC %s\nwill not be loaded' % dlc_name, tr("KEY_TEXT_WARNING"))
+				not_loaded_content.append(dlc_name)
+		else:
+			if not assigned_user == "" and not dlc_cfg_instal_dir == "":
+				print(user_data)
+				print(assigned_user)
+				print(dlc_cfg_instal_dir)
+				if assigned_user == user_data['localid']:
+					var cf2 = ConfigFile.new()
+					cf2.load(dlc_cfg_instal_dir)
+					for i2 in cf2.get_value("mod_info", "pck_files"):
+						ProjectSettings.load_resource_pack(dlc_cfg_instal_dir.get_base_dir() + "/" + i2)
+					load(cf2.get_value("mod_info", "main_script_file")).new().init_mod()
+					print("loading %s" % dlc_name)
+				else:
+					if not not_loaded_content.has(dlc_name):
+						OS.alert('DLC %s\nwill not be loaded' % dlc_name, tr("KEY_TEXT_WARNING"))
+						not_loaded_content.append(dlc_name)

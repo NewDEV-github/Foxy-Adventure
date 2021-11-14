@@ -9,11 +9,13 @@ var base_install_path = "user://dlcs/"
 func _ready():
 	set_process(false)
 
-func activate_license_key_in_game(key:String, product_name:String):
+func activate_license_key_in_game(key:String, product_name:String, install_cfg_path:String):
 	var result
 	var cfg = ConfigFile.new()
 	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	cfg.set_value("keys", key, product_name)
+	cfg.set_value("keys", key + "_userid", Globals.user_data['localid'])
+	cfg.set_value("keys", key + "_cfg", install_cfg_path)
 	cfg.save_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 
 var _validation_result_d
@@ -66,6 +68,7 @@ var _tmp_downloaded_files = 0
 var _tmp_dlc_name = ""
 var _tmp_dlc_full_name = ""
 var _tmp_dlc_license_key = ""
+var _tmp_cfg_path = ""
 func _on_ContentDataDownloader_request_completed(result, response_code, headers, body):
 	$VBoxContainer/result.text = tr("KEY_LICENSES_RECIVING_DATA")
 	$VBoxContainer/result.text = tr("KEY_LICENSES_PARSING_DATA")
@@ -87,9 +90,11 @@ func _on_ContentDataDownloader_request_completed(result, response_code, headers,
 		$ContentFileDownloader.download_file = base_install_path + _tmp_dlc_name + "/" + download_name
 		$ContentFileDownloader.request(download_url)
 		yield($ContentFileDownloader, "request_completed")
+		
 		if _result[i].get_extension() == "cfg":
+			_tmp_cfg_path = base_install_path + _tmp_dlc_name + "/" + download_name
 			_tmp_dlc_full_name = get_dlc_full_name(_tmp_dlc_name)
-	activate_license_key_in_game(_tmp_dlc_license_key, _tmp_dlc_full_name)
+	activate_license_key_in_game(_tmp_dlc_license_key, _tmp_dlc_full_name, _tmp_cfg_path)
 
 func _on_ContentFileDownloader_request_completed(result, response_code, headers, body):
 	_tmp_downloaded_files += 1
