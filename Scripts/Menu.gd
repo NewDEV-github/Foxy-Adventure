@@ -12,7 +12,7 @@ func _on_FirebaseAuth_login_succeeded(auth):
 	Firebase.Auth.save_auth(auth)
 	Globals.user_data = auth
 #	$Account.load_account_info()
-	$VBoxContainer3/Info.disabled = false
+	$VBoxContainer3/DownloadableContent.disabled = false
 	$VBoxContainer3/Logout.disabled = false
 	$VBoxContainer3/Login.disabled = true
 func change_game_version_bbcode_text(text):
@@ -210,7 +210,7 @@ func _on_Logout_pressed():
 	Firebase.Auth.remove_auth()
 	Firebase.Auth.logout()
 	Globals.user_data = {}
-	$VBoxContainer3/Info.disabled = true
+	$VBoxContainer3/DownloadableContent.disabled = true
 	$VBoxContainer3/Logout.disabled = true
 	$VBoxContainer3/Login.disabled = false
 
@@ -265,10 +265,16 @@ func get_installed_dlc():
 	$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".clear()
 	for i in get_activated_products_in_game():
 		print(get_dlc_name_for_activated_key(i))
-		$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".add_item(get_dlc_name_for_activated_key(i))
+		print(str(i).split('_').size())
+		if str(i).split('_').size() == 1:
+			$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".add_item(get_dlc_name_for_activated_key(i))
 	yield(get_tree(), "idle_frame")
 	var scb = $SaveLoader/HBoxContainer/ScrollContainer.get_v_scrollbar()
 #		print("MS: " + str(scb.max_value))
 	if scb.max_value >= $SaveLoader/HBoxContainer/ScrollContainer.rect_size.y:
 		show_slider()
 		$SaveLoader/HBoxContainer/DLCVSlider.max_value = scb.max_value - $SaveLoader/HBoxContainer/ScrollContainer.rect_size.y
+
+
+func _on_Editor_pressed():
+	OS.shell_open("https://newdev.web.app/faq/foxy-adventure#creating-modofications-and-custom-stages")

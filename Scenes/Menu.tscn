@@ -143,14 +143,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "KEY_TEXT_ACHIEVEMENTS"
 
-[node name="Leaderboard" type="Button" parent="VBoxContainer2"]
+[node name="Editor" type="Button" parent="VBoxContainer2"]
 margin_top = 46.0
 margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
-text = "KEY_TEXT_LEADERBOARD"
+text = "KEY_TEXT_EDITOR"
 
 [node name="Options" type="Button" parent="VBoxContainer2"]
 margin_top = 92.0
@@ -524,7 +524,7 @@ margin_bottom = -5.0
 [connection signal="pressed" from="VBoxContainer3/Logout" to="." method="_on_Logout_pressed"]
 [connection signal="pressed" from="VBoxContainer3/DownloadableContent" to="." method="_on_DownloadableContent_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
-[connection signal="pressed" from="VBoxContainer2/Leaderboard" to="." method="_on_Leaderboard_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Editor" to="." method="_on_Editor_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="no_saves_found" from="SaveLoader" to="." method="_on_SaveLoader_no_saves_found"]

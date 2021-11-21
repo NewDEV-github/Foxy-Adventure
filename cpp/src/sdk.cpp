@@ -104,7 +104,7 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
                 FoxyAdventureSDK::init_debugger();
             }
         }
-        else {
+        if (n != godot_string_version) {
             godot::String s1 = "Version of used Foxy Adventure SDK - ";
             godot::String s2 = " is not supported by the game :/";
             godot::Godot::print(s1 + godot_string_version + s2);

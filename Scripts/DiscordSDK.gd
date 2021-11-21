@@ -30,13 +30,8 @@ func _ready() -> void:
 				users = _get_user_manager()
 				images = _get_image_manager()
 				activities = _get_activity_manager()
-
 				users.connect("current_user_update", self, "_on_current_user_update")
-
-				users.get_user(425340416531890178, self, "get_user_callback")
-
 				result = yield(activities, "update_activity_callback")
-
 				if result == Discord.Result.OK:
 					print("Updated activity successfully!")
 				else:
@@ -118,11 +113,13 @@ func _on_current_user_update() -> void:
 	ret = yield(images, "fetch_callback")
 	result = ret[0]
 	handle = ret[1]
-
+	print(handle)
+	print(result)
 	if result != Discord.Result.OK:
 		print(
 			"Failed to fetch image handle: ",
-			enum_to_string(Discord.Result, result)
+			enum_to_string(Discord.Result, result), ", ",
+			handle.id, ", ", handle.size, ", ", handle.type
 		)
 		return
 

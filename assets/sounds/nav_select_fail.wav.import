@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nav_select_fail.wav-ce4642dbfc0937020e98effab4ff8026.sample"
+
+[deps]
+
+source_file="res://assets/sounds/nav_select_fail.wav"
+dest_files=[ "res://.import/nav_select_fail.wav-ce4642dbfc0937020e98effab4ff8026.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

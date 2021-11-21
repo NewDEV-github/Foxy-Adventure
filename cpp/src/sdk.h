@@ -26,7 +26,7 @@ private:
 
     godot::String changelog = "Basic updates";
     godot::String version_string = "1.1.1";
-    int version = 110;
+    int version = 111
     float time_passed;
     bool initialized = false;
     bool debugger_initialized = false;
