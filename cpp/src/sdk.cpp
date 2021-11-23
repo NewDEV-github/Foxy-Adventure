@@ -110,7 +110,7 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
             }
         }
     }
-    if (std::find(std::begin(versions), std::end(FoxyAdventureSDK::itos(version)) == std::end(versions))
+    if (std::find(std::begin(versions), std::end(FoxyAdventureSDK::itos(version))) == std::end(versions))
     {
         godot::Godot::print("Sorry, but it seems like tkere is unsupported SDK version");
     }
