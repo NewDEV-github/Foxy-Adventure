@@ -90,8 +90,8 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
 
 	}
 	std::string line;
-    int size = 0;
-    std::string versions [] = {};
+  int size = 0;
+  std::string versions [1];
 	while(getline(inFile, line)){
         godot::String n = line.c_str();
         godot::String godot_string_version = FoxyAdventureSDK::itos(version).c_str();
