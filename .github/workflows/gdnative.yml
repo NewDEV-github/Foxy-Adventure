@@ -42,6 +42,8 @@ jobs:
         git clone https://github.com/JezSonic/foreigner.git
         git clone --branch 3.4 https://github.com/godotengine/godot.git
         sudo apt install make
+        sudo apt install tree
+        tree
         cd foreigner
         make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
     - name: Upload a Build Artifact Linux
