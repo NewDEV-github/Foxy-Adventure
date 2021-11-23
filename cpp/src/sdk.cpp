@@ -95,7 +95,7 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
 	while(getline(inFile, line)){
         godot::String n = line.c_str();
         godot::String godot_string_version = FoxyAdventureSDK::itos(version).c_str();
-        versions[size++] = FoxyAdventureSDK::itos(version); // adding all supported versions to the array
+        versions[size++] = line // adding all supported versions to the array
         if (n == godot_string_version) {
             if (init_flag == 0) {
                 initialized = true;
@@ -109,18 +109,10 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
                 break;
             }
         }
-        if (n != godot_string_version) {
-            versions *v = std::find(std::begin(version), std::end(version), version);
-            // When the element is not found, std::find returns the end of the range
-            if (v != std::end(version)) {
-                std::cerr << "Found at position " << std::distance(std::cerr, v) << std::endl;
-            } else {
-                std::cerr << "Not found" << std::endl;
-                godot::String s1 = "Version of used Foxy Adventure SDK - ";
-                godot::String s2 = " is not supported by the game :/";
-                godot::Godot::print(s1 + godot_string_version + s2);
-            }
-        }
+    }
+    if (std::find(std::begin(versions), std::end(versions), FoxyAdventureSDK::itos(version)) = std::end(versions))
+    {
+        godot::Godot::print("Sorry, but it seems like tkere is unsupported SDK version");
     }
 }
 void FoxyAdventureSDK::init_debugger() {
