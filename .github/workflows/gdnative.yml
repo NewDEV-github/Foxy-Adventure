@@ -114,8 +114,9 @@ jobs:
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
         scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu)
+        cd ../
+        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core.dylib
         cd $GITHUB_WORKSPACE
-#        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core.dylib
 #        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #        brew install cmake
 #        cd ../
