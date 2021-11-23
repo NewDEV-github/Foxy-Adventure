@@ -39,11 +39,11 @@ jobs:
         cd ../
         scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core.so
         cd $GITHUB_WORKSPACE
-        git clone https://github.com/and3rson/foreigner.git
+        git clone https://github.com/JezSonic/foreigner.git
         git clone --branch 3.4 https://github.com/godotengine/godot.git
         sudo apt install make
         cd foreigner
-        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot
+        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -82,7 +82,7 @@ jobs:
         curl https://github.com/Kitware/CMake/releases/download/v3.22.0/cmake-3.22.0-windows-x86_64.msi
         msiexec /i cmake-3.22.0-windows-x86_64.msi /l*vx log.txt
         cd foreigner
-        make GODOTCPP_PATH=../cpp/godot-cpp GODOT_PATH=../godot
+        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.windows.release.64
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -120,7 +120,7 @@ jobs:
         git clone https://github.com/and3rson/foreigner.git
         git clone --branch 3.4 https://github.com/godotengine/godot.git
         cd foreigner
-        make GODOTCPP_PATH=../cpp/godot-cpp GODOT_PATH=../godot
+        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.osx.release.64
     - name: Upload a Build Artifact OSX
       uses: actions/upload-artifact@v2.2.4
       with:
