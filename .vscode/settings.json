@@ -42,6 +42,14 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "cctype": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "array": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "clocale": "cpp",
+        "compare": "cpp",
+        "ctime": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp"
     }
 }

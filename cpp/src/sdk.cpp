@@ -110,12 +110,12 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
             }
         }
         if (n != godot_string_version) {
-            versions *v = std::find(std::begin(array), std::end(array), someObject);
+            versions *v = std::find(std::begin(version), std::end(version), version);
             // When the element is not found, std::find returns the end of the range
-            if (foo != std::end(array)) {
-                cerr << "Found at position " << std::distance(array, foo) << endl;
+            if (v != std::end(version)) {
+                std::cerr << "Found at position " << std::distance(std::cerr, v) << std::endl;
             } else {
-                cerr << "Not found" << endl;
+                std::cerr << "Not found" << std::endl;
                 godot::String s1 = "Version of used Foxy Adventure SDK - ";
                 godot::String s2 = " is not supported by the game :/";
                 godot::Godot::print(s1 + godot_string_version + s2);
