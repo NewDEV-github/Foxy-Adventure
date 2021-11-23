@@ -90,24 +90,36 @@ void FoxyAdventureSDK::init_sdk(int init_flag) {
 
 	}
 	std::string line;
+    int size = 0;
+    std::string versions [] = {};
 	while(getline(inFile, line)){
         godot::String n = line.c_str();
         godot::String godot_string_version = FoxyAdventureSDK::itos(version).c_str();
+        versions[size++] = FoxyAdventureSDK::itos(version); // adding all supported versions to the array
         if (n == godot_string_version) {
             if (init_flag == 0) {
                 initialized = true;
                 godot::Godot::print("Foxy Adventure SDK Initialized!");
+                break;
             }
             if (init_flag == 1) {
                 initialized = true;
                 godot::Godot::print("Foxy Adventure SDK Initialized!");
                 FoxyAdventureSDK::init_debugger();
+                break;
             }
         }
         if (n != godot_string_version) {
-            godot::String s1 = "Version of used Foxy Adventure SDK - ";
-            godot::String s2 = " is not supported by the game :/";
-            godot::Godot::print(s1 + godot_string_version + s2);
+            versions *v = std::find(std::begin(array), std::end(array), someObject);
+            // When the element is not found, std::find returns the end of the range
+            if (foo != std::end(array)) {
+                cerr << "Found at position " << std::distance(array, foo) << endl;
+            } else {
+                cerr << "Not found" << endl;
+                godot::String s1 = "Version of used Foxy Adventure SDK - ";
+                godot::String s2 = " is not supported by the game :/";
+                godot::Godot::print(s1 + godot_string_version + s2);
+            }
         }
     }
 }

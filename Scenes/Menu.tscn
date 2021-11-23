@@ -149,7 +149,6 @@ margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 text = "KEY_TEXT_EDITOR"
 
 [node name="Options" type="Button" parent="VBoxContainer2"]
