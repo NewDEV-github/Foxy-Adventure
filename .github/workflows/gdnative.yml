@@ -38,24 +38,24 @@ jobs:
         scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
         scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core.so
-        cd $GITHUB_WORKSPACE
-        git clone https://github.com/JezSonic/foreigner.git
-        git clone --branch 3.4 https://github.com/godotengine/godot.git
-        sudo apt install make
-        sudo apt install tree
-        tree
-        cd foreigner
-        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
+#        cd $GITHUB_WORKSPACE
+#        git clone https://github.com/JezSonic/foreigner.git
+#        git clone --branch 3.4 https://github.com/godotengine/godot.git
+#        sudo apt install make
+#        sudo apt install tree
+#        tree
+#        cd foreigner
+#        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-x11-sdk
         path: cpp/demo/bin/
-    - name: Upload a Build Artifact Linux
-      uses: actions/upload-artifact@v2.2.4
-      with:
-        name: build-godot-cpp-x11-foreigner
-        path: src/
+#    - name: Upload a Build Artifact Linux
+#      uses: actions/upload-artifact@v2.2.4
+#      with:
+#        name: build-godot-cpp-x11-foreigner
+#        path: src/
   compile-gdnative-windows:
     runs-on: windows-latest
     steps:
@@ -78,23 +78,23 @@ jobs:
         scons platform=windows generate_bindings=yes target=release -j $env:NUMBER_OF_PROCESSORS
         cd ../
         scons platform=windows target=release -j $env:NUMBER_OF_PROCESSORS target_name=FoxyAdventureSDK.Core.dll
-        cd ../
-        git clone https://github.com/and3rson/foreigner.git
-        git clone --branch 3.4 https://github.com/godotengine/godot.git
-        curl https://github.com/Kitware/CMake/releases/download/v3.22.0/cmake-3.22.0-windows-x86_64.msi
-        msiexec /i cmake-3.22.0-windows-x86_64.msi /l*vx log.txt
-        cd foreigner
-        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.windows.release.64
+        cd $GITHUB_WORKSPACE
+#        git clone https://github.com/and3rson/foreigner.git
+#        git clone --branch 3.4 https://github.com/godotengine/godot.git
+#        curl https://github.com/Kitware/CMake/releases/download/v3.22.0/cmake-3.22.0-windows-x86_64.msi
+#        msiexec /i cmake-3.22.0-windows-x86_64.msi /l*vx log.txt
+#        cd foreigner
+#        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.windows.release.64
     - name: Upload a Build Artifact Windows
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-win-sdk
         path: cpp/demo/bin/
-    - name: Upload a Build Artifact Windows
-      uses: actions/upload-artifact@v2.2.4
-      with:
-        name: build-godot-cpp-win-foreigner
-        path: src/
+#    - name: Upload a Build Artifact Windows
+#      uses: actions/upload-artifact@v2.2.4
+#      with:
+#        name: build-godot-cpp-win-foreigner
+#        path: src/
   compile-gdnative-osx:
     runs-on: macos-10.15
     steps:
@@ -114,23 +114,23 @@ jobs:
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
         scons platform=osx generate_bindings=yes target=release -j $(sysctl -n hw.logicalcpu)
-        cd ../
-        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core.dylib
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        brew install cmake
-        cd ../
-        git clone https://github.com/and3rson/foreigner.git
-        git clone --branch 3.4 https://github.com/godotengine/godot.git
-        cd foreigner
-        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.osx.release.64
+        cd $GITHUB_WORKSPACE
+#        scons platform=osx target=release -j $(sysctl -n hw.logicalcpu) target_name=FoxyAdventureSDK.Core.dylib
+#        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#        brew install cmake
+#        cd ../
+#        git clone https://github.com/and3rson/foreigner.git
+#        git clone --branch 3.4 https://github.com/godotengine/godot.git
+#        cd foreigner
+#        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.osx.release.64
     - name: Upload a Build Artifact OSX
       uses: actions/upload-artifact@v2.2.4
       with:
         name: build-godot-cpp-osx-sdk
         path: cpp/demo/bin/
-    - name: Upload a Build Artifact OSX
-      uses: actions/upload-artifact@v2.2.4
-      with:
-        name: build-godot-cpp-osx-foreigner
-        path: src/
+#    - name: Upload a Build Artifact OSX
+#      uses: actions/upload-artifact@v2.2.4
+#      with:
+#        name: build-godot-cpp-osx-foreigner
+#        path: src/
 
