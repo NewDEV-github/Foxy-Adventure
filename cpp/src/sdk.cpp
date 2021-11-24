@@ -79,40 +79,14 @@ void FoxyAdventureSDK::_init() {
 
 void FoxyAdventureSDK::init_sdk(int init_flag) {
     godot::Godot::print("Initializing Foxy Adventure SDK...");
-    godot::Godot::print("Checking for SDK version support...");
-    String f = OS::get_singleton()->get_user_data_dir();
-    std::string f_std = FoxyAdventureSDK::itos(f.alloc_c_string()) + "/sdk_data";
-    // std::cout << f_std << std::endl;
-    std::ifstream inFile(f_std);
-	if(!inFile)
-	{
-		godot::Godot::print("Can not initialize SDK - SDK Data file not found\nYou should try re-run the game to fix that :/");
-
-	}
-	std::string line;
-  int size = 0;
-  std::string versions [1];
-	while(getline(inFile, line)){
-        godot::String n = line.c_str();
-        godot::String godot_string_version = FoxyAdventureSDK::itos(version).c_str();
-        versions[size++] = line; // adding all supported versions to the array
-        if (n == godot_string_version) {
-            if (init_flag == 0) {
-                initialized = true;
-                godot::Godot::print("Foxy Adventure SDK Initialized!");
-                break;
-            }
-            if (init_flag == 1) {
-                initialized = true;
-                godot::Godot::print("Foxy Adventure SDK Initialized!");
-                FoxyAdventureSDK::init_debugger();
-                break;
-            }
-        }
+    if (init_flag == 0) {
+      initialized = true;
+      godot::Godot::print("Foxy Adventure SDK Initialized!");
     }
-    if (std::find(std::begin(versions), std::end(versions), FoxyAdventureSDK::itos(version)) == std::end(versions))
-    {
-        godot::Godot::print("Sorry, but it seems like tkere is unsupported SDK version");
+    if (init_flag == 1) {
+      initialized = true;
+      godot::Godot::print("Foxy Adventure SDK Initialized!");
+      FoxyAdventureSDK::init_debugger();
     }
 }
 void FoxyAdventureSDK::init_debugger() {
