@@ -300,7 +300,7 @@ func load_auth() -> void:
 		var encrypted_file = File.new()
 		var err = encrypted_file.open_encrypted_with_pass("user://user.auth", File.READ, OS.get_unique_id())
 		if err != OK:
-			Firebase._printerr("Error Opening File. Error Code: "+ err)
+			Firebase._printerr("Error Opening File. Error Code: "+ str(err))
 		else:
 			var encrypted_file_data = parse_json(encrypted_file.get_line())
 			manual_token_refresh(encrypted_file_data)
