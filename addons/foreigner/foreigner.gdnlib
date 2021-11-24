@@ -1,0 +1,20 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+X11.64="res://addons/foreigner/linux/foreigner.so"
+OSX.64="res://addons/foreigner/mac/foreigner.dylib"
+Windows.64="res://addons/foreigner/win64/foreigner.dll"
+Server.64="res://addons/foreigner/linux/foreigner.so"
+
+[dependencies]
+
+X11.64=[  ]
+OSX.64=[  ]
+Windows.64=[  ]
+Server.64=[  ]
