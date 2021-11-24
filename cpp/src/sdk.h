@@ -24,7 +24,7 @@ private:
     template<typename T>
     std::string itos(T i);
 
-    godot::String changelog = "Basic updates";
+    godot::String changelog = "SDK initialization is simpler now, because the game checks if the SDK is supported or not";
     godot::String version_string = "1.1.1";
     int version = 111;
     float time_passed;
