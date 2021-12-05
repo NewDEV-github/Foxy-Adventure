@@ -37,6 +37,7 @@ void FoxyAdventureSDK::_register_methods() {
     register_method("set_stage_list", &FoxyAdventureSDK::set_stage_list);
     register_method("change_stage_to_next", &FoxyAdventureSDK::change_stage_to_next);
     register_method("set_stage_name", &FoxyAdventureSDK::set_stage_name);
+    register_method("add_custom_music_for_stages", &FoxyAdventureSDK::add_custom_music_for_stages);
 
 }
 
@@ -370,4 +371,15 @@ void FoxyAdventureSDK::set_stage_name(godot::String stage_id, godot::String stag
     else {
         godot::Godot::print("SDK not initialized - function won't work");
     }
+}
+void FoxyAdventureSDK::add_custom_music_for_stages(godot::String file_path) {
+    if (initialized == true) {
+        godot::Array args{};
+        args.push_back(file_path);
+        get_node(NodePath("/root/Globals"))->call("add_custom_music_for_stages", args);
+    }
+    else {
+        godot::Godot::print("SDK not initialized - function won't work");
+    }
+
 }

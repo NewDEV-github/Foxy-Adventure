@@ -7,10 +7,10 @@ extends Node2D
 onready var startup_position = $start_position.position
 onready var root = get_tree().root
 # Called when the node enters the scene tree for the first time.
-var music_files = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
+var music_files = Globals.stage_music_list
 func _ready():
 	var character = load(str(Globals.character_path)).instance()
-	ApiScores.force_upload()
+#	ApiScores.force_upload()
 	Globals.add_coin(0, true)
 	randomize()
 	var audio = load(music_files[randi()%music_files.size()])

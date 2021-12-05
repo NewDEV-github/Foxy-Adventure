@@ -357,6 +357,7 @@ valign = 1
 visible = false
 
 [node name="LoginPanel" parent="." instance=ExtResource( 8 )]
+margin_right = 755.0
 
 [node name="Leaderboard" type="WindowDialog" parent="."]
 margin_right = 408.0
@@ -442,9 +443,11 @@ margin_bottom = 38.0
 text = "Delete Stage"
 
 [node name="DownloadableContent" type="WindowDialog" parent="."]
-visible = true
-margin_right = 702.0
-margin_bottom = 436.0
+margin_right = 556.0
+margin_bottom = 357.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TabContainer" type="TabContainer" parent="DownloadableContent"]
 anchor_right = 1.0
@@ -473,8 +476,8 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DownloadableContent/TabContainer/Installed Content/HBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 662.0
-margin_bottom = 305.0
+margin_right = 516.0
+margin_bottom = 226.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
@@ -484,8 +487,8 @@ __meta__ = {
 }
 
 [node name="DLCList" type="ItemList" parent="DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer"]
-margin_right = 662.0
-margin_bottom = 305.0
+margin_right = 516.0
+margin_bottom = 226.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -498,9 +501,9 @@ __meta__ = {
 }
 
 [node name="DLCVSlider" type="VSlider" parent="DownloadableContent/TabContainer/Installed Content/HBoxContainer"]
-margin_left = 666.0
-margin_right = 682.0
-margin_bottom = 305.0
+margin_left = 520.0
+margin_right = 536.0
+margin_bottom = 226.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

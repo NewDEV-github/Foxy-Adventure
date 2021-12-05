@@ -23,14 +23,7 @@ func _ready():
 			$ConfirmationDialog.popup_centered()
 		elif not file.file_exists("user://settings.cfg"):
 			$ConfirmationDialog.popup_centered()
-	#		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
-	#		print(str(player))
 		file = File.new()
-	#	print(str(PI))
-	#	if Globals.release_mode:
-	#		load_assets()
-	#	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
-	#	BackgroundLoad.get_node("bgload").load_scene("res://s.tscn")
 		var dir = Directory.new()
 		dir.open('user://')
 		dir.make_dir('dlcs')
@@ -39,13 +32,7 @@ func _ready():
 			dir.open('user://')
 			dir.make_dir('logs')
 		OS.request_permissions()
-		
-	#	$icon.show()
 		$VideoPlayer.stop()
-		#OS.native_video_play("res://assets/Animations/intro2.mp4",0, "", "" )
-		
-	#	if intro_played:
-	#		get_tree().change_scene("res://Scenes/Menu.tscn")
 		break
 func _process(delta: float) -> void:
 	if DiscordSDK.discord_user_img:

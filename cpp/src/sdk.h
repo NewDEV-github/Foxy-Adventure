@@ -24,9 +24,9 @@ private:
     template<typename T>
     std::string itos(T i);
 
-    godot::String changelog = "SDK initialization is simpler now, because the game checks if the SDK is supported or not";
-    godot::String version_string = "1.1.1";
-    int version = 111;
+    godot::String changelog = "Added possibility to add music to list for music in the background of stages";
+    godot::String version_string = "1.2.1";
+    int version = 121;
     float time_passed;
     bool initialized = false;
     bool debugger_initialized = false;
@@ -85,6 +85,8 @@ public:
     void set_stage_list(godot::Dictionary list); //dictionary here
     void change_stage_to_next();
     void set_stage_name(godot::String stage_id, godot::String stage_name);
+
+    void add_custom_music_for_stages(godot::String file_path);
 };
 
 }

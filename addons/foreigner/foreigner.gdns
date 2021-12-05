@@ -6,3 +6,4 @@
 resource_name = "foreigner"
 class_name = "Foreigner"
 library = ExtResource( 1 )
+script_class_name = "Foreigner"

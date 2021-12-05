@@ -58,6 +58,7 @@ var stage_names:Dictionary = {
 	"2": tr("KEY_TEXT_STAGE_LABORATORY") + " - 3",
 	"3": tr("KEY_TEXT_STAGE_CREDITS") + " :3"
 }
+var stage_music_list = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
 func change_stage(stage_id:String):
 	BackgroundLoad.get_node("bgload").load_scene(stage_list[stage_id])
 func add_stage_to_list(stage_path:String, stage_name:String):
@@ -183,7 +184,12 @@ func add_custom_world(world_name:String, path:String):
 	if not cworlds.has(world_name):
 		cworlds[world_name] = path
 	else:
-		print("Stage named " + world_name + "\nis already imported into the game.", "Oops!")
+		print("Stage named " + world_name + "\nis already imported into the game.")
+func add_custom_music_for_stages(file_path:String):
+	if not stage_music_list.has(file_path):
+		stage_music_list.append(file_path)
+	else:
+		print("Music file at path: " + file_path + "\nis already imported into the game.")
 func add_custom_world_scan_path(path:String):
 	levels_scan_path.append(path)
 

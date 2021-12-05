@@ -15,9 +15,12 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 24.0
+margin_right = -21.0
+custom_constants/separation = 30
 
 [node name="Login" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 257.0
+margin_right = 221.0
 margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -26,13 +29,13 @@ alignment = 1
 
 [node name="Email" type="LineEdit" parent="HBoxContainer/Login"]
 margin_top = 133.0
-margin_right = 257.0
+margin_right = 221.0
 margin_bottom = 157.0
 placeholder_text = "KEY_TEXT_EMAIL"
 
 [node name="Password" type="LineEdit" parent="HBoxContainer/Login"]
 margin_top = 164.0
-margin_right = 257.0
+margin_right = 221.0
 margin_bottom = 188.0
 secret = true
 secret_character = "•"
@@ -40,13 +43,13 @@ placeholder_text = "KEY_TEXT_PASSWORD"
 
 [node name="Login" type="Button" parent="HBoxContainer/Login"]
 margin_top = 195.0
-margin_right = 257.0
+margin_right = 221.0
 margin_bottom = 215.0
 text = "KEY_TEXT_LOGIN"
 
 [node name="Register" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 261.0
-margin_right = 518.0
+margin_left = 251.0
+margin_right = 473.0
 margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -71,7 +74,7 @@ placeholder_text = "KEY_TEXT_PASSWORD"
 
 [node name="Register" type="Button" parent="HBoxContainer/Register"]
 margin_top = 164.0
-margin_right = 257.0
+margin_right = 222.0
 margin_bottom = 184.0
 text = "KEY_TEXT_REGISTER"
 
