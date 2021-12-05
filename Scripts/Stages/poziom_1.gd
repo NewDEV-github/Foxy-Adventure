@@ -13,13 +13,11 @@ func _ready():
 #	ApiScores.force_upload()
 	Globals.add_coin(0, true)
 	randomize()
-	var audio = load(music_files[randi()%music_files.size()])
-	$AudioStreamPlayer2D.stream = audio
+#	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = Globals.ParseAudioAsStreamData(music_files[randi()%music_files.size()])
 	$AudioStreamPlayer2D.play()
 	Globals.current_stage = 0
 	DiscordSDK.run_rpc(false, true, Globals.get_current_character_name_from_list(), false)
-#	Fmod.add_listener(0, self)
-#	Fmod.play_music_sound_instance("res://assets/Audio/BGM/1stage.ogg", "1stage")
 	Globals.save_level(0, Globals.current_save_name)
 	add_child(character)
 	var game_ui_scene = preload("res://Scenes/game_ui.tscn").instance()
@@ -71,6 +69,6 @@ func _on_messagearea_body_entered(body):
 
 
 func _on_AudioStreamPlayer2D_finished():
-	var audio = load(music_files[randi()%music_files.size()])
-	$AudioStreamPlayer2D.stream = audio
+#	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = Globals.ParseAudioAsStreamData(music_files[randi()%music_files.size()])
 	$AudioStreamPlayer2D.play()

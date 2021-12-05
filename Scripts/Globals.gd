@@ -7,7 +7,8 @@ signal achivement_done(achivement)
 var user_data = {}
 var supported_sdk_versions = [
 	110,
-	111
+	111,
+	121
 ]
 var not_loaded_content = []
 #var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
@@ -410,10 +411,12 @@ func load_modification(mod_name):
 		print(str(supported_sdk_versions.has(int(mod["sdk_version"]))))
 		if supported_sdk_versions.has(int(mod["sdk_version"])):
 			for i in mod["pck_files"]:
+				print("Loading: " + OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
 				ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
 			var main_script = load(mod["main_script_file"]).new()
 			print("Loading mod")
 			main_script.init_mod()
+			dir_contents('res://more_music/')
 		else:
 			print(mod["name"] + " - " + tr("KEY_TEXT_MODIFICATION_UNSUPPORTED_SDK"))
 			OS.alert(mod["name"] + " - " + tr("KEY_TEXT_MODIFICATION_UNSUPPORTED_SDK"), tr("KEY_TEXT_WARNING"))
@@ -452,9 +455,164 @@ func load_dlcs():
 					cf2.load(dlc_cfg_instal_dir)
 					for i2 in cf2.get_value("mod_info", "pck_files"):
 						ProjectSettings.load_resource_pack(dlc_cfg_instal_dir.get_base_dir() + "/" + i2)
-					load(cf2.get_value("mod_info", "main_script_file")).new().init_mod()
+					if cf2.has_section_key("mod_info", "main_script_file") and not cf2.get_value("mod_info", "main_script_file") == "":
+						load(cf2.get_value("mod_info", "main_script_file")).new().init_mod()
 					print("loading %s" % dlc_name)
 				else:
 					if not not_loaded_content.has(dlc_name):
 						OS.alert('DLC %s\nwill not be loaded' % dlc_name, tr("KEY_TEXT_WARNING"))
 						not_loaded_content.append(dlc_name)
+
+
+
+
+
+
+
+
+
+func dir_contents(path, recursive = false):
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				print("Found file: " + file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path - " + path)
+
+
+
+
+func report_errors(err, filepath):
+	# See: https://docs.godotengine.org/en/latest/classes/class_@globalscope.html#enum-globalscope-error
+	var result_hash = {
+		ERR_FILE_NOT_FOUND: "File: not found",
+		ERR_FILE_BAD_DRIVE: "File: Bad drive error",
+		ERR_FILE_BAD_PATH: "File: Bad path error.",
+		ERR_FILE_NO_PERMISSION: "File: No permission error.",
+		ERR_FILE_ALREADY_IN_USE: "File: Already in use error.",
+		ERR_FILE_CANT_OPEN: "File: Can't open error.",
+		ERR_FILE_CANT_WRITE: "File: Can't write error.",
+		ERR_FILE_CANT_READ: "File: Can't read error.",
+		ERR_FILE_UNRECOGNIZED: "File: Unrecognized error.",
+		ERR_FILE_CORRUPT: "File: Corrupt error.",
+		ERR_FILE_MISSING_DEPENDENCIES: "File: Missing dependencies error.",
+		ERR_FILE_EOF: "File: End of file (EOF) error."
+	}
+	if err in result_hash:
+		print("Error: ", result_hash[err], " ", filepath)
+	else:
+		print("Unknown error with file ", filepath, " error code: ", err)
+
+func ParseAudioAsStreamData(filepath):
+	var file = File.new()
+	var err = file.open(filepath, File.READ)
+	if err != OK:
+		report_errors(err, filepath)
+		file.close()
+		return AudioStreamSample.new()
+
+	var bytes = file.get_buffer(file.get_len())
+
+	# if File is wav
+	if filepath.ends_with(".wav"):
+
+		var newstream = AudioStreamSample.new()
+
+		#---------------------------
+		#parrrrseeeeee!!! :D
+
+		for i in range(0, 100):
+			var those4bytes = str(char(bytes[i])+char(bytes[i+1])+char(bytes[i+2])+char(bytes[i+3]))
+			
+			if those4bytes == "RIFF": 
+				print ("RIFF OK at bytes " + str(i) + "-" + str(i+3))
+				#RIP bytes 4-7 integer for now
+			if those4bytes == "WAVE": 
+				print ("WAVE OK at bytes " + str(i) + "-" + str(i+3))
+
+			if those4bytes == "fmt ":
+				print ("fmt OK at bytes " + str(i) + "-" + str(i+3))
+				
+				#get format subchunk size, 4 bytes next to "fmt " are an int32
+				var formatsubchunksize = bytes[i+4] + (bytes[i+5] << 8) + (bytes[i+6] << 16) + (bytes[i+7] << 24)
+				print ("Format subchunk size: " + str(formatsubchunksize))
+				
+				#using formatsubchunk index so it's easier to understand what's going on
+				var fsc0 = i+8 #fsc0 is byte 8 after start of "fmt "
+
+				#get format code [Bytes 0-1]
+				var format_code = bytes[fsc0] + (bytes[fsc0+1] << 8)
+				var format_name
+				if format_code == 0: format_name = "8_BITS"
+				elif format_code == 1: format_name = "16_BITS"
+				elif format_code == 2: format_name = "IMA_ADPCM"
+				print ("Format: " + str(format_code) + " " + format_name)
+				#assign format to our AudioStreamSample
+				newstream.format = format_code
+				
+				#get channel num [Bytes 2-3]
+				var channel_num = bytes[fsc0+2] + (bytes[fsc0+3] << 8)
+				print ("Number of channels: " + str(channel_num))
+				#set our AudioStreamSample to stereo if needed
+				if channel_num == 2: newstream.stereo = true
+				
+				#get sample rate [Bytes 4-7]
+				var sample_rate = bytes[fsc0+4] + (bytes[fsc0+5] << 8) + (bytes[fsc0+6] << 16) + (bytes[fsc0+7] << 24)
+				print ("Sample rate: " + str(sample_rate))
+				#set our AudioStreamSample mixrate
+				newstream.mix_rate = sample_rate
+				
+				#get byte_rate [Bytes 8-11] because we can
+				var byte_rate = bytes[fsc0+8] + (bytes[fsc0+9] << 8) + (bytes[fsc0+10] << 16) + (bytes[fsc0+11] << 24)
+				print ("Byte rate: " + str(byte_rate))
+				
+				#same with bits*sample*channel [Bytes 12-13]
+				var bits_sample_channel = bytes[fsc0+12] + (bytes[fsc0+13] << 8)
+				print ("BitsPerSample * Channel / 8: " + str(bits_sample_channel))
+				
+				#aaaand bits per sample/bitrate [Bytes 14-15] - TODO: Handle different bitrates
+				var bits_per_sample = bytes[fsc0+14] + (bytes[fsc0+15] << 8)
+				print ("Bits per sample: " + str(bits_per_sample))
+				
+				
+			if those4bytes == "data":
+				var audio_data_size = bytes[i+4] + (bytes[i+5] << 8) + (bytes[i+6] << 16) + (bytes[i+7] << 24)
+				print ("Audio data/stream size is " + str(audio_data_size) + " bytes")
+
+				var data_entry_point = (i+8)
+				print ("Audio data starts at byte " + str(data_entry_point))
+				
+				newstream.data = bytes.subarray(data_entry_point, data_entry_point+audio_data_size-1)
+				
+			# end of parsing
+			#---------------------------
+
+		#get samples and set loop end
+		var samplenum = newstream.data.size() / 4
+		newstream.loop_end = samplenum
+		newstream.loop_mode = 1 #change to 0 or delete this line if you don't want loop, also check out modes 2 and 3 in the docs
+		return newstream  #:D
+
+	#if file is ogg
+	elif filepath.ends_with(".ogg"):
+		var newstream = AudioStreamOGGVorbis.new()
+		newstream.loop = true #set to false or delete this line if you don't want to loop
+		newstream.data = bytes
+		return newstream
+
+	#if file is mp3
+	elif filepath.ends_with(".mp3"):
+		var newstream = AudioStreamMP3.new()
+		newstream.loop = true #set to false or delete this line if you don't want to loop
+		newstream.data = bytes
+		return newstream
+
+	else:
+		print ("ERROR: Wrong filetype or format")
+	file.close()

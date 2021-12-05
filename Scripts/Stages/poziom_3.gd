@@ -13,8 +13,8 @@ func _ready():
 	ApiScores.force_upload()
 	Globals.add_coin(0, true)
 	randomize()
-	var audio = load(music_files[randi()%music_files.size()])
-	$AudioStreamPlayer2D.stream = audio
+#	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = Globals.ParseAudioAsStreamData(music_files[randi()%music_files.size()])
 	$AudioStreamPlayer2D.play()
 	Globals.current_stage = 2
 #	Fmod.add_listener(0, self)
@@ -44,8 +44,8 @@ func _on_Doors_body_entered(body):
 		change_level()
 
 func _on_AudioStreamPlayer2D_finished():
-	var audio = load(music_files[randi()%music_files.size()])
-	$AudioStreamPlayer2D.stream = audio
+#	var audio = load(music_files[randi()%music_files.size()])
+	$AudioStreamPlayer2D.stream = Globals.ParseAudioAsStreamData(music_files[randi()%music_files.size()])
 	$AudioStreamPlayer2D.play()
 
 

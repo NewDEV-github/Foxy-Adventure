@@ -20,11 +20,12 @@ func change_game_version_bbcode_text(text):
 func load_level_editor():
 	pass
 func _ready() -> void:
+	print(Globals.stage_music_list)
 	Globals.connect("game_version_text_changed", self, "change_game_version_bbcode_text")
 	if Globals.custom_menu_bg != "":
 		$bg.texture = load(Globals.custom_menu_bg)
 	if Globals.custom_menu_audio != "":
-		$AudioStreamPlayer.stream = load(Globals.custom_menu_audio)
+		$AudioStreamPlayer.stream = Globals.ParseAudioAsStreamData(Globals.custom_menu_audio)
 	$AudioStreamPlayer.play()
 	$VBoxContainer3/DownloadableContent.disabled = true
 	$VBoxContainer3/Logout.disabled = true
