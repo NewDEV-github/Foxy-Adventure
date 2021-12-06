@@ -901,156 +901,137 @@ bus = "Music"
 
 [node name="AnimatedSprite" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 338.727, 890.741 )
-frame = 0
 
 [node name="AnimatedSprite2" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 501.361, 784.853 )
-frame = 0
 
 [node name="AnimatedSprite3" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 294.886, 663.231 )
-frame = 0
 
 [node name="AnimatedSprite4" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1517.09, 683.03 )
-frame = 0
 
 [node name="AnimatedSprite5" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1751.85, 591.106 )
-frame = 0
 
 [node name="AnimatedSprite6" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1569.42, 859.806 )
-frame = 0
 
 [node name="AnimatedSprite7" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1753.26, 842.836 )
-frame = 0
 
 [node name="AnimatedSprite8" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1863.57, 647.674 )
-frame = 0
 
 [node name="AnimatedSprite9" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 1925.8, 864.049 )
-frame = 0
 
 [node name="AnimatedSprite10" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2198.32, 865.463 )
-frame = 0
 
 [node name="AnimatedSprite11" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2892.84, 1242.21 )
-frame = 0
 
 [node name="AnimatedSprite12" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3057.93, 1302.53 )
-frame = 0
 
 [node name="AnimatedSprite13" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2978.56, 1181.89 )
-frame = 0
 
 [node name="AnimatedSprite14" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3203.97, 1162.84 )
-frame = 0
 
 [node name="AnimatedSprite15" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3099.2, 1219.98 )
-frame = 0
 
 [node name="AnimatedSprite16" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3172.22, 1343.8 )
-frame = 0
 
 [node name="AnimatedSprite17" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2949.99, 1353.33 )
-frame = 0
 
 [node name="AnimatedSprite18" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 2959.51, 1454.92 )
-frame = 0
 
 [node name="AnimatedSprite19" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3169.05, 1470.79 )
-frame = 0
 
 [node name="AnimatedSprite20" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 3042.05, 1502.54 )
-frame = 0
 
 [node name="AnimatedSprite21" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5398.18, 1984.06 )
+frame = 0
 
 [node name="AnimatedSprite22" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5412.18, 2078.06 )
-frame = 0
 
 [node name="AnimatedSprite23" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5400.18, 2158.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite24" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5408.18, 2258.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite25" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5410.18, 2366.06 )
-frame = 0
 
 [node name="AnimatedSprite26" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5404.18, 2482.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite27" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5654.18, 2038.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite28" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5642.18, 2166.06 )
+frame = 0
 
 [node name="AnimatedSprite29" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5646.18, 2250.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite30" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5646.18, 2332.06 )
+frame = 0
 
 [node name="AnimatedSprite31" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5650.18, 2434.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite32" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 5634.18, 2532.06 )
-frame = 0
 
 [node name="AnimatedSprite33" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7166.18, 2224.06 )
-frame = 0
 
 [node name="AnimatedSprite34" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7160.18, 2298.06 )
-frame = 3
+frame = 1
 
 [node name="AnimatedSprite35" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7234.18, 2276.06 )
+frame = 0
 
 [node name="AnimatedSprite36" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7245.18, 2314.06 )
+frame = 0
 
 [node name="AnimatedSprite37" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7962.18, 1944.06 )
+frame = 0
 
 [node name="AnimatedSprite38" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7982.18, 2002.06 )
-frame = 1
+frame = 3
 
 [node name="AnimatedSprite39" parent="bubbles" instance=ExtResource( 7 )]
 position = Vector2( 7952.18, 2014.06 )
-frame = 0
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3697.36, 1395.16 )
+position = Vector2( 3548.06, 879.581 )
 waypoints_path = NodePath("../Waypoints")
 
 [node name="Waypoints" parent="." instance=ExtResource( 5 )]
@@ -1096,7 +1077,7 @@ position = Vector2( 1.60899, 82.6017 )
 position = Vector2( 1.8043, 42.6301 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3991.5, 1318.42 )
+position = Vector2( 4819.57, 310.332 )
 waypoints_path = NodePath("../Waypoints2")
 
 [node name="Waypoints2" parent="." instance=ExtResource( 5 )]
@@ -1148,7 +1129,7 @@ position = Vector2( -122.167, 532.46 )
 position = Vector2( -126.167, 6.46002 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 5022.45, 1839.84 )
+position = Vector2( 5433.14, 1894.76 )
 waypoints_path = NodePath("../Waypoints3")
 
 [node name="Waypoints3" parent="." instance=ExtResource( 5 )]
@@ -1170,7 +1151,7 @@ position = Vector2( 356.01, 98.2771 )
 position = Vector2( 0.352966, 84.9634 )
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 6815.63, 866 )
+position = Vector2( 6793.05, 1211.93 )
 waypoints_path = NodePath("../Waypoints4")
 
 [node name="Waypoints4" parent="." instance=ExtResource( 5 )]

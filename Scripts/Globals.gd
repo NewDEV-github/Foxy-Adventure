@@ -59,7 +59,7 @@ var stage_names:Dictionary = {
 	"2": tr("KEY_TEXT_STAGE_LABORATORY") + " - 3",
 	"3": tr("KEY_TEXT_STAGE_CREDITS") + " :3"
 }
-var stage_music_list = ["res://assets/Audio/BGM/1stage2.mp3","res://assets/Audio/BGM/1stage.ogg"]
+var stage_music_list = ["res://assets/Audio/BGM/1stage2.mp3", "res://assets/Audio/BGM/1stage.ogg", "res://assets/Audio/BGM/beauty.ogg", "res://assets/Audio/BGM/love.ogg", "res://assets/Audio/BGM/nasko.ogg"]
 func change_stage(stage_id:String):
 	BackgroundLoad.get_node("bgload").load_scene(stage_list[stage_id])
 func add_stage_to_list(stage_path:String, stage_name:String):
@@ -510,6 +510,7 @@ func report_errors(err, filepath):
 		print("Unknown error with file ", filepath, " error code: ", err)
 
 func ParseAudioAsStreamData(filepath):
+	print("AUDIO AT: " + filepath)
 	var file = File.new()
 	var err = file.open(filepath, File.READ)
 	if err != OK:
