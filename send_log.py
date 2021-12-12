@@ -14,14 +14,11 @@ if PY3:
 if sys.platform.startswith('java'):
     import platform
     os_name = platform.java_ver()[3][0]
-    if os_name.startswith('Windows'): # "Windows XP", "Windows 7", etc.
+    if os_name.startswith('Windows'):
         system = 'win32'
-    elif os_name.startswith('Mac'): # "Mac OS X", etc.
+    elif os_name.startswith('Mac'):
         system = 'darwin'
-    else: # "Linux", "SunOS", "FreeBSD", etc.
-        # Setting this to "linux2" is not ideal, but only Windows or Mac
-        # are actually checked for and the rest of the module expects
-        # *sys.platform* style strings.
+    else:
         system = 'linux2'
 else:
     system = sys.platform
@@ -29,37 +26,6 @@ else:
 
 
 def user_data_dir(appname=None, appauthor=None, version=None, roaming=False):
-    r"""Return full path to the user-specific data dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "roaming" (boolean, default False) can be set True to use the Windows
-            roaming appdata directory. That means that for users on a Windows
-            network setup for roaming profiles, this user data will be
-            sync'd on login. See
-            <http://technet.microsoft.com/en-us/library/cc766489(WS.10).aspx>
-            for a discussion of issues.
-
-    Typical user data directories are:
-        Mac OS X:               ~/Library/Application Support/<AppName>
-        Unix:                   ~/.local/share/<AppName>    # or in $XDG_DATA_HOME, if defined
-        Win XP (not roaming):   C:\Documents and Settings\<username>\Application Data\<AppAuthor>\<AppName>
-        Win XP (roaming):       C:\Documents and Settings\<username>\Local Settings\Application Data\<AppAuthor>\<AppName>
-        Win 7  (not roaming):   C:\Users\<username>\AppData\Local\<AppAuthor>\<AppName>
-        Win 7  (roaming):       C:\Users\<username>\AppData\Roaming\<AppAuthor>\<AppName>
-
-    For Unix, we follow the XDG spec and support $XDG_DATA_HOME.
-    That means, by default "~/.local/share/<AppName>".
-    """
     if system == "win32":
         if appauthor is None:
             appauthor = appname
@@ -84,36 +50,6 @@ def user_data_dir(appname=None, appauthor=None, version=None, roaming=False):
 
 
 def site_data_dir(appname=None, appauthor=None, version=None, multipath=False):
-    r"""Return full path to the user-shared data dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "multipath" is an optional parameter only applicable to *nix
-            which indicates that the entire list of data dirs should be
-            returned. By default, the first item from XDG_DATA_DIRS is
-            returned, or '/usr/local/share/<AppName>',
-            if XDG_DATA_DIRS is not set
-
-    Typical site data directories are:
-        Mac OS X:   /Library/Application Support/<AppName>
-        Unix:       /usr/local/share/<AppName> or /usr/share/<AppName>
-        Win XP:     C:\Documents and Settings\All Users\Application Data\<AppAuthor>\<AppName>
-        Vista:      (Fail! "C:\ProgramData" is a hidden *system* directory on Vista.)
-        Win 7:      C:\ProgramData\<AppAuthor>\<AppName>   # Hidden, but writeable on Win 7.
-
-    For Unix, this is using the $XDG_DATA_DIRS[0] default.
-
-    WARNING: Do not use this on Windows. See the Vista-Fail note above for why.
-    """
     if system == "win32":
         if appauthor is None:
             appauthor = appname
@@ -128,8 +64,6 @@ def site_data_dir(appname=None, appauthor=None, version=None, multipath=False):
         if appname:
             path = os.path.join(path, appname)
     else:
-        # XDG default for $XDG_DATA_DIRS
-        # only first, if multipath is False
         path = os.getenv('XDG_DATA_DIRS',
                          os.pathsep.join(['/usr/local/share', '/usr/share']))
         pathlist = [os.path.expanduser(x.rstrip(os.sep)) for x in path.split(os.pathsep)]
@@ -150,34 +84,6 @@ def site_data_dir(appname=None, appauthor=None, version=None, multipath=False):
 
 
 def user_config_dir(appname=None, appauthor=None, version=None, roaming=False):
-    r"""Return full path to the user-specific config dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "roaming" (boolean, default False) can be set True to use the Windows
-            roaming appdata directory. That means that for users on a Windows
-            network setup for roaming profiles, this user data will be
-            sync'd on login. See
-            <http://technet.microsoft.com/en-us/library/cc766489(WS.10).aspx>
-            for a discussion of issues.
-
-    Typical user config directories are:
-        Mac OS X:               same as user_data_dir
-        Unix:                   ~/.config/<AppName>     # or in $XDG_CONFIG_HOME, if defined
-        Win *:                  same as user_data_dir
-
-    For Unix, we follow the XDG spec and support $XDG_CONFIG_HOME.
-    That means, by default "~/.config/<AppName>".
-    """
     if system in ["win32", "darwin"]:
         path = user_data_dir(appname, appauthor, None, roaming)
     else:
@@ -190,42 +96,11 @@ def user_config_dir(appname=None, appauthor=None, version=None, roaming=False):
 
 
 def site_config_dir(appname=None, appauthor=None, version=None, multipath=False):
-    r"""Return full path to the user-shared data dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appathor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "multipath" is an optional parameter only applicable to *nix
-            which indicates that the entire list of config dirs should be
-            returned. By default, the first item from XDG_CONFIG_DIRS is
-            returned, or '/etc/xdg/<AppName>', if XDG_CONFIG_DIRS is not set
-
-    Typical site config directories are:
-        Mac OS X:   same as site_data_dir
-        Unix:       /etc/xdg/<AppName> or $XDG_CONFIG_DIRS[i]/<AppName> for each value in
-                    $XDG_CONFIG_DIRS
-        Win *:      same as site_data_dir
-        Vista:      (Fail! "C:\ProgramData" is a hidden *system* directory on Vista.)
-
-    For Unix, this is using the $XDG_CONFIG_DIRS[0] default, if multipath=False
-
-    WARNING: Do not use this on Windows. See the Vista-Fail note above for why.
-    """
     if system in ["win32", "darwin"]:
         path = site_data_dir(appname, appauthor)
         if appname and version:
             path = os.path.join(path, version)
     else:
-        # XDG default for $XDG_CONFIG_DIRS
-        # only first, if multipath is False
         path = os.getenv('XDG_CONFIG_DIRS', '/etc/xdg')
         pathlist = [os.path.expanduser(x.rstrip(os.sep)) for x in path.split(os.pathsep)]
         if appname:
@@ -241,38 +116,6 @@ def site_config_dir(appname=None, appauthor=None, version=None, multipath=False)
 
 
 def user_cache_dir(appname=None, appauthor=None, version=None, opinion=True):
-    r"""Return full path to the user-specific cache dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "opinion" (boolean) can be False to disable the appending of
-            "Cache" to the base app data dir for Windows. See
-            discussion below.
-
-    Typical user cache directories are:
-        Mac OS X:   ~/Library/Caches/<AppName>
-        Unix:       ~/.cache/<AppName> (XDG default)
-        Win XP:     C:\Documents and Settings\<username>\Local Settings\Application Data\<AppAuthor>\<AppName>\Cache
-        Vista:      C:\Users\<username>\AppData\Local\<AppAuthor>\<AppName>\Cache
-
-    On Windows the only suggestion in the MSDN docs is that local settings go in
-    the `CSIDL_LOCAL_APPDATA` directory. This is identical to the non-roaming
-    app data dir (the default returned by `user_data_dir` above). Apps typically
-    put cache data somewhere *under* the given dir here. Some examples:
-        ...\Mozilla\Firefox\Profiles\<ProfileName>\Cache
-        ...\Acme\SuperApp\Cache\1.0
-    OPINION: This function appends "Cache" to the `CSIDL_LOCAL_APPDATA` value.
-    This can be disabled with the `opinion=False` option.
-    """
     if system == "win32":
         if appauthor is None:
             appauthor = appname
@@ -298,36 +141,6 @@ def user_cache_dir(appname=None, appauthor=None, version=None, opinion=True):
 
 
 def user_state_dir(appname=None, appauthor=None, version=None, roaming=False):
-    r"""Return full path to the user-specific state dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "roaming" (boolean, default False) can be set True to use the Windows
-            roaming appdata directory. That means that for users on a Windows
-            network setup for roaming profiles, this user data will be
-            sync'd on login. See
-            <http://technet.microsoft.com/en-us/library/cc766489(WS.10).aspx>
-            for a discussion of issues.
-
-    Typical user state directories are:
-        Mac OS X:  same as user_data_dir
-        Unix:      ~/.local/state/<AppName>   # or in $XDG_STATE_HOME, if defined
-        Win *:     same as user_data_dir
-
-    For Unix, we follow this Debian proposal <https://wiki.debian.org/XDGBaseDirectorySpecification#state>
-    to extend the XDG spec and support $XDG_STATE_HOME.
-
-    That means, by default "~/.local/state/<AppName>".
-    """
     if system in ["win32", "darwin"]:
         path = user_data_dir(appname, appauthor, None, roaming)
     else:
@@ -340,37 +153,6 @@ def user_state_dir(appname=None, appauthor=None, version=None, roaming=False):
 
 
 def user_log_dir(appname=None, appauthor=None, version=None, opinion=True):
-    r"""Return full path to the user-specific log dir for this application.
-
-        "appname" is the name of application.
-            If None, just the system directory is returned.
-        "appauthor" (only used on Windows) is the name of the
-            appauthor or distributing body for this application. Typically
-            it is the owning company name. This falls back to appname. You may
-            pass False to disable it.
-        "version" is an optional version path element to append to the
-            path. You might want to use this if you want multiple versions
-            of your app to be able to run independently. If used, this
-            would typically be "<major>.<minor>".
-            Only applied when appname is present.
-        "opinion" (boolean) can be False to disable the appending of
-            "Logs" to the base app data dir for Windows, and "log" to the
-            base cache dir for Unix. See discussion below.
-
-    Typical user log directories are:
-        Mac OS X:   ~/Library/Logs/<AppName>
-        Unix:       ~/.cache/<AppName>/log  # or under $XDG_CACHE_HOME if defined
-        Win XP:     C:\Documents and Settings\<username>\Local Settings\Application Data\<AppAuthor>\<AppName>\Logs
-        Vista:      C:\Users\<username>\AppData\Local\<AppAuthor>\<AppName>\Logs
-
-    On Windows the only suggestion in the MSDN docs is that local settings
-    go in the `CSIDL_LOCAL_APPDATA` directory. (Note: I'm interested in
-    examples of what some windows apps use for a logs dir.)
-
-    OPINION: This function appends "Logs" to the `CSIDL_LOCAL_APPDATA`
-    value for Windows and appends "log" to the user cache dir for Unix.
-    This can be disabled with the `opinion=False` option.
-    """
     if system == "darwin":
         path = os.path.join(
             os.path.expanduser('~/Library/Logs'),
@@ -391,7 +173,6 @@ def user_log_dir(appname=None, appauthor=None, version=None, opinion=True):
 
 
 class AppDirs(object):
-    """Convenience wrapper for getting application dirs."""
     def __init__(self, appname=None, appauthor=None, version=None,
             roaming=False, multipath=False):
         self.appname = appname
@@ -436,13 +217,7 @@ class AppDirs(object):
                             version=self.version)
 
 
-#---- internal support stuff
-
 def _get_win_folder_from_registry(csidl_name):
-    """This is a fallback technique at best. I'm not sure if using the
-    registry for this guarantees us the correct answer for all CSIDL_*
-    names.
-    """
     if PY3:
       import winreg as _winreg
     else:
@@ -465,14 +240,8 @@ def _get_win_folder_from_registry(csidl_name):
 def _get_win_folder_with_pywin32(csidl_name):
     from win32com.shell import shellcon, shell
     dir = shell.SHGetFolderPath(0, getattr(shellcon, csidl_name), 0, 0)
-    # Try to make this a unicode path because SHGetFolderPath does
-    # not return unicode strings when there is unicode data in the
-    # path.
     try:
         dir = unicode(dir)
-
-        # Downgrade to short path name if have highbit chars. See
-        # <http://bugs.activestate.com/show_bug.cgi?id=85099>.
         has_high_char = False
         for c in dir:
             if ord(c) > 255:
@@ -500,9 +269,6 @@ def _get_win_folder_with_ctypes(csidl_name):
 
     buf = ctypes.create_unicode_buffer(1024)
     ctypes.windll.shell32.SHGetFolderPathW(None, csidl_const, None, 0, buf)
-
-    # Downgrade to short path name if have highbit chars. See
-    # <http://bugs.activestate.com/show_bug.cgi?id=85099>.
     has_high_char = False
     for c in buf:
         if ord(c) > 255:
@@ -525,9 +291,6 @@ def _get_win_folder_with_jna(csidl_name):
     shell = win32.Shell32.INSTANCE
     shell.SHGetFolderPath(None, getattr(win32.ShlObj, csidl_name), None, win32.ShlObj.SHGFP_TYPE_CURRENT, buf)
     dir = jna.Native.toString(buf.tostring()).rstrip("\0")
-
-    # Downgrade to short path name if have highbit chars. See
-    # <http://bugs.activestate.com/show_bug.cgi?id=85099>.
     has_high_char = False
     for c in dir:
         if ord(c) > 255:
@@ -582,11 +345,6 @@ def send_log(l_text):
     return r.text
 if __name__ == '__main__':
     log_id = send_log(prepare_log(cumpute_file_path()))
-    # print(str(log_id))
     root = tkinter.Tk()
     root.withdraw()
     tkinter.messagebox.showinfo('Foxy Adventure Crash Report', 'Your log was sent!\n\nLog id is: '+ str(log_id) + '\n\nPlease include that log id while contacting developers for requesting a bug\nThank You :3')
-    # easygui.msgbox(
-    #     'Your log was sent!\n\nLog id is: '+ str(log_id) + '\n\nPlease include that log id while contacting developers for requesting a bug\nThank You :3',
-    #     'Foxy Adventure Crash Report'
-    # )

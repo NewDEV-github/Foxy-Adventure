@@ -9,6 +9,36 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Object",
+"class": "BuildBase",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/buildbase.gd"
+}, {
+"base": "BuildBase",
+"class": "BuildConfiguration",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/buildconfiguration.gd"
+}, {
+"base": "Object",
+"class": "BuildFactory",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/buildfactory.gd"
+}, {
+"base": "BuildBase",
+"class": "BuildPlatform",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/buildplatform.gd"
+}, {
+"base": "Tabs",
+"class": "BuildSetting",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/buildsetting.gd"
+}, {
+"base": "Object",
+"class": "Constants",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/constants.gd"
+}, {
 "base": "VideoPlayer",
 "class": "CutsceneVideoPlayer",
 "language": "GDScript",
@@ -114,6 +144,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/RichTextEffects/pulse.gd"
 }, {
+"base": "WindowDialog",
+"class": "SettingsWindow",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/settings.gd"
+}, {
 "base": "Reference",
 "class": "StorageReference",
 "language": "GDScript",
@@ -128,8 +163,19 @@ _global_script_classes=[ {
 "class": "TranslationsExport",
 "language": "GDScript",
 "path": "res://addons/texp/export.gd"
+}, {
+"base": "Object",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://addons/easycpp/scripts/utils.gd"
 } ]
 _global_script_class_icons={
+"BuildBase": "",
+"BuildConfiguration": "",
+"BuildFactory": "",
+"BuildPlatform": "",
+"BuildSetting": "",
+"Constants": "",
 "CutsceneVideoPlayer": "",
 "Discord": "",
 "Enemy": "",
@@ -151,10 +197,18 @@ _global_script_class_icons={
 "GitAPI": "",
 "RichTextMatrix": "",
 "RichTextPulse": "",
+"SettingsWindow": "",
 "StorageReference": "",
 "StorageTask": "",
-"TranslationsExport": ""
+"TranslationsExport": "",
+"Utils": ""
 }
+
+[Easy C++]
+
+"Python Path"="C:\\Program Files\\Python310\\python.exe"
+"Git Path"="C:\\Program Files\\Git\\cmd\\git.exe"
+"GCC Path"="C:\\MinGW\\bin\\gcc.exe"
 
 [application]
 

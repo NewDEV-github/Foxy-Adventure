@@ -259,6 +259,8 @@ func _ready():
 	if date.day == 1 and date.month == 4:
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_WTF)
 		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_PC_ON_FIRE)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_YOURE_CUTE)
+		ErrorCodeServer.treat_error(ErrorCodeServer.ERR_CUTEST_PERSON_IN_THE_WORLD)
 	if file.file_exists('user://dlcs/betatests/config.cfg'):
 		stage_list = {
 			"0": "res://Scenes/Stages/poziom_1.tscn",

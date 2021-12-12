@@ -24,6 +24,8 @@ const FILE_ERR_LOCKED = "0x2002"
 const FILE_ERR_CORRUPTED = "0x2003"
 const ERR_PC_ON_FIRE = "Your PC is being burned now"
 const ERR_WTF = "WTF?!"
+const ERR_YOURE_CUTE = "ERR_YOURE_CUTE"
+const ERR_CUTEST_PERSON_IN_THE_WORLD = "ERR_YOURE_CUTEST_PERSON_IN_THE_WORLD"
 # Called when the node enters the scene tree for the first time.
 func treat_error(error_code, treat_alert=true):
 	printerr("Error happened!\n\nError code: " + str(error_code))
