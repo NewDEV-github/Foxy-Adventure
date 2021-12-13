@@ -7,12 +7,7 @@ echo "Builiding with:"
 echo "$GODOT_VERSION"
 echo "For user: $(whoami)"
 echo "Installing required packages..."
-BASE_PATH="/home/$(whoami)"
-if [[ -v $GITHUB_WORKSPACE ]]; then
-  $BASE_PATH=$GITHUB_WORKSPACE
-else
-  $BASE_PATH="/home/$(whoami)"
-fi
+BASE_PATH={8}
 sudo apt-get install unzip
 sudo apt-get install osslsigncode
 echo "Generating links and other required data..."
@@ -39,8 +34,8 @@ else
 
 fi
 echo "Installing Godot's export templates..."
-sudo mkdir -p $BASE_PATH/.local/share/godot/templates/$GODOT_VERSION
-sudo cp -r templates/* $BASE_PATH/.local/share/godot/templates/$GODOT_VERSION
+sudo mkdir -p /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION
+sudo cp -r templates/* /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION
 echo "Downloading certificates for windows export..."
 cd $BASE_PATH
 CETS=("https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.crt" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.keystore" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.p12" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.pem")
