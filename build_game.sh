@@ -52,5 +52,5 @@ echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..
 sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
 echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
 sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
-echo "Exporting for win-64-enable-codesign-github to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64-enable-codesign-github" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
