@@ -103,7 +103,7 @@ jobs:
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable"
+          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "normal" -base_path $GITHUB_WORKSPACE
       - name: Upload a Build Artifact x11-64
         uses: actions/upload-artifact@v2.2.4
         with:
