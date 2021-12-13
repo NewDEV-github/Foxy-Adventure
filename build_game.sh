@@ -1,7 +1,7 @@
 #!/bin/bash
 GODOT_V_N=${2} #3.3.3
 GODOT_V_S=${4} #stable
-EXPORT_MODE=${6} #normal or zipped
+EXPORT_MODE=${6} #normal or source
 GODOT_VERSION=$GODOT_V_N"."$GODOT_V_S #3.3.3.stable
 echo "Builiding with:"
 echo "$GODOT_VERSION"
@@ -48,9 +48,19 @@ do
     fi
 done
 sudo mkdir -p builds/$GODOT_VERSION/{x11-64-standard,win-64-standard,osx-standard}
-echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
-echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
-echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+if [[ "$EXPORT_MODE" == "normal" ]]; then
+  echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
+  sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
+  echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
+  sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
+  echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
+  sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+fi
+if [[ "$EXPORT_MODE" == "source" ]]; then
+  echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
+  sudo cp -r $GITHUB_WORKSPACE/* $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
+  echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
+  sudo cp -r $GITHUB_WORKSPACE/* $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
+  echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
+  sudo cp -r $GITHUB_WORKSPACE/* $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
+fi
