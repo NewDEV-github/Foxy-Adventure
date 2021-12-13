@@ -60,15 +60,15 @@ fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
-  git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/linux_x11_64_release $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/Foxy-Adventure/FoxyAdventure
   #remove not required files
 
 
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
-  git clone https://github.com/NewDEV-github/Foxy-Adventure.git
-  unzip /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo unzip /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/Foxy-Adventure/FoxyAdventure.app
   #remove not required files
   
@@ -76,6 +76,6 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
-  git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/windows_64_release.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/Foxy-Adventure/FoxyAdventure.exe
 fi
