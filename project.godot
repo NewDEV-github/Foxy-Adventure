@@ -119,7 +119,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_task.gd"
 }, {
-"base": "Reference",
+"base": "",
 "class": "Foreigner",
 "language": "NativeScript",
 "path": "res://addons/foreigner/foreigner.gdns"
@@ -282,7 +282,7 @@ config/python="python"
 
 [gdnative]
 
-singletons=[ "res://addons/videodecoder.gdnlib", "res://webrtc/webrtc.tres" ]
+singletons=[ "res://addons/videodecoder.gdnlib", "res://pythonscript.gdnlib", "res://webrtc/webrtc.tres" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

@@ -36,6 +36,7 @@ fi
 echo "Installing Godot's export templates..."
 sudo mkdir -p /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION
 sudo cp -r templates/* /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION
+rm -r templates
 echo "Downloading certificates for windows export..."
 cd $BASE_PATH
 CETS=("https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.crt" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.keystore" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.p12" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.pem")
@@ -57,10 +58,19 @@ if [[ "$EXPORT_MODE" == "normal" ]]; then
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
 fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
+  rm -r cpp
+  rm $GODOT_BINARY_FILENAME
+  rm $GODOT_TPZ_FILENAME
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
-  sudo cp -r $GITHUB_WORKSPACE/* $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
+  sudo cp -r $BASE_PATH/* $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
+  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/linux_x11_64_release $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
-  sudo cp -r $GITHUB_WORKSPACE/* $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
+  sudo cp -r $BASE_PATH/* $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
+  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip $BASE_PATH/builds/$GODOT_VERSION/osx-standard/osx.zip
+  unzip $BASE_PATH/builds/$GODOT_VERSION/osx-standard/osx.zip
+  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.app
+  rm /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
-  sudo cp -r $GITHUB_WORKSPACE/* $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
+  sudo cp -r $BASE_PATH/* $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
+  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/windows_64_release.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
 fi
