@@ -7,6 +7,12 @@ echo "Builiding with:"
 echo "$GODOT_VERSION"
 echo "For user: $(whoami)"
 echo "Installing required packages..."
+BASE_PATH="/home/$(whoami)"
+if [[ -v $GITHUB_WORKSPACE ]]; then
+  $BASE_PATH=$GITHUB_WORKSPACE
+else
+  $BASE_PATH="/home/$(whoami)"
+fi
 sudo apt-get install unzip
 sudo apt-get install osslsigncode
 echo "Generating links and other required data..."
@@ -33,10 +39,10 @@ else
 
 fi
 echo "Installing Godot's export templates..."
-sudo mkdir -p /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION
-sudo cp -r templates/* /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION
+sudo mkdir -p $BASE_PATH/.local/share/godot/templates/$GODOT_VERSION
+sudo cp -r templates/* $BASE_PATH/.local/share/godot/templates/$GODOT_VERSION
 echo "Downloading certificates for windows export..."
-cd $GITHUB_WORKSPACE
+cd $BASE_PATH
 CETS=("https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.crt" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.keystore" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.p12" "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventure.pem")
 for CERT in $CERTS
 do
@@ -47,9 +53,9 @@ do
     fi
 done
 sudo mkdir -p builds/$GODOT_VERSION/{x11-64-standard,win-64-standard,osx-standard}
-echo "Exporting for x11-64 to /home/$(whoami)/builds/$GODOT_VERSION/x11-64-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" /home/$(whoami)/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
-echo "Exporting for osx to /home/$(whoami)/builds/$GODOT_VERSION/osx-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" /home/$(whoami)/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
-echo "Exporting for win-64-enable-codesign-github to /home/$(whoami)/builds/$GODOT_VERSION/win-64-standard..."
-sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64-enable-codesign-github" /home/$(whoami)/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
+echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
+echo "Exporting for win-64-enable-codesign-github to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
+sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64-enable-codesign-github" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
