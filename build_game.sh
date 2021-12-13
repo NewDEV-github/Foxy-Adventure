@@ -7,7 +7,7 @@ echo "Builiding with:"
 echo "$GODOT_VERSION"
 echo "For user: $(whoami)"
 echo "Installing required packages..."
-BASE_PATH={8}
+BASE_PATH=${8}
 sudo apt-get install unzip
 sudo apt-get install osslsigncode
 echo "Generating links and other required data..."
