@@ -61,21 +61,77 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
   sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  rm -r Foxy-Adventure/.git
+  rm -r Foxy-Adventure/.vscode
+  rm -r Foxy-Adventure/cpp
+  rm -r Foxy-Adventure/docs
+  rm -r Foxy-Adventure/addons/bin/win64
+  rm -r Foxy-Adventure/addons/bin/osx
+  rm -r Foxy-Adventure/addons/foreigner/mac
+  rm -r Foxy-Adventure/addons/foreigner/win64
+  rm -r Foxy-Adventure/addons/pythonscript/osx-64
+  rm -r Foxy-Adventure/addons/pythonscript/win-64
+  rm -r Foxy-Adventure/bin/sdk/lib/osx
+  rm -r Foxy-Adventure/bin/sdk/lib/win
+  rm -r Foxy-Adventure/bin/gitapi/osx
+  rm -r Foxy-Adventure/bin/gitapi/win64
+  rm -r Foxy-Adventure/bin/gdsdk/osx-64
+  rm -r Foxy-Adventure/bin/gdsdk/windows-64
+  rm -r Foxy-Adventure/webrtc/*.dylib
+  rm -r Foxy-Adventure/webrtc/*.dll
+  rm -r Foxy-Adventure/addons/opus/bin/osx
+  rm -r Foxy-Adventure/addons/opus/bin/win64
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/linux_x11_64_release $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/Foxy-Adventure/FoxyAdventure
-  #remove not required files
 
 
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
   sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  rm -r Foxy-Adventure/.git
+  rm -r Foxy-Adventure/.vscode
+  rm -r Foxy-Adventure/cpp
+  rm -r Foxy-Adventure/docs
+  rm -r Foxy-Adventure/addons/bin/win64
+  rm -r Foxy-Adventure/addons/bin/x11
+  rm -r Foxy-Adventure/addons/foreigner/linux
+  rm -r Foxy-Adventure/addons/foreigner/win64
+  rm -r Foxy-Adventure/addons/pythonscript/x11-64
+  rm -r Foxy-Adventure/addons/pythonscript/win-64
+  rm -r Foxy-Adventure/bin/sdk/lib/x11
+  rm -r Foxy-Adventure/bin/sdk/lib/win
+  rm -r Foxy-Adventure/bin/gitapi/x11
+  rm -r Foxy-Adventure/bin/gitapi/win64
+  rm -r Foxy-Adventure/bin/gdsdk/linux-64
+  rm -r Foxy-Adventure/bin/gdsdk/windows-64
+  rm -r Foxy-Adventure/webrtc/*.so
+  rm -r Foxy-Adventure/webrtc/*.dll
+  rm -r Foxy-Adventure/addons/opus/bin/x11
+  rm -r Foxy-Adventure/addons/opus/bin/win64
   sudo unzip /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/Foxy-Adventure/FoxyAdventure.app
-  #remove not required files
   
   
   
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
   sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  rm -r Foxy-Adventure/.git
+  rm -r Foxy-Adventure/.vscode
+  rm -r Foxy-Adventure/cpp
+  rm -r Foxy-Adventure/docs
+  rm -r Foxy-Adventure/addons/bin/x11
+  rm -r Foxy-Adventure/addons/bin/osx
+  rm -r Foxy-Adventure/addons/foreigner/mac
+  rm -r Foxy-Adventure/addons/foreigner/linux
+  rm -r Foxy-Adventure/addons/pythonscript/osx-64
+  rm -r Foxy-Adventure/addons/pythonscript/x11-64
+  rm -r Foxy-Adventure/bin/gitapi/osx
+  rm -r Foxy-Adventure/bin/gitapi/x11
+  rm -r Foxy-Adventure/bin/gdsdk/osx-64
+  rm -r Foxy-Adventure/bin/gdsdk/linux-64
+  rm -r Foxy-Adventure/webrtc/*.dylib
+  rm -r Foxy-Adventure/webrtc/*.so
+  rm -r Foxy-Adventure/addons/opus/bin/osx
+  rm -r Foxy-Adventure/addons/opus/bin/x11
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/windows_64_release.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/Foxy-Adventure/FoxyAdventure.exe
 fi
