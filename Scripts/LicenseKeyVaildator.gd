@@ -4,11 +4,11 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 var base_install_path = "user://dlcs/"
-
+onready var qc = preload("res://Scenes/QuitConfirm.py").new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(false)
-
+	qc.dlcrestartask('test dlc')
 func activate_license_key_in_game(key:String, product_name:String, install_cfg_path:String, needs_restart:bool):
 	var result
 	var cfg = ConfigFile.new()
@@ -18,8 +18,8 @@ func activate_license_key_in_game(key:String, product_name:String, install_cfg_p
 	cfg.set_value("keys", key + "_cfg", install_cfg_path)
 	cfg.save_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	if needs_restart:
-		OS.alert("Foxy Adventure needs restart to load\n%s"%product_name, tr("KEY_TEXT_WARNING"))
-
+#		OS.alert("Foxy Adventure needs restart to load\n%s"%product_name, tr("KEY_TEXT_WARNING"))
+		qc.dlcrestartask(product_name)
 var _validation_result_d
 func validate_license_key(key:String):
 	$VBoxContainer/result.text = tr("KEY_LICENSES_VALIDATION_STARTED")

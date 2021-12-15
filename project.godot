@@ -119,7 +119,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_task.gd"
 }, {
-"base": "",
+"base": "Reference",
 "class": "Foreigner",
 "language": "NativeScript",
 "path": "res://addons/foreigner/foreigner.gdns"
@@ -229,13 +229,13 @@ Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 ApiLogs="*res://Scenes/api_logs.tscn"
 ApiScores="*res://Scenes/api_scores.tscn"
 Console="*res://addons/quentincaffeino-console/src/Console.tscn"
-ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 BackgroundLoad="*res://Scenes/background_load.tscn"
 DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Screenshot="*res://Scripts/screenshot.gd"
 FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
-TagProcessor="*res://TagProcessor [SINGLETON].tscn"
+TagProcessor="*res://tag_processor/TagProcessor [SINGLETON].tscn"
 Globals="*res://Scripts/Globals.gd"
+ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
 
 [debug]
 
@@ -282,7 +282,7 @@ config/python="python"
 
 [gdnative]
 
-singletons=[ "res://addons/videodecoder.gdnlib", "res://pythonscript.gdnlib", "res://webrtc/webrtc.tres" ]
+singletons=[ "res://addons/pythonscript.gdnlib", "res://addons/videodecoder.gdnlib", "res://webrtc/webrtc.tres" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

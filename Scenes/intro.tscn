@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/PythonTester.py" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro"
@@ -188,6 +189,9 @@ You can enable/disable this in options later"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PythonTester" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

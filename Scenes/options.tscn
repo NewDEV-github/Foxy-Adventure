@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/options.gd" type="Script" id=1]
-[ext_resource path="res://TagProcessingLabel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tag_processor/TagProcessingLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
+
 
 [node name="Control" type="Panel"]
 anchor_right = 1.0

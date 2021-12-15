@@ -5,14 +5,7 @@ var cfg = ConfigFile.new()
 func change_text_autosave():
 	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_AUTOSAVE") + "\n[/color][/center]"
 func _ready():
-#	print(FoxyAdventureSDK.get_version())
-#	get_node("/root/Globals")
-#	FoxyAdventureSDK.init_sdk(1)
-#	FoxyAdventureSDK.register_world("1", "2")
-#	FoxyAdventureSDK.set_coins(3)
-#	FoxyAdventureSDK.add_coins(3)
-#	print("SDK COINS: "+ FoxyAdventureSDK.get_coins())
-#	print("SDK LIVES: "+ FoxyAdventureSDK.get_lives())
+	ErrorCodeServer.treat_error(ErrorCodeServer.ERR_CUTEST_PERSON_IN_THE_WORLD)
 	while Globals.loaded == true:
 		$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
 		$AnimationPlayer.play("intro")

@@ -436,7 +436,6 @@ func load_dlcs():
 	var assigned_user:String = ""
 	var dlc_name:String = ""
 	for i in cfg.get_section_keys("keys"):
-		print(i)
 		if str(i).ends_with("_userid"):
 			assigned_user = cfg.get_value("keys", i)
 		elif str(i).ends_with("_cfg"):
@@ -449,9 +448,6 @@ func load_dlcs():
 				not_loaded_content.append(dlc_name)
 		else:
 			if not assigned_user == "" and not dlc_cfg_instal_dir == "":
-				print(user_data)
-				print(assigned_user)
-				print(dlc_cfg_instal_dir)
 				if assigned_user == user_data['localid']:
 					var cf2 = ConfigFile.new()
 					cf2.load(dlc_cfg_instal_dir)
@@ -459,7 +455,7 @@ func load_dlcs():
 						ProjectSettings.load_resource_pack(dlc_cfg_instal_dir.get_base_dir() + "/" + i2)
 					if cf2.has_section_key("mod_info", "main_script_file") and not cf2.get_value("mod_info", "main_script_file") == "":
 						load(cf2.get_value("mod_info", "main_script_file")).new().init_mod()
-					print("loading %s" % dlc_name)
+					print("Loading %s ..." % dlc_name)
 				else:
 					if not not_loaded_content.has(dlc_name):
 						OS.alert('DLC %s\nwill not be loaded' % dlc_name, tr("KEY_TEXT_WARNING"))

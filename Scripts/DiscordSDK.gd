@@ -108,7 +108,6 @@ func _on_current_user_update() -> void:
 	handle.id = user.id
 	handle.size = 256
 	handle.type = Discord.ImageType.USER
-
 	images.fetch(handle, true)
 	ret = yield(images, "fetch_callback")
 	result = ret[0]
