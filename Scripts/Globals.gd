@@ -103,6 +103,7 @@ var coins = 0
 var lives = 5
 var new_characters:Dictionary = {
 	"Tails": "res://Scenes/Characters/Tails.tscn",
+	"Pysiek": "res://Scenes/Characters/Pysiek.tscn",
 }
 var game_version_text = "Support: [url]https://newdev.web.app/contact[/url]\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 signal game_version_text_changed(text)

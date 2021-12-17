@@ -5,7 +5,6 @@ var cfg = ConfigFile.new()
 func change_text_autosave():
 	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_AUTOSAVE") + "\n[/color][/center]"
 func _ready():
-	ErrorCodeServer.treat_error(ErrorCodeServer.ERR_CUTEST_PERSON_IN_THE_WORLD)
 	while Globals.loaded == true:
 		$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
 		$AnimationPlayer.play("intro")
