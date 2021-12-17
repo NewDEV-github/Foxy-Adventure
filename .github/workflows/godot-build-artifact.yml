@@ -53,6 +53,7 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-x11-64-${{ matrix.godot-version }}.zip
           asset_name: build-x11-64-${{ matrix.godot-version }}.zip
+          asset_content_type: application/zip
       - name: Upload Release Asset - osx
         id: upload-release-asset-osx
         uses: actions/upload-release-asset@v1
@@ -62,6 +63,7 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-osx-${{ matrix.godot-version }}.zip
           asset_name: build-osx-${{ matrix.godot-version }}.zip
+          asset_content_type: application/zip
       - name: Upload Release Asset - win
         id: upload-release-asset-win
         uses: actions/upload-release-asset@v1
@@ -71,4 +73,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-win-64-${{ matrix.godot-version }}.zip
           asset_name: build-win-64-${{ matrix.godot-version }}.zip
-    
+          asset_content_type: application/zip
