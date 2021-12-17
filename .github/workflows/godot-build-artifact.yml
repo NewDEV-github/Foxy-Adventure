@@ -16,79 +16,6 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  crashreport-build-windows:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
-    steps:
-      - uses: actions/checkout@v2.4.0
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-          pip install pywin32
-          pip install tk
-          pip install pyinstaller
-          ./build_crashreport_windows.bat
-      - name: Upload a Build Artifact Windows
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: build-crashreport-windows
-          path: crashreport/win/dist
-  crashreport-build-osx:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
-    steps:
-      - uses: actions/checkout@v2.4.0
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-          pip install tk
-          pip install pyinstaller
-          sudo chmod +x ./build_crashreport_osx.sh
-          ./build_crashreport_osx.sh
-      - name: Upload a Build Artifact osx
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: build-crashreport-osx
-          path: crashreport/osx/dist
-  crashreport-build-linux:
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        python-version: [3.8]
-    steps:
-      - uses: actions/checkout@v2.4.0
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-          pip install tk
-          pip install pyinstaller
-          sudo chmod +x ./build_crashreport_linux.sh
-          ./build_crashreport_linux.sh
-      - name: Upload a Build Artifact x11-64
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: build-crashreport-x11-64
-          path: crashreport/x11/dist
-  # This workflow contains a single job called "build"
   godot-build:
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
@@ -104,131 +31,41 @@ jobs:
         run: |
           sudo chmod +x ./build_game.sh
           ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "source" -base_path $GITHUB_WORKSPACE
-      - name: Upload a Build Artifact x11-64
-        uses: actions/upload-artifact@v2.3.1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          name: build-x11-64-${{ matrix.godot-version }}
-          path: builds/${{ matrix.godot-version }}.stable/x11-64-standard
-      - name: Upload a Build Artifact osx-64
-        uses: actions/upload-artifact@v2.3.1
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset - x11
+        id: upload-release-asset-x11 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: build-osx-64-${{ matrix.godot-version }}
-          path: builds/${{ matrix.godot-version }}.stable/osx-standard
-      - name: Upload a Build Artifact win-64
-        uses: actions/upload-artifact@v2.3.1
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: builds/${{ matrix.godot-version }}.stable/x11-64-standard/build.zip
+          asset_name: build-x11-64-${{ matrix.godot-version }}.zip
+      - name: Upload Release Asset - osx
+        id: upload-release-asset-osx
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: build-win-64-${{ matrix.godot-version }}
-          path: builds/${{ matrix.godot-version }}.stable/win-64-standard
-  crashreport-build-windows-signed:
-    runs-on: ubuntu-18.04
-    needs: [crashreport-build-windows]
-    steps:
-      - name: Download certificate and install packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install libnss3-tools build-essential pkg-config libssl-dev libcurl4-openssl-dev
-          sudo apt-get install -y osslsigncode
-          wget "https://newdev.web.app/dl/files/downloads/foxy-adventure/foxyadventurecrashreport.p12"
-      - uses: actions/download-artifact@v2
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: builds/${{ matrix.godot-version }}.stable/osx-standard/build.zip
+          asset_name: build-osx-${{ matrix.godot-version }}.zip
+      - name: Upload Release Asset - win
+        id: upload-release-asset-win
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: artifacts
-      - name: Windows signtool.exe code sign action
-        run: |
-          cd $GITHUB_WORKSPACE/artifacts/build-crashreport-windows/send_log/
-          cp send_log.exe sendlog.exe
-          osslsigncode sign -pkcs12 $GITHUB_WORKSPACE/foxyadventurecrashreport.p12 -pass "foxyadventurecrashreport" \
-          -n "Foxy Adventure Crash Report" -i "https://newdev.web.app" \
-          -in sendlog.exe -out send_log.exe
-          rm sendlog.exe
-      - name: Upload a Build Artifact Windows
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: build-crashreport-windows-signed
-          path: artifacts/build-crashreport-windows/
-  do-release:
-    runs-on: ubuntu-18.04
-    needs: [godot-build, crashreport-build-windows-signed, crashreport-build-linux, crashreport-build-osx]
-    strategy:
-      matrix:
-        godot-version: [3.4]
-    steps:
-    - uses: actions/checkout@v2.4.0
-    - name: Declare some variables
-      id: vars
-      shell: bash
-      run: |
-        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-    - uses: actions/download-artifact@v2
-      with:
-        path: artifacts
-    - name: Prepare files for releasing
-      run: |
-        cd $GITHUB_WORKSPACE/artifacts
-        cp -r build-crashreport-osx/send_log/ build-osx-64-${{ matrix.godot-version }}
-        cp -r build-crashreport-x11-64/send_log/ build-x11-64-${{ matrix.godot-version }}
-        cp -r build-crashreport-windows-signed/send_log/ build-win-64-${{ matrix.godot-version }}
-        cd $GITHUB_WORKSPACE/artifacts/build-osx-64-${{ matrix.godot-version }}
-        sudo zip -r build-osx-64-${{ matrix.godot-version }}.zip *
-        cd $GITHUB_WORKSPACE/artifacts/build-x11-64-${{ matrix.godot-version }}
-        sudo zip -r build-x11-64-${{ matrix.godot-version }}.zip *
-        cd $GITHUB_WORKSPACE/artifacts/build-win-64-${{ matrix.godot-version }}
-        sudo zip -r build-win-64-${{ matrix.godot-version }}.zip *
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1.1.4
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      with:
-        tag_name: ${{ steps.vars.outputs.sha_short }}-${{ matrix.godot-version }}
-        release_name: Release ${{ steps.vars.outputs.sha_short }} - ${{ matrix.godot-version }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset - x11-64 - ${{ matrix.godot-version }}
-      id: upload-release-asset-x1164
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: artifacts/build-x11-64-${{ matrix.godot-version }}/build-x11-64-${{ matrix.godot-version }}.zip
-        asset_name: build-x11-64-${{ matrix.godot-version }}.zip
-        asset_content_type: application/zip
-    - name: Upload Release Asset - osx-64 - ${{ matrix.godot-version }}
-      id: upload-release-asset-osx64
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: artifacts/build-osx-64-${{ matrix.godot-version }}/build-osx-64-${{ matrix.godot-version }}.zip
-        asset_name: build-osx-64-${{ matrix.godot-version }}.zip
-        asset_content_type: application/zip
-    - name: Upload Release Asset - win-64 - ${{ matrix.godot-version }}
-      id: upload-release-asset-win64
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: artifacts/build-win-64-${{ matrix.godot-version }}/build-win-64-${{ matrix.godot-version }}.zip
-        asset_name: build-win-64-${{ matrix.godot-version }}.zip
-        asset_content_type: application/zip
-  delete-artifacts:
-    runs-on: ubuntu-18.04
-    needs: [do-release, godot-build, crashreport-build-windows, crashreport-build-linux, crashreport-build-osx]
-    strategy:
-      matrix:
-        godot-version: [3.4]
-    steps:
-    - uses: actions/checkout@v2.4.0
-    - uses: geekyeggo/delete-artifact@v1
-      with:
-        name: |
-          build-win-64-${{ matrix.godot-version }}
-          build-osx-64-${{ matrix.godot-version }}
-          build-x11-64-${{ matrix.godot-version }}
-          build-crashreport-x11-64
-          build-crashreport-osx
-          build-crashreport-windows
-          build-crashreport-windows-signed
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: builds/${{ matrix.godot-version }}.stable/win-64-standard/build.zip
+          asset_name: build-win-64-${{ matrix.godot-version }}.zip
+    
