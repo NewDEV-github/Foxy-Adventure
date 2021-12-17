@@ -28,15 +28,15 @@ func _ready() -> void:
 	$AudioStreamPlayer.play()
 	$VBoxContainer3/DownloadableContent.disabled = true
 	$VBoxContainer3/Logout.disabled = true
-	$VBoxContainer3/Login.disabled = true
+	$VBoxContainer3/Login.disabled = false
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
-#	if Firebase.Auth.check_auth_file():
-#		Firebase.Auth.load_auth()
-#		Globals.user_data = Firebase.Auth.auth
-#		$VBoxContainer3/DownloadableContent.disabled = false
-#		$VBoxContainer3/Logout.disabled = false
-#		$VBoxContainer3/Login.disabled = true
+	if Firebase.Auth.check_auth_file():
+		Firebase.Auth.load_auth()
+		Globals.user_data = Firebase.Auth.auth
+		$VBoxContainer3/DownloadableContent.disabled = false
+		$VBoxContainer3/Logout.disabled = false
+		$VBoxContainer3/Login.disabled = true
 	$DownloadableContent/TabContainer.set_tab_title(0, tr("KEY_LICENSES_INSTALLED_CONTENT"))
 	$DownloadableContent/TabContainer.set_tab_title(1, tr("KEY_LICENSES_ADD_LICENSE_KEY"))
 #		var db_ref = Firebase.Database.get_database_reference("test")
