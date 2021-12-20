@@ -18,6 +18,6 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var latest_tag = commits[0]['sha'].left(6)
 	print(latest_tag)
 	print("Latest release URL: " + (base_patch_url % [latest_tag, platforms[OS.get_name()]]))
-		
+
 func download():
 	pass
