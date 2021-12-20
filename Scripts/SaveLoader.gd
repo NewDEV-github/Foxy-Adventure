@@ -78,6 +78,7 @@ func _on_ItemList_item_selected(index: int) -> void:
 	$buttons/DelSave.disabled = false
 	$buttons/RunSave.disabled = false
 	current_item_index = index
+#	print('save id:' + str(index))
 
 
 func _on_Cancel_pressed():

@@ -2,9 +2,21 @@
 
 [ext_resource path="res://GithubUpdate.gd" type="Script" id=1]
 
-[node name="GithubUpdate" type="Node2D"]
+[node name="GithubUpdate" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="patch_downloader" type="HTTPRequest" parent="."]
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
+[node name="TagList" type="ItemList" parent="."]
+margin_right = 413.0
+margin_bottom = 320.0
+
+[node name="release_data_downloader" type="HTTPRequest" parent="."]
+
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="release_data_downloader" to="." method="_on_release_data_downloader_request_completed"]

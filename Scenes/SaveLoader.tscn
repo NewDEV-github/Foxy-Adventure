@@ -104,8 +104,5 @@ __meta__ = {
 [connection signal="pressed" from="buttons/RunSave" to="." method="_on_RunSave_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
 [connection signal="item_selected" from="HBoxContainer/ScrollContainer/ItemList" to="." method="_on_ItemList_item_selected"]
-[connection signal="item_selected" from="HBoxContainer/ScrollContainer/ItemList" to="HBoxContainer/ScrollContainer/ItemList" method="_on_ItemList_item_selected"]
-[connection signal="mouse_entered" from="HBoxContainer/ScrollContainer/ItemList" to="HBoxContainer/ScrollContainer/ItemList" method="_on_ItemList_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/ScrollContainer/ItemList" to="HBoxContainer/ScrollContainer/ItemList" method="_on_ItemList_mouse_exited"]
 [connection signal="nothing_selected" from="HBoxContainer/ScrollContainer/ItemList" to="." method="_on_ItemList_nothing_selected"]
 [connection signal="value_changed" from="HBoxContainer/VSlider" to="." method="_on_VSlider_value_changed"]
