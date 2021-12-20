@@ -1,9 +1,6 @@
 extends Node
 var request_url = "https://api.github.com/repos/NewDEV-github/Foxy-Adventure/commits"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var latest_release_url = ""
 var base_patch_url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/%s/%s"
 var platforms = {
