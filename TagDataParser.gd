@@ -9,15 +9,15 @@ extends RichTextLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-func parse_text_from_dictionary(dict:Dictionary, bbcode:bool=true) -> void:
+func parse_text_from_dictionary(dict:Dictionary, bbcode:bool=true, avoid=[]) -> void:
 	bbcode_text = ""
 	text = ""
 	if bbcode:
 		bbcode_enabled = true
-		bbcode_text = _parser(dict, bbcode)
+		bbcode_text = _parser(dict, bbcode, false, avoid)
 	else:
 		bbcode_enabled = false
-		text = _parser(dict, bbcode)
+		text = _parser(dict, bbcode, false, avoid)
 func _parser(dict:Dictionary, bbcode:bool=true, add_tab:bool=false, avoid=[]):
 	var ret_text = ""
 	var keys = dict.keys()

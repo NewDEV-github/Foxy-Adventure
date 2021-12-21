@@ -79,8 +79,8 @@ func get_tag_info(id):
 func get_notes_info(id):
 	return release_notes_data[updates_data[$TagList.get_item_text(id)]]
 func _on_TagList_item_selected(index):
-	$TagData.parse_text_from_dictionary(get_tag_info(index))
-	$ReleaseNotes.parse_text_from_dictionary(get_notes_info(index))
+	$TagData.parse_text_from_dictionary(get_tag_info(index), true, ["author", "url", "assets_url", "upload_url", "id", "html_url", "node_id"])
+#	$ReleaseNotes.parse_text_from_dictionary(get_tag_info(index), true, ["author", "url", "assets_url", "upload_url", "id", "html_url", "node_id"])
 
 
 func _on_release_notes_downloader_request_completed(result, response_code, headers, body):
