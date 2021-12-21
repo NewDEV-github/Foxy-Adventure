@@ -39,10 +39,10 @@ __meta__ = {
 }
 
 [node name="ReleaseNotes" type="RichTextLabel" parent="."]
-margin_left = 415.0
-margin_top = 4.0
-margin_right = 1016.0
-margin_bottom = 597.0
+margin_left = -5.0
+margin_top = 328.0
+margin_right = 418.0
+margin_bottom = 921.0
 focus_mode = 2
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/bold_font = ExtResource( 5 )

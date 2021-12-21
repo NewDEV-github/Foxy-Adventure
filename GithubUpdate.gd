@@ -21,7 +21,7 @@ func _ready():
 #		"Array": ["Array", "array 1", "Array number Two_lol"]
 #	}
 #	$TagData.parse_text_from_dictionary(test_dict)
-	$HTTPRequest.request(request_commits_url, [], true, HTTPClient.METHOD_GET)
+	$HTTPRequest.request(request_commits_url, ["Accept: application/vnd.github.v3+json"], true, HTTPClient.METHOD_GET)
 var updates_data = {}
 var releases_data = {}
 var release_notes_data = {}
@@ -36,6 +36,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var _processed_tags = 0
 	for i in commits:
 		if not _processed_tags == tag_limit or not _processed_tags >= tag_limit:
+			_processed_tags += 1
 			print(i['sha'].left(6))
 			add_tag_to_list(i['sha'].left(7))
 			yield($release_data_downloader, "request_completed")
@@ -60,10 +61,10 @@ func add_tag_to_list(tag:String):
 	release_notes_data[tag]=_tmp_tag_download_info_result_notes
 
 func download_update_info(tag:String):
-	$release_data_downloader.request(request_releases_url % tag, [], true, HTTPClient.METHOD_GET)
+	$release_data_downloader.request(request_releases_url % tag, ["Accept: application/vnd.github.v3+json"], true, HTTPClient.METHOD_GET)
 	yield($release_data_downloader, "request_completed")
 	var tag_js = JSON.print({'tag_name': tag})
-	$release_notes_downloader.request(request_notes_releases_url, [], true, HTTPClient.METHOD_GET, tag_js)
+	$release_notes_downloader.request(request_notes_releases_url, ["Accept: application/vnd.github.v3+json"], true, HTTPClient.METHOD_POST, tag_js)
 	_tmp_tag_download_info = tag
 
 

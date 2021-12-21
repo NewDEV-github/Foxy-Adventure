@@ -18,46 +18,48 @@ func parse_text_from_dictionary(dict:Dictionary, bbcode:bool=true) -> void:
 	else:
 		bbcode_enabled = false
 		text = _parser(dict, bbcode)
-func _parser(dict:Dictionary, bbcode:bool=true, add_tab:bool=false):
+func _parser(dict:Dictionary, bbcode:bool=true, add_tab:bool=false, avoid=[]):
 	var ret_text = ""
 	var keys = dict.keys()
 	for i in keys:
-		if typeof(dict[i]) == 4: #String
-			var normal_key = i.capitalize()
-			if bbcode:
-				if add_tab:
-					ret_text += "	[b]" + normal_key + ":[/b]\n	"+dict[i] + "\n\n"
+		print(i)
+		if not avoid.has(i):
+			if typeof(dict[i]) == 4: #String
+				var normal_key = i.capitalize()
+				if bbcode:
+					if add_tab:
+						ret_text += "	[b]" + normal_key + ":[/b]\n	"+dict[i] + "\n\n"
+					else:
+						ret_text += "[b]" + normal_key + ":[/b]\n"+dict[i] + "\n\n"
 				else:
-					ret_text += "[b]" + normal_key + ":[/b]\n"+dict[i] + "\n\n"
-			else:
-				if add_tab:
-					ret_text += "	" + normal_key + ":\n	"+dict[i] + "\n\n"
+					if add_tab:
+						ret_text += "	" + normal_key + ":\n	"+dict[i] + "\n\n"
+					else:
+						ret_text += normal_key + ":\n"+dict[i] + "\n\n"
+			elif typeof(dict[i]) == 18: #Dictionary
+				var normal_key = i.capitalize()
+				if bbcode:
+					if add_tab:
+						ret_text += "	[b]" +normal_key + ":[/b]\n	"+ _parser(dict[i], bbcode, true) + "\n\n"
+					else:
+						ret_text += "[b]" +normal_key + ":[/b]\n"+ _parser(dict[i], bbcode, true) + "\n\n"
 				else:
-					ret_text += normal_key + ":\n"+dict[i] + "\n\n"
-		elif typeof(dict[i]) == 18: #Dictionary
-			var normal_key = i.capitalize()
-			if bbcode:
-				if add_tab:
-					ret_text += "	[b]" +normal_key + ":[/b]\n	"+ _parser(dict[i], bbcode, true) + "\n\n"
+					if add_tab:
+						ret_text += "	" + normal_key + ":\n	"+ _parser(dict[i], bbcode, true) + "\n\n"
+					else:
+						ret_text += normal_key + ":\n"+ _parser(dict[i], bbcode, true) + "\n\n"
+			elif typeof(dict[i]) == 19:#Array
+				var normal_key = i.capitalize()
+				if bbcode:
+					if add_tab:
+						ret_text += "	[b]" + normal_key + ":[/b]\n	"+ _parse_array(dict[i]) + "\n\n"
+					else:
+						ret_text += "[b]" + normal_key + ":[/b]\n"+_parse_array(dict[i]) + "\n\n"
 				else:
-					ret_text += "[b]" +normal_key + ":[/b]\n"+ _parser(dict[i], bbcode, true) + "\n\n"
-			else:
-				if add_tab:
-					ret_text += "	" + normal_key + ":\n	"+ _parser(dict[i], bbcode, true) + "\n\n"
-				else:
-					ret_text += normal_key + ":\n"+ _parser(dict[i], bbcode, true) + "\n\n"
-		elif typeof(dict[i]) == 19:#Array
-			var normal_key = i.capitalize()
-			if bbcode:
-				if add_tab:
-					ret_text += "	[b]" + normal_key + ":[/b]\n	"+ _parse_array(dict[i]) + "\n\n"
-				else:
-					ret_text += "[b]" + normal_key + ":[/b]\n"+_parse_array(dict[i]) + "\n\n"
-			else:
-				if add_tab:
-					ret_text += "	" + normal_key + ":\n	"+_parse_array(dict[i]) + "\n\n"
-				else:
-					ret_text += normal_key + ":\n"+_parse_array(dict[i]) + "\n\n"
+					if add_tab:
+						ret_text += "	" + normal_key + ":\n	"+_parse_array(dict[i]) + "\n\n"
+					else:
+						ret_text += normal_key + ":\n"+_parse_array(dict[i]) + "\n\n"
 	return ret_text
 
 func _parse_array(array:Array):
