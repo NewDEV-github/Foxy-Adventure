@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://GithubUpdate.gd" type="Script" id=1]
-[ext_resource path="res://TagDataParser.gd" type="Script" id=2]
+[ext_resource path="res://updater/GithubUpdate.gd" type="Script" id=1]
+[ext_resource path="res://updater/TagDataParser.gd" type="Script" id=2]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=3]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/RobotoRegularBold.tres" type="DynamicFont" id=5]

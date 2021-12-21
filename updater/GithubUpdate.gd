@@ -1,5 +1,5 @@
 extends Control
-var request_commits_url = "https://api.github.com/repos/NewDEV-github/Foxy-Adventure/commits"
+var request_commits_url = "https://api.github.com/repos/NewDEV-github/Foxy-Adventure/tags"
 var request_releases_url = "https://api.github.com/repos/NewDEV-github/Foxy-Adventure/releases/tags/%s"
 var request_notes_releases_url = "https://api.github.com/repos/NewDEV-github/Foxy-Adventure/releases/generate-notes"
 var latest_release_url = ""
@@ -29,7 +29,7 @@ var commits_data = []
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	var commits = json.result
-	var latest_tag = commits[0]['sha'].left(7)
+	var latest_tag = commits[0]['commit']['sha'].left(7)
 	commits_data = commits
 	print(latest_tag)
 	print("Latest release URL: " + (base_patch_url % [latest_tag, platforms[OS.get_name()]]))
@@ -37,8 +37,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	for i in commits:
 		if not _processed_tags == tag_limit or not _processed_tags >= tag_limit:
 			_processed_tags += 1
-			print(i['sha'].left(6))
-			add_tag_to_list(i['sha'].left(7))
+			print(i['commit']['sha'].left(7))
+			add_tag_to_list(i['commit']['sha'].left(7))
 			yield($release_data_downloader, "request_completed")
 			yield($release_notes_downloader, "request_completed")
 		else:
