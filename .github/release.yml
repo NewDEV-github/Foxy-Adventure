@@ -1,0 +1,24 @@
+# .github/release.yml
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+  categories:
+    - title: New features
+      labels:
+        - "enhancement"
+        - "help wanted"
+    - title: In progress
+      labels:
+        - "in progress"
+    - title: Translation updates
+      labels:
+        - "translations"
+    - title: Bug fixes
+      labels:
+        - "bug"
+        - "invaild"
+    - title: Other Changes
+      labels:
+        - "*"
