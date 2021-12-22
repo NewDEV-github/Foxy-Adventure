@@ -66,7 +66,13 @@ func _parse_array(array:Array):
 	var ret_text = ""
 	for i in array:
 		if i == array[-1]:
-			ret_text += i.capitalize()
+			if typeof(i) == 4:
+				ret_text += i.capitalize()
+			elif typeof(i) == 18:
+				ret_text += _parser(i, true)
 		else:
-			ret_text += i.capitalize() + ", "
+			if typeof(i) == 4:
+				ret_text += i.capitalize() + ", "
+			elif typeof(i) == 18:
+				ret_text += _parser(i, true)
 	return ret_text
