@@ -26,6 +26,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2.4.0
       # Runs a set of commands using the runners shell
+      - name: Read version file
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./version.dat
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
@@ -39,8 +44,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: $(git rev-parse --short "$GITHUB_SHA")
-          release_name: Release $(git rev-parse --short "$GITHUB_SHA")
+          tag_name: ${{ steps.package.outputs.content }}
+          release_name: Release ${{ steps.package.outputs.content }}
           draft: false
           prerelease: false
       - name: Upload Release Asset - x11
