@@ -6,12 +6,15 @@
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/RobotoRegularBold.tres" type="DynamicFont" id=5]
 
-[node name="GithubUpdate" type="Control"]
+[node name="GithubUpdate" type="WindowDialog"]
+visible = true
+anchor_top = 0.21
+anchor_right = 0.729
+anchor_bottom = 1.0
+margin_top = -7.62939e-06
+margin_right = 0.503967
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="patch_downloader" type="HTTPRequest" parent="."]
 
@@ -20,10 +23,13 @@ __meta__ = {
 [node name="release_data_downloader" type="HTTPRequest" parent="."]
 
 [node name="TagData" type="RichTextLabel" parent="."]
-margin_left = 415.0
-margin_top = 4.0
-margin_right = 1016.0
-margin_bottom = 597.0
+anchor_top = 0.059
+anchor_right = 1.0
+anchor_bottom = 0.926
+margin_left = 1.0
+margin_top = 0.0339985
+margin_right = -2.0
+margin_bottom = 0.0759583
 focus_mode = 2
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/bold_font = ExtResource( 5 )
@@ -34,12 +40,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="release_notes_downloader" type="HTTPRequest" parent="."]
-
 [node name="Main" type="Label" parent="."]
-margin_right = 332.0
-margin_bottom = 112.0
+anchor_right = 1.0
+margin_bottom = 19.0
+align = 1
+valign = 1
+
+[node name="Download" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -125.5
+margin_top = -27.0
+margin_right = 125.5
+text = "Download"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
-[connection signal="request_completed" from="release_data_downloader" to="." method="_on_release_data_downloader_request_completed"]
-[connection signal="request_completed" from="release_notes_downloader" to="." method="_on_release_notes_downloader_request_completed"]
+[connection signal="pressed" from="Download" to="." method="_on_Download_pressed"]
