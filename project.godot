@@ -248,6 +248,7 @@ FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
 TagProcessor="*res://tag_processor/TagProcessor [SINGLETON].tscn"
 Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
+Unzip="*res://addons/gdunzip/unzip.gd"
 
 [debug]
 

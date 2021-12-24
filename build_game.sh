@@ -70,17 +70,17 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/addons/foreigner/mac
   sudo rm -r Foxy-Adventure/addons/foreigner/win64
   sudo rm -r Foxy-Adventure/addons/pythonscript/osx-64
-  sudo rm -r Foxy-Adventure/addons/pythonscript/win-64
+  sudo rm -r Foxy-Adventure/addons/pythonscript/windows-64
   sudo rm -r Foxy-Adventure/bin/sdk/lib/osx
   sudo rm -r Foxy-Adventure/bin/sdk/lib/win
   sudo rm -r Foxy-Adventure/bin/gitapi/osx
   sudo rm -r Foxy-Adventure/bin/gitapi/win64
   sudo rm -r Foxy-Adventure/bin/gdsdk/osx-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
-  sudo rm -r Foxy-Adventure/webrtc/*.dylib
-  sudo rm -r Foxy-Adventure/webrtc/*.dll
   sudo rm -r Foxy-Adventure/addons/opus/bin/osx
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
+  find . -name "*.dll" | xargs sudo rm
+  find . -name "*.dylib" | xargs sudo rm
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/linux_x11_64_release $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/Foxy-Adventure/FoxyAdventure
 
 
@@ -96,15 +96,15 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/addons/foreigner/linux
   sudo rm -r Foxy-Adventure/addons/foreigner/win64
   sudo rm -r Foxy-Adventure/addons/pythonscript/x11-64
-  sudo rm -r Foxy-Adventure/addons/pythonscript/win-64
+  sudo rm -r Foxy-Adventure/addons/pythonscript/windows-64
   sudo rm -r Foxy-Adventure/bin/sdk/lib/x11
   sudo rm -r Foxy-Adventure/bin/sdk/lib/win
   sudo rm -r Foxy-Adventure/bin/gitapi/x11
   sudo rm -r Foxy-Adventure/bin/gitapi/win64
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
-  sudo rm -r Foxy-Adventure/webrtc/*.so
-  sudo rm -r Foxy-Adventure/webrtc/*.dll
+  find . -name "*.so" | xargs sudo rm
+  find . -name "*.dll" | xargs sudo rm
   sudo rm -r Foxy-Adventure/addons/opus/bin/x11
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
   sudo unzip /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
@@ -131,7 +131,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/webrtc/*.dylib
   sudo rm -r Foxy-Adventure/webrtc/*.so
-  sudo rm -r Foxy-Adventure/addons/opus/bin/osx
-  sudo rm -r Foxy-Adventure/addons/opus/bin/x11
+  find . -name "*.so" | xargs sudo rm
+  find . -name "*.dylib" | xargs sudo rm
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/windows_64_release.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/Foxy-Adventure/FoxyAdventure.exe
 fi
