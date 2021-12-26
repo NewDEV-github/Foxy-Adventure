@@ -8,6 +8,7 @@ var platforms = {
 }
 
 func _ready():
+	popup_centered()
 	$HTTPRequest.request(latest_release_data_url, ["Accept: application/vnd.github.v3+json"], true, HTTPClient.METHOD_GET)
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
@@ -43,4 +44,16 @@ func _on_Download_pressed():
 	if not File.new().file_exists("user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]]):
 		$patch_downloader.download_file = "user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]]
 		$patch_downloader.request(url)
-	Unzip.unzip("user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]],"user://updates/_tmp/%s" % [latest_tag])
+	print(OS.get_user_data_dir() + "/updates/%s/%s" % [latest_tag, platforms[OS.get_name()]])
+	$Node.unzip_update(OS.get_user_data_dir() + "/updates/%s/%s" % [latest_tag, platforms[OS.get_name()]], "../Main2")
+#	$Node.unzip_update("user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]])
+var cfn = "Extracitng..."
+func _process(delta):
+	$Main2.set_text(cfn)
+func _on_Node_extracted_file(file_name):
+	print(file_name)
+
+
+func _on_Node_extraction_finished(target):
+	cfn = "Updating..."
+	print("Exportet to: " + target)
