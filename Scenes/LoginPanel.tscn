@@ -3,10 +3,9 @@
 [ext_resource path="res://Scripts/LoginPanel.gd" type="Script" id=1]
 
 [node name="LoginPanel" type="WindowDialog"]
-visible = true
 margin_right = 518.0
 margin_bottom = 348.0
-window_title = "KEY_TEXT_LOG_REG"
+window_title = "Login/Register"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -31,7 +30,7 @@ alignment = 1
 margin_top = 133.0
 margin_right = 221.0
 margin_bottom = 157.0
-placeholder_text = "KEY_TEXT_EMAIL"
+placeholder_text = "Email"
 
 [node name="Password" type="LineEdit" parent="HBoxContainer/Login"]
 margin_top = 164.0
@@ -39,13 +38,13 @@ margin_right = 221.0
 margin_bottom = 188.0
 secret = true
 secret_character = "•"
-placeholder_text = "KEY_TEXT_PASSWORD"
+placeholder_text = "Password"
 
 [node name="Login" type="Button" parent="HBoxContainer/Login"]
 margin_top = 195.0
 margin_right = 221.0
 margin_bottom = 215.0
-text = "KEY_TEXT_LOGIN"
+text = "Login"
 
 [node name="Register" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 251.0
@@ -61,7 +60,7 @@ visible = false
 margin_top = 133.0
 margin_right = 257.0
 margin_bottom = 157.0
-placeholder_text = "KEY_TEXT_EMAIL"
+placeholder_text = "Email"
 
 [node name="Password" type="LineEdit" parent="HBoxContainer/Register"]
 visible = false
@@ -70,13 +69,13 @@ margin_right = 257.0
 margin_bottom = 172.0
 secret = true
 secret_character = "•"
-placeholder_text = "KEY_TEXT_PASSWORD"
+placeholder_text = "Password"
 
 [node name="Register" type="Button" parent="HBoxContainer/Register"]
 margin_top = 164.0
 margin_right = 222.0
 margin_bottom = 184.0
-text = "KEY_TEXT_REGISTER"
+text = "Register"
 
 [node name="Error" type="AcceptDialog" parent="."]
 visible = true

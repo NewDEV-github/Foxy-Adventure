@@ -38,10 +38,7 @@ func _init(console):
 		.set_description('Changes scene.')\
 		.add_argument('path', TYPE_STRING)\
 		.register()
-	self._console.add_command('set_locale', self, '_set_locale')\
-		.set_description('Sets locale to given.')\
-		.add_argument('locale', TYPE_STRING)\
-		.register()
+
 	self._console.add_command('quit', self, '_quit')\
 		.set_description('Exit application.')\
 		.register()
@@ -90,8 +87,7 @@ func _list_commands():
 	for command in self._console._command_service.values():
 		var name = command.getName()
 		self._console.write_line('[color=#ffff66][url=%s]%s[/url][/color]' % [ name, name ])
-func _set_locale(locale):
-	TranslationServer.set_locale(locale)
+
 func _update_score(score, uid):
 	ApiScores.update_score(uid, score)
 	self._console.write_line("Score for %s was updated :3" % [uid])

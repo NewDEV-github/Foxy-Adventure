@@ -2,10 +2,7 @@ extends Panel
 var visible_connect
 var audio = AudioServer
 var current_submenu_page
-func _ready():
-	if Globals.arguments.has("locale"):
-		print("Setting locale to: " + Globals.arguments["locale"])
-		TranslationServer.set_locale(Globals.arguments["locale"])
+
 var music_bus_idx = audio.get_bus_index('Music')
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

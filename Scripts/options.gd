@@ -8,8 +8,8 @@ var tr_en_fallback = [
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
-	$tabs.set_tab_title(0, tr("KEY_TEXT_OPTIONS_GRAPHICS"))
-	$tabs.set_tab_title(1, tr("KEY_TEXT_OPTIONS_AUDIO"))
+	$tabs.set_tab_title(0, "Graphics")
+	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
 	$"tabs/Graphics/Options/side_left/fps/target".value = Engine.target_fps
 	
@@ -28,7 +28,6 @@ func _process(_delta):
 	save_file.load('user://settings.cfg')
 	save_file.set_value('Game', 'engine_version', str(Engine.get_version_info()))
 	save_file.set_value('Game', 'target_fps', str(Engine.target_fps))
-#	save_file.set_value('Game', 'locale', str(TranslationServer.get_locale()))
 	save_file.set_value('Game', 'fps_visible', str(Globals.fps_visible))
 	save_file.set_value('Game', 'timer_visible', str(Globals.timer_visible))
 	save_file.set_value('Game', 'discord_sdk_enabled', str(Globals.discord_sdk_enabled))
@@ -38,13 +37,8 @@ func _process(_delta):
 	save_file.set_value('Audio', 'music_bus_enabled', str($"tabs/Audio/Options/Audio/Music/Music_on".pressed))
 	save_file.set_value('Audio', 'sfx_bus_volume', str($"tabs/Audio/Options/Audio/SFX/SFX_slider".value))
 	save_file.set_value('Audio', 'sfx_bus_enabled', str($"tabs/Audio/Options/Audio/SFX/SFX_on".pressed))
-#	save_file.set_value('Graphics', 'fullscreen', str($"tabs/Graphics/Options/side_left/Fullscreen".pressed))
 	save_file.set_value('Graphics', 'vsync_enabled', str($"tabs/Graphics/Options/side_left/VSync".pressed))
 	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/Graphics/Options/side_left/VSync".pressed))
-#	save_file.set_value('Graphics', 'window_x_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/x".value))
-#	save_file.set_value('Graphics', 'window_y_resolution', str($"tabs/Graphics/Options/side_left/custom_resolution/y".value))
-	# save_file.set_value('Graphics', 'camera_smoothing_enabled', Globals.camera_smoothing_enabled)
-	# save_file.set_value('Graphics', 'camera_smoothing_speed', Globals.camera_smoothing_speed)
 	save_file.save('user://settings.cfg')
 	hide()
 	set_process(false)
@@ -73,8 +67,6 @@ func load_settings():
 #			$"tabs/Graphics/Options/side_left/custom_resolution/y".value = float(str(save_file.get_value('Graphics', 'window_y_resolution', 600)))
 		if save_file.has_section_key('Game', 'target_fps'):
 			$"tabs/Graphics/Options/side_left/fps/target".value = float(str(save_file.get_value('Game', 'target_fps', 60)))
-#		if save_file.has_section_key('Game', 'locale'):
-#			TranslationServer.set_locale(str(save_file.get_value('Game', 'locale', 'en')))
 		if save_file.has_section_key('Game', 'fps_visible'):
 			$tabs/Graphics/Options/side_right/show_fps.pressed = bool(save_file.get_value('Game', 'fps_visible', true))
 		if save_file.has_section_key('Game', 'timer_visible'):
@@ -208,34 +200,6 @@ func _on_SpinBox_item_selected(id):
 func _on_maxfps_value_changed(value):
 	Engine.target_fps = value
 
-
-func _on_gcbutton_item_selected(id):
-	if id == 0:
-		Globals.set_day_night_mode('realtime')
-	if id == 1:
-		Globals.set_day_night_mode('gametime')
-
-
-func _on_lang_item_selected(id):
-#	var theme = preload("res://themes/rpgm_like/rpgm_like.tres")
-	if id == 0:
-		TranslationServer.set_locale("en")
-	if id == 1:
-		TranslationServer.set_locale("es")
-	if id == 2:
-		TranslationServer.set_locale("de")
-	if id == 3:
-		TranslationServer.set_locale("pl")
-	if id == 4:
-		TranslationServer.set_locale("es_MX")
-	if id == 5:
-		TranslationServer.set_locale("ja")
-	if id == 6:
-		TranslationServer.set_locale("ru")
-	if id == 7:
-#		theme.default_font = preload("res://Fonts/msyhl.tres")
-		TranslationServer.set_locale("zh")
-	
 
 func default_settings():
 	$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1024

@@ -37,8 +37,8 @@ func _ready() -> void:
 		$VBoxContainer3/DownloadableContent.disabled = false
 		$VBoxContainer3/Logout.disabled = false
 		$VBoxContainer3/Login.disabled = true
-	$DownloadableContent/TabContainer.set_tab_title(0, tr("KEY_LICENSES_INSTALLED_CONTENT"))
-	$DownloadableContent/TabContainer.set_tab_title(1, tr("KEY_LICENSES_ADD_LICENSE_KEY"))
+	$DownloadableContent/TabContainer.set_tab_title(0, "Installed content")
+	$DownloadableContent/TabContainer.set_tab_title(1, "Add license key")
 #		var db_ref = Firebase.Database.get_database_reference("test")
 	#	print("Db ref: " + db_ref.get_data())
 #		db_ref.push({"f": ""})
@@ -73,29 +73,26 @@ func _ready() -> void:
 		$SelectWorld/WorldList.add_item(world_name)
 	Directory.new().make_dir('user://logs/')
 	if day == 21 and month == 6:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "Foxy Adventure"')
+		$Label.set_text("Happy Birthday to: " + ' "Foxy Adventure"')
 	elif day == 17 and month == 2:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
+		$Label.set_text("Happy Birthday to: " + ' "NewTheFox" ')
 	elif day == 25 and month == 3:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' "NewTheFox" ')
+		$Label.set_text("Happy Birthday to: " + ' "NewTheFox" ')
 	elif day == 14 and month == 9:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Gekon aka "GeKaGD"')
+		$Label.set_text("Happy Birthday to: " + ' Gekon aka "GeKaGD"')
 	elif day == 10 and month == 7:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Tuzi')
+		$Label.set_text("Happy Birthday to: " + ' Tuzi')
 	elif day == 11 and month == 7:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Asperr_ :3')
+		$Label.set_text("Happy Birthday to: " + ' Asperr_ :3')
 	elif day == 16 and month == 10:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Miles "Tails" Prower')
+		$Label.set_text("Happy Birthday to: " + ' Miles "Tails" Prower')
 	elif day == 7 and month == 4:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' DoS (the main developer)')
+		$Label.set_text("Happy Birthday to: " + ' DoS (the main developer)')
 	elif day == 4 and month == 5:
-		$Label.set_text(tr("KEY_HAPPY_BDAY") + ' Itam :3')
+		$Label.set_text("Happy Birthday to: " + ' Itam :3')
 	get_tree().paused = false
 #	$AnimationPlayer.play('end_transition')
 	print('Game launched successfully!\n')
-	if Globals.arguments.has("locale"):
-		print("Setting locale to: " + Globals.arguments["locale"])
-		TranslationServer.set_locale(Globals.arguments["locale"])
 func show_submenu_page(page):
 	if current_submenu_page != null:
 		page.show()
@@ -278,3 +275,7 @@ func get_installed_dlc():
 
 func _on_Editor_pressed():
 	OS.shell_open("https://newdev.web.app/faq/foxy-adventure#creating-modofications-and-custom-stages")
+
+
+func _on_UpdatePopup_pressed():
+	$GithubUpdate.popup_centered()

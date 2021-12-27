@@ -17,19 +17,19 @@ func activate_license_key_in_game(key:String, product_name:String, install_cfg_p
 	cfg.set_value("keys", key + "_cfg", install_cfg_path)
 	cfg.save_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	if needs_restart:
-		OS.alert("Foxy Adventure needs restart to load\n%s"%product_name, tr("KEY_TEXT_WARNING"))
+		OS.alert("Foxy Adventure needs restart to load\n%s"%product_name, "Warning")
 #		qc.dlcrestartask(product_name)
 var _validation_result_d
 func validate_license_key(key:String):
-	$VBoxContainer/result.text = tr("KEY_LICENSES_VALIDATION_STARTED")
-	$VBoxContainer/result.text = tr("KEY_LICENSES_PARSING_DATA")
+	$VBoxContainer/result.text = "Validation started..."
+	$VBoxContainer/result.text = "Parsing data..."
 	var data = {'license_key': key}
 	_tmp_dlc_license_key = key
 	var query = JSON.print(data)
 	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/api/validate_license_key/"
-	$VBoxContainer/result.text = tr("KEY_LICENSES_SENDING_DATA")
+	$VBoxContainer/result.text = "Sending data..."
 	$Vaildator.request(url, ["Content-Type: application/json"], true, HTTPClient.METHOD_POST, query)
-	$VBoxContainer/result.text = tr("KEY_LICENSES_AWAITING_FOR_SERVER_RESPONSE")
+	$VBoxContainer/result.text = "Awaiting for server response..."
 
 func get_activated_products_in_game():
 	var cfg = ConfigFile.new()
@@ -37,8 +37,8 @@ func get_activated_products_in_game():
 	return cfg.get_section_keys("keys")
 
 func _on_Vaildator_request_completed(result, response_code, headers, body):
-	$VBoxContainer/result.text = tr("KEY_LICENSES_RECIVING_DATA")
-	$VBoxContainer/result.text = tr("KEY_LICENSES_PARSING_DATA")
+	$VBoxContainer/result.text = "Reciving data..."
+	$VBoxContainer/result.text = "Parsing data..."
 	var vaildation_result = JSON.parse(body.get_string_from_utf8()).result
 	_tmp_dlc_name = vaildation_result['product']
 	print(vaildation_result['exists'])
@@ -47,22 +47,22 @@ func _on_Vaildator_request_completed(result, response_code, headers, body):
 #		$VBoxContainer/result.text = Globals.user_data)
 		if vaildation_result['assigned_to_user'] == Globals.user_data['localid']:
 			download_content(vaildation_result['product'])
-			$VBoxContainer/result.text = tr("KEY_LICENSES_VALIDATION_SUCCESSFUL")
+			$VBoxContainer/result.text = "Vaildation successfull"
 		else:
-			$VBoxContainer/result.text = tr("KEY_LICENSES_WRONG_LICENSE_KEY")
+			$VBoxContainer/result.text = "Wrong license key"
 	else:
-		$VBoxContainer/result.text = tr("KEY_LICENSES_WRONG_LICENSE_KEY")
+		$VBoxContainer/result.text = "Wrong license key"
 
 
 func download_content(content_name:String):
-	$VBoxContainer/result.text = tr("KEY_LICENSES_DOWNLOADING_STARTED")
-	$VBoxContainer/result.text = tr("KEY_LICENSES_PARSING_DATA")
+	$VBoxContainer/result.text = "Downloading started..."
+	$VBoxContainer/result.text = "Parsing data..."
 	var data = {'content_name': content_name}
 	var query = JSON.print(data)
 	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/api/get_content_download_data/"
-	$VBoxContainer/result.text = tr("KEY_LICENSES_SENDING_DATA")
+	$VBoxContainer/result.text = "Sending data..."
 	$ContentDataDownloader.request(url, ["Content-Type: application/json"], true, HTTPClient.METHOD_POST, query)
-	$VBoxContainer/result.text = tr("KEY_LICENSES_AWAITING_FOR_SERVER_RESPONSE")
+	$VBoxContainer/result.text = "Awaiting for server response..."
 
 var _tmp_download_files = 0
 var _tmp_downloaded_files = 0
@@ -71,8 +71,8 @@ var _tmp_dlc_full_name = ""
 var _tmp_dlc_license_key = ""
 var _tmp_cfg_path = ""
 func _on_ContentDataDownloader_request_completed(result, response_code, headers, body):
-	$VBoxContainer/result.text = tr("KEY_LICENSES_RECIVING_DATA")
-	$VBoxContainer/result.text = tr("KEY_LICENSES_PARSING_DATA")
+	$VBoxContainer/result.text = "Reciving data..."
+	$VBoxContainer/result.text = "Parsing data..."
 	#LINKs for all files will be placed in database and they will be returned there
 #	{"cfg": download link, "pck1": download link} etc.
 	var _result = JSON.parse(body.get_string_from_utf8()).result
@@ -87,11 +87,11 @@ func _on_ContentDataDownloader_request_completed(result, response_code, headers,
 		set_process(true)
 		var download_name = _result[i].get_file()
 		var download_url = _result[i]
-		$VBoxContainer/result.text = tr("KEY_LICENSES_DOWNLOADING_DLC")
+		$VBoxContainer/result.text = "Downloading..."
 		$ContentFileDownloader.download_file = base_install_path + _tmp_dlc_name + "/" + download_name
 		$ContentFileDownloader.request(download_url)
 		yield($ContentFileDownloader, "request_completed")
-		$VBoxContainer/result.text = tr("KEY_LICENSES_PARSING_DATA")
+		$VBoxContainer/result.text = "Parsing data..."
 		if _result[i].get_extension() == "cfg":
 			_tmp_cfg_path = base_install_path + _tmp_dlc_name + "/" + download_name
 			_tmp_dlc_full_name = get_dlc_full_name(_tmp_dlc_name)
@@ -130,6 +130,6 @@ func get_dlc_full_name(product):
 
 func _on_AddKeyButton_pressed():
 	if $VBoxContainer/LineEdit.text == "":
-		$VBoxContainer/result.text = tr("KEY_LICENSES_MISSING_LICENSE_KEY")
+		$VBoxContainer/result.text = "Missing license key!"
 	else:
 		validate_license_key($VBoxContainer/LineEdit.text)

@@ -3,10 +3,10 @@ var intro_played = false
 var file = File.new()
 var cfg = ConfigFile.new()
 func change_text_autosave():
-	$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_AUTOSAVE") + "\n[/color][/center]"
+	$CharacterCopyright.bbcode_text = "[center][color=red]" + 'Warning' + "[/color][color=white]\n" + "This game uses an autosave.\nPlease, don't turn off the game while that icon is displayed" + "\n[/color][/center]"
 func _ready():
 	while Globals.loaded == true:
-		$CharacterCopyright.bbcode_text = "[center][color=red]" + tr("KEY_TEXT_WARNING") + "[/color][color=white]\n" + tr("KEY_TEXT_INTRO_1") + "\n[/color][/center]"
+		$CharacterCopyright.bbcode_text = "[center][color=red]" + 'Warning' + "[/color][color=white]\n" + 'Sonic and other characters belongs to SEGA and/or their owners' + "\n[/color][/center]"
 		$AnimationPlayer.play("intro")
 		cfg.load("user://settings.cfg")
 #		if cfg.has_section_key('Graphics', 'window_x_resolution') and cfg.has_section_key('Graphics', 'window_y_resolution'):

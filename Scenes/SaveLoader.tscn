@@ -37,16 +37,16 @@ __meta__ = {
 }
 
 [node name="DelSave" type="Button" parent="buttons"]
-margin_left = 38.0
-margin_right = 235.0
+margin_left = 131.0
+margin_right = 226.0
 margin_bottom = 32.0
-text = "KEY_TEXT_DELETE_SAVE"
+text = "Delete Save"
 
 [node name="RunSave" type="Button" parent="buttons"]
-margin_left = 260.0
-margin_right = 431.0
+margin_left = 251.0
+margin_right = 338.0
 margin_bottom = 32.0
-text = "KEY_TEXT_RUN_SAVE"
+text = "Load Save"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 margin_right = 406.0

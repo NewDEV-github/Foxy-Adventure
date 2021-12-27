@@ -4,10 +4,10 @@
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Scenes/Account.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/LoginPanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://updater/GithubUpdate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Graphics/bg.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/LicenseKeyVaildator.tscn" type="PackedScene" id=11]
 
@@ -68,7 +68,7 @@ margin_right = 225.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_NEW_GAME"
+text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,7 +79,7 @@ margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_WEBSITE"
+text = "Website"
 
 [node name="LoadGame" type="Button" parent="VBoxContainer"]
 margin_top = 92.0
@@ -87,7 +87,7 @@ margin_right = 225.0
 margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_LOAD"
+text = "Load Game"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -104,7 +104,7 @@ margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
-text = "KEY_TEXT_LOG_REG"
+text = "Login/Register"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,7 +115,7 @@ margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_LOGOUT"
+text = "Logout"
 
 [node name="DownloadableContent" type="Button" parent="VBoxContainer3"]
 margin_top = 92.0
@@ -123,7 +123,7 @@ margin_right = 225.0
 margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_DOWN_CONTENT"
+text = "Downloadable Content"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -141,7 +141,7 @@ margin_right = 225.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_ACHIEVEMENTS"
+text = "Achievements"
 
 [node name="Editor" type="Button" parent="VBoxContainer2"]
 margin_top = 46.0
@@ -149,7 +149,7 @@ margin_right = 225.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_EDITOR"
+text = "Editor"
 
 [node name="Options" type="Button" parent="VBoxContainer2"]
 margin_top = 92.0
@@ -157,7 +157,7 @@ margin_right = 225.0
 margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_OPTIONS"
+text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer2"]
 margin_top = 138.0
@@ -165,7 +165,7 @@ margin_right = 225.0
 margin_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "KEY_TEXT_QUIT"
+text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -242,18 +242,7 @@ margin_top = -38.8995
 margin_right = 56.5858
 margin_bottom = -9.89951
 shortcut = SubResource( 2 )
-text = "KEY_TEXT_GO"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CancelNewSave" type="Button" parent="NewSave"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -24.0
-margin_bottom = 29.0
-text = "X"
+text = "Go!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -272,7 +261,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="NewSave/VBoxContainer"]
 margin_right = 371.0
 margin_bottom = 19.0
-text = "KEY_TEXT_NEW_SAVE"
+text = "New Save"
 align = 1
 valign = 1
 
@@ -280,7 +269,7 @@ valign = 1
 margin_top = 23.0
 margin_right = 371.0
 margin_bottom = 42.0
-placeholder_text = "KEY_TEXT_NAME_OF_SAVE"
+placeholder_text = "Enter Save Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -292,7 +281,7 @@ bus = "Music"
 [node name="AchivementPanel" type="WindowDialog" parent="."]
 margin_right = 758.0
 margin_bottom = 478.0
-window_title = "KEY_TEXT_ACHIEVEMENTS"
+window_title = "Achievements"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -339,7 +328,7 @@ margin_right = 377.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "KEY_TEXT_ACH_DONE"
+text = "Done"
 align = 1
 valign = 1
 
@@ -349,76 +338,25 @@ margin_right = 758.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "KEY_TEXT_ACH_NOT_DONE"
+text = "Not Done"
 align = 1
 valign = 1
-
-[node name="Account" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [node name="LoginPanel" parent="." instance=ExtResource( 8 )]
 margin_right = 755.0
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
+
+[node name="GithubUpdate" parent="." instance=ExtResource( 9 )]
 visible = false
-
-[node name="SelectWorld" type="WindowDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -336.0
-margin_top = -231.5
-margin_right = 336.0
-margin_bottom = 231.5
-
-[node name="WorldList" type="ItemList" parent="SelectWorld"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 42.0
-margin_bottom = -41.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="SelectWorld"]
-anchor_right = 1.0
-margin_right = -1.0
-margin_bottom = 25.0
-text = "We have propably found some custom stages. Select one to start game or click 'Play Normal' button to play Foxy Adventure's storyline"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SelectWorld"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -38.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayNormal" type="Button" parent="SelectWorld/HBoxContainer"]
-margin_left = 178.0
-margin_right = 277.0
-margin_bottom = 38.0
-text = "Play Normal"
-
-[node name="PlaySelected" type="Button" parent="SelectWorld/HBoxContainer"]
-margin_left = 281.0
-margin_right = 388.0
-margin_bottom = 38.0
-text = "Play Selected"
-
-[node name="DeleteStage" type="Button" parent="SelectWorld/HBoxContainer"]
-margin_left = 392.0
-margin_right = 493.0
-margin_bottom = 38.0
-text = "Delete Stage"
+anchor_left = 0.221
+anchor_top = 0.223
+anchor_right = 0.779
+anchor_bottom = 0.777
+margin_left = 0.195984
+margin_top = 0.199997
+margin_right = -0.196045
+margin_bottom = -0.200012
 
 [node name="DownloadableContent" type="WindowDialog" parent="."]
 margin_right = 556.0
@@ -486,6 +424,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="UpdatePopup" type="Button" parent="DownloadableContent/TabContainer/Installed Content"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -92.0
+margin_top = -27.0
+margin_right = 92.0
+text = "Check for game updates"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Add license key" type="Tabs" parent="DownloadableContent/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -509,10 +460,7 @@ margin_bottom = -5.0
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="no_saves_found" from="SaveLoader" to="." method="_on_SaveLoader_no_saves_found"]
 [connection signal="pressed" from="NewSave/CreateNewSave" to="." method="_on_CreateNewSave_pressed"]
-[connection signal="pressed" from="NewSave/CancelNewSave" to="." method="_on_CanceNewSave_pressed"]
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/Done" to="." method="_on_Done_item_selected"]
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/NotDone" to="." method="_on_NotDone_item_selected"]
-[connection signal="item_selected" from="SelectWorld/WorldList" to="." method="_on_WorldList_item_selected"]
-[connection signal="pressed" from="SelectWorld/HBoxContainer/PlayNormal" to="." method="_on_PlayNormal_pressed"]
-[connection signal="pressed" from="SelectWorld/HBoxContainer/PlaySelected" to="." method="_on_PlaySelected_pressed"]
 [connection signal="value_changed" from="DownloadableContent/TabContainer/Installed Content/HBoxContainer/DLCVSlider" to="." method="_on_DLCVSlider_value_changed"]
+[connection signal="pressed" from="DownloadableContent/TabContainer/Installed Content/UpdatePopup" to="." method="_on_UpdatePopup_pressed"]

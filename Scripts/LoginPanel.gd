@@ -13,9 +13,6 @@ var errors = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Globals.arguments.has("locale"):
-		print("Setting locale to: " + Globals.arguments["locale"])
-		TranslationServer.set_locale(Globals.arguments["locale"])
 	Firebase.Auth.connect("login_failed", self, "on_login_failed")
 
 

@@ -5,73 +5,12 @@
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
 
-
 [node name="Control" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 745, 455 )
 theme = ExtResource( 5 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Modifications" type="Tabs" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 34.0
-margin_right = -5.0
-margin_bottom = -5.0
-drag_to_rearrange_enabled = true
-
-[node name="ItemList" type="ItemList" parent="Modifications"]
-anchor_right = 1.0
-anchor_bottom = 0.882
-margin_top = -4.0
-margin_bottom = -0.192017
-allow_reselect = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Modifications"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -50.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Modifications/VBoxContainer"]
-margin_right = 1014.0
-margin_bottom = 19.0
-text = "KEY_TEXT_OPTIONS_MODIFICATIONS_NOTE"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Modifications/VBoxContainer"]
-margin_top = 23.0
-margin_right = 1014.0
-margin_bottom = 50.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Enable" type="Button" parent="Modifications/VBoxContainer/HBoxContainer"]
-margin_left = 331.0
-margin_right = 683.0
-margin_bottom = 27.0
-focus_mode = 0
-toggle_mode = true
-enabled_focus_mode = 0
-text = "KEY_TEXT_OPTIONS_MODIFICATIONS_ENABLE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -100,7 +39,7 @@ anchor_right = 0.5
 margin_left = -116.0
 margin_right = 116.0
 margin_bottom = 21.0
-text = "KEY_TEXT_OPTIONS_GRAPHICS"
+text = "Graphics"
 align = 1
 valign = 1
 __meta__ = {
@@ -122,18 +61,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Fullscreen" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
-visible = false
-margin_top = 109.0
-margin_right = 440.0
-margin_bottom = 149.0
-text = "KEY_OPTIONS_FULLSCREEN_MODE"
-
 [node name="VSync" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
 margin_top = 221.0
 margin_right = 505.0
 margin_bottom = 261.0
-text = "KEY_TEXT_OPTIONS_VSYNC"
+text = "VSync"
 
 [node name="fps" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
 margin_top = 265.0
@@ -148,7 +80,7 @@ margin_right = 437.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-text = "KEY_TEXT_OPTIONS_FORCED_FPS"
+text = "Target FPS"
 
 [node name="target" type="SpinBox" parent="tabs/Graphics/Options/side_left/fps"]
 margin_left = 441.0
@@ -170,14 +102,14 @@ margin_top = 221.0
 margin_right = 505.0
 margin_bottom = 261.0
 pressed = true
-text = "KEY_TEXT_OPTIONS_SHOW_TIMER"
+text = "Show Timer"
 
 [node name="show_fps" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
 margin_top = 265.0
 margin_right = 505.0
 margin_bottom = 305.0
 pressed = true
-text = "KEY_TEXT_OPTIONS_SHOW_FPS"
+text = "Show FPS"
 
 [node name="Audio" type="Tabs" parent="tabs"]
 visible = false
@@ -214,7 +146,7 @@ __meta__ = {
 margin_top = 126.0
 margin_right = 1004.0
 margin_bottom = 145.0
-text = "KEY_TEXT_OPTIONS_AUDIO"
+text = "Audio"
 align = 1
 valign = 1
 
@@ -222,7 +154,7 @@ valign = 1
 margin_top = 170.0
 margin_right = 1004.0
 margin_bottom = 189.0
-text = "KEY_TEXT_OPTIONS_AUDIO_MASTER"
+text = "Master"
 align = 1
 valign = 1
 
@@ -250,7 +182,7 @@ pressed = true
 margin_top = 255.0
 margin_right = 1004.0
 margin_bottom = 274.0
-text = "KEY_TEXT_OPTIONS_AUDIO_MUSIC"
+text = "Music"
 align = 1
 valign = 1
 
@@ -279,7 +211,7 @@ margin_top = 340.0
 margin_right = 1004.0
 margin_bottom = 359.0
 rect_pivot_offset = Vector2( 973.75, -401.625 )
-text = "KEY_TEXT_OPTIONS_AUDIO_SFX"
+text = "SFX"
 align = 1
 valign = 1
 
@@ -412,14 +344,11 @@ anchor_bottom = 1.0
 margin_left = -96.5
 margin_top = -29.0001
 margin_right = 96.5
-text = "KEY_TEXT_APPLY"
+text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="item_selected" from="Modifications/ItemList" to="." method="_on_ItemList_item_selected"]
-[connection signal="toggled" from="Modifications/VBoxContainer/HBoxContainer/Enable" to="." method="_on_Enable_toggled"]
-[connection signal="toggled" from="tabs/Graphics/Options/side_left/Fullscreen" to="." method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]

@@ -15,9 +15,6 @@ signal no_saves_found
 var cfg = ConfigFile.new()
 func _ready() -> void:
 	hide_slider()
-	if Globals.arguments.has("locale"):
-		print("Setting locale to: " + Globals.arguments["locale"])
-		TranslationServer.set_locale(Globals.arguments["locale"])
 	$buttons/DelSave.disabled = true
 	$buttons/RunSave.disabled = true
 #	popup()
