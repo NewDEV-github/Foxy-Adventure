@@ -19,6 +19,9 @@ changelog:
       labels:
         - "bug"
         - "invaild"
+    - title: Removed features
+      labels:
+        - "for remove"
     - title: Other Changes
       labels:
         - "*"
