@@ -8,7 +8,6 @@ var platforms = {
 }
 
 func _ready():
-	popup_centered()
 	$HTTPRequest.request(latest_release_data_url, ["Accept: application/vnd.github.v3+json"], true, HTTPClient.METHOD_GET)
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):

@@ -8,8 +8,8 @@ var tr_en_fallback = [
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
-	$tabs.set_tab_title(0, tr("KEY_TEXT_OPTIONS_GRAPHICS"))
-	$tabs.set_tab_title(1, tr("KEY_TEXT_OPTIONS_AUDIO"))
+	$tabs.set_tab_title(0, "Graphics")
+	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
 	$"tabs/Graphics/Options/side_left/fps/target".value = Engine.target_fps
 	
