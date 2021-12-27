@@ -245,9 +245,6 @@ func _ready():
 	if arguments.has("send-log"):
 		OS.shell_open(install_base_path + "send_log/send_log")
 		get_tree().quit()
-	if arguments.has("locale"):
-		print("Setting locale to: " + arguments["locale"])
-		TranslationServer.set_locale(arguments["locale"])
 	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")

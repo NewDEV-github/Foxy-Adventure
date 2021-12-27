@@ -8,9 +8,6 @@ export (bool) var tooltip_enabled = false
 #var discord_rpc = DISCORD_RPC.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Globals.arguments.has("locale"):
-		print("Setting locale to: " + Globals.arguments["locale"])
-		TranslationServer.set_locale(Globals.arguments["locale"])
 	BackgroundLoad.get_node("bgload").play_start_transition = true
 	var new_chrs = Globals.new_characters
 	print(str(new_chrs))
