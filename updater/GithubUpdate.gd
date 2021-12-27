@@ -44,15 +44,14 @@ func _on_Download_pressed():
 		$patch_downloader.download_file = "user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]]
 		$patch_downloader.request(url)
 	print(OS.get_user_data_dir() + "/updates/%s/%s" % [latest_tag, platforms[OS.get_name()]])
+	$Main2.set_text("Extracting...")
 	$Node.unzip_update(OS.get_user_data_dir() + "/updates/%s/%s" % [latest_tag, platforms[OS.get_name()]], "../Main2")
 #	$Node.unzip_update("user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]])
-var cfn = "Extracitng..."
-func _process(delta):
-	$Main2.set_text(cfn)
+
 func _on_Node_extracted_file(file_name):
 	print(file_name)
 
 
 func _on_Node_extraction_finished(target):
-	cfn = "Updating..."
+	$Main2.set_text("Updating...")
 	print("Exportet to: " + target)
