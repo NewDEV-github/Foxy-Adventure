@@ -14,9 +14,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	var data = json.result
 	$Main.text = "Checking for updates"
-	for i in data.keys():
-		print(str(i) + " = " + str(data[i]))
-	$TagData.bbcode_text = data['body']
+	$Control.process_to_bbcode(data['body'])
+	print(str(data['body']).c_escape())
 	latest_tag = data['tag_name']
 	if compare_versions(data['tag_name']):
 		$Main.text = "You have the newest version"
@@ -37,22 +36,14 @@ func compare_versions(version:String):
 		return false
 
 func _on_Download_pressed():
-	var url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/download/%s/%s" % [latest_tag, platforms[OS.get_name()]]
-	Directory.new().make_dir_recursive("user://updates/%s" % [latest_tag])
-	Directory.new().make_dir_recursive("user://updates/_tmp/%s" % [latest_tag])
-	if not File.new().file_exists("user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]]):
-		$patch_downloader.download_file = "user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]]
-		$patch_downloader.request(url)
-	print(OS.get_user_data_dir() + "/updates/%s/%s" % [latest_tag, platforms[OS.get_name()]])
-	$Node.unzip_update(OS.get_user_data_dir() + "/updates/%s/%s" % [latest_tag, platforms[OS.get_name()]], "../Main2")
-#	$Node.unzip_update("user://updates/%s/%s" % [latest_tag, platforms[OS.get_name()]])
-var cfn = "Extracitng..."
-func _process(delta):
-	$Main2.set_text(cfn)
+	var url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/tag/%s/" % [latest_tag]
+	OS.shell_open(url)
+
+
 func _on_Node_extracted_file(file_name):
 	print(file_name)
 
 
 func _on_Node_extraction_finished(target):
-	cfn = "Updating..."
+	$Main2.set_text("Updating...")
 	print("Exportet to: " + target)

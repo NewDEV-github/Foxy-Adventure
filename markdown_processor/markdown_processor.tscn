@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://markdown_processor/markdown_processor.gd" type="Script" id=1]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
+
+[node name="Control" type="RichTextLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
