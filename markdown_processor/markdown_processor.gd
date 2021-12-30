@@ -30,31 +30,18 @@ func process_to_bbcode(_text:String):
 	bbcode_text = new_text
 
 func _parse_line(_text:String):
+	var base_text = _text
 	var text_to_return = _text
 	for i in tags:
-		print(_text.begins_with(i))
-		if _text.begins_with(i): #has one of tags
+		if base_text.begins_with(i): #has one of tags
 			if i == "<!--":
 				text_to_return = ""
 			else:
-				var _nt = _text.trim_prefix(i)
-				print("NT: " + _nt)
+				var _nt = base_text.trim_prefix(i)
+				print("NT: " + str(str(tags[i]) % _nt))
+				base_text=str(str(tags[i]) % _nt)
 				text_to_return=str(str(tags[i]) % _nt)
-		else:#none, go try other methods
-			var regex = RegEx.new()
-			var patterns = {
-				"(http|ftp|https):\\/\\/([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:\\/~+#-]*[\\w@?^=%&\\/~+#-])": "url", #url address
-				"(\\*+)(\\s*\\b)([^\\*]*)(\\b\\s*)(\\*+)": "bold"
-			}
-			for i2 in patterns:
-				regex.compile(i2)
-				var result = regex.search(_text)
-				if result != null:
-					print("Regex result is: " + result.get_string())
-					if patterns[i2] == "url":
-						text_to_return = _text.replace(result.get_string(), _parse_url(result.get_string()))
-					elif patterns[i2] == "bold":
-						text_to_return = _text.replace(result.get_string(), _parse_bold(result.get_string()))
+		text_to_return=_recurse_regex(base_text)
 	return text_to_return + "\n"
 
 
@@ -75,3 +62,25 @@ func _parse_bold(t:String):
 	var t1 = t.trim_prefix('**')
 	var t2 = t1.trim_suffix('**')
 	return "[b]" + t2 + "[/b]"
+
+
+func _recurse_regex(_text:String):
+	var text_to_return = _text
+	var base_text = _text
+	var regex = RegEx.new()
+	var patterns = {
+		"(http|ftp|https):\\/\\/([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:\\/~+#-]*[\\w@?^=%&\\/~+#-])": "url", #url address
+		"(\\*+)(\\s*\\b)([^\\*]*)(\\b\\s*)(\\*+)": "bold"
+	}
+	var pattern_results = {}
+	for i2 in patterns:
+		regex.compile(i2)
+		print("REGEX is Searching for %s in: %s" % [patterns[i2], base_text])
+		var result = regex.search(base_text)
+		if result != null:
+			print("Regex result is: " + result.get_string())
+			if patterns[i2] == "url":
+				text_to_return = base_text.replace(result.get_string(), _parse_url(result.get_string()))
+			elif patterns[i2] == "bold":
+				text_to_return = base_text.replace(result.get_string(), _parse_bold(result.get_string()))
+	return text_to_return
