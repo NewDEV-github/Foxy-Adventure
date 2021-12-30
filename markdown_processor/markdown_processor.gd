@@ -68,7 +68,7 @@ func _parse_url(url:String):
 	elif splitted_url.has('compare'): #compare
 		print("compare")
 		var comparision_t = splitted_url.back()
-		ret_text = "[color=#58a6ff][url=%s]#%s[/url][/color]" % [url, comparision_t]
+		ret_text = "[color=#58a6ff][url=%s]%s[/url][/color]" % [url, comparision_t]
 	return ret_text
 
 func _parse_bold(t:String):

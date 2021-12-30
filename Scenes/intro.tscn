@@ -132,10 +132,10 @@ bbcode_text = "[center][color=red]WARNING[/color][color=white]
 This game uses auto save
 Please do not turn off the game while this icon is being displayed
 [/color][/center]"
-text = "[center][color=red]WARNING[/color][color=white]
+text = "WARNING
 This game uses auto save
 Please do not turn off the game while this icon is being displayed
-[/color][/center]"
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
