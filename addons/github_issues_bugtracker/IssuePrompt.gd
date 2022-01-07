@@ -7,10 +7,16 @@ extends WindowDialog
 var _tags = []
 var _token = ""
 # Called when the node enters the scene tree for the first time.
+func _save_new_token(t:String):
+	var f = File.new()
+	f.open_encrypted_with_pass("res://gho_token", File.WRITE, "hcksU1jI")
+	f.store_line(t)
+	f.close()
 func _ready():
 	var f = File.new()
 	f.open_encrypted_with_pass("res://gho_token", File.READ, "hcksU1jI")
 	_token = f.get_line()
+	f.close()
 	_get_labels()
 	popup_centered()
 
