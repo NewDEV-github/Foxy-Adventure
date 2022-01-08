@@ -8,6 +8,16 @@ var SIMULATED_DELAY_SEC = 1.0
 func _ready():
 	hide()
 var hints = [
+	"Destiny is a funny thing, you never know what awaits you.\nBut if you keep an open mind and heart, I promise you will find your own",
+	"Perfection and power are overkill,\nI think you are extremely wise in choosing happiness and love",
+	"There is nothing wrong with life, peace and well-being.\nIt is better for you to think about what you want out of life and why",
+	"You have to let go of your feelings of disgrace if you want to overcome your anger.\nPride is not the opposite of disgrace, but its source.\nTrue humility is the real antidote to dishonor",
+	"It is best to admit your mistake when it does and try to regain your honor",
+	"It is important to learn from many different places.\nIf you take it from one source only, it will be scrapped.\nUnderstanding other, other elements and nations helps to become whole",
+	"Life takes place wherever you are, with or without you",
+	"There is nothing wrong with letting loving people help you",
+	"Sometimes life is like a dark tunnel, you don't always see the light at the end of this tunnel,\nbut if you keep going, you'll find a better place",
+	"It's time for you to look inside yourself and start asking yourself the most important question:\nWho are you and what do you really want?",
 	"Use WASD to control Your character and move around!",
 	"Tails can't fly!",
 	"Thank You for playing Foxy Adventure",
