@@ -8,8 +8,10 @@ on:
   push:
     paths-ignore: .github/workflows/gdnative.yml
     branches: [ main ]
+    branches-ignore: [ developer, sdk, 4.0 ]
   pull_request:
     branches: [ main ]
+    branches-ignore: [ developer, sdk, 4.0 ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -76,5 +78,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-win-64-${{ matrix.godot-version }}.zip
-          asset_name: build-win-64-${{ matrix.godot-version }}.zip
+           asset_name: build-win-64-${{ matrix.godot-version }}.zip
           asset_content_type: application/zip
