@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/options.gd" type="Script" id=1]
 [ext_resource path="res://tag_processor/TagProcessingLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=3]
+[ext_resource path="res://addons/github_issues_bugtracker/issues_api.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
 
 [node name="Control" type="Panel"]
@@ -315,7 +316,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Discord" type="Tabs" parent="tabs"]
+[node name="Other" type="Tabs" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -325,7 +326,7 @@ margin_right = -5.0
 margin_bottom = -5.0
 drag_to_rearrange_enabled = true
 
-[node name="DSDK" type="CheckButton" parent="tabs/Discord"]
+[node name="DSDK" type="CheckButton" parent="tabs/Other"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -335,6 +336,13 @@ text = "KEY_TEXT_OPTIONS_ENABLE_DISCORD_SDK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BugReport" type="Button" parent="tabs/Other"]
+anchor_right = 0.144
+anchor_bottom = 0.051
+margin_right = -0.0160065
+margin_bottom = 0.122999
+text = "Report a bug"
 
 [node name="SAVE" type="Button" parent="."]
 anchor_left = 0.5
@@ -348,6 +356,9 @@ text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BugReportP" parent="." instance=ExtResource( 4 )]
+mouse_filter = 1
 
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
@@ -363,5 +374,6 @@ __meta__ = {
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/PS_Button" to="tabs/Controls" method="_on_PS_Button_pressed"]
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/XBOX_Button" to="tabs/Controls" method="_on_XBOX_Button_pressed"]
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/PC_Button" to="tabs/Controls" method="_on_PC_Button_pressed"]
-[connection signal="toggled" from="tabs/Discord/DSDK" to="." method="_on_DSDK_toggled"]
+[connection signal="toggled" from="tabs/Other/DSDK" to="." method="_on_DSDK_toggled"]
+[connection signal="pressed" from="tabs/Other/BugReport" to="." method="_on_BugReport_pressed"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]

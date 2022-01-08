@@ -18,7 +18,7 @@ func _ready():
 	_token = f.get_line()
 	f.close()
 	_get_labels()
-	popup_centered()
+
 
 func _get_labels():
 	$"../LabelsRequest".request('https://api.github.com/repos/%s/%s/labels' % ['NewDEV-github', "Foxy-Adventure"])
@@ -57,3 +57,9 @@ func send_issue():
 	issue_sender.make_github_issue($Tiitle.text, $Body.text, _tags_str, _token)
 func _on_Send_pressed():
 	send_issue()
+	hide()
+	
+
+
+func _on_IssuePrompt_popup_hide():
+	get_node("../").hide()

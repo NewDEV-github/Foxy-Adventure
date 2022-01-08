@@ -8,6 +8,7 @@ var tr_en_fallback = [
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
+	$BugReportP.hide()
 	$tabs.set_tab_title(0, "Graphics")
 	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
@@ -75,7 +76,7 @@ func load_settings():
 #			$tabs/Rozgrywka/box/minimapenabled/minimap.set_pressed(bool(str(save_file.get_value('Game', 'minimap_enabled', true))))
 #		if save_file.has_section_key('Game', 'nsfw_enabled'):
 #		if save_file.has_section_key('Game', 'discord_sdk_enabled'):
-#			$tabs/Discord/DSDK.pressed = bool(save_file.get_value('Game', 'discord_sdk_enabled'))
+#			$tabs/Other/DSDK.pressed = bool(save_file.get_value('Game', 'discord_sdk_enabled'))
 #			Globals.set_nsfw(bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 #			$tabs/Rozgrywka/box/nsfwmode/nsfw.set_pressed(!bool(str(save_file.get_value('Game', 'nsfw_enabled',false))))
 #		if not str(OS.get_name()) == 'Android':
@@ -264,3 +265,8 @@ func _on_ItemList_item_selected(index):
 	mod_item_name = $tabs/Modifications/ItemList.get_item_text(index)
 	var mod = Globals.modifications[mod_names[mod_item_name]]
 	$tabs/Modifications/VBoxContainer/HBoxContainer/Enable.pressed = bool(mod["enabled"])
+
+
+func _on_BugReport_pressed():
+	$BugReportP.show()
+	$BugReportP/IssuePrompt.popup_centered()
