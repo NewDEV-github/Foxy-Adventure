@@ -7,24 +7,42 @@ changelog:
   categories:
     - title: New features
       labels:
-        - "enhancement"
-        - "help wanted"
+        - "Topic: Enhancement"
+        - "Topic: Help wanted"
     - title: In progress
       labels:
-        - "in progress"
+        - "Topic: In progress"
     - title: Translation updates
       labels:
-        - "translations"
+        - "Topic: Translations"
     - title: Bug fixes
       labels:
-        - "bug"
-        - "invaild"
+        - "Topic: Bug"
+        - "Topic: Invalid"
     - title: Removed features
       labels:
-        - "for remove"
+        - "Topic: For remove"
     - title: Dependencies
       labels:
-        - "dependencies"
+        - "Topic: Dependencies"
+    - title: Build system improvements
+      labels:
+        - "Topic: Build System"
+    - title: DLCs
+      labels:
+        - "Topic: DLCs"
+    - title: SDK
+      labels:
+        - "Topic: SDK"
+    - title: Linux
+      labels:
+        - "OS: Linux"
+    - title: Windows
+      labels:
+        - "OS: Windows"
+    - title: OSX
+      labels:
+        - "OS: OSX"
     - title: Other Changes
       labels:
         - "*"
