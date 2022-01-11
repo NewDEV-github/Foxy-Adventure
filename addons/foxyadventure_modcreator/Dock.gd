@@ -8,8 +8,12 @@ extends Control
 onready var sdk = preload("res://bin/sdk/sdk.gdns").new()
 
 # Called when the node enters the scene tree for the first time.
+func _init():
+	_ready()
 func _ready():
-	pass # Replace with function body.
+	var f = File.new()
+	f.open("res://version.dat", File.READ)
+	$VBoxContainer/game_versions.text = "[" + f.get_line() + "]"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,7 +31,10 @@ func _on_Generate_pressed():
 	if not $VBoxContainer/pck_files.text.length() == 0:
 		cfg.set_value("mod_info", "pck_files", $VBoxContainer/pck_files.text)
 	cfg.set_value("mod_info", 'enabled', str(false))
-	cfg.set_value("mod_info", "main_script_file", $VBoxContainer/main_script_file.text)
+	cfg.set_value("mod_info", "main_script_file", $VBoxContainer/HBoxContainer/main_script_file.text)
+	cfg.set_value("game_info", "supported_versions", $VBoxContainer/game_versions.text)
+	cfg.set_value("game_info", "support_lover_versions", str($VBoxContainer/l_v_support.pressed))
+	cfg.set_value("game_info", "support_higher_versions", str($VBoxContainer/h_v_support.pressed))
 	cfg.set_value("sdk_info", "version", sdk.get_version())
 	print("Generating " + "res://" + mod_name.to_lower().replace(' ', '_') + ".cfg" + "...")
 	cfg.save("res://" + mod_name.to_lower().replace(' ', '_') + ".cfg")
@@ -36,3 +43,11 @@ func _on_Generate_pressed():
 	file.store_line(mod_name.to_lower().replace(' ', '_') + ".cfg")
 	print("Generated!")
 	file.close()
+
+
+func _on_SelectMainScriptFile_pressed():
+	$GdDialog.popup_centered()
+
+
+func _on_GdDialog_file_selected(path):
+	$VBoxContainer/HBoxContainer/main_script_file.text = path
