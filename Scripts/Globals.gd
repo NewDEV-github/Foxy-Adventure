@@ -383,6 +383,7 @@ func scan_and_load_modifications_cfg():
 					tmp["author"] = cfg.get_value("mod_info", "author", "author")
 					tmp["description"] = cfg.get_value("mod_info", "description")
 					tmp["pck_files"] = cfg.get_value("mod_info", "pck_files")
+					tmp["supported_game_versions"] = cfg.get_value("game_info", "supported_versions")
 					tmp["enabled"] = "True" #cfg.get_value("mod_info", "enabled", "True")
 					tmp["sdk_version"] = cfg.get_value("sdk_info", "version")
 					tmp["main_script_file"] = cfg.get_value("mod_info", "main_script_file")
@@ -409,14 +410,15 @@ func load_modification(mod_name):
 	if mod["enabled"] == "True":
 		print(mod["sdk_version"])
 		print(str(supported_sdk_versions.has(int(mod["sdk_version"]))))
-		if supported_sdk_versions.has(int(mod["sdk_version"])):
+		var f = File.new()
+		f.open("res://version.dat", File.READ)
+		if supported_sdk_versions.has(int(mod["sdk_version"])) and Array(mod["supported_game_versions"]).has(f.get_line()):
 			for i in mod["pck_files"]:
 				print("Loading: " + OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
 				ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
 			var main_script = load(mod["main_script_file"]).new()
 			print("Loading mod")
 			main_script.init_mod()
-			dir_contents('res://more_music/')
 		else:
 			print(mod["name"] + " - " + "That modification uses unsupported SDK version")
 			OS.alert(mod["name"] + " - " + "That modification uses unsupported SDK version", "Warning")
@@ -424,7 +426,8 @@ func load_modification(mod_name):
 func load_stage_from_editor(stage_name:String, character:String):
 	pass
 
-
+func _check_mod_game_version_support(mod_cfg_path):
+	pass
 
 
 func load_dlcs():

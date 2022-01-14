@@ -34,6 +34,9 @@ changelog:
     - title: SDK
       labels:
         - "Topic: SDK"
+    - title: Modifications
+      labels:
+        - "Topic: Modifications"
     - title: Linux
       labels:
         - "OS: Linux"
