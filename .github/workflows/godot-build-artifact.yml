@@ -84,7 +84,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - name: Download files
-      - uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: game-builds
       - name: Build Installers
