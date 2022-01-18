@@ -123,9 +123,9 @@ jobs:
           powershell Expand-Archive -Path D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11-64-standard\build-x11-64-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11
           echo "game data unzipped"
           mkdir D:\a\Foxy-Adventure\Foxy-Adventure\output_installer
-          D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
-          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml windows --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
-          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
+          D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux-x64 --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\ project.version=${{ steps.package.outputs.content }}
+          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml windows-x64 --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\ project.version=${{ steps.package.outputs.content }}
+          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\ project.version=${{ steps.package.outputs.content }}
           cd D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
           tree /f
           powershell Compress-Archive "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app" "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app.zip"
