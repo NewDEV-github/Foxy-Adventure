@@ -65,7 +65,7 @@
                     <platforms>osx</platforms>
                     <distributionFileList>
                         <distributionDirectory>
-                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\builds\3.4.stable\osx-standard</origin>
+                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -76,7 +76,7 @@
                     <platforms>windows-x64</platforms>
                     <distributionFileList>
                         <distributionDirectory>
-                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\builds\3.4.stable\win-64standard</origin>
+                            <originD:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -87,7 +87,7 @@
                     <platforms>linux-x64</platforms>
                     <distributionFileList>
                         <distributionDirectory>
-                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\builds\3.4.stable\x11-64-standard</origin>
+                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
