@@ -83,10 +83,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      - name: Download files and build
+      - name: Download files
       - uses: actions/download-artifact@v2
         with:
           name: game-builds
+      - name: Build Installers
         run: |
           $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml linux
           $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml windows
