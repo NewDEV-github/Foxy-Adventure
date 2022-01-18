@@ -114,8 +114,10 @@ jobs:
           path: game_builds
       - name: Build Installers
         run: |
+          mkdir D:\a\Foxy-Adventure\Foxy-Adventure\output_installer
+          D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
+          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml windows --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
+          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
+          cd D:\a\Foxy-Adventure\Foxy-Adventure\install_builder\
           tree /f
-          D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux
-          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml windows
-          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx
           
