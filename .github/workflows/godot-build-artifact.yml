@@ -39,6 +39,30 @@ jobs:
           zip -r build-x11-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/x11-64-standard/
           zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/osx-standard/
           zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/win-64-standard/
+      - name: Upload a Build Artifact win
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          # Artifact name
+          name: win-64-standard
+          # A file, directory or wildcard pattern that describes what to upload
+          path: builds/${{ matrix.godot-version }}.stable/win-64-standard
+          # The desired behavior if no files are found using the provided path.
+      - name: Upload a Build Artifact x11
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          # Artifact name
+          name: x11-64-standard
+          # A file, directory or wildcard pattern that describes what to upload
+          path: builds/${{ matrix.godot-version }}.stable/x11-64-standard/
+          # The desired behavior if no files are found using the provided path.
+      - name: Upload a Build Artifact osx
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          # Artifact name
+          name: osx-standard
+          # A file, directory or wildcard pattern that describes what to upload
+          path: bbuilds/${{ matrix.godot-version }}.stable/osx-standard/
+          # The desired behavior if no files are found using the provided path.
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -80,6 +104,7 @@ jobs:
           asset_name: build-win-64-${{ matrix.godot-version }}.zip
           asset_content_type: application/zip
   installer-build:
+    needs: godot-build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2.4.0
@@ -89,6 +114,9 @@ jobs:
           name: game-builds
       - name: Build Installers
         run: |
+          cd $GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE
+          dir
           $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml linux
           $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml windows
           $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml osx
