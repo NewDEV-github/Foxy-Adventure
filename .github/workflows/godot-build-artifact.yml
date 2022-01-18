@@ -115,7 +115,7 @@ jobs:
       - name: Build Installers
         run: |
           tree /f
-          D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml linux
-          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml windows
-          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml osx
+          D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux
+          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml windows
+          D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx
           
