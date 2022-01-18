@@ -108,6 +108,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2.4.0
+      - name: Read version file
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./version.dat
       - name: Download files
         uses: actions/download-artifact@v2
         with:
@@ -128,12 +133,7 @@ jobs:
           D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\ project.version=${{ steps.package.outputs.content }}
           cd D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
           tree /f
-          powershell Compress-Archive "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app" "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app.zip"
-      - name: Read version file
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./version.dat
+          powershell Compress-Archive "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-osx-installer.app" "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-osx-installer.app.zip"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -151,8 +151,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-linux-installer.run
-          asset_name: foxyadventure-1.0-linux-installer.run
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-linux-installer.run
+          asset_name: foxyadventure-${{ steps.package.outputs.content }}-linux-installer.run
           asset_content_type: application/octet-stream
       - name: Upload Release Asset - osx
         id: upload-release-asset-osx
@@ -161,8 +161,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app.zip
-          asset_name: foxyadventure-1.0-osx-installer.app.zip
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-osx-installer.app.zip
+          asset_name: foxyadventure-${{ steps.package.outputs.content }}-osx-installer.app.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win
         id: upload-release-asset-win
@@ -171,7 +171,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-windows-installer.exe
-          asset_name: foxyadventure-1.0-windows-installer.exe
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-windows-installer.exe
+          asset_name: foxyadventure-${{ steps.package.outputs.content }}-windows-installer.exe
           asset_content_type: application/octet-stream
           
