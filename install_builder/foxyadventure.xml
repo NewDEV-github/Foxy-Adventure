@@ -76,7 +76,7 @@
                     <platforms>windows-x64</platforms>
                     <distributionFileList>
                         <distributionDirectory>
-                            <originD:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows</origin>
+                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
