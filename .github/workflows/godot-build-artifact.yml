@@ -132,8 +132,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ steps.package.outputs.content }}-installer
-          release_name: Release ${{ steps.package.outputs.content }}-installer
+          tag_name: installer-${{ steps.package.outputs.content }}
+          release_name: Release Installer ${{ steps.package.outputs.content }}
           draft: false
           prerelease: false
       - name: Upload Release Asset - x11
