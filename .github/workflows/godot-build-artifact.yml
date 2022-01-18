@@ -114,10 +114,10 @@ jobs:
           path: game_builds
       - name: Build Installers
         run: |
-          cd $GITHUB_WORKSPACE
-          echo $GITHUB_WORKSPACE
+          cd %GITHUB_WORKSPACE%
+          echo %GITHUB_WORKSPACE%
           dir
-          $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml linux
-          $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml windows
-          $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml osx
+          %GITHUB_WORKSPACE%/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml linux
+          %GITHUB_WORKSPACE%/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml windows
+          %GITHUB_WORKSPACE%/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml osx
           
