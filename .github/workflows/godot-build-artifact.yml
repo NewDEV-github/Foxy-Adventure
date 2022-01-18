@@ -114,13 +114,12 @@ jobs:
           path: game_builds
       - name: Build Installers
         run: |
-          tree /f
           mkdir D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows
           mkdir D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx
           mkdir D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11
-          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\win-64-standard\build-win-64-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows
-          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\osx-standard\build-osx-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx
-          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\x11-64-standard\build-x11-64-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11
+          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\win-64-standard\build-win-64-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows
+          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx-standard\build-osx-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx
+          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11-64-standard\build-x11-64-3.4.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11
           tree /f
           mkdir D:\a\Foxy-Adventure\Foxy-Adventure\output_installer
           D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
