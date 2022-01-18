@@ -120,4 +120,50 @@ jobs:
           D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
           cd D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
           tree /f
+          powershell Compress-Archive "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app" "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app.zip"
+      - name: Read version file
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./version.dat
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+       with:
+         tag_name: ${{ steps.package.outputs.content }}-installer
+         release_name: Release ${{ steps.package.outputs.content }}-installer
+         draft: false
+         prerelease: false
+     - name: Upload Release Asset - x11
+        id: upload-release-asset-x11 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-linux-installer.run
+          asset_name: foxyadventure-1.0-linux-installer.run
+          asset_content_type: application/octet-stream
+      - name: Upload Release Asset - osx
+        id: upload-release-asset-osx
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-osx-installer.app.zip
+          asset_name: foxyadventure-1.0-osx-installer.app.zip
+          asset_content_type: application/zip
+      - name: Upload Release Asset - win
+        id: upload-release-asset-win
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-1.0-windows-installer.exe
+          asset_name: foxyadventure-1.0-windows-installer.exe
+          asset_content_type: application/octet-stream
           
