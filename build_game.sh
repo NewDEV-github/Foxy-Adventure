@@ -77,6 +77,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/gitapi/win64
   sudo rm -r Foxy-Adventure/bin/gdsdk/osx-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
+  sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/addons/opus/bin/osx
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
   find . -name "*.dll" | xargs sudo rm
@@ -101,6 +102,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/sdk/lib/win
   sudo rm -r Foxy-Adventure/bin/gitapi/x11
   sudo rm -r Foxy-Adventure/bin/gitapi/win64
+  sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
   find . -name "*.so" | xargs sudo rm
@@ -120,6 +122,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/cpp
   sudo rm -r Foxy-Adventure/docs
   sudo rm -r Foxy-Adventure/addons/bin/x11
+  sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/addons/bin/osx
   sudo rm -r Foxy-Adventure/addons/foreigner/mac
   sudo rm -r Foxy-Adventure/addons/foreigner/linux

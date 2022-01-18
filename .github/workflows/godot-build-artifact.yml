@@ -16,6 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   godot-build:
+    continue-on-error: true
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
     strategy:
@@ -78,3 +79,16 @@ jobs:
           asset_path: build-win-64-${{ matrix.godot-version }}.zip
           asset_name: build-win-64-${{ matrix.godot-version }}.zip
           asset_content_type: application/zip
+  installer-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: Download files and build
+      - uses: actions/download-artifact@v2
+        with:
+          name: game-builds
+        run: |
+          $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml linux
+          $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml windows
+          $GITHUB_WORKSPACE/install_builder/bin/builder-cli.exe build $GITHUB_WORKSPACE/install_builder/foxyadventure.xml osx
+          

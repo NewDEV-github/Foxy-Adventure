@@ -1,0 +1,127 @@
+<project>
+    <shortName>foxyadventure</shortName>
+    <fullName>Foxy Adventure</fullName>
+    <version>1.0</version>
+    <installerFilename>${project.shortName}-${project.version}-${platform_name}-installer.${platform_exec_suffix}</installerFilename>
+    <logoImage>D:\a\Foxy-Adventure\Foxy-Adventure\assets\Graphics\icon.png</logoImage>
+    <splashImage>D:\a\Foxy-Adventure\Foxy-Adventure\assets\Graphics\icon.png</splashImage>
+    <allowLanguageSelection>1</allowLanguageSelection>
+    <componentList>
+        <component>
+            <name>game</name>
+            <description>Game</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <desktopShortcutList>
+                <shortcut>
+                    <comment></comment>
+                    <exec>${installdir}\FoxyAdventure</exec>
+                    <icon>${installdir}\assets\Graphics\icon.png</icon>
+                    <name>Foxy Adventure</name>
+                    <path></path>
+                    <platforms>linux-x64</platforms>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec></windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon></windowsIcon>
+                    <windowsPath></windowsPath>
+                </shortcut>
+                <shortcut>
+                    <comment></comment>
+                    <exec></exec>
+                    <icon></icon>
+                    <name>Foxy Adventure</name>
+                    <path></path>
+                    <platforms>windows-x64</platforms>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}\FoxyAdventure.exe</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon>${installdir}\assets\Graphics\icon.ico</windowsIcon>
+                    <windowsPath></windowsPath>
+                </shortcut>
+                <shortcut>
+                    <comment></comment>
+                    <exec>${installdir}\FoxyAdventure.app</exec>
+                    <icon>${installdir}\assets\Graphics\icon.png</icon>
+                    <name>Foxy Adventure</name>
+                    <path></path>
+                    <platforms>osx</platforms>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec></windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon></windowsIcon>
+                    <windowsPath></windowsPath>
+                </shortcut>
+            </desktopShortcutList>
+            <folderList>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>osx</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\builds\3.4.stable\osx-standard</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>win64</name>
+                    <platforms>windows-x64</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\builds\3.4.stable\win-64standard</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}/</destination>
+                    <name>x11_64</name>
+                    <platforms>linux-x64</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>D:\a\Foxy-Adventure\Foxy-Adventure\builds\3.4.stable\x11-64-standard</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <postInstallationScript></postInstallationScript>
+    <postInstallationScriptArguments></postInstallationScriptArguments>
+    <enableRollback>1</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <projectSchemaVersion>1.0</projectSchemaVersion>
+    <startMenuGroupName>${project.fullName}</startMenuGroupName>
+    <vendor>New DEV</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value>${platform_install_prefix}/New DEV/Foxy Adventure</value>
+            <default>${platform_install_prefix}/New DEV/Foxy Adventure</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>yes</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>40</width>
+        </directoryParameter>
+    </parameterList>
+    <platformOptionsList>
+        <platformOptions>
+            <postInstallationScript></postInstallationScript>
+            <postInstallationScriptArguments></postInstallationScriptArguments>
+            <platform>windows</platform>
+        </platformOptions>
+    </platformOptionsList>
+</project>
+
