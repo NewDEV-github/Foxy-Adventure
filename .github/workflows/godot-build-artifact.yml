@@ -114,6 +114,14 @@ jobs:
           path: game_builds
       - name: Build Installers
         run: |
+          tree /f
+          mkdir D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows
+          mkdir D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx
+          mkdir D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11
+          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\windows.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\windows
+          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\osx.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx
+          powershell Expand-Archive D:\a\Foxy-Adventure\Foxy-Adventure\x11.zip -DestinationPath D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11
+          tree /f
           mkdir D:\a\Foxy-Adventure\Foxy-Adventure\output_installer
           D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml linux --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
           D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml windows --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
@@ -132,8 +140,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: installer-${{ steps.package.outputs.content }}
-          release_name: Release Installer ${{ steps.package.outputs.content }}
+          tag_name: ${{ steps.package.outputs.content }}-installer
+          release_name: Release ${{ steps.package.outputs.content }}-installer
           draft: false
           prerelease: false
       - name: Upload Release Asset - x11
