@@ -111,7 +111,7 @@ jobs:
       - name: Download files
         uses: actions/download-artifact@v2
         with:
-          name: game-builds
+          path: game_builds
       - name: Build Installers
         run: |
           cd $GITHUB_WORKSPACE
