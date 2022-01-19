@@ -63,46 +63,6 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: build-osx-${{ matrix.godot-version }}.zip
           # The desired behavior if no files are found using the provided path.
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ steps.package.outputs.content }}
-          release_name: Release ${{ steps.package.outputs.content }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset - x11
-        id: upload-release-asset-x11 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: build-x11-64-${{ matrix.godot-version }}.zip
-          asset_name: build-x11-64-${{ matrix.godot-version }}.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset - osx
-        id: upload-release-asset-osx
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: build-osx-${{ matrix.godot-version }}.zip
-          asset_name: build-osx-${{ matrix.godot-version }}.zip
-          asset_content_type: application/zip
-      - name: Upload Release Asset - win
-        id: upload-release-asset-win
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: build-win-64-${{ matrix.godot-version }}.zip
-          asset_name: build-win-64-${{ matrix.godot-version }}.zip
-          asset_content_type: application/zip
   installer-build:
     needs: godot-build
     runs-on: windows-latest
@@ -140,8 +100,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: installer-${{ steps.package.outputs.content }}
-          release_name: Release Installer ${{ steps.package.outputs.content }}
+          tag_name: ${{ steps.package.outputs.content }}
+          release_name: Release ${{ steps.package.outputs.content }}
           draft: false
           prerelease: false
       - name: Upload Release Asset - x11
@@ -154,6 +114,16 @@ jobs:
           asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\FoxyAdventureInstaller-linux-x64.run
           asset_name: FoxyAdventureInstaller-linux-x64.run
           asset_content_type: application/octet-stream
+      - name: Upload Release Asset - x11
+        id: upload-release-asset-x112
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\x11-64-standard\build-x11-64-3.4.zip
+          asset_name: build-x11-64-3.4.zip
+          asset_content_type: application/zip
       - name: Upload Release Asset - osx
         id: upload-release-asset-osx
         uses: actions/upload-release-asset@v1
@@ -163,6 +133,16 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\FoxyAdventureInstaller-osx.app.zip
           asset_name: FoxyAdventureInstaller-osx.app.zip
+          asset_content_type: application/zip
+      - name: Upload Release Asset - osx
+        id: upload-release-asset-osx2
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\osx-standard\build-osx-3.4.zip
+          asset_name: build-osx-3.4.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win
         id: upload-release-asset-win
@@ -174,4 +154,14 @@ jobs:
           asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\FoxyAdventureInstaller-windows-x64.exe
           asset_name: FoxyAdventureInstaller-windows-64.exe
           asset_content_type: application/octet-stream
+      - name: Upload Release Asset - win
+        id: upload-release-asset-win2
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: D:\a\Foxy-Adventure\Foxy-Adventure\game_builds\win-64-standard\build-win-64-3.4.zip
+          asset_name: build-win-64-3.4.zip
+          asset_content_type: application/zip
           
