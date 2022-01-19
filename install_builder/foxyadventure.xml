@@ -2,7 +2,7 @@
     <shortName>foxyadventure</shortName>
     <fullName>Foxy Adventure</fullName>
     <version>1.0</version>
-    <installerFilename>${project.shortName}-${project.version}-${platform_name}-installer.${platform_exec_suffix}</installerFilename>
+    <installerFilename>FoxyAdventureInstaller-${platform_name}.${platform_exec_suffix}</installerFilename>
     <logoImage>D:\a\Foxy-Adventure\Foxy-Adventure\assets\Graphics\icon.png</logoImage>
     <splashImage>D:\a\Foxy-Adventure\Foxy-Adventure\assets\Graphics\icon.png</splashImage>
     <allowLanguageSelection>1</allowLanguageSelection>
