@@ -133,7 +133,7 @@ jobs:
           D:\a\Foxy-Adventure\Foxy-Adventure\install_builder/bin/builder-cli.exe build D:\a\Foxy-Adventure\Foxy-Adventure/install_builder/foxyadventure.xml osx --setvars project.outputDirectory=D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\ project.version=${{ steps.package.outputs.content }}
           cd D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\
           tree /f
-          powershell Compress-Archive "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-osx-installer.app" "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-${{ steps.package.outputs.content }}-osx-installer.app.zip"
+          powershell Compress-Archive "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-"+${{ steps.package.outputs.content }}+"-osx-installer.app" "D:\a\Foxy-Adventure\Foxy-Adventure\output_installer\foxyadventure-"+${{ steps.package.outputs.content }}+"-osx-installer.app.zip"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
