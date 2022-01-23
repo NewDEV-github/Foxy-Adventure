@@ -69,4 +69,5 @@ __meta__ = {
 }
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="meta_clicked" from="Control" to="." method="_on_Control_meta_clicked"]
 [connection signal="pressed" from="Download" to="." method="_on_Download_pressed"]

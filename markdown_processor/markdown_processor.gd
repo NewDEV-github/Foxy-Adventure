@@ -13,7 +13,6 @@ var tags = {
 	"###### ": '[b][font=res://assets/fonts/roboto_font_xxs.tres]%s[/font][/b]',
 	"* ": '• %s',
 	"- ": '• %s',
-	"<!-- ": "%s",
 }
 #
 ## Called when the node enters the scene tree for the first time.
@@ -34,15 +33,12 @@ func _parse_line(_text:String):
 	var text_to_return = _text
 	for i in tags:
 		if base_text.begins_with(i):
-			if i == "<!--":
-				text_to_return = ""
-				base_text = ""
-			else:
-				var _nt = base_text.trim_prefix(i)
-				#print("NT: " + str(str(tags[i]) % _nt))
-				base_text=str(str(tags[i]) % _nt)
-				text_to_return=str(str(tags[i]) % _nt)
-		text_to_return=_recurse_regex(base_text)
+			print("Parsing: " + i)
+			var _nt = base_text.trim_prefix(i)
+			#print("NT: " + str(str(tags[i]) % _nt))
+			base_text=str(str(tags[i]) % _nt)
+			text_to_return=str(str(tags[i]) % _nt)
+	text_to_return=_recurse_regex(base_text)
 	return text_to_return + "\n"
 
 
@@ -68,7 +64,8 @@ func _parse_username(u:String):
 	var new_u = u.trim_prefix('@')
 	var url = 'https://github.com/' + new_u
 	return "[color=#58a6ff][url=%s]%s[/url][/color]" % [url, u]
-
+func _parse_comment(c:String):
+	return " "
 func _recurse_regex(_text:String):
 	var text_to_return = _text
 	var base_text = _text
@@ -76,7 +73,8 @@ func _recurse_regex(_text:String):
 	var patterns = {
 		"(http|ftp|https):\\/\\/([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:\\/~+#-]*[\\w@?^=%&\\/~+#-])": "url", #url address
 		"(\\*+)(\\s*\\b)([^\\*]*)(\\b\\s*)(\\*+)": "bold", #bold text
-		"(@\\w+)+": "username" #username e.g. @JezSonic
+		"(@\\w+)+": "username", #username e.g. @JezSonic
+		"(<!--(?s)(.*)-->)+": "comment"
 	}
 	var pattern_results = {}
 	for i2 in patterns:
@@ -84,11 +82,13 @@ func _recurse_regex(_text:String):
 		#print("REGEX is Searching for %s in: %s" % [patterns[i2], base_text])
 		var result = regex.search(base_text)
 		if result != null:
-			#print("Regex result is: " + result.get_string())
+			print("Regex result is: " + result.get_string())
 			if patterns[i2] == "url":
 				text_to_return = base_text.replace(result.get_string(), _parse_url(result.get_string()))
 			elif patterns[i2] == "bold":
 				text_to_return = base_text.replace(result.get_string(), _parse_bold(result.get_string()))
 			elif patterns[i2] == "username":
 				text_to_return = base_text.replace(result.get_string(), _parse_username(result.get_string()))
+			elif patterns[i2] == "comment":
+				text_to_return = base_text.replace(result.get_string(), _parse_comment(result.get_string()))
 	return text_to_return
