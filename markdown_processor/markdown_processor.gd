@@ -66,6 +66,15 @@ func _parse_username(u:String):
 	return "[color=#58a6ff][url=%s]%s[/url][/color]" % [url, u]
 func _parse_comment(c:String):
 	return " "
+func _parse_italic(i:String):
+	var symbol = ''
+	if i.begins_with('_'):
+		symbol = "_"
+	elif i.begins_with('*'):
+		symbol = '*'
+	var i1 = i.trim_prefix(symbol)
+	var i2 = i1.trim_suffix(symbol)
+	return "[i]" + i2 + "[/i]"
 func _recurse_regex(_text:String):
 	var text_to_return = _text
 	var base_text = _text
@@ -74,7 +83,9 @@ func _recurse_regex(_text:String):
 		"(http|ftp|https):\\/\\/([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:\\/~+#-]*[\\w@?^=%&\\/~+#-])": "url", #url address
 		"(\\*+)(\\s*\\b)([^\\*]*)(\\b\\s*)(\\*+)": "bold", #bold text
 		"(@\\w+)+": "username", #username e.g. @JezSonic
-		"(<!--(?s)(.*)-->)+": "comment"
+		"(<!--(?s)(.*)-->)+": "comment",
+		"(_(s+)_)+": "italic_underscore",
+		"(\\*(s+)\\*)+": "italic_stars",
 	}
 	var pattern_results = {}
 	for i2 in patterns:
@@ -91,4 +102,8 @@ func _recurse_regex(_text:String):
 				text_to_return = base_text.replace(result.get_string(), _parse_username(result.get_string()))
 			elif patterns[i2] == "comment":
 				text_to_return = base_text.replace(result.get_string(), _parse_comment(result.get_string()))
+			elif patterns[i2] == "italic_underscore":
+				text_to_return = base_text.replace(result.get_string(), _parse_italic(result.get_string()))
+			elif patterns[i2] == "italic_stars":
+				text_to_return = base_text.replace(result.get_string(), _parse_italic(result.get_string()))
 	return text_to_return
