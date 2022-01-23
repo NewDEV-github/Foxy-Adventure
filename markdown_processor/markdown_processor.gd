@@ -13,7 +13,7 @@ var tags = {
 	"###### ": '[b][font=res://assets/fonts/roboto_font_xxs.tres]%s[/font][/b]',
 	"* ": '• %s',
 	"- ": '• %s',
-	"<!--": "%s",
+	"<!-- ": "%s",
 }
 #
 ## Called when the node enters the scene tree for the first time.
@@ -33,9 +33,10 @@ func _parse_line(_text:String):
 	var base_text = _text
 	var text_to_return = _text
 	for i in tags:
-		if base_text.begins_with(i): #has one of tags
+		if base_text.begins_with(i):
 			if i == "<!--":
 				text_to_return = ""
+				base_text = ""
 			else:
 				var _nt = base_text.trim_prefix(i)
 				#print("NT: " + str(str(tags[i]) % _nt))
@@ -63,6 +64,10 @@ func _parse_bold(t:String):
 	var t2 = t1.trim_suffix('**')
 	return "[b]" + t2 + "[/b]"
 
+func _parse_username(u:String):
+	var new_u = u.trim_prefix('@')
+	var url = 'https://github.com/' + new_u
+	return "[color=#58a6ff][url=%s]%s[/url][/color]" % [url, u]
 
 func _recurse_regex(_text:String):
 	var text_to_return = _text
@@ -70,7 +75,8 @@ func _recurse_regex(_text:String):
 	var regex = RegEx.new()
 	var patterns = {
 		"(http|ftp|https):\\/\\/([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:\\/~+#-]*[\\w@?^=%&\\/~+#-])": "url", #url address
-		"(\\*+)(\\s*\\b)([^\\*]*)(\\b\\s*)(\\*+)": "bold"
+		"(\\*+)(\\s*\\b)([^\\*]*)(\\b\\s*)(\\*+)": "bold", #bold text
+		"(@\\w+)+": "username" #username e.g. @JezSonic
 	}
 	var pattern_results = {}
 	for i2 in patterns:
@@ -83,4 +89,6 @@ func _recurse_regex(_text:String):
 				text_to_return = base_text.replace(result.get_string(), _parse_url(result.get_string()))
 			elif patterns[i2] == "bold":
 				text_to_return = base_text.replace(result.get_string(), _parse_bold(result.get_string()))
+			elif patterns[i2] == "username":
+				text_to_return = base_text.replace(result.get_string(), _parse_username(result.get_string()))
 	return text_to_return
