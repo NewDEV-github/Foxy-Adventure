@@ -8,6 +8,7 @@ var platforms = {
 }
 
 func _ready():
+	popup_centered()
 	$HTTPRequest.request(latest_release_data_url, ["Accept: application/vnd.github.v3+json"], true, HTTPClient.METHOD_GET)
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
@@ -44,3 +45,7 @@ func _on_Download_pressed():
 func _on_Node_extraction_finished(target):
 	$Main2.set_text("Updating...")
 	print("Exportet to: " + target)
+
+
+func _on_Control_meta_clicked(meta):
+	OS.shell_open(meta)
