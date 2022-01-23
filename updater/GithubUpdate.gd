@@ -40,9 +40,6 @@ func _on_Download_pressed():
 	OS.shell_open(url)
 
 
-func _on_Node_extracted_file(file_name):
-	print(file_name)
-
 
 func _on_Node_extraction_finished(target):
 	$Main2.set_text("Updating...")

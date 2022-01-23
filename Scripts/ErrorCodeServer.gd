@@ -28,9 +28,7 @@ const ERR_YOURE_CUTE = "ERR_YOURE_CUTE"
 const ERR_CUTEST_PERSON_IN_THE_WORLD = "ERR_YOURE_CUTEST_PERSON_IN_THE_WORLD"
 # Called when the node enters the scene tree for the first time.
 func treat_error(error_code, treat_alert=true):
-	preload("res://Scripts/ErrorCodeServer.py").new().treat(error_code)
-	printerr("Error happened!\n\nError code: " + str(error_code))
-#	if treat_alert:
-#		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")
-#	if str(OS.get_name()) == "Android" and treat_on_android and treat_alert:
-#		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")
+	if treat_alert:
+		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")
+	if str(OS.get_name()) == "Android" and treat_on_android and treat_alert:
+		OS.alert("Error occured :c\n\nError code: " + str(error_code), "Oops!")

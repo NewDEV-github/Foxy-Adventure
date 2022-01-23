@@ -25,7 +25,7 @@ func process_to_bbcode(_text:String):
 	var _lines = _text.split("\n")
 	var new_text = ""
 	for i in _lines:
-		print("SCANNING: " + i)
+		#print("SCANNING: " + i)
 		new_text += _parse_line(i)
 	bbcode_text = new_text
 
@@ -38,7 +38,7 @@ func _parse_line(_text:String):
 				text_to_return = ""
 			else:
 				var _nt = base_text.trim_prefix(i)
-				print("NT: " + str(str(tags[i]) % _nt))
+				#print("NT: " + str(str(tags[i]) % _nt))
 				base_text=str(str(tags[i]) % _nt)
 				text_to_return=str(str(tags[i]) % _nt)
 		text_to_return=_recurse_regex(base_text)
@@ -49,11 +49,11 @@ func _parse_url(url:String):
 	var ret_text = url
 	var splitted_url = Array(url.split('/'))
 	if splitted_url.has('pull'): #pull request
-		print("pull")
+		#print("pull")
 		var pull_number = splitted_url.back()
 		ret_text = "[color=#58a6ff][url=%s]#%s[/url][/color]" % [url, pull_number]
 	elif splitted_url.has('compare'): #compare
-		print("compare")
+		#print("compare")
 		var comparision_t = splitted_url.back()
 		ret_text = "[color=#58a6ff][url=%s]%s[/url][/color]" % [url, comparision_t]
 	return ret_text
@@ -75,10 +75,10 @@ func _recurse_regex(_text:String):
 	var pattern_results = {}
 	for i2 in patterns:
 		regex.compile(i2)
-		print("REGEX is Searching for %s in: %s" % [patterns[i2], base_text])
+		#print("REGEX is Searching for %s in: %s" % [patterns[i2], base_text])
 		var result = regex.search(base_text)
 		if result != null:
-			print("Regex result is: " + result.get_string())
+			#print("Regex result is: " + result.get_string())
 			if patterns[i2] == "url":
 				text_to_return = base_text.replace(result.get_string(), _parse_url(result.get_string()))
 			elif patterns[i2] == "bold":
