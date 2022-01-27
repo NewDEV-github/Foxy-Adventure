@@ -38,10 +38,7 @@ elif platform == "windows":
         env.Append(CCFLAGS = ['-EHsc', '-D_DEBUG', '/MDd'])
     else:
         env.Append(CCFLAGS = ['-O2', '-EHsc', '-DNDEBUG', '/MD'])
-if env['target'] in ('debug', 'd'):
-    cpp_library += '.debug'
-else:
-    cpp_library += '.release'
+cpp_library += '.' + target
 # GDNative headers & GDNativeCPP
 env.Append(CPPPATH=['.', 'godot-cpp/godot_headers/'])
 env.Append(CPPPATH=['godot-cpp' + '/include/'])
