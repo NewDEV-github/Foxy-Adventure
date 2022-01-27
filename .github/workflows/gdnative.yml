@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -qqq build-essential pkg-config gcc-multilib g++-multilib
+        sudo apt-get install -qqq build-essential pkg-config gcc-multilib g++-multilib libgtk-3-dev
         python -m pip install scons
     - name: Compile
       run: |
