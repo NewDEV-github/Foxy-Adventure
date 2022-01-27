@@ -2,8 +2,8 @@
 import os, subprocess
 
 # Local dependency paths
-godot_headers_path = ARGUMENTS.get("godot_headers", os.getenv("GODOT_HEADERS", "#godot_headers/"))
-cpp_bindings_path = ARGUMENTS.get("godot-cpp", os.getenv("GD_CPP_BINDINGS", "#cpp_bindings/"))
+godot_headers_path = ARGUMENTS.get("godot_headers", "godot-cpp/godot_headers")
+cpp_bindings_path = ARGUMENTS.get("godot-cpp", "godot-cpp")
 # default to release build, add target=debug to build debug build
 target = ARGUMENTS.get("target", "debug")
 cpp_library = "libgodot-cpp"
@@ -45,6 +45,7 @@ env.Append(CPPPATH=['godot-cpp' + '/include/'])
 env.Append(CPPPATH=['godot-cpp' + '/include/core'])
 env.Append(LIBPATH=['godot-cpp' + '/bin'])
 cpp_library += '.' + str(bits)
+print("CPP LIBRARY is: " + cpp_library)
 if (os.name == "nt" and os.getenv("VCINSTALLDIR")):
     env.Append(LINKFLAGS=['godot_cpp_bindings.lib'])
 else:
