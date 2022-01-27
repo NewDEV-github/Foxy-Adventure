@@ -5,7 +5,7 @@ import os, subprocess
 godot_headers_path = ARGUMENTS.get("godot_headers", os.getenv("GODOT_HEADERS", "#godot_headers/"))
 cpp_bindings_path = ARGUMENTS.get("godot-cpp", os.getenv("GD_CPP_BINDINGS", "#cpp_bindings/"))
 # default to release build, add target=debug to build debug build
-target = ARGUMENTS.get("target", "release")
+target = ARGUMENTS.get("target", "debug")
 cpp_library = "libgodot-cpp"
 # platform= makes it in line with Godots scons file, keeping p for backwards compatibility
 platform = ARGUMENTS.get("p", "linux")
@@ -38,7 +38,10 @@ elif platform == "windows":
         env.Append(CCFLAGS = ['-EHsc', '-D_DEBUG', '/MDd'])
     else:
         env.Append(CCFLAGS = ['-O2', '-EHsc', '-DNDEBUG', '/MD'])
-
+if env['target'] in ('debug', 'd'):
+    cpp_library += '.debug'
+else:
+    cpp_library += '.release'
 # GDNative headers & GDNativeCPP
 env.Append(CPPPATH=['.', 'godot-cpp/godot_headers/'])
 env.Append(CPPPATH=['godot-cpp' + '/include/'])
