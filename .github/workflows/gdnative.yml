@@ -31,13 +31,17 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
-        cd cpp
+        cd cpp/SDK
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.4
         cd godot-cpp
         scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
         scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core.so
+        
+        cd ../NativeDialogs
+        cp -r ../SDK/godot-cpp modules/NativeDialogs/godot-cpp
+        scons
 #        cd $GITHUB_WORKSPACE
 #        git clone https://github.com/JezSonic/foreigner.git
 #        git clone --branch 3.4 https://github.com/godotengine/godot.git
@@ -50,7 +54,12 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: build-godot-cpp-x11-sdk
-        path: cpp/demo/bin/
+        path: cpp/SDK/demo/bin/
+    - name: Upload a Build Artifact Linux
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: build-godot-cpp-x11-nativedialogs
+        path: cpp/NativeDialogs/bin/
 #    - name: Upload a Build Artifact Linux
 #      uses: actions/upload-artifact@v2.3.1
 #      with:
@@ -71,7 +80,7 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
-        cd cpp
+        cd cpp/SDK
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.4
         cd godot-cpp
@@ -89,7 +98,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: build-godot-cpp-win-sdk
-        path: cpp/demo/bin/
+        path: cpp/SDK/demo/bin/
 #    - name: Upload a Build Artifact Windows
 #      uses: actions/upload-artifact@v2.3.1
 #      with:
@@ -109,7 +118,7 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
-        cd cpp
+        cd cpp/SDK
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
@@ -128,7 +137,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: build-godot-cpp-osx-sdk
-        path: cpp/demo/bin/
+        path: cpp/SDK/demo/bin/
 #    - name: Upload a Build Artifact OSX
 #      uses: actions/upload-artifact@v2.3.1
 #      with:
