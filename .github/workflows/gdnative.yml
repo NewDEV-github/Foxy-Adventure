@@ -15,6 +15,46 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  compile-gdnative-x11-nd:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2.4.0
+    - name: Set up Python (for SCons)
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.1'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -qqq build-essential pkg-config gcc-multilib g++-multilib libgtk-3-dev tree
+        python -m pip install scons
+    - name: Compile
+      run: |
+        cd cpp/NativeDialogs/modules/NativeDialogs
+        mkdir -p demo/bin/
+        git clone --recursive https://github.com/godotengine/godot-cpp -b 3.4
+        cd godot-cpp
+        scons platform=linux generate_bindings=yes target=release -j $(nproc)
+        cd $GITHUB_WORKSPACE/cpp/NativeDialogs
+        scons
+#        git clone https://github.com/JezSonic/foreigner.git
+#        git clone --branch 3.4 https://github.com/godotengine/godot.git
+#        sudo apt install make
+#        sudo apt install tree
+#        tree
+#        cd foreigner
+#        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
+    - name: Upload a Build Artifact Linux
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: build-godot-cpp-x11-nativedialogs
+        path: cpp/NativeDialogs/bin/
+#    - name: Upload a Build Artifact Linux
+#      uses: actions/upload-artifact@v2.3.1
+#      with:
+#        name: build-godot-cpp-x11-foreigner
+#        path: src/
   compile-gdnative-x11:
     runs-on: ubuntu-18.04
     steps:
@@ -27,35 +67,24 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -qqq build-essential pkg-config gcc-multilib g++-multilib
+        sudo apt-get install -qqq build-essential pkg-config gcc-multilib g++-multilib libgtk-3-dev tree
         python -m pip install scons
     - name: Compile
       run: |
-        cd cpp
+        cd cpp/SDK
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.4
         cd godot-cpp
         scons platform=linux generate_bindings=yes target=release -j $(nproc)
         cd ../
         scons platform=linux target=release -j $(nproc) target_name=FoxyAdventureSDK.Core.so
-#        cd $GITHUB_WORKSPACE
-#        git clone https://github.com/JezSonic/foreigner.git
-#        git clone --branch 3.4 https://github.com/godotengine/godot.git
-#        sudo apt install make
-#        sudo apt install tree
-#        tree
-#        cd foreigner
+       
 #        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
     - name: Upload a Build Artifact Linux
       uses: actions/upload-artifact@v2.3.1
       with:
         name: build-godot-cpp-x11-sdk
-        path: cpp/demo/bin/
-#    - name: Upload a Build Artifact Linux
-#      uses: actions/upload-artifact@v2.3.1
-#      with:
-#        name: build-godot-cpp-x11-foreigner
-#        path: src/
+        path: cpp/SDK/demo/bin/
   compile-gdnative-windows:
     runs-on: windows-latest
     steps:
@@ -71,7 +100,7 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
-        cd cpp
+        cd cpp/SDK
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.4
         cd godot-cpp
@@ -89,7 +118,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: build-godot-cpp-win-sdk
-        path: cpp/demo/bin/
+        path: cpp/SDK/demo/bin/
 #    - name: Upload a Build Artifact Windows
 #      uses: actions/upload-artifact@v2.3.1
 #      with:
@@ -109,7 +138,7 @@ jobs:
         python -m pip install scons
     - name: Compile
       run: |
-        cd cpp
+        cd cpp/SDK
         mkdir -p demo/bin/
         git clone --recursive https://github.com/godotengine/godot-cpp -b 3.3
         cd godot-cpp
@@ -128,7 +157,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: build-godot-cpp-osx-sdk
-        path: cpp/demo/bin/
+        path: cpp/SDK/demo/bin/
 #    - name: Upload a Build Artifact OSX
 #      uses: actions/upload-artifact@v2.3.1
 #      with:
