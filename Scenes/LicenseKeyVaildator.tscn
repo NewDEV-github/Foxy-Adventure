@@ -32,7 +32,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 441.0
 margin_bottom = 14.0
-text = "KEY_LICENSES_ADD_NEW_KEY"
+text = "Assign license key"
 align = 1
 valign = 1
 
@@ -41,15 +41,15 @@ margin_top = 18.0
 margin_right = 441.0
 margin_bottom = 42.0
 clear_button_enabled = true
-placeholder_text = "KEY_LICENSES_TYPE_LICENSE_KEY"
+placeholder_text = "Type license key..."
 
 [node name="AddKeyButton" type="Button" parent="VBoxContainer"]
-margin_left = 111.0
+margin_left = 193.0
 margin_top = 46.0
-margin_right = 329.0
+margin_right = 247.0
 margin_bottom = 66.0
 size_flags_horizontal = 4
-text = "KEY_LICENSES_ADD_LICENSE_KEY"
+text = "Assign"
 
 [node name="result" type="Label" parent="VBoxContainer"]
 margin_top = 70.0

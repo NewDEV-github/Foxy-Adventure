@@ -79,21 +79,44 @@ void FoxyAdventureSDK::_init() {
 }
 
 void FoxyAdventureSDK::init_sdk(int init_flag) {
+    //check if sdk was previously initialized
+    //if (get_node(NodePath("/root/Globals"))->get("sdk_is_initialized"); == true)
     godot::Godot::print("Initializing Foxy Adventure SDK...");
     if (init_flag == 0) {
-      initialized = true;
-      godot::Godot::print("Foxy Adventure SDK Initialized!");
+      if (FoxyAdventureSDK::init_checks() == true) {
+        initialized = true;
+        godot::Godot::print("Foxy Adventure SDK Initialized!");
+      }
+      else {
+        godot::Godot::print("Can not initialize Foxy SDK")
+      }
     }
     if (init_flag == 1) {
-      initialized = true;
-      godot::Godot::print("Foxy Adventure SDK Initialized!");
-      FoxyAdventureSDK::init_debugger();
+      if (FoxyAdventureSDK::init_checks() == true) {
+        initialized = true;
+        godot::Godot::print("Foxy Adventure SDK Initialized!");
+        FoxyAdventureSDK::init_debugger();
+      }
+      else {
+        godot::Godot::print("Can not initialize Foxy SDK")
+      }
     }
 }
 void FoxyAdventureSDK::init_debugger() {
     godot::Godot::print("Initializing Foxy Adventure SDK Debugger...");
-    debugger_initialized = true;
-    godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
+    if (FoxyAdventureSDK::init_debugger_checks() == true) {     
+        debugger_initialized = true;
+        godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
+    }
+    else {
+        godot::Godot::print("Can not initialize Foxy Adventure SDK Debugger")
+    }
+}
+bool FoxyAdventureSDK::init_checks() {
+    return true //no checks needed for now
+}
+bool FoxyAdventureSDK::init_debugger_checks() {
+    return true //no checks needed for now
 }
 void FoxyAdventureSDK::throw_error(godot::String where, godot::String what) {
     if (initialized == true) {
