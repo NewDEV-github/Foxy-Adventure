@@ -24,8 +24,8 @@ private:
     template<typename T>
     std::string itos(T i);
 
-    godot::String changelog = "Added possibility to add music to list for music in the background of stages";
-    godot::String version_string = "1.2.1";
+    godot::String changelog = "Added checking for some functions before running sdk";
+    godot::String version_string = "1.2.2";
     int version = 121;
     float time_passed;
     bool initialized = false;
@@ -35,6 +35,8 @@ private:
     godot::String crash_message = "[" + dt + ".Debugger] Crash at: ";
     godot::String warning_message = "[" + dt + ".Debugger] Warning at: ";
     void init_debugger();
+    bool init_checks();
+    bool init_debugger_checks();
     void deinit_debugger();
     void throw_error(godot::String where, godot::String what);
     void throw_warning(godot::String where, godot::String what);

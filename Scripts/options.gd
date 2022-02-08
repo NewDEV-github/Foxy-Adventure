@@ -5,9 +5,16 @@ var file = File.new()
 var tr_en_fallback = [
 	"EN_US"
 ]
+signal player_disconnected(player_name)
+
+var players = {}
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
+# warning-ignore:return_value_discarded
+	GamePad.connect("gamepad_connected", self, "_on_GamePad_controller_connected")
+# warning-ignore:return_value_discarded
+	GamePad.connect("gamepad_disconnected", self, "_on_GamePad_controller_disconnected")
 	$BugReportP.hide()
 	$tabs.set_tab_title(0, "Graphics")
 	$tabs.set_tab_title(1, "Audio")
@@ -270,3 +277,31 @@ func _on_ItemList_item_selected(index):
 func _on_BugReport_pressed():
 	$BugReportP.show()
 	$BugReportP/IssuePrompt.popup_centered()
+
+
+func _on_AddController_pressed():
+	GamePad.search_for_controllers()
+	$tabs/Controls/ControllerSearchLabel.text = "Searching for controller..."
+
+func _on_GamePad_controller_connected(id):
+	var player_name
+	var values = []
+	for player in players:
+		values.append(players.get(player))
+		
+	for i in range(1, 4):
+		var test_player = "player %s" % str(i)
+		if !test_player in values:
+			player_name = test_player
+			break
+	players[id] = player_name
+	$tabs/Controls/ControllerSearchLabel.text = "Controller connected!"
+	GamePad.stop_search_for_controllers()
+
+func _on_GamePad_controller_disconnected(id):
+	print(players)
+	emit_signal("player_disconnected", players.get(id))
+	players.erase(id)
+	print(players)
+	
+	
