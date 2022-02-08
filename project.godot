@@ -286,8 +286,6 @@ settings/stdout/verbose_stdout=true
 [display]
 
 window/size/borderless=true
-window/dpi/allow_hidpi=true
-window/vsync/vsync_via_compositor=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 
@@ -469,23 +467,14 @@ file_logging/max_log_files=30000
 export/include_scripts_content=true
 export/export_assemblies_inside_pck=false
 
-[physics]
-
-common/enable_pause_aware_picking=true
-
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/driver/fallback_to_gles2=true
 2d/options/use_nvidia_rect_flicker_workaround=true
-quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=0
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-misc/lossless_compression/force_png=true
-quality/reflections/texture_array_reflections.mobile=true
-quality/reflections/high_quality_ggx.mobile=true
-2d/opengl/batching_stream=2
 options/api_usage_batching/flag_stream=true
 options/api_usage_legacy/flag_stream=true
