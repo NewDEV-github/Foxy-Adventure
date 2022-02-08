@@ -1,6 +1,6 @@
 extends KinematicBody2D
 export (String) var character_name
-const GRAVITY_VEC = Vector2(0, 850)
+const GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 const MIN_ONAIR_TIME = 0.1
@@ -117,7 +117,10 @@ func _physics_process(delta):
 			sprite.scale.x = -1
 		if Input.is_action_pressed("ui_right"):
 			sprite.scale.x = 1
-		if linear_vel.y < 0:
+		print(linear_vel.y)
+		if linear_vel.y < 400 and Input.is_action_pressed("jump") or linear_vel.y < 300 and Input.is_action_pressed("jump2"):
+			new_anim = "jump_" + str(sprite.scale.x)
+		elif linear_vel.y < 0:
 			new_anim = "jump_" + str(sprite.scale.x)
 #	print(str(Globals.lives))
 #	if shoot_time < SHOOT_TIME_SHOW_WEAPON:

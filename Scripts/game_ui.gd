@@ -10,10 +10,11 @@ var m = 0
 # Called when the node enters the scene tree for the first time.
 
 
-
-func _process(delta: float) -> void:
+func _ready():
 	if DiscordSDK.discord_user_img:
 		$Icon.texture = DiscordSDK.discord_user_img
+func _process(delta: float) -> void:
+	
 	$stats_label.set_text("Coins:" + " " + str(Globals.coins) + "\n" + "Lives:" + " " + str(Globals.lives))
 	$fps.visible = Globals.fps_visible
 	if Globals.fps_visible:
