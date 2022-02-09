@@ -110,7 +110,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/addons/opus/bin/x11
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
   sudo unzip /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
-  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/Foxy-Adventure/FoxyAdventure.app
+  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/Foxy-Adventure/FoxyAdventure.app
   
   
   
