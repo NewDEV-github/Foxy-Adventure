@@ -134,7 +134,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_task.gd"
 }, {
-"base": "Reference",
+"base": "",
 "class": "Foreigner",
 "language": "NativeScript",
 "path": "res://addons/foreigner/foreigner.gdns"
