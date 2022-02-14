@@ -270,12 +270,12 @@ DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Screenshot="*res://Scripts/screenshot.gd"
 FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
 TagProcessor="*res://tag_processor/TagProcessor [SINGLETON].tscn"
-Globals="*res://Scripts/Globals.gd"
 ErrorCodeServer="*res://Scripts/ErrorCodeServer.gd"
-Unzip="*res://addons/gdunzip/unzip.gd"
 Server="*res://addons/GodotGamePad/Networking/Server.gd"
+Unzip="*res://addons/gdunzip/unzip.gd"
 GamePad="*res://addons/GodotGamePad/Networking/GamePad.tscn"
 UdpBroadcast="*res://addons/GodotGamePad/Networking/UDP_Broadcast.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [debug]
 

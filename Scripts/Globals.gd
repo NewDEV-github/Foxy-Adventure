@@ -238,6 +238,13 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
+	
+# warning-ignore:return_value_discarded
+	GamePad.connect("gamepad_connected", self, "_on_GamePad_controller_connected")
+# warning-ignore:return_value_discarded
+	GamePad.connect("gamepad_disconnected", self, "_on_GamePad_controller_disconnected")
+	GamePad.search_for_controllers()
+	print("looking up for controllers")
 	if Firebase.Auth.check_auth_file():
 		Firebase.Auth.load_auth()
 		user_data = Firebase.Auth.auth
@@ -616,3 +623,24 @@ func ParseAudioAsStreamData(filepath):
 	else:
 		print ("ERROR: Wrong filetype or format")
 	file.close()
+var players = {}
+func _on_GamePad_controller_connected(id):
+	var player_name
+	var values = []
+	for player in players:
+		values.append(players.get(player))
+		
+	for i in range(1, 4):
+		var test_player = "player %s" % str(i)
+		if !test_player in values:
+			player_name = test_player
+			break
+	players[id] = player_name
+	GamePad.stop_search_for_controllers()
+
+func _on_GamePad_controller_disconnected(id):
+	print(players)
+	emit_signal("player_disconnected", players.get(id))
+	players.erase(id)
+	print(players)
+	
