@@ -93,7 +93,7 @@ text = "Load Game"
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -225.0
-margin_bottom = 135.0
+margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -120,10 +120,21 @@ text = "Logout"
 [node name="DownloadableContent" type="Button" parent="VBoxContainer3"]
 margin_top = 92.0
 margin_right = 225.0
-margin_bottom = 135.0
+margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Downloadable Content"
+
+[node name="UpdatePopup" type="Button" parent="VBoxContainer3"]
+margin_top = 138.0
+margin_right = 225.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Check for game updates"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -424,19 +435,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpdatePopup" type="Button" parent="DownloadableContent/TabContainer/Installed Content"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -92.0
-margin_top = -27.0
-margin_right = 92.0
-text = "Check for game updates"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Add license key" type="Tabs" parent="DownloadableContent/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -454,6 +452,7 @@ margin_bottom = -5.0
 [connection signal="pressed" from="VBoxContainer3/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="VBoxContainer3/Logout" to="." method="_on_Logout_pressed"]
 [connection signal="pressed" from="VBoxContainer3/DownloadableContent" to="." method="_on_DownloadableContent_pressed"]
+[connection signal="pressed" from="VBoxContainer3/UpdatePopup" to="." method="_on_UpdatePopup_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Editor" to="." method="_on_Editor_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
@@ -463,4 +462,3 @@ margin_bottom = -5.0
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/Done" to="." method="_on_Done_item_selected"]
 [connection signal="item_selected" from="AchivementPanel/HBoxContainer/NotDone" to="." method="_on_NotDone_item_selected"]
 [connection signal="value_changed" from="DownloadableContent/TabContainer/Installed Content/HBoxContainer/DLCVSlider" to="." method="_on_DLCVSlider_value_changed"]
-[connection signal="pressed" from="DownloadableContent/TabContainer/Installed Content/UpdatePopup" to="." method="_on_UpdatePopup_pressed"]
