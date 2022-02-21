@@ -3,9 +3,10 @@
 [ext_resource path="res://Scripts/LoginPanel.gd" type="Script" id=1]
 
 [node name="LoginPanel" type="WindowDialog"]
+visible = true
 margin_right = 518.0
 margin_bottom = 348.0
-window_title = "Login/Register"
+window_title = "Login"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,7 +20,7 @@ margin_right = -21.0
 custom_constants/separation = 30
 
 [node name="Login" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 221.0
+margin_right = 473.0
 margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -28,13 +29,13 @@ alignment = 1
 
 [node name="Email" type="LineEdit" parent="HBoxContainer/Login"]
 margin_top = 133.0
-margin_right = 221.0
+margin_right = 473.0
 margin_bottom = 157.0
 placeholder_text = "Email"
 
 [node name="Password" type="LineEdit" parent="HBoxContainer/Login"]
 margin_top = 164.0
-margin_right = 221.0
+margin_right = 473.0
 margin_bottom = 188.0
 secret = true
 secret_character = "•"
@@ -42,11 +43,12 @@ placeholder_text = "Password"
 
 [node name="Login" type="Button" parent="HBoxContainer/Login"]
 margin_top = 195.0
-margin_right = 221.0
+margin_right = 473.0
 margin_bottom = 215.0
 text = "Login"
 
 [node name="Register" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 margin_left = 251.0
 margin_right = 473.0
 margin_bottom = 348.0
@@ -81,7 +83,7 @@ text = "Register"
 visible = true
 margin_right = 288.0
 margin_bottom = 154.0
-window_title = "KEY_TEXT_ERROR"
+window_title = "Error!"
 dialog_autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

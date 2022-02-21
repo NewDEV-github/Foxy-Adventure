@@ -104,7 +104,7 @@ margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
-text = "Login/Register"
+text = "Login"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -370,6 +370,7 @@ margin_right = -0.196045
 margin_bottom = -0.200012
 
 [node name="DownloadableContent" type="WindowDialog" parent="."]
+visible = true
 margin_right = 556.0
 margin_bottom = 357.0
 __meta__ = {
