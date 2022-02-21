@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/LoginPanel.gd" type="Script" id=1]
 
 [node name="LoginPanel" type="WindowDialog"]
-visible = true
 margin_right = 518.0
 margin_bottom = 348.0
 window_title = "Login"

@@ -110,6 +110,7 @@ signal game_version_text_changed(text)
 func construct_game_version():
 	emit_signal("game_version_text_changed", game_version_text)
 func _init():
+#	encrypt_cfg("user://decryptedKeys2.cfg", "wefbgfrfgb", "user://lk_data.cfg")
 	for argument in OS.get_cmdline_args():
 		# Parse valid command-line arguments into a dictionary
 		if argument.find("=") > -1:
@@ -438,36 +439,59 @@ func _check_mod_game_version_support(mod_cfg_path):
 
 
 func load_dlcs():
+	var all_dlcs=[]
 	var cfg = ConfigFile.new()
 	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
-	var dlc_cfg_instal_dir:String = ""
+	var dlc_cfg_install_dir:String = ""
 	var assigned_user:String = ""
 	var dlc_name:String = ""
+	var array
+	var scanned_keys = []
 	for i in cfg.get_section_keys("keys"):
-		if str(i).ends_with("_userid"):
-			assigned_user = cfg.get_value("keys", i)
-		elif str(i).ends_with("_cfg"):
-			dlc_cfg_instal_dir = cfg.get_value("keys", i)
-		else:
-			dlc_name = cfg.get_value("keys", i)
-		if not user_data.has('localid'):
-			if not not_loaded_content.has(dlc_name):
-				OS.alert('DLC %s\nwill not be loaded' % dlc_name, "Warning")
-				not_loaded_content.append(dlc_name)
-		else:
-			if not assigned_user == "" and not dlc_cfg_instal_dir == "":
-				if assigned_user == user_data['localid']:
-					var cf2 = ConfigFile.new()
-					cf2.load(dlc_cfg_instal_dir)
-					for i2 in cf2.get_value("mod_info", "pck_files"):
-						ProjectSettings.load_resource_pack(dlc_cfg_instal_dir.get_base_dir() + "/" + i2)
-					if cf2.has_section_key("mod_info", "main_script_file") and not cf2.get_value("mod_info", "main_script_file") == "":
-						load(cf2.get_value("mod_info", "main_script_file")).new().init_mod()
-					print("Loading %s ..." % dlc_name)
+		array = Array(str(i).split('_'))
+		if not scanned_keys.has(array[0]):
+			if array.size() == 2:
+				if array[1] == "cfg":
+					dlc_cfg_install_dir = cfg.get_value("keys", i)
 				else:
-					if not not_loaded_content.has(dlc_name):
-						OS.alert('DLC %s\nwill not be loaded' % dlc_name, "Warning")
-						not_loaded_content.append(dlc_name)
+					assigned_user = array[1]
+					dlc_name = cfg.get_value("keys", i)
+			if not dlc_cfg_install_dir =="":
+				scanned_keys.append(array[0])
+				all_dlcs.append({"name": dlc_name, "cfg_path": dlc_cfg_install_dir, "assigned_user": assigned_user, "key": array[0]})
+		else:
+			print("that key was scanned already")
+	
+	print(str(all_dlcs))
+	for i in all_dlcs:
+		print(str(i))
+		if not user_data.has('localid'):
+			if not not_loaded_content.has(i["name"]):
+				OS.alert('DLC %s\nwill not be loaded' % i["name"], "Warning")
+				not_loaded_content.append(i["name"])
+		else:
+			print("Step 1 passed")
+			if not i["assigned_user"] == "" and not i["cfg_path"] == "":
+				print("Step 2 passed")
+				if i["assigned_user"] == user_data['localid']:
+					print("Step 3 passed")
+					var cf2 = ConfigFile.new()
+					cf2.load(i["cfg_path"])
+					for i2 in cf2.get_value("mod_info", "pck_files"):
+						print(i["cfg_path"].get_base_dir() + "/" + i2)
+						ProjectSettings.load_resource_pack(i["cfg_path"].get_base_dir() + "/" + i2)
+					if cf2.has_section_key("mod_info", "main_script_file") and not cf2.get_value("mod_info", "main_script_file") == "":
+						print("Step 4 passed")
+						load(cf2.get_value("mod_info", "main_script_file")).new().init_mod()
+					print("Loading %s ..." % i["name"])
+				else:
+					if not not_loaded_content.has(i["name"]):
+						OS.alert('DLC %s\nwill not be loaded' % i["name"], "Warning")
+						not_loaded_content.append(i["name"])
+			else:
+				if not not_loaded_content.has(i["name"]):
+					OS.alert('DLC %s\nwill not be loaded' % i["name"], "Warning")
+					not_loaded_content.append(i["name"])
 
 
 
@@ -644,3 +668,30 @@ func _on_GamePad_controller_disconnected(id):
 	players.erase(id)
 	print(players)
 	
+
+func decrypt_cfg(path, key, dest_path):
+	var old_cfg = ConfigFile.new()
+	old_cfg.load_encrypted_pass(path, key)
+	var new_cfg = ConfigFile.new()
+	new_cfg.load(dest_path)
+	for section in old_cfg.get_sections():
+		print("Found section: " + section)
+		for section_key in old_cfg.get_section_keys(section):
+			print("Found key: " + section_key)
+			var section_key_value = old_cfg.get_value(section, section_key)
+			print("Found value: " + section_key_value)
+			new_cfg.set_value(section, section_key, section_key_value)
+	new_cfg.save(dest_path)
+func encrypt_cfg(path, key, dest_path):
+	var old_cfg = ConfigFile.new()
+	old_cfg.load(path)
+	var new_cfg = ConfigFile.new()
+	new_cfg.load_encrypted_pass(dest_path, key)
+	for section in old_cfg.get_sections():
+		print("Found section: " + section)
+		for section_key in old_cfg.get_section_keys(section):
+			print("Found key: " + section_key)
+			var section_key_value = old_cfg.get_value(section, section_key)
+			print("Found value: " + section_key_value)
+			new_cfg.set_value(section, section_key, section_key_value)
+	new_cfg.save_encrypted_pass(dest_path, key)
