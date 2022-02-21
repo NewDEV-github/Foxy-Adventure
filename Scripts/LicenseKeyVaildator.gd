@@ -7,13 +7,13 @@ var base_install_path = "user://dlcs/"
 onready var qc = preload("res://Scenes/QuitConfirm.py").new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	Globals.encrypt_cfg("user://decryptedKeys2.cfg", "wefbgfrfgb", "user://lk_data.cfg")
 	set_process(false)
 func activate_license_key_in_game(key:String, product_name:String, install_cfg_path:String, needs_restart:bool):
 	var result
 	var cfg = ConfigFile.new()
 	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
-	cfg.set_value("keys", key, product_name)
-	cfg.set_value("keys", key + "_userid", Globals.user_data['localid'])
+	cfg.set_value("keys", key + "_" + Globals.user_data['localid'], product_name)
 	cfg.set_value("keys", key + "_cfg", install_cfg_path)
 	cfg.save_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	if needs_restart:

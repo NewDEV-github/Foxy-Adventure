@@ -25,7 +25,6 @@ __meta__ = {
 }
 
 [node name="Graphics" type="Tabs" parent="tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -247,6 +246,7 @@ items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", 
 selected = 1
 
 [node name="Controls" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

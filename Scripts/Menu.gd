@@ -259,12 +259,19 @@ func get_dlc_name_for_activated_key(key:String):
 	cfg.load_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	return cfg.get_value("keys", key)
 func get_installed_dlc():
+	var _tmp_uid = ''
 	$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".clear()
 	for i in get_activated_products_in_game():
-		print(get_dlc_name_for_activated_key(i))
-		print(str(i).split('_').size())
-		if str(i).split('_').size() == 1:
-			$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".add_item(get_dlc_name_for_activated_key(i))
+		var array = Array(str(i).split('_'))
+		var not_uid_array = ["cfg", "userid"]
+		if array.size() == 2:
+			if not not_uid_array.has(array[1]):
+				if Globals.user_data['localid'] == array[1]:
+					print("DLC %s is for this user" % get_dlc_name_for_activated_key(i))
+					$"DownloadableContent/TabContainer/Installed Content/HBoxContainer/ScrollContainer/DLCList".add_item(get_dlc_name_for_activated_key(i))
+				else:
+					print("DLC %s is for another user" % get_dlc_name_for_activated_key(i))
+
 	yield(get_tree(), "idle_frame")
 	var scb = $SaveLoader/HBoxContainer/ScrollContainer.get_v_scrollbar()
 #		print("MS: " + str(scb.max_value))

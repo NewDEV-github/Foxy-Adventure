@@ -16,8 +16,8 @@
             <desktopShortcutList>
                 <shortcut>
                     <comment></comment>
-                    <exec>${installdir}\FoxyAdventure</exec>
-                    <icon>${installdir}\assets\Graphics\icon.png</icon>
+                    <exec>${installdir}\x11\builds\3.4.stable\x11-64-standard\Foxy-Adventure\FoxyAdventure</exec>
+                    <icon>${installdir}\x11\builds\3.4.stable\x11-64-standard\Foxy-Adventure\assets\Graphics\icon.png</icon>
                     <name>Foxy Adventure</name>
                     <path></path>
                     <platforms>linux-x64</platforms>
@@ -37,15 +37,15 @@
                     <platforms>windows-x64</platforms>
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
-                    <windowsExec>${installdir}\FoxyAdventure.exe</windowsExec>
+                    <windowsExec>${installdir}\windows\builds\3.4.stable\win-64-standard\Foxy-Adventure\FoxyAdventure.exe</windowsExec>
                     <windowsExecArgs></windowsExecArgs>
-                    <windowsIcon>${installdir}\assets\Graphics\icon.ico</windowsIcon>
+                    <windowsIcon>${installdir}\windows\builds\3.4.stable\win-64-standard\Foxy-Adventure\assets\Graphics\icon.ico</windowsIcon>
                     <windowsPath></windowsPath>
                 </shortcut>
                 <shortcut>
                     <comment></comment>
-                    <exec>${installdir}\FoxyAdventure.app</exec>
-                    <icon>${installdir}\assets\Graphics\icon.png</icon>
+                    <exec>${installdir}\osx\builds\3.4.stable\osx-64-standard\Foxy-Adventure\FoxyAdventure.app</exec>
+                    <icon>${installdir}\osx\builds\3.4.stable\osx-64-standard\Foxy-Adventure\assets\Graphics\icon.png</icon>
                     <name>Foxy Adventure</name>
                     <path></path>
                     <platforms>osx</platforms>
