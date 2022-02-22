@@ -6,13 +6,22 @@ const UDP_PORT = 4242
 var server := UDPServer.new()
 var is_broadcasting = false
 var layout
-
+var _tmp_scene = ""
 
 func _ready():
 	set_process(false)
 	layout = JSON.print(UI_Builder.load_layout_info()).to_utf8()
 
-
+func SendPacketToPhoneApp(value):
+	server.poll()
+	if server.is_connection_available():
+		var peer : PacketPeerUDP = server.take_connection()
+		var pkt = peer.get_packet()
+#		print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
+#		print("Received data: %s" % [pkt.get_string_from_utf8()])
+		# Reply so it knows we received the message.
+# warning-ignore:return_value_discarded
+		peer.put_packet(value)
 func _process(_delta):
 # warning-ignore:return_value_discarded
 	server.poll()
@@ -25,12 +34,12 @@ func _process(_delta):
 # warning-ignore:return_value_discarded
 		peer.put_packet(layout)
 
-
 func start_broadcast():
 # warning-ignore:return_value_discarded
 	server.listen(UDP_PORT)
 	set_process(true)
-	
+	var msg = "Packet send by function"
+	SendPacketToPhoneApp(msg.to_utf8())
 	is_broadcasting = true
 #	print('UDP Broadcast Started')
 

@@ -1,8 +1,22 @@
 extends Control
 
+var bytes = 128974848.0 # WIELKOSC pliku
+var download = 0
+var changes = 0
 
-# Declare member variables here. Examples:
-# var a = 2
+var size = 0
+var file_size #wielkosc pliku w stringu
+
+var mbs = ""
+var bytespers = 0
+var lastbytesper = 0
+
+var mbs_v = 0
+
+var timer = 0
+
+var last_ten = []
+
 var base_install_path = "user://dlcs/"
 onready var qc = preload("res://Scenes/QuitConfirm.py").new()
 # Called when the node enters the scene tree for the first time.
@@ -90,6 +104,7 @@ func _on_ContentDataDownloader_request_completed(result, response_code, headers,
 		$VBoxContainer/result.text = "Downloading..."
 		$ContentFileDownloader.download_file = base_install_path + _tmp_dlc_name + "/" + download_name
 		$ContentFileDownloader.request(download_url)
+		
 		yield($ContentFileDownloader, "request_completed")
 		$VBoxContainer/result.text = "Parsing data..."
 		if _result[i].get_extension() == "cfg":
@@ -107,7 +122,30 @@ func _on_ContentCFGDownloader_request_completed(result, response_code, headers, 
 	pass # Replace with function body.
 
 func _process(delta):
-	$VBoxContainer/FileDownloadProgress.value = (($ContentFileDownloader.get_downloaded_bytes())*100/$ContentFileDownloader.get_body_size())
+	if $ContentFileDownloader.get_http_client_status() == 7:
+		file_size = "%.2f" % ($ContentFileDownloader.get_body_size() / 1048576.0)
+		timer += delta
+		download = $ContentFileDownloader.get_downloaded_bytes()
+		bytespers = download
+		if timer>1:
+			timer=0
+			last_ten.append((bytespers-lastbytesper))
+			if last_ten.size()>10:
+				last_ten.remove(0)
+			var bytepersumaverage = 0    
+			for byprs in last_ten:
+				bytepersumaverage+=byprs+0.1
+			bytepersumaverage /= last_ten.size()
+			var sum  = (($ContentFileDownloader.get_body_size()) - (changes)) / (bytepersumaverage)
+			var mins = int(sum/60)
+			var secs = int(int(sum)%60)    
+			mbs = ("%.2f" % ((bytepersumaverage)/ 1048576.0))+"MB/s, Estimated download time: "+str(mins)+":"+("%02d" % secs)
+			lastbytesper = bytespers
+		if changes != download:
+			changes = download
+			var downloaded_size = (changes / 1048576.0)
+			$VBoxContainer/REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE.set_text("Downloaded: "+("%.2f" % downloaded_size)+"MB /"+file_size+"MB\n"+mbs)
+			$VBoxContainer/FileDownloadProgress.value = (($ContentFileDownloader.get_downloaded_bytes())*100/$ContentFileDownloader.get_body_size())
 
 func get_dlc_full_name(product):
 	print(product)

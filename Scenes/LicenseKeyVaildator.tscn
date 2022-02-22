@@ -58,10 +58,15 @@ margin_bottom = 84.0
 align = 1
 valign = 1
 
-[node name="AllFilesDownloadProgress" type="ProgressBar" parent="VBoxContainer"]
+[node name="REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" type="Label" parent="VBoxContainer"]
 margin_top = 88.0
 margin_right = 441.0
-margin_bottom = 205.0
+margin_bottom = 102.0
+
+[node name="AllFilesDownloadProgress" type="ProgressBar" parent="VBoxContainer"]
+margin_top = 106.0
+margin_right = 441.0
+margin_bottom = 214.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -69,7 +74,7 @@ __meta__ = {
 }
 
 [node name="FileDownloadProgress" type="ProgressBar" parent="VBoxContainer"]
-margin_top = 209.0
+margin_top = 218.0
 margin_right = 441.0
 margin_bottom = 326.0
 size_flags_horizontal = 3
