@@ -1,0 +1,345 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Editor/ui/navbar.gd" type="Script" id=1]
+[ext_resource path="res://Editor/ui/NewFile.gd" type="Script" id=2]
+[ext_resource path="res://Editor/ui/FileLoadPopup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=4]
+
+[node name="Control" type="Panel"]
+anchor_right = 1.0
+margin_bottom = 25.0
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfigurationMenu" type="WindowDialog" parent="."]
+anchor_right = 0.06
+anchor_bottom = 0.067
+margin_left = 110.0
+margin_top = 124.0
+margin_right = 377.56
+margin_bottom = 351.459
+rect_min_size = Vector2( 200, 100 )
+theme = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfigurationMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfigurationMenu/VBoxContainer"]
+margin_right = 319.0
+margin_bottom = 19.0
+text = "Level name:"
+
+[node name="LevelName" type="LineEdit" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 23.0
+margin_right = 319.0
+margin_bottom = 42.0
+clear_button_enabled = true
+placeholder_text = "My awesome level"
+
+[node name="Label2" type="Label" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 46.0
+margin_right = 319.0
+margin_bottom = 65.0
+text = "Level author:"
+
+[node name="LevelAuthor" type="LineEdit" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 69.0
+margin_right = 319.0
+margin_bottom = 88.0
+clear_button_enabled = true
+placeholder_text = "Some awesome dude :3"
+
+[node name="Label3" type="Label" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 92.0
+margin_right = 319.0
+margin_bottom = 111.0
+text = "Level version:"
+
+[node name="LevelVersion" type="LineEdit" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 115.0
+margin_right = 319.0
+margin_bottom = 134.0
+clear_button_enabled = true
+placeholder_text = "The best version"
+
+[node name="Label4" type="Label" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 138.0
+margin_right = 319.0
+margin_bottom = 157.0
+text = "Level description:"
+
+[node name="LevelDescription" type="LineEdit" parent="ConfigurationMenu/VBoxContainer"]
+margin_top = 161.0
+margin_right = 319.0
+margin_bottom = 180.0
+clear_button_enabled = true
+placeholder_text = "Dude, that's just awesome stage."
+
+[node name="Button" type="Button" parent="ConfigurationMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -16.5
+margin_top = -20.0
+margin_right = 16.5
+text = "GO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsMenu" type="WindowDialog" parent="."]
+visible = true
+anchor_right = 0.06
+anchor_bottom = 0.067
+margin_left = 110.0
+margin_top = 124.0
+margin_right = 377.56
+margin_bottom = 351.459
+rect_min_size = Vector2( 200, 100 )
+theme = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Configure" type="VBoxContainer" parent="OptionsMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OptionsMenu/Configure"]
+margin_right = 319.0
+margin_bottom = 19.0
+text = "Level name:"
+
+[node name="LevelName" type="LineEdit" parent="OptionsMenu/Configure"]
+margin_top = 23.0
+margin_right = 319.0
+margin_bottom = 42.0
+clear_button_enabled = true
+placeholder_text = "My awesome level"
+
+[node name="Label2" type="Label" parent="OptionsMenu/Configure"]
+margin_top = 46.0
+margin_right = 319.0
+margin_bottom = 65.0
+text = "Level author:"
+
+[node name="LevelAuthor" type="LineEdit" parent="OptionsMenu/Configure"]
+margin_top = 69.0
+margin_right = 319.0
+margin_bottom = 88.0
+clear_button_enabled = true
+placeholder_text = "Some awesome dude :3"
+
+[node name="Label3" type="Label" parent="OptionsMenu/Configure"]
+margin_top = 92.0
+margin_right = 319.0
+margin_bottom = 111.0
+text = "Level version:"
+
+[node name="LevelVersion" type="LineEdit" parent="OptionsMenu/Configure"]
+margin_top = 115.0
+margin_right = 319.0
+margin_bottom = 134.0
+clear_button_enabled = true
+placeholder_text = "The best version"
+
+[node name="Label4" type="Label" parent="OptionsMenu/Configure"]
+margin_top = 138.0
+margin_right = 319.0
+margin_bottom = 157.0
+text = "Level description:"
+
+[node name="LevelDescription" type="LineEdit" parent="OptionsMenu/Configure"]
+margin_top = 161.0
+margin_right = 319.0
+margin_bottom = 180.0
+clear_button_enabled = true
+placeholder_text = "Dude, that's just awesome stage."
+
+[node name="Button" type="Button" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -16.5
+margin_top = -20.7071
+margin_right = 17.5
+margin_bottom = 6.29288
+text = "GO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileLoadPopup" parent="." instance=ExtResource( 3 )]
+margin_left = 774.99
+margin_top = 271.529
+margin_right = 1174.99
+margin_bottom = 517.529
+window_title = "Otwórz katalog"
+mode = 2
+current_dir = "/Users/S_P_K/Documents/GitHub/Foxy-Adventure"
+current_path = "/Users/S_P_K/Documents/GitHub/Foxy-Adventure/"
+
+[node name="Container" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File" type="MenuButton" parent="Container"]
+margin_right = 37.0
+margin_bottom = 27.0
+text = "File"
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false, "Build level", null, 0, false, false, 3, 0, null, "", false, "Open Data Directory", null, 0, false, false, 4, 0, null, "", false, "Options", null, 0, false, false, 5, 0, null, "", false, "Quit", null, 0, false, false, 6, 0, null, "", false ]
+
+[node name="Audio" type="MenuButton" parent="Container"]
+margin_left = 41.0
+margin_right = 94.0
+margin_bottom = 27.0
+focus_mode = 2
+text = "Audio"
+items = [ "Add/change audio", null, 0, false, false, 0, 0, null, "", false ]
+
+[node name="Bg" type="MenuButton" parent="Container"]
+margin_left = 98.0
+margin_right = 195.0
+margin_bottom = 27.0
+focus_mode = 2
+text = "Background"
+items = [ "Manage Backgrounds", null, 0, false, false, 0, 0, null, "", false ]
+
+[node name="StatusLabel" type="Label" parent="Container"]
+margin_left = 199.0
+margin_right = 1024.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+valign = 1
+
+[node name="BackgroundPanel" type="WindowDialog" parent="."]
+margin_right = 537.0
+margin_bottom = 269.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BgList" type="ItemList" parent="BackgroundPanel/VBoxContainer"]
+margin_right = 537.0
+margin_bottom = 238.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="BackgroundPanel/VBoxContainer"]
+margin_top = 242.0
+margin_right = 537.0
+margin_bottom = 269.0
+text = "KEY_TEXT_OPTIONS_APPLY"
+
+[node name="AudioPopup" type="FileDialog" parent="."]
+margin_right = 667.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "Otwórz plik"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.mp3; MP3 Audio FIle", "*.wav; WAV Audio File", "*.ogg; OGG Audio File" )
+show_hidden_files = true
+current_dir = "/Users/S_P_K/Documents/GitHub/Foxy-Adventure"
+current_path = "/Users/S_P_K/Documents/GitHub/Foxy-Adventure/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioDialog" type="WindowDialog" parent="."]
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 395.0
+margin_bottom = 250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemListAudio" type="ItemList" parent="AudioDialog"]
+anchor_right = 1.025
+anchor_bottom = 0.879
+margin_right = -9.90002
+margin_bottom = -5.87102
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AudioDialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_bottom = -5.0
+custom_constants/separation = 125
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UseAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+margin_left = 6.0
+margin_right = 44.0
+margin_bottom = 27.0
+text = "Use"
+
+[node name="AddAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+margin_left = 169.0
+margin_right = 209.0
+margin_bottom = 27.0
+text = "Add"
+
+[node name="DeleteAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+margin_left = 334.0
+margin_right = 390.0
+margin_bottom = 27.0
+text = "Delete"
+
+[connection signal="pressed" from="ConfigurationMenu/Button" to="ConfigurationMenu" method="_on_Button_pressed"]
+[connection signal="pressed" from="OptionsMenu/Button" to="OptionsMenu" method="_on_Button_pressed"]
+[connection signal="dir_selected" from="FileLoadPopup" to="." method="_on_FileLoadPopup_dir_selected"]
+[connection signal="item_activated" from="BackgroundPanel/VBoxContainer/BgList" to="." method="_on_BgList_item_activated"]
+[connection signal="file_selected" from="AudioPopup" to="." method="_on_AudioPopup_file_selected"]
+[connection signal="item_selected" from="AudioDialog/ItemListAudio" to="." method="_on_ItemListAudio_item_selected"]
+[connection signal="pressed" from="AudioDialog/HBoxContainer/UseAudio" to="." method="_on_UseAudio_pressed"]
+[connection signal="pressed" from="AudioDialog/HBoxContainer/AddAudio" to="." method="_on_AddAudio_pressed"]
+[connection signal="pressed" from="AudioDialog/HBoxContainer/DeleteAudio" to="." method="_on_DeleteAudio_pressed"]
