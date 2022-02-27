@@ -61,11 +61,11 @@ func _on_rotateright_pressed() -> void:
 
 
 func _on_flipx_toggled(button_pressed: bool) -> void:
-	flip_tiles_in_panel(0, button_pressed)
+	flip_tiles_in_panel(1, button_pressed)
 	Globals.flip_tiles_x = button_pressed
 
 func _on_flipy_toggled(button_pressed: bool) -> void:
-	flip_tiles_in_panel(1, button_pressed)
+	flip_tiles_in_panel(0, button_pressed)
 	Globals.flip_tiles_y = button_pressed
 
 

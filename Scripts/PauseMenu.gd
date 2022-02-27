@@ -14,7 +14,7 @@ func _on_Resume_pressed():
 
 
 func _on_Options_pressed():
-	show_submenu_page($Control)
+	show_submenu_page($"../Control")
 
 func show_submenu_page(page):
 	if current_submenu_page != null:

@@ -25,7 +25,6 @@ margin_right = -1.41418
 margin_bottom = 35.4142
 
 [node name="ProjectSelect" type="Panel" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
