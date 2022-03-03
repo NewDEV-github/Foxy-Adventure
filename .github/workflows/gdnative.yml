@@ -46,12 +46,12 @@ jobs:
 #        cd foreigner
 #        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
     - name: Upload a Build Artifact Linux
-      uses: actions/upload-artifact@v2.3.1
+      uses: actions/upload-artifact@v3
       with:
         name: build-godot-cpp-x11-nativedialogs
         path: cpp/NativeDialogs/bin/
 #    - name: Upload a Build Artifact Linux
-#      uses: actions/upload-artifact@v2.3.1
+#      uses: actions/upload-artifact@v3
 #      with:
 #        name: build-godot-cpp-x11-foreigner
 #        path: src/
@@ -81,7 +81,7 @@ jobs:
        
 #        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.linux.release.64
     - name: Upload a Build Artifact Linux
-      uses: actions/upload-artifact@v2.3.1
+      uses: actions/upload-artifact@v3
       with:
         name: build-godot-cpp-x11-sdk
         path: cpp/SDK/demo/bin/
@@ -115,12 +115,12 @@ jobs:
 #        cd foreigner
 #        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.windows.release.64
     - name: Upload a Build Artifact Windows
-      uses: actions/upload-artifact@v2.3.1
+      uses: actions/upload-artifact@v3
       with:
         name: build-godot-cpp-win-sdk
         path: cpp/SDK/demo/bin/
 #    - name: Upload a Build Artifact Windows
-#      uses: actions/upload-artifact@v2.3.1
+#      uses: actions/upload-artifact@v3
 #      with:
 #        name: build-godot-cpp-win-foreigner
 #        path: src/
@@ -154,12 +154,12 @@ jobs:
 #        cd foreigner
 #        make GODOTCPP_PATH=$GITHUB_WORKSPACE/cpp/godot-cpp GODOT_PATH=$GITHUB_WORKSPACE/godot GODOT_CPP_BIN=godot-cpp.osx.release.64
     - name: Upload a Build Artifact OSX
-      uses: actions/upload-artifact@v2.3.1
+      uses: actions/upload-artifact@v3
       with:
         name: build-godot-cpp-osx-sdk
         path: cpp/SDK/demo/bin/
 #    - name: Upload a Build Artifact OSX
-#      uses: actions/upload-artifact@v2.3.1
+#      uses: actions/upload-artifact@v3
 #      with:
 #        name: build-godot-cpp-osx-foreigner
 #        path: src/
