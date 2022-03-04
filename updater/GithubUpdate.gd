@@ -36,7 +36,7 @@ func compare_versions(version:String):
 		return false
 
 func _on_Download_pressed():
-	var url = "https://github.com/NewDEV-github/Foxy-Adventure/releases/tag/%s/" % [latest_tag]
+	var url = "https://newdev.web.app/games/foxy-adventure/"
 	OS.shell_open(url)
 
 
