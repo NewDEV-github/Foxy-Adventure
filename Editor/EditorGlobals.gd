@@ -12,3 +12,4 @@ var audios = {
 	5: "res://assets/Audio/BGM/music_gekagd.ogg",
 	6: "res://assets/Audio/BGM/nasko.ogg"
 }
+var can_place_tiles = false

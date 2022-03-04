@@ -269,7 +269,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 537.0
 margin_bottom = 269.0
-text = "KEY_TEXT_OPTIONS_APPLY"
+text = "Apply"
 
 [node name="AudioPopup" type="FileDialog" parent="."]
 margin_right = 667.0
@@ -317,28 +317,48 @@ __meta__ = {
 }
 
 [node name="UseAudio" type="Button" parent="AudioDialog/HBoxContainer"]
-margin_left = 6.0
-margin_right = 44.0
+margin_left = 179.0
+margin_right = 217.0
 margin_bottom = 27.0
 text = "Use"
 
 [node name="AddAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+visible = false
 margin_left = 169.0
 margin_right = 209.0
 margin_bottom = 27.0
 text = "Add"
 
 [node name="DeleteAudio" type="Button" parent="AudioDialog/HBoxContainer"]
+visible = false
 margin_left = 334.0
 margin_right = 390.0
 margin_bottom = 27.0
 text = "Delete"
 
+[connection signal="mouse_entered" from="ConfigurationMenu" to="." method="_on_ConfigurationMenu_mouse_entered"]
+[connection signal="mouse_exited" from="ConfigurationMenu" to="." method="_on_ConfigurationMenu_mouse_exited"]
 [connection signal="pressed" from="ConfigurationMenu/Button" to="ConfigurationMenu" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="OptionsMenu" to="." method="_on_OptionsMenu_mouse_entered"]
+[connection signal="mouse_exited" from="OptionsMenu" to="." method="_on_OptionsMenu_mouse_exited"]
 [connection signal="pressed" from="OptionsMenu/Button" to="OptionsMenu" method="_on_Button_pressed"]
 [connection signal="dir_selected" from="FileLoadPopup" to="." method="_on_FileLoadPopup_dir_selected"]
+[connection signal="mouse_entered" from="FileLoadPopup" to="." method="_on_FileLoadPopup_mouse_entered"]
+[connection signal="mouse_exited" from="FileLoadPopup" to="." method="_on_FileLoadPopup_mouse_exited"]
+[connection signal="mouse_entered" from="Container/File" to="." method="_on_File_mouse_entered"]
+[connection signal="mouse_exited" from="Container/File" to="." method="_on_File_mouse_exited"]
+[connection signal="mouse_entered" from="Container/Audio" to="." method="_on_Audio_mouse_entered"]
+[connection signal="mouse_exited" from="Container/Audio" to="." method="_on_Audio_mouse_exited"]
+[connection signal="mouse_entered" from="Container/Bg" to="." method="_on_Bg_mouse_entered"]
+[connection signal="mouse_exited" from="Container/Bg" to="." method="_on_Bg_mouse_exited"]
+[connection signal="mouse_entered" from="BackgroundPanel" to="." method="_on_BackgroundPanel_mouse_entered"]
+[connection signal="mouse_exited" from="BackgroundPanel" to="." method="_on_BackgroundPanel_mouse_exited"]
 [connection signal="item_activated" from="BackgroundPanel/VBoxContainer/BgList" to="." method="_on_BgList_item_activated"]
 [connection signal="file_selected" from="AudioPopup" to="." method="_on_AudioPopup_file_selected"]
+[connection signal="mouse_entered" from="AudioPopup" to="." method="_on_AudioPopup_mouse_entered"]
+[connection signal="mouse_exited" from="AudioPopup" to="." method="_on_AudioPopup_mouse_exited"]
+[connection signal="mouse_entered" from="AudioDialog" to="." method="_on_AudioDialog_mouse_entered"]
+[connection signal="mouse_exited" from="AudioDialog" to="." method="_on_AudioDialog_mouse_exited"]
 [connection signal="item_selected" from="AudioDialog/ItemListAudio" to="." method="_on_ItemListAudio_item_selected"]
 [connection signal="pressed" from="AudioDialog/HBoxContainer/UseAudio" to="." method="_on_UseAudio_pressed"]
 [connection signal="pressed" from="AudioDialog/HBoxContainer/AddAudio" to="." method="_on_AddAudio_pressed"]

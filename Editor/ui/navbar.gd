@@ -93,3 +93,75 @@ func _on_ItemListAudio_item_selected(index):
 
 func _on_AddAudio_pressed():
 	$AudioPopup.popup_centered()
+
+
+func _on_ConfigurationMenu_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_ConfigurationMenu_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_OptionsMenu_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_OptionsMenu_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_FileLoadPopup_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_FileLoadPopup_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_File_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_File_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_Audio_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_Audio_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_Bg_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_Bg_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_BackgroundPanel_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_BackgroundPanel_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_AudioPopup_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_AudioPopup_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_AudioDialog_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_AudioDialog_mouse_exited():
+	EditorGlobals.can_place_tiles = true

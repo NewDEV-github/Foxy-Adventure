@@ -132,7 +132,8 @@ func add_bg(bg_idx:int):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("paint_tile") and editor_mode == "MODE_EDIT":
-		$TileMap.paint_tile(get_global_mouse_position(), 8)
+		if EditorGlobals.can_place_tiles == true:
+			$TileMap.paint_tile(get_local_mouse_position(), 8)
 func cumpute_file_path(original_path:String):
 	if original_path.begins_with("user://"):
 		var _tmp_original_path = original_path.split("/")
