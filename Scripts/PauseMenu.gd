@@ -10,6 +10,7 @@ func _process(_delta):
 		get_tree().paused = visible
 func _on_Resume_pressed():
 	hide()
+	$"../Control".hide()
 	get_tree().paused = false
 
 
