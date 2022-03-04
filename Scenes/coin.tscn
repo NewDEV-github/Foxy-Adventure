@@ -1,10 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/coin.gd" type="Script" id=1]
 [ext_resource path="res://assets/Graphics/coin.png" type="Texture" id=2]
 [ext_resource path="res://assets/Audio/SFX/sound_coin.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("coin:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "taken"
@@ -33,6 +48,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("coin:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -126,16 +153,14 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="coin" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.0567849 )
 position = Vector2( 0.333711, 0 )
 texture = ExtResource( 2 )
-flip_h = true
 hframes = 4
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "hajs"
 playback_speed = 1.1
+anims/RESET = SubResource( 4 )
 anims/hajs = SubResource( 2 )
 anims/taken = SubResource( 3 )
 

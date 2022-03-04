@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Graphics/Sprites/pysiek_sprite.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Characters/character_control.gd" type="Script" id=2]
+[ext_resource path="res://assets/Audio/SFX/sound_jump.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle1"
@@ -371,6 +372,10 @@ cast_to = Vector2( -11, 0 )
 position = Vector2( 0.8995, -1.51041 )
 scale = Vector2( 0.7, 1 )
 shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
 
 [connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

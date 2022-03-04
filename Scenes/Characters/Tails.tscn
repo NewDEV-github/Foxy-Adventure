@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://assets/Audio/SFX/sound_jump.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Characters/character_control.gd" type="Script" id=2]
 [ext_resource path="res://assets/Graphics/Sprites/tails_sprite.png" type="Texture" id=3]
 
@@ -365,5 +366,9 @@ cast_to = Vector2( 11, 0 )
 [node name="LeftWallSensor" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -11, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX"
 
 [connection signal="tree_exiting" from="." to="." method="_on_Tails_tree_exiting"]

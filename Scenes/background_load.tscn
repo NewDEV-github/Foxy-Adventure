@@ -66,7 +66,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 4, 4.9 ),
+"times": PoolRealArray( 0, 0.8, 4, 4.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -147,3 +147,4 @@ playback_speed = 0.8
 anims/normal = SubResource( 2 )
 
 [connection signal="animation_finished" from="bgload/AnimationPlayer" to="bgload" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="bgload/hintanimator" to="bgload" method="_on_hintanimator_animation_finished"]

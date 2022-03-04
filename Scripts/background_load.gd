@@ -106,8 +106,7 @@ func randomize_hint():
 	var hint = hints[randi() % hints.size()]
 	$hint.bbcode_text = "[center]" + hint + "[/center]"
 	$hintanimator.play("normal")
-	yield($hintanimator,"animation_finished")
-	randomize_hint()
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if str(anim_name) == 'start_transition':
 		thread = Thread.new()
@@ -118,3 +117,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func play_end_transition():
 	raise()
 	$AnimationPlayer.play("end_transition")
+
+
+func _on_hintanimator_animation_finished(anim_name):
+	randomize_hint()

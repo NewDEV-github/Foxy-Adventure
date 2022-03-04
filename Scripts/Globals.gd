@@ -51,7 +51,9 @@ var achievements_desc = {
 }
 var stage_list = {
 	"0": "res://Scenes/Stages/poziom_1.tscn",
-	"1": "res://Scenes/Credits.tscn"
+	"1": "res://Scenes/Stages/poziom_2.tscn",
+	"2": "res://Scenes/Stages/poziom_3.tscn",
+	"4": "res://Scenes/Credits.tscn"
 }
 var stage_names:Dictionary = {
 	"0": "Laboratory" + " - 1",
