@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/options.gd" type="Script" id=1]
 [ext_resource path="res://tag_processor/TagProcessingLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=3]
-[ext_resource path="res://addons/github_issues_bugtracker/issues_api.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/github_issues_bugtracker/IssuePrompt.gd" type="Script" id=4]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
+[ext_resource path="res://addons/github_issues_bugtracker/issues_api.py" type="Script" id=6]
 
 [node name="Control" type="Panel"]
 anchor_right = 1.0
@@ -25,6 +26,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -316,8 +318,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Other" type="Tabs" parent="tabs"]
-visible = false
+[node name="Bug Report" type="Tabs" parent="tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -326,23 +327,125 @@ margin_right = -5.0
 margin_bottom = -5.0
 drag_to_rearrange_enabled = true
 
-[node name="DSDK" type="CheckButton" parent="tabs/Other"]
-anchor_top = 0.5
+[node name="BugReportP" type="Control" parent="tabs/Bug Report"]
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -20.0
-margin_bottom = 20.0
-text = "Enable Discord integration"
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="IssueRequest" type="HTTPRequest" parent="tabs/Bug Report/BugReportP"]
+
+[node name="IssuePrompt" type="Control" parent="tabs/Bug Report/BugReportP"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BugReport" type="Button" parent="tabs/Other"]
-anchor_right = 0.144
-anchor_bottom = 0.051
-margin_right = -0.0160065
-margin_bottom = 0.122999
-text = "Report a bug"
+[node name="Body" type="TextEdit" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_left = 0.001
+anchor_top = 0.175
+anchor_right = 1.001
+anchor_bottom = 0.599
+margin_left = 0.1
+margin_top = -0.0749969
+margin_right = 0.0999756
+margin_bottom = 0.148987
+size_flags_horizontal = 3
+size_flags_vertical = 3
+highlight_current_line = true
+syntax_highlighting = true
+show_line_numbers = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_top = 0.672
+anchor_right = 1.0
+anchor_bottom = 0.944
+margin_left = 25.0
+margin_top = 0.0719604
+margin_right = -25.0
+margin_bottom = -0.255981
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 850, 115 )
+rect_clip_content = true
+size_flags_horizontal = 7
+size_flags_vertical = 7
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Send" type="Button" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -27.0
+margin_right = 24.0
+size_flags_horizontal = 6
+text = "Send"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_top = 0.594
+anchor_right = 1.0
+anchor_bottom = 0.66
+margin_top = -0.106018
+margin_bottom = 0.258026
+text = "Add tags:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_top = 0.659
+anchor_right = 1.0
+anchor_bottom = 0.726
+margin_left = 1.0
+margin_top = -302.745
+margin_right = 1.0
+margin_bottom = -302.93
+text = "Add description:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -452.0
+margin_right = 452.0
+margin_bottom = 37.0
+text = "Add title:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tiitle" type="LineEdit" parent="tabs/Bug Report/BugReportP/IssuePrompt"]
+anchor_top = 0.067
+anchor_right = 1.0
+anchor_bottom = 0.101
+margin_left = 1.0
+margin_top = -3.185
+margin_right = 1.0
+margin_bottom = 4.945
+
+[node name="LabelsRequest" type="HTTPRequest" parent="tabs/Bug Report/BugReportP"]
 
 [node name="SAVE" type="Button" parent="."]
 anchor_left = 0.5
@@ -356,10 +459,6 @@ text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="BugReportP" parent="." instance=ExtResource( 4 )]
-visible = false
-mouse_filter = 1
 
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
@@ -375,6 +474,7 @@ mouse_filter = 1
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/PS_Button" to="tabs/Controls" method="_on_PS_Button_pressed"]
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/XBOX_Button" to="tabs/Controls" method="_on_XBOX_Button_pressed"]
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/PC_Button" to="tabs/Controls" method="_on_PC_Button_pressed"]
-[connection signal="toggled" from="tabs/Other/DSDK" to="." method="_on_DSDK_toggled"]
-[connection signal="pressed" from="tabs/Other/BugReport" to="." method="_on_BugReport_pressed"]
+[connection signal="request_completed" from="tabs/Bug Report/BugReportP/IssueRequest" to="tabs/Bug Report/BugReportP" method="_on_IssueRequest_request_completed"]
+[connection signal="pressed" from="tabs/Bug Report/BugReportP/IssuePrompt/Send" to="tabs/Bug Report/BugReportP/IssuePrompt" method="_on_Send_pressed"]
+[connection signal="request_completed" from="tabs/Bug Report/BugReportP/LabelsRequest" to="tabs/Bug Report/BugReportP/IssuePrompt" method="_on_LabelsRequest_request_completed"]
 [connection signal="pressed" from="SAVE" to="." method="_on_SAVE_pressed"]

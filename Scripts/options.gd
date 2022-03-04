@@ -10,7 +10,6 @@ signal player_disconnected(player_name)
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
-	$BugReportP.hide()
 	$tabs.set_tab_title(0, "Graphics")
 	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
