@@ -8,8 +8,6 @@ extends Control
 onready var sdk = preload("res://bin/sdk/sdk.gdns").new()
 
 # Called when the node enters the scene tree for the first time.
-func _init():
-	_ready()
 func _ready():
 	var f = File.new()
 	f.open("res://version.dat", File.READ)
