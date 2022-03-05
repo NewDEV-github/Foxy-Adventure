@@ -28,7 +28,7 @@ const anchor_options = [
 var editorInterface#: EditorInterface
 
 
-static func create_bg_stylebox(type:int = 1) -> StyleBox:
+static func create_bg_stylebox(type:int = 1):# -> StyleBox:
 	var stylebox = StyleBoxFlat.new()
 	
 	match type:
@@ -66,7 +66,7 @@ static func anchor_option_to_layout_preset(anchor_option):
 	
 	return layout_preset
 
-static func create_add_button(label_text: String, connect_object, connect_function: String) -> HBoxContainer:
+static func create_add_button(label_text: String, connect_object, connect_function: String):# -> HBoxContainer:
 	var add_button = HBoxContainer.new()
 	var button_container = PanelContainer.new()
 	var button = ToolButton.new()
@@ -94,7 +94,7 @@ static func create_add_button(label_text: String, connect_object, connect_functi
 	return add_button
 
 
-static func create_category_header(title_string: String = "GamePad Layout Configuration") -> PanelContainer:
+static func create_category_header(title_string: String = "GamePad Layout Configuration"):# -> PanelContainer:
 	var title_panel = PanelContainer.new()
 	title_panel.set('custom_styles/panel', create_bg_stylebox(1))
 	title_panel.set_h_size_flags(3)
@@ -117,7 +117,7 @@ static func create_category_header(title_string: String = "GamePad Layout Config
 	return title_panel
 
 
-static func create_layout_action_button(button_text: String) -> CenterContainer:
+static func create_layout_action_button(button_text: String):# -> CenterContainer:
 	var container = CenterContainer.new()
 	
 	var label = Label.new()
@@ -132,7 +132,7 @@ static func create_layout_action_button(button_text: String) -> CenterContainer:
 	return container
 
 
-static func create_layout_panelbutton(button_info, controller_location) -> PanelContainer:
+static func create_layout_panelbutton(button_info, controller_location):# -> PanelContainer:
 	var new_button = PanelContainer.new()
 	
 	if button_info.get("button_stylebox_info"):
@@ -157,7 +157,7 @@ const inspector_save_path = SAVE_DIR + 'inspector.dat'
 const layoutInfo_save_path = SAVE_DIR + 'layout.dat'
 
 
-static func save_Inspector(inspector: EditorInspectorPlugin):
+static func save_Inspector(inspector):#: EditorInspectorPlugin):
 	var dir = Directory.new()
 	if !dir.dir_exists(SAVE_DIR):
 		dir.make_dir_recursive(SAVE_DIR)
@@ -170,8 +170,7 @@ static func save_Inspector(inspector: EditorInspectorPlugin):
 		file.store_var(inspector_ID)
 	file.close()
 
-
-static func load_Inspector() -> EditorInspectorPlugin:
+static func load_Inspector():# -> EditorInspectorPlugin:
 	var inspector = null
 	
 	var file = File.new()
@@ -198,7 +197,7 @@ static func save_layout_info(layout_info: Dictionary):
 	file.close()
 
 
-static func load_layout_info() -> Dictionary:
+static func load_layout_info():# -> Dictionary:
 	var layout_info = null
 	
 	var file = File.new()
@@ -213,7 +212,7 @@ static func load_layout_info() -> Dictionary:
 	return layout_info
 
 
-static func create_tres_from_info(stylebox_info) -> Resource:
+static func create_tres_from_info(stylebox_info):# -> Resource:
 	var dir = "res://addons/GodotGamePad/LayoutConfiguration/ButtonStyleboxes/"
 #	var file_name = "%s_button_%s" % [controller_location, button_info.get("child_number")]
 	var file_name = "TEMP_FILE"
