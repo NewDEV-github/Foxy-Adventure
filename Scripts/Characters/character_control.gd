@@ -82,11 +82,12 @@ func _physics_process(delta):
 		# Jumping
 		if can_jump:
 			if on_floor and Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump2"):
+				if not $AudioStreamPlayer == null:
+					$AudioStreamPlayer.play()
 				can_jump = false
 				linear_vel.y = -JUMP_SPEED
 				
 		can_jump = is_on_floor()
-#		$AudioPlayer/jump.play()
 	# Shooting
 #	if Input.is_action_just_pressed("shoot"):
 #		var weapon_current = preload("res://scenes/bullet.tscn").instance()

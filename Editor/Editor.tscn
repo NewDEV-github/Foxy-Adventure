@@ -14,7 +14,28 @@ script = ExtResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+margin_left = 7.0
+margin_top = 574.0
+margin_right = 911.0
+margin_bottom = 598.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider" type="VSlider" parent="CanvasLayer"]
+margin_left = 896.0
+margin_top = 47.0
+margin_right = 922.0
+margin_bottom = 577.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TileSelector" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = -104.0
 margin_top = -0.799999
 margin_bottom = -8.0
 
@@ -25,7 +46,6 @@ margin_right = -1.41418
 margin_bottom = 35.4142
 
 [node name="ProjectSelect" type="Panel" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
@@ -106,6 +126,18 @@ margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="mouse_entered" from="CanvasLayer/HSlider" to="." method="_on_HSlider_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/VSlider" to="." method="_on_VSlider_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VSlider" to="." method="_on_VSlider_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/VSlider" to="." method="_on_VSlider_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/TileSelector" to="." method="_on_TileSelector_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/TileSelector" to="." method="_on_TileSelector_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/navbar" to="." method="_on_navbar_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/navbar" to="." method="_on_navbar_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/ProjectSelect" to="." method="_on_ProjectSelect_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ProjectSelect" to="." method="_on_ProjectSelect_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/ProjectSelect/VBoxContainer/New" to="CanvasLayer/ProjectSelect" method="_on_New_pressed"]
 [connection signal="pressed" from="CanvasLayer/ProjectSelect/VBoxContainer/Edit" to="CanvasLayer/ProjectSelect" method="_on_Edit_pressed"]
 [connection signal="pressed" from="CanvasLayer/ProjectSelect/VBoxContainer/Delete" to="CanvasLayer/ProjectSelect" method="_on_Delete_pressed"]

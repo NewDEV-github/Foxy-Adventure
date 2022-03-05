@@ -4,7 +4,7 @@
 resource_name = "SpectrumAnalyzer"
 
 [resource]
-bus/0/volume_db = -1.45259
+bus/0/volume_db = -0.0638371
 bus/1/name = "SFX"
 bus/1/solo = false
 bus/1/mute = false

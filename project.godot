@@ -276,6 +276,7 @@ Unzip="*res://addons/gdunzip/unzip.gd"
 GamePad="*res://addons/GodotGamePad/Networking/GamePad.tscn"
 UdpBroadcast="*res://addons/GodotGamePad/Networking/UDP_Broadcast.gd"
 Globals="*res://Scripts/Globals.gd"
+EditorGlobals="*res://Editor/EditorGlobals.gd"
 
 [debug]
 

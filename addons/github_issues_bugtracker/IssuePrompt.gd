@@ -1,4 +1,4 @@
-extends WindowDialog
+extends Control
 
 
 # Declare member variables here. Examples:

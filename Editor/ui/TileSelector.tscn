@@ -653,9 +653,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 2.0
-margin_right = -2.0
-margin_bottom = -2.0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -674,22 +672,28 @@ margin_bottom = 20.0
 text = "r"
 
 [node name="flipx" type="Button" parent="Panel/HBoxContainer"]
-margin_right = 20.0
-margin_bottom = 27.0
+margin_right = 23.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 toggle_mode = true
 text = "x"
 
 [node name="flipy" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 24.0
-margin_right = 44.0
-margin_bottom = 27.0
+margin_left = 27.0
+margin_right = 50.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 toggle_mode = true
 text = "y"
 
 [node name="clear" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 48.0
-margin_right = 94.0
-margin_bottom = 27.0
+margin_left = 54.0
+margin_right = 100.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 toggle_mode = true
 text = "clear"
 
@@ -701,6 +705,9 @@ margin_left = -13.0
 margin_right = -5.0
 margin_bottom = -27.75
 max_value = 1730.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Container/Tile1" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 4" ]]
 [connection signal="pressed" from="Container/Tile2" to="." method="tile_selected" binds= [ "sci-fi-tileset.png 7" ]]

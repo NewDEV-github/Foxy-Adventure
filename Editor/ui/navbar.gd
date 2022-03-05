@@ -11,7 +11,7 @@ func _ready() -> void:
 	bg_menu.connect("id_pressed", self, "bg_menu_selected")
 	file_menu.connect("id_pressed", self, "file_menu_selected")
 	audio_menu.connect("id_pressed", self, "audio_menu_selected")
-var bg_file_paths = {"Laboratory": "res://Scenes/Stages/bg1.tscn"}
+var bg_file_paths = {"Laboratory": 0}
 func bg_menu_selected(id:int):
 	if id == 0:
 		$BackgroundPanel.popup_centered()
@@ -39,6 +39,9 @@ func add_bg_to_list(name:String, file_path:String):
 	refresh_bg_list()
 func audio_menu_selected(id:int):
 	if id == 0:
+		$AudioDialog/ItemListAudio.clear()
+		for i in EditorGlobals.audios:
+			$AudioDialog/ItemListAudio.add_item(str(EditorGlobals.audios[i]).get_file())
 		$AudioDialog.popup_centered()
 func refresh_bg_list():
 	$BackgroundPanel/VBoxContainer/BgList.clear()
@@ -73,7 +76,7 @@ func _on_DeleteAudio_pressed():
 
 func _on_UseAudio_pressed():
 	if not _tmp_aufio_file_name == "null":
-		Editor.add_audio_from_file(audio_file_paths[_tmp_aufio_file_name])
+		Editor.add_audio(_tmp_aufio_file_id)
 		$AudioDialog/ItemListAudio.set_item_text(_tmp_aufio_file_id, $AudioDialog/ItemListAudio.get_item_text(_tmp_aufio_file_id) + " (currently used)")
 		$AudioDialog/ItemListAudio.set_item_text(_prev_selected_audio_item_id, $AudioDialog/ItemListAudio.get_item_text(_prev_selected_audio_item_id).rstrip(" (currently used)"))
 func _on_ItemListAudio_item_selected(index):
@@ -90,3 +93,75 @@ func _on_ItemListAudio_item_selected(index):
 
 func _on_AddAudio_pressed():
 	$AudioPopup.popup_centered()
+
+
+func _on_ConfigurationMenu_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_ConfigurationMenu_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_OptionsMenu_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_OptionsMenu_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_FileLoadPopup_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_FileLoadPopup_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_File_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_File_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_Audio_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_Audio_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_Bg_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_Bg_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_BackgroundPanel_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_BackgroundPanel_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_AudioPopup_mouse_exited():
+	EditorGlobals.can_place_tiles = true
+
+
+func _on_AudioPopup_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_AudioDialog_mouse_entered():
+	EditorGlobals.can_place_tiles = false
+
+
+func _on_AudioDialog_mouse_exited():
+	EditorGlobals.can_place_tiles = true

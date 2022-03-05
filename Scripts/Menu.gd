@@ -281,6 +281,7 @@ func get_installed_dlc():
 
 
 func _on_Editor_pressed():
+#	get_tree().change_scene("res://Editor/Editor.tscn")
 	OS.shell_open("https://newdev.web.app/faq/foxy-adventure#creating-modofications-and-custom-stages")
 
 

@@ -4,11 +4,12 @@ var editor_mode = "MODE_EDIT"
 onready var startup_pos_node = $Position2D
 var bg_path = 'none'
 onready var navbar = $"../CanvasLayer/navbar"
-var modes = ["custom_audio", "custom_tiles", "custom_backgrounds", "custom_backgrounds/sprites", "scripts", "configuration", "finished"]
+var modes = ["configuration", "finished"]
 signal stage_preloaded
-var audio_file_path:String = ""
-var scripts:Array = []
-var custom_tile_sets:Array = []
+
+
+var audio_id
+var bg_id
 
 func set_startup_position(pos:Vector2):
 	startup_pos_node.position = pos
@@ -74,6 +75,8 @@ func load_stage(path):
 	Globals.level_description = cfg.get_value("info", "description")
 	Globals.level_version = cfg.get_value("info", "version")
 	Globals.level_name = cfg.get_value("info", "name")
+	audio_id = cfg.get_value("data", "audio_id")
+	bg_id = cfg.get_value("data", "bg_id")
 	if editor_mode == "MODE_EDIT":
 		navbar.audio_file_paths = cfg.get_value("data", "audio_file_paths")
 	if cfg.get_value("data", "bg_path") != 'none':
@@ -121,16 +124,16 @@ func config_dirs():
 func clear_all():
 	if $TileMap:
 		$TileMap.clear()
-func add_bg(file_path:String):
-#	bg_path = "user://level_data/" + Globals.level_name + "/custom_backgrounds/" + file_path.get_file()
-#	var dir = Directory.new()
-#	dir.copy(file_path, bg_path)
+func add_bg(bg_idx:int):
+	var file_path = EditorGlobals.backrounds[bg_idx]
 	var n = load(file_path).instance()
 	add_child(n)
+	bg_id = bg_idx
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("paint_tile") and editor_mode == "MODE_EDIT":
-		$TileMap.paint_tile(get_global_mouse_position(), 8)
+		if EditorGlobals.can_place_tiles == true:
+			$TileMap.paint_tile(get_local_mouse_position(), 8)
 func cumpute_file_path(original_path:String):
 	if original_path.begins_with("user://"):
 		var _tmp_original_path = original_path.split("/")
@@ -204,10 +207,11 @@ func save_level():
 	cfg.set_value("info", "version", Globals.level_version)
 	cfg.set_value("info", "name", Globals.level_name)
 	cfg.set_value("info", "name_org", Globals.level_name_org)
-	cfg.set_value("data", "audio_file_paths", navbar.audio_file_paths)
-	cfg.set_value("data", "bg_path", bg_path)
+	cfg.set_value("data", "audio_id", audio_id)
+	cfg.set_value("data", "bg_id", bg_id)
 	cfg.save("user://level_data/" + Globals.level_name + "/configuration/main.cfg")
 	navbar.set_status_label_text("Project saved!")
+## DEPREACTED, TO REPLACE WITH add_audio
 func add_audio_from_file(path:String):
 	var dir = Directory.new()
 	navbar.set_status_label_text("Checking access")
@@ -221,7 +225,11 @@ func add_audio_from_file(path:String):
 	else:
 		navbar.set_status_label_text("Access to the file denied")
 
-
+func add_audio(idx:int):
+	navbar.set_status_label_text("Loading...")
+#	var audio_path = EditorGlobals.audios[idx]
+	audio_id = idx
+	navbar.set_status_label_text("Audio loaded")
 func _on_ColorRect_mouse_entered():
 	pass
 #	if Input.is_action_pressed("paint_tile"):
