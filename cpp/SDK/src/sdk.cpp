@@ -86,13 +86,13 @@ godot::String FoxyAdventureSDK::init_sdk(int init_flag) {
     if (init_flag == 0) {
       if (FoxyAdventureSDK::init_checks() == true) {
         initialized = true;
-        message = "init"
+        message = "init";
         godot::Godot::print("Foxy Adventure SDK Initialized!");
         return message;
       }
       else {
         godot::Godot::print("Can not initialize Foxy SDK");
-        message = "n_init"
+        message = "n_init";
         return message;
       }
     }
@@ -115,12 +115,12 @@ godot::String FoxyAdventureSDK::init_debugger() {
     if (FoxyAdventureSDK::init_debugger_checks() == true) {     
         debugger_initialized = true;
         godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
-        message = "init_d"
+        message = "init_d";
         return message;
     }
     else {
         godot::Godot::print("Can not initialize Foxy Adventure SDK Debugger");
-        message = "n_init_d"
+        message = "n_init_d";
         return message;
     }
 }
