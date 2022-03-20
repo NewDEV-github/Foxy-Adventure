@@ -30,6 +30,7 @@ func _ready() -> void:
 	$VBoxContainer3/Logout.disabled = true
 	$VBoxContainer3/Login.disabled = false
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
+	Firebase.Auth.connect("login_failed", self, "_on_FirebaseAuth_login_failed")
 	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	if Firebase.Auth.check_auth_file():
 		Firebase.Auth.load_auth()

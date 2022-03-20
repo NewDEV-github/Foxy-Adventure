@@ -24,9 +24,6 @@ anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -354,6 +351,7 @@ align = 1
 valign = 1
 
 [node name="LoginPanel" parent="." instance=ExtResource( 8 )]
+visible = true
 margin_right = 755.0
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
@@ -370,7 +368,6 @@ margin_right = -0.196045
 margin_bottom = -0.200012
 
 [node name="DownloadableContent" type="WindowDialog" parent="."]
-visible = true
 margin_right = 702.0
 margin_bottom = 503.0
 __meta__ = {
