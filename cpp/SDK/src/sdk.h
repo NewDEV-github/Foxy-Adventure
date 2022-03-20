@@ -25,8 +25,8 @@ private:
     std::string itos(T i);
 
     godot::String changelog = "Added checking for some functions before running sdk";
-    godot::String version_string = "1.2.2";
-    int version = 121;
+    godot::String version_string = "1.2.3";
+    int version = 123;
     float time_passed;
     bool initialized = false;
     bool debugger_initialized = false;
@@ -34,7 +34,7 @@ private:
     godot::String error_message = "[" + dt + ".Debugger] Error at: ";
     godot::String crash_message = "[" + dt + ".Debugger] Crash at: ";
     godot::String warning_message = "[" + dt + ".Debugger] Warning at: ";
-    void init_debugger();
+    godot::String init_debugger();
     bool init_checks();
     bool init_debugger_checks();
     void deinit_debugger();
@@ -51,7 +51,7 @@ public:
     ~FoxyAdventureSDK();
 
     void _init(); // our initializer called by Godot
-    void init_sdk(int init_flag);
+    godot::String init_sdk(int init_flag);
     void deinit_sdk();
     godot::String get_changelog();
     int get_version();

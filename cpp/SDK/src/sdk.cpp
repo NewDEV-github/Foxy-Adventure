@@ -78,45 +78,57 @@ void FoxyAdventureSDK::_init() {
     debugger_initialized = false;
 }
 
-void FoxyAdventureSDK::init_sdk(int init_flag) {
+godot::String FoxyAdventureSDK::init_sdk(int init_flag) {
+    godot::String message = "";
     //check if sdk was previously initialized
     //if (get_node(NodePath("/root/Globals"))->get("sdk_is_initialized"); == true)
     godot::Godot::print("Initializing Foxy Adventure SDK...");
     if (init_flag == 0) {
       if (FoxyAdventureSDK::init_checks() == true) {
         initialized = true;
+        message = "init";
         godot::Godot::print("Foxy Adventure SDK Initialized!");
+        return message;
       }
       else {
-        godot::Godot::print("Can not initialize Foxy SDK")
+        godot::Godot::print("Can not initialize Foxy SDK");
+        message = "n_init";
+        return message;
       }
     }
     if (init_flag == 1) {
       if (FoxyAdventureSDK::init_checks() == true) {
         initialized = true;
         godot::Godot::print("Foxy Adventure SDK Initialized!");
-        FoxyAdventureSDK::init_debugger();
+        message = FoxyAdventureSDK::init_debugger();
+        return message;
       }
       else {
-        godot::Godot::print("Can not initialize Foxy SDK")
+        godot::Godot::print("Can not initialize Foxy SDK");
+        return message;
       }
     }
 }
-void FoxyAdventureSDK::init_debugger() {
+godot::String FoxyAdventureSDK::init_debugger() {
+    godot::String message = "";
     godot::Godot::print("Initializing Foxy Adventure SDK Debugger...");
     if (FoxyAdventureSDK::init_debugger_checks() == true) {     
         debugger_initialized = true;
         godot::Godot::print("Foxy Adventure SDK Debugger Initialized!");
+        message = "init_d";
+        return message;
     }
     else {
-        godot::Godot::print("Can not initialize Foxy Adventure SDK Debugger")
+        godot::Godot::print("Can not initialize Foxy Adventure SDK Debugger");
+        message = "n_init_d";
+        return message;
     }
 }
 bool FoxyAdventureSDK::init_checks() {
-    return true //no checks needed for now
+    return true; //no checks needed for now
 }
 bool FoxyAdventureSDK::init_debugger_checks() {
-    return true //no checks needed for now
+    return true; //no checks needed for now
 }
 void FoxyAdventureSDK::throw_error(godot::String where, godot::String what) {
     if (initialized == true) {
