@@ -125,10 +125,10 @@ godot::String FoxyAdventureSDK::init_debugger() {
     }
 }
 bool FoxyAdventureSDK::init_checks() {
-    return true //no checks needed for now
+    return true; //no checks needed for now
 }
 bool FoxyAdventureSDK::init_debugger_checks() {
-    return true //no checks needed for now
+    return true; //no checks needed for now
 }
 void FoxyAdventureSDK::throw_error(godot::String where, godot::String what) {
     if (initialized == true) {
