@@ -6,7 +6,9 @@ var tr_en_fallback = [
 	"EN_US"
 ]
 signal player_disconnected(player_name)
-
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		hide()
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
