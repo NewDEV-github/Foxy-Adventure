@@ -27,11 +27,11 @@ func _on_LabelsRequest_request_completed(result, response_code, headers, body):
 	var labels_list = Array(JSON.parse(body.get_string_from_utf8()).result)
 	for i in labels_list:
 		print(i)
-		_add_label(i["name"])
+		_add_label(i["name"], i["color"])
 
-func _add_label(name_:String):
+func _add_label(name_:String, color_:String):
 	var l = preload("res://addons/github_issues_bugtracker/label_base.tscn").instance()
-	l.configure(name_)
+	l.configure(name_, color_)
 	l.connect("l_toggled", self, "_label_toggled")
 	$GridContainer.add_child(l)
 func _label_toggled(_name:String, pressed:bool):
@@ -57,7 +57,6 @@ func send_issue():
 	issue_sender.make_github_issue($Tiitle.text, $Body.text, _tags_str, _token)
 func _on_Send_pressed():
 	send_issue()
-	hide()
 	
 
 

@@ -13,9 +13,6 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 745, 455 )
 theme = ExtResource( 5 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tabs" type="TabContainer" parent="."]
 anchor_right = 1.0

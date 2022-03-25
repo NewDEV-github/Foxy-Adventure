@@ -11,8 +11,10 @@ func _ready():
 	pass # Replace with function body.
 
 signal l_toggled(label_name, pressed)
-func configure(name_label:String):
+func configure(name_label:String, color:String):
 	text = name_label
+	var c = "#" + color
+	add_color_override("font_color", Color(c))
 
 
 func _on_CheckBox_toggled(button_pressed):
