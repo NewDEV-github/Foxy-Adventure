@@ -40,7 +40,7 @@ func validate_license_key(key:String):
 	var data = {'license_key': key}
 	_tmp_dlc_license_key = key
 	var query = JSON.print(data)
-	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/api/validate_license_key/"
+	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/validateLicenseKey"
 	$VBoxContainer/result.text = "Sending data..."
 	$Vaildator.request(url, ["Content-Type: application/json"], true, HTTPClient.METHOD_POST, query)
 	$VBoxContainer/result.text = "Awaiting for server response..."
@@ -73,7 +73,7 @@ func download_content(content_name:String):
 	$VBoxContainer/result.text = "Parsing data..."
 	var data = {'content_name': content_name}
 	var query = JSON.print(data)
-	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/api/get_content_download_data/"
+	var url = "https://us-central1-api-9176249411662404922-339889.cloudfunctions.net/getContentDownloadData"
 	$VBoxContainer/result.text = "Sending data..."
 	$ContentDataDownloader.request(url, ["Content-Type: application/json"], true, HTTPClient.METHOD_POST, query)
 	$VBoxContainer/result.text = "Awaiting for server response..."
