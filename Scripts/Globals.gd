@@ -104,8 +104,15 @@ var current_save_name = ""
 var coins = 0
 var lives = 5
 var new_characters:Dictionary = {
+	"Tuzi": "res://Scenes/Characters/tuzi.tscn",
 	"Tails": "res://Scenes/Characters/Tails.tscn",
+	"Hencko": "res://Scenes/Characters/hencko.tscn",
 	"Pysiek": "res://Scenes/Characters/Pysiek.tscn",
+	"Itam": "res://Scenes/Characters/itam.tscn",
+	"ivip": "res://Scenes/Characters/ivip.tscn",
+	"Kaz": "res://Scenes/Characters/kaz.tscn",
+	"Mizu": "res://Scenes/Characters/mizu.tscn",
+	"Nikko": "res://Scenes/Characters/nikko.tscn"
 }
 var game_version_text = "Support: [url]https://newdev.web.app/contact[/url]\n%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), OS.get_date().year]
 signal game_version_text_changed(text)

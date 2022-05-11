@@ -28,11 +28,8 @@ func _process(_delta):
 	if server.is_connection_available():
 		var peer : PacketPeerUDP = server.take_connection()
 		var pkt = peer.get_packet()
-#		print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
-#		print("Received data: %s" % [pkt.get_string_from_utf8()])
-		# Reply so it knows we received the message.
-# warning-ignore:return_value_discarded
 		peer.put_packet(layout)
+		rpc("get_scene", "eee")
 
 func start_broadcast():
 # warning-ignore:return_value_discarded

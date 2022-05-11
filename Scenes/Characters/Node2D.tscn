@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://characters/hencko.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 2, 0 )
+polygon = PoolVector2Array( -1001.18, 110.818, 497.75, 139.318, 1363.75, 132.818, 2300, 112.818, 703.997, 202.818, -157.25, 189.318 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -389.185, 80.818 )
