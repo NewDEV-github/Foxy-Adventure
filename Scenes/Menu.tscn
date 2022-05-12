@@ -120,16 +120,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Downloadable Content"
 
-[node name="UpdatePopup" type="Button" parent="VBoxContainer3"]
-margin_right = 225.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Check for game updates"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -141,14 +131,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Achivements" type="Button" parent="VBoxContainer2"]
+[node name="UpdatePopup" type="Button" parent="VBoxContainer2"]
 margin_right = 225.0
 margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Check for game updates"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Achivements" type="Button" parent="VBoxContainer2"]
+margin_top = 46.0
+margin_right = 225.0
+margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Achievements"
 
 [node name="Editor" type="Button" parent="VBoxContainer2"]
+visible = false
 margin_top = 46.0
 margin_right = 225.0
 margin_bottom = 88.0
@@ -446,7 +448,7 @@ margin_bottom = -5.0
 [connection signal="pressed" from="VBoxContainer3/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="VBoxContainer3/Logout" to="." method="_on_Logout_pressed"]
 [connection signal="pressed" from="VBoxContainer3/DownloadableContent" to="." method="_on_DownloadableContent_pressed"]
-[connection signal="pressed" from="VBoxContainer3/UpdatePopup" to="." method="_on_UpdatePopup_pressed"]
+[connection signal="pressed" from="VBoxContainer2/UpdatePopup" to="." method="_on_UpdatePopup_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Achivements" to="." method="_on_Achivements_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Editor" to="." method="_on_Editor_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]

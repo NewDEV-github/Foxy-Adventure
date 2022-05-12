@@ -55,6 +55,14 @@ func _init(console):
 		.set_description('The maximal framerate at which the application can run.')\
 		.add_argument('fps', self._console.IntRangeType.new(10, 1000))\
 		.register()
+	self._console.add_command('Globals.set', self, '_set_globals_variable')\
+		.set_description('Set variable in Globals')\
+		.add_argument('property', TYPE_STRING)\
+		.add_argument('variable', TYPE_STRING)\
+		.register()
+	self._console.add_command('reload_scene', self, '_reload_scene')\
+		.set_description('Reloads scene')\
+		.register()
 
 
 # Display help message or display description for the command.
@@ -102,4 +110,9 @@ func _quit():
 func _change_scene(path):
 	self._console.Log.warn('Changing scene to ' + path + '...')
 	BackgroundLoad.get_node("bgload").load_scene(path)
-	
+
+func _reload_scene():
+	Globals.reload_scene()
+
+func _set_globals_variable(property, value):
+	Globals.set(property, value)

@@ -26,7 +26,6 @@ func _get_labels():
 func _on_LabelsRequest_request_completed(result, response_code, headers, body):
 	var labels_list = Array(JSON.parse(body.get_string_from_utf8()).result)
 	for i in labels_list:
-		print(i)
 		_add_label(i["name"], i["color"])
 
 func _add_label(name_:String, color_:String):
@@ -36,10 +35,8 @@ func _add_label(name_:String, color_:String):
 	$GridContainer.add_child(l)
 func _label_toggled(_name:String, pressed:bool):
 	if pressed:
-		print("Checked label: "+ _name)
 		_add_tag(_name)
 	else:
-		print("Unchecked label: "+ _name)
 		_remove_tag(_name)
 	print(_tags)
 
