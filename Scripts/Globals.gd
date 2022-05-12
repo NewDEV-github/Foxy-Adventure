@@ -704,3 +704,6 @@ func encrypt_cfg(path, key, dest_path):
 			print("Found value: " + section_key_value)
 			new_cfg.set_value(section, section_key, section_key_value)
 	new_cfg.save_encrypted_pass(dest_path, key)
+
+func reload_scene():
+	get_tree().reload_current_scene()
