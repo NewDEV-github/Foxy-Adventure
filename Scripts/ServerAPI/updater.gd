@@ -68,12 +68,12 @@ func _on_VideoPlayer_finished():
 
 func _on_ConfirmationDialog_confirmed():
 	get_tree().paused = false
-	Globals.enable_discord_sdk(true)
+	DiscordSDK.av_en = true
 
 
 func _on_ConfirmationDialog_popup_hide():
 	get_tree().paused = false
-	Globals.enable_discord_sdk(false)
+	DiscordSDK.av_en = false
 
 
 func _on_ConfirmationDialog_about_to_show():

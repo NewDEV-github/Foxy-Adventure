@@ -12,6 +12,7 @@ func _input(event):
 var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
+	$tabs/Graphics/Options/side_left/DiscordAvatar.pressed = DiscordSDK.av_en #option is loaded at game start, so there we only need to press the button according to loaded option state
 	$tabs.set_tab_title(0, "Graphics")
 	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
