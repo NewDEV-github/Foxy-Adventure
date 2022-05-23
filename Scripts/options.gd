@@ -34,7 +34,7 @@ func _process(_delta):
 	save_file.set_value('Game', 'target_fps', str(Engine.target_fps))
 	save_file.set_value('Game', 'fps_visible', str(Globals.fps_visible))
 	save_file.set_value('Game', 'timer_visible', str(Globals.timer_visible))
-	save_file.set_value('Game', 'discord_sdk_enabled', str(Globals.discord_sdk_enabled))
+	save_file.set_value('Game', 'use_discord_avatar', str(DiscordSDK.av_en))
 	save_file.set_value('Audio', 'master_bus_volume', str($"tabs/Audio/Options/Audio/Master/Master_slider".value))
 	save_file.set_value('Audio', 'master_bus_enabled', str($"tabs/Audio/Options/Audio/Master/Master_on".pressed))
 	save_file.set_value('Audio', 'music_bus_volume', str($"tabs/Audio/Options/Audio/Music/Music_slider".value))
@@ -275,6 +275,5 @@ func _on_BugReport_pressed():
 	$BugReportP/IssuePrompt.popup_centered()
 
 
-
-
-	
+func _on_DiscordAvatar_toggled(button_pressed):
+	DiscordSDK.av_en = button_pressed

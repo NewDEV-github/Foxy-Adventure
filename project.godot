@@ -266,7 +266,6 @@ ApiLogs="*res://Scenes/api_logs.tscn"
 ApiScores="*res://Scenes/api_scores.tscn"
 Console="*res://addons/quentincaffeino-console/src/Console.tscn"
 BackgroundLoad="*res://Scenes/background_load.tscn"
-DiscordSDK="*res://Scripts/DiscordSDK.gd"
 Screenshot="*res://Scripts/screenshot.gd"
 FoxyAdventureSDK="*res://bin/sdk/sdk.gdns"
 TagProcessor="*res://tag_processor/TagProcessor [SINGLETON].tscn"
@@ -277,6 +276,7 @@ GamePad="*res://addons/GodotGamePad/Networking/GamePad.tscn"
 UdpBroadcast="*res://addons/GodotGamePad/Networking/UDP_Broadcast.gd"
 Globals="*res://Scripts/Globals.gd"
 EditorGlobals="*res://Editor/EditorGlobals.gd"
+DiscordSDK="*res://Scripts/DiscordSDK.gd"
 
 [debug]
 

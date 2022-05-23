@@ -3,7 +3,6 @@
 [ext_resource path="res://Editor/ui/FileLoadPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 
-
 [node name="FileLoadPopup" type="FileDialog"]
 margin_right = 400.0
 margin_bottom = 246.0
@@ -13,8 +12,8 @@ window_title = "Otwórz plik"
 mode = 0
 access = 2
 show_hidden_files = true
-current_dir = "/Users/DoS/Documents/GitHub/Foxy-Adventure"
-current_path = "/Users/DoS/Documents/GitHub/Foxy-Adventure/"
+current_dir = "/GitHub/Foxy-Adventure"
+current_path = "/GitHub/Foxy-Adventure/"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
