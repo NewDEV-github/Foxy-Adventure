@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2.4.0
+        with:
+          ref: developer
       # Runs a set of commands using the runners shell
       - name: Read version file
         id: package
