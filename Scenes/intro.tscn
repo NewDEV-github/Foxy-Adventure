@@ -190,6 +190,7 @@ __meta__ = {
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 pause_mode = 2
+visible = true
 margin_right = 270.0
 margin_bottom = 149.0
 rect_min_size = Vector2( 150, 52.5 )
@@ -199,9 +200,6 @@ dialog_text = "Would you like to give the game permission to
 acces your discord account by Discord Game SDK?
 
 You can enable/disable this in options later"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PythonTester" type="Node" parent="."]
 script = ExtResource( 5 )
