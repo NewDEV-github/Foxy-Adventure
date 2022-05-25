@@ -101,7 +101,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ steps.package.outputs.content }}-beta
+          tag_name: ${{ steps.package.outputs.content }}
           release_name: BETA Release ${{ steps.package.outputs.content }}
           draft: false
           prerelease: true
