@@ -8,6 +8,7 @@ echo "$GODOT_VERSION"
 echo "For user: $(whoami)"
 echo "Installing required packages..."
 BASE_PATH=${8}
+BRANCH=${10}
 sudo apt-get install unzip
 sudo apt-get install osslsigncode
 echo "Generating links and other required data..."
@@ -60,7 +61,7 @@ fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
-  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git -b $BRANCH
   sudo rm -r Foxy-Adventure/.git
   sudo rm -r Foxy-Adventure/.vscode
   sudo rm -r Foxy-Adventure/cpp
@@ -87,7 +88,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
 
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
-  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git -b $BRANCH
   sudo rm -r Foxy-Adventure/.git
   sudo rm -r Foxy-Adventure/.vscode
   sudo rm -r Foxy-Adventure/cpp
@@ -116,7 +117,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
-  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git -b $BRANCH
   sudo rm -r Foxy-Adventure/.git
   sudo rm -r Foxy-Adventure/.vscode
   sudo rm -r Foxy-Adventure/cpp
