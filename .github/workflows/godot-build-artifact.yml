@@ -6,10 +6,7 @@ name: Godot Build PC Artifact
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    paths-ignore: .github/workflows/gdnative.yml
-    branches-ignore: [ developer, sdk, 4.0 ]
-  pull_request:
-    branches-ignore: [ master, developer, sdk, 4.0 ]
+    branches: [ master ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
