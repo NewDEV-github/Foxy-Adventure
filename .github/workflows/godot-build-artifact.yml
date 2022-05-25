@@ -32,7 +32,7 @@ jobs:
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "source" -base_path $GITHUB_WORKSPACE
+          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "source" -base_path $GITHUB_WORKSPACE -branch "main"
           zip -r build-x11-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/x11-64-standard/
           zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/osx-standard/
           zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/win-64-standard/
