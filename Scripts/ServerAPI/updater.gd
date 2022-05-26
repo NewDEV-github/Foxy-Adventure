@@ -15,7 +15,8 @@ func _ready():
 		elif not file.file_exists("user://settings.cfg"):
 			$ConfirmationDialog.popup_centered()
 		else:
-			DiscordSDK.av_en = bool(cfg.get_value('Game', 'use_discord_avatar', false))
+			print("Discord avatar is set to: " + cfg.get_value('Game', 'use_discord_avatar', false))
+			DiscordSDK.av_en = cfg.get_value('Game', 'use_discord_avatar', false)
 		$CharacterCopyright.bbcode_text = "[center][color=red]" + 'Warning' + "[/color][color=white]\n" + 'Sonic and other characters belongs to SEGA and/or their owners' + "\n[/color][/center]"
 		$AnimationPlayer.play("intro")
 		file = File.new()
@@ -30,12 +31,13 @@ func _ready():
 		$VideoPlayer.stop()
 		break
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_VideoPlayer_finished()
 	yield(DiscordSDK, "user_avatar_loaded")
 	if DiscordSDK.discord_user_img != null:
 		$Icon.texture = DiscordSDK.discord_user_img
 		$lightmask.show()
-	if Input.is_action_just_pressed("ui_accept"):
-		_on_VideoPlayer_finished()
+	
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
@@ -68,12 +70,12 @@ func _on_VideoPlayer_finished():
 
 func _on_ConfirmationDialog_confirmed():
 	get_tree().paused = false
-	DiscordSDK.av_en = true
+	DiscordSDK.av_en = "True"
 
 
 func _on_ConfirmationDialog_popup_hide():
 	get_tree().paused = false
-	DiscordSDK.av_en = false
+	DiscordSDK.av_en = "False"
 
 
 func _on_ConfirmationDialog_about_to_show():

@@ -6,7 +6,7 @@ var core: Discord.Core = null
 var discord_user_img = null
 signal user_avatar_loaded
 signal initialized
-var av_en = true
+var av_en = "True"
 func enum_to_string(the_enum: Dictionary, value: int) -> String:
 	var index: = the_enum.values().find(value)
 	var string: String = the_enum.keys()[index]
@@ -164,7 +164,7 @@ func _on_current_user_update() -> void:
 		image.unlock() 
 		var tex: = ImageTexture.new()
 		tex.create_from_image(image)
-		if av_en == true:
+		if av_en == "True":
 			discord_user_img = tex
 			tex.set_size_override(Vector2(100, 100))
 		emit_signal("user_avatar_loaded")

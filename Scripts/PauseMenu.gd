@@ -38,6 +38,7 @@ func _on_QuitTOMenuDIalog_confirmed():
 func _on_FeedBack_pressed():
 	$HTTPRequest.send_feedback()
 func restart():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_Restart_pressed():
