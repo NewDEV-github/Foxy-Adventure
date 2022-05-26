@@ -11,7 +11,8 @@ var m = 0
 
 
 func _ready():
-	if DiscordSDK.discord_user_img:
+#	yield(DiscordSDK, "user_avatar_loaded")
+	if DiscordSDK.discord_user_img != null:
 		$Icon.texture = DiscordSDK.discord_user_img
 func _process(delta: float) -> void:
 	

@@ -1,4 +1,5 @@
 extends KinematicBody2D
+export (String) var character_name
 const GRAVITY_VEC = Vector2(0, 750)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
@@ -20,10 +21,7 @@ var scene
 var timer = 0
 onready var sprite = $Sprite
 func _physics_process(delta):
-#	if Input.is_action_just_pressed("console"):
-#		if $console/console.visible == false:
-#			$console/console.show()
-#		if $console/console.visible == true:
+	DiscordSDK.run_rpc(false, true, character_name)
 	onair_time += delta
 	shoot_time += delta
 
@@ -130,4 +128,5 @@ func _physics_process(delta):
 		anim = new_anim
 		$AnimationPlayer.play(anim)
 		
-
+func _exit_tree():
+	DiscordSDK.kill_rpc()

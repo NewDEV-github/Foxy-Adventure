@@ -48,9 +48,6 @@ __meta__ = {
 [node name="Options" type="HBoxContainer" parent="tabs/Graphics"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="side_left" type="VBoxContainer" parent="tabs/Graphics/Options"]
 margin_right = 505.0
@@ -61,15 +58,15 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="VSync" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
-margin_top = 221.0
+margin_top = 167.0
 margin_right = 505.0
-margin_bottom = 261.0
+margin_bottom = 207.0
 text = "VSync"
 
 [node name="fps" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
-margin_top = 265.0
+margin_top = 211.0
 margin_right = 505.0
-margin_bottom = 305.0
+margin_bottom = 251.0
 rect_min_size = Vector2( 0, 40 )
 alignment = 2
 
@@ -86,6 +83,20 @@ margin_left = 441.0
 margin_right = 505.0
 margin_bottom = 40.0
 max_value = 1e+14
+
+[node name="Label" type="Label" parent="tabs/Graphics/Options/side_left"]
+margin_top = 255.0
+margin_right = 505.0
+margin_bottom = 316.0
+text = "
+WARNING! You might need to restart Foxy Adventure to make option below working as You want"
+autowrap = true
+
+[node name="DiscordAvatar" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
+margin_top = 320.0
+margin_right = 505.0
+margin_bottom = 360.0
+text = "Use Your current Discord avatar as loading icon"
 
 [node name="side_right" type="VBoxContainer" parent="tabs/Graphics/Options"]
 margin_left = 509.0
@@ -459,6 +470,7 @@ __meta__ = {
 
 [connection signal="toggled" from="tabs/Graphics/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/Graphics/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
+[connection signal="toggled" from="tabs/Graphics/Options/side_left/DiscordAvatar" to="." method="_on_DiscordAvatar_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]
 [connection signal="toggled" from="tabs/Graphics/Options/side_right/show_fps" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Master/Master_slider" to="." method="_on_Master_slider_value_changed"]

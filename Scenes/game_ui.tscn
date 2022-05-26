@@ -1,14 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/game_ui.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/options.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Graphics/Masks/circle.png" type="Texture" id=4]
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/MessageDisplay.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/AchivementPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/messagebox/message_box.gd" type="Script" id=9]
+[ext_resource path="res://assets/Shaders/mask.shader" type="Shader" id=10]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=11]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 10 )
+shader_param/mask_texture = ExtResource( 4 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "save"
@@ -113,6 +119,7 @@ visible = false
 
 [node name="Icon" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 2 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -123,9 +130,6 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ms" type="Timer" parent="."]
 wait_time = 0.1

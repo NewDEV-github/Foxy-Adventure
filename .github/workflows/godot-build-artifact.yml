@@ -6,10 +6,7 @@ name: Godot Build PC Artifact
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    paths-ignore: .github/workflows/gdnative.yml
-    branches-ignore: [ developer, sdk, 4.0 ]
-  pull_request:
-    branches-ignore: [ developer, sdk, 4.0 ]
+    branches: [ master ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -35,7 +32,7 @@ jobs:
       - name: Build everything
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "source" -base_path $GITHUB_WORKSPACE
+          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "source" -base_path $GITHUB_WORKSPACE -branch "main"
           zip -r build-x11-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/x11-64-standard/
           zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/osx-standard/
           zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/win-64-standard/

@@ -6,19 +6,22 @@ var core: Discord.Core = null
 var discord_user_img = null
 signal user_avatar_loaded
 signal initialized
-var av_en = false
+var av_en = "True"
 func enum_to_string(the_enum: Dictionary, value: int) -> String:
 	var index: = the_enum.values().find(value)
 	var string: String = the_enum.keys()[index]
 	return string
 
-
+func force_rerun():
+	_ready()
 func _ready() -> void:
 	if Globals.gdsdk_enabled:
-		if core != null:
+		print("Discord sdk is enabled")
+		if core == null:
+			print("Creating core")
 			core = Discord.Core.new()
 			var result: int = core.create(
-				729429191489093702,
+				978303743349129336,
 				Discord.CreateFlags.NO_REQUIRE_DISCORD
 			)
 			print("Created Discord Core: ", enum_to_string(Discord.Result, result))
@@ -41,7 +44,7 @@ func _ready() -> void:
 					)
 				emit_signal("initialized")
 	else:
-		pass
+		print("Core not created, disabled by globals")
 
 
 func _process(_delta: float) -> void:
@@ -99,6 +102,7 @@ func _get_activity_manager() -> Discord.ActivityManager:
 
 func _on_current_user_update() -> void:
 	if core != null:
+		print("Getting current user...")
 		users.get_current_user()
 		var ret: Array = yield(users, "get_current_user_callback")
 		var result: int = ret[0]
@@ -122,8 +126,8 @@ func _on_current_user_update() -> void:
 		ret = yield(images, "fetch_callback")
 		result = ret[0]
 		handle = ret[1]
-		print(handle)
-		print(result)
+		print("IMAGE RESULT:"+str(handle))
+		print("IMAGE RESULT:"+ str(result))
 		if result != Discord.Result.OK:
 			print(
 				"Failed to fetch image handle: ",
@@ -157,13 +161,13 @@ func _on_current_user_update() -> void:
 			Image.FORMAT_RGBA8,
 			data
 		)
-		image.unlock()
+		image.unlock() 
 		var tex: = ImageTexture.new()
 		tex.create_from_image(image)
-		if av_en == true:
+		if av_en == "True":
 			discord_user_img = tex
 			tex.set_size_override(Vector2(100, 100))
-			emit_signal("user_avatar_loaded")
+		emit_signal("user_avatar_loaded")
 		users.get_current_user_premium_type(
 			self, "get_current_user_premium_type_callback"
 		)

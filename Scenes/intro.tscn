@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/PythonTester.py" type="Script" id=5]
+[ext_resource path="res://assets/Graphics/Masks/circle_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Materials/light_mask.material" type="Material" id=7]
+[ext_resource path="res://assets/Graphics/Masks/circle.png" type="Texture" id=8]
+[ext_resource path="res://assets/Shaders/mask.shader" type="Shader" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro"
@@ -64,10 +68,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 2, 3, 6.2, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2, 3, 6.2, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/5/type = "method"
 tracks/5/path = NodePath(".")
@@ -83,6 +87,10 @@ tracks/5/keys = {
 "method": "change_text_autosave"
 } ]
 }
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 9 )
+shader_param/mask_texture = ExtResource( 8 )
 
 [node name="Updater" type="Control"]
 anchor_right = 1.0
@@ -141,22 +149,30 @@ __meta__ = {
 playback_speed = 0.5
 anims/intro = SubResource( 1 )
 
+[node name="lightmask" type="Light2D" parent="."]
+material = ExtResource( 7 )
+use_parent_material = true
+position = Vector2( 879.2, 456.2 )
+scale = Vector2( -0.00266667, -0.00266667 )
+texture = ExtResource( 6 )
+mode = 1
+
 [node name="Icon" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 2 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -128.0
-margin_top = -128.0
+margin_left = -138.0
+margin_top = -138.0
+margin_right = -10.0
+margin_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
 texture = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bootsplash" type="TextureRect" parent="."]
 visible = false
@@ -174,6 +190,7 @@ __meta__ = {
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 pause_mode = 2
+visible = true
 margin_right = 270.0
 margin_bottom = 149.0
 rect_min_size = Vector2( 150, 52.5 )
@@ -183,9 +200,6 @@ dialog_text = "Would you like to give the game permission to
 acces your discord account by Discord Game SDK?
 
 You can enable/disable this in options later"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PythonTester" type="Node" parent="."]
 script = ExtResource( 5 )

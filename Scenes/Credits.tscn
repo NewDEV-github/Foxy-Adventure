@@ -398,9 +398,6 @@ ZuBsPaCe
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -420,7 +417,7 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 510.0
-margin_bottom = 4060.0
+margin_bottom = 4020.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
@@ -438,7 +435,8 @@ NewTheFox
 [b]Music[/b]
 · [rainbow freq=0.1 sat=2 val=20]GeKaGD[/rainbow] ·
 
-[b]Game Desing[/b]
+[b]Game Desing & Testing[/b]
+Switchy Juice
 NewTheFox
 [rainbow freq=0.1 sat=1 val=20][matrix span=10 dirty=2 clean=2]DoS[/matrix][/rainbow]
 
@@ -627,7 +625,7 @@ ZuBsPaCe
 LeD
 · [rainbow freq=0.1 sat=2 val=20]GeKaGD[/rainbow] ·
 LennyPhoenix
-NewTheFox"
+Switchy Juice"
 text = "
 New DEV Development Team
 
@@ -641,7 +639,8 @@ NewTheFox
 Music
 · GeKaGD ·
 
-Game Desing
+Game Desing & Testing
+Switchy Juice
 NewTheFox
 DoS
 
@@ -830,7 +829,7 @@ Special Thanks
 LeD
 · GeKaGD ·
 LennyPhoenix
-NewTheFox"
+Switchy Juice"
 fit_content_height = true
 scroll_active = false
 scroll_following = true
@@ -842,7 +841,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 4060.0
+margin_bottom = 4020.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
