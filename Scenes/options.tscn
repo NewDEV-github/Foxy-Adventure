@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/options.gd" type="Script" id=1]
 [ext_resource path="res://tag_processor/TagProcessingLabel.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://addons/github_issues_bugtracker/IssuePrompt.gd" type="Script" id=4]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
 [ext_resource path="res://addons/github_issues_bugtracker/issues_api.py" type="Script" id=6]
+
+[sub_resource type="StyleBoxLine" id=1]
+color = Color( 1, 1, 1, 1 )
 
 [node name="Control" type="Panel"]
 anchor_right = 1.0
@@ -22,7 +25,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Graphics" type="Tabs" parent="tabs"]
+[node name="General" type="Tabs" parent="tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -32,24 +35,24 @@ margin_bottom = -5.0
 tab_close_display_policy = 1
 drag_to_rearrange_enabled = true
 
-[node name="Graphics" type="Label" parent="tabs/Graphics"]
+[node name="Graphics" type="Label" parent="tabs/General"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -116.0
 margin_right = 116.0
 margin_bottom = 21.0
-text = "Graphics"
+text = "General"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="HBoxContainer" parent="tabs/Graphics"]
+[node name="Options" type="HBoxContainer" parent="tabs/General"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="side_left" type="VBoxContainer" parent="tabs/Graphics/Options"]
+[node name="side_left" type="VBoxContainer" parent="tabs/General/Options"]
 margin_right = 505.0
 margin_bottom = 527.0
 rect_clip_content = true
@@ -57,20 +60,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VSync" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
+[node name="VSync" type="CheckButton" parent="tabs/General/Options/side_left"]
 margin_top = 167.0
 margin_right = 505.0
 margin_bottom = 207.0
 text = "VSync"
 
-[node name="fps" type="HBoxContainer" parent="tabs/Graphics/Options/side_left"]
+[node name="fps" type="HBoxContainer" parent="tabs/General/Options/side_left"]
 margin_top = 211.0
 margin_right = 505.0
 margin_bottom = 251.0
 rect_min_size = Vector2( 0, 40 )
 alignment = 2
 
-[node name="Label" type="Label" parent="tabs/Graphics/Options/side_left/fps"]
+[node name="Label" type="Label" parent="tabs/General/Options/side_left/fps"]
 margin_top = 10.0
 margin_right = 437.0
 margin_bottom = 29.0
@@ -78,13 +81,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Target FPS"
 
-[node name="target" type="SpinBox" parent="tabs/Graphics/Options/side_left/fps"]
+[node name="target" type="SpinBox" parent="tabs/General/Options/side_left/fps"]
 margin_left = 441.0
 margin_right = 505.0
 margin_bottom = 40.0
 max_value = 1e+14
 
-[node name="Label" type="Label" parent="tabs/Graphics/Options/side_left"]
+[node name="Label" type="Label" parent="tabs/General/Options/side_left"]
 margin_top = 255.0
 margin_right = 505.0
 margin_bottom = 316.0
@@ -92,13 +95,13 @@ text = "
 WARNING! You might need to restart Foxy Adventure to make option below working as You want"
 autowrap = true
 
-[node name="DiscordAvatar" type="CheckButton" parent="tabs/Graphics/Options/side_left"]
+[node name="DiscordAvatar" type="CheckButton" parent="tabs/General/Options/side_left"]
 margin_top = 320.0
 margin_right = 505.0
 margin_bottom = 360.0
 text = "Use Your current Discord avatar as loading icon"
 
-[node name="side_right" type="VBoxContainer" parent="tabs/Graphics/Options"]
+[node name="side_right" type="VBoxContainer" parent="tabs/General/Options"]
 margin_left = 509.0
 margin_right = 1014.0
 margin_bottom = 527.0
@@ -107,19 +110,37 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="show_timer" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
-margin_top = 221.0
+[node name="show_timer" type="CheckButton" parent="tabs/General/Options/side_right"]
+margin_top = 184.0
 margin_right = 505.0
-margin_bottom = 261.0
+margin_bottom = 224.0
 pressed = true
 text = "Show Timer"
 
-[node name="show_fps" type="CheckButton" parent="tabs/Graphics/Options/side_right"]
-margin_top = 265.0
+[node name="show_fps" type="CheckButton" parent="tabs/General/Options/side_right"]
+margin_top = 228.0
 margin_right = 505.0
-margin_bottom = 305.0
+margin_bottom = 268.0
 pressed = true
 text = "Show FPS"
+
+[node name="HSeparator" type="HSeparator" parent="tabs/General/Options/side_right"]
+margin_top = 272.0
+margin_right = 505.0
+margin_bottom = 276.0
+custom_styles/separator = SubResource( 1 )
+
+[node name="Label" type="Label" parent="tabs/General/Options/side_right"]
+margin_top = 280.0
+margin_right = 505.0
+margin_bottom = 320.0
+text = "Set value of delay in loading (only on loading screens). 0 means delay is disabled"
+autowrap = true
+
+[node name="LoadingDelay" type="SpinBox" parent="tabs/General/Options/side_right"]
+margin_top = 324.0
+margin_right = 505.0
+margin_bottom = 343.0
 
 [node name="Audio" type="Tabs" parent="tabs"]
 visible = false
@@ -468,11 +489,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="toggled" from="tabs/Graphics/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
-[connection signal="value_changed" from="tabs/Graphics/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
-[connection signal="toggled" from="tabs/Graphics/Options/side_left/DiscordAvatar" to="." method="_on_DiscordAvatar_toggled"]
-[connection signal="toggled" from="tabs/Graphics/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]
-[connection signal="toggled" from="tabs/Graphics/Options/side_right/show_fps" to="." method="_on_show_fps_toggled"]
+[connection signal="toggled" from="tabs/General/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
+[connection signal="value_changed" from="tabs/General/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
+[connection signal="toggled" from="tabs/General/Options/side_left/DiscordAvatar" to="." method="_on_DiscordAvatar_toggled"]
+[connection signal="toggled" from="tabs/General/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]
+[connection signal="toggled" from="tabs/General/Options/side_right/show_fps" to="." method="_on_show_fps_toggled"]
+[connection signal="value_changed" from="tabs/General/Options/side_right/LoadingDelay" to="." method="_on_LoadingDelay_value_changed"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Master/Master_slider" to="." method="_on_Master_slider_value_changed"]
 [connection signal="toggled" from="tabs/Audio/Options/Audio/Master/Master_on" to="." method="_on_Master_on_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Music/Music_slider" to="." method="_on_Music_slider_value_changed"]

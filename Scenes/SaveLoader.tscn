@@ -49,11 +49,12 @@ margin_bottom = 32.0
 text = "Load Save"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+visible = true
 margin_right = 406.0
 margin_bottom = 186.0
 rect_min_size = Vector2( 150, 52.5 )
 window_title = "Proszę potwierdzić..."
-dialog_text = "KEY_TEXT_DELETE_SAVE_CONFIRM"
+dialog_text = "Do You want to delete this save?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
