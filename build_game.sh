@@ -81,6 +81,8 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/addons/opus/bin/osx
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
+  sudo rm FoxyAdventure/autoupdate/autoupdate-windows-x64.exe
+  sudo rm -r FoxyAdventure/autoupdate/autoupdate-osx.app
   find . -name "*.dll" | xargs sudo rm
   find . -name "*.dylib" | xargs sudo rm
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/linux_x11_64_release $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/Foxy-Adventure/FoxyAdventure
@@ -106,6 +108,8 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
+  sudo rm FoxyAdventure/autoupdate/autoupdate-windows-x64.exe
+  sudo rm FoxyAdventure/autoupdate/autoupdate-linux-x64.run
   find . -name "*.so" | xargs sudo rm
   find . -name "*.dll" | xargs sudo rm
   sudo rm -r Foxy-Adventure/addons/opus/bin/x11
@@ -135,6 +139,8 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/webrtc/*.dylib
   sudo rm -r Foxy-Adventure/webrtc/*.so
+  sudo rm FoxyAdventure/autoupdate/autoupdate-linux-x64.run
+  sudo rm -r FoxyAdventure/autoupdate/autoupdate-osx.app
   find . -name "*.so" | xargs sudo rm
   find . -name "*.dylib" | xargs sudo rm
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/windows_64_release.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/Foxy-Adventure/FoxyAdventure.exe
