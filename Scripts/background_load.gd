@@ -4,7 +4,7 @@ var thread = null
 var play_start_transition = false
 onready var progress = $progress
 signal loaded
-var SIMULATED_DELAY_SEC = 1.0
+var SIMULATED_DELAY_SEC = 0.1
 func _ready():
 	hide()
 var hints = [
@@ -24,6 +24,8 @@ var hints = [
 	"OK!",
 	"Better don't jump into toxins…",
 ]
+func set_loading_delay(value:float):
+	SIMULATED_DELAY_SEC = value
 func add_hint(text:String):
 	hints.append(text)
 func _thread_load(path):

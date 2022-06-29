@@ -19,7 +19,7 @@ func _ready():
 	$tabs.set_tab_title(0, "Graphics")
 	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
-	$"tabs/Graphics/Options/side_left/fps/target".value = Engine.target_fps
+	$"tabs/General/Options/side_left/fps/target".value = Engine.target_fps
 	
 	load_settings()
 	if str(OS.get_name()) == 'Android':
@@ -45,8 +45,9 @@ func _process(_delta):
 	save_file.set_value('Audio', 'music_bus_enabled', str($"tabs/Audio/Options/Audio/Music/Music_on".pressed))
 	save_file.set_value('Audio', 'sfx_bus_volume', str($"tabs/Audio/Options/Audio/SFX/SFX_slider".value))
 	save_file.set_value('Audio', 'sfx_bus_enabled', str($"tabs/Audio/Options/Audio/SFX/SFX_on".pressed))
-	save_file.set_value('Graphics', 'vsync_enabled', str($"tabs/Graphics/Options/side_left/VSync".pressed))
-	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/Graphics/Options/side_left/VSync".pressed))
+	save_file.set_value('Graphics', 'vsync_enabled', str($"tabs/General/Options/side_left/VSync".pressed))
+	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/General/Options/side_left/VSync".pressed))
+	save_file.set_value('Misc', 'simulated_loading_delay', str($tabs/General/Options/side_right/LoadingDelay.value))
 	save_file.save('user://settings.cfg')
 	hide()
 	set_process(false)
@@ -66,19 +67,22 @@ func load_settings():
 		if save_file.has_section_key('Audio', 'sfx_bus_enabled'):
 			$"tabs/Audio/Options/Audio/SFX/SFX_on".set_pressed(bool(str(save_file.get_value('Audio', 'sfx_bus_enabled', false))))
 #		if save_file.has_section_key('Graphics', 'fullscreen'):
-#			$"tabs/Graphics/Options/side_left/Fullscreen".pressed = bool(str(save_file.get_value('Graphics', 'fullscreen', false)))
+#			$"tabs/General/Options/side_left/Fullscreen".pressed = bool(str(save_file.get_value('Graphics', 'fullscreen', false)))
 		if save_file.has_section_key('Graphics', 'vsync_enabled'):
-			$"tabs/Graphics/Options/side_left/VSync".pressed = bool(str(save_file.get_value('Graphics', 'vsync_enabled', true)))
+			$"tabs/General/Options/side_left/VSync".pressed = bool(str(save_file.get_value('Graphics', 'vsync_enabled', true)))
 #		if save_file.has_section_key('Graphics', 'window_x_resolution'):
-#			$"tabs/Graphics/Options/side_left/custom_resolution/x".value = float(str(save_file.get_value('Graphics', 'window_x_resolution', 1024)))
+#			$"tabs/General/Options/side_left/custom_resolution/x".value = float(str(save_file.get_value('Graphics', 'window_x_resolution', 1024)))
 #		if save_file.has_section_key('Graphics', 'window_y_resolution'):
-#			$"tabs/Graphics/Options/side_left/custom_resolution/y".value = float(str(save_file.get_value('Graphics', 'window_y_resolution', 600)))
+#			$"tabs/General/Options/side_left/custom_resolution/y".value = float(str(save_file.get_value('Graphics', 'window_y_resolution', 600)))
 		if save_file.has_section_key('Game', 'target_fps'):
-			$"tabs/Graphics/Options/side_left/fps/target".value = float(str(save_file.get_value('Game', 'target_fps', 60)))
+			$"tabs/General/Options/side_left/fps/target".value = float(str(save_file.get_value('Game', 'target_fps', 60)))
 		if save_file.has_section_key('Game', 'fps_visible'):
-			$tabs/Graphics/Options/side_right/show_fps.pressed = bool(save_file.get_value('Game', 'fps_visible', true))
+			$tabs/General/Options/side_right/show_fps.pressed = bool(save_file.get_value('Game', 'fps_visible', true))
+		if save_file.has_section_key('Misc', 'simulated_loading_delay'):
+			$tabs/General/Options/side_right/LoadingDelay.value = float(save_file.get_value('Misc', 'simulated_loading_delay', 0.0))
+			BackgroundLoad.set_loading_delay(float(save_file.get_value('Misc', 'simulated_loading_delay', 0.0)))
 		if save_file.has_section_key('Game', 'timer_visible'):
-			$tabs/Graphics/Options/side_right/show_timer.pressed = bool(save_file.get_value('Game', 'timer_visible', true))
+			$tabs/General/Options/side_right/show_timer.pressed = bool(save_file.get_value('Game', 'timer_visible', true))
 #		if save_file.has_section_key('Game', 'minimap_enabled'):
 #			$tabs/Rozgrywka/box/minimapenabled/minimap.set_pressed(bool(str(save_file.get_value('Game', 'minimap_enabled', true))))
 #		if save_file.has_section_key('Game', 'nsfw_enabled'):
@@ -146,63 +150,12 @@ func _on_VSync_toggled(button_pressed):
 
 func _on_x_value_changed(value):
 	Globals.window_x_resolution = value
-	$"tabs/Graphics/Options/side_left/custom_resolution/SpinBox".set_text(str(Globals.window_x_resolution) + 'x' + str(Globals.window_y_resolution))
+	$"tabs/General/Options/side_left/custom_resolution/SpinBox".set_text(str(Globals.window_x_resolution) + 'x' + str(Globals.window_y_resolution))
 
 
 func _on_y_value_changed(value):
 	Globals.window_y_resolution = value
-	$"tabs/Graphics/Options/side_left/custom_resolution/SpinBox".set_text(str(Globals.window_x_resolution) + 'x' + str(Globals.window_y_resolution))
-
-func _on_SpinBox_item_selected(id):
-	if id == 0:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 640
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 480
-	elif id == 1:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 800
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 480
-	elif id == 2:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 800
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 600
-	elif id == 3:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1024
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 600
-	elif id == 4:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1280
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 720
-	elif id == 5:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1280
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 800
-	elif id == 6:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1366
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 768
-	elif id == 7:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1440
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 900
-	elif id == 8:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1920
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 1080
-	elif id == 9:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 2048
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 1152
-	elif id == 10:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 2048
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 1024
-	elif id == 11:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 2560
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 1600
-	elif id == 12:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 2560
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 2048
-	elif id == 13:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 3072
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 1728
-	elif id == 14:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 4096
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 2304
-	elif id == 15:
-		$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 8192
-		$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 4608
-	
+	$"tabs/General/Options/side_left/custom_resolution/SpinBox".set_text(str(Globals.window_x_resolution) + 'x' + str(Globals.window_y_resolution))
 
 
 func _on_maxfps_value_changed(value):
@@ -210,17 +163,17 @@ func _on_maxfps_value_changed(value):
 
 
 func default_settings():
-	$"tabs/Graphics/Options/side_left/custom_resolution/x".value = 1024
-	$"tabs/Graphics/Options/side_left/custom_resolution/y".value = 600
+	$"tabs/General/Options/side_left/custom_resolution/x".value = 1024
+	$"tabs/General/Options/side_left/custom_resolution/y".value = 600
 	$"tabs/Audio/Options/Audio/Master/Master_slider".value = 0
 	$"tabs/Audio/Options/Audio/Music/Music_slider".value = 0
 	$"tabs/Audio/Options/Audio/SFX/SFX_slider".value = 0
-	$"tabs/Graphics/Options/side_left/VSync".pressed = true
+	$"tabs/General/Options/side_left/VSync".pressed = true
 	$tabs/Rozgrywka/box/game_clock/gcbutton.select(0)
-	$"tabs/Graphics/Options/side_left/lang/lang".select(0)
+	$"tabs/General/Options/side_left/lang/lang".select(0)
 	$tabs/Sterowanie/controls_ui._ready()
-	# $"tabs/Graphics/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
-	# $"tabs/Graphics/Options/side_left/SmoothedCamera".pressed = true
+	# $"tabs/General/Options/side_left/SmoothedCameraSpeed/SCSpeed".value = 0
+	# $"tabs/General/Options/side_left/SmoothedCamera".pressed = true
 func _on_RESETSETTINGS_pressed():
 	var dir = Directory.new()
 	dir.open('user://')
@@ -281,3 +234,7 @@ func _on_BugReport_pressed():
 
 func _on_DiscordAvatar_toggled(button_pressed):
 	DiscordSDK.av_en = str(button_pressed)
+
+
+func _on_LoadingDelay_value_changed(value: float) -> void:
+	BackgroundLoad.set_loading_delay(value)

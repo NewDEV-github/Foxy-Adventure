@@ -152,8 +152,8 @@ anims/intro = SubResource( 1 )
 [node name="lightmask" type="Light2D" parent="."]
 material = ExtResource( 7 )
 use_parent_material = true
-position = Vector2( 879.2, 456.2 )
-scale = Vector2( -0.00266667, -0.00266667 )
+position = Vector2( 878.899, 456.2 )
+scale = Vector2( 1.18519e-05, -0.00266667 )
 texture = ExtResource( 6 )
 mode = 1
 

@@ -1,4 +1,4 @@
-#include "sdk.h"
+#include "ProtogenTechSDK.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
     godot::Godot::gdnative_init(o);
