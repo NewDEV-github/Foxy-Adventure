@@ -8,6 +8,7 @@ echo "$GODOT_VERSION"
 echo "For user: $(whoami)"
 echo "Installing required packages..."
 BASE_PATH=${8}
+BRANCH=${10}
 sudo apt-get install unzip
 sudo apt-get install osslsigncode
 echo "Generating links and other required data..."
@@ -60,7 +61,7 @@ fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/
-  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git -b $BRANCH
   sudo rm -r Foxy-Adventure/.git
   sudo rm -r Foxy-Adventure/.vscode
   sudo rm -r Foxy-Adventure/cpp
@@ -77,8 +78,11 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/gitapi/win64
   sudo rm -r Foxy-Adventure/bin/gdsdk/osx-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
+  sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/addons/opus/bin/osx
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
+  sudo rm FoxyAdventure/autoupdate/autoupdate-windows-x64.exe
+  sudo rm FoxyAdventure/autoupdate/autoupdate-osx.app
   find . -name "*.dll" | xargs sudo rm
   find . -name "*.dylib" | xargs sudo rm
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/linux_x11_64_release $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/Foxy-Adventure/FoxyAdventure
@@ -86,7 +90,7 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
 
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/osx-standard/
-  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git -b $BRANCH
   sudo rm -r Foxy-Adventure/.git
   sudo rm -r Foxy-Adventure/.vscode
   sudo rm -r Foxy-Adventure/cpp
@@ -101,25 +105,29 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/sdk/lib/win
   sudo rm -r Foxy-Adventure/bin/gitapi/x11
   sudo rm -r Foxy-Adventure/bin/gitapi/win64
+  sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/bin/gdsdk/windows-64
+  sudo rm FoxyAdventure/autoupdate/autoupdate-windows-x64.exe
+  sudo rm FoxyAdventure/autoupdate/autoupdate-linux-x64.run
   find . -name "*.so" | xargs sudo rm
   find . -name "*.dll" | xargs sudo rm
   sudo rm -r Foxy-Adventure/addons/opus/bin/x11
   sudo rm -r Foxy-Adventure/addons/opus/bin/win64
   sudo unzip /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx.zip
-  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/Foxy-Adventure/FoxyAdventure.app
+  sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/osx_template.app $BASE_PATH/builds/$GODOT_VERSION/osx-standard/Foxy-Adventure/FoxyAdventure.app
   
   
   
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   cd $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/
-  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git
+  sudo git clone https://github.com/NewDEV-github/Foxy-Adventure.git -b $BRANCH
   sudo rm -r Foxy-Adventure/.git
   sudo rm -r Foxy-Adventure/.vscode
   sudo rm -r Foxy-Adventure/cpp
   sudo rm -r Foxy-Adventure/docs
   sudo rm -r Foxy-Adventure/addons/bin/x11
+  sudo rm -r Foxy-Adventure/install_builder
   sudo rm -r Foxy-Adventure/addons/bin/osx
   sudo rm -r Foxy-Adventure/addons/foreigner/mac
   sudo rm -r Foxy-Adventure/addons/foreigner/linux
@@ -131,6 +139,8 @@ if [[ "$EXPORT_MODE" == "source" ]]; then
   sudo rm -r Foxy-Adventure/bin/gdsdk/linux-64
   sudo rm -r Foxy-Adventure/webrtc/*.dylib
   sudo rm -r Foxy-Adventure/webrtc/*.so
+  sudo rm FoxyAdventure/autoupdate/autoupdate-linux-x64.run
+  sudo rm FoxyAdventure/autoupdate/autoupdate-osx.app
   find . -name "*.so" | xargs sudo rm
   find . -name "*.dylib" | xargs sudo rm
   sudo cp /home/$(whoami)/.local/share/godot/templates/$GODOT_VERSION/windows_64_release.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/Foxy-Adventure/FoxyAdventure.exe
