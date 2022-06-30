@@ -131,6 +131,7 @@ margin_bottom = 276.0
 custom_styles/separator = SubResource( 1 )
 
 [node name="Label" type="Label" parent="tabs/General/Options/side_right"]
+margin_left = 5.0
 margin_top = 280.0
 margin_right = 505.0
 margin_bottom = 320.0
@@ -138,6 +139,7 @@ text = "Set value of delay in loading (only on loading screens). 0 means delay i
 autowrap = true
 
 [node name="LoadingDelay" type="SpinBox" parent="tabs/General/Options/side_right"]
+margin_left = 5.0
 margin_top = 324.0
 margin_right = 505.0
 margin_bottom = 343.0
