@@ -13,9 +13,9 @@ var mod_names = {}
 #var dlc_web_avaliable = Globals.get_dlcs_avaliable()
 func _ready():
 	if DiscordSDK.av_en == "True": #option is loaded at game start, so there we only need to press the button according to loaded option state
-		$tabs/Graphics/Options/side_left/DiscordAvatar.pressed = true
+		$tabs/General/Options/side_left/DiscordAvatar.pressed = true
 	else:
-		$tabs/Graphics/Options/side_left/DiscordAvatar.pressed = false
+		$tabs/General/Options/side_left/DiscordAvatar.pressed = false
 	$tabs.set_tab_title(0, "Graphics")
 	$tabs.set_tab_title(1, "Audio")
 	set_process(false)
@@ -48,6 +48,7 @@ func _process(_delta):
 	save_file.set_value('Graphics', 'vsync_enabled', str($"tabs/General/Options/side_left/VSync".pressed))
 	save_file.set_value('Graphics', 'vsync_via_compositor', str($"tabs/General/Options/side_left/VSync".pressed))
 	save_file.set_value('Misc', 'simulated_loading_delay', str($tabs/General/Options/side_right/LoadingDelay.value))
+	save_file.set_value('Misc', 'camera_smoothing_speed', str($tabs/General/Options/side_right/LoadingDelay2.value))
 	save_file.save('user://settings.cfg')
 	hide()
 	set_process(false)
@@ -78,9 +79,12 @@ func load_settings():
 			$"tabs/General/Options/side_left/fps/target".value = float(str(save_file.get_value('Game', 'target_fps', 60)))
 		if save_file.has_section_key('Game', 'fps_visible'):
 			$tabs/General/Options/side_right/show_fps.pressed = bool(save_file.get_value('Game', 'fps_visible', true))
+		if save_file.has_section_key('Misc', 'camera_smoothing_speed'):
+			$tabs/General/Options/side_right/LoadingDelay2.value = float(save_file.get_value('Misc', 'camera_smoothing_speed','0'))
+			Globals.set_character_camera_smoothing(float(save_file.get_value('Misc', 'camera_smoothing_speed','0')))
 		if save_file.has_section_key('Misc', 'simulated_loading_delay'):
 			$tabs/General/Options/side_right/LoadingDelay.value = float(save_file.get_value('Misc', 'simulated_loading_delay', 0.0))
-			BackgroundLoad.set_loading_delay(float(save_file.get_value('Misc', 'simulated_loading_delay', 0.0)))
+			BackgroundLoad.get_node("bgload").set_loading_delay(float(save_file.get_value('Misc', 'simulated_loading_delay', 0.0)))
 		if save_file.has_section_key('Game', 'timer_visible'):
 			$tabs/General/Options/side_right/show_timer.pressed = bool(save_file.get_value('Game', 'timer_visible', true))
 #		if save_file.has_section_key('Game', 'minimap_enabled'):
@@ -237,4 +241,8 @@ func _on_DiscordAvatar_toggled(button_pressed):
 
 
 func _on_LoadingDelay_value_changed(value: float) -> void:
-	BackgroundLoad.set_loading_delay(value)
+	BackgroundLoad.get_node("bgload").set_loading_delay(value)
+
+
+func _on_LoadingDelay2_value_changed(value: float) -> void:
+	Globals.set_character_camera_smoothing(value)

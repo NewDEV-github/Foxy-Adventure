@@ -92,9 +92,6 @@ anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="ColorRect" parent="bgload"]
 visible = false

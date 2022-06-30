@@ -5,6 +5,7 @@ signal scoredatarecived
 var fallen_into_toxins = 0
 signal achivement_done(achivement)
 var user_data = {}
+var camera_smoothing = 0
 var supported_sdk_versions = [
 	110,
 	111,
@@ -508,7 +509,7 @@ func load_dlcs():
 
 
 func set_character_camera_smoothing(value:float):
-	pass
+	camera_smoothing = value
 
 
 func dir_contents(path, recursive = false):

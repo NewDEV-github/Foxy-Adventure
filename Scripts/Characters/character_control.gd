@@ -19,6 +19,7 @@ var can_jump = true
 var speed = 0.5
 var scene
 var controls_blocked = false
+var camera_smoothing = Globals.camera_smoothing
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
 	DiscordSDK.run_rpc(false, true, character_name)
@@ -136,7 +137,13 @@ func _physics_process(delta):
 func _on_Tails_tree_exiting():
 	DiscordSDK.kill_rpc()
 
-
+func _process(delta: float) -> void:
+	if Globals.camera_smoothing > 0:
+		$Camera2D.smoothing_enabled = true
+		$Camera2D.smoothing_speed = Globals.camera_smoothing
+	else:
+		$Camera2D.smoothing_enabled = false
+		$Camera2D.smoothing_speed = 0
 func _on_Area2D_body_entered(body):
 	if body.name == "Enemy":
 		body.hit_by_bullet()
