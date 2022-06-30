@@ -18,7 +18,6 @@ var timer = 0
 var last_ten = []
 
 var base_install_path = "user://dlcs/"
-onready var qc = preload("res://Scenes/QuitConfirm.py").new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	Globals.encrypt_cfg("user://decryptedKeys2.cfg", "wefbgfrfgb", "user://lk_data.cfg")
@@ -32,7 +31,6 @@ func activate_license_key_in_game(key:String, product_name:String, install_cfg_p
 	cfg.save_encrypted_pass("user://lk_data.cfg", "wefbgfrfgb")
 	if needs_restart:
 		OS.alert("Foxy Adventure needs restart to load\n%s"%product_name, "Warning")
-#		qc.dlcrestartask(product_name)
 var _validation_result_d
 func validate_license_key(key:String):
 	$VBoxContainer/result.text = "Validation started..."
