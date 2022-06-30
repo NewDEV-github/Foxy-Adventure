@@ -45,13 +45,12 @@ func _add_tag(t_name):
 
 func _remove_tag(t_name):
 	_tags.remove(_tags.find(t_name))
-var issue_sender = preload("res://addons/github_issues_bugtracker/issues_api.py").new()
 func send_issue():
 	var _tags_str = str(_tags)
 	_tags_str.erase(_tags_str.length() -1, 1) #remove ']'
 	_tags_str.erase(0, 1) # remove '['
 	print(_tags_str)
-	issue_sender.make_github_issue($Tiitle.text, $Body.text, _tags_str, _token)
+	$"../".make_github_issue($Tiitle.text, $Body.text, _tags_str, _token)
 func _on_Send_pressed():
 	send_issue()
 	
