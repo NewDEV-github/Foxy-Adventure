@@ -28,18 +28,21 @@ jobs:
           ref: developer
       # Runs a set of commands using the runners shell
       - name: Read version file
+        continue-on-error: true
         id: package
         uses: juliangruber/read-file-action@v1
         with:
           path: ./version.dat
       - name: Build everything
+        continue-on-error: true
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "source" -base_path $GITHUB_WORKSPACE -branch "developer"
+          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "normal" -base_path $GITHUB_WORKSPACE -branch "developer"
           zip -r build-x11-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/x11-64-standard/
           zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/osx-standard/
           zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/win-64-standard/
       - name: Create Release
+        continue-on-error: true
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -50,6 +53,7 @@ jobs:
           draft: false
           prerelease: true
       - name: Upload Release Asset - x11
+        continue-on-error: true
         id: upload-release-asset-x112
         uses: actions/upload-release-asset@v1
         env:
@@ -60,6 +64,7 @@ jobs:
           asset_name: build-x11-64-3.4.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - osx
+        continue-on-error: true
         id: upload-release-asset-osx2
         uses: actions/upload-release-asset@v1
         env:
@@ -70,6 +75,7 @@ jobs:
           asset_name: build-osx-3.4.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win
+        continue-on-error: true
         id: upload-release-asset-win2
         uses: actions/upload-release-asset@v1
         env:
@@ -79,3 +85,24 @@ jobs:
           asset_path: build-win-64-${{ matrix.godot-version }}.zip
           asset_name: build-win-64-3.4.zip
           asset_content_type: application/zip
+      - name: Upload a Build Artifact x11
+        continue-on-error: true
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          # Artifact name
+          name: Linux-x64
+          path: builds/${{ matrix.godot-version }}.stable/x11-64-standard/
+      - name: Upload a Build Artifact osx
+        continue-on-error: true
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          # Artifact name
+          name: OSX
+          path: builds/${{ matrix.godot-version }}.stable/osx-standard/
+      - name: Upload a Build Artifact win
+        continue-on-error: true
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          # Artifact name
+          name: Win-x64
+          path: builds/${{ matrix.godot-version }}.stable/win-64-standard/

@@ -507,7 +507,8 @@ func load_dlcs():
 
 
 
-
+func set_character_camera_smoothing(value:float):
+	pass
 
 
 func dir_contents(path, recursive = false):

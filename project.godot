@@ -321,7 +321,7 @@ config/python="python"
 
 [gdnative]
 
-singletons=[ "res://addons/pythonscript.gdnlib", "res://addons/videodecoder.gdnlib", "res://webrtc/webrtc.tres" ]
+singletons=[ "res://addons/videodecoder.gdnlib", "res://webrtc/webrtc.tres" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

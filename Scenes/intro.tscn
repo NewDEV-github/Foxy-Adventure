@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/ServerAPI/updater.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/RobotoRegular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Graphics/icon.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/PythonTester.py" type="Script" id=5]
 [ext_resource path="res://assets/Graphics/Masks/circle_2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Materials/light_mask.material" type="Material" id=7]
 [ext_resource path="res://assets/Graphics/Masks/circle.png" type="Texture" id=8]
@@ -200,9 +199,6 @@ dialog_text = "Would you like to give the game permission to
 acces your discord account by Discord Game SDK?
 
 You can enable/disable this in options later"
-
-[node name="PythonTester" type="Node" parent="."]
-script = ExtResource( 5 )
 
 [connection signal="request_completed" from="RequiredAssets" to="." method="_on_pck_request_completed"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
