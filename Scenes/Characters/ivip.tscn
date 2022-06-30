@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scenes/Characters/characters.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Characters/character_control.gd" type="Script" id=1]
 [ext_resource path="res://assets/Audio/SFX/sound_jump.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Characters/ivip.png" type="Texture" id=3]
 

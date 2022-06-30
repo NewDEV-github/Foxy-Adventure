@@ -111,38 +111,55 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="show_timer" type="CheckButton" parent="tabs/General/Options/side_right"]
-margin_top = 184.0
+margin_top = 157.0
 margin_right = 505.0
-margin_bottom = 224.0
+margin_bottom = 197.0
 pressed = true
 text = "Show Timer"
 
 [node name="show_fps" type="CheckButton" parent="tabs/General/Options/side_right"]
-margin_top = 228.0
+margin_top = 201.0
 margin_right = 505.0
-margin_bottom = 268.0
+margin_bottom = 241.0
 pressed = true
 text = "Show FPS"
 
 [node name="HSeparator" type="HSeparator" parent="tabs/General/Options/side_right"]
-margin_top = 272.0
+margin_top = 245.0
 margin_right = 505.0
-margin_bottom = 276.0
+margin_bottom = 249.0
 custom_styles/separator = SubResource( 1 )
 
 [node name="Label" type="Label" parent="tabs/General/Options/side_right"]
-margin_left = 5.0
-margin_top = 280.0
+margin_top = 253.0
 margin_right = 505.0
-margin_bottom = 320.0
+margin_bottom = 293.0
 text = "Set value of delay in loading (only on loading screens). 0 means delay is disabled"
 autowrap = true
 
 [node name="LoadingDelay" type="SpinBox" parent="tabs/General/Options/side_right"]
-margin_left = 5.0
-margin_top = 324.0
+margin_top = 297.0
 margin_right = 505.0
-margin_bottom = 343.0
+margin_bottom = 316.0
+step = 0.001
+
+[node name="HSeparator2" type="HSeparator" parent="tabs/General/Options/side_right"]
+margin_top = 320.0
+margin_right = 505.0
+margin_bottom = 324.0
+custom_styles/separator = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="tabs/General/Options/side_right"]
+margin_top = 328.0
+margin_right = 505.0
+margin_bottom = 347.0
+text = "Set value of camera smoothing. 0 means smoothing is disabled"
+autowrap = true
+
+[node name="LoadingDelay2" type="SpinBox" parent="tabs/General/Options/side_right"]
+margin_top = 351.0
+margin_right = 505.0
+margin_bottom = 370.0
 step = 0.001
 
 [node name="Audio" type="Tabs" parent="tabs"]
@@ -498,6 +515,7 @@ __meta__ = {
 [connection signal="toggled" from="tabs/General/Options/side_right/show_timer" to="." method="_on_show_timer_toggled"]
 [connection signal="toggled" from="tabs/General/Options/side_right/show_fps" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="tabs/General/Options/side_right/LoadingDelay" to="." method="_on_LoadingDelay_value_changed"]
+[connection signal="value_changed" from="tabs/General/Options/side_right/LoadingDelay2" to="." method="_on_LoadingDelay2_value_changed"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Master/Master_slider" to="." method="_on_Master_slider_value_changed"]
 [connection signal="toggled" from="tabs/Audio/Options/Audio/Master/Master_on" to="." method="_on_Master_on_toggled"]
 [connection signal="value_changed" from="tabs/Audio/Options/Audio/Music/Music_slider" to="." method="_on_Music_slider_value_changed"]
