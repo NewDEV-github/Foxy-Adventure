@@ -57,11 +57,11 @@ if [[ "$EXPORT_MODE" == "normal" ]]; then
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   sudo cp -r $BASE_PATH/autoupdate/autoupdate-osx.app/* $BASE_PATH/builds/$GODOT_VERSION/osx-standard/autoupdate/autoupdate-osx.app
-  sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/autoupdate/update.ini
+  sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/osx-standard/autoupdate/update.ini
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   sudo cp $BASE_PATH/autoupdate/autoupdate-windows-x64.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/autoupdate/autoupdate-windows-x64.exe
-  sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/autoupdate/update.ini
+  sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/autoupdate/update.ini
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
 fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
