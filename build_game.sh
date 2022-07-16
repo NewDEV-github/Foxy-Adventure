@@ -53,10 +53,18 @@ sudo mkdir -p builds/$GODOT_VERSION/{x11-64-standard,win-64-standard,osx-standar
 if [[ "$EXPORT_MODE" == "normal" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.ico $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/icon.ico
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.png $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/icon.png
+
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.ico $BASE_PATH/builds/$GODOT_VERSION/osx-standard/icon.ico
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.png $BASE_PATH/builds/$GODOT_VERSION/osx-standard/icon.png
+    
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.ico $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/icon.ico
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.png $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/icon.png
 fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
