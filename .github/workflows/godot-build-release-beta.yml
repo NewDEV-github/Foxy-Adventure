@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        godot-version: [3.4]
+        godot-version: [3.5]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -37,10 +37,10 @@ jobs:
         continue-on-error: true
         run: |
           sudo chmod +x ./build_game.sh
-          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "stable" -build_mode "normal" -base_path $GITHUB_WORKSPACE -branch "developer"
-          zip -r build-x11-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/x11-64-standard/
-          zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/osx-standard/
-          zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.stable/win-64-standard/
+          ./build_game.sh -godot_version_number ${{ matrix.godot-version }} -godot_version_status "rc6" -build_mode "normal" -base_path $GITHUB_WORKSPACE -branch "developer"
+          zip -r build-x11-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.rc6/x11-64-standard/
+          zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.rc6/osx-standard/
+          zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.rc6/win-64-standard/
       - name: Create Release
         continue-on-error: true
         id: create_release
@@ -61,7 +61,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-x11-64-${{ matrix.godot-version }}.zip
-          asset_name: build-x11-64-3.4.zip
+          asset_name: build-x11-64-3.5.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - osx
         continue-on-error: true
@@ -72,7 +72,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-osx-${{ matrix.godot-version }}.zip
-          asset_name: build-osx-3.4.zip
+          asset_name: build-osx-3.5.zip
           asset_content_type: application/zip
       - name: Upload Release Asset - win
         continue-on-error: true
@@ -83,7 +83,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: build-win-64-${{ matrix.godot-version }}.zip
-          asset_name: build-win-64-3.4.zip
+          asset_name: build-win-64-3.5.zip
           asset_content_type: application/zip
       - name: Upload a Build Artifact x11
         continue-on-error: true
