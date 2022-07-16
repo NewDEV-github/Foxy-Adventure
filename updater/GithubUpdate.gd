@@ -36,7 +36,19 @@ func compare_versions(version:String):
 		return false
 
 func _on_Download_pressed():
-	var url = "https://newdev.web.app/games/foxy-adventure/"
+	var _platform_names = {
+		"Windows": "windows-x64",
+		"OSX": "osx",
+		"X11": "linux-x64"
+	}
+	var _platform_suffixes = {
+		"Windows": 'exe',
+		'X11': 'run',
+		'OSX': 'app'
+	}
+	var platform = _platform_names[OS.get_name()]
+	var platform_suffix = _platform_suffixes[OS.get_name()]
+	var url = Globals.install_base_path + 'autoupdate/autoupdate-%s.%s' % [platform, platform_suffix]
 	OS.shell_open(url)
 
 

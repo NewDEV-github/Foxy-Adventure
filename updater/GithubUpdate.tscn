@@ -62,7 +62,7 @@ anchor_bottom = 1.0
 margin_left = -125.5
 margin_top = -27.0
 margin_right = 125.5
-text = "Go to the download page"
+text = "Start upgrade process"
 __meta__ = {
 "_edit_use_anchors_": false
 }
