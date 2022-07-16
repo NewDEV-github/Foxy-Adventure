@@ -416,8 +416,9 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
+margin_top = 600.0
 margin_right = 510.0
-margin_bottom = 4020.0
+margin_bottom = 4620.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )

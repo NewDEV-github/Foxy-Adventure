@@ -12,9 +12,6 @@ margin_top = -1.0
 margin_bottom = -1.0
 theme = ExtResource( 4 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NewFile" parent="." instance=ExtResource( 3 )]
 visible = true
@@ -29,8 +26,6 @@ margin_bottom = 414.686
 visible = true
 window_title = "Otwórz katalog"
 mode = 2
-current_dir = "/Users/S_P_K/Documents/GitHub/Foxy-Adventure"
-current_path = "/Users/S_P_K/Documents/GitHub/Foxy-Adventure/"
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_left = 0.5

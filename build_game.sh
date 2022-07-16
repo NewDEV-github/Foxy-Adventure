@@ -12,8 +12,8 @@ BRANCH=${10}
 sudo apt-get install unzip
 sudo apt-get install osslsigncode
 echo "Generating links and other required data..."
-GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/"$GODOT_V_N"/Godot_v"$GODOT_V_N"-"$GODOT_V_S"_linux_headless.64.zip"
-GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/"$GODOT_V_N"/Godot_v"$GODOT_V_N"-"$GODOT_V_S"_export_templates.tpz"
+GODOT_BINARY_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/"$GODOT_V_N"/rc6/Godot_v"$GODOT_V_N"-"$GODOT_V_S"_linux_headless.64.zip"
+GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK="https://downloads.tuxfamily.org/godotengine/"$GODOT_V_N"/rc6/Godot_v"$GODOT_V_N"-"$GODOT_V_S"_export_templates.tpz"
 GODOT_BINARY_FILENAME="$(basename -s .zip $GODOT_BINARY_DOWNLOAD_LINK)"
 GODOT_ZIP_FILENAME="$(basename $GODOT_BINARY_DOWNLOAD_LINK)"
 GODOT_TPZ_FILENAME="$(basename $GODOT_EXPORT_TEMPLATES_DOWNLOAD_LINK)"
@@ -55,14 +55,22 @@ if [[ "$EXPORT_MODE" == "normal" ]]; then
   sudo cp $BASE_PATH/autoupdate/autoupdate-linux-x64.run $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/autoupdate/autoupdate-linux-x64.run
   sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/autoupdate/update.ini
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "x11-64" $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/FoxyAdventure.x86_64
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.ico $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/icon.ico
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.png $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard/icon.png
+
   echo "Exporting for osx to $BASE_PATH/builds/$GODOT_VERSION/osx-standard..."
   sudo cp -r $BASE_PATH/autoupdate/autoupdate-osx.app/* $BASE_PATH/builds/$GODOT_VERSION/osx-standard/autoupdate/autoupdate-osx.app
   sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/osx-standard/autoupdate/update.ini
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "osx" $BASE_PATH/builds/$GODOT_VERSION/osx-standard/FoxyAdventure.zip
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.ico $BASE_PATH/builds/$GODOT_VERSION/osx-standard/icon.ico
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.png $BASE_PATH/builds/$GODOT_VERSION/osx-standard/icon.png
+    
   echo "Exporting for win-64 to $BASE_PATH/builds/$GODOT_VERSION/win-64-standard..."
   sudo cp $BASE_PATH/autoupdate/autoupdate-windows-x64.exe $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/autoupdate/autoupdate-windows-x64.exe
   sudo cp $BASE_PATH/autoupdate/update.ini $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/autoupdate/update.ini
   sudo ./$GODOT_BINARY_FILENAME --verbose --path "." --export "win-64" $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/FoxyAdventure.exe
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.ico $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/icon.ico
+  sudo cp $GITHUB_WORKSPACE/assets/Graphics/icon.png $BASE_PATH/builds/$GODOT_VERSION/win-64-standard/icon.png
 fi
 if [[ "$EXPORT_MODE" == "source" ]]; then
   echo "Exporting for x11-64 to $BASE_PATH/builds/$GODOT_VERSION/x11-64-standard..."
