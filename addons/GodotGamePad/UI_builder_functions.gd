@@ -152,7 +152,7 @@ static func create_layout_panelbutton(button_info, controller_location):# -> Pan
 
 
 # SAVING FUNCTIONS
-const SAVE_DIR = 'user://UI_Plugin_data/'
+const SAVE_DIR = 'res://UI_Plugin_data/'
 const inspector_save_path = SAVE_DIR + 'inspector.dat'
 const layoutInfo_save_path = SAVE_DIR + 'layout.dat'
 

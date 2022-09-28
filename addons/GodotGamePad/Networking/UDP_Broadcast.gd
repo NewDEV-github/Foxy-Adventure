@@ -9,8 +9,8 @@ var layout
 var _tmp_scene = ""
 
 func _ready():
-	set_process(false)
 	layout = JSON.print(UI_Builder.load_layout_info()).to_utf8()
+	set_process(false)
 
 func SendPacketToPhoneApp(value):
 	server.poll()

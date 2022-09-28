@@ -11,6 +11,7 @@ var supported_sdk_versions = [
 	111,
 	121
 ]
+var game_pad_clients = []
 var not_loaded_content = []
 #var packs = [install_base_path + "/packs/core/scenes.pck", install_base_path + "/packs/core/scripts.pck"]
 var custom_menu_bg = ""
@@ -249,7 +250,6 @@ func felt_into_toxine():
 	emit_signal("scoredatarecived")
 
 func _ready():
-	
 # warning-ignore:return_value_discarded
 	GamePad.connect("gamepad_connected", self, "_on_GamePad_controller_connected")
 # warning-ignore:return_value_discarded
@@ -263,7 +263,6 @@ func _ready():
 	if arguments.has("send-log"):
 		OS.shell_open(install_base_path + "send_log/send_log")
 		get_tree().quit()
-	var dir = Directory.new()
 	if not dir.dir_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/"):
 		dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/")
 	var conf = ConfigFile.new()

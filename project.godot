@@ -286,7 +286,8 @@ settings/stdout/verbose_stdout=true
 
 [display]
 
-window/size/borderless=true
+window/dpi/allow_hidpi=true
+window/vsync/use_vsync=false
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 

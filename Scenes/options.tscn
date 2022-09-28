@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/options.gd" type="Script" id=1]
 [ext_resource path="res://tag_processor/TagProcessingLabel.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://addons/github_issues_bugtracker/IssuePrompt.gd" type="Script" id=4]
 [ext_resource path="res://assets/themes/new_gui/neon.tres" type="Theme" id=5]
 [ext_resource path="res://addons/github_issues_bugtracker/issues_api.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/OptionsGamePadManager.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxLine" id=1]
 color = Color( 1, 1, 1, 1 )
@@ -21,11 +22,9 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -34.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="General" type="Tabs" parent="tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -296,7 +295,6 @@ items = [ "MONO", null, false, 0, null, "STEREO", null, false, 1, null, "QUAD", 
 selected = 1
 
 [node name="Controls" type="Tabs" parent="tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -305,22 +303,6 @@ margin_right = -5.0
 margin_bottom = -5.0
 drag_to_rearrange_enabled = true
 script = ExtResource( 3 )
-
-[node name="TagProcessedLabel" parent="tabs/Controls" instance=ExtResource( 2 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 83.0
-margin_bottom = -103.0
-theme = ExtResource( 5 )
-original_text = "[color=white][center]
-Move up: {D_UP}
-Move down: {D_DOWN}
-Move right: {D_RIGHT}
-Move left: {D_LEFT}
-
-Jump: {CONFIRM}
-Pause: {SKIP}
-[/center][/color]"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tabs/Controls"]
 anchor_right = 1.0
@@ -365,6 +347,63 @@ text = "PC"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="tabs/Controls"]
+anchor_top = 0.184
+anchor_right = 1.0
+anchor_bottom = 0.917
+margin_top = 15.032
+margin_bottom = -0.259033
+
+[node name="TagProcessedLabel" parent="tabs/Controls/HBoxContainer2" instance=ExtResource( 2 )]
+margin_right = 501.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+theme = ExtResource( 5 )
+original_text = "[color=white][center]
+Move up: {D_UP}
+Move down: {D_DOWN}
+Move right: {D_RIGHT}
+Move left: {D_LEFT}
+
+Jump: {CONFIRM}
+Pause: {SKIP}
+[/center][/color]"
+
+[node name="VSeparator" type="VSeparator" parent="tabs/Controls/HBoxContainer2"]
+margin_left = 505.0
+margin_right = 509.0
+margin_bottom = 371.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tabs/Controls/HBoxContainer2"]
+margin_left = 513.0
+margin_right = 1014.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+script = ExtResource( 7 )
+
+[node name="Button" type="Button" parent="tabs/Controls"]
+margin_left = 747.0
+margin_top = 489.0
+margin_right = 813.0
+margin_bottom = 516.0
+text = "Refresh"
+
+[node name="Button2" type="Button" parent="tabs/Controls"]
+margin_left = 677.0
+margin_top = 74.0
+margin_right = 865.0
+margin_bottom = 101.0
+text = "Get there one for Android"
+
+[node name="Label" type="Label" parent="tabs/Controls"]
+margin_left = 526.0
+margin_top = 44.0
+margin_right = 1013.0
+margin_bottom = 63.0
+text = "List of connected Remote Controllers"
+align = 1
+valign = 1
 
 [node name="Bug Report" type="Tabs" parent="tabs"]
 visible = false
@@ -505,9 +544,6 @@ margin_left = -96.5
 margin_top = -29.0001
 margin_right = 96.5
 text = "Apply"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="toggled" from="tabs/General/Options/side_left/VSync" to="." method="_on_VSync_toggled"]
 [connection signal="value_changed" from="tabs/General/Options/side_left/fps/target" to="." method="_on_maxfps_value_changed"]
@@ -526,6 +562,8 @@ __meta__ = {
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/PS_Button" to="tabs/Controls" method="_on_PS_Button_pressed"]
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/XBOX_Button" to="tabs/Controls" method="_on_XBOX_Button_pressed"]
 [connection signal="pressed" from="tabs/Controls/HBoxContainer/PC_Button" to="tabs/Controls" method="_on_PC_Button_pressed"]
+[connection signal="pressed" from="tabs/Controls/Button" to="tabs/Controls/HBoxContainer2/VBoxContainer" method="_on_Button_pressed"]
+[connection signal="pressed" from="tabs/Controls/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="request_completed" from="tabs/Bug Report/BugReportP/IssueRequest" to="tabs/Bug Report/BugReportP" method="_on_IssueRequest_request_completed"]
 [connection signal="pressed" from="tabs/Bug Report/BugReportP/IssuePrompt/Send" to="tabs/Bug Report/BugReportP/IssuePrompt" method="_on_Send_pressed"]
 [connection signal="request_completed" from="tabs/Bug Report/BugReportP/LabelsRequest" to="tabs/Bug Report/BugReportP/IssuePrompt" method="_on_LabelsRequest_request_completed"]

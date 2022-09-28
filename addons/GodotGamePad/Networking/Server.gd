@@ -54,15 +54,19 @@ func on_network_peer_connected(id):
 	register_client(id)
 	GamePad._on_Server_network_peer_connected(id)
 
+func unregister_cient(id):
+	pass
 
 func register_client(id):
 #	var playerINS = player.instance()
 #	self.add_child(playerINS)
 #	clients[id] = playerINS
+	Globals.game_pad_clients.push_back(id)
 	print("client %s registered" %id)
 
 
 func on_network_peer_disconnected(id):
+	Globals.game_pad_clients.remove(Globals.game_pad_clients.find(id))
 #	GamePad._on_Server_network_peer_disconnected(id)
 	print('client %s disconnected' % id)
 #	clients[id].queue_free()

@@ -22,6 +22,10 @@ var controls_blocked = false
 var camera_smoothing = Globals.camera_smoothing
 onready var sprite = $Anim/Sprite
 func _ready() -> void:
+	if get_node("Anim/Sprite") != null:
+		sprite = $Anim/Sprite
+	elif get_node("Sprite") != null:
+		sprite = $Sprite
 	DiscordSDK.run_rpc(false, true, character_name)
 #func restart_position():
 #	set_position(Vector2(144, 90))
@@ -130,7 +134,10 @@ func _physics_process(delta):
 
 	if new_anim != anim:
 		anim = new_anim
-		$Anim/Sprite/AnimationPlayer.play(anim)
+		if get_node("Anim/Sprite/AnimationPlayer") != null:
+			$Anim/Sprite/AnimationPlayer.play(anim)
+		elif get_node("AnimationPlayer") != null:
+			$AnimationPlayer.play(anim)
 	
 
 

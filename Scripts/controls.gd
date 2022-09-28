@@ -1,5 +1,5 @@
 extends Tabs
-onready var tpl = $TagProcessedLabel
+onready var tpl = $HBoxContainer2/TagProcessedLabel
 func _on_NIN_Button_pressed():
 	tpl.update_text("Pro Controller")
 

@@ -246,3 +246,7 @@ func _on_LoadingDelay_value_changed(value: float) -> void:
 
 func _on_LoadingDelay2_value_changed(value: float) -> void:
 	Globals.set_character_camera_smoothing(value)
+
+
+func _on_Button2_pressed():
+	OS.shell_open("https://play.google.com/store/apps/details?id=org.godotengine.foxyadventureremotecontrolapp&hl=pl&gl=US")
