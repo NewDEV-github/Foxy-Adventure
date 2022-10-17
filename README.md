@@ -1,10 +1,7 @@
 # Foxy Adventure
-<p align="center">
-  <a href="https://newdev.web.app/games/foxy-adventure">
-    <img src="https://newdev.web.app/dl/img/games/foxy-adventure/bg.png" width="400" alt="Godot Engine logo">
-  </a>
-</p>
-
+<a href="https://newdev.web.app/games/foxy-adventure">
+    <img src="https://newdev.web.app/favicon.ico" align="right" width="100" alt="Foxy Adventure Logo">
+</a>   
 
 ## About the game:
 A 2D platformer with Miles "Tails" Prower as main character.
