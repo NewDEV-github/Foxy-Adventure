@@ -11,7 +11,7 @@ onready var sdk = preload("res://bin/sdk/sdk.gdns").new()
 func _ready():
 	var f = File.new()
 	f.open("res://version.dat", File.READ)
-	$VBoxContainer/game_versions.text = "[" + f.get_line() + "]"
+	$VBoxContainer/game_versions.text = f.get_line()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
