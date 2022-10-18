@@ -105,7 +105,7 @@ func _physics_process(delta):
 
 	### ANIMATION ###
 
-	var new_anim = "idle1"
+	var new_anim = "idle"
 
 	if is_on_floor():
 		if linear_vel.x < -SIDING_CHANGE_SPEED:
@@ -137,7 +137,8 @@ func _physics_process(delta):
 		if get_node("Anim/Sprite/AnimationPlayer") != null:
 			$Anim/Sprite/AnimationPlayer.play(anim)
 		elif get_node("AnimationPlayer") != null:
-			$AnimationPlayer.play(anim)
+			if $AnimationPlayer.has_animation(anim):
+				$AnimationPlayer.play(anim)
 	
 
 

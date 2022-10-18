@@ -9,7 +9,9 @@ var camera_smoothing = 0
 var supported_sdk_versions = [
 	110,
 	111,
-	121
+	121,
+	122,
+	123
 ]
 var game_pad_clients = []
 var not_loaded_content = []
@@ -429,10 +431,9 @@ func load_modification(mod_name):
 		print(str(supported_sdk_versions.has(int(mod["sdk_version"]))))
 		var f = File.new()
 		f.open("res://version.dat", File.READ)
-		if supported_sdk_versions.has(int(mod["sdk_version"])) and Array(mod["supported_game_versions"]).has(f.get_line()):
-			for i in mod["pck_files"]:
-				print("Loading: " + OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
-				ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + i)
+		if supported_sdk_versions.has(int(mod["sdk_version"])):
+			print("Loading: " + OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + mod['pck_files'])
+			ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/New DEV/Foxy Adventure/Mods/" + mod['pck_files'])
 			var main_script = load(mod["main_script_file"]).new()
 			print("Loading mod")
 			main_script.init_mod()
