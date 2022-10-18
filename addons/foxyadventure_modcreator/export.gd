@@ -21,7 +21,7 @@ func _export_begin(features, is_debug, path, flags):
 		file.close()
 		config.load("res://" + mod_cfg_filename)
 		if not config.has_section_key("mod_info", "pck_files"):
-			config.set_value("mod_info", "pck_files", [path.get_file()])
+			config.set_value("mod_info", "pck_files", path.get_file())
 		config.save("res://" + mod_cfg_filename)
 		print("Copying mod cfg file from %s to %s" % ["res://" + mod_cfg_filename, cfg_path + "/" + mod_cfg_filename])
 		dir.copy("res://" + mod_cfg_filename, cfg_path + "/" + mod_cfg_filename)
