@@ -87,21 +87,21 @@ jobs:
           asset_content_type: application/zip
       - name: Upload a Build Artifact x11
         continue-on-error: true
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           # Artifact name
           name: Linux-x64
           path: builds/${{ matrix.godot-version }}.rc6/x11-64-standard/
       - name: Upload a Build Artifact osx
         continue-on-error: true
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           # Artifact name
           name: OSX
           path: builds/${{ matrix.godot-version }}.rc6/osx-standard/
       - name: Upload a Build Artifact win
         continue-on-error: true
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           # Artifact name
           name: Win-x64
