@@ -37,7 +37,7 @@ jobs:
           zip -r build-osx-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.rc6/osx-standard/
           zip -r build-win-64-${{ matrix.godot-version }}.zip builds/${{ matrix.godot-version }}.rc6/win-64-standard/
       - name: Upload a Build Artifact win
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         with:
           # Artifact name
           name: win-64-standard
@@ -45,7 +45,7 @@ jobs:
           path: build-win-64-${{ matrix.godot-version }}.zip
           # The desired behavior if no files are found using the provided path.
       - name: Upload a Build Artifact x11
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         with:
           # Artifact name
           name: x11-64-standard
@@ -53,7 +53,7 @@ jobs:
           path: build-x11-64-${{ matrix.godot-version }}.zip
           # The desired behavior if no files are found using the provided path.
       - name: Upload a Build Artifact osx
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         with:
           # Artifact name
           name: osx-standard
